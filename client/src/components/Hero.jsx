@@ -6,31 +6,31 @@ function Hero() {
   const [menuOpen, setMenuOpen] = useState(false);
 
   return (
-    <section className="w-full mx-auto overflow-hidden rounded-3xl px-2 md:px-10 py-2">
+    <section className="w-full mx-auto overflow-hidden rounded-3xl px-2 md:px-10">
       <div
         className="
           grid
           grid-cols-1 grid-rows-2
           md:grid-cols-2 md:grid-rows-1
           w-full
-          h-[760px] md:h-[650px]
-          min-h-0
+          h-[950px] md:h-[650px]
+          
         "
       >
         {/* LEFT */}
         <div
           className="
             h-full
-            min-h-0
+
             overflow-hidden
             bg-[#123C32]
-            px-8 py-10
+            px-8
             md:px-12 lg:px-16
             flex flex-col justify-center
-            rounded-t-3xl md:rounded-l-3xl md:rounded-tr-none
+            rounded-t-3xl md:rounded-l-3xl md:rounded-tr-none py-5
           "
         >
-          <div className="w-full max-w-[610px] mx-auto lg:mx-0">
+          <div className="w-full max-w-[610px] mx-auto lg:mx-0 ">
             {/* Badge */}
             <a
               href="#"
