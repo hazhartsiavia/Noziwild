@@ -6,7 +6,7 @@ function Hero() {
   const [menuOpen, setMenuOpen] = useState(false);
 
   return (
-    <section className="w-full mx-auto overflow-hidden rounded-3xl px-10">
+    <section className="w-full mx-auto overflow-hidden rounded-3xl px-2 md:px-10">
       <div
         className="
           grid
