@@ -1,1 +1,5 @@
 @import "tailwindcss";
+
+.right-side{
+    height: 100%;
+}

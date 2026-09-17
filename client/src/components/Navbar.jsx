@@ -15,12 +15,13 @@ function Navbar() {
                     }
                 `}
             </style>
-            <nav className="bg-white px-6 md:px-16 lg:px-24 xl:px-32 py-4 flex items-center justify-between relative">
-                <div className="flex items-center gap-20">
+            <nav className="bg-white w-full lg:px-10 pb-1 pt-4 px-10 md:px-10 flex items-center justify-between relative">
+                <div className="flex items-center gap-4">
                     <a href="https://prebuiltui.com">
-                        <img src={icone} alt="Logo" className="h-18" />
+                        <img src={icone} alt="Logo" className="h-18" /> 
                     </a>
-                    <div className="hidden md:flex items-center gap-10">
+                    Noziwild
+                    <div className="hidden md:flex items-center px-20 gap-10">
                         <div className="relative group">
                             <button className="flex items-center gap-1.5 text-sm text-zinc-800 cursor-pointer bg-transparent border-0 py-2">
                                 All Pages
