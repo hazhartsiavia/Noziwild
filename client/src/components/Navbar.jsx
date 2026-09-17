@@ -15,7 +15,7 @@ function Navbar() {
                     }
                 `}
             </style>
-            <nav className="bg-white w-full lg:px-10 pb-1 pt-4 px-10 md:px-10 flex items-center justify-between relative">
+            <nav className="bg-white w-full px-2 pb-1 pt-4 md:px-10 flex items-center justify-between relative">
                 <div className="flex items-center gap-4">
                     <a href="https://prebuiltui.com">
                         <img src={icone} alt="Logo" className="h-18" /> 
