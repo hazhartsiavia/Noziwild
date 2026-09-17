@@ -13,7 +13,7 @@ function Hero() {
           grid-cols-1 grid-rows-2
           md:grid-cols-2 md:grid-rows-1
           w-full
-          h-[950px] md:h-[650px]
+          h-[950px] md:h-[500px]
           
         "
       >
@@ -214,6 +214,7 @@ function Hero() {
             overflow-hidden
             bg-[#123C32]
             relative
+            md:rounded-r-3xl
           "
         >
           <img
