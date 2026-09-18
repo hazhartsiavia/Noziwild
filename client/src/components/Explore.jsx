@@ -39,18 +39,18 @@ function Explore() {
         `}
       </style>
 
-      <div className="bg-[#FAFAFA] py-16 md:px-4 flex flex-col items-center">
+      <div className="bg-[#FAFAFA] pt-16 md:px-4 flex flex-col items-center">
         <div className="text-center mb-15">
           <h1 className="text-[35px] md:text-[40px] font-medium text-slate-900 mb-4">
             Typical travel Experiences
           </h1>
-          <p className="text-base text-slate-600 max-w-lg px-4 md:px-10 pb-4 leading-relaxed">
+          <p className="text-base text-slate-600 max-w-lg px-4 md:px-10 md:pb-4 leading-relaxed">
             From breathtaking landscapes to cultural immersions, 
             we offer unforgettable adventures for every traveler.
           </p>
         </div>
 
-        <div className="px-10 flex flex-wrap items-center justify-center gap-6 max-w-full w-full">
+        <div className="px-5 flex flex-wrap items-center justify-center gap-6 max-w-full w-full">
           {cards.map((card) => (
             <div
               key={card.id}
