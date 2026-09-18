@@ -39,25 +39,25 @@ function Explore() {
         `}
       </style>
 
-      <div className="bg-[#FAFAFA] py-16 px-4 flex flex-col items-center">
+      <div className="bg-[#FAFAFA] py-16 md:px-4 flex flex-col items-center">
         <div className="text-center mb-15">
-          <h1 className="text-[40px] font-medium text-slate-900 mb-4">
+          <h1 className="text-[35px] md:text-[40px] font-medium text-slate-900 mb-4">
             Typical travel Experiences
           </h1>
-          <p className="text-base text-slate-600 max-w-lg px-5 md:px-10 pb-4 leading-relaxed">
+          <p className="text-base text-slate-600 max-w-lg px-4 md:px-10 pb-4 leading-relaxed">
             From breathtaking landscapes to cultural immersions, 
             we offer unforgettable adventures for every traveler.
           </p>
         </div>
 
-        <div className="flex flex-wrap items-center justify-center gap-6 max-w-full w-full">
+        <div className="px-10 flex flex-wrap items-center justify-center gap-6 max-w-full w-full">
           {cards.map((card) => (
             <div
               key={card.id}
-              className="bg-white border border-zinc-200 rounded-lg overflow-hidden transition-all duration-300 cursor-pointer hover:-translate-y-2 hover:shadow-lg p-4 flex flex-col items-center"
+              className="w-full md:w-auto bg-white border border-zinc-200 rounded-lg overflow-hidden transition-all duration-300 cursor-pointer hover:-translate-y-2 hover:shadow-lg p-4 flex flex-col items-center"
             >
-              <img src={card.image} alt={card.title} className="w-full max-w-56 object-cover mb-6" />
-              <div className="w-full max-w-56 flex flex-col h-full">
+              <img src={card.image} alt={card.title} className="w-full md:max-w-56 object-cover mb-6" />
+              <div className="w-full md:max-w-56 flex flex-col h-full">
                 <h3 className="text-base font-medium text-slate-900 mb-2">{card.title}</h3>
                 <p className="text-xs text-slate-700 leading-relaxed mb-3">{card.description}</p>
                 <div className="flex items-end justify-end">
