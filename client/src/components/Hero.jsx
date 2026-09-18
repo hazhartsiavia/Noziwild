@@ -76,8 +76,7 @@ function Hero() {
                 text-white
                 text-3xl
                 md:text-4xl
-                md:text-5xl
-                lg:text-[52px]/[1.1]
+                lg:text-[45px]/[1.1]
                 font-semibold
                 mt-5
                 max-w-full
@@ -101,6 +100,39 @@ function Hero() {
               Go Beyond the Ordinary: Embark on a Journey to Madagascar&apos;s
               Untamed Beauty, Where Adventure Meets Serenity
             </p>
+            <form className='bg-white text-gray-500 rounded-lg px-6 py-4  flex sm:flex-wrap md:flex-wrap-none flex-col flex-row max-md:items-start gap-4 max-md:mx-auto my-6'>
+
+                <div>
+                    <div className='flex items-center gap-2'>
+                        <svg className="w-4 h-4 text-gray-800" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24" >
+                            <path stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M4 10h16M8 14h8m-4-7V4M7 7V4m10 3V4M5 20h14a1 1 0 0 0 1-1V7a1 1 0 0 0-1-1H5a1 1 0 0 0-1 1v12a1 1 0 0 0 1 1Z" />
+                        </svg>
+                        <label htmlFor="destinationInput">Destination</label>
+                    </div>
+                    <input list='destinations' id="destinationInput" type="text" className=" rounded border border-gray-200 px-3 py-1.5 mt-1.5 text-sm outline-none" placeholder="Type here" required />
+                </div>
+
+                <div>
+                    <div className='flex items-center gap-2'>
+                        <svg className="w-4 h-4 text-gray-800" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24" >
+                            <path stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M4 10h16M8 14h8m-4-7V4M7 7V4m10 3V4M5 20h14a1 1 0 0 0 1-1V7a1 1 0 0 0-1-1H5a1 1 0 0 0-1 1v12a1 1 0 0 0 1 1Z" />
+                        </svg>
+                        <label htmlFor="checkIn">Check in</label>
+                    </div>
+                    <input id="checkIn" type="date" className=" rounded border border-gray-200 px-3 py-1.5 mt-1.5 text-sm outline-none" />
+                </div>
+                <div className='flex flex-col items-center'>
+                    <label htmlFor="guests">Guests</label>
+                    <input min={1} max={4} id="guests" type="number" className=" rounded border border-gray-200 px-3 py-1.5 mt-1.5 text-sm outline-none  max-w-16" placeholder="0" />
+                </div>
+
+                <button className='flex items-center justify-center gap-1 rounded-md bg-[#C49849] py-3 px-4 text-white my-auto cursor-pointer max-md:w-full max-md:py-1' >
+                    <svg className="w-4 h-4 text-white" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24" >
+                        <path stroke="currentColor" strokeLinecap="round" strokeWidth="2" d="m21 21-3.5-3.5M17 10a7 7 0 1 1-14 0 7 7 0 0 1 14 0Z" />
+                    </svg>
+                    <span>Search</span>
+                </button>
+            </form>
 
             {/* Form */}
             <form
@@ -151,62 +183,6 @@ function Hero() {
                 Subscribe now
               </button>
             </form>
-
-            {/* Avatars + Stars */}
-            <div className="flex items-center mt-8">
-              <div className="flex -space-x-3 pr-3">
-                <img
-                  src="https://images.unsplash.com/photo-1438761681033-6461ffad8d80?q=80&w=200"
-                  alt="user"
-                  className="size-9 object-cover rounded-full border-2 border-[#123C32]"
-                />
-
-                <img
-                  src="https://images.unsplash.com/photo-1633332755192-727a05c4013d?q=80&w=200"
-                  alt="user"
-                  className="size-9 object-cover rounded-full border-2 border-[#123C32]"
-                />
-
-                <img
-                  src="https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?q=80&w=200"
-                  alt="user"
-                  className="size-9 object-cover rounded-full border-2 border-[#123C32]"
-                />
-
-                <img
-                  src="https://images.unsplash.com/photo-1438761681033-6461ffad8d80?q=80&w=200"
-                  alt="user"
-                  className="size-9 object-cover rounded-full border-2 border-[#123C32]"
-                />
-              </div>
-
-              <div>
-                <div className="flex">
-                  {Array(5)
-                    .fill(0)
-                    .map((_, i) => (
-                      <svg
-                        key={i}
-                        xmlns="http://www.w3.org/2000/svg"
-                        width="16"
-                        height="16"
-                        viewBox="0 0 24 24"
-                        fill="#FF8F20"
-                        stroke="#FF8F20"
-                        strokeWidth="2"
-                        strokeLinecap="round"
-                        strokeLinejoin="round"
-                      >
-                        <path d="M11.525 2.295a.53.53 0 0 1 .95 0l2.31 4.679a2.123 2.123 0 0 0 1.595 1.16l5.166.756a.53.53 0 0 1 .294.904l-3.736 3.638a2.123 2.123 0 0 0-.611 1.878l.882 5.14a.53.53 0 0 1-.771.56l-4.618-2.428a2.122 2.122 0 0 0-1.973 0L6.396 21.01a.53.53 0 0 1-.77-.56l.881-5.139a2.122 2.122 0 0 0-.611-1.879L2.16 9.795a.53.53 0 0 1 .294-.906l5.165-.755a2.123 2.123 0 0 0 1.597-1.16z" />
-                      </svg>
-                    ))}
-                </div>
-
-                <p className="text-xs text-white/60">
-                  Used by 10,000+ users
-                </p>
-              </div>
-            </div>
           </div>
         </div>
 
@@ -234,11 +210,11 @@ function Hero() {
           />
         </div>
       </div>
-      <div className="w-full h-full  bg-[#FAFAFA] flex items-center justify-center">
+      <div className="w-full h-full  bg-[#FFFFFF] flex items-center justify-center">
         <img
             src={down}
             alt="user"
-            className="md:size-50 object-contain "
+            className="md:size-40 border border-white/20 object-contain "
           />
       </div>
     </section>
