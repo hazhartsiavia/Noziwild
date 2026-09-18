@@ -11,9 +11,9 @@ function Hero() {
         className="
           grid
           grid-cols-1 grid-rows-2
-          md:grid-cols-2 md:grid-rows-1
+          lg:grid-cols-2 lg:grid-rows-1
           w-full
-          h-full md:h-[600px]
+          md:h-[1050px] lg:h-[700px]
           
         "
       >
@@ -24,10 +24,10 @@ function Hero() {
             py-10 md:py-0
             overflow-hidden
             bg-[#123C32]
-            px-8
-            md:px-12 lg:px-16
+            px-2
+            lg:px-12 lg:px-16
             flex flex-col justify-center
-            rounded-t-3xl md:rounded-l-3xl md:rounded-tr-none py-5
+            rounded-t-3xl lg:rounded-l-3xl lg:rounded-tr-none py-20 lg:py-5
           "
         >
           <div className="w-full max-w-[610px] mx-auto lg:mx-0 md:mt-0 flex flex-col items-start">
@@ -215,7 +215,8 @@ function Hero() {
             overflow-hidden
             bg-[#123C32]
             relative
-            md:rounded-r-3xl
+            lg:rounded-r-3xl
+            rounded-b-3xl lg:rounded-bl-none
           "
         >
           <img
