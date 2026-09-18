@@ -41,7 +41,7 @@ function Explore() {
 
       <div className="bg-[#FAFAFA] pt-16 md:px-4 flex flex-col items-center">
         <div className="text-center mb-15">
-          <h1 className="text-[35px] md:text-[40px] font-medium text-slate-900 mb-4">
+          <h1 className="text-[30px] md:text-[40px] font-medium text-slate-900 mb-4">
             Typical travel Experiences
           </h1>
           <p className="text-base text-slate-600 max-w-lg px-4 md:px-10 md:pb-4 leading-relaxed">

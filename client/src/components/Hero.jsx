@@ -21,7 +21,7 @@ function Hero() {
         <div
           className="
             h-full
-
+            py-10 md:py-0
             overflow-hidden
             bg-[#123C32]
             px-8
@@ -30,7 +30,7 @@ function Hero() {
             rounded-t-3xl md:rounded-l-3xl md:rounded-tr-none py-5
           "
         >
-          <div className="w-full max-w-[610px] mx-auto lg:mx-0 ">
+          <div className="w-full max-w-[610px] mx-auto lg:mx-0 md:mt-0 flex flex-col items-start">
             {/* Badge */}
             <a
               href="https://noziwild.com"
