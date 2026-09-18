@@ -74,7 +74,8 @@ function Hero() {
             <h1
               className="
                 text-white
-                text-4xl
+                text-3xl
+                md:text-4xl
                 md:text-5xl
                 lg:text-[52px]/[1.1]
                 font-semibold
