@@ -13,7 +13,7 @@ function Hero() {
           grid-cols-1 grid-rows-2
           md:grid-cols-2 md:grid-rows-1
           w-full
-          h-[950px] md:h-[500px]
+          h-[950px] md:h-[600px]
           
         "
       >
@@ -33,23 +33,23 @@ function Hero() {
           <div className="w-full max-w-[610px] mx-auto lg:mx-0 ">
             {/* Badge */}
             <a
-              href="#"
+              href="https://noziwild.com"
               className="
                 inline-flex items-center gap-2
-                bg-indigo-50
-                border border-indigo-200
+                bg-white
+                border border-[#C49849]
                 rounded-full
                 p-1 pr-3
                 text-sm
               "
             >
-              <span className="bg-indigo-600 text-white text-xs px-3 py-1 rounded-full">
-                NEW
+              <span className="bg-[#C49849] text-white text-xs px-3 py-1 rounded-full">
+                Noziwild
               </span>
 
-              <p className="flex items-center gap-2 text-indigo-600">
+              <p className="flex items-center gap-2 text-[#C49849]">
                 <span className="text-sm">
-                  Try 30 days free trial option
+                  MADAGASCAR
                 </span>
 
                 <svg
@@ -82,7 +82,7 @@ function Hero() {
                 max-w-[610px]
               "
             >
-              MADAGASCAR, WILDLY YOURS
+              Where dreams become destinations await extraordinary
             </h1>
 
             {/* Description */}
