@@ -13,7 +13,7 @@ function Hero() {
           grid-cols-1 grid-rows-2
           md:grid-cols-2 md:grid-rows-1
           w-full
-          h-[950px] md:h-[600px]
+          h-full md:h-[600px]
           
         "
       >

@@ -62,7 +62,7 @@ function Explore() {
                 <p className="text-xs text-slate-700 leading-relaxed mb-3">{card.description}</p>
                 <div className="flex items-end justify-end">
                   <button className="inline-flex items-center gap-2 bg-transparent border-0 text-slate-700 text-xs cursor-pointer p-0 hover:gap-2 group">
-                    TRY NOW
+                    En savoir plus
                     <svg
                       width="22"
                       height="15"
