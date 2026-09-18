@@ -1,19 +1,21 @@
 import React, { useState } from "react";
 import Lemurien from "../assets/images/Lemurien.png";
 import Tana from "../assets/images/Tana.png";
+import down from "../assets/images/downDirection.png";
 
 function Hero() {
   const [menuOpen, setMenuOpen] = useState(false);
 
   return (
-    <section className="w-full mx-auto overflow-hidden rounded-3xl px-2 md:px-10">
+    <section className="w-full mx-auto overflow-hidden  px-2 lg:px-10">
       <div
         className="
           grid
           grid-cols-1 grid-rows-2
           lg:grid-cols-2 lg:grid-rows-1
           w-full
-          md:h-[1050px] lg:h-[700px]
+          md:h-[1050px] lg:h-[80vh]
+          lg:mt-4
           
         "
       >
@@ -21,16 +23,14 @@ function Hero() {
         <div
           className="
             h-full
-            py-10 md:py-0
+            py-10 
             overflow-hidden
             bg-[#123C32]
-            px-2
-            lg:px-12 lg:px-16
-            flex flex-col justify-center
-            rounded-t-3xl lg:rounded-l-3xl lg:rounded-tr-none py-20 lg:py-5
+            flex flex-col justify-center items-start
+            rounded-t-3xl lg:rounded-l-3xl lg:rounded-tr-none py-20 lg:py-5 ld:gap-20
           "
         >
-          <div className="w-full max-w-[610px] mx-auto lg:mx-0 md:mt-0 flex flex-col items-start">
+          <div className="w-full px-10 lg:mx-0 md:mt-0 flex flex-col items-start">
             {/* Badge */}
             <a
               href="https://noziwild.com"
@@ -80,10 +80,12 @@ function Hero() {
                 lg:text-[52px]/[1.1]
                 font-semibold
                 mt-5
-                max-w-[610px]
+                max-w-full
+                pr-2 lg:pr-0
+                md:leading-[1.2]
               "
             >
-              Where dreams become destinations await extraordinary
+              Noziwild Madagascar, Explore the Untamed Beauty of the Island
             </h1>
 
             {/* Description */}
@@ -91,7 +93,8 @@ function Hero() {
               className="
                 text-white/75
                 text-base leading-7
-                max-w-md
+                max-w-full
+                pr-2 lg:pr-8 lg:max-w-full
                 mt-5
               "
             >
@@ -216,7 +219,7 @@ function Hero() {
             bg-[#123C32]
             relative
             lg:rounded-r-3xl
-            rounded-b-3xl lg:rounded-bl-none
+            rounded-b-3xl md:rounded-b-none
           "
         >
           <img
@@ -230,6 +233,13 @@ function Hero() {
             "
           />
         </div>
+      </div>
+      <div className="w-full h-full  bg-[#FAFAFA] flex items-center justify-center">
+        <img
+            src={down}
+            alt="user"
+            className="md:size-50 object-contain "
+          />
       </div>
     </section>
   );
