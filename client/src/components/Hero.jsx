@@ -100,7 +100,7 @@ function Hero() {
               Go Beyond the Ordinary: Embark on a Journey to Madagascar&apos;s
               Untamed Beauty, Where Adventure Meets Serenity
             </p>
-            <form className='bg-white text-gray-500 rounded-lg px-6 py-4  flex sm:flex-wrap md:flex-wrap-none flex-col flex-row max-md:items-start gap-4 max-md:mx-auto my-6'>
+            <form className='bg-white text-gray-500 rounded-lg px-6 py-4  flex sm:flex- md:flex-wrap-none flex-col flex-row max-md:items-start gap-4 max-md:mx-auto my-6'>
 
                 <div>
                     <div className='flex items-center gap-2'>
