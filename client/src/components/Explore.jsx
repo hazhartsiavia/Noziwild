@@ -21,7 +21,7 @@ function Explore() {
   const rootRef = useRef(null)
   const imageWrapperRef = useRef(null)
   const imageRef = useRef(null)
-  const thumbsWrapperRef = useRef(null)
+  const overlayRef = useRef(null)
 
   useGSAP(() => {
     // Image principale : scale de 0.25 à 1 pendant le scroll
@@ -39,23 +39,41 @@ function Explore() {
         },
       }
     );
-    const thumbnails = gsap.utils.toArray(".thumbnail", rootRef.current);
 
-    gsap.fromTo(
-      thumbnails,
-      { y: 60, opacity: 0 },
+    // État initial : overlay flouté/invisible, miniatures masquées (cercle fermé)
+    gsap.set(".overlay-item", { opacity: 0, y: 20, filter: "blur(8px)" });
+    gsap.set(".thumbnail", { clipPath: "circle(0% at 50% 50%)", scale: 0.8, rotate: -6 });
+
+    // Timeline déclenchée quand l'image atteint 100%
+    const tl = gsap.timeline({
+      scrollTrigger: {
+        trigger: imageWrapperRef.current,
+        start: "top center",
+        toggleActions: "play none none none",
+      },
+    });
+
+    tl.to(".overlay-item", {
+      opacity: 1,
+      y: 0,
+      filter: "blur(0px)",
+      duration: 0.7,
+      stagger: 0.1,
+      ease: "power2.out",
+    }).to(
+      ".thumbnail",
       {
-        y: 0,
-        opacity: 1,
-        ease: "none",
-        stagger: 0.2,
-        scrollTrigger: {
-          trigger: thumbsWrapperRef.current,
-          start: "top 85%",
-          end: "top 65%",
-          scrub: true,
+        clipPath: "circle(75% at 50% 50%)",
+        scale: 1,
+        rotate: 0,
+        duration: 0.8,
+        stagger: {
+          each: 0.15,
+          from: "center", // s'ouvrent depuis le centre vers les bords
         },
-      }
+        ease: "back.out(1.6)", // léger rebond à l'arrivée
+      },
+      "-=0.3"
     );
   }, { scope: rootRef });
 
@@ -73,7 +91,7 @@ function Explore() {
       </div>
 
       {/* Galerie */}
-      <div className="w-full max-w-[90vw] md:max-h-[80vh] flex flex-col items-center space-y-4">
+      <div className="w-full max-w-[90vw] md:max-h-[95vh] flex flex-col items-center space-y-4">
 
         {/* Image principale */}
         <div ref={imageWrapperRef} className="relative w-full overflow-hidden rounded-lg">
@@ -87,14 +105,16 @@ function Explore() {
               alt={selectedImage.title}
               className="w-full h-[500px] md:h-[580px] object-cover rounded-lg"
             />
-            <div className="absolute h-full inset-x-0 top-0 rounded-t-lg bg-black/50 p-5 md:p-10 md:space-y-4 text-white">
-              <h2 className="text-3xl md:text-4xl lg:text-5xl font-medium">{selectedImage.title}</h2>
-              <p className="mt-1 text-sm text-white/80">{selectedImage.description}</p>
-              <hr className='w-[200px] md:w-[200px] my-2'/>
-              <p className="mt-1 text-sm text-white/80"></p>
-              <div className="absolute bottom-5 md:bottom-5 md:right-10 right-5 justify-end items-end">
-                <h1 className="text-base md:text-lg lg:text-xl font-medium text-white/80 mr-4 mb-4">Starting at 200$</h1>
-                <button className="bg-white text-slate-900 px-4 py-2 rounded-lg hover:bg-slate-100 transition">
+            <div ref={overlayRef} className="absolute h-[100%] inset-x-0 top-0 rounded-t-lg bg-black/50 p-5 md:p-10 md:space-y-4 text-white">
+              <h2 className="overlay-item text-3xl md:text-4xl lg:text-5xl font-medium">{selectedImage.title}</h2>
+              <p className="overlay-item mt-1 text-sm text-white/80">{selectedImage.description}</p>
+              <hr className='overlay-item w-[200px] md:w-[200px] my-2'/>
+              <div className="absolute bottom-3 right-5 md:bottom-5 md:right-10 flex flex-col items-end">
+                <h1 className="overlay-item text-base md:text-lg lg:text-xl font-medium text-white/80 mb-4">
+                  Starting at 200$
+                </h1>
+
+                <button className="overlay-item bg-white text-slate-900 px-4 py-2 mb-4 lg:mb-5 rounded-lg hover:bg-slate-100 transition">
                   Explore Now
                 </button>
               </div>
@@ -103,7 +123,7 @@ function Explore() {
         </div>
 
         {/* Miniatures */}
-        <div ref={thumbsWrapperRef} className="grid grid-cols-4 w-full gap-4">
+        <div className="grid grid-cols-4 w-full gap-[10px]">
           {cards.map((card) => (
             <img
               key={card.id}
@@ -113,7 +133,7 @@ function Explore() {
               className={`
                 thumbnail
                 w-full md:h-30 h-24 object-cover rounded-md md:rounded-lg
-                cursor-pointer transition hover:opacity-80
+                cursor-pointer
                 ${selectedImage.id === card.id ? 'ring-2 ring-slate-900' : ''}
               `}
             />
