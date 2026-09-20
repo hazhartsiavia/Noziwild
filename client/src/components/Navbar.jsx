@@ -1,5 +1,6 @@
 import React from 'react'
 import icone from "../assets/icone.png";
+import { Link } from "react-router-dom";
 
 function Navbar() {
     const [menuOpen, setMenuOpen] = React.useState(false);
@@ -15,7 +16,7 @@ function Navbar() {
                     }
                 `}
             </style>
-            <nav className="bg-white w-full px-5 pb-4 mb:pb-1 pt-2 md:pt-4 lg:px-10 flex items-center justify-between relative">
+            <nav className=" w-full px-5 pb-4 mb:pb-1 pt-2 md:pt-4 lg:px-10 flex items-center justify-between relative">
                 <div className="flex items-center gap-2 lg:gap-4">
                     <a href="https://prebuiltui.com">
                         <img src={icone} alt="Logo" className="h-12 lg:h-18" /> 
@@ -36,7 +37,7 @@ function Navbar() {
                         </div>
                         <a href="#" className="text-sm text-zinc-500 hover:text-zinc-800">Nos Circuits</a>
                         <a href="#" className="text-sm text-zinc-500 hover:text-zinc-800">Pricing</a>
-                        <a href="#" className="text-sm text-zinc-500 hover:text-zinc-800">Blogs</a>
+                        <a href="#" className="text-sm text-zinc-500 hover:text-zinc-800"><Link to="/blog"> Blogs</Link></a>
                     </div>
                 </div>
 

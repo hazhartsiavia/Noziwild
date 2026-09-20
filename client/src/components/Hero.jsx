@@ -5,7 +5,7 @@ import down from "../assets/images/downDirection.png";
 function Hero() {
   return (
     <>
-      <div className="w-[95vw] lg:max-w-[90vw] mx-auto">
+      <div className="w-[95vw] lg:max-w-full mx-auto">
         <div className="grid grid-cols-1 lg:grid-cols-2 w-full min-h-[600px] rounded-3xl overflow-hidden">
 
           {/* LEFT : contenu texte + formulaires */}
