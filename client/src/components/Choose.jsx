@@ -9,6 +9,17 @@ import BoatImg from "../assets/images/Ramena.png";
 
 gsap.registerPlugin(ScrollTrigger)
 
+/* ------------------------------------------------------------------
+   Échelle typographique PARTAGÉE
+   ⚠ À garder strictement identique dans Explore.jsx et Choose.jsx
+------------------------------------------------------------------- */
+const SECTION_WIDTH = "w-[90vw] lg:max-w-[80vw]"
+const SECTION_TITLE = "text-3xl sm:text-4xl md:text-5xl lg:text-[52px] font-medium text-slate-900 leading-[1.15] tracking-tight"
+const SECTION_SUBTITLE = "text-sm sm:text-base md:text-lg text-slate-600 leading-relaxed max-w-3xl"
+const CARD_TITLE = "text-3xl md:text-4xl font-medium tracking-tight leading-[1.1] break-words"
+const META_TEXT = "text-xs sm:text-sm"
+const BUTTON = "text-sm font-medium px-5 py-2.5 rounded-full"
+
 const recommendedTours = [
   {
     id: 1,
@@ -69,18 +80,18 @@ function RecommendedCard({ tour }) {
       />
       <div className="flex flex-col gap-1.5 flex-1 min-w-0">
         <div className="flex items-center gap-1.5">
-          <svg className="w-4 h-4 text-[#F5B800] fill-current" viewBox="0 0 20 20">
+          <svg className="w-4 h-4 text-[#F5B800] fill-current" viewBox="0 0 20 20" aria-hidden="true">
             <path d="M10 15l-5.878 3.09 1.123-6.545L.489 6.91l6.572-.955L10 0l2.939 5.955 6.572.955-4.756 4.635 1.123 6.545z" />
           </svg>
-          <span className="text-white text-sm font-medium">
+          <span className={`text-white ${META_TEXT} font-medium`}>
             {tour.rating.toFixed(2)} ({tour.reviews})
           </span>
         </div>
-        <h3 className="text-white text-base md:text-lg font-semibold leading-snug">
+        <h3 className="text-white text-base md:text-lg font-medium leading-snug">
           {tour.title}
         </h3>
         <hr className="border-white/20" />
-        <div className="flex items-center justify-between text-white/90 text-sm">
+        <div className={`flex items-center justify-between text-white/90 ${META_TEXT}`}>
           <span>{tour.duration}</span>
           <span>From $ {tour.price} USD</span>
         </div>
@@ -125,38 +136,39 @@ function Choose() {
       <div ref={bgRef} className="absolute inset-0 z-0 bg-white" />
 
       {/* Conteneur global en colonne pour empiler les blocs */}
-      <div className="relative flex flex-col items-center gap-8 w-full">
+      <div className="relative flex flex-col items-center gap-8 md:gap-12 w-full">
 
-        {/* Bloc 1 : titre + bouton */}
-        <div className="flex w-[95vw] max-h-[150px] lg:max-w-[90vw] items-center justify-between">
-          <div className="flex-col gap-2">
-            <h2 className="text-[14px] lg:text-[18px] font-medium text-slate-900">
-              DISCOVER OUR MOST POPULAR TOURS
+        {/* Bloc 1 : titre de section + bouton */}
+        <div className={`flex flex-col sm:flex-row ${SECTION_WIDTH} items-start sm:items-end justify-between gap-5 sm:gap-6`}>
+          <div>
+            <h2 className={`${SECTION_TITLE} mb-3 md:mb-5`}>
+              Best Tours for You
             </h2>
-            <h1 className="text-[36px] lg:text-[45px] font-medium text-slate-900 mb-4">
-              BEST TOURS FOR YOU
-            </h1>
+            <p className={SECTION_SUBTITLE}>
+              Discover our most popular tours, picked by travelers for their scenery, comfort and value.
+            </p>
           </div>
-          <button className="hidden md:flex items-center gap-2.5 bg-[#C49849] text-zinc-50 hover:text-zinc-200 text-sm font-medium pl-5 pr-2 py-2 rounded-full cursor-pointer border-0">
-            View All TOURS
+
+          <button className={`bg-[#C49849] text-zinc-50 hover:text-zinc-200 ${BUTTON} cursor-pointer border-0 shrink-0`}>
+            View all tours
           </button>
         </div>
 
         {/* Bloc 2 : image + cartes recommandées */}
-        <div className="w-[95vw] lg:max-w-[90vw]">
+        <div className={SECTION_WIDTH}>
           <div className="grid grid-cols-1 lg:grid-cols-2 w-full min-h-[600px] rounded-3xl overflow-hidden">
 
             {/* LEFT : image + overlay titre */}
-           <div className="relative min-h-[300px] lg:min-h-full">
-                <img
-                    src={RecommendedImg}
-                    alt="Recommended for you"
-                    className="absolute inset-0 w-full h-full object-cover"
-                />
-                <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/40 via-30% to-transparent to-70%" />
-                <h2 className="absolute bottom-6 left-6 text-white text-2xl md:text-3xl font-medium z-10">
-                    Recommended For You
-                </h2>
+            <div className="relative min-h-[300px] lg:min-h-full">
+              <img
+                src={RecommendedImg}
+                alt="Recommended for you"
+                className="absolute inset-0 w-full h-full object-cover"
+              />
+              <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/40 via-30% to-transparent to-70%" />
+              <h3 className={`absolute bottom-6 left-6 text-white z-10 ${CARD_TITLE}`}>
+                Recommended For You
+              </h3>
             </div>
 
             {/* RIGHT : liste des cartes + navigation */}
@@ -171,20 +183,20 @@ function Choose() {
                   <button
                     onClick={handlePrev}
                     disabled={!canGoPrev}
-                    aria-label="Précédent"
-                    className="w-9 h-9 flex items-center justify-center rounded-full bg-white/10 text-white disabled:opacity-30 disabled:cursor-not-allowed hover:bg-white/20 transition"
+                    aria-label="Previous tours"
+                    className="w-10 h-10 flex items-center justify-center rounded-full bg-white/10 text-white disabled:opacity-30 disabled:cursor-not-allowed hover:bg-white/20 transition"
                   >
-                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" aria-hidden="true">
                       <path d="M15 18l-6-6 6-6" strokeLinecap="round" strokeLinejoin="round" />
                     </svg>
                   </button>
                   <button
                     onClick={handleNext}
                     disabled={!canGoNext}
-                    aria-label="Suivant"
-                    className="w-9 h-9 flex items-center justify-center rounded-full bg-white/10 text-white disabled:opacity-30 disabled:cursor-not-allowed hover:bg-white/20 transition"
+                    aria-label="Next tours"
+                    className="w-10 h-10 flex items-center justify-center rounded-full bg-white/10 text-white disabled:opacity-30 disabled:cursor-not-allowed hover:bg-white/20 transition"
                   >
-                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" aria-hidden="true">
                       <path d="M9 18l6-6-6-6" strokeLinecap="round" strokeLinejoin="round" />
                     </svg>
                   </button>
