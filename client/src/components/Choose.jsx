@@ -132,7 +132,7 @@ function Choose() {
   const handleNext = () => setStartIndex((prev) => Math.min(maxStart, prev + 1))
 
   return (
-    <div ref={sectionRef} className="relative w-full mt-[50px] md:mt-[100px] min-h-[100vh] overflow-hidden py-20">
+    <div ref={sectionRef} className="relative w-full mt-[50px] md:mt-[100px] min-h-[100vh] overflow-hidden py-20 md:pb-[150px]">
       <div ref={bgRef} className="absolute inset-0 z-0 bg-white" />
 
       {/* Conteneur global en colonne pour empiler les blocs */}

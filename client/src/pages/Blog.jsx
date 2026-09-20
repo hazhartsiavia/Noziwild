@@ -6,6 +6,7 @@ import Ambanja from "../assets/images/Ambanja.png";
 import Deux from "../assets/images/2.jpg";
 import Tana from "../assets/images/Tana.png";
 import Navbar from '../components/Navbar';
+import Footer from '../components/Footer';
 
 /* Constantes partagées : mêmes valeurs que dans Explore.jsx, Choose.jsx et Trips.jsx */
 const SECTION_WIDTH = "w-[90vw] lg:max-w-[95vw]"
@@ -14,7 +15,7 @@ const META_TEXT = "text-xs sm:text-sm"
 
 // Propres à cette page
 const PAGE_TITLE = "text-5xl sm:text-6xl md:text-7xl lg:text-[80px] font-bold uppercase leading-none tracking-tight"
-const BADGE = "inline-block bg-[#C7432E] text-white text-xs sm:text-sm font-medium px-3 py-1.5 rounded-sm"
+const BADGE = "inline-block bg-[#C49849] text-white text-xs sm:text-sm font-medium px-3 py-1.5 rounded-sm"
 
 /* ---------------------------- Données ---------------------------- */
 
@@ -52,6 +53,7 @@ function BlogHero() {
     <>
     <Navbar />
     <section className={`${SECTION_WIDTH} relative flex items-center overflow-hidden rounded-3xl bg-slate-900 text-white min-h-[100px] md:min-h-[360px]`}>
+        
       <img src={Ramena} alt="" className="absolute inset-0 w-full h-full object-cover" />
       <div className="absolute inset-0 bg-slate-950/60" />
 
@@ -81,7 +83,7 @@ function BlogHero() {
 
 function FeaturedJournal() {
   return (
-    <div className="grid grid-cols-1 lg:grid-cols-[5fr_7fr] overflow-hidden rounded-3xl bg-white">
+    <div className="grid grid-cols-1 lg:grid-cols-[5fr_7fr] md:h-full xl:h-[85vh] overflow-hidden rounded-3xl bg-white">
 
       {/* Grande image */}
       <div className="relative min-h-[260px] sm:min-h-[340px] lg:min-h-full">
@@ -106,7 +108,7 @@ function FeaturedJournal() {
               <img
                 src={post.thumb}
                 alt=""
-                className="shrink-0 w-24 h-24 sm:w-40 sm:h-32 lg:w-56 lg:h-40 rounded-xl object-cover"
+                className="shrink-0 w-24 h-24 sm:w-40 sm:h-32 lg:w-56 lg:h-30 rounded-xl object-cover"
               />
             </a>
           </li>
@@ -143,8 +145,9 @@ function PostCard({ post }) {
 
 function Blog() {
   return (
-    <main className="w-full bg-[#D5E8E2] pt-4 md:pt-6 pb-16 md:pb-24 flex flex-col items-center">
-
+    <>
+    <main className="w-full bg-[#D5E8E2] pt-0 pb-16 md:pb-24 flex flex-col items-center">
+    
       <BlogHero />
 
       {/* Journal */}
@@ -165,8 +168,9 @@ function Blog() {
           ))}
         </div>
       </section>
-
     </main>
+    <Footer />
+    </>
   )
 }
 

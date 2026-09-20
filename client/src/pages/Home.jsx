@@ -5,7 +5,8 @@ import Choose from "../components/Choose";
 import Explore from "../components/Explore";
 import Trips from "../components/Trips";
 import Testimaonials from "../components/Testimaonials";
-
+import Footer from "../components/Footer";
+import WhyUs from '../components/WhyUs';
 function Home() {
   return (
     <div>
@@ -15,6 +16,8 @@ function Home() {
       <Choose />
       <Trips />
       <Testimaonials />
+      <WhyUs />
+        <Footer />
     </div>
   )
 }

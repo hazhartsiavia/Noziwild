@@ -36,8 +36,8 @@ function Navbar() {
                             </div>
                         </div>
                         <a href="#" className="text-sm text-zinc-500 hover:text-zinc-800">Nos Circuits</a>
-                        <a href="#" className="text-sm text-zinc-500 hover:text-zinc-800">Pricing</a>
-                        <a href="#" className="text-sm text-zinc-500 hover:text-zinc-800"><Link to="/blog"> Blogs</Link></a>
+                        <a href="#" className="text-sm text-zinc-500 hover:text-zinc-800"><Link to="/blog">Circuits</Link></a>
+                        <a href="#" className="text-sm text-zinc-500 hover:text-zinc-800">Contact</a>
                     </div>
                 </div>
 
