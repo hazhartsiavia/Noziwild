@@ -5,6 +5,7 @@ import NosyLonjo from "../assets/images/NosyLonjo.png";
 import Navbar from '../components/Navbar';
 import Footer from '../components/Footer';
 
+
 /* Constantes partagées : mêmes valeurs que dans les autres sections */
 const SECTION_WIDTH = "w-[90vw] lg:max-w-[90vw] xl:max-w-[95vw] mt-10"
 const SECTION_SUBTITLE = "text-sm sm:text-base md:text-lg text-slate-600 leading-relaxed max-w-3xl"

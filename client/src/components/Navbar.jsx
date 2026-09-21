@@ -25,11 +25,11 @@ function Navbar() {
                     <div className="hidden md:flex items-center px-20 gap-10">
                         <div className="relative group">
                             <button className="flex items-center gap-1.5 text-sm text-zinc-800 cursor-pointer bg-transparent border-0 py-2">
-                                All Pages
+                                Activities
                                 <svg className="transition-transform group-hover:rotate-180" width="10" height="6" viewBox="0 0 10 6" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="m1 1 4 4 4-4" stroke="#71717b" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/></svg>
                             </button>
                             <div className="absolute top-full left-0 mt-1 w-44 bg-white border border-zinc-200 rounded-xl shadow-lg py-2 z-50 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all">
-                                <a href="#" className="block px-4 py-2 text-sm text-zinc-600 hover:bg-zinc-50">Landing Pages</a>
+                                <a href="#" className="block px-4 py-2 text-sm text-zinc-600 hover:bg-zinc-50">Trekking</a>
                                 <a href="#" className="block px-4 py-2 text-sm text-zinc-600 hover:bg-zinc-50">About Pages</a>
                                 <a href="#" className="block px-4 py-2 text-sm text-zinc-600 hover:bg-zinc-50">Contact Pages</a>
                                 <a href="#" className="block px-4 py-2 text-sm text-zinc-600 hover:bg-zinc-50">Blog Pages</a>

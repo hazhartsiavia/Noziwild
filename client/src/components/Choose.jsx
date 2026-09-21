@@ -13,7 +13,7 @@ gsap.registerPlugin(ScrollTrigger)
    Échelle typographique PARTAGÉE
    ⚠ À garder strictement identique dans Explore.jsx et Choose.jsx
 ------------------------------------------------------------------- */
-const SECTION_WIDTH = "w-[90vw] lg:max-w-[80vw]"
+const SECTION_WIDTH = "w-[90vw] lg:max-w-[95vw]"
 const SECTION_TITLE = "text-3xl sm:text-4xl md:text-5xl lg:text-[52px] font-medium text-slate-900 leading-[1.15] tracking-tight"
 const SECTION_SUBTITLE = "text-sm sm:text-base md:text-lg text-slate-600 leading-relaxed max-w-3xl"
 const CARD_TITLE = "text-3xl md:text-4xl font-medium tracking-tight leading-[1.1] break-words"

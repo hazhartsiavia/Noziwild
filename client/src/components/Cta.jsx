@@ -19,7 +19,7 @@ const banner = {
 }
 
 
-function Testimaonials() {
+function Cta() {
   return (
     <div> 
             
@@ -82,4 +82,4 @@ function Testimaonials() {
   )
 }
 
-export default Testimaonials
+export default Cta

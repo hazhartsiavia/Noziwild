@@ -46,9 +46,9 @@ const Footer = () => {
                             </div>
                         </div>
 
-                        <div className="flex flex-col max-md:items-center max-md:text-center gap-2 items-end">
+                        <div className="flex flex-col max-md:items-center max-md:text-start gap-2 items-end">
                             <p className="max-w-60">Making every customer feel valued—no matter the size of your audience.</p>
-                            <div className="flex items-center gap-4 mt-3">
+                            <div className="flex md:items-center gap-4 mt-3">
                                 <a href="https://dribbble.com/prebuiltui" target="_blank" rel="noreferrer">
                                     <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="lucide lucide-dribbble size-5 hover:text-[#064434]" aria-hidden="true">
                                         <circle cx="12" cy="12" r="10"></circle>
