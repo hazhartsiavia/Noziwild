@@ -1,9 +1,10 @@
 import React, { useRef, useLayoutEffect } from "react";
+import Navbar from "../components/Navbar";
 import Footer from '../components/Footer'
+import CTA from '../components/Cta'
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import AdvantagesBg from "../assets/images/AdvantagesBg.png";
-import Navbar from "../components/Navbar";
 import transportBg from '../assets/images/transportBg.jpg'
 import transport1 from '../assets/images/transport1.png'
 import transport2 from '../assets/images/transport2.png'
@@ -298,7 +299,7 @@ function WhyChooseUs() {
       className="relative w-full"
       style={{ height: "150vh" }}
     >
-      <div className="sticky top-0 h-screen w-full overflow-hidden">
+      <div className="sticky  top-0 h-screen w-full overflow-hidden">
 
         {/* ============================================================
             LA BOÎTE — ancrée au viewport
@@ -308,9 +309,9 @@ function WhyChooseUs() {
             ============================================================ */}
         <div
           ref={bgBoxRef}
-          className="absolute top-2 left-1/2 -translate-x-1/2 overflow-hidden rounded-3xl bg-slate-900 z-20 flex"
+          className="absolute px-10 left-1/2 -translate-x-1/2 overflow-hidden rounded-3xl bg-slate-900 z-20 flex"
           style={{
-            width: "98%",
+            width: "95vw",
             height: "150px",
             willChange: "width, height, border-radius",
 
@@ -429,52 +430,247 @@ function HowItWorks() {
 
 function TransportCard({ transport }) {
   return (
-    <a href="#" className="group flex flex-col rounded-xl bg-white p-3 text-slate-800">
-      <div className="aspect-[4/3] overflow-hidden rounded-md">
-        <img src={transport.image} alt={transport.title} className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" />
+    <a
+      href="#"
+      className="group flex flex-col overflow-hidden rounded-xl bg-white text-slate-800 shadow-sm transition-all duration-300 hover:-translate-y-1 hover:shadow-xl"
+    >
+      <div className="aspect-[4/3] overflow-hidden">
+        <img
+          src={transport.image}
+          alt={transport.title}
+          className="h-full w-full object-cover transition-transform duration-700 group-hover:scale-105"
+        />
       </div>
-      <div className="px-3 pt-6 pb-6">
-        <p className={`flex items-center gap-3 ${META_TEXT} text-[#0F172B]`}>
+
+      <div className="px-5 pt-5 pb-6">
+
+        <p className="flex items-center gap-3 text-xs sm:text-sm text-[#0F172B]">
           <span>{transport.category}</span>
-          <span className="w-px h-4 bg-slate-700" />
+
+          <span className="h-4 w-px bg-slate-300" />
+
           <span>{transport.duration}</span>
         </p>
-        <h3 className="mt-4 text-xl md:text-2xl leading-snug group-hover:underline">{transport.title}</h3>
+
+        <h3 className="mt-3 text-xl md:text-2xl leading-snug font-medium text-[#0F172B]">
+          {transport.title}
+        </h3>
+
       </div>
     </a>
   );
 }
 
 function TransportGrid({ transports = transportTypes }) {
+  const [activeFilter, setActiveFilter] = React.useState("Tous");
+
   const sectionRef = useRef(null);
+
+  const filters = [
+    { id: "Tous", label: "Tous les transports" },
+    { id: "Terrestre", label: "Terrestre" },
+    { id: "Maritime", label: "Maritime" },
+  ];
+
+  const filteredTransports =
+    activeFilter === "Tous"
+      ? transports
+      : transports.filter(
+          (transport) => transport.category === activeFilter
+        );
+
   useLayoutEffect(() => {
     const ctx = gsap.context(() => {
       const cards = gsap.utils.toArray(".transport-card");
-      cards.forEach((card) => {
-        gsap.fromTo(card, { y: 100, opacity: 0 }, { y: 0, opacity: 1, duration: 0.8, ease: "power3.out", scrollTrigger: { trigger: card, start: "top 90%", end: "top 45%", scrub: 0.8 } });
-      });
+
+      gsap.fromTo(
+        cards,
+        {
+          y: 40,
+          opacity: 0,
+        },
+        {
+          y: 0,
+          opacity: 1,
+          duration: 0.6,
+          stagger: 0.08,
+          ease: "power3.out",
+        }
+      );
     }, sectionRef);
+
     return () => ctx.revert();
-  }, [transports]);
+  }, [activeFilter]);
 
   return (
-    <section ref={sectionRef} className="w-full mx-auto bg-[#D5E8E2] sm:px-0 lg:px-0">
-      <div className="bg-white rounded-b-4xl h-10 w-full mb-10" />
-      <div className="mx-auto grid px-5 md:px-10 grid-cols-2 lg:grid-cols-4 gap-6 lg:gap-8 mb-10">
-        {transports.map((transport, i) => {
-          const offset = i % 4 === 1 || i % 4 === 3 ? "lg:mt-10" : "";
+    <>
+     
+    <section
+      ref={sectionRef}
+      className="w-full bg-[#D5E8E2] "
+    >
+    <div className="w-full h-10 bg-white rounded-b-4xl mb-5 md:mb-16"/>
+    
+      {/* =====================================================
+          FILTRES
+      ====================================================== */}
+    <div className="mx-auto max-w-[1300px] px-6">
+
+    <div className="relative mb-12">
+
+        {/* =====================================================
+            DESKTOP : LIGNE
+        ====================================================== */}
+
+        {/* Ligne horizontale */}
+        <div className="hidden sm:block absolute left-0 right-0 top-[54px] h-[2px] bg-slate-300" />
+
+        {/* Ligne active */}
+        <div
+          className="hidden sm:block absolute left-0 top-[54px] h-[2px] bg-[#C39649] transition-all duration-500"
+          style={{
+            width:
+              activeFilter === "Tous"
+                ? "33.33%"
+                : activeFilter === "Terrestre"
+                ? "66.66%"
+                : "100%",
+          }}
+        />
+
+
+        {/* =====================================================
+            MOBILE : 2 × 2
+            SANS LIGNE
+        ====================================================== */}
+
+        <div className="grid grid-cols-2 gap-3 sm:hidden">
+
+          {filters.map((filter) => {
+            const active = activeFilter === filter.id;
+
+            return (
+              <button
+                key={filter.id}
+                onClick={() => setActiveFilter(filter.id)}
+                className={`
+                  flex min-h-[60px]
+                  items-center justify-center
+                  rounded-xl border
+                  px-3 text-center
+                  text-sm font-medium
+                  transition-all duration-300
+
+                  ${
+                    active
+                      ? "border-slate-300 bg-white text-[#0F172B] shadow-sm"
+                      : "border-slate-300 bg-transparent text-[#0F172B]"
+                  }
+                `}
+              >
+                {filter.label}
+              </button>
+            );
+          })}
+
+        </div>
+
+
+      {/* =====================================================
+          DESKTOP : FILTRES + POINTS
+      ====================================================== */}
+
+      <div className="relative hidden sm:grid grid-cols-3">
+
+        {filters.map((filter) => {
+          const active = activeFilter === filter.id;
+
           return (
-            <div className={`transport-card ${offset}`} key={transport.id}>
-              <TransportCard transport={transport} />
-            </div>
+            <button
+              key={filter.id}
+              onClick={() => setActiveFilter(filter.id)}
+              className="group relative flex flex-col items-center pb-8"
+            >
+
+              {/* Texte */}
+              <span
+                className={`text-sm md:text-base font-medium transition-colors duration-300
+                  ${
+                    active
+                      ? "text-[#0F172B]"
+                      : "text-slate-500 group-hover:text-slate-800"
+                  }
+                `}
+              >
+                {filter.label}
+              </span>
+
+              {/* Point */}
+              <span
+                className={`
+                  absolute top-[48px] z-10 rounded-full
+                  transition-all duration-300
+                  ${
+                    active
+                      ? "h-5 w-5 border-2 border-[#C39649] bg-[#D5E8E2]"
+                      : "h-3 w-3 bg-slate-300"
+                  }
+                `}
+              >
+
+                {active && (
+                  <span
+                    className="
+                      absolute left-1/2 top-1/2
+                      h-2 w-2
+                      -translate-x-1/2
+                      -translate-y-1/2
+                      rounded-full
+                      bg-[#C39649]
+                    "
+                  />
+                )}
+
+              </span>
+
+            </button>
           );
         })}
+
       </div>
-      <div className="bg-white mt-10 rounded-t-4xl h-10 w-full " />
+
+    </div>
+
+        {/* =====================================================
+            CARTES TRANSPORT
+        ====================================================== */}
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 lg:gap-8 m">
+
+          {filteredTransports.map((transport, i) => {
+            const offset =
+              i % 4 === 1 || i % 4 === 3
+                ? "lg:mt-10"
+                : "";
+
+            return (
+              <div
+                className={`transport-card ${offset}`}
+                key={transport.id}
+              >
+                <TransportCard transport={transport} />
+              </div>
+            );
+          })}
+
+        </div>
+
+    </div>
+    <div className="w-full h-10 bg-white rounded-t-4xl mt-5 sm:mt-10 md:16"/>
     </section>
+    
+    </>
   );
 }
-
 /* ====================================================================
    TRAVEL HERO + ASSEMBLAGE
 ==================================================================== */
@@ -570,6 +766,7 @@ export default function TravelHero({
       <WhyChooseUs />
       <HowItWorks />
       <FAQ/>
+      <CTA/>
       <Footer/>
     </>
   );
