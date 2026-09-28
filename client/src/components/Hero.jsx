@@ -1,5 +1,5 @@
 import React from "react";
-import Tana from "../assets/images/Tana.png";
+import Tana from "../assets/images/Dunes.png";
 import down from "../assets/images/downDirection.png";
 
 function Hero() {
