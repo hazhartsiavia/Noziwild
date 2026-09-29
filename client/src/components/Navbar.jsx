@@ -45,6 +45,7 @@ function Navbar() {
                 <div className="invisible absolute left-0 top-full z-50 mt-1 w-44 rounded-xl border border-zinc-200 bg-white py-2 opacity-0 shadow-lg transition-all group-hover:visible group-hover:opacity-100">
                   <Link to="/" className="block px-4 py-2 text-sm text-zinc-600 hover:bg-zinc-50">Accueil</Link>
                   <Link to="/about" className="block px-4 py-2 text-sm text-zinc-600 hover:bg-zinc-50">About Pages</Link>
+                  <Link to="/equipment-rentals" className="block px-4 py-2 text-sm text-zinc-600 hover:bg-zinc-50">Equipment Rentals</Link>
                   <Link to="/contact" className="block px-4 py-2 text-sm text-zinc-600 hover:bg-zinc-50">Contact Pages</Link>
                   <Link to="/blog" className="block px-4 py-2 text-sm text-zinc-600 hover:bg-zinc-50">Blog Pages</Link>
                 </div>
@@ -107,6 +108,7 @@ function Navbar() {
                 <div className="flex flex-col pl-4">
                   <Link to="/" className="rounded-lg px-4 py-2 text-sm text-zinc-500 hover:bg-zinc-50">Landing Pages</Link>
                   <Link to="/about" className="rounded-lg px-4 py-2 text-sm text-zinc-500 hover:bg-zinc-50">About Pages</Link>
+                  <Link to="/equipment-rentals" className="rounded-lg px-4 py-2 text-sm text-zinc-500 hover:bg-zinc-50">Equipment Rentals</Link>
                   <Link to="/contact" className="rounded-lg px-4 py-2 text-sm text-zinc-500 hover:bg-zinc-50">Contact Pages</Link>
                   <Link to="/blog" className="rounded-lg px-4 py-2 text-sm text-zinc-500 hover:bg-zinc-50">Blog Pages</Link>
                 </div>

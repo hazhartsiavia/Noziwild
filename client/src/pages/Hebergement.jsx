@@ -1,2462 +1,351 @@
-import React, { useRef, useLayoutEffect } from "react";
-import Navbar from "../components/Navbar";
-import Footer from "../components/Footer";
-import CTA from "../components/Cta";
-
-import gsap from "gsap";
-import { ScrollTrigger } from "gsap/ScrollTrigger";
-
-import AdvantagesBg from "../assets/images/AdvantagesBg.png";
-import transportBg from "../assets/images/transportBg.jpg";
-import transport1 from "../assets/images/transport1.png";
-import transport2 from "../assets/images/transport2.png";
-import transport3 from "../assets/images/transport3.png";
-import transport4 from "../assets/images/transport4.png";
-import transport5 from "../assets/images/transport5.png";
-import FAQIllust from "../assets/images/FAQ.png";
-import transportVideo from "../assets/videos/video.mp4";
-
-gsap.registerPlugin(ScrollTrigger);
-
-
-/* ====================================================================
-   GENERAL CONTENT
-==================================================================== */
-
-const content = {
-  title: "Creating Unforgettable Journeys, Together",
-
-  text: "From the first idea to the last sunset, our team plans every detail so you can simply enjoy the journey.",
-
-  label: "Our Promise",
-
-  image: AdvantagesBg,
-
-  imageAlt: "A traveler jumping with a backpack",
-
-  video: transportVideo,
-};
-
-
-/* ====================================================================
-   ICON BOX
-==================================================================== */
-
-const IconBox = ({ children, className = "" }) => (
-  <div
-    className={`flex h-12 w-12 items-center justify-center rounded-xl bg-[#C49849] text-white shadow-sm ${className}`}
-  >
-    <svg
-      width="24"
-      height="24"
-      viewBox="0 0 24 24"
-      fill="none"
-      stroke="currentColor"
-      strokeWidth="1.8"
-      strokeLinecap="round"
-      strokeLinejoin="round"
-      aria-hidden="true"
-      className="h-5 w-5"
-    >
-      {children}
-    </svg>
-  </div>
-);
-
-
-/* ====================================================================
-   FEATURE ICONS
-==================================================================== */
-
-const RouteIcon = () => (
-  <IconBox>
-    <circle cx="6" cy="19" r="3" />
-    <path d="M9 19h8.5a3.5 3.5 0 0 0 0-7h-11a3.5 3.5 0 0 1 0-7H15" />
-    <circle cx="18" cy="5" r="3" />
-  </IconBox>
-);
-
-
-const LuggageIcon = () => (
-  <IconBox>
-    <path d="M6 20a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v10a2 2 0 0 1-2 2" />
-    <path d="M8 18V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v14" />
-    <path d="M10 20v2" />
-    <path d="M14 20v2" />
-  </IconBox>
-);
-
-
-const HotelIcon = () => (
-  <IconBox>
-    <path d="M10 22v-6.57" />
-    <path d="M14 15.43V22" />
-    <path d="M15 16a5 5 0 0 0-6 0" />
-    <path d="M8 7h.01M12 7h.01M16 7h.01M8 11h.01M12 11h.01M16 11h.01" />
-    <rect x="4" y="2" width="16" height="20" rx="2" />
-  </IconBox>
-);
-
-
-const CompassIcon = () => (
-  <IconBox>
-    <circle cx="12" cy="12" r="10" />
-    <path d="m16.24 7.76-1.804 5.411a2 2 0 0 1-1.265 1.265L7.76 16.24l1.804-5.411a2 2 0 0 1 1.265-1.265z" />
-  </IconBox>
-);
-
-
-/* ====================================================================
-   WHY CHOOSE US FEATURES
-==================================================================== */
-
-const features = [
-  {
-    id: 1,
-    title: "Numerous Routes",
-    text: "Explore a wide range of routes across Madagascar.",
-    icon: RouteIcon,
-  },
-
-  {
-    id: 2,
-    title: "Easy Booking",
-    text: "Book your transport easily and plan your journey with confidence.",
-    icon: LuggageIcon,
-  },
-
-  {
-    id: 3,
-    title: "Accommodation",
-    text: "Discover carefully selected places to stay along your journey.",
-    icon: HotelIcon,
-  },
-
-  {
-    id: 4,
-    title: "Local Guidance",
-    text: "Get helpful guidance from people who know Madagascar.",
-    icon: CompassIcon,
-  },
-];
-
-
-/* ====================================================================
-   HOW IT WORKS DATA
-==================================================================== */
-
-const howItWorks = [
-  {
-    number: "01",
-    title: "Choose Your Destination",
-    text: "Select your destination and tell us where your journey begins.",
-  },
-
-  {
-    number: "02",
-    title: "Select Your Vehicle",
-    text: "Explore our transport options and choose the one that best suits your needs.",
-  },
-
-  {
-    number: "03",
-    title: "Customize Your Trip",
-    text: "Choose your travel date, departure time and any additional services you need.",
-  },
-
-  {
-    number: "04",
-    title: "Confirm Your Booking",
-    text: "Review your choices and confirm your transport to get ready for your journey.",
-  },
-];
-
-
-/* ====================================================================
-   ACCOMMODATION DATA
-==================================================================== */
-
-const accommodationTypes = [
-  {
-    id: 1,
-
-    image: transport1,
-
-    category: "Beach & Island",
-
-    title: "Beachfront Escapes",
-
-    text: "Wake up by the ocean and enjoy the beauty of Madagascar's coastline.",
-  },
-
-  {
-    id: 2,
-
-    image: transport2,
-
-    category: "Nature",
-
-    title: "Lodges & Retreats",
-
-    text: "Stay close to nature in peaceful places surrounded by Madagascar's landscapes.",
-  },
-
-  {
-    id: 3,
-
-    image: transport3,
-
-    category: "Boutique",
-
-    title: "Boutique Stays",
-
-    text: "Discover charming places designed for comfort, character and memorable moments.",
-  },
-
-  {
-    id: 4,
-
-    image: transport4,
-
-    category: "Unique Stays",
-
-    title: "Exceptional Places",
-
-    text: "Make your journey special with accommodations that are part of the experience.",
-  },
-];
-
-
-/* ====================================================================
-   FAQ
-==================================================================== */
-
-function FAQ() {
-  const [openIndex, setOpenIndex] = React.useState(null);
-
-  const faqs = [
-    {
-      question: "How can I book my transport?",
-      answer:
-        "Choose your destination, select the transport option that suits your journey, customize your trip and confirm your booking.",
-    },
-
-    {
-      question: "What types of transport are available?",
-      answer:
-        "We offer a variety of land and sea transport options, including 4x4 vehicles, quads, vans, motorbikes, bicycles, catamarans, speedboats and boats.",
-    },
-
-    {
-      question: "Can I book accommodation with my transport?",
-      answer:
-        "Yes. Accommodation options can be part of your travel planning, allowing you to combine transport and places to stay for a smoother journey.",
-    },
-
-    {
-      question: "Can I customize my journey?",
-      answer:
-        "Yes. You can choose your destination, travel date, departure time and additional services according to your needs.",
-    },
-  ];
-
+import React, { useState } from 'react'
+import Deux from "../assets/images/2.jpg";
+import Ambanja from "../assets/images/Ambanja.png";
+import NosyLonjo from "../assets/images/NosyLonjo.png";
+import NosyIranja from "../assets/images/NosyIranja.png";
+import Ramena from "../assets/images/Ramena.png";
+import Tana from "../assets/images/Tana.png";
+import Navbar from '../components/Navbar';
+import Footer from '../components/Footer';
+
+/* Constantes partagées : mêmes valeurs que dans les autres pages */
+const SECTION_WIDTH = "w-[90vw] lg:max-w-[90vw] xl:max-w-[95vw]"
+const SECTION_TITLE = "text-3xl sm:text-4xl md:text-5xl lg:text-[52px] font-medium text-slate-900 leading-[1.15] tracking-tight"
+const SECTION_SUBTITLE = "text-sm sm:text-base md:text-lg text-slate-600 leading-relaxed max-w-3xl"
+const META_TEXT = "text-xs sm:text-sm"
+const PAGE_TITLE = "text-5xl sm:text-6xl md:text-7xl lg:text-[80px] font-bold uppercase leading-none tracking-tight"
+const ON_IMAGE_TITLE = "text-3xl sm:text-4xl md:text-5xl lg:text-[52px] font-medium text-white leading-[1.15] tracking-tight"
+const BADGE = "inline-block bg-[#C49849] text-white text-xs sm:text-sm font-medium px-3 py-1.5 rounded-sm"
+const BUTTON = "text-sm font-medium px-5 py-2.5 rounded-full"
+const SECTION_GAP = "mt-[50px] md:mt-[100px]"
+
+/* ---------------------------- Données ---------------------------- */
+
+const intro = {
+  label: 'Where To Stay',
+  title: 'Sleep Well, Wake Up Somewhere Special',
+  text: 'From beachfront bungalows to family-run guesthouses, every Noziwild stay is visited, tested and chosen for its comfort, its welcome and its setting.',
+  stats: [
+    { id: 1, value: '80+', label: 'Handpicked Stays' },
+    { id: 2, value: '25+', label: 'Destinations Covered' },
+    { id: 3, value: '4.8/5', label: 'Average Guest Rating' },
+  ],
+}
+
+const categories = [
+  { id: 'all', label: 'All Stays' },
+  { id: 'hotel', label: 'Hotels' },
+  { id: 'lodge', label: 'Eco Lodges' },
+  { id: 'bungalow', label: 'Beach Bungalows' },
+  { id: 'guesthouse', label: 'Guesthouses' },
+]
+
+const stays = [
+  { id: 1, category: 'bungalow', name: 'Ramena Sea Bungalows', place: 'Ramena, Diego Suarez', image: Ramena, price: 65, rating: 4.8, amenities: ['Sea view', 'Breakfast', 'Snorkeling'] },
+  { id: 2, category: 'hotel', name: 'Nosy Iranja Retreat', place: 'Nosy Iranja', image: NosyIranja, price: 140, rating: 4.9, amenities: ['Infinity pool', 'Spa', 'Restaurant'] },
+  { id: 3, category: 'lodge', name: 'Ambanja Cocoa Lodge', place: 'Ambanja', image: Ambanja, price: 75, rating: 4.7, amenities: ['Garden', 'Farm visits', 'Solar power'] },
+  { id: 4, category: 'guesthouse', name: 'Maison Tana', place: 'Antananarivo', image: Tana, price: 40, rating: 4.6, amenities: ['Family-run', 'Breakfast', 'Free Wi-Fi'] },
+  { id: 5, category: 'bungalow', name: 'Lonjo Beach Huts', place: 'Nosy Be', image: NosyLonjo, price: 90, rating: 4.8, amenities: ['Beachfront', 'Kayaks', 'Dinner on request'] },
+  { id: 6, category: 'lodge', name: 'Baobab Safari Camp', place: 'Northern Madagascar', image: Deux, price: 110, rating: 4.7, amenities: ['Guided walks', 'Full board', 'Stargazing'] },
+]
+
+const featured = {
+  label: 'Guest Favorite',
+  name: 'Nosy Iranja Retreat',
+  place: 'Nosy Iranja',
+  text: 'A quiet island hideaway with a private stretch of white sand, an infinity pool facing the sunset and a kitchen that cooks the morning’s catch.',
+  image: NosyIranja,
+  details: ['12 rooms and suites', 'Boat transfer included', 'Best from April to November'],
+}
+
+const criteria = [
+  { id: 1, title: 'Visited By Our Team', text: 'We sleep there before we recommend it. No stay is listed without a real visit.' },
+  { id: 2, title: 'Local & Responsible', text: 'We favor owners from the region, fair jobs and low-impact ways of running a stay.' },
+  { id: 3, title: 'Honest Prices', text: 'Clear rates with taxes and breakfast shown, so the quote is the price you pay.' },
+]
+
+const included = [
+  { id: 1, title: 'Free Cancellation', text: 'On most stays, up to 7 days before arrival.' },
+  { id: 2, title: 'Airport & Port Pickup', text: 'Book your transfer with the stay.' },
+  { id: 3, title: 'Local Tips', text: 'Restaurants, walks and hidden spots from our experts.' },
+  { id: 4, title: '24/7 Support', text: 'A real person if anything goes wrong.' },
+]
+
+const faqs = [
+  { id: 1, q: 'Are the prices per person or per room?', a: 'Prices shown are per room, per night, starting from the lowest season. Your quote shows the exact total for your dates and group.' },
+  { id: 2, q: 'Is breakfast included?', a: 'On most of our stays, yes. Each stay lists what is included, and we tell you clearly when meals cost extra.' },
+  { id: 3, q: 'Can you find something for a family or large group?', a: 'Yes. Tell us how many people are traveling and we suggest family rooms, connected rooms or a private villa.' },
+  { id: 4, q: 'Can I change my dates after booking?', a: 'In most cases you can, up to 7 days before arrival and subject to availability. The exact terms are in your quote.' },
+  { id: 5, q: 'Do the stays have electricity and Wi-Fi?', a: 'Most do, but some remote lodges run on solar power with limited connection. We always say so in advance so you can choose.' },
+]
+
+/* ---------------------------- Icônes ----------------------------- */
+
+const Svg = ({ children, className = "w-4 h-4" }) => (
+  <svg className={className} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+    {children}
+  </svg>
+)
+
+const PinIcon = () => (
+  <Svg>
+    <path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z" />
+    <circle cx="12" cy="10" r="3" />
+  </Svg>
+)
+
+const StarIcon = () => (
+  <svg className="w-4 h-4 text-[#F5B800] fill-current" viewBox="0 0 20 20" aria-hidden="true">
+    <path d="M10 15l-5.878 3.09 1.123-6.545L.489 6.91l6.572-.955L10 0l2.939 5.955 6.572.955-4.756 4.635 1.123 6.545z" />
+  </svg>
+)
+
+const CheckIcon = () => (
+  <Svg className="w-4 h-4 shrink-0 text-[#C49849]">
+    <path d="M20 6 9 17l-5-5" />
+  </Svg>
+)
+
+const ArrowIcon = () => (
+  <Svg className="w-5 h-5">
+    <path d="M5 12h14M13 6l6 6-6 6" />
+  </Svg>
+)
+
+const PlusIcon = ({ open }) => (
+  <Svg className={`w-5 h-5 shrink-0 transition-transform duration-300 ${open ? 'rotate-45' : ''}`}>
+    <path d="M12 5v14M5 12h14" />
+  </Svg>
+)
+
+/* -------------------------- Composants --------------------------- */
+
+function Hero() {
   return (
-    <section className="w-full px-5 py-16 sm:px-8 lg:px-10 lg:py-24">
-
-      <div className="mx-auto flex max-w-7xl flex-col items-start justify-center gap-8 md:flex-row">
-
-        {/* IMAGE */}
-
-        <img
-          className="h-[450px] w-full max-w-sm rounded-xl object-cover"
-          src={FAQIllust}
-          alt="Travel illustration"
-        />
-
-
-        {/* CONTENT */}
-
-        <div className="w-full max-w-2xl">
-
-          <p className="text-md font-medium text-[#074536]">
-            FAQ's
-          </p>
-
-          <h2 className="text-4xl font-semibold text-[#0F172B]">
-            Looking for answers?
-          </h2>
-
-          <p className="mt-2 pb-4 text-md text-slate-500">
-            Everything you need to know about planning your journey across Madagascar.
-          </p>
-
-
-          {faqs.map((faq, index) => (
-
-            <div
-              className="cursor-pointer border-b border-slate-200 py-4"
-              key={index}
-              onClick={() =>
-                setOpenIndex(
-                  openIndex === index ? null : index
-                )
-              }
-            >
-
-              <div className="flex items-center justify-between gap-5">
-
-                <h3 className="text-md font-medium text-[#1D293D]">
-                  {faq.question}
-                </h3>
-
-                <svg
-                  width="18"
-                  height="18"
-                  viewBox="0 0 18 18"
-                  fill="none"
-                  xmlns="http://www.w3.org/2000/svg"
-                  className={`${
-                    openIndex === index
-                      ? "rotate-180"
-                      : ""
-                  } shrink-0 transition-all duration-500 ease-in-out`}
-                >
-                  <path
-                    d="m4.5 7.2 3.793 3.793a1 1 0 0 0 1.414 0L13.5 7.2"
-                    stroke="#1D293D"
-                    strokeWidth="1.5"
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                  />
-                </svg>
-
-              </div>
-
-
-              <p
-                className={`
-                  max-w-lg
-                  overflow-hidden
-                  text-md
-                  text-slate-500
-                  transition-all
-                  duration-500
-                  ease-in-out
-
-                  ${
-                    openIndex === index
-                      ? "max-h-[300px] translate-y-0 pt-4 opacity-100"
-                      : "max-h-0 -translate-y-2 opacity-0"
-                  }
-                `}
-              >
-                {faq.answer}
-              </p>
-
-            </div>
-
-          ))}
-
-        </div>
-
+    <section className={`${SECTION_WIDTH} relative flex items-center overflow-hidden rounded-3xl bg-slate-900 text-white min-h-[240px] md:min-h-[360px]`}>
+      <img src={NosyLonjo} alt="" className="absolute inset-0 w-full h-full object-cover" />
+      <div className="absolute inset-0 bg-slate-950/60" />
+      <div className="relative w-full max-w-5xl mx-auto px-6 md:px-10 py-16">
+        <h1 className={PAGE_TITLE}>Accommodation</h1>
+        <hr className="my-6 md:my-8 border-white/30" />
+        <nav aria-label="Breadcrumb" className="text-sm md:text-base font-medium">
+          <a href="/" className="hover:underline underline-offset-4">Home</a> <span aria-hidden="true">/</span> Accommodation
+        </nav>
       </div>
-
     </section>
-  );
+  )
 }
 
-
-/* ====================================================================
-   OPTIONAL ICON
-==================================================================== */
-
-function Icon({ name, className = "w-8 h-8" }) {
-
-  const common = {
-    className,
-    viewBox: "0 0 24 24",
-    fill: "none",
-    stroke: "currentColor",
-    strokeWidth: 1.6,
-    strokeLinecap: "round",
-    strokeLinejoin: "round",
-  };
-
-  switch (name) {
-
-    case "brain":
-
-      return (
-        <svg {...common}>
-
-          <path d="M9 3.5a3 3 0 0 0-3 3v.5A3 3 0 0 0 4 10a3 3 0 0 0 1.5 2.6V13a3 3 0 0 0 3 3h.5" />
-
-          <path d="M15 3.5a3 3 0 0 1 3 3v.5A3 3 0 0 1 20 10a3 3 0 0 1-1.5 2.6V13a3 3 0 0 1-3 3h-.5" />
-
-          <path d="M9 3.5v17M15 3.5v17" />
-
-        </svg>
-      );
-
-    default:
-      return null;
-  }
-}
-
-
-/* ====================================================================
-   HERO DATA
-==================================================================== */
-
-const defaultImages = [
-  {
-    url: transport1,
-    alt: "Madagascar travel landscape",
-  },
-
-  {
-    url: transport2,
-    alt: "Madagascar nature landscape",
-  },
-
-  {
-    url: transport4,
-    alt: "Traveler in Madagascar",
-  },
-
-  {
-    url: transport3,
-    alt: "Madagascar coastal landscape",
-  },
-
-  {
-    url: transport5,
-    alt: "Madagascar coastline",
-  },
-];
-
-
-const defaultHeights = [
-  "h-40 sm:h-44 lg:h-52",
-
-  "h-48 sm:h-56 lg:h-64",
-
-  "h-56 sm:h-64 lg:h-72 -mt-6",
-
-  "h-48 sm:h-56 lg:h-64",
-
-  "h-40 sm:h-44 lg:h-52",
-];
-
-
-const META_TEXT = "text-xs sm:text-sm";
-
-
-/* ====================================================================
-   TRANSPORT DATA
-==================================================================== */
-
-const transportTypes = [
-
-  {
-    id: 1,
-    image:
-      "https://images.unsplash.com/photo-1533106418989-88406c7cc8ca?w=700&q=80",
-    category: "Land",
-    duration: "Roads & trails",
-    title: "4×4",
-  },
-
-  {
-    id: 2,
-    image:
-      "https://images.unsplash.com/photo-1558981403-c5f9899a28bc?w=700&q=80",
-    category: "Land",
-    duration: "Difficult terrain",
-    title: "Quad",
-  },
-
-  {
-    id: 3,
-    image:
-      "https://images.unsplash.com/photo-1544620347-c4fd4a3d5957?w=700&q=80",
-    category: "Land",
-    duration: "Groups & comfort",
-    title: "Vans",
-  },
-
-  {
-    id: 4,
-    image:
-      "https://images.unsplash.com/photo-1558981806-ec527fa84c39?w=700&q=80",
-    category: "Land",
-    duration: "Freedom & speed",
-    title: "Motorbike",
-  },
-
-  {
-    id: 5,
-    image:
-      "https://images.unsplash.com/photo-1571333250630-f0230c320b6d?w=700&q=80",
-    category: "Land",
-    duration: "Relaxed rides",
-    title: "Bicycle",
-  },
-
-  {
-    id: 6,
-    image:
-      "https://images.unsplash.com/photo-1544551763-46a013bb70d5?w=700&q=80",
-    category: "Sea",
-    duration: "Islands & coastline",
-    title: "Catamaran",
-  },
-
-  {
-    id: 7,
-    image:
-      "https://images.unsplash.com/photo-1605281317010-fe5ffe798166?w=700&q=80",
-    category: "Sea",
-    duration: "Fast journeys",
-    title: "Speedboat",
-  },
-
-  {
-    id: 8,
-    image:
-      "https://images.unsplash.com/photo-1500627964684-141351970a7e?w=700&q=80",
-    category: "Sea",
-    duration: "Crossings & fishing",
-    title: "Boat",
-  },
-
-];
-
-
-/* ====================================================================
-   FEATURE CARD
-==================================================================== */
-
-function FeatureCard({ feature }) {
-
-  const IconComponent = feature.icon;
-
+function Intro() {
   return (
-
-    <div
-      className="
-        why-card
-        flex
-        h-full
-        flex-col
-        justify-between
-        rounded-2xl
-        border
-        border-white/10
-        bg-white/10
-        p-4
-        text-left
-        shadow-[0_16px_40px_rgba(15,23,42,0.12)]
-        backdrop-blur-sm
-        sm:p-5
-      "
-    >
-
-      <div className="mb-4">
-        <IconComponent />
+    <div className="grid grid-cols-1 lg:grid-cols-[1.3fr_1fr] gap-8 lg:gap-16 items-center">
+      <div>
+        <p className="mb-3 text-xs sm:text-sm md:text-base uppercase tracking-wide text-slate-700">{intro.label}</p>
+        <h2 className={SECTION_TITLE}>{intro.title}</h2>
+        <p className={`mt-5 md:mt-6 ${SECTION_SUBTITLE}`}>{intro.text}</p>
       </div>
-
-      <h3 className="text-lg font-medium text-white sm:text-xl">
-        {feature.title}
-      </h3>
-
-      <p className="mt-3 text-sm leading-relaxed text-slate-200 sm:text-base">
-        {feature.text}
-      </p>
-
+      <div className="grid grid-cols-3 gap-3 md:gap-5">
+        {intro.stats.map((s) => (
+          <div key={s.id} className="rounded-2xl bg-white p-4 md:p-6">
+            <p className="text-2xl md:text-4xl lg:text-5xl leading-none text-slate-800">{s.value}</p>
+            <p className="mt-2 md:mt-3 text-xs md:text-base leading-snug text-slate-600">{s.label}</p>
+          </div>
+        ))}
+      </div>
     </div>
-  );
+  )
 }
 
-
-/* ====================================================================
-   WHY CHOOSE US
-==================================================================== */
-
-function WhyChooseUs() {
-
-  const sectionRef = useRef(null);
-
-  const bgBoxRef = useRef(null);
-
-  const labelRef = useRef(null);
-
-  const textColRef = useRef(null);
-
-
-  useLayoutEffect(() => {
-
-    const ctx = gsap.context(() => {
-
-      const cards = gsap.utils.toArray(".why-card");
-
-      const bgBox = bgBoxRef.current;
-
-
-      gsap.set(labelRef.current, {
-        opacity: 0,
-        y: 20,
-      });
-
-
-      gsap.set(cards, {
-        y: 60,
-        opacity: 0,
-      });
-
-
-      const tl = gsap.timeline({
-
-        scrollTrigger: {
-
-          trigger: sectionRef.current,
-
-          start: "top bottom",
-
-          end: "bottom bottom",
-
-          scrub: 1,
-
-          invalidateOnRefresh: true,
-        },
-      });
-
-
-      /* TEXT */
-
-      if (textColRef.current) {
-
-        tl.to(
-          textColRef.current,
-          {
-            opacity: 0,
-            x: -60,
-            ease: "power2.in",
-            duration: 3,
-          },
-          0
-        );
-
-      }
-
-
-      /* BACKGROUND BOX */
-
-      tl.to(
-        bgBox,
-        {
-          width: "calc(100vw - 80px)",
-
-          height: "calc(100vh - 80px)",
-
-          borderRadius: 10,
-
-          ease: "power2.inOut",
-
-          duration: 5,
-        },
-        0
-      );
-
-
-      /* LABEL */
-
-      tl.to(
-        labelRef.current,
-        {
-          opacity: 1,
-          y: 0,
-          ease: "power2.out",
-          duration: 0.8,
-        },
-        1.6
-      );
-
-
-      /* CARDS */
-
-      tl.to(
-        cards,
-        {
-          y: 0,
-          opacity: 1,
-          stagger: 0.15,
-          ease: "power2.out",
-          duration: 1,
-        },
-        1.8
-      );
-
-
-      const onLoad = () => {
-        ScrollTrigger.refresh();
-      };
-
-
-      window.addEventListener("load", onLoad);
-
-
-      return () => {
-        window.removeEventListener("load", onLoad);
-      };
-
-    }, sectionRef);
-
-
-    return () => ctx.revert();
-
-  }, []);
-
-
+function StayCard({ stay }) {
   return (
-
-    <section
-      ref={sectionRef}
-      className="relative w-full"
-      style={{
-        height: "150vh",
-      }}
-    >
-
-      <div className="sticky top-0 h-screen w-full overflow-hidden">
-
-
-        {/* ============================================================
-            BACKGROUND BOX
-        ============================================================ */}
-
-        <div
-          ref={bgBoxRef}
-          className="
-            absolute
-            left-1/2
-            z-20
-            flex
-            -translate-x-1/2
-            overflow-hidden
-            rounded-3xl
-            bg-slate-900
-          "
-          style={{
-            width: "95vw",
-
-            height: "150px",
-
-            willChange:
-              "width, height, border-radius",
-          }}
-        >
-
-          <img
-            src={content.image}
-            alt={content.imageAlt}
-            className="
-              absolute
-              inset-0
-              h-full
-              w-full
-              object-cover
-            "
-          />
-
-
-          {/* DARK OVERLAY */}
-
-          <div className="absolute inset-0 bg-black/30" />
-
-
-          <div
-            ref={textColRef}
-            className="
-              relative
-              z-10
-              flex
-              h-full
-              w-full
-              flex-col
-              justify-between
-              p-5
-              md:p-8
-            "
-          >
-
-            {/* LABEL */}
-
-            <p
-              ref={labelRef}
-              className="
-                flex
-                items-start
-                gap-2
-                text-lg
-                font-medium
-                text-white
-                md:text-xl
-              "
-            >
-
-              <span
-                className="
-                  mt-2
-                  h-1.5
-                  w-1.5
-                  rounded-full
-                  bg-white
-                "
-                aria-hidden="true"
-              />
-
-              {content.label}
-
-            </p>
-
-
-            {/* FEATURES */}
-
-            <div
-              className="
-                grid
-                grid-cols-2
-                gap-3
-                md:grid-cols-4
-                md:gap-5
-              "
-            >
-
-              {features.map((feature) => (
-
-                <FeatureCard
-                  key={feature.id}
-                  feature={feature}
-                />
-
-              ))}
-
-            </div>
-
-          </div>
-
-        </div>
-
-      </div>
-
-    </section>
-  );
-}
-
-
-/* ====================================================================
-   ACCOMMODATION CARD
-==================================================================== */
-
-function AccommodationCard({ accommodation }) {
-
-  return (
-
-    <article
-      className="
-        accommodation-card
-        group
-        overflow-hidden
-        rounded-2xl
-        bg-white
-        shadow-sm
-        transition-all
-        duration-500
-        hover:-translate-y-1
-        hover:shadow-xl
-      "
-    >
-
-      <div className="relative aspect-[4/5] overflow-hidden">
-
-        <img
-          src={accommodation.image}
-          alt={accommodation.title}
-          className="
-            h-full
-            w-full
-            object-cover
-            transition-transform
-            duration-700
-            ease-out
-            group-hover:scale-105
-          "
-        />
-
-
-        {/* OVERLAY */}
-
-        <div
-          className="
-            absolute
-            inset-0
-            bg-gradient-to-t
-            from-black/80
-            via-black/20
-            to-transparent
-          "
-        />
-
-
-        {/* CATEGORY */}
-
-        <span
-          className="
-            absolute
-            left-4
-            top-4
-            rounded-full
-            bg-white/90
-            px-3
-            py-1.5
-            text-[11px]
-            font-medium
-            text-slate-800
-            backdrop-blur-sm
-          "
-        >
-          {accommodation.category}
+    <article className="group flex flex-col rounded-xl bg-white p-3">
+      <div className="relative aspect-[4/3] overflow-hidden rounded-md">
+        <img src={stay.image} alt={stay.name} className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" />
+        <span className="absolute left-3 top-3 flex items-center gap-1 rounded-full bg-white px-3 py-1 text-xs font-medium text-slate-800">
+          <StarIcon /> {stay.rating}
         </span>
-
-
-        {/* CARD CONTENT */}
-
-        <div
-          className="
-            absolute
-            bottom-0
-            left-0
-            right-0
-            p-5
-            text-white
-          "
-        >
-
-          <h3
-            className="
-              text-xl
-              font-medium
-              leading-tight
-              sm:text-2xl
-            "
-          >
-            {accommodation.title}
-          </h3>
-
-
-          <p
-            className="
-              mt-2
-              max-w-[280px]
-              text-sm
-              leading-relaxed
-              text-white/80
-            "
-          >
-            {accommodation.text}
-          </p>
-
-
-          <div
-            className="
-              mt-4
-              flex
-              items-center
-              gap-2
-              text-sm
-              font-medium
-            "
-          >
-
-            <span>
-              Discover more
-            </span>
-
-            <span
-              className="
-                transition-transform
-                duration-300
-                group-hover:translate-x-1
-              "
-            >
-              ↗
-            </span>
-
-          </div>
-
-        </div>
-
       </div>
-
+      <div className="flex flex-col flex-1 px-3 pt-5 pb-4">
+        <p className={`flex items-center gap-1.5 ${META_TEXT} text-slate-600`}><PinIcon />{stay.place}</p>
+        <h3 className="mt-2 text-xl md:text-2xl leading-snug text-slate-900">{stay.name}</h3>
+        <ul className="mt-4 flex flex-wrap gap-2">
+          {stay.amenities.map((a) => (
+            <li key={a} className="rounded-full border border-slate-300 px-3 py-1 text-xs text-slate-700">{a}</li>
+          ))}
+        </ul>
+        <div className="mt-auto pt-6 flex items-center justify-between gap-3">
+          <p className="text-slate-600 text-sm">From <span className="text-xl md:text-2xl font-medium text-slate-900">${stay.price}</span> / night</p>
+          <a href="/contact" className={`bg-slate-800 hover:bg-slate-700 active:scale-95 transition text-white ${BUTTON}`}>Enquire</a>
+        </div>
+      </div>
     </article>
-  );
+  )
 }
 
+function Stays() {
+  const [category, setCategory] = useState('all')
+  const list = category === 'all' ? stays : stays.filter((s) => s.category === category)
 
-/* ====================================================================
-   ACCOMMODATION
-==================================================================== */
+  return (
+    <div className={SECTION_GAP}>
+      <h2 className={`${SECTION_TITLE} text-center mb-8 md:mb-12`}>Find Your Perfect Stay</h2>
+
+      <div className="mb-8 flex flex-wrap justify-center gap-2 md:gap-3" role="tablist" aria-label="Accommodation categories">
+        {categories.map((c) => (
+          <button
+            key={c.id}
+            type="button"
+            role="tab"
+            aria-selected={category === c.id}
+            onClick={() => setCategory(c.id)}
+            className={`rounded-full px-5 py-2 text-sm md:text-base font-medium transition ${
+              category === c.id ? 'bg-slate-800 text-white' : 'bg-white text-slate-700 hover:bg-white/70'
+            }`}
+          >
+            {c.label}
+          </button>
+        ))}
+      </div>
+
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-9">
+        {list.map((stay) => <StayCard key={stay.id} stay={stay} />)}
+      </div>
+    </div>
+  )
+}
+
+function Featured() {
+  return (
+    <div className={`${SECTION_GAP} relative overflow-hidden rounded-3xl bg-slate-900 text-white min-h-[480px] md:min-h-[560px]`}>
+      <img src={featured.image} alt={featured.name} className="absolute inset-0 w-full h-full object-cover" />
+      <div className="absolute inset-0 bg-gradient-to-r from-black/80 via-black/30 to-black/10" />
+      <div className="relative min-h-[inherit] flex flex-col justify-end p-5 md:p-10 max-w-2xl">
+        <span className={`${BADGE} self-start`}>{featured.label}</span>
+        <h2 className={`${ON_IMAGE_TITLE} mt-5`}>{featured.name}</h2>
+        <p className="mt-2 flex items-center gap-1.5 text-sm md:text-base text-white/80"><PinIcon />{featured.place}</p>
+        <p className="mt-4 text-sm md:text-lg text-white/85 leading-relaxed">{featured.text}</p>
+        <ul className="mt-5 flex flex-col gap-2 text-sm md:text-base">
+          {featured.details.map((d) => <li key={d} className="flex items-center gap-2"><CheckIcon />{d}</li>)}
+        </ul>
+        <a href="/contact" className={`mt-6 self-start bg-[#C49849] hover:bg-[#b08339] active:scale-95 transition text-white ${BUTTON} md:px-6 md:py-3`}>
+          Check Availability
+        </a>
+      </div>
+    </div>
+  )
+}
+
+function Criteria() {
+  return (
+    <div className={SECTION_GAP}>
+      <h2 className={`${SECTION_TITLE} text-center mb-10 md:mb-16`}>How We Choose Our Stays</h2>
+      <ul className="grid grid-cols-1 md:grid-cols-3 gap-4 md:gap-6">
+        {criteria.map((c) => (
+          <li key={c.id} className="rounded-2xl bg-white p-6 md:p-8">
+            <span className="w-12 h-12 rounded-full bg-[#C49849] flex items-center justify-center text-white text-lg font-medium">{c.id}</span>
+            <h3 className="mt-6 text-xl md:text-2xl font-medium text-slate-900 leading-snug">{c.title}</h3>
+            <p className="mt-3 text-sm md:text-base leading-relaxed text-slate-600">{c.text}</p>
+          </li>
+        ))}
+      </ul>
+    </div>
+  )
+}
+
+function Included() {
+  return (
+    <div className={`${SECTION_GAP} rounded-3xl bg-slate-900 text-white p-6 md:p-12`}>
+      <div className="flex flex-col lg:flex-row lg:items-center lg:justify-between gap-5 lg:gap-12">
+        <h2 className={`${ON_IMAGE_TITLE} lg:max-w-[45%]`}>Peace Of Mind, Included</h2>
+        <p className="text-sm md:text-lg text-white/70 leading-relaxed lg:max-w-lg">
+          Book with Noziwild and enjoy extras you would not get on your own.
+        </p>
+      </div>
+      <div className="mt-8 md:mt-12 grid grid-cols-2 lg:grid-cols-4 gap-3 md:gap-5">
+        {included.map((item) => (
+          <div key={item.id} className="rounded-xl border border-white/20 bg-white/10 p-4 md:p-5 md:min-h-[160px]">
+            <h3 className="text-sm md:text-lg font-medium leading-snug">{item.title}</h3>
+            <p className="mt-2 md:mt-3 text-xs md:text-sm text-white/70 leading-relaxed">{item.text}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  )
+}
+
+function Faq() {
+  const [open, setOpen] = useState(1)
+
+  return (
+    <div className={`${SECTION_GAP} grid grid-cols-1 lg:grid-cols-[1fr_1.6fr] gap-8 lg:gap-16`}>
+      <div>
+        <h2 className={SECTION_TITLE}>Frequently Asked Questions</h2>
+        <p className={`mt-4 md:mt-6 ${SECTION_SUBTITLE}`}>Something else on your mind? Our team replies within one working day.</p>
+      </div>
+      <div className="flex flex-col gap-3">
+        {faqs.map((f) => {
+          const isOpen = open === f.id
+          return (
+            <div key={f.id} className="rounded-2xl bg-white">
+              <button
+                type="button"
+                onClick={() => setOpen(isOpen ? null : f.id)}
+                aria-expanded={isOpen}
+                className="w-full flex items-center justify-between gap-4 text-left p-5 md:p-6"
+              >
+                <span className="text-base md:text-xl font-medium text-slate-900">{f.q}</span>
+                <PlusIcon open={isOpen} />
+              </button>
+              {isOpen && <p className="px-5 md:px-6 pb-5 md:pb-6 -mt-1 text-sm md:text-base leading-relaxed text-slate-600">{f.a}</p>}
+            </div>
+          )
+        })}
+      </div>
+    </div>
+  )
+}
+
+function Cta() {
+  return (
+    <div className={`${SECTION_GAP} relative overflow-hidden rounded-3xl min-h-[380px] md:min-h-[460px] flex`}>
+      <img src={Ramena} alt="" className="absolute inset-0 w-full h-full object-cover" />
+      <div className="absolute inset-0 bg-gradient-to-r from-black/70 via-black/40 to-black/10" />
+      <div className="relative flex flex-col justify-end p-6 md:p-12 max-w-2xl">
+        <h2 className={ON_IMAGE_TITLE}>Not Sure Where To Stay?</h2>
+        <p className="mt-4 text-sm md:text-lg text-white/85 leading-relaxed">
+          Tell us your dates, budget and travel style. We will suggest the stays that fit.
+        </p>
+        <a
+          href="/contact"
+          className="mt-6 md:mt-8 self-start inline-flex items-center gap-3 rounded-full bg-white hover:bg-white/90 transition text-slate-900 pl-6 pr-2.5 py-2.5 font-medium"
+        >
+          Get A Free Suggestion
+          <span className="w-10 h-10 rounded-full bg-[#C49849] flex items-center justify-center text-white"><ArrowIcon /></span>
+        </a>
+      </div>
+    </div>
+  )
+}
 
 function Accommodation() {
-
-  const sectionRef = useRef(null);
-
-
-  useLayoutEffect(() => {
-
-    const ctx = gsap.context(() => {
-
-      const cards = gsap.utils.toArray(
-        ".accommodation-card"
-      );
-
-
-      gsap.fromTo(
-        cards,
-
-        {
-          y: 50,
-          opacity: 0,
-        },
-
-        {
-          y: 0,
-          opacity: 1,
-
-          duration: 0.8,
-
-          stagger: 0.12,
-
-          ease: "power3.out",
-
-          scrollTrigger: {
-
-            trigger: sectionRef.current,
-
-            start: "top 80%",
-
-            toggleActions:
-              "play none none reverse",
-          },
-        }
-      );
-
-
-      const refresh = () => {
-        ScrollTrigger.refresh();
-      };
-
-
-      window.addEventListener("load", refresh);
-
-
-      return () => {
-        window.removeEventListener("load", refresh);
-      };
-
-    }, sectionRef);
-
-
-    return () => ctx.revert();
-
-  }, []);
-
-
   return (
-
-    <section
-      ref={sectionRef}
-      className="
-        w-full
-        bg-white
-        px-5
-        py-16
-        sm:px-8
-        lg:px-10
-        lg:py-24
-      "
-    >
-
-      <div className="mx-auto max-w-[1440px]">
-
-
-        {/* ============================================================
-            HEADER
-        ============================================================ */}
-
-        <div
-          className="
-            mb-10
-            flex
-            flex-col
-            gap-5
-            md:mb-14
-            md:flex-row
-            md:items-end
-            md:justify-between
-          "
-        >
-
-          <div className="max-w-2xl">
-
-            <p
-              className="
-                mb-3
-                text-xs
-                font-semibold
-                uppercase
-                tracking-[0.2em]
-                text-[#C49849]
-              "
-            >
-              Stay your way
-            </p>
-
-
-            <h2
-              className="
-                text-3xl
-                font-medium
-                leading-[1.05]
-                tracking-[-0.04em]
-                text-[#0F172B]
-                sm:text-4xl
-                lg:text-5xl
-              "
-            >
-              Find a place to stay,
-              <br />
-              make it part of the journey.
-            </h2>
-
-          </div>
-
-
-          <p
-            className="
-              max-w-md
-              text-sm
-              leading-relaxed
-              text-slate-500
-              sm:text-base
-            "
-          >
-            From tropical escapes to peaceful retreats,
-            discover accommodation options that complement
-            every journey across Madagascar.
-          </p>
-
-        </div>
-
-
-        {/* ============================================================
-            CARDS
-        ============================================================ */}
-
-        <div
-          className="
-            grid
-            grid-cols-1
-            gap-5
-            sm:grid-cols-2
-            lg:grid-cols-4
-          "
-        >
-
-          {accommodationTypes.map(
-            (accommodation) => (
-
-              <AccommodationCard
-                key={accommodation.id}
-                accommodation={accommodation}
-              />
-
-            )
-          )}
-
-        </div>
-
-      </div>
-
-    </section>
-  );
-}
-
-
-/* ====================================================================
-   HOW IT WORKS
-==================================================================== */
-
-function HowItWorks() {
-
-  const sectionRef = useRef(null);
-
-
-  useLayoutEffect(() => {
-
-    const ctx = gsap.context(() => {
-
-      const items =
-        gsap.utils.toArray(".how-step");
-
-
-      gsap.fromTo(
-        items,
-
-        {
-          y: 60,
-          opacity: 0,
-        },
-
-        {
-          y: 0,
-          opacity: 1,
-
-          duration: 1.7,
-
-          stagger: 0.35,
-
-          ease: "power3.out",
-
-          scrollTrigger: {
-
-            trigger: sectionRef.current,
-
-            start: "50% bottom",
-
-            toggleActions:
-              "play none none reverse",
-          },
-        }
-      );
-
-    }, sectionRef);
-
-
-    return () => ctx.revert();
-
-  }, []);
-
-
-  return (
-
-    <section
-      ref={sectionRef}
-      className="
-        w-full
-        px-5
-        py-16
-        sm:px-8
-        lg:px-10
-        lg:py-20
-      "
-    >
-
-      <div className="mx-auto max-w-[1440px]">
-
-
-        {/* TITLE */}
-
-        <div className="mb-12 max-w-3xl lg:mb-8">
-
-          <h2
-            className="
-              text-3xl
-              font-medium
-              leading-[0.98]
-              tracking-[-0.04em]
-              text-[#0F0F0F]
-              sm:text-4xl
-            "
-          >
-            How it works?
-          </h2>
-
-        </div>
-
-
-        {/* STEPS */}
-
-        <div
-          className="
-            grid
-            grid-cols-1
-            gap-px
-            overflow-hidden
-            rounded-[28px]
-            bg-[#D8D6D1]
-            md:grid-cols-2
-            lg:grid-cols-4
-          "
-        >
-
-          {howItWorks.map((step) => (
-
-            <article
-              key={step.number}
-              className="
-                how-step
-                group
-                flex
-                min-h-[340px]
-                flex-col
-                justify-between
-                bg-[#D5E8E2]
-                p-7
-                sm:p-8
-                lg:p-9
-              "
-            >
-
-              <div
-                className="
-                  flex
-                  items-center
-                  justify-between
-                "
-              >
-
-                <span
-                  className="
-                    text-lg
-                    font-semibold
-                    text-[#53615D]
-                  "
-                >
-                  {step.number}
-                </span>
-
-
-                <span
-                  className="
-                    text-2xl
-                    text-[#111]
-                    transition-transform
-                    duration-300
-                    group-hover:translate-x-1
-                    group-hover:-translate-y-1
-                  "
-                >
-                  ↗
-                </span>
-
-              </div>
-
-
-              <div className="mt-5 md:mt-16">
-
-                <h3
-                  className="
-                    max-w-[280px]
-                    text-lg
-                    font-semibold
-                    uppercase
-                    leading-[1.3]
-                    tracking-[0.06em]
-                    text-[#26332F]
-                    sm:text-xl
-                    lg:text-[22px]
-                  "
-                >
-                  {step.title}
-                </h3>
-
-
-                <p
-                  className="
-                    mt-1
-                    max-w-[300px]
-                    text-base
-                    leading-relaxed
-                    text-[#53615D]
-                    md:mt-5
-                  "
-                >
-                  {step.text}
-                </p>
-
-              </div>
-
-            </article>
-
-          ))}
-
-        </div>
-
-      </div>
-
-    </section>
-  );
-}
-
-
-/* ====================================================================
-   TRANSPORT CARD
-==================================================================== */
-
-function TransportCard({ transport }) {
-
-  return (
-
-    <a
-      href="#"
-      className="
-        group
-        flex
-        flex-col
-        overflow-hidden
-        rounded-xl
-        bg-white
-        text-slate-800
-        shadow-sm
-        transition-all
-        duration-300
-        hover:-translate-y-1
-        hover:shadow-xl
-      "
-    >
-
-      <div className="aspect-[4/3] overflow-hidden">
-
-        <img
-          src={transport.image}
-          alt={transport.title}
-          className="
-            h-full
-            w-full
-            object-cover
-            transition-transform
-            duration-700
-            group-hover:scale-105
-          "
-        />
-
-      </div>
-
-
-      <div className="px-5 pb-6 pt-5">
-
-        <p
-          className="
-            flex
-            items-center
-            gap-3
-            text-xs
-            text-[#0F172B]
-            sm:text-sm
-          "
-        >
-
-          <span>
-            {transport.category}
-          </span>
-
-          <span className="h-4 w-px bg-slate-300" />
-
-          <span>
-            {transport.duration}
-          </span>
-
-        </p>
-
-
-        <h3
-          className="
-            mt-3
-            text-xl
-            font-medium
-            leading-snug
-            text-[#0F172B]
-            md:text-2xl
-          "
-        >
-          {transport.title}
-        </h3>
-
-      </div>
-
-    </a>
-  );
-}
-
-
-/* ====================================================================
-   TRANSPORT GRID
-==================================================================== */
-
-function TransportGrid({
-  transports = transportTypes,
-}) {
-
-  const [activeFilter, setActiveFilter] =
-    React.useState("All");
-
-
-  const sectionRef = useRef(null);
-
-
-  const filters = [
-
-    {
-      id: "All",
-      label: "All transport",
-    },
-
-    {
-      id: "Land",
-      label: "Land",
-    },
-
-    {
-      id: "Sea",
-      label: "Sea",
-    },
-
-  ];
-
-
-  const filteredTransports =
-    activeFilter === "All"
-      ? transports
-      : transports.filter(
-          (transport) =>
-            transport.category ===
-            activeFilter
-        );
-
-
-  useLayoutEffect(() => {
-
-    const ctx = gsap.context(() => {
-
-      const cards =
-        gsap.utils.toArray(
-          ".transport-card"
-        );
-
-
-      gsap.fromTo(
-        cards,
-
-        {
-          y: 40,
-          opacity: 0,
-        },
-
-        {
-          y: 0,
-          opacity: 1,
-
-          duration: 0.6,
-
-          stagger: 0.08,
-
-          ease: "power3.out",
-        }
-      );
-
-    }, sectionRef);
-
-
-    return () => ctx.revert();
-
-  }, [activeFilter]);
-
-
-  return (
-
-    <section
-      ref={sectionRef}
-      className="w-full bg-[#D5E8E2]"
-    >
-
-
-      {/* TOP CURVE */}
-
-      <div
-        className="
-          mb-5
-          h-10
-          w-full
-          rounded-b-4xl
-          bg-white
-          md:mb-16
-        "
-      />
-
-
-      <div
-        className="
-          mx-auto
-          max-w-[1300px]
-          px-6
-        "
-      >
-
-
-        {/* ============================================================
-            FILTERS
-        ============================================================ */}
-
-        <div className="relative mb-12">
-
-
-          {/* DESKTOP LINE */}
-
-          <div
-            className="
-              absolute
-              left-0
-              right-0
-              top-[54px]
-              hidden
-              h-[2px]
-              bg-slate-300
-              sm:block
-            "
-          />
-
-
-          {/* ACTIVE LINE */}
-
-          <div
-            className="
-              absolute
-              left-0
-              top-[54px]
-              hidden
-              h-[2px]
-              bg-[#C39649]
-              transition-all
-              duration-500
-              sm:block
-            "
-            style={{
-              width:
-                activeFilter === "All"
-                  ? "33.33%"
-                  : activeFilter === "Land"
-                  ? "66.66%"
-                  : "100%",
-            }}
-          />
-
-
-          {/* MOBILE FILTERS */}
-
-          <div
-            className="
-              grid
-              grid-cols-2
-              gap-3
-              sm:hidden
-            "
-          >
-
-            {filters.map((filter) => {
-
-              const active =
-                activeFilter ===
-                filter.id;
-
-
-              return (
-
-                <button
-                  key={filter.id}
-                  onClick={() =>
-                    setActiveFilter(
-                      filter.id
-                    )
-                  }
-                  className={`
-                    flex
-                    min-h-[60px]
-                    items-center
-                    justify-center
-                    rounded-xl
-                    border
-                    px-3
-                    text-center
-                    text-sm
-                    font-medium
-                    transition-all
-                    duration-300
-
-                    ${
-                      active
-                        ? "border-slate-300 bg-white text-[#0F172B] shadow-sm"
-                        : "border-slate-300 bg-transparent text-[#0F172B]"
-                    }
-                  `}
-                >
-                  {filter.label}
-                </button>
-
-              );
-            })}
-
-          </div>
-
-
-          {/* DESKTOP FILTERS */}
-
-          <div
-            className="
-              relative
-              hidden
-              grid-cols-3
-              sm:grid
-            "
-          >
-
-            {filters.map((filter) => {
-
-              const active =
-                activeFilter ===
-                filter.id;
-
-
-              return (
-
-                <button
-                  key={filter.id}
-                  onClick={() =>
-                    setActiveFilter(
-                      filter.id
-                    )
-                  }
-                  className="
-                    group
-                    relative
-                    flex
-                    flex-col
-                    items-center
-                    pb-8
-                  "
-                >
-
-                  <span
-                    className={`
-                      text-sm
-                      font-medium
-                      transition-colors
-                      duration-300
-                      md:text-base
-
-                      ${
-                        active
-                          ? "text-[#0F172B]"
-                          : "text-slate-500 group-hover:text-slate-800"
-                      }
-                    `}
-                  >
-                    {filter.label}
-                  </span>
-
-
-                  <span
-                    className={`
-                      absolute
-                      top-[48px]
-                      z-10
-                      rounded-full
-                      transition-all
-                      duration-300
-
-                      ${
-                        active
-                          ? "h-5 w-5 border-2 border-[#C39649] bg-[#D5E8E2]"
-                          : "h-3 w-3 bg-slate-300"
-                      }
-                    `}
-                  >
-
-                    {active && (
-
-                      <span
-                        className="
-                          absolute
-                          left-1/2
-                          top-1/2
-                          h-2
-                          w-2
-                          -translate-x-1/2
-                          -translate-y-1/2
-                          rounded-full
-                          bg-[#C39649]
-                        "
-                      />
-
-                    )}
-
-                  </span>
-
-                </button>
-
-              );
-            })}
-
-          </div>
-
-        </div>
-
-
-        {/* ============================================================
-            TRANSPORT CARDS
-        ============================================================ */}
-
-        <div
-          className="
-            grid
-            grid-cols-1
-            gap-6
-            sm:grid-cols-2
-            lg:grid-cols-4
-            lg:gap-8
-          "
-        >
-
-          {filteredTransports.map(
-            (transport, i) => {
-
-              const offset =
-                i % 4 === 1 ||
-                i % 4 === 3
-                  ? "lg:mt-10"
-                  : "";
-
-
-              return (
-
-                <div
-                  className={`transport-card ${offset}`}
-                  key={transport.id}
-                >
-
-                  <TransportCard
-                    transport={
-                      transport
-                    }
-                  />
-
-                </div>
-
-              );
-            }
-          )}
-
-        </div>
-
-      </div>
-
-
-      {/* BOTTOM CURVE */}
-
-      <div
-        className="
-          mt-5
-          h-10
-          w-full
-          rounded-t-4xl
-          bg-white
-          sm:mt-10
-        "
-      />
-
-    </section>
-  );
-}
-
-
-/* ====================================================================
-   HERO + COMPLETE PAGE
-==================================================================== */
-
-export default function TravelHero({
-
-  eyebrow = "One journey. Many ways.",
-
-  title = "Explore Madagascar, your way.",
-
-  images = defaultImages,
-
-  heights = defaultHeights,
-
-  centerIndex,
-
-  bgColor = "#123C32",
-
-}) {
-
-  const resolvedCenterIndex =
-    centerIndex ??
-    Math.floor(
-      images.length / 2
-    );
-
-
-  const bgRef = useRef(null);
-
-  const labelRef = useRef(null);
-
-  const titleRef = useRef(null);
-
-  const imagesContainerRef =
-    useRef(null);
-
-  const imgRefs = useRef([]);
-
-
-  /* ================================================================
-     HERO ANIMATION
-  ================================================================ */
-
-  useLayoutEffect(() => {
-
-    const items =
-      imgRefs.current.filter(Boolean);
-
-
-    if (!items.length) return;
-
-
-    const centerEl =
-      imgRefs.current[
-        resolvedCenterIndex
-      ];
-
-
-    if (!centerEl) return;
-
-
-    const ctx = gsap.context(() => {
-
-      const centerRect =
-        centerEl.getBoundingClientRect();
-
-
-      const centerX =
-        centerRect.left +
-        centerRect.width / 2;
-
-
-      const centerY =
-        centerRect.top +
-        centerRect.height / 2;
-
-
-      const deltas =
-        items.map((el) => {
-
-          const rect =
-            el.getBoundingClientRect();
-
-
-          const elX =
-            rect.left +
-            rect.width / 2;
-
-
-          const elY =
-            rect.top +
-            rect.height / 2;
-
-
-          return {
-
-            x: centerX - elX,
-
-            y: centerY - elY,
-
-            scale:
-              centerRect.height /
-              rect.height,
-          };
-        });
-
-
-      /* INITIAL STATES */
-
-      gsap.set(
-        bgRef.current,
-        {
-          xPercent: -100,
-        }
-      );
-
-
-      gsap.set(
-        imagesContainerRef.current,
-        {
-          y: 80,
-          opacity: 0,
-        }
-      );
-
-
-      gsap.set(
-        [
-          labelRef.current,
-          titleRef.current,
-        ],
-        {
-          opacity: 0,
-          y: 24,
-        }
-      );
-
-
-      items.forEach((el, i) => {
-
-        gsap.set(
-          el,
-          {
-
-            x: deltas[i].x,
-
-            y: deltas[i].y,
-
-            scale:
-              deltas[i].scale *
-              0.9,
-
-            opacity:
-              i ===
-              resolvedCenterIndex
-                ? 1
-                : 0,
-
-            zIndex:
-              items.length -
-              Math.abs(
-                i -
-                  resolvedCenterIndex
-              ),
-          }
-        );
-
-      });
-
-
-      /* TIMELINE */
-
-      const tl =
-        gsap.timeline({
-          delay: 0.15,
-        });
-
-
-      /* BACKGROUND */
-
-      tl.to(
-        bgRef.current,
-        {
-          xPercent: 0,
-
-          duration: 0.8,
-
-          ease: "power3.out",
-        }
-      );
-
-
-      /* IMAGES */
-
-      tl.to(
-        imagesContainerRef.current,
-        {
-          y: 0,
-
-          opacity: 1,
-
-          duration: 0.7,
-
-          ease: "power3.out",
-        },
-        "-=0.35"
-      );
-
-
-      /* TEXT */
-
-      tl.to(
-        [
-          labelRef.current,
-          titleRef.current,
-        ],
-        {
-          opacity: 1,
-
-          y: 0,
-
-          duration: 0.6,
-
-          stagger: 0.15,
-
-          ease: "power2.out",
-        },
-        "-=0.3"
-      );
-
-
-      /* IMAGE ORDER */
-
-      const order =
-        [...Array(items.length).keys()]
-          .sort(
-            (a, b) =>
-              Math.abs(
-                a -
-                  resolvedCenterIndex
-              ) -
-              Math.abs(
-                b -
-                  resolvedCenterIndex
-              )
-          );
-
-
-      order.forEach(
-        (i, seq) => {
-
-          if (
-            i ===
-            resolvedCenterIndex
-          )
-            return;
-
-
-          tl.to(
-            items[i],
-            {
-
-              x: 0,
-
-              y: 0,
-
-              scale: 1,
-
-              opacity: 1,
-
-              duration: 0.85,
-
-              ease: "power3.out",
-
-            },
-
-            seq === 1
-              ? "+=0.1"
-              : "-=0.55"
-          );
-
-        }
-      );
-
-
-      /* CENTER IMAGE */
-
-      tl.fromTo(
-
-        items[
-          resolvedCenterIndex
-        ],
-
-        {
-          scale:
-            deltas[
-              resolvedCenterIndex
-            ].scale * 0.9,
-        },
-
-        {
-          scale: 1,
-
-          duration: 0.6,
-
-          ease: "back.out(1.7)",
-        },
-
-        "<"
-      );
-
-    });
-
-
-    return () =>
-      ctx.revert();
-
-  }, [
-    images,
-    resolvedCenterIndex,
-  ]);
-
-
-  /* ================================================================
-     COMPLETE PAGE
-  ================================================================ */
-
-  return (
-
     <>
-
-      {/* ============================================================
-          NAVBAR
-      ============================================================ */}
-
+    <section className="w-full pt-0 pb-12 md:pb-20 bg-[#D5E8E2] flex flex-col items-center">
       <Navbar />
-
-
-      {/* ============================================================
-          HERO
-      ============================================================ */}
-
-      <section
-        className="
-          relative
-          mx-auto
-          w-[95vw]
-          overflow-hidden
-          rounded-4xl
-          px-6
-          pt-10
-          sm:px-10
-          lg:px-16
-          md:my-1
-        "
-        style={{
-          backgroundColor:
-            bgColor,
-        }}
-      >
-
-        {/* HERO BACKGROUND */}
-
-        <div
-          ref={bgRef}
-          className="
-            absolute
-            inset-0
-            bg-cover
-            bg-center
-          "
-          style={{
-            backgroundImage: `
-              linear-gradient(
-                rgba(0,0,0,0.45),
-                rgba(0,0,0,0.45)
-              ),
-              url(${transportBg})
-            `,
-          }}
-        >
-
-          <div
-            className="
-              pointer-events-none
-              absolute
-              -top-10
-              left-0
-              h-64
-              w-64
-              rounded-full
-              bg-white/5
-              blur-3xl
-            "
-          />
-
-          <div
-            className="
-              pointer-events-none
-              absolute
-              right-1/4
-              top-0
-              h-40
-              w-96
-              rounded-full
-              bg-white/5
-              blur-2xl
-            "
-          />
-
-        </div>
-
-
-        {/* HERO CONTENT */}
-
-        <div
-          className="
-            relative
-            mx-auto
-            max-w-5xl
-            text-center
-            xl:max-w-7xl
-          "
-        >
-
-          {/* EYEBROW */}
-
-          <p
-            ref={labelRef}
-            className="
-              text-xs
-              font-extrabold
-              tracking-[0.2em]
-              text-white
-              xl:text-sm
-            "
-          >
-            {eyebrow}
-          </p>
-
-
-          {/* TITLE */}
-
-          <h1
-            ref={titleRef}
-            className="
-              mt-4
-              text-4xl
-              font-extrabold
-              leading-[1.05]
-              text-white
-              sm:text-5xl
-              lg:text-6xl
-              xl:text-7xl
-            "
-          >
-            {title}
-          </h1>
-
-
-          {/* HERO IMAGES */}
-
-          <div
-            ref={imagesContainerRef}
-            className="
-              mt-14
-              flex
-              items-end
-              justify-center
-              gap-3
-              sm:gap-4
-            "
-          >
-
-            {images.map((img, i) => (
-
-              <div
-                key={
-                  img.url + i
-                }
-                ref={(el) =>
-                  (imgRefs.current[i] =
-                    el)
-                }
-                className={`
-                  w-1/3
-                  overflow-hidden
-                  rounded-t-2xl
-                  sm:w-1/5
-
-                  ${
-                    i >= 3
-                      ? "hidden sm:block"
-                      : ""
-                  }
-
-                  ${
-                    heights[i] ??
-                    "h-48"
-                  }
-                `}
-                style={{
-                  willChange:
-                    "transform, opacity",
-                }}
-              >
-
-                <img
-                  src={img.url}
-                  alt={img.alt}
-                  className="
-                    h-full
-                    w-full
-                    object-cover
-                  "
-                />
-
-              </div>
-
-            ))}
-
-          </div>
-
-        </div>
-
-      </section>
-
-
-      {/* ============================================================
-          TRANSPORT
-      ============================================================ */}
-
-      <TransportGrid />
-
-
-      {/* ============================================================
-          ACCOMMODATION
-      ============================================================ */}
-
-      <Accommodation />
-
-
-      {/* ============================================================
-          WHY CHOOSE US
-      ============================================================ */}
-
-      <WhyChooseUs />
-
-
-      {/* ============================================================
-          HOW IT WORKS
-      ============================================================ */}
-
-      <HowItWorks />
-
-
-      {/* ============================================================
-          FAQ
-      ============================================================ */}
-
-      <FAQ />
-
-
-      {/* ============================================================
-          CTA
-      ============================================================ */}
-
-      <CTA />
-
-
-      {/* ============================================================
-          FOOTER
-      ============================================================ */}
-
-      <Footer />
-
+      <Hero />
+      <div className={`${SECTION_WIDTH} ${SECTION_GAP}`}>
+        <Intro />
+        <Stays />
+        <Featured />
+        <Criteria />
+        <Included />
+        <Faq />
+        <Cta />
+      </div>
+    </section>
+    <Footer />
     </>
-
-  );
+  )
 }
+
+export default Accommodation
