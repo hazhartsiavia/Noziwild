@@ -5,6 +5,31 @@ import { Link } from 'react-router-dom'
 function Navbar() {
   const [menuOpen, setMenuOpen] = React.useState(false)
   const [dropdownOpen, setDropdownOpen] = React.useState(false)
+  const pageLinks = [
+    ['Accueil', '/'],
+    ['Activities', '/activities'],
+    ['Destinations', '/destinations'],
+    ['Circuits', '/circuits'],
+    ['Excursions', '/excurssions'],
+    ['Cruise Excursions', '/cruise-excurssion'],
+    ['Long Stay', '/longstay'],
+    ['Tailor-Made', '/tailor-made'],
+    ['Transport', '/transport'],
+    ['Hebergement', '/hosting'],
+    ['Guides', '/guide'],
+    ['Equipment Rentals', '/equipment-rentals'],
+    ['Photography', '/photography'],
+    ['Food & Dining', '/Food-dining'],
+    ['Travel Planning', '/travel-planning'],
+    ['Ticket Reservations', '/ticket-reservation'],
+    ['About', '/about'],
+    ['Blog', '/blog'],
+    ['Contact', '/contact'],
+  ]
+  const closeMenu = () => {
+    setMenuOpen(false)
+    setDropdownOpen(false)
+  }
 
   return (
     <>
@@ -25,10 +50,7 @@ function Navbar() {
 
             <div className="hidden items-center gap-8 pl-10 md:flex">
               <div className="relative group">
-                <button
-                  type="button"
-                  className="flex items-center gap-1.5 border-0 bg-transparent py-2 text-sm text-zinc-800 hover:text-zinc-950"
-                >
+                <Link to="/activities" className="flex items-center gap-1.5 border-0 bg-transparent py-2 text-sm text-zinc-800 hover:text-zinc-950">
                   Activities
                   <svg
                     className="transition-transform group-hover:rotate-180"
@@ -40,35 +62,32 @@ function Navbar() {
                   >
                     <path d="m1 1 4 4 4-4" stroke="#71717b" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
                   </svg>
-                </button>
+                </Link>
 
-                <div className="invisible absolute left-0 top-full z-50 mt-1 w-44 rounded-xl border border-zinc-200 bg-white py-2 opacity-0 shadow-lg transition-all group-hover:visible group-hover:opacity-100">
-                  <Link to="/" className="block px-4 py-2 text-sm text-zinc-600 hover:bg-zinc-50">Accueil</Link>
-                  <Link to="/about" className="block px-4 py-2 text-sm text-zinc-600 hover:bg-zinc-50">About Pages</Link>
-                  <Link to="/equipment-rentals" className="block px-4 py-2 text-sm text-zinc-600 hover:bg-zinc-50">Equipment Rentals</Link>
-                  <Link to="/contact" className="block px-4 py-2 text-sm text-zinc-600 hover:bg-zinc-50">Contact Pages</Link>
-                  <Link to="/blog" className="block px-4 py-2 text-sm text-zinc-600 hover:bg-zinc-50">Blog Pages</Link>
+                <div className="invisible absolute left-0 top-full z-50 mt-1 max-h-[70vh] w-56 overflow-y-auto rounded-xl border border-zinc-200 bg-white py-2 opacity-0 shadow-lg transition-all group-hover:visible group-hover:opacity-100 group-focus-within:visible group-focus-within:opacity-100">
+                  {pageLinks.map(([label, path]) => (
+                    <Link key={path} to={path} className="block px-4 py-2 text-sm text-zinc-600 hover:bg-zinc-50">{label}</Link>
+                  ))}
                 </div>
               </div>
 
-              <Link to="/about" className="text-sm text-zinc-500 transition hover:text-zinc-800">Nos Circuits</Link>
-              <Link to="/blog" className="text-sm text-zinc-500 transition hover:text-zinc-800">Circuits</Link>
+              <Link to="/destinations" className="text-sm text-zinc-500 transition hover:text-zinc-800">Destinations</Link>
+              <Link to="/circuits" className="text-sm text-zinc-500 transition hover:text-zinc-800">Circuits</Link>
+              <Link to="/about" className="text-sm text-zinc-500 transition hover:text-zinc-800">About</Link>
+              <Link to="/blog" className="text-sm text-zinc-500 transition hover:text-zinc-800">Blog</Link>
               <Link to="/contact" className="text-sm text-zinc-500 transition hover:text-zinc-800">Contact</Link>
             </div>
           </div>
 
           <div className="hidden items-center md:flex">
-            <button
-              type="button"
-              className="inline-flex items-center gap-2.5 rounded-full bg-[#C49849] px-5 py-2.5 text-sm font-medium text-zinc-50 transition hover:text-zinc-200"
-            >
+            <Link to="/ticket-reservation" className="inline-flex items-center gap-2.5 rounded-full bg-[#C49849] px-5 py-2.5 text-sm font-medium text-zinc-50 transition hover:text-zinc-200">
               Booking
               <span className="flex h-7 w-7 items-center justify-center rounded-full bg-white text-zinc-800">
                 <svg width="12" height="10" viewBox="0 0 12 10" fill="none" xmlns="http://www.w3.org/2000/svg">
                   <path d="M.6 4.602h10m-4-4 4 4-4 4" stroke="#3f3f47" strokeWidth="1.2" strokeLinecap="round" strokeLinejoin="round" />
                 </svg>
               </span>
-            </button>
+            </Link>
           </div>
 
           <button
@@ -106,29 +125,20 @@ function Navbar() {
 
               {dropdownOpen && (
                 <div className="flex flex-col pl-4">
-                  <Link to="/" className="rounded-lg px-4 py-2 text-sm text-zinc-500 hover:bg-zinc-50">Landing Pages</Link>
-                  <Link to="/about" className="rounded-lg px-4 py-2 text-sm text-zinc-500 hover:bg-zinc-50">About Pages</Link>
-                  <Link to="/equipment-rentals" className="rounded-lg px-4 py-2 text-sm text-zinc-500 hover:bg-zinc-50">Equipment Rentals</Link>
-                  <Link to="/contact" className="rounded-lg px-4 py-2 text-sm text-zinc-500 hover:bg-zinc-50">Contact Pages</Link>
-                  <Link to="/blog" className="rounded-lg px-4 py-2 text-sm text-zinc-500 hover:bg-zinc-50">Blog Pages</Link>
+                  {pageLinks.map(([label, path]) => (
+                    <Link key={path} to={path} onClick={closeMenu} className="rounded-lg px-4 py-2 text-sm text-zinc-500 hover:bg-zinc-50">{label}</Link>
+                  ))}
                 </div>
               )}
 
-              <Link to="/about" className="rounded-lg px-4 py-2.5 text-sm text-zinc-500 hover:bg-zinc-50">Company</Link>
-              <Link to="/contact" className="rounded-lg px-4 py-2.5 text-sm text-zinc-500 hover:bg-zinc-50">Pricing</Link>
-              <Link to="/blog" className="rounded-lg px-4 py-2.5 text-sm text-zinc-500 hover:bg-zinc-50">Blogs</Link>
-
-              <button
-                type="button"
-                className="mt-3 inline-flex w-fit items-center gap-2.5 rounded-full bg-[#C49849] px-5 py-2.5 text-sm font-medium text-zinc-50"
-              >
+              <Link to="/ticket-reservation" onClick={closeMenu} className="mt-3 inline-flex w-fit items-center gap-2.5 rounded-full bg-[#C49849] px-5 py-2.5 text-sm font-medium text-zinc-50">
                 Booking
                 <span className="flex h-7 w-7 items-center justify-center rounded-full bg-white text-zinc-800">
                   <svg width="12" height="10" viewBox="0 0 12 10" fill="none" xmlns="http://www.w3.org/2000/svg">
                     <path d="M.6 4.602h10m-4-4 4 4-4 4" stroke="#3f3f47" strokeWidth="1.2" strokeLinecap="round" strokeLinejoin="round" />
                   </svg>
                 </span>
-              </button>
+              </Link>
             </div>
           </div>
         )}
