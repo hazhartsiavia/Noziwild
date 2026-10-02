@@ -18,6 +18,7 @@ import Destinations from "./pages/Destinations";
 import DestinationDetail from "./pages/DestinationDetail";
 import PlaceDetail from "./pages/PlaceDetail";
 import Excurssions from "./pages/Excurssions";
+import CruiseExcursions from "./pages/CruiseExcurssions";
 import TailorMade from "./pages/TailorMade";
 
 function App() {
