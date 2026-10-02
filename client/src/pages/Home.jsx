@@ -1,43 +1,61 @@
-import React, { useEffect, useRef, useState } from 'react'
+import React, { useEffect, useLayoutEffect, useRef, useState } from 'react'
+import gsap from 'gsap'
+import { ScrollTrigger } from 'gsap/ScrollTrigger'
 import Ramena from '../assets/images/Ramena.png'
 import NosyIranja from '../assets/images/NosyIranja.png'
 import NosyLonjo from '../assets/images/NosyLonjo.png'
 import Ambanja from '../assets/images/Ambanja.png'
 import Deux from '../assets/images/2.jpg'
 import Tana from '../assets/images/Tana.png'
+import heroVideo from '../assets/videos/background.mp4'
 import Navbar from '../components/Navbar'
 import Footer from '../components/Footer'
 import { destinations } from './destinationsData'
+
+gsap.registerPlugin(ScrollTrigger)
 
 /* Constantes partagées par toutes les sections */
 const W = 'w-[90vw] lg:max-w-[95vw]'
 const H2 = 'text-3xl sm:text-4xl md:text-5xl lg:text-[52px] font-medium leading-[1.1] tracking-tight text-slate-900'
 const BTN = 'inline-flex items-center justify-center text-sm md:text-base font-medium px-6 py-3 rounded-full active:scale-95 transition'
 
-/* ================= Apparition en fondu au défilement ================= */
+/* ================= Apparition en fondu au défilement (GSAP) ================= */
 
-// Fait apparaître le contenu en fondu quand il entre à l'écran
 function Reveal({ children, className = '' }) {
   const ref = useRef(null)
-  const [shown, setShown] = useState(false)
 
-  useEffect(() => {
+  useLayoutEffect(() => {
     const el = ref.current
     if (!el) return
-    const io = new IntersectionObserver(([e]) => {
-      if (e.isIntersecting) { setShown(true); io.disconnect() }
-    }, { threshold: 0.12 })
-    io.observe(el)
-    return () => io.disconnect()
+
+    const mm = gsap.matchMedia()
+
+    mm.add('(prefers-reduced-motion: no-preference)', () => {
+      const ctx = gsap.context(() => {
+        gsap.fromTo(
+          el,
+          { opacity: 0, y: 32 },
+          {
+            opacity: 1,
+            y: 0,
+            duration: 0.8,
+            ease: 'power3.out',
+            scrollTrigger: {
+              trigger: el,
+              start: 'top 88%',
+              toggleActions: 'play none none none',
+            },
+          }
+        )
+      })
+      return () => ctx.revert()
+    })
+
+    return () => mm.revert()
   }, [])
 
   return (
-    <div
-      ref={ref}
-      className={`transition duration-700 ease-out motion-reduce:transition-none ${
-        shown ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8 motion-reduce:opacity-100 motion-reduce:translate-y-0'
-      } ${className}`}
-    >
+    <div ref={ref} className={className}>
       {children}
     </div>
   )
@@ -45,7 +63,6 @@ function Reveal({ children, className = '' }) {
 
 /* ================= Barre d'informations au-dessus de la Navbar ================= */
 
-// Barre d'informations au-dessus de la Navbar
 function TopBar() {
   return (
     <div className="w-full bg-[#D5E8E2] flex justify-center pt-4">
@@ -61,9 +78,8 @@ function TopBar() {
   )
 }
 
-/* ================= Hero : panneau vert + photo, barre de demande de devis ================= */
+/* ================= Hero plein écran : vidéo + panneau de demande ================= */
 
-const GREEN = 'bg-[#084838]'
 const BUTTON = 'text-sm md:text-base font-medium px-6 py-3 rounded-full active:scale-95 transition'
 const LABEL = 'block mb-1.5 text-xs md:text-sm text-white/70'
 const CONTROL =
@@ -85,91 +101,181 @@ const socials = [
   { id: 3, label: 'YouTube', href: '#', icon: <Icon><path d="M2.5 17a24.12 24.12 0 0 1 0-10 2 2 0 0 1 1.4-1.4 49.56 49.56 0 0 1 16.2 0A2 2 0 0 1 21.5 7a24.12 24.12 0 0 1 0 10 2 2 0 0 1-1.4 1.4 49.55 49.55 0 0 1-16.2 0A2 2 0 0 1 2.5 17" /><path d="m10 15 5-3-5-3z" /></Icon> },
 ]
 
-/* Les attributs data-* sont ceux utilisés par les animations GSAP de Home.jsx */
+/* Hero plein écran : vidéo en parallaxe, contenu qui s'estompe au scroll */
 function Hero() {
+  const cell = 'lg:border-r lg:border-white/25 lg:pr-6'
+
+  const sectionRef = useRef(null)
+  const videoRef = useRef(null)
+  const contentRef = useRef(null)
+
+  const [reduceMotion, setReduceMotion] = useState(false)
+  useEffect(() => {
+    setReduceMotion(window.matchMedia('(prefers-reduced-motion: reduce)').matches)
+  }, [])
+
+  useLayoutEffect(() => {
+    const ctx = gsap.context(() => {
+      const lines = gsap.utils.toArray('[data-line]', sectionRef.current)
+      const heroBlocks = gsap.utils.toArray('[data-hero]', sectionRef.current)
+      const socialItems = gsap.utils.toArray('[data-social]', sectionRef.current)
+
+      gsap.set(lines, { yPercent: 110 })
+      gsap.set(heroBlocks, { opacity: 0, y: 24 })
+      gsap.set(socialItems, { opacity: 0, x: 16 })
+
+      /* --- Entrée au chargement --- */
+      const tl = gsap.timeline({ defaults: { ease: 'power3.out' }, delay: 0.2 })
+
+      tl.to(lines, { yPercent: 0, duration: 0.95, stagger: 0.12 })
+        .to(heroBlocks, { opacity: 1, y: 0, duration: 0.7, stagger: 0.15 }, '-=0.55')
+        .to(socialItems, { opacity: 1, x: 0, duration: 0.5, stagger: 0.08 }, '-=0.4')
+
+      /* --- Parallaxe vidéo au scroll --- */
+      if (!reduceMotion && videoRef.current) {
+        gsap.to(videoRef.current, {
+          yPercent: 15,
+          scale: 1.12,
+          ease: 'none',
+          scrollTrigger: {
+            trigger: sectionRef.current,
+            start: 'top top',
+            end: 'bottom top',
+            scrub: 1,
+          },
+        })
+      }
+
+      /* --- Contenu qui s'estompe et remonte en quittant le hero --- */
+      if (contentRef.current) {
+        gsap.to(contentRef.current, {
+          y: -100,
+          opacity: 0,
+          ease: 'none',
+          scrollTrigger: {
+            trigger: sectionRef.current,
+            start: 'top top',
+            end: 'bottom top',
+            scrub: 1,
+          },
+        })
+      }
+
+      ScrollTrigger.refresh()
+    }, sectionRef)
+
+    return () => ctx.revert()
+  }, [reduceMotion])
+
   return (
-    <section data-hero-section className="relative overflow-hidden rounded-[2rem] grid grid-cols-1 lg:grid-cols-2 lg:min-h-[780px]">
-      {/* Panneau vert */}
-      <div className={`${GREEN} text-white flex flex-col justify-between gap-12 px-6 py-10 sm:px-10 md:px-14 md:py-16`}>
-        <div className="my-auto">
-          <p data-hero className="text-xs md:text-sm uppercase tracking-[0.2em] text-[#E6C58A]">Your journey begins here</p>
-          <h1 className="mt-5 text-4xl sm:text-5xl xl:text-7xl font-bold uppercase leading-[1.05] tracking-tight">
-            {['Madagascar Journeys', 'Crafted For You'].map((line) => (
-              <span key={line} className="block overflow-hidden pb-1"><span data-line className="block">{line}</span></span>
-            ))}
+    <section ref={sectionRef} className="relative w-full min-h-[max(640px,100svh)] overflow-hidden border-t-[10px] border-white bg-slate-900 text-white flex flex-col">
+      {reduceMotion ? (
+        <img src={NosyIranja} alt="Turquoise water and a white sandbank" className="absolute inset-0 w-full h-full object-cover" />
+      ) : (
+        <video
+          ref={videoRef}
+          className="absolute inset-0 w-full h-full object-cover"
+          style={{ willChange: 'transform' }}
+          src={heroVideo}
+          poster={NosyIranja}
+          autoPlay muted loop playsInline preload="auto"
+          disablePictureInPicture
+          aria-hidden="true"
+        />
+      )}
+      <div className="absolute inset-0 bg-gradient-to-r from-black/65 via-black/25 to-transparent" />
+      <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-black/45" />
+
+      {/* Onglet blanc de la navbar, collé en haut de la photo */}
+      <div className="relative z-20"><Navbar /></div>
+
+      <div ref={contentRef} className={`${W} relative mx-auto flex flex-1 flex-col justify-end gap-10 pt-10 pb-6 md:pb-10`}>
+        <div className="max-w-4xl">
+          <p data-hero className="text-xs md:text-sm uppercase tracking-[0.25em] text-[#E6C58A]">Your journey begins here</p>
+          <h1 className="mt-5 text-5xl sm:text-6xl md:text-7xl xl:text-[104px] font-bold uppercase leading-[0.98] tracking-tight">
+            <span className="block overflow-hidden"><span data-line className="block">Madagascar Journeys</span></span>
+            <span className="block overflow-hidden"><span data-line className="block">Crafted For You</span></span>
           </h1>
-          <p data-hero className="mt-6 max-w-xl text-sm md:text-lg text-white/85 leading-relaxed">
+          <p data-hero className="mt-6 max-w-xl text-sm md:text-xl text-white/90 leading-relaxed">
             Private trips built around you, with local guides, handpicked stays and a free quote within one working day.
           </p>
-
-          {/* Barre de demande : envoie les choix vers la page contact */}
-          <form
-            data-hero action="/contact" method="get"
-            className="mt-10 grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-[1fr_1fr_1fr_auto] gap-4 items-end rounded-3xl border border-white/15 bg-white/10 backdrop-blur-sm p-4 md:p-5"
-          >
-            <input type="hidden" name="type" value="quote" />
-            <div>
-              <label htmlFor="hero-location" className={LABEL}>Location</label>
-              <select id="hero-location" name="destination" defaultValue="" className={CONTROL}>
-                <option value="" disabled className={OPTION}>Where to next?</option>
-                {locations.map((l) => <option key={l} value={l} className={OPTION}>{l}</option>)}
-              </select>
-            </div>
-            <div>
-              <label htmlFor="hero-activity" className={LABEL}>Activities</label>
-              <select id="hero-activity" name="activity" defaultValue="" className={CONTROL}>
-                <option value="" disabled className={OPTION}>Select activities</option>
-                {activities.map((a) => <option key={a} value={a} className={OPTION}>{a}</option>)}
-              </select>
-            </div>
-            <div>
-              <label htmlFor="hero-date" className={LABEL}>Travel date</label>
-              <input id="hero-date" name="date" type="date" className={CONTROL} />
-            </div>
-            <span data-magnetic className="inline-block sm:col-span-2 xl:col-span-1">
-              <button type="submit" className={`w-full bg-[#C49849] hover:bg-[#b08339] text-white ${BUTTON}`}>Get My Quote</button>
-            </span>
-          </form>
         </div>
 
-        <div data-hero className="flex flex-wrap items-center gap-x-8 gap-y-4 text-sm md:text-base">
-          <span className="text-white/85">Free quote, no obligation</span>
-          <ul className="flex items-center gap-4">
-            {socials.map((s) => (
-              <li key={s.id}>
-                <a href={s.href} aria-label={s.label} className="block text-white/80 hover:text-white transition">{s.icon}</a>
-              </li>
-            ))}
-          </ul>
-        </div>
+        {/* Barre de demande : envoie les choix vers la page contact */}
+        <form
+          data-hero
+          action="/contact" method="get"
+          className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-[1fr_1fr_1fr_auto] gap-4 lg:gap-6 items-end rounded-[2rem] border border-white/25 bg-white/15 backdrop-blur-md p-4 md:p-6"
+        >
+          <input type="hidden" name="type" value="quote" />
+          <div className={cell}>
+            <label htmlFor="hero-location" className={LABEL}>Location</label>
+            <select id="hero-location" name="destination" defaultValue="" className={CONTROL}>
+              <option value="" disabled className={OPTION}>Where to next?</option>
+              {locations.map((l) => <option key={l} value={l} className={OPTION}>{l}</option>)}
+            </select>
+          </div>
+          <div className={cell}>
+            <label htmlFor="hero-activity" className={LABEL}>Activities</label>
+            <select id="hero-activity" name="activity" defaultValue="" className={CONTROL}>
+              <option value="" disabled className={OPTION}>Select activities</option>
+              {activities.map((a) => <option key={a} value={a} className={OPTION}>{a}</option>)}
+            </select>
+          </div>
+          <div className={cell}>
+            <label htmlFor="hero-date" className={LABEL}>Travel date</label>
+            <input id="hero-date" name="date" type="date" className={CONTROL} />
+          </div>
+          <button type="submit" className={`sm:col-span-2 lg:col-span-1 bg-[#C49849] hover:bg-[#b08339] text-white ${BUTTON}`}>Get My Quote</button>
+        </form>
       </div>
 
-      {/* Photo */}
-      <div className="relative min-h-[380px] lg:min-h-full overflow-hidden bg-[#084838]">
-        <img data-kb src={NosyIranja} alt="Turquoise water and a white sandbank" className="absolute inset-0 w-full h-full object-cover" />
-        <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent" />
-        <div className="absolute bottom-5 right-5 md:bottom-8 md:right-8 flex items-center gap-4 text-white">
-          <img src={Ambanja} alt="" className="w-16 h-16 md:w-24 md:h-24 rounded-full object-cover border-4 border-white/80" />
-          <p className="text-base md:text-xl font-medium leading-snug">Handcrafted<br />Journeys</p>
-        </div>
-      </div>
+      {/* Réseaux sociaux, à droite sur grand écran */}
+      <ul className="absolute right-8 top-1/2 -translate-y-1/2 hidden lg:flex flex-col gap-5">
+        {socials.map((s) => (
+          <li key={s.id} data-social>
+            <a href={s.href} aria-label={s.label} className="block text-white/80 hover:text-white transition">{s.icon}</a>
+          </li>
+        ))}
+      </ul>
     </section>
   )
 }
 
 /* ================= Every Way To Discover Madagascar ================= */
 
-/* Adaptez les liens à vos routes */
 const offers = [
   { title: 'Circuits', text: 'Ready-made routes across the island.', image: Tana, href: '/circuits', cls: 'lg:col-span-2 lg:row-span-2' },
-  { title: 'Excursions', text: 'Day trips and short escapes.', image: Ramena, href: '/excursions', cls: '' },
-  { title: 'Long stay', text: 'Live the island for weeks.', image: Deux, href: '/long-stay', cls: '' },
+  { title: 'Excursions', text: 'Day trips and short escapes.', image: Ramena, href: '/excurssions', cls: '' },
+  { title: 'Long stay', text: 'Live the island for weeks.', image: Deux, href: '/longstay', cls: '' },
   { title: 'Tailor-made stays', text: 'Designed around your wishes.', image: Ambanja, href: '/tailor-made', cls: 'lg:col-span-2' },
-  { title: 'Cruise excursions', text: 'Timed around your ship.', image: NosyLonjo, href: '/cruise-excursions', cls: 'lg:col-span-2' },
+  { title: 'Cruise excursions', text: 'Timed around your ship.', image: NosyLonjo, href: '/cruise-excurssion', cls: 'lg:col-span-2' },
   { title: 'Destinations', text: 'Explore all five regions.', image: NosyIranja, href: '/destinations', cls: 'lg:col-span-2' },
 ]
 
 function Offers() {
+  const listRef = useRef(null)
+
+  useLayoutEffect(() => {
+    const ctx = gsap.context(() => {
+      gsap.from('.offer-card', {
+        y: 50,
+        opacity: 0,
+        scale: 0.96,
+        duration: 0.8,
+        stagger: 0.1,
+        ease: 'power3.out',
+        scrollTrigger: {
+          trigger: listRef.current,
+          start: 'top 85%',
+          toggleActions: 'play none none none',
+        },
+      })
+    }, listRef)
+
+    return () => ctx.revert()
+  }, [])
+
   return (
     <section className="w-full bg-[#D5E8E2] flex flex-col items-center py-16 md:py-28">
       <div className={W}>
@@ -180,9 +286,9 @@ function Offers() {
           </div>
         </Reveal>
 
-        <ul className="mt-10 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 auto-rows-[220px] md:auto-rows-[250px] gap-4 md:gap-5">
+        <ul ref={listRef} className="mt-10 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 auto-rows-[220px] md:auto-rows-[250px] gap-4 md:gap-5">
           {offers.map((o) => (
-            <li key={o.title} className={o.cls}>
+            <li key={o.title} className={`offer-card ${o.cls}`}>
               <a href={o.href} className="group relative block h-full overflow-hidden rounded-[1.5rem] md:rounded-[2rem] text-white focus:outline-none focus-visible:ring-4 focus-visible:ring-slate-800">
                 <img src={o.image} alt="" className="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" />
                 <div className="absolute inset-0 bg-gradient-to-t from-slate-950/85 via-slate-950/15 to-transparent" />
@@ -204,9 +310,28 @@ function Offers() {
 
 /* ================= Places You Will Not Forget ================= */
 
-// destinations : tableau d'objets { slug, name, region, image } (voir destinationsData.js)
 function FeaturedDestinations({ destinations = [], limit = 6 }) {
   const items = destinations.slice(0, limit)
+  const listRef = useRef(null)
+
+  useLayoutEffect(() => {
+    const ctx = gsap.context(() => {
+      gsap.from('.dest-card', {
+        y: 60,
+        opacity: 0,
+        duration: 0.8,
+        stagger: 0.1,
+        ease: 'power3.out',
+        scrollTrigger: {
+          trigger: listRef.current,
+          start: 'top 85%',
+          toggleActions: 'play none none none',
+        },
+      })
+    }, listRef)
+
+    return () => ctx.revert()
+  }, [items.length])
 
   return (
     <section className="w-full bg-[#D5E8E2] flex flex-col items-center pb-16 md:pb-28">
@@ -218,9 +343,9 @@ function FeaturedDestinations({ destinations = [], limit = 6 }) {
           <a href="/destinations" className={`${BTN} bg-slate-800 hover:bg-slate-700 text-white mt-8`}>All destinations</a>
         </Reveal>
 
-        <ul className="grid grid-cols-2 gap-4 md:gap-6">
+        <ul ref={listRef} className="grid grid-cols-2 gap-4 md:gap-6">
           {items.map((d, n) => (
-            <li key={d.slug} className={n % 2 === 1 ? 'mt-8 md:mt-14' : ''}>
+            <li key={d.slug} className={`dest-card ${n % 2 === 1 ? 'mt-8 md:mt-14' : ''}`}>
               <a href={`/destinations/${d.slug}`} className="group relative block aspect-[3/4] overflow-hidden rounded-[1.5rem] md:rounded-[2rem] text-white focus:outline-none focus-visible:ring-4 focus-visible:ring-slate-800">
                 <img src={d.image} alt={d.name} className="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" />
                 <div className="absolute inset-0 bg-gradient-to-t from-slate-950/85 via-transparent to-transparent" />
@@ -250,8 +375,6 @@ const Arrow = () => (
 const Star = () => (
   <svg className="w-4 h-4 text-[#F5B800] fill-current" viewBox="0 0 20 20" aria-hidden="true"><path d="M10 15l-5.878 3.09 1.123-6.545L.489 6.91l6.572-.955L10 0l2.939 5.955 6.572.955-4.756 4.635 1.123 6.545z" /></svg>
 )
-
-/* ---------------------------- Données ---------------------------- */
 
 const stats = [
   { value: '12+', label: 'years of local expertise' },
@@ -288,14 +411,60 @@ const quotes = [
   { text: 'Having one person to call for everything made our family trip stress-free. The kids still talk about it.', name: 'Sophie L.', origin: 'Montréal' },
 ]
 
-/* -------------------------- Composants --------------------------- */
-
 function Stats() {
+  const listRef = useRef(null)
+
+  useLayoutEffect(() => {
+    const ctx = gsap.context(() => {
+      const items = gsap.utils.toArray('.stat-item', listRef.current)
+
+      gsap.from(items, {
+        y: 30,
+        opacity: 0,
+        duration: 0.7,
+        stagger: 0.12,
+        ease: 'power3.out',
+        scrollTrigger: {
+          trigger: listRef.current,
+          start: 'top 88%',
+          toggleActions: 'play none none none',
+        },
+      })
+
+      items.forEach((item) => {
+        const valueEl = item.querySelector('.stat-value')
+        const raw = valueEl.textContent
+        const match = raw.match(/[\d.]+/)
+        if (!match) return
+        const target = parseFloat(match[0])
+        const suffix = raw.replace(match[0], '')
+        const counter = { val: 0 }
+
+        gsap.to(counter, {
+          val: target,
+          duration: 1.4,
+          ease: 'power2.out',
+          scrollTrigger: {
+            trigger: listRef.current,
+            start: 'top 88%',
+            toggleActions: 'play none none none',
+          },
+          onUpdate: () => {
+            const decimals = raw.includes('.') ? 1 : 0
+            valueEl.textContent = `${counter.val.toFixed(decimals)}${suffix}`
+          },
+        })
+      })
+    }, listRef)
+
+    return () => ctx.revert()
+  }, [])
+
   return (
-    <ul className={`${W} mt-10 md:mt-14 grid grid-cols-2 md:grid-cols-4 gap-6`}>
+    <ul ref={listRef} className={`${W} mt-10 md:mt-14 grid grid-cols-2 md:grid-cols-4 gap-6`}>
       {stats.map((s) => (
-        <li key={s.label} className="border-t border-[#084838]/25 pt-4">
-          <p className="text-4xl md:text-6xl font-medium leading-none text-[#084838]">{s.value}</p>
+        <li key={s.label} className="stat-item border-t border-[#084838]/25 pt-4">
+          <p className="stat-value text-4xl md:text-6xl font-medium leading-none text-[#084838]">{s.value}</p>
           <p className="mt-2 text-sm md:text-base text-slate-700">{s.label}</p>
         </li>
       ))}
@@ -303,7 +472,6 @@ function Stats() {
   )
 }
 
-/* Panneaux qui s'ouvrent : un par univers de voyage */
 function Themes() {
   const [active, setActive] = useState(0)
   const desktop = () => window.matchMedia('(min-width: 1024px)').matches
@@ -321,7 +489,7 @@ function Themes() {
             <button key={t.name} type="button" role="tab" aria-selected={on} onClick={() => setActive(i)} onMouseEnter={() => desktop() && setActive(i)}
               className={`group relative overflow-hidden rounded-3xl text-left text-white transition-all duration-700 ease-in-out motion-reduce:transition-none ${on ? 'h-[440px] lg:h-auto lg:flex-[4]' : 'h-[84px] lg:h-auto lg:flex-1'}`}>
               <img src={t.image} alt="" className="absolute inset-0 w-full h-full object-cover transition-transform duration-1000 group-hover:scale-105" />
-              <span className={`absolute inset-0 ${on ? 'bg-gradient-to-t from-black/80 via-black/20 to-transparent' : 'bg-[#084838]/60'}`} />
+              <span className={`absolute inset-0 ${on ? 'bg-gradient-to-t from-black/80 via-black/20 to-transparent' : 'bg-black/45'}`} />
               <span className={`absolute left-5 top-1/2 -translate-y-1/2 text-lg font-medium lg:hidden ${on ? 'opacity-0' : ''}`}>{t.name}</span>
               <span className={`absolute inset-x-0 bottom-6 hidden lg:flex justify-center ${on ? 'opacity-0' : ''}`}>
                 <span className="[writing-mode:vertical-rl] rotate-180 text-xl font-medium">{t.name}</span>
@@ -339,12 +507,31 @@ function Themes() {
   )
 }
 
-/* Circuits phares : une grande carte, deux petites. Devis uniquement. */
 function Trips() {
   const [big, ...rest] = trips
-  const card = 'group relative overflow-hidden rounded-3xl bg-[#084838] text-white flex focus:outline-none focus-visible:ring-4 focus-visible:ring-slate-800'
+  const card = 'group relative overflow-hidden rounded-3xl bg-slate-900 text-white flex focus:outline-none focus-visible:ring-4 focus-visible:ring-slate-800'
   const shade = 'absolute inset-0 bg-gradient-to-t from-black/85 via-black/25 to-transparent'
   const img = 'absolute inset-0 w-full h-full object-cover transition-transform duration-1000 group-hover:scale-105'
+  const gridRef = useRef(null)
+
+  useLayoutEffect(() => {
+    const ctx = gsap.context(() => {
+      gsap.from('.trip-card', {
+        y: 60,
+        opacity: 0,
+        duration: 0.8,
+        stagger: 0.12,
+        ease: 'power3.out',
+        scrollTrigger: {
+          trigger: gridRef.current,
+          start: 'top 85%',
+          toggleActions: 'play none none none',
+        },
+      })
+    }, gridRef)
+
+    return () => ctx.revert()
+  }, [])
 
   return (
     <section className={`${W} ${GAP}`}>
@@ -353,8 +540,8 @@ function Trips() {
         <h2 className={`${H2} max-w-3xl`}>Trips We Love To Send You On</h2>
         <p className="mt-4 text-base md:text-lg text-slate-600 max-w-2xl">Ready-made starting points. We adapt every one to your dates, pace and budget, and send you a free quote.</p>
       </Reveal>
-      <div className="mt-10 grid grid-cols-1 lg:grid-cols-[1.35fr_1fr] gap-4 md:gap-6">
-        <a href={quoteHref('trip', big.name)} className={`${card} min-h-[480px] lg:min-h-[640px] lg:row-span-2`}>
+      <div ref={gridRef} className="mt-10 grid grid-cols-1 lg:grid-cols-[1.35fr_1fr] gap-4 md:gap-6">
+        <a href={quoteHref('trip', big.name)} className={`trip-card ${card} min-h-[480px] lg:min-h-[640px] lg:row-span-2`}>
           <img src={big.image} alt={big.name} className={img} /><span className={shade} />
           <span className="relative flex w-full flex-col justify-end p-6 md:p-10">
             <span className="self-start bg-[#C49849] text-xs sm:text-sm font-medium px-3 py-1.5 rounded-sm">{big.days} days</span>
@@ -369,7 +556,7 @@ function Trips() {
           </span>
         </a>
         {rest.map((t) => (
-          <a key={t.name} href={quoteHref('trip', t.name)} className={`${card} min-h-[310px]`}>
+          <a key={t.name} href={quoteHref('trip', t.name)} className={`trip-card ${card} min-h-[310px]`}>
             <img src={t.image} alt={t.name} className={img} /><span className={shade} />
             <span className="relative flex w-full flex-col justify-end p-5 md:p-8">
               <span className="text-sm text-white/80">{t.days} days · Free quote</span>
@@ -390,22 +577,42 @@ const whyIcons = [
   ['M21 12a8 8 0 0 1-11.5 7.2L4 21l1.8-5.5A8 8 0 1 1 21 12z'],
 ]
 
-/* Grande photo, quatre cartes qui la chevauchent */
 function WhyUs() {
+  const listRef = useRef(null)
+
+  useLayoutEffect(() => {
+    const ctx = gsap.context(() => {
+      gsap.from('.why-card', {
+        y: 40,
+        opacity: 0,
+        duration: 0.7,
+        stagger: 0.1,
+        ease: 'power3.out',
+        scrollTrigger: {
+          trigger: listRef.current,
+          start: 'top 90%',
+          toggleActions: 'play none none none',
+        },
+      })
+    }, listRef)
+
+    return () => ctx.revert()
+  }, [])
+
   return (
     <section className={`${W} ${GAP}`}>
       <div className="relative overflow-hidden rounded-[2rem] md:rounded-[3rem] min-h-[460px] md:min-h-[540px]">
         <img src={Tana} alt="Highland landscape near Antananarivo" className="absolute inset-0 w-full h-full object-cover" />
-        <div className="absolute inset-0 bg-gradient-to-b from-[#084838]/85 via-[#084838]/50 to-[#084838]/30" />
+        <div className="absolute inset-0 bg-gradient-to-b from-black/70 via-black/35 to-black/20" />
         <Reveal className="relative p-6 sm:p-10 md:p-16 max-w-3xl text-white">
           <p className="text-xs md:text-sm uppercase tracking-[0.3em] text-[#E6C58A]">Why Noziwild</p>
           <h2 className="mt-4 text-4xl sm:text-5xl md:text-6xl font-medium leading-[1.05] tracking-tight">Travel With People Who Know The Island</h2>
         </Reveal>
       </div>
 
-      <ul className="relative z-10 -mt-24 md:-mt-28 px-3 md:px-10 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 md:gap-5">
+      <ul ref={listRef} className="relative z-10 -mt-24 md:-mt-28 px-3 md:px-10 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 md:gap-5">
         {promises.map((p, i) => (
-          <li key={p.title} className="rounded-3xl bg-white p-6 md:p-8 shadow-xl shadow-[#084838]/10">
+          <li key={p.title} className="why-card rounded-3xl bg-white p-6 md:p-8 shadow-xl shadow-[#084838]/10">
             <span className="w-12 h-12 rounded-full bg-[#084838] text-[#E6C58A] flex items-center justify-center">
               <svg className="w-6 h-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
                 {whyIcons[i].map((d) => <path key={d} d={d} />)}
@@ -420,9 +627,28 @@ function WhyUs() {
   )
 }
 
-/* Note globale + quatre avis en cartes */
 function Testimonials() {
   const initials = (name) => name.split(/[\s&.]+/).filter(Boolean).map((w) => w[0]).slice(0, 2).join('')
+  const listRef = useRef(null)
+
+  useLayoutEffect(() => {
+    const ctx = gsap.context(() => {
+      gsap.from('.testimonial-card', {
+        y: 40,
+        opacity: 0,
+        duration: 0.7,
+        stagger: 0.1,
+        ease: 'power3.out',
+        scrollTrigger: {
+          trigger: listRef.current,
+          start: 'top 88%',
+          toggleActions: 'play none none none',
+        },
+      })
+    }, listRef)
+
+    return () => ctx.revert()
+  }, [])
 
   return (
     <section className={`${W} ${GAP} grid grid-cols-1 lg:grid-cols-[1fr_2fr] gap-5 md:gap-6`}>
@@ -438,9 +664,9 @@ function Testimonials() {
         </div>
       </div>
 
-      <ul className="grid grid-cols-1 md:grid-cols-2 gap-5 md:gap-6">
+      <ul ref={listRef} className="grid grid-cols-1 md:grid-cols-2 gap-5 md:gap-6">
         {quotes.map((q) => (
-          <li key={q.name}>
+          <li key={q.name} className="testimonial-card">
             <figure className="flex h-full flex-col rounded-[2rem] bg-white p-6 md:p-8">
               <div className="flex gap-0.5" aria-hidden="true">{[0, 1, 2, 3, 4].map((n) => <Star key={n} />)}</div>
               <blockquote className="mt-4 text-base md:text-lg text-slate-700 leading-relaxed">“{q.text}”</blockquote>
@@ -467,7 +693,6 @@ function QuoteCta() {
 
   const submit = (e) => {
     e.preventDefault()
-    // TODO : envoyer les données à votre API ou service d'emails (EmailJS, Formspree...)
     console.log('Quote request:', Object.fromEntries(new FormData(e.currentTarget)))
     setSent(true)
     e.currentTarget.reset()
@@ -476,7 +701,7 @@ function QuoteCta() {
   return (
     <section className={`${W} ${GAP} relative overflow-hidden rounded-[2rem] text-white`}>
       <img src={Ramena} alt="" className="absolute inset-0 w-full h-full object-cover" />
-      <div className="absolute inset-0 bg-gradient-to-r from-[#084838]/95 via-[#084838]/75 to-black/40" />
+      <div className="absolute inset-0 bg-gradient-to-r from-black/80 via-black/60 to-black/40" />
       <div className="relative grid grid-cols-1 lg:grid-cols-[1.2fr_1fr] gap-10 lg:gap-16 items-center px-6 py-14 md:px-16 md:py-24">
         <div>
           <p className="text-xs md:text-sm uppercase tracking-[0.3em] text-[#E6C58A]">Ready when you are</p>
@@ -510,12 +735,8 @@ function QuoteCta() {
 function Home() {
   return (
     <>
-      
       <main className="w-full bg-[#D5E8E2] pb-16 md:pb-24 flex flex-col items-center">
-        <Navbar />
-        <div className="w-[90vw] lg:max-w-[95vw] mt-4 md:mt-4">
-          <Hero />
-        </div>
+        <Hero />
 
         <Stats />
         <Offers />
