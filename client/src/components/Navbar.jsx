@@ -355,8 +355,10 @@ function Navbar() {
               py-3
               md:w-auto
               md:justify-start
-              md:gap-8
-              md:px-8
+              md:gap-5
+              md:px-5
+              lg:gap-8
+              lg:px-8
             "
           >
 
@@ -384,8 +386,9 @@ function Navbar() {
               className="
                 hidden
                 items-center
-                gap-7
+                gap-4
                 md:flex
+                lg:gap-7
               "
             >
 
@@ -597,6 +600,7 @@ function Navbar() {
                 hidden
                 items-center
                 gap-2
+                whitespace-nowrap
                 rounded-full
                 border
                 border-zinc-900
