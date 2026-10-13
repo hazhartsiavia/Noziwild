@@ -12,6 +12,14 @@ async function request(method, path, data) {
     body: data ? JSON.stringify(data) : undefined,
   })
 
+  // Pas du JSON : ce n'est pas l'API qui a répondu (ex. l'hébergeur renvoie la page du site
+  // parce que l'API n'est pas déployée à cette adresse)
+  if (!response.headers.get('content-type')?.includes('application/json')) {
+    const error = new Error('Our server is not reachable right now. Please try again later.')
+    error.status = response.ok ? 502 : response.status
+    throw error
+  }
+
   const body = await response.json().catch(() => ({}))
   if (!response.ok) {
     const error = new Error(body.error || 'Something went wrong. Please try again later.')

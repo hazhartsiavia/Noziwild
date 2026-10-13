@@ -9,7 +9,7 @@ Cette API enregistre dans MySQL les formulaires envoyés depuis le site React (d
 
 ```bash
 npm install
-cp .env.example .env     # puis remplir ADMIN_TOKEN (et DB_PASSWORD si besoin)
+cp .env.example .env     # puis remplir JWT_SECRET, ADMIN_TOKEN (et DB_PASSWORD si besoin)
 npm run db:init          # crée la base "noziwild", ses tables et les circuits de départ (à relancer après une mise à jour : sans risque)
 npm run dev              # lance l'API sur http://localhost:5002 (redémarre à chaque modification)
 ```
@@ -188,8 +188,51 @@ GOOGLE_CLIENT_ID=123456789-abc.apps.googleusercontent.com
 
 Aucun secret client n'est nécessaire : le site reçoit un jeton d'identité de Google, et le serveur le vérifie avec l'ID client.
 
-### En production
+## Mise en ligne (Hostinger ou tout hébergeur Node.js)
 
-- Mettre `COOKIE_SECURE=true` (le site doit être en HTTPS).
-- Mettre l'adresse du site dans `CLIENT_URL` (plusieurs adresses possibles, séparées par des virgules ; la première sert aux liens envoyés par email).
-- Si l'API est sur un autre domaine que le site, définir `VITE_API_URL` côté client.
+En production, **un seul serveur Node** sert tout : le site React construit (`client/dist`),
+l'API (`/api/...`) et les photos (`/uploads/...`), sur la même adresse.
+Les deux commandes sont à la racine du dépôt :
+
+| Réglage | Valeur |
+|---|---|
+| Dossier racine | la racine du dépôt (pas `client/`) |
+| Version de Node | 20 ou plus |
+| Commande de build | `npm run build` (installe et construit le site, installe l'API) |
+| Commande de démarrage | `npm start` (fichier d'entrée : `server/src/server.js`) |
+
+Variables d'environnement à définir dans le panneau de l'hébergeur (pas de fichier `.env` en ligne) :
+
+| Variable | Valeur |
+|---|---|
+| `DB_HOST`, `DB_PORT`, `DB_NAME`, `DB_USER`, `DB_PASSWORD` | la base MySQL créée dans le panneau |
+| `JWT_SECRET` | longue chaîne aléatoire (voir ci-dessous) |
+| `ADMIN_TOKEN` | autre longue chaîne aléatoire |
+| `CLIENT_URL` | l'adresse publique du site, ex. `https://darkslategray-mouse-542044.hostingersite.com` |
+| `COOKIE_SECURE` | `true` |
+| `GOOGLE_CLIENT_ID` | le même que en local |
+| `SMTP_*`, `MAIL_FROM` | pour les emails « mot de passe oublié » (sinon, liens seulement dans les journaux) |
+
+```bash
+# Générer une chaîne aléatoire pour JWT_SECRET ou ADMIN_TOKEN
+node -e "console.log(require('crypto').randomBytes(48).toString('hex'))"
+```
+
+Au démarrage, le serveur crée les tables et les 6 circuits de départ si la base est vide.
+Vérification : `https://ton-site/api/health` doit répondre `{"ok":true,"database":"connected"}`.
+
+Sans accès en ligne de commande, pour donner le rôle admin, dans phpMyAdmin :
+
+```sql
+UPDATE users SET role = 'admin' WHERE email = 'ton.email@exemple.com';
+```
+
+Connexion Google en ligne : ajouter l'adresse publique (`https://...`) dans
+**Origines JavaScript autorisées** du client OAuth (console Google Cloud).
+
+Attention : les photos envoyées depuis l'admin sont rangées dans `server/uploads/files/` sur le serveur.
+Si l'hébergeur repart du dépôt GitHub à chaque déploiement, vérifiez qu'il conserve ce dossier,
+sinon ces photos seront perdues (les photos de départ, elles, sont dans le dépôt).
+
+Si un jour l'API est sur un autre domaine que le site : `VITE_API_URL` côté client,
+et `COOKIE_SAMESITE=none` côté serveur.

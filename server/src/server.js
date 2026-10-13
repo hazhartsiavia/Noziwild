@@ -1,11 +1,14 @@
 import 'dotenv/config'
+import fs from 'node:fs'
+import path from 'node:path'
 import express from 'express'
 import cors from 'cors'
 import cookieParser from 'cookie-parser'
 import routes from './routes/index.js'
 import { notFound, errorHandler } from './middlewares/errorHandler.js'
 import { checkOrigin, isAllowedOrigin } from './middlewares/checkOrigin.js'
-import { UPLOADS_DIR } from './config/paths.js'
+import { UPLOADS_DIR, CLIENT_DIST } from './config/paths.js'
+import { initDatabase } from './utils/database.js'
 
 // Les sessions ne peuvent pas fonctionner sans secret : on arrête tout de suite
 if (!process.env.JWT_SECRET || process.env.JWT_SECRET === 'change-moi') {
@@ -42,8 +45,37 @@ app.use(cookieParser())
 // Toutes les routes commencent par /api
 app.use('/api', routes)
 
+// Site React construit (client/dist) : servi par le même serveur s'il est présent
+const INDEX_HTML = path.join(CLIENT_DIST, 'index.html')
+if (fs.existsSync(INDEX_HTML)) {
+  app.use(express.static(CLIENT_DIST, {
+    index: false,
+    // Les fichiers de /assets ont un nom qui change à chaque build : cache long. Le reste : revalidé.
+    setHeaders: (res, file) => {
+      res.set('Cache-Control', file.includes(`${path.sep}assets${path.sep}`) ? 'public, max-age=31536000, immutable' : 'no-cache')
+    },
+  }))
+  // Les adresses du site (/circuits/..., /account...) sont gérées par React : on renvoie index.html
+  app.use((req, res, next) => {
+    const isPage = (req.method === 'GET' || req.method === 'HEAD') && !req.path.startsWith('/api/') && !req.path.startsWith('/uploads/')
+    if (!isPage || !req.accepts('html')) return next()
+    res.set('Cache-Control', 'no-cache')
+    res.sendFile(INDEX_HTML)
+  })
+}
+
 app.use(notFound)
 app.use(errorHandler)
+
+// Tables à jour avant de répondre (sans risque à relancer). DB_AUTO_INIT=false pour le désactiver.
+// Si MySQL ne répond pas, le serveur démarre quand même : /api/health dira "disconnected".
+if (process.env.DB_AUTO_INIT !== 'false') {
+  try {
+    await initDatabase({ log: () => {} })
+  } catch (error) {
+    console.error('Base de données non préparée :', error.message || error.code)
+  }
+}
 
 app.listen(PORT, (error) => {
   // Express 5 transmet ici les erreurs de démarrage (ex. port déjà utilisé)
@@ -51,5 +83,6 @@ app.listen(PORT, (error) => {
     console.error(`Impossible de démarrer l'API sur le port ${PORT} :`, error.message)
     process.exit(1)
   }
-  console.log(`API Noziwild démarrée sur http://localhost:${PORT}`)
+  const site = fs.existsSync(INDEX_HTML) ? ' (site + API)' : ''
+  console.log(`API Noziwild démarrée sur http://localhost:${PORT}${site}`)
 })

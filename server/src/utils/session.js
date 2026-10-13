@@ -21,8 +21,9 @@ function cookieOptions() {
   return {
     httpOnly: true,
     secure,
-    // "none" est nécessaire si le site et l'API sont sur des domaines différents (HTTPS obligatoire)
-    sameSite: secure ? 'none' : 'lax',
+    // "lax" quand le site et l'API ont la même adresse (protège contre le CSRF).
+    // COOKIE_SAMESITE=none seulement si l'API est sur un autre domaine que le site (HTTPS obligatoire).
+    sameSite: process.env.COOKIE_SAMESITE === 'none' && secure ? 'none' : 'lax',
     path: '/',
   }
 }
