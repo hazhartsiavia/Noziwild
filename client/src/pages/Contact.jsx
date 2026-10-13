@@ -4,6 +4,8 @@ import Ambanja from "../assets/images/Ambanja.png";
 import NosyLonjo from "../assets/images/NosyLonjo.png";
 import Navbar from '../components/Navbar';
 import Footer from '../components/Footer';
+import { sendContact } from '../api';
+import { useAuth } from '../context/AuthContext';
 
 
 /* Constantes partagées : mêmes valeurs que dans les autres sections */
@@ -196,18 +198,25 @@ function CallBanner() {
 }
 
 function Contact() {
-  const [status, setStatus] = useState('idle') // 'idle' | 'sent'
+  // Connecté : nom et email pré-remplis (la clé recrée le champ quand la session est connue)
+  const { user } = useAuth()
+  const [status, setStatus] = useState('idle') // 'idle' | 'sending' | 'sent' | 'error'
+  const [error, setError] = useState('')
 
-  const handleSubmit = (event) => {
+  const handleSubmit = async (event) => {
     event.preventDefault()
     const form = event.currentTarget
     const data = Object.fromEntries(new FormData(form))
 
-    // TODO : envoyer `data` à ton API ou à un service d'emails (EmailJS, Formspree...)
-    console.log('Contact form:', data)
-
-    setStatus('sent')
-    form.reset()
+    setStatus('sending')
+    try {
+      await sendContact(data)
+      setStatus('sent')
+      form.reset()
+    } catch (err) {
+      setError(err.message)
+      setStatus('error')
+    }
   }
 
   return (
@@ -248,7 +257,7 @@ function Contact() {
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-8">
               <div>
                 <label htmlFor="name" className={LABEL}>Name</label>
-                <input id="name" name="name" type="text" autoComplete="name" required className={FIELD} />
+                <input id="name" name="name" key={`n-${user?.id}`} defaultValue={user?.name} type="text" autoComplete="name" required className={FIELD} />
               </div>
               <div>
                 <label htmlFor="phone" className={LABEL}>Phone</label>
@@ -258,7 +267,7 @@ function Contact() {
 
             <div>
               <label htmlFor="email" className={LABEL}>Email Address</label>
-              <input id="email" name="email" type="email" autoComplete="email" required className={FIELD} />
+              <input id="email" name="email" key={`e-${user?.id}`} defaultValue={user?.email} type="email" autoComplete="email" required className={FIELD} />
             </div>
 
             {/* Type de demande : boutons radio stylés en pastilles */}
@@ -303,15 +312,19 @@ function Contact() {
             <div className="flex flex-col sm:flex-row sm:items-center gap-4">
               <button
                 type="submit"
-                className={`self-start bg-[#C49849] hover:bg-[#b53d2a] active:scale-95 transition text-white ${BUTTON} md:px-6 md:py-3`}
+                disabled={status === 'sending'}
+                className={`self-start bg-[#C49849] hover:bg-[#b53d2a] active:scale-95 transition text-white disabled:opacity-60 disabled:cursor-wait ${BUTTON} md:px-6 md:py-3`}
               >
-                Start A Conversation
+                {status === 'sending' ? 'Sending…' : 'Start A Conversation'}
               </button>
 
               {status === 'sent' && (
                 <p role="status" className={`${META_TEXT} md:text-base text-emerald-700`}>
                   Thank you! Your message has been sent, we will get back to you soon.
                 </p>
+              )}
+              {status === 'error' && (
+                <p role="alert" className={`${META_TEXT} md:text-base text-red-700`}>{error}</p>
               )}
             </div>
           </form>

@@ -1,0 +1,885 @@
+[
+  {
+    "slug": "diego-suarez-bay-and-ramena-coast",
+    "title": "Diego Suarez Bay And Ramena Coast",
+    "region": "North",
+    "days": 6,
+    "level": "Easy",
+    "price": 890,
+    "stops": "Diego Suarez · Ramena · Emerald Sea",
+    "summary": "Turquoise lagoons, red sandstone canyons and wild bays at the northern tip of Madagascar.",
+    "groupSize": "2 to 8 travellers",
+    "tourType": "Beach & nature",
+    "start": "Diego Suarez (Arrachart airport)",
+    "end": "Diego Suarez (Arrachart airport)",
+    "bestTime": "April to December",
+    "tip": "From June to September the varatraza trade wind blows hard on the bay: perfect for kitesurfers, a little choppy for boat trips.",
+    "image": "/uploads/circuits/ramena.png",
+    "gallery": [
+      "/uploads/circuits/ramena.png",
+      "/uploads/circuits/noziwild-boat.png",
+      "/uploads/circuits/sakalava-bay.png"
+    ],
+    "overview": [
+      "Diego Suarez sits on one of the largest natural bays in the world. In six relaxed days you sail to the Emerald Sea, walk among the Red Tsingy and drive along the Three Bays, with time left for long lunches of grilled fish on the beach.",
+      "Nights are spent between the colonial town of Diego and the fishing village of Ramena, so every morning starts close to the water."
+    ],
+    "highlights": [
+      "Sail across the Emerald Sea and swim in its shallow turquoise water",
+      "Walk among the Red Tsingy, sharp pinnacles shaped by erosion",
+      "Drive the coastal track of the Three Bays: Sakalava, Pigeons and Dunes",
+      "Spot crowned lemurs and chameleons in Amber Mountain National Park"
+    ],
+    "included": [
+      "Private vehicle with an experienced driver",
+      "English or French speaking local guide",
+      "National park entrance fees and local guides",
+      "Accommodation in double room",
+      "5 nights in hotels and beach lodges",
+      "Breakfast every day, lunch on excursion days",
+      "Boat trip to the Emerald Sea"
+    ],
+    "excluded": [
+      "International flights and visa",
+      "Travel insurance",
+      "Drinks and personal expenses",
+      "Tips for guides and drivers",
+      "Dinners"
+    ],
+    "sortOrder": 1,
+    "itinerary": [
+      {
+        "day": "Day 1",
+        "title": "Arrival in Diego Suarez",
+        "text": "Welcome at Arrachart airport and transfer to your hotel. Late afternoon walk in the old colonial town, then sunset over the bay and the Sugar Loaf island of Nosy Lonjo.",
+        "stay": "Diego Suarez",
+        "meals": "Dinner on your own",
+        "images": [
+          "/uploads/circuits/nosy-lonjo.png",
+          "/uploads/circuits/coast-road-van.png",
+          "/uploads/circuits/ramena.png"
+        ]
+      },
+      {
+        "day": "Day 2",
+        "title": "The Red Tsingy",
+        "text": "A morning drive south to the Red Tsingy, a canyon of red and ochre pinnacles that glow in the low light. Back in town for a free afternoon.",
+        "stay": "Diego Suarez",
+        "meals": "Breakfast, lunch",
+        "images": [
+          "/uploads/circuits/coastal-tsingy.jpg",
+          "/uploads/circuits/dirt-track-motorbike.png",
+          "/uploads/circuits/noziwild-van-road.png"
+        ]
+      },
+      {
+        "day": "Day 3",
+        "title": "Ramena and the Emerald Sea",
+        "text": "Transfer to Ramena, then a sailing boat crosses the bay to the Emerald Sea. Swim, snorkel and enjoy a seafood lunch on a sandy islet.",
+        "stay": "Ramena",
+        "meals": "Breakfast, lunch",
+        "images": [
+          "/uploads/circuits/ramena.png",
+          "/uploads/circuits/noziwild-boat.png",
+          "/uploads/circuits/jet-ski.png"
+        ]
+      },
+      {
+        "day": "Day 4",
+        "title": "The Three Bays",
+        "text": "A 4x4 track follows the coast to Sakalava Bay, Pigeons Bay and Dunes Bay. Short walks to the Cap Miné lighthouse and plenty of time to swim.",
+        "stay": "Ramena",
+        "meals": "Breakfast, lunch",
+        "images": [
+          "/uploads/circuits/sakalava-bay.png",
+          "/uploads/circuits/dunes-bay.png",
+          "/uploads/circuits/beach-sunset.jpg"
+        ]
+      },
+      {
+        "day": "Day 5",
+        "title": "Amber Mountain National Park",
+        "text": "A cool rainforest on an old volcano: waterfalls, crater lakes, crowned lemurs and some of the smallest chameleons on Earth.",
+        "stay": "Diego Suarez",
+        "meals": "Breakfast, lunch",
+        "images": [
+          "/uploads/circuits/forest-trail-bike.png",
+          "/uploads/circuits/lemur.png",
+          "/uploads/circuits/guide-with-lemur.png"
+        ]
+      },
+      {
+        "day": "Day 6",
+        "title": "Departure",
+        "text": "Free morning for a last coffee by the bay, then transfer to the airport for your flight.",
+        "stay": null,
+        "meals": "Breakfast",
+        "images": [
+          "/uploads/circuits/coast-road-van.png",
+          "/uploads/circuits/nosy-lonjo.png",
+          "/uploads/circuits/sea-sunset.png"
+        ]
+      }
+    ]
+  },
+  {
+    "slug": "nosy-be-and-nosy-iranja",
+    "title": "Nosy Be, Nosy Komba And Nosy Iranja",
+    "region": "North",
+    "days": 8,
+    "level": "Easy",
+    "price": 1240,
+    "stops": "Nosy Be · Nosy Komba · Nosy Iranja",
+    "summary": "Island hopping between perfumed Nosy Be, lemur-filled Nosy Komba and the twin islands of Nosy Iranja.",
+    "groupSize": "2 to 8 travellers",
+    "tourType": "Islands & beaches",
+    "start": "Nosy Be (Fascene airport)",
+    "end": "Nosy Be (Fascene airport)",
+    "bestTime": "April to December",
+    "tip": "Whale sharks visit the waters around Nosy Be from October to December, humpback whales from July to September.",
+    "image": "/uploads/circuits/nosy-iranja.png",
+    "gallery": [
+      "/uploads/circuits/nosy-iranja.png",
+      "/uploads/circuits/island-beach-aerial.jpg",
+      "/uploads/circuits/noziwild-boat.png"
+    ],
+    "overview": [
+      "Nosy Be smells of ylang-ylang and vanilla. From there, small boats take you to the islands around it: Nosy Komba and its friendly black lemurs, the marine reserve of Nosy Tanikely, and Nosy Iranja, two islands joined by a long sandbar at low tide.",
+      "The pace is slow on purpose. Mornings at sea, afternoons on the beach, and one night on Nosy Iranja to enjoy it after the day visitors leave."
+    ],
+    "highlights": [
+      "Walk the sandbar between the two islands of Nosy Iranja at low tide",
+      "Snorkel with turtles in the marine reserve of Nosy Tanikely",
+      "Meet black lemurs in the forest of Nosy Komba",
+      "Watch the sunset over the bay from the top of Mont Passot"
+    ],
+    "included": [
+      "Private vehicle with an experienced driver",
+      "English or French speaking local guide",
+      "National park entrance fees and local guides",
+      "Accommodation in double room",
+      "7 nights in beach hotels",
+      "Breakfast every day, lunch on boat days",
+      "All boat transfers between the islands"
+    ],
+    "excluded": [
+      "International flights and visa",
+      "Travel insurance",
+      "Drinks and personal expenses",
+      "Tips for guides and drivers",
+      "Dinners",
+      "Diving and whale shark trips"
+    ],
+    "sortOrder": 2,
+    "itinerary": [
+      {
+        "day": "Day 1",
+        "title": "Arrival in Nosy Be",
+        "text": "Welcome at Fascene airport and transfer to your beach hotel. The rest of the day is yours.",
+        "stay": "Nosy Be",
+        "meals": "Dinner on your own",
+        "images": [
+          "/uploads/circuits/island-beach-aerial.jpg",
+          "/uploads/circuits/coast-road-van.png",
+          "/uploads/circuits/boat-ride-beach.png"
+        ]
+      },
+      {
+        "day": "Day 2",
+        "title": "Lokobe forest by pirogue",
+        "text": "Paddle a traditional outrigger canoe to the edge of Lokobe, the last primary forest of Nosy Be, home to black lemurs and panther chameleons.",
+        "stay": "Nosy Be",
+        "meals": "Breakfast, lunch",
+        "images": [
+          "/uploads/circuits/forest-trail-bike.png",
+          "/uploads/circuits/lemur.png",
+          "/uploads/circuits/boat-ride-beach.png"
+        ]
+      },
+      {
+        "day": "Day 3",
+        "title": "Nosy Komba and Nosy Tanikely",
+        "text": "Morning on Nosy Komba with its lemurs and embroidery village, then snorkelling in the clear water of the Nosy Tanikely marine reserve.",
+        "stay": "Nosy Be",
+        "meals": "Breakfast, lunch",
+        "images": [
+          "/uploads/circuits/guide-with-lemur.png",
+          "/uploads/circuits/island-beach-aerial.jpg",
+          "/uploads/circuits/jet-ski.png"
+        ]
+      },
+      {
+        "day": "Days 4 – 5",
+        "title": "Nosy Iranja",
+        "text": "Boat ride south to Nosy Iranja. Walk the sandbar, swim, and spend the night on the island. Green and hawksbill turtles nest on its beaches.",
+        "stay": "Nosy Iranja",
+        "meals": "Breakfast, lunch",
+        "images": [
+          "/uploads/circuits/nosy-iranja.png",
+          "/uploads/circuits/noziwild-boat.png",
+          "/uploads/circuits/dunes-bay.png"
+        ]
+      },
+      {
+        "day": "Day 6",
+        "title": "Ylang-ylang and Mont Passot",
+        "text": "Back to Nosy Be. Visit an ylang-ylang distillery and the sacred fig tree of Mahatsinjo, then sunset over the crater lakes from Mont Passot.",
+        "stay": "Nosy Be",
+        "meals": "Breakfast",
+        "images": [
+          "/uploads/circuits/sambirano-river.png",
+          "/uploads/circuits/sea-sunset.png",
+          "/uploads/circuits/coast-road-van.png"
+        ]
+      },
+      {
+        "day": "Day 7",
+        "title": "Free day",
+        "text": "Rest on the beach, or add a dive. From October to December, ask us about a whale shark trip.",
+        "stay": "Nosy Be",
+        "meals": "Breakfast",
+        "images": [
+          "/uploads/circuits/jet-ski.png",
+          "/uploads/circuits/sakalava-bay.png",
+          "/uploads/circuits/beach-sunset.jpg"
+        ]
+      },
+      {
+        "day": "Day 8",
+        "title": "Departure",
+        "text": "Transfer to Fascene airport for your flight.",
+        "stay": null,
+        "meals": "Breakfast",
+        "images": [
+          "/uploads/circuits/island-beach-aerial.jpg",
+          "/uploads/circuits/boat-ride-beach.png",
+          "/uploads/circuits/sea-sunset.png"
+        ]
+      }
+    ]
+  },
+  {
+    "slug": "ambanja-cocoa-country-and-northern-wildlife",
+    "title": "Ambanja Cocoa Country And Northern Wildlife",
+    "region": "North",
+    "days": 10,
+    "level": "Moderate",
+    "price": 1480,
+    "stops": "Ambanja · Ankarana · Amber Mountain",
+    "summary": "From the cocoa plantations of the Sambirano valley to the grey tsingy of Ankarana.",
+    "groupSize": "2 to 8 travellers",
+    "tourType": "Nature & culture",
+    "start": "Nosy Be (Fascene airport)",
+    "end": "Diego Suarez (Arrachart airport)",
+    "bestTime": "May to November",
+    "tip": "Some trails in Ankarana close during the rainy season, from January to March.",
+    "image": "/uploads/circuits/sambirano-river.png",
+    "gallery": [
+      "/uploads/circuits/sambirano-river.png",
+      "/uploads/circuits/lemur.png",
+      "/uploads/circuits/coastal-tsingy.jpg"
+    ],
+    "overview": [
+      "The Sambirano valley around Ambanja grows some of the finest cocoa in the world. You walk the plantations with the farmers, then follow the road north to the limestone massif of Ankarana, its caves and its suspension bridge over the tsingy.",
+      "The circuit ends in Diego Suarez with the rainforest of Amber Mountain and a day at sea, crossing the whole north of the island by road."
+    ],
+    "highlights": [
+      "Follow cocoa from the tree to the bean in a Sambirano plantation",
+      "Cross the suspension bridge above the grey tsingy of Ankarana",
+      "Explore caves and underground rivers with a park guide",
+      "Look for crowned lemurs and leaf-tailed geckos at night"
+    ],
+    "included": [
+      "Private vehicle with an experienced driver",
+      "English or French speaking local guide",
+      "National park entrance fees and local guides",
+      "Accommodation in double room",
+      "9 nights in hotels and lodges",
+      "Breakfast and dinner every day",
+      "Boat transfer from Nosy Be to Ankify"
+    ],
+    "excluded": [
+      "International flights and visa",
+      "Travel insurance",
+      "Drinks and personal expenses",
+      "Tips for guides and drivers",
+      "Lunches"
+    ],
+    "sortOrder": 3,
+    "itinerary": [
+      {
+        "day": "Day 1",
+        "title": "Arrival and crossing to the mainland",
+        "text": "Welcome in Nosy Be, then a short boat ride to Ankify and the road to Ambanja.",
+        "stay": "Ambanja",
+        "meals": "Dinner",
+        "images": [
+          "/uploads/circuits/noziwild-boat.png",
+          "/uploads/circuits/boat-ride-beach.png",
+          "/uploads/circuits/noziwild-van-road.png"
+        ]
+      },
+      {
+        "day": "Days 2 – 3",
+        "title": "The Sambirano valley",
+        "text": "Two days among cocoa, vanilla, pepper and ylang-ylang plantations. Taste fresh cocoa pulp and learn how the beans are fermented and dried.",
+        "stay": "Ambanja",
+        "meals": "Breakfast, dinner",
+        "images": [
+          "/uploads/circuits/sambirano-river.png",
+          "/uploads/circuits/forest-trail-bike.png",
+          "/uploads/circuits/guide-with-lemur.png"
+        ]
+      },
+      {
+        "day": "Day 4",
+        "title": "North to Ankarana",
+        "text": "A long scenic drive on the RN6 through villages and rice fields, arriving at the edge of Ankarana National Park.",
+        "stay": "Ankarana",
+        "meals": "Breakfast, dinner",
+        "images": [
+          "/uploads/circuits/noziwild-van-road.png",
+          "/uploads/circuits/dirt-track-motorbike.png",
+          "/uploads/circuits/forest-track-quad.png"
+        ]
+      },
+      {
+        "day": "Days 5 – 6",
+        "title": "Ankarana National Park",
+        "text": "Hikes to the grey tsingy and the suspension bridge, the Lost River and the bat caves. Night walk to find mouse lemurs and geckos.",
+        "stay": "Ankarana",
+        "meals": "Breakfast, dinner",
+        "images": [
+          "/uploads/circuits/coastal-tsingy.jpg",
+          "/uploads/circuits/lemur.png",
+          "/uploads/circuits/forest-trail-bike.png"
+        ]
+      },
+      {
+        "day": "Day 7",
+        "title": "Red Tsingy and Diego Suarez",
+        "text": "On the way to Diego Suarez, stop at the Red Tsingy, then settle in the colonial town by the bay.",
+        "stay": "Diego Suarez",
+        "meals": "Breakfast, dinner",
+        "images": [
+          "/uploads/circuits/dirt-track-motorbike.png",
+          "/uploads/circuits/nosy-lonjo.png",
+          "/uploads/circuits/coast-road-van.png"
+        ]
+      },
+      {
+        "day": "Day 8",
+        "title": "Amber Mountain National Park",
+        "text": "Waterfalls, crater lakes and cool rainforest, home to crowned lemurs and tiny chameleons.",
+        "stay": "Diego Suarez",
+        "meals": "Breakfast, dinner",
+        "images": [
+          "/uploads/circuits/guide-with-lemur.png",
+          "/uploads/circuits/forest-track-quad.png",
+          "/uploads/circuits/lemur.png"
+        ]
+      },
+      {
+        "day": "Day 9",
+        "title": "The Emerald Sea",
+        "text": "Sailing day from Ramena to the turquoise lagoon of the Emerald Sea, with swimming and lunch on the beach.",
+        "stay": "Diego Suarez",
+        "meals": "Breakfast, dinner",
+        "images": [
+          "/uploads/circuits/ramena.png",
+          "/uploads/circuits/noziwild-boat.png",
+          "/uploads/circuits/jet-ski.png"
+        ]
+      },
+      {
+        "day": "Day 10",
+        "title": "Departure",
+        "text": "Transfer to Arrachart airport for your flight.",
+        "stay": null,
+        "meals": "Breakfast",
+        "images": [
+          "/uploads/circuits/nosy-lonjo.png",
+          "/uploads/circuits/sea-sunset.png",
+          "/uploads/circuits/noziwild-car-antananarivo.jpeg"
+        ]
+      }
+    ]
+  },
+  {
+    "slug": "antananarivo-and-the-royal-highlands",
+    "title": "Antananarivo And The Royal Highlands",
+    "region": "Highlands",
+    "days": 5,
+    "level": "Easy",
+    "price": 640,
+    "stops": "Antananarivo · Ambohimanga · Antsirabe",
+    "summary": "Royal hills, rice terraces and artisan towns in the heart of Madagascar.",
+    "groupSize": "2 to 8 travellers",
+    "tourType": "Culture & history",
+    "start": "Antananarivo (Ivato airport)",
+    "end": "Antananarivo (Ivato airport)",
+    "bestTime": "All year, best from April to November",
+    "tip": "The highlands are cool: nights can drop below 10 °C from June to August. Bring a warm layer.",
+    "image": "/uploads/circuits/antananarivo-rice-fields.png",
+    "gallery": [
+      "/uploads/circuits/antananarivo-rice-fields.png",
+      "/uploads/circuits/noziwild-car-antananarivo.jpeg",
+      "/uploads/circuits/noziwild-van-road.png"
+    ],
+    "overview": [
+      "The highlands are where the Merina kingdom was born. You climb to the royal palaces of Antananarivo and the sacred hill of Ambohimanga, then drive south along the RN7 through rice terraces to Antsirabe, the town of pousse-pousse and craftsmen.",
+      "A short circuit, perfect at the start or the end of a longer trip."
+    ],
+    "highlights": [
+      "Visit the Rova, the Queen’s palace above Antananarivo",
+      "Walk the sacred royal hill of Ambohimanga, a UNESCO World Heritage site",
+      "Watch aluminium pots being cast by hand in Ambatolampy",
+      "Ride a pousse-pousse in Antsirabe and hike to the crater lake of Tritriva"
+    ],
+    "included": [
+      "Private vehicle with an experienced driver",
+      "English or French speaking local guide",
+      "National park entrance fees and local guides",
+      "Accommodation in double room",
+      "4 nights in hotels",
+      "Breakfast every day, two lunches"
+    ],
+    "excluded": [
+      "International flights and visa",
+      "Travel insurance",
+      "Drinks and personal expenses",
+      "Tips for guides and drivers",
+      "Dinners"
+    ],
+    "sortOrder": 4,
+    "itinerary": [
+      {
+        "day": "Day 1",
+        "title": "Arrival in Antananarivo",
+        "text": "Welcome at Ivato airport and transfer to your hotel. Short walk in the upper town if the flight allows.",
+        "stay": "Antananarivo",
+        "meals": "Dinner on your own",
+        "images": [
+          "/uploads/circuits/noziwild-car-antananarivo.jpeg",
+          "/uploads/circuits/antananarivo-rice-fields.png",
+          "/uploads/circuits/noziwild-van-road.png"
+        ]
+      },
+      {
+        "day": "Day 2",
+        "title": "Royal Antananarivo and Ambohimanga",
+        "text": "Morning at the Rova and the upper town, then the royal hill of Ambohimanga, its wooden palace and its views over the rice fields.",
+        "stay": "Antananarivo",
+        "meals": "Breakfast, lunch",
+        "images": [
+          "/uploads/circuits/antananarivo-rice-fields.png",
+          "/uploads/circuits/noziwild-car-antananarivo.jpeg",
+          "/uploads/circuits/sea-sunset.png"
+        ]
+      },
+      {
+        "day": "Day 3",
+        "title": "South on the RN7",
+        "text": "Drive through the highlands to Antsirabe, with a stop in Ambatolampy to meet the pot makers.",
+        "stay": "Antsirabe",
+        "meals": "Breakfast, lunch",
+        "images": [
+          "/uploads/circuits/noziwild-van-road.png",
+          "/uploads/circuits/antananarivo-rice-fields.png",
+          "/uploads/circuits/dirt-track-motorbike.png"
+        ]
+      },
+      {
+        "day": "Day 4",
+        "title": "Antsirabe and Lake Tritriva",
+        "text": "Pousse-pousse tour of the spa town, visits to gem cutters and horn carvers, then a walk around the deep green crater lake of Tritriva.",
+        "stay": "Antsirabe",
+        "meals": "Breakfast",
+        "images": [
+          "/uploads/circuits/forest-trail-bike.png",
+          "/uploads/circuits/dirt-track-motorbike.png",
+          "/uploads/circuits/sambirano-river.png"
+        ]
+      },
+      {
+        "day": "Day 5",
+        "title": "Back to Antananarivo",
+        "text": "Return drive to the capital, a last stop at the craft market of La Digue, and transfer to the airport.",
+        "stay": null,
+        "meals": "Breakfast",
+        "images": [
+          "/uploads/circuits/noziwild-car-antananarivo.jpeg",
+          "/uploads/circuits/noziwild-van-road.png",
+          "/uploads/circuits/sea-sunset.png"
+        ]
+      }
+    ]
+  },
+  {
+    "slug": "baobab-avenue-and-the-tsingy",
+    "title": "Baobab Avenue And The Tsingy",
+    "region": "South & West",
+    "days": 12,
+    "level": "Moderate",
+    "price": 1760,
+    "stops": "Morondava · Baobab Avenue · Bekopaka",
+    "summary": "The great baobabs of Morondava and the stone forest of the Tsingy de Bemaraha.",
+    "groupSize": "2 to 6 travellers",
+    "tourType": "Adventure & landscapes",
+    "start": "Antananarivo (Ivato airport)",
+    "end": "Antananarivo (Ivato airport)",
+    "bestTime": "May to November",
+    "tip": "The Tsingy de Bemaraha park and the tracks to reach it are closed during the rainy season, roughly from December to April.",
+    "image": "/uploads/circuits/coastal-tsingy.jpg",
+    "gallery": [
+      "/uploads/circuits/coastal-tsingy.jpg",
+      "/uploads/circuits/dunes-bay.png",
+      "/uploads/circuits/noziwild-van-road.png"
+    ],
+    "overview": [
+      "The west of Madagascar is a land of giants. Sunset on the Avenue of the Baobabs, then a 4x4 expedition north, across rivers on small ferries, to the Tsingy de Bemaraha, a forest of limestone needles listed by UNESCO.",
+      "It is an adventure: long days on dirt tracks, rewarded by some of the most striking landscapes on the island and quiet days by the sea in Morondava at the end."
+    ],
+    "highlights": [
+      "Watch the sun set behind the Avenue of the Baobabs",
+      "Climb ladders and cross rope bridges in the Great Tsingy",
+      "Paddle through the gorges of the Manambolo river",
+      "Look for the fossa during a walk in Kirindy forest"
+    ],
+    "included": [
+      "Private vehicle with an experienced driver",
+      "English or French speaking local guide",
+      "National park entrance fees and local guides",
+      "Accommodation in double room",
+      "11 nights in hotels and lodges",
+      "Breakfast and dinner every day",
+      "4x4 with driver for the west",
+      "Domestic flights Antananarivo – Morondava"
+    ],
+    "excluded": [
+      "International flights and visa",
+      "Travel insurance",
+      "Drinks and personal expenses",
+      "Tips for guides and drivers",
+      "Lunches"
+    ],
+    "sortOrder": 5,
+    "itinerary": [
+      {
+        "day": "Day 1",
+        "title": "Arrival in Antananarivo",
+        "text": "Welcome at Ivato airport and transfer to your hotel.",
+        "stay": "Antananarivo",
+        "meals": "Dinner",
+        "images": [
+          "/uploads/circuits/noziwild-car-antananarivo.jpeg",
+          "/uploads/circuits/antananarivo-rice-fields.png",
+          "/uploads/circuits/noziwild-van-road.png"
+        ]
+      },
+      {
+        "day": "Day 2",
+        "title": "Flight to Morondava",
+        "text": "Short flight to the west coast. In the late afternoon, the Avenue of the Baobabs at sunset.",
+        "stay": "Morondava",
+        "meals": "Breakfast, dinner",
+        "images": [
+          "/uploads/circuits/sea-sunset.png",
+          "/uploads/circuits/dunes-bay.png",
+          "/uploads/circuits/beach-sunset.jpg"
+        ]
+      },
+      {
+        "day": "Day 3",
+        "title": "Kirindy forest",
+        "text": "Dry forest walks to look for the fossa, Verreaux’s sifakas and the giant jumping rat, then a night walk for mouse lemurs.",
+        "stay": "Kirindy",
+        "meals": "Breakfast, dinner",
+        "images": [
+          "/uploads/circuits/forest-trail-bike.png",
+          "/uploads/circuits/lemur.png",
+          "/uploads/circuits/guide-with-lemur.png"
+        ]
+      },
+      {
+        "day": "Day 4",
+        "title": "North to Bekopaka",
+        "text": "A full day by 4x4, crossing the Tsiribihina river by ferry at Belo-sur-Tsiribihina, to reach Bekopaka at the gates of the Tsingy.",
+        "stay": "Bekopaka",
+        "meals": "Breakfast, dinner",
+        "images": [
+          "/uploads/circuits/dirt-track-motorbike.png",
+          "/uploads/circuits/forest-track-quad.png",
+          "/uploads/circuits/noziwild-van-road.png"
+        ]
+      },
+      {
+        "day": "Day 5",
+        "title": "The Great Tsingy",
+        "text": "Harness, ladders and rope bridges: a guided via ferrata in the heart of the stone forest.",
+        "stay": "Bekopaka",
+        "meals": "Breakfast, dinner",
+        "images": [
+          "/uploads/circuits/coastal-tsingy.jpg",
+          "/uploads/circuits/forest-trail-bike.png",
+          "/uploads/circuits/guide-with-lemur.png"
+        ]
+      },
+      {
+        "day": "Day 6",
+        "title": "Small Tsingy and Manambolo gorges",
+        "text": "Easier trails in the Small Tsingy, then a pirogue ride through the gorges of the Manambolo river.",
+        "stay": "Bekopaka",
+        "meals": "Breakfast, dinner",
+        "images": [
+          "/uploads/circuits/sambirano-river.png",
+          "/uploads/circuits/coastal-tsingy.jpg",
+          "/uploads/circuits/boat-ride-beach.png"
+        ]
+      },
+      {
+        "day": "Day 7",
+        "title": "Back to Morondava",
+        "text": "The long road south, with a stop at the twisted Baobabs in Love.",
+        "stay": "Morondava",
+        "meals": "Breakfast, dinner",
+        "images": [
+          "/uploads/circuits/noziwild-van-road.png",
+          "/uploads/circuits/forest-track-quad.png",
+          "/uploads/circuits/sea-sunset.png"
+        ]
+      },
+      {
+        "day": "Days 8 – 9",
+        "title": "Morondava by the sea",
+        "text": "Rest on the beach and cross by pirogue to the fishing village of Betania.",
+        "stay": "Morondava",
+        "meals": "Breakfast, dinner",
+        "images": [
+          "/uploads/circuits/dunes-bay.png",
+          "/uploads/circuits/beach-sunset.jpg",
+          "/uploads/circuits/boat-ride-beach.png"
+        ]
+      },
+      {
+        "day": "Day 10",
+        "title": "Flight to Antananarivo",
+        "text": "Morning flight back to the capital, afternoon free.",
+        "stay": "Antananarivo",
+        "meals": "Breakfast, dinner",
+        "images": [
+          "/uploads/circuits/antananarivo-rice-fields.png",
+          "/uploads/circuits/noziwild-car-antananarivo.jpeg",
+          "/uploads/circuits/noziwild-van-road.png"
+        ]
+      },
+      {
+        "day": "Day 11",
+        "title": "Royal hill of Ambohimanga",
+        "text": "Half day at the sacred hill of Ambohimanga, then a last shopping stop at the craft market.",
+        "stay": "Antananarivo",
+        "meals": "Breakfast, dinner",
+        "images": [
+          "/uploads/circuits/antananarivo-rice-fields.png",
+          "/uploads/circuits/guide-with-lemur.png",
+          "/uploads/circuits/noziwild-car-antananarivo.jpeg"
+        ]
+      },
+      {
+        "day": "Day 12",
+        "title": "Departure",
+        "text": "Transfer to Ivato airport for your flight.",
+        "stay": null,
+        "meals": "Breakfast",
+        "images": [
+          "/uploads/circuits/sea-sunset.png",
+          "/uploads/circuits/noziwild-car-antananarivo.jpeg",
+          "/uploads/circuits/antananarivo-rice-fields.png"
+        ]
+      }
+    ]
+  },
+  {
+    "slug": "rainforests-lemurs-and-indri-trails",
+    "title": "Rainforests, Lemurs And Indri Trails",
+    "region": "East",
+    "days": 14,
+    "level": "Active",
+    "price": 2150,
+    "stops": "Andasibe · Ile Sainte-Marie · Masoala",
+    "summary": "The song of the indri, the island of Sainte-Marie and the wild peninsula of Masoala.",
+    "groupSize": "2 to 6 travellers",
+    "tourType": "Wildlife & rainforest",
+    "start": "Antananarivo (Ivato airport)",
+    "end": "Antananarivo (Ivato airport)",
+    "bestTime": "September to December",
+    "tip": "The east coast is the wettest part of Madagascar. Bring a light rain jacket whatever the season, and quick-dry clothes for Masoala.",
+    "image": "/uploads/circuits/lemur.png",
+    "gallery": [
+      "/uploads/circuits/lemur.png",
+      "/uploads/circuits/island-beach-aerial.jpg",
+      "/uploads/circuits/noziwild-van-road.png"
+    ],
+    "overview": [
+      "The east is Madagascar at its greenest. In Andasibe you wake up to the call of the indri, the largest living lemur. On Ile Sainte-Marie you rest on quiet beaches and, in season, watch humpback whales from the shore.",
+      "The journey ends on the Masoala peninsula, where the rainforest runs down to the sea. Remote and rainy, it is one of the richest places for wildlife on the island."
+    ],
+    "highlights": [
+      "Hear the indri sing at dawn in Andasibe",
+      "Watch humpback whales off Ile Sainte-Marie from July to September",
+      "Look for the red ruffed lemur, found only on Masoala",
+      "Kayak and snorkel in the marine park of Masoala"
+    ],
+    "included": [
+      "Private vehicle with an experienced driver",
+      "English or French speaking local guide",
+      "National park entrance fees and local guides",
+      "Accommodation in double room",
+      "13 nights in lodges and beach hotels",
+      "Full board in Masoala, breakfast elsewhere",
+      "Domestic flights and boat transfers"
+    ],
+    "excluded": [
+      "International flights and visa",
+      "Travel insurance",
+      "Drinks and personal expenses",
+      "Tips for guides and drivers",
+      "Lunches and dinners outside Masoala"
+    ],
+    "sortOrder": 6,
+    "itinerary": [
+      {
+        "day": "Day 1",
+        "title": "Arrival in Antananarivo",
+        "text": "Welcome at Ivato airport and transfer to your hotel.",
+        "stay": "Antananarivo",
+        "meals": "Dinner on your own",
+        "images": [
+          "/uploads/circuits/noziwild-car-antananarivo.jpeg",
+          "/uploads/circuits/antananarivo-rice-fields.png",
+          "/uploads/circuits/noziwild-van-road.png"
+        ]
+      },
+      {
+        "day": "Day 2",
+        "title": "Road to Andasibe",
+        "text": "About four hours east, from the highlands down into the rainforest. First night walk to find chameleons and frogs.",
+        "stay": "Andasibe",
+        "meals": "Breakfast",
+        "images": [
+          "/uploads/circuits/noziwild-van-road.png",
+          "/uploads/circuits/sambirano-river.png",
+          "/uploads/circuits/forest-trail-bike.png"
+        ]
+      },
+      {
+        "day": "Day 3",
+        "title": "The indri of Analamazaotra",
+        "text": "Early morning walk to find a family of indri and hear their song, the loudest call of any lemur.",
+        "stay": "Andasibe",
+        "meals": "Breakfast",
+        "images": [
+          "/uploads/circuits/lemur.png",
+          "/uploads/circuits/guide-with-lemur.png",
+          "/uploads/circuits/forest-trail-bike.png"
+        ]
+      },
+      {
+        "day": "Day 4",
+        "title": "Mantadia National Park",
+        "text": "A wilder forest with longer trails, waterfalls and the colourful diademed sifaka.",
+        "stay": "Andasibe",
+        "meals": "Breakfast",
+        "images": [
+          "/uploads/circuits/forest-track-quad.png",
+          "/uploads/circuits/sambirano-river.png",
+          "/uploads/circuits/lemur.png"
+        ]
+      },
+      {
+        "day": "Day 5",
+        "title": "Back to Antananarivo",
+        "text": "Return drive to the capital to catch the next morning’s flight.",
+        "stay": "Antananarivo",
+        "meals": "Breakfast",
+        "images": [
+          "/uploads/circuits/antananarivo-rice-fields.png",
+          "/uploads/circuits/noziwild-van-road.png",
+          "/uploads/circuits/noziwild-car-antananarivo.jpeg"
+        ]
+      },
+      {
+        "day": "Day 6",
+        "title": "Flight to Ile Sainte-Marie",
+        "text": "A short flight to the island, and the afternoon on the beach.",
+        "stay": "Ile Sainte-Marie",
+        "meals": "Breakfast",
+        "images": [
+          "/uploads/circuits/island-beach-aerial.jpg",
+          "/uploads/circuits/coast-road-van.png",
+          "/uploads/circuits/boat-ride-beach.png"
+        ]
+      },
+      {
+        "day": "Days 7 – 8",
+        "title": "Ile Sainte-Marie",
+        "text": "The pirate cemetery, a boat trip to Ile aux Nattes and, in season, whale watching with a certified operator.",
+        "stay": "Ile Sainte-Marie",
+        "meals": "Breakfast",
+        "images": [
+          "/uploads/circuits/island-beach-aerial.jpg",
+          "/uploads/circuits/noziwild-boat.png",
+          "/uploads/circuits/jet-ski.png"
+        ]
+      },
+      {
+        "day": "Day 9",
+        "title": "To Maroantsetra and Masoala",
+        "text": "Flight to Maroantsetra, then a boat across the bay of Antongil to your lodge on the peninsula.",
+        "stay": "Masoala",
+        "meals": "Breakfast, lunch, dinner",
+        "images": [
+          "/uploads/circuits/noziwild-boat.png",
+          "/uploads/circuits/boat-ride-beach.png",
+          "/uploads/circuits/sambirano-river.png"
+        ]
+      },
+      {
+        "day": "Days 10 – 12",
+        "title": "Masoala National Park",
+        "text": "Guided rainforest hikes for red ruffed lemurs and leaf-tailed geckos, kayaking along the coast and snorkelling in the marine park.",
+        "stay": "Masoala",
+        "meals": "Breakfast, lunch, dinner",
+        "images": [
+          "/uploads/circuits/lemur.png",
+          "/uploads/circuits/forest-trail-bike.png",
+          "/uploads/circuits/island-beach-aerial.jpg"
+        ]
+      },
+      {
+        "day": "Day 13",
+        "title": "Back to Antananarivo",
+        "text": "Boat to Maroantsetra and flight to the capital.",
+        "stay": "Antananarivo",
+        "meals": "Breakfast",
+        "images": [
+          "/uploads/circuits/noziwild-boat.png",
+          "/uploads/circuits/antananarivo-rice-fields.png",
+          "/uploads/circuits/noziwild-car-antananarivo.jpeg"
+        ]
+      },
+      {
+        "day": "Day 14",
+        "title": "Departure",
+        "text": "Transfer to Ivato airport for your flight.",
+        "stay": null,
+        "meals": "Breakfast",
+        "images": [
+          "/uploads/circuits/sea-sunset.png",
+          "/uploads/circuits/noziwild-car-antananarivo.jpeg",
+          "/uploads/circuits/antananarivo-rice-fields.png"
+        ]
+      }
+    ]
+  }
+]

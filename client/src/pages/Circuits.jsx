@@ -1,14 +1,13 @@
-import React, { useState, useRef, useLayoutEffect } from 'react'
+import React, { useEffect, useState, useRef, useLayoutEffect } from 'react'
 import gsap from 'gsap'
 import { ScrollTrigger } from 'gsap/ScrollTrigger'
-import Ramena from '../assets/images/Ramena.png'
+import { Link } from 'react-router-dom'
 import NosyIranja from '../assets/images/NosyIranja.png'
-import NosyLonjo from '../assets/images/NosyLonjo.png'
 import Ambanja from '../assets/images/Ambanja.png'
-import Deux from '../assets/images/2.jpg'
-import Tana from '../assets/images/Tana.png'
 import Navbar from '../components/Navbar'
 import Footer from '../components/Footer'
+import { fetchCircuits, assetUrl } from '../api'
+import { formatPrice } from '../utils/format'
 
 gsap.registerPlugin(ScrollTrigger)
 
@@ -23,76 +22,14 @@ const BUTTON = 'text-sm font-medium px-5 py-2.5 rounded-full'
 
 /* ---------------------------- Données ---------------------------- */
 
-const regions = ['All', 'North', 'Highlands', 'South & West', 'East']
+// Ordre d'affichage des régions connues ; une région créée depuis l'admin s'ajoute à la fin
+const REGION_ORDER = ['North', 'Highlands', 'South & West', 'East']
 
 const durations = [
   { label: 'Any length', test: () => true },
   { label: '1 week or less', test: (d) => d <= 7 },
   { label: '8 to 12 days', test: (d) => d >= 8 && d <= 12 },
   { label: '13 days or more', test: (d) => d >= 13 },
-]
-
-const circuits = [
-  {
-    id: 1,
-    region: 'North',
-    title: 'Diego Suarez Bay And Ramena Coast',
-    days: 6,
-    stops: 'Diego Suarez · Ramena · Emerald Sea',
-    level: 'Easy',
-    price: 'From €890',
-    image: Ramena,
-  },
-  {
-    id: 2,
-    region: 'North',
-    title: 'Nosy Be, Nosy Iranja And Nosy Lonjo',
-    days: 8,
-    stops: 'Nosy Be · Nosy Iranja · Nosy Lonjo',
-    level: 'Easy',
-    price: 'From €1,240',
-    image: NosyIranja,
-  },
-  {
-    id: 3,
-    region: 'North',
-    title: 'Ambanja Cocoa Country And Northern Wildlife',
-    days: 10,
-    stops: 'Ambanja · Ankarana · Amber Mountain',
-    level: 'Moderate',
-    price: 'From €1,480',
-    image: Ambanja,
-  },
-  {
-    id: 4,
-    region: 'Highlands',
-    title: 'Antananarivo And The Royal Highlands',
-    days: 5,
-    stops: 'Antananarivo · Ambohimanga · Antsirabe',
-    level: 'Easy',
-    price: 'From €640',
-    image: Tana,
-  },
-  {
-    id: 5,
-    region: 'South & West',
-    title: 'Baobab Avenue And The Tsingy',
-    days: 12,
-    stops: 'Morondava · Baobab Avenue · Bekopaka',
-    level: 'Moderate',
-    price: 'From €1,760',
-    image: Deux,
-  },
-  {
-    id: 6,
-    region: 'East',
-    title: 'Rainforests, Lemurs And Indri Trails',
-    days: 14,
-    stops: 'Andasibe · Ile Sainte-Marie · Masoala',
-    level: 'Active',
-    price: 'From €2,150',
-    image: NosyLonjo,
-  },
 ]
 
 const highlights = [
@@ -180,10 +117,10 @@ function Chip({ active, onClick, children }) {
 
 function CircuitCard({ circuit }) {
   return (
-    <a href={`/circuits/${circuit.id}`} className="circuit-card group flex flex-col rounded-xl bg-white p-3 text-slate-800">
+    <Link to={`/circuits/${circuit.slug}`} className="circuit-card group flex flex-col rounded-xl bg-white p-3 text-slate-800">
       <div className="relative aspect-[4/3] overflow-hidden rounded-md">
         <img
-          src={circuit.image}
+          src={assetUrl(circuit.image)}
           alt={circuit.title}
           className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
         />
@@ -197,15 +134,38 @@ function CircuitCard({ circuit }) {
         </p>
         <h3 className="mt-4 text-xl md:text-2xl leading-snug group-hover:underline">{circuit.title}</h3>
         <p className={`mt-3 ${META_TEXT} text-slate-600`}>{circuit.stops}</p>
-        <p className="mt-auto pt-6 text-base md:text-lg font-medium text-slate-900">{circuit.price}</p>
+        <p className="mt-auto pt-6 text-base md:text-lg font-medium text-slate-900">From {formatPrice(circuit.price)}</p>
       </div>
-    </a>
+    </Link>
   )
 }
 
 function Circuits() {
   const [region, setRegion] = useState('All')
   const [duration, setDuration] = useState(0)
+  // Circuits lus depuis l'API
+  const [circuits, setCircuits] = useState([])
+  const [status, setStatus] = useState('loading') // 'loading' | 'ready' | 'error'
+
+  useEffect(() => {
+    let cancelled = false
+    fetchCircuits()
+      .then((data) => {
+        if (cancelled) return
+        setCircuits(data.circuits)
+        setStatus('ready')
+      })
+      .catch(() => !cancelled && setStatus('error'))
+    return () => {
+      cancelled = true
+    }
+  }, [])
+
+  const regions = [
+    'All',
+    ...REGION_ORDER,
+    ...new Set(circuits.map((c) => c.region).filter((r) => !REGION_ORDER.includes(r))),
+  ]
 
   const introRef = useRef(null)
   const gridRef = useRef(null)
@@ -248,7 +208,7 @@ function Circuits() {
         )
       },
     })
-  }, [region, duration])
+  }, [region, duration, circuits])
 
   /* Points forts : chaque carte se dévoile de bas en haut (clip-path) */
   useGsap(highlightsRef, () => {
@@ -324,10 +284,33 @@ function Circuits() {
 
           {/* Grille de circuits */}
           <div ref={gridRef}>
-            {visible.length > 0 ? (
+            {status === 'loading' && (
+              <div role="status" aria-label="Loading circuits" className="mt-10 md:mt-16 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-9">
+                {[0, 1, 2].map((n) => (
+                  <div key={n} className="rounded-xl bg-white p-3 animate-pulse">
+                    <div className="aspect-[4/3] rounded-md bg-slate-200" />
+                    <div className="mx-3 mt-6 h-4 w-1/3 rounded bg-slate-200" />
+                    <div className="mx-3 mt-4 mb-6 h-6 w-3/4 rounded bg-slate-200" />
+                  </div>
+                ))}
+              </div>
+            )}
+            {status === 'error' && (
+              <div role="alert" className="mt-10 md:mt-16 rounded-3xl bg-white p-8 text-center text-slate-700">
+                <p className="text-lg">The circuits could not be loaded. Please try again in a moment.</p>
+                <button
+                  type="button"
+                  onClick={() => window.location.reload()}
+                  className={`mt-4 bg-slate-800 hover:bg-slate-700 active:scale-95 transition text-white ${BUTTON}`}
+                >
+                  Reload
+                </button>
+              </div>
+            )}
+            {status === 'ready' && (visible.length > 0 ? (
               <div className="mt-10 md:mt-16 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-9">
                 {visible.map((circuit) => (
-                  <CircuitCard key={circuit.id} circuit={circuit} />
+                  <CircuitCard key={circuit.slug} circuit={circuit} />
                 ))}
               </div>
             ) : (
@@ -341,7 +324,7 @@ function Circuits() {
                   Reset filters
                 </button>
               </div>
-            )}
+            ))}
           </div>
         </section>
 

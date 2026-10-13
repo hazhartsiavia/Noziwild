@@ -13,6 +13,7 @@ import FoodDining from "./pages/FoodDining";
 import Travelplanning from "./pages/Travelplanning";
 import Ticketreservations from "./pages/Ticketsreservations";
 import Circuits from "./pages/Circuits";
+import CircuitDetail from "./pages/CircuitDetail";
 import LongStay from "./pages/LongStay";
 import Destinations from "./pages/Destinations";
 import DestinationDetail from "./pages/DestinationDetail";
@@ -20,6 +21,10 @@ import PlaceDetail from "./pages/PlaceDetail";
 import Excurssions from "./pages/Excurssions";
 import CruiseExcursions from "./pages/CruiseExcurssions";
 import TailorMade from "./pages/TailorMade";
+import Auth from "./pages/Auth";
+import Account from "./pages/Account";
+import ForgotPassword from "./pages/ForgotPassword";
+import ResetPassword from "./pages/ResetPassword";
 
 function App() {
   return (
@@ -38,6 +43,7 @@ function App() {
       <Route path="/ticket-reservation" element={<Ticketreservations/>} />
       <Route path="/travel-planning" element={<Travelplanning/>}/>
       <Route path="/circuits" element={< Circuits/>}/>
+      <Route path="/circuits/:slug" element={<CircuitDetail />} />
       <Route path="/longstay" element={< LongStay/>}/>
       <Route path="/destinations" element={< Destinations/>}/>
       <Route path="/destinations/:slug/:placeSlug" element={<PlaceDetail />} />
@@ -45,6 +51,11 @@ function App() {
       <Route path="/excurssions" element={<Excurssions/>}/>
       <Route path="/cruise-excurssion" element={<CruiseExcursions />} />
       <Route path="/tailor-made" element={<TailorMade />} />
+      <Route path="/login" element={<Auth key="login" mode="login" />} />
+      <Route path="/register" element={<Auth key="register" mode="register" />} />
+      <Route path="/forgot-password" element={<ForgotPassword />} />
+      <Route path="/reset-password" element={<ResetPassword />} />
+      <Route path="/account" element={<Account />} />
     </Routes>
   );
 }

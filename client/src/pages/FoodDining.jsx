@@ -7,6 +7,8 @@ import Ramena from "../assets/images/Ramena.png";
 import Tana from "../assets/images/Tana.png";
 import Navbar from '../components/Navbar';
 import Footer from '../components/Footer';
+import { sendRequest } from '../api';
+import { useAuth } from '../context/AuthContext';
 import { gsap } from 'gsap'
 import { ScrollTrigger } from 'gsap/ScrollTrigger'
 
@@ -427,19 +429,26 @@ function Faq() {
 
 // CTA : carte verte avec petit formulaire (choix de l'expérience + email)
 function Cta() {
+  // Connecté : nom et email pré-remplis (la clé recrée le champ quand la session est connue)
+  const { user } = useAuth()
   const [pick, setPick] = useState(ctaChoices[0])
-  const [status, setStatus] = useState('idle') // 'idle' | 'sent'
+  const [status, setStatus] = useState('idle') // 'idle' | 'sending' | 'sent' | 'error'
+  const [error, setError] = useState('')
 
-  const handleSubmit = (event) => {
+  const handleSubmit = async (event) => {
     event.preventDefault()
     const form = event.currentTarget
     const { email } = Object.fromEntries(new FormData(form))
 
-    // TODO : envoyer { pick, email } à ton API ou à un service d'emails (EmailJS, Formspree...)
-    console.log('Food request:', { pick, email })
-
-    setStatus('sent')
-    form.reset()
+    setStatus('sending')
+    try {
+      await sendRequest('food', { email, subject: pick })
+      setStatus('sent')
+      form.reset()
+    } catch (err) {
+      setError(err.message)
+      setStatus('error')
+    }
   }
 
   return (
@@ -471,11 +480,12 @@ function Cta() {
 
         <label htmlFor="food-email" className="mt-6 block text-sm md:text-base text-white/80">Your email</label>
         <div className="mt-2 flex flex-col sm:flex-row gap-2 rounded-3xl sm:rounded-full bg-white p-2 sm:pl-6">
-          <input id="food-email" name="email" type="email" required autoComplete="email" placeholder="name@example.com" className="flex-1 min-w-0 bg-transparent px-4 py-2 sm:px-0 text-sm md:text-base text-slate-800 placeholder:text-slate-500 focus:outline-none" />
-          <button type="submit" className={`shrink-0 bg-[#C49849] hover:bg-[#b08339] text-white ${BUTTON}`}>Send Request</button>
+          <input id="food-email" name="email" key={`e-${user?.id}`} defaultValue={user?.email} type="email" required autoComplete="email" placeholder="name@example.com" className="flex-1 min-w-0 bg-transparent px-4 py-2 sm:px-0 text-sm md:text-base text-slate-800 placeholder:text-slate-500 focus:outline-none" />
+          <button type="submit" disabled={status === 'sending'} className={`shrink-0 bg-[#C49849] hover:bg-[#b08339] text-white disabled:opacity-60 disabled:cursor-wait ${BUTTON}`}>{status === 'sending' ? 'Sending…' : 'Send Request'}</button>
         </div>
 
         {status === 'sent' && <p role="status" className="mt-4 text-sm md:text-base text-[#E6C58A]">Thank you! We will get back to you soon.</p>}
+        {status === 'error' && <p role="alert" className="mt-4 text-sm md:text-base text-red-300">{error}</p>}
       </form>
     </div>
   )

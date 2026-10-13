@@ -7,6 +7,7 @@ import Ramena from "../assets/images/Ramena.png";
 import Tana from "../assets/images/Tana.png";
 import Navbar from '../components/Navbar';
 import Footer from '../components/Footer';
+import { subscribeNewsletter } from '../api';
 import { gsap } from 'gsap'
 import { ScrollTrigger } from 'gsap/ScrollTrigger'
 
@@ -553,18 +554,23 @@ function Photo({ src, alt = '', className = '' }) {
 }
 
 function Cta() {
-  const [status, setStatus] = useState('idle') // 'idle' | 'sent'
+  const [status, setStatus] = useState('idle') // 'idle' | 'sending' | 'sent' | 'error'
+  const [error, setError] = useState('')
 
-  const handleSubmit = (event) => {
+  const handleSubmit = async (event) => {
     event.preventDefault()
     const form = event.currentTarget
     const { email } = Object.fromEntries(new FormData(form))
 
-    // TODO : envoyer `email` à ton API ou à un service de newsletter (Mailchimp, Brevo...)
-    console.log('Newsletter:', email)
-
-    setStatus('sent')
-    form.reset()
+    setStatus('sending')
+    try {
+      await subscribeNewsletter(email)
+      setStatus('sent')
+      form.reset()
+    } catch (err) {
+      setError(err.message)
+      setStatus('error')
+    }
   }
 
   return (
@@ -589,14 +595,17 @@ function Cta() {
               placeholder="Your Email Address"
               className="flex-1 min-w-0 bg-transparent text-sm md:text-base text-slate-800 placeholder:text-slate-500 focus:outline-none"
             />
-            <button type="submit" className={`shrink-0 bg-[#C49849] hover:bg-[#b08339] text-white ${BUTTON}`}>
-              Subscribe
+            <button type="submit" disabled={status === 'sending'} className={`shrink-0 bg-[#C49849] hover:bg-[#b08339] text-white disabled:opacity-60 disabled:cursor-wait ${BUTTON}`}>
+              {status === 'sending' ? 'Sending…' : 'Subscribe'}
             </button>
           </form>
           {status === 'sent' && (
             <p role="status" className={`mt-3 pl-6 ${META_TEXT} md:text-base text-emerald-700`}>
               Thank you! You are on the list.
             </p>
+          )}
+          {status === 'error' && (
+            <p role="alert" className={`mt-3 pl-6 ${META_TEXT} md:text-base text-red-700`}>{error}</p>
           )}
         </div>
       </div>

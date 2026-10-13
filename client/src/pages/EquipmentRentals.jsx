@@ -7,6 +7,8 @@ import Ramena from "../assets/images/Ramena.png";
 import Tana from "../assets/images/Tana.png";
 import Navbar from '../components/Navbar';
 import Footer from '../components/Footer';
+import { sendRequest } from '../api';
+import { useAuth } from '../context/AuthContext';
 import { gsap } from 'gsap'
 import { ScrollTrigger } from 'gsap/ScrollTrigger'
 
@@ -371,18 +373,25 @@ function Faq() {
 
 // CTA : bannière image avec petit formulaire "il vous manque quelque chose ?"
 function Cta() {
-  const [status, setStatus] = useState('idle') // 'idle' | 'sent'
+  // Connecté : nom et email pré-remplis (la clé recrée le champ quand la session est connue)
+  const { user } = useAuth()
+  const [status, setStatus] = useState('idle') // 'idle' | 'sending' | 'sent' | 'error'
+  const [error, setError] = useState('')
 
-  const handleSubmit = (event) => {
+  const handleSubmit = async (event) => {
     event.preventDefault()
     const form = event.currentTarget
-    const data = Object.fromEntries(new FormData(form))
+    const { gear, email } = Object.fromEntries(new FormData(form))
 
-    // TODO : envoyer `data` à ton API ou à un service d'emails (EmailJS, Formspree...)
-    console.log('Gear request:', data)
-
-    setStatus('sent')
-    form.reset()
+    setStatus('sending')
+    try {
+      await sendRequest('gear', { email, subject: 'Equipment request', message: gear })
+      setStatus('sent')
+      form.reset()
+    } catch (err) {
+      setError(err.message)
+      setStatus('error')
+    }
   }
 
   return (
@@ -400,11 +409,12 @@ function Cta() {
           <label htmlFor="gear-request" className="sr-only">Gear you need</label>
           <input id="gear-request" name="gear" type="text" required placeholder="e.g. Fishing rods, child seat, tent for 4…" className="flex-1 min-w-0 bg-transparent px-4 py-2 sm:px-0 text-sm md:text-base text-slate-800 placeholder:text-slate-500 focus:outline-none" />
           <label htmlFor="gear-email" className="sr-only">Your email</label>
-          <input id="gear-email" name="email" type="email" required placeholder="Your email" className="sm:w-56 min-w-0 bg-transparent px-4 py-2 sm:border-l sm:border-slate-200 text-sm md:text-base text-slate-800 placeholder:text-slate-500 focus:outline-none" />
-          <button type="submit" className={`shrink-0 bg-[#C49849] hover:bg-[#b08339] text-white ${BUTTON}`}>Send Request</button>
+          <input id="gear-email" name="email" key={`e-${user?.id}`} defaultValue={user?.email} type="email" required placeholder="Your email" className="sm:w-56 min-w-0 bg-transparent px-4 py-2 sm:border-l sm:border-slate-200 text-sm md:text-base text-slate-800 placeholder:text-slate-500 focus:outline-none" />
+          <button type="submit" disabled={status === 'sending'} className={`shrink-0 bg-[#C49849] hover:bg-[#b08339] text-white disabled:opacity-60 disabled:cursor-wait ${BUTTON}`}>{status === 'sending' ? 'Sending…' : 'Send Request'}</button>
         </form>
 
         {status === 'sent' && <p role="status" className="mt-4 text-sm md:text-base text-[#E6C58A]">Thank you! We will get back to you soon.</p>}
+        {status === 'error' && <p role="alert" className="mt-4 text-sm md:text-base text-red-300">{error}</p>}
       </div>
     </div>
   )

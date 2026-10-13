@@ -1,0 +1,5 @@
+node_modules
+.env
+*.log
+# Photos envoyées par l'admin (les photos de départ, uploads/circuits/, restent dans git)
+uploads/files/

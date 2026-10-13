@@ -3,6 +3,8 @@ import React, { useRef, useLayoutEffect, useState } from 'react'
 import gsap from 'gsap'
 import icone from '../assets/icone.png'
 import { Link } from 'react-router-dom'
+import { useAuth } from '../context/AuthContext'
+import Avatar from './Avatar'
 
 /* ============================================================
    ÉPAULE COURBE
@@ -48,6 +50,7 @@ const Chevron = ({ className = '' }) => (
 )
 
 function Navbar() {
+  const { user, loading } = useAuth()
   const [menuOpen, setMenuOpen] = useState(false)
   const [mobileSection, setMobileSection] = useState(null)
 
@@ -589,6 +592,31 @@ function Navbar() {
             </div>
 
             {/* ==================================================
+                COMPTE (connexion / profil)
+            ================================================== */}
+            {loading ? (
+              <span className="hidden h-9 w-9 md:block" aria-hidden="true" />
+            ) : user ? (
+              <Link
+                to="/account"
+                aria-label="My account"
+                className="hidden items-center gap-2 text-[15px] text-zinc-700 transition hover:text-zinc-900 md:flex"
+              >
+                <Avatar user={user} className="h-9 w-9 text-sm" />
+                <span className="hidden max-w-[8rem] truncate lg:inline">
+                  {user.name.split(' ')[0]}
+                </span>
+              </Link>
+            ) : (
+              <Link
+                to="/login"
+                className={`hidden whitespace-nowrap md:inline ${link}`}
+              >
+                Log in
+              </Link>
+            )}
+
+            {/* ==================================================
                 CTA
             ================================================== */}
             <Link
@@ -892,6 +920,34 @@ function Navbar() {
                 >
                   Blog
                 </Link>
+
+                {/* COMPTE MOBILE */}
+                {!loading && (
+                  <Link
+                    to={user ? '/account' : '/login'}
+                    onClick={closeMenu}
+                    className="
+                      flex
+                      items-center
+                      gap-3
+                      rounded-lg
+                      px-4
+                      py-2.5
+                      text-[15px]
+                      text-zinc-800
+                      hover:bg-zinc-50
+                    "
+                  >
+                    {user ? (
+                      <>
+                        <Avatar user={user} className="h-7 w-7 text-xs" />
+                        My account
+                      </>
+                    ) : (
+                      'Log in'
+                    )}
+                  </Link>
+                )}
 
                 {/* CTA MOBILE */}
                 <Link

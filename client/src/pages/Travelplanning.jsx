@@ -7,6 +7,8 @@ import Ramena from "../assets/images/Ramena.png";
 import Tana from "../assets/images/Tana.png";
 import Navbar from '../components/Navbar';
 import Footer from '../components/Footer';
+import { sendRequest } from '../api';
+import { useAuth } from '../context/AuthContext';
 import { gsap } from 'gsap'
 import { ScrollTrigger } from 'gsap/ScrollTrigger'
 
@@ -312,18 +314,25 @@ function Chat() {
 
 // CTA : décrire son voyage idéal
 function Cta() {
-  const [status, setStatus] = useState('idle') // 'idle' | 'sent'
+  // Connecté : nom et email pré-remplis (la clé recrée le champ quand la session est connue)
+  const { user } = useAuth()
+  const [status, setStatus] = useState('idle') // 'idle' | 'sending' | 'sent' | 'error'
+  const [error, setError] = useState('')
 
-  const handleSubmit = (event) => {
+  const handleSubmit = async (event) => {
     event.preventDefault()
     const form = event.currentTarget
-    const data = Object.fromEntries(new FormData(form))
+    const { idea, email } = Object.fromEntries(new FormData(form))
 
-    // TODO : envoyer `data` à ton API ou à un service d'emails (EmailJS, Formspree...)
-    console.log('Trip idea:', data)
-
-    setStatus('sent')
-    form.reset()
+    setStatus('sending')
+    try {
+      await sendRequest('trip', { email, subject: 'Trip idea', message: idea })
+      setStatus('sent')
+      form.reset()
+    } catch (err) {
+      setError(err.message)
+      setStatus('error')
+    }
   }
 
   return (
@@ -338,10 +347,11 @@ function Cta() {
         <textarea id="trip-idea" name="idea" rows={4} required placeholder="When, where, with whom, and what you would love to do…" className="w-full rounded-3xl bg-white px-6 py-4 text-sm md:text-base text-slate-800 placeholder:text-slate-500 resize-y focus:outline-none" />
         <div className="flex flex-col sm:flex-row gap-2 rounded-3xl sm:rounded-full bg-white p-2 sm:pl-6">
           <label htmlFor="trip-email" className="sr-only">Your email</label>
-          <input id="trip-email" name="email" type="email" required placeholder="Your email" className="flex-1 min-w-0 bg-transparent px-4 py-2 sm:px-0 text-sm md:text-base text-slate-800 placeholder:text-slate-500 focus:outline-none" />
-          <button type="submit" className={`shrink-0 bg-[#C49849] hover:bg-[#b08339] text-white ${BUTTON}`}>Send My Idea</button>
+          <input id="trip-email" name="email" key={`e-${user?.id}`} defaultValue={user?.email} type="email" required placeholder="Your email" className="flex-1 min-w-0 bg-transparent px-4 py-2 sm:px-0 text-sm md:text-base text-slate-800 placeholder:text-slate-500 focus:outline-none" />
+          <button type="submit" disabled={status === 'sending'} className={`shrink-0 bg-[#C49849] hover:bg-[#b08339] text-white disabled:opacity-60 disabled:cursor-wait ${BUTTON}`}>{status === 'sending' ? 'Sending…' : 'Send My Idea'}</button>
         </div>
         {status === 'sent' && <p role="status" className="text-sm md:text-base text-[#E6C58A]">Thank you! A planner will get back to you soon.</p>}
+        {status === 'error' && <p role="alert" className="text-sm md:text-base text-red-300">{error}</p>}
       </form>
     </div>
   )

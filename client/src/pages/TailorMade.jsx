@@ -9,6 +9,8 @@ import Deux from '../assets/images/2.jpg'
 import Tana from '../assets/images/Tana.png'
 import Navbar from '../components/Navbar'
 import Footer from '../components/Footer'
+import { sendTailorMade } from '../api'
+import { useAuth } from '../context/AuthContext'
 
 gsap.registerPlugin(ScrollTrigger)
 
@@ -178,6 +180,8 @@ function Hero() {
 }
 
 function Builder({ form, setForm }) {
+  // Connecté : nom et email pré-remplis (la clé recrée le champ quand la session est connue)
+  const { user } = useAuth()
   const [step, setStep] = useState(0)
   const [sent, setSent] = useState(false)
   const root = useRef(null)
@@ -190,11 +194,23 @@ function Builder({ form, setForm }) {
   const toggle = (id) => set('interests', form.interests.includes(id) ? form.interests.filter((x) => x !== id) : [...form.interests, id])
   const titles = ['Your interests', 'Time', 'Your style', 'Your details']
 
-  const submit = (e) => {
+  const [sending, setSending] = useState(false)
+  const [error, setError] = useState('')
+
+  const submit = async (e) => {
     e.preventDefault()
     const payload = { ...form, ...Object.fromEntries(new FormData(e.currentTarget)) }
-    console.log('Tailor-made request:', payload)
-    setSent(true)
+
+    setSending(true)
+    setError('')
+    try {
+      await sendTailorMade(payload)
+      setSent(true)
+    } catch (err) {
+      setError(err.message)
+    } finally {
+      setSending(false)
+    }
   }
 
   const summary = [
@@ -327,10 +343,10 @@ function Builder({ form, setForm }) {
               <form id="tailor-form" onSubmit={submit} className="step-pane mt-8 flex flex-col gap-5">
                 <h2 className={H2}>Where do we send your proposal?</h2>
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
-                  <div><label htmlFor="t-name" className={LABEL}>Name</label><input id="t-name" name="name" required autoComplete="name" className={FIELD} /></div>
+                  <div><label htmlFor="t-name" className={LABEL}>Name</label><input id="t-name" name="name" key={`n-${user?.id}`} defaultValue={user?.name} required autoComplete="name" className={FIELD} /></div>
                   <div><label htmlFor="t-phone" className={LABEL}>Phone (optional)</label><input id="t-phone" name="phone" type="tel" autoComplete="tel" className={FIELD} /></div>
                 </div>
-                <div><label htmlFor="t-email" className={LABEL}>Email address</label><input id="t-email" name="email" type="email" required autoComplete="email" className={FIELD} /></div>
+                <div><label htmlFor="t-email" className={LABEL}>Email address</label><input id="t-email" name="email" key={`e-${user?.id}`} defaultValue={user?.email} type="email" required autoComplete="email" className={FIELD} /></div>
                 <div>
                   <label htmlFor="t-notes" className={LABEL}>Anything else we should know?</label>
                   <textarea id="t-notes" name="notes" rows={4} className="w-full rounded-3xl border border-slate-300 bg-white px-5 py-3 text-base text-slate-800 focus:outline-none focus:border-slate-700 focus:ring-1 focus:ring-slate-700" />
@@ -343,9 +359,10 @@ function Builder({ form, setForm }) {
               {step < 3 ? (
                 <button type="button" onClick={() => setStep(step + 1)} disabled={step === 0 && form.interests.length === 0} className={`${BTN} bg-slate-800 hover:bg-slate-700 text-white`}>Next</button>
               ) : (
-                <button type="submit" form="tailor-form" className={`${BTN} ${GOLD} text-white`}>Send my wishes</button>
+                <button type="submit" form="tailor-form" disabled={sending} className={`${BTN} ${GOLD} text-white disabled:opacity-60 disabled:cursor-wait`}>{sending ? 'Sending…' : 'Send my wishes'}</button>
               )}
             </div>
+            {error && <p role="alert" className="mt-4 text-sm md:text-base text-red-700">{error}</p>}
           </>
         )}
       </div>

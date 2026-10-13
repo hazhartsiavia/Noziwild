@@ -3,6 +3,8 @@ import { useParams } from 'react-router-dom'
 import Navbar from '../components/Navbar'
 import Footer from '../components/Footer'
 import { destinations } from './destinationsData'
+import { sendRequest } from '../api'
+import { useAuth } from '../context/AuthContext'
 
 const W = 'w-[90vw] lg:max-w-[95vw]'
 const GOLD = 'bg-[#C49849] hover:bg-[#a9813a]'
@@ -22,6 +24,8 @@ const Icon = ({ name, className = 'w-6 h-6' }) => (
 )
 
 function BookingCard({ place, dest }) {
+  // Connecté : nom et email pré-remplis (la clé recrée le champ quand la session est connue)
+  const { user } = useAuth()
   const [tab, setTab] = useState('booking')
   const [guests, setGuests] = useState(1)
   const [date, setDate] = useState('')
@@ -30,12 +34,25 @@ function BookingCard({ place, dest }) {
   const bookHref = `/contact?place=${encodeURIComponent(place.name)}&guests=${guests}${date ? `&date=${date}` : ''}`
   const tabCls = (t) => `flex-1 rounded-full py-3 text-sm md:text-base font-medium transition ${tab === t ? 'bg-slate-800 text-white' : 'text-slate-700 hover:bg-slate-100'}`
 
-  const submitInquiry = (e) => {
+  const [sending, setSending] = useState(false)
+  const [error, setError] = useState('')
+
+  const submitInquiry = async (e) => {
     e.preventDefault()
-    // TODO : envoyer les données à votre API ou service d'emails
-    console.log('Inquiry:', { place: place.name, ...Object.fromEntries(new FormData(e.currentTarget)) })
-    setSent(true)
-    e.currentTarget.reset()
+    const form = e.currentTarget
+    const { name, email, message } = Object.fromEntries(new FormData(form))
+
+    setSending(true)
+    setError('')
+    try {
+      await sendRequest('place', { name, email, message, subject: place.name })
+      setSent(true)
+      form.reset()
+    } catch (err) {
+      setError(err.message)
+    } finally {
+      setSending(false)
+    }
   }
 
   return (
@@ -74,11 +91,12 @@ function BookingCard({ place, dest }) {
         </div>
       ) : (
         <form onSubmit={submitInquiry} className="mt-6 flex flex-col gap-4">
-          <input name="name" required placeholder="Your name" aria-label="Your name" className={FIELD} />
-          <input name="email" type="email" required placeholder="Email address" aria-label="Email address" className={FIELD} />
+          <input name="name" key={`n-${user?.id}`} defaultValue={user?.name} required placeholder="Your name" aria-label="Your name" className={FIELD} />
+          <input name="email" key={`e-${user?.id}`} defaultValue={user?.email} type="email" required placeholder="Email address" aria-label="Email address" className={FIELD} />
           <textarea name="message" rows={4} required placeholder="Your questions" aria-label="Your questions" className="w-full rounded-3xl border border-slate-300 px-5 py-3 text-base focus:outline-none focus:border-slate-700 focus:ring-1 focus:ring-slate-700" />
-          <button type="submit" className={`${BTN} ${GOLD} text-white w-full`}>Send inquiry</button>
+          <button type="submit" disabled={sending} className={`${BTN} ${GOLD} text-white w-full disabled:opacity-60 disabled:cursor-wait`}>{sending ? 'Sending…' : 'Send inquiry'}</button>
           {sent && <p role="status" className="text-sm text-emerald-700">Thank you! We will reply within one working day.</p>}
+          {error && <p role="alert" className="text-sm text-red-700">{error}</p>}
         </form>
       )}
     </aside>
