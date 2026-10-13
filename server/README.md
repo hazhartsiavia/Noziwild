@@ -56,6 +56,22 @@ curl http://localhost:5002/api/admin/contacts -H "Authorization: Bearer TON_TOKE
 
 Les formulaires sont limités à 20 envois par adresse IP toutes les 10 minutes.
 
+## Espace admin du site (/admin)
+
+Le site a un espace d'administration sur `/admin`, réservé aux comptes `admin` :
+
+- **Circuits** : publier / masquer, changer l'ordre, créer, modifier (textes, photos, itinéraire jour par jour), supprimer.
+- **Inbox** : demandes reçues (formulaires, demandes de circuits, sur-mesure, contact), newsletter, comptes.
+
+Pour donner l'accès à un compte (il doit d'abord exister : inscription sur `/register` ou connexion Google) :
+
+```bash
+npm run make-admin -- ton.email@exemple.com
+npm run make-admin -- ton.email@exemple.com --remove   # retirer l'accès
+```
+
+Le rôle est relu à chaque requête : il suffit de recharger la page, pas besoin de se reconnecter.
+
 ## Circuits
 
 Les circuits (textes, prix, itinéraire jour par jour, photos) sont dans MySQL :
@@ -70,7 +86,9 @@ Au premier `npm run db:init`, les 6 circuits de `sql/circuits.seed.json` sont aj
 | GET | `/api/admin/circuits/:slug` | Détail d'un circuit, même non publié |
 | POST | `/api/admin/circuits` | Crée un circuit |
 | PUT | `/api/admin/circuits/:slug` | Remplace un circuit (le slug peut changer) |
+| PATCH | `/api/admin/circuits/:slug` | Réglages rapides : `isPublished`, `sortOrder` |
 | DELETE | `/api/admin/circuits/:slug` | Supprime un circuit et ses jours |
+| GET | `/api/admin/uploads` | Bibliothèque : toutes les photos disponibles |
 | POST | `/api/admin/uploads` | Envoie une photo (champ `image`, JPEG/PNG/WebP, 8 Mo max) et renvoie son chemin |
 
 Les routes `/api/admin/...` demandent un compte `admin` ou l'en-tête `Authorization: Bearer <ADMIN_TOKEN>`.

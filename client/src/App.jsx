@@ -1,4 +1,4 @@
-import { Routes, Route } from "react-router-dom";
+import { Routes, Route, Navigate } from "react-router-dom";
 import Home from "./pages/Home";
 import Blog from "./pages/Blog";
 import About from "./pages/About";
@@ -25,6 +25,10 @@ import Auth from "./pages/Auth";
 import Account from "./pages/Account";
 import ForgotPassword from "./pages/ForgotPassword";
 import ResetPassword from "./pages/ResetPassword";
+import AdminLayout from "./pages/admin/AdminLayout";
+import AdminCircuits from "./pages/admin/AdminCircuits";
+import CircuitEditor from "./pages/admin/CircuitEditor";
+import AdminInbox from "./pages/admin/AdminInbox";
 
 function App() {
   return (
@@ -56,6 +60,13 @@ function App() {
       <Route path="/forgot-password" element={<ForgotPassword />} />
       <Route path="/reset-password" element={<ResetPassword />} />
       <Route path="/account" element={<Account />} />
+      <Route path="/admin" element={<AdminLayout />}>
+        <Route index element={<Navigate to="circuits" replace />} />
+        <Route path="circuits" element={<AdminCircuits />} />
+        <Route path="circuits/new" element={<CircuitEditor key="new" />} />
+        <Route path="circuits/:slug" element={<CircuitEditor />} />
+        <Route path="inbox" element={<AdminInbox />} />
+      </Route>
     </Routes>
   );
 }

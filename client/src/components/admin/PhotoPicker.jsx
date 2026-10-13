@@ -34,10 +34,12 @@ function PhotoLibrary({ selected, max, onConfirm, onClose }) {
     }
   }, [onClose])
 
-  const toggle = (path) => {
-    if (picked.includes(path)) setPicked(picked.filter((p) => p !== path))
-    else if (picked.length < room) setPicked([...picked, path])
-  }
+  // Forme fonctionnelle : deux clics rapides ne s'écrasent pas
+  const toggle = (path) =>
+    setPicked((current) => {
+      if (current.includes(path)) return current.filter((p) => p !== path)
+      return current.length < room ? [...current, path] : current
+    })
 
   return (
     <div role="dialog" aria-modal="true" aria-labelledby="library-title" className="fixed inset-0 z-50 flex items-center justify-center bg-slate-950/70 p-4" onClick={onClose}>
@@ -133,7 +135,7 @@ function PhotoPicker({ label, photos, onChange, max = 6, error, hint }) {
   return (
     <fieldset>
       <legend className="mb-2 text-sm text-slate-700">{label}</legend>
-      <ul className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-3">
+      <ul className="grid grid-cols-[repeat(auto-fill,minmax(140px,1fr))] gap-3">
         {photos.map((path, i) => (
           <li key={`${path}-${i}`} className="relative overflow-hidden rounded-xl bg-slate-100">
             <img src={assetUrl(path)} alt="" loading="lazy" className="aspect-[4/3] w-full object-cover" />

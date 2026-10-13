@@ -422,6 +422,11 @@ function Account() {
         <DeleteCard user={user} onDeleted={handleDeleted} />
 
         <div className="w-[90vw] max-w-3xl flex flex-col sm:flex-row gap-3">
+          {user.role === 'admin' && (
+            <Link to="/admin" className={`text-center bg-slate-800 hover:bg-slate-700 active:scale-95 transition text-white ${BUTTON}`}>
+              Admin
+            </Link>
+          )}
           <Link to="/tailor-made" className={`text-center bg-[#C49849] hover:bg-[#b08339] active:scale-95 transition text-white ${BUTTON}`}>
             Plan a trip
           </Link>
