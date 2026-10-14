@@ -197,7 +197,7 @@ Les deux commandes sont à la racine du dépôt :
 | Réglage | Valeur |
 |---|---|
 | Dossier racine | la racine du dépôt (pas `client/`) |
-| Version de Node | 20 ou plus |
+| Version de Node | 22 (Vite 8 demande au moins 22.12 ou 20.19) |
 | Commande de build | `npm run build` (installe et construit le site, installe l'API) |
 | Commande de démarrage | `npm start` (fichier d'entrée : `server/src/server.js`) |
 
