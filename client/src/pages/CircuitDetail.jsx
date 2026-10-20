@@ -8,6 +8,7 @@ import Footer from '../components/Footer'
 import { sendRequest, fetchCircuit, assetUrl } from '../api'
 import { formatPrice } from '../utils/format'
 import { useAuth } from '../context/AuthContext'
+import { Trans, useLanguage, useT } from '../i18n/LanguageContext'
 
 gsap.registerPlugin(ScrollTrigger)
 
@@ -87,7 +88,8 @@ function Lightbox({ photos, index, title, onClose, onMove }) {
     }
   }, [onClose, onMove])
 
-  const label = `${title}, photo ${index + 1} of ${photos.length}`
+  const t = useT('circuitDetail')
+  const label = t('photoOf', { title, n: index + 1, total: photos.length })
   const navBtn = 'absolute top-1/2 -translate-y-1/2 flex w-11 h-11 md:w-12 md:h-12 items-center justify-center rounded-full bg-white/90 text-slate-900 hover:bg-white transition'
 
   return (
@@ -104,14 +106,14 @@ function Lightbox({ photos, index, title, onClose, onMove }) {
           <span>{title}</span>
           <span aria-hidden="true">{index + 1} / {photos.length}</span>
         </figcaption>
-        <button type="button" aria-label="Previous photo" onClick={() => onMove(-1)} className={`${navBtn} left-2 md:-left-6`}>
+        <button type="button" aria-label={t('previousPhoto')} onClick={() => onMove(-1)} className={`${navBtn} left-2 md:-left-6`}>
           <Icon name="left" className="w-5 h-5" />
         </button>
-        <button type="button" aria-label="Next photo" onClick={() => onMove(1)} className={`${navBtn} right-2 md:-right-6`}>
+        <button type="button" aria-label={t('nextPhoto')} onClick={() => onMove(1)} className={`${navBtn} right-2 md:-right-6`}>
           <Icon name="right" className="w-5 h-5" />
         </button>
       </figure>
-      <button ref={closeRef} type="button" aria-label="Close" onClick={onClose} className="absolute right-4 top-4 flex w-11 h-11 items-center justify-center rounded-full bg-white/10 text-white hover:bg-white/20 transition">
+      <button ref={closeRef} type="button" aria-label={t('close')} onClick={onClose} className="absolute right-4 top-4 flex w-11 h-11 items-center justify-center rounded-full bg-white/10 text-white hover:bg-white/20 transition">
         <Icon name="cross" className="w-6 h-6" />
       </button>
     </div>
@@ -136,6 +138,7 @@ function Endpoint({ icon, label, place }) {
 
 function Itinerary({ circuit }) {
   const root = useRef(null)
+  const t = useT('circuitDetail')
   // Le premier jour est ouvert, comme une invitation à déplier la suite
   const [open, setOpen] = useState(() => new Set([0]))
   const allOpen = open.size === circuit.itinerary.length
@@ -215,13 +218,13 @@ function Itinerary({ circuit }) {
   return (
     <section ref={root} className="mt-14 md:mt-16" aria-labelledby="itinerary-title">
       <div className="flex flex-wrap items-end justify-between gap-4">
-        <h2 id="itinerary-title" className={`gs-title ${H2}`}>Itinerary</h2>
+        <h2 id="itinerary-title" className={`gs-title ${H2}`}>{t('itinerary')}</h2>
         <button
           type="button"
           onClick={() => setOpen(allOpen ? new Set() : new Set(circuit.itinerary.map((_, i) => i)))}
           className="text-sm md:text-base font-medium text-[#a9813a] hover:underline"
         >
-          {allOpen ? 'Collapse all days' : 'Expand all days'}
+          {allOpen ? t('collapseAll') : t('expandAll')}
         </button>
       </div>
 
@@ -234,7 +237,7 @@ function Itinerary({ circuit }) {
         </span>
 
         <ol className="relative flex flex-col gap-4">
-          <Endpoint icon="flag" label="Starting location:" place={circuit.start} />
+          <Endpoint icon="flag" label={t('start')} place={circuit.start} />
 
           {circuit.itinerary.map((step, i) => {
             const isOpen = open.has(i)
@@ -262,7 +265,7 @@ function Itinerary({ circuit }) {
                       <div className="px-5 pb-5 md:px-6 md:pb-6">
                         <p className="text-sm md:text-base text-slate-700 leading-relaxed">{step.text}</p>
                         <div className="mt-4 flex flex-wrap gap-x-6 gap-y-2 text-xs sm:text-sm text-slate-600">
-                          {step.stay && <span className="flex items-center gap-2"><Icon name="bed" className="w-4 h-4 text-[#a9813a]" />Night in {step.stay}</span>}
+                          {step.stay && <span className="flex items-center gap-2"><Icon name="bed" className="w-4 h-4 text-[#a9813a]" />{t('nightIn', { place: step.stay })}</span>}
                           {step.meals && <span className="flex items-center gap-2"><Icon name="meal" className="w-4 h-4 text-[#a9813a]" />{step.meals}</span>}
                         </div>
                         {step.images?.length > 0 && (
@@ -272,7 +275,7 @@ function Itinerary({ circuit }) {
                                 <button
                                   type="button"
                                   onClick={() => setViewer({ step: i, index: n })}
-                                  aria-label={`Enlarge photo ${n + 1} of ${step.images.length}: ${step.title}`}
+                                  aria-label={t('enlarge', { n: n + 1, total: step.images.length, title: step.title })}
                                   className="group relative block w-full aspect-[4/3] overflow-hidden rounded-xl sm:rounded-2xl focus:outline-none focus-visible:ring-2 focus-visible:ring-slate-700 focus-visible:ring-offset-2"
                                 >
                                   <img src={assetUrl(src)} alt="" loading="lazy" className="absolute inset-0 w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" />
@@ -292,7 +295,7 @@ function Itinerary({ circuit }) {
             )
           })}
 
-          <Endpoint icon="pin" label="Arrive back at:" place={circuit.end} />
+          <Endpoint icon="pin" label={t('end')} place={circuit.end} />
         </ol>
       </div>
 
@@ -315,6 +318,8 @@ function Itinerary({ circuit }) {
 function BookingCard({ circuit }) {
   // Connecté : nom et email pré-remplis (la clé recrée le champ quand la session est connue)
   const { user } = useAuth()
+  const t = useT('circuitDetail')
+  const { lang } = useLanguage()
   const [tab, setTab] = useState('booking')
   const [travellers, setTravellers] = useState(2)
   const [date, setDate] = useState('')
@@ -347,61 +352,61 @@ function BookingCard({ circuit }) {
     }
   }
 
-  const tabCls = (t) => `flex-1 rounded-full py-3 text-sm md:text-base font-medium transition ${tab === t ? 'bg-slate-800 text-white' : 'text-slate-700 hover:bg-slate-100'}`
+  const tabCls = (name) => `flex-1 rounded-full py-3 text-sm md:text-base font-medium transition ${tab === name ? 'bg-slate-800 text-white' : 'text-slate-700 hover:bg-slate-100'}`
 
   return (
     <aside id="booking" className="booking-card scroll-mt-6 rounded-3xl bg-white p-6 md:p-8 lg:sticky lg:top-6 self-start shadow-sm">
-      <p className="text-lg text-slate-800">Price</p>
+      <p className="text-lg text-slate-800">{t('price')}</p>
       <p className="mt-2 text-slate-600">
-        From <span className="gs-price text-3xl md:text-4xl font-semibold text-slate-900 tabular-nums">{formatPrice(circuit.price)}</span>
+        {t('from')} <span className="gs-price text-3xl md:text-4xl font-semibold text-slate-900 tabular-nums">{formatPrice(circuit.price, lang)}</span>
       </p>
-      <p className="mt-1 text-sm text-slate-500">Per person, based on two travellers sharing</p>
+      <p className="mt-1 text-sm text-slate-500">{t('perPerson')}</p>
 
-      <div className="mt-6 flex gap-1 rounded-full border border-slate-200 p-1" role="tablist" aria-label="Booking options">
-        <button type="button" role="tab" aria-selected={tab === 'booking'} onClick={() => switchTab('booking')} className={tabCls('booking')}>Booking</button>
-        <button type="button" role="tab" aria-selected={tab === 'inquiry'} onClick={() => switchTab('inquiry')} className={tabCls('inquiry')}>Inquiry Form</button>
+      <div className="mt-6 flex gap-1 rounded-full border border-slate-200 p-1" role="tablist" aria-label={t('bookingOptions')}>
+        <button type="button" role="tab" aria-selected={tab === 'booking'} onClick={() => switchTab('booking')} className={tabCls('booking')}>{t('booking')}</button>
+        <button type="button" role="tab" aria-selected={tab === 'inquiry'} onClick={() => switchTab('inquiry')} className={tabCls('inquiry')}>{t('inquiry')}</button>
       </div>
 
       <form onSubmit={submit} className="mt-6 flex flex-col gap-5">
         {tab === 'booking' && (
           <>
             <div>
-              <label htmlFor="circuit-date" className={LABEL}>Start date</label>
+              <label htmlFor="circuit-date" className={LABEL}>{t('startDate')}</label>
               <input id="circuit-date" type="date" min={today} value={date} onChange={(e) => setDate(e.target.value)} className={FIELD} />
             </div>
             <div>
-              <p className={LABEL} id="travellers-label">Number of travellers</p>
+              <p className={LABEL} id="travellers-label">{t('travellers')}</p>
               <div className="flex items-center justify-between rounded-full bg-[#D5E8E2] px-2 py-2" role="group" aria-labelledby="travellers-label">
-                <button type="button" aria-label="Fewer travellers" onClick={() => setTravellers(Math.max(1, travellers - 1))} disabled={travellers <= 1} className="w-10 h-10 rounded-full bg-white text-xl text-slate-800 hover:bg-slate-100 disabled:opacity-40">−</button>
+                <button type="button" aria-label={t('fewer')} onClick={() => setTravellers(Math.max(1, travellers - 1))} disabled={travellers <= 1} className="w-10 h-10 rounded-full bg-white text-xl text-slate-800 hover:bg-slate-100 disabled:opacity-40">−</button>
                 <span className="text-lg font-medium text-slate-900" aria-live="polite">{travellers}</span>
-                <button type="button" aria-label="More travellers" onClick={() => setTravellers(Math.min(12, travellers + 1))} disabled={travellers >= 12} className="w-10 h-10 rounded-full bg-white text-xl text-slate-800 hover:bg-slate-100 disabled:opacity-40">+</button>
+                <button type="button" aria-label={t('more')} onClick={() => setTravellers(Math.min(12, travellers + 1))} disabled={travellers >= 12} className="w-10 h-10 rounded-full bg-white text-xl text-slate-800 hover:bg-slate-100 disabled:opacity-40">+</button>
               </div>
             </div>
             <p className="flex justify-between border-t border-slate-200 pt-4 text-base text-slate-700">
-              <span>Estimated total</span><span className="font-semibold text-slate-900">{formatPrice(total)}</span>
+              <span>{t('total')}</span><span className="font-semibold text-slate-900">{formatPrice(total, lang)}</span>
             </p>
           </>
         )}
 
-        <input name="name" key={`n-${user?.id}`} defaultValue={user?.name} required autoComplete="name" placeholder="Your name" aria-label="Your name" className={FIELD} />
-        <input name="email" key={`e-${user?.id}`} defaultValue={user?.email} type="email" required autoComplete="email" placeholder="Email address" aria-label="Email address" className={FIELD} />
+        <input name="name" key={`n-${user?.id}`} defaultValue={user?.name} required autoComplete="name" placeholder={t('name')} aria-label={t('name')} className={FIELD} />
+        <input name="email" key={`e-${user?.id}`} defaultValue={user?.email} type="email" required autoComplete="email" placeholder={t('email')} aria-label={t('email')} className={FIELD} />
         {tab === 'inquiry' && (
-          <textarea name="question" rows={4} required placeholder="Your questions about this circuit" aria-label="Your questions about this circuit" className="w-full rounded-3xl border border-slate-300 px-5 py-3 text-base focus:outline-none focus:border-slate-700 focus:ring-1 focus:ring-slate-700" />
+          <textarea name="question" rows={4} required placeholder={t('question')} aria-label={t('question')} className="w-full rounded-3xl border border-slate-300 px-5 py-3 text-base focus:outline-none focus:border-slate-700 focus:ring-1 focus:ring-slate-700" />
         )}
 
         <button type="submit" disabled={status === 'sending'} className={`${BTN} w-full text-white disabled:opacity-60 disabled:cursor-wait ${tab === 'booking' ? 'bg-slate-800 hover:bg-slate-700' : GOLD}`}>
-          {status === 'sending' ? 'Sending…' : tab === 'booking' ? 'Request this circuit' : 'Send inquiry'}
+          {status === 'sending' ? t('sending') : tab === 'booking' ? t('request') : t('send')}
         </button>
 
         {status === 'sent' && (
           <p role="status" className="text-sm text-emerald-700">
-            Thank you! A travel expert will reply within one working day.
-            {user && <> You can follow it in <Link to="/account" className="font-medium underline">your account</Link>.</>}
+            {t('thanks')}
+            {user && <> <Trans text={t('follow')} values={{ link: <Link to="/account" className="font-medium underline">{t('followLink')}</Link> }} /></>}
           </p>
         )}
         {status === 'error' && <p role="alert" className="text-sm text-red-700">{error}</p>}
         {tab === 'booking' && status !== 'sent' && (
-          <p className="text-xs text-slate-500 text-center">No payment now. We confirm availability and the final price first.</p>
+          <p className="text-xs text-slate-500 text-center">{t('noPayment')}</p>
         )}
       </form>
     </aside>
@@ -412,6 +417,8 @@ function BookingCard({ circuit }) {
    BARRE MOBILE : prix toujours visible, cachée quand la carte de réservation est à l'écran
 ============================================================ */
 function MobileBookingBar({ circuit }) {
+  const t = useT('circuitDetail')
+  const { lang } = useLanguage()
   const [cardVisible, setCardVisible] = useState(false)
 
   useEffect(() => {
@@ -429,7 +436,7 @@ function MobileBookingBar({ circuit }) {
     >
       <div className="mx-auto flex max-w-xl items-center justify-between gap-4">
         <p className="text-sm text-slate-600">
-          From <span className="text-xl font-semibold text-slate-900">{formatPrice(circuit.price)}</span> / person
+          <Trans text={t('fromPerPerson')} values={{ price: <span className="text-xl font-semibold text-slate-900">{formatPrice(circuit.price, lang)}</span> }} />
         </p>
         <button
           type="button"
@@ -437,7 +444,7 @@ function MobileBookingBar({ circuit }) {
           onClick={() => document.getElementById('booking')?.scrollIntoView({ behavior: 'smooth' })}
           className={`${BTN} bg-slate-800 hover:bg-slate-700 text-white`}
         >
-          Book now
+          {t('bookNow')}
         </button>
       </div>
     </div>
@@ -449,6 +456,8 @@ function MobileBookingBar({ circuit }) {
 ============================================================ */
 function CircuitDetail() {
   const { slug } = useParams()
+  const t = useT('circuitDetail')
+  const { lang } = useLanguage()
   // Réponse de l'API pour un slug : { slug, status: 'ready' | 'notfound' | 'error', circuit, related }.
   // Tant qu'elle ne correspond pas au slug de l'adresse, la page est en chargement.
   const [response, setResponse] = useState(null)
@@ -463,13 +472,13 @@ function CircuitDetail() {
 
   useEffect(() => {
     let cancelled = false
-    fetchCircuit(slug)
+    fetchCircuit(slug, lang)
       .then(({ circuit: c, related: r }) => !cancelled && setResponse({ slug, status: 'ready', circuit: c, related: r }))
       .catch((err) => !cancelled && setResponse({ slug, status: err.status === 404 ? 'notfound' : 'error', circuit: null, related: [] }))
     return () => {
       cancelled = true
     }
-  }, [slug])
+  }, [slug, lang])
 
   // Passer d'un circuit à l'autre (liens "More Circuits") : on repart du haut de la page
   useLayoutEffect(() => {
@@ -541,11 +550,11 @@ function CircuitDetail() {
     gsap.to(counter, {
       value: circuit.price, duration: 1.4, ease: 'power2.out',
       scrollTrigger: once('.booking-card', 'top 90%'),
-      onUpdate: () => { priceEl.textContent = formatPrice(Math.round(counter.value)) },
+      onUpdate: () => { priceEl.textContent = formatPrice(Math.round(counter.value), lang) },
     })
     // À l'annulation (changement de circuit), le prix réel est remis
-    return () => { priceEl.textContent = formatPrice(circuit.price) }
-  }, [loadedSlug])
+    return () => { priceEl.textContent = formatPrice(circuit.price, lang) }
+  }, [loadedSlug, lang])
 
   // Autres circuits : arrivée par lots, photo qui se dézoome
   useGsap(more, () => {
@@ -569,7 +578,7 @@ function CircuitDetail() {
       <>
         <main className="w-full bg-[#D5E8E2] pb-24 flex flex-col items-center">
           <Navbar />
-          <section role="status" aria-label="Loading the circuit" className={`${W} mt-6 animate-pulse`}>
+          <section role="status" aria-label={t('loading')} className={`${W} mt-6 animate-pulse`}>
             <div className="h-4 w-64 rounded bg-white/70" />
             <div className="mt-6 h-14 md:h-20 w-full max-w-3xl rounded-2xl bg-white/70" />
             <div className="mt-4 h-6 w-full max-w-xl rounded bg-white/70" />
@@ -592,13 +601,13 @@ function CircuitDetail() {
         <main className="w-full bg-[#D5E8E2] pb-24 flex flex-col items-center">
           <Navbar />
           <section className={`${W} mt-16 rounded-3xl bg-white p-10 text-center`}>
-            <h1 className={H2}>{notFound ? 'This circuit was not found' : 'This circuit could not be loaded'}</h1>
-            {!notFound && <p className="mt-3 text-slate-600">Please check your connection and try again.</p>}
+            <h1 className={H2}>{notFound ? t('notFound') : t('loadError')}</h1>
+            {!notFound && <p className="mt-3 text-slate-600">{t('checkConnection')}</p>}
             <div className="mt-6 flex flex-wrap justify-center gap-3">
               {!notFound && (
-                <button type="button" onClick={() => window.location.reload()} className={`${BTN} ${GOLD} text-white`}>Try again</button>
+                <button type="button" onClick={() => window.location.reload()} className={`${BTN} ${GOLD} text-white`}>{t('tryAgain')}</button>
               )}
-              <Link to="/circuits" className={`${BTN} bg-slate-800 hover:bg-slate-700 text-white`}>All circuits</Link>
+              <Link to="/circuits" className={`${BTN} bg-slate-800 hover:bg-slate-700 text-white`}>{t('allCircuits')}</Link>
             </div>
           </section>
         </main>
@@ -608,10 +617,10 @@ function CircuitDetail() {
   }
 
   const meta = [
-    { icon: 'clock', label: 'Duration', value: `${circuit.days - 1} nights · ${circuit.days} days` },
-    { icon: 'users', label: 'Group size', value: circuit.groupSize },
-    { icon: 'compass', label: 'Tour type', value: circuit.tourType },
-    { icon: 'gauge', label: 'Level', value: circuit.level },
+    { icon: 'clock', label: t('duration'), value: t('durationValue', { nights: circuit.days - 1, days: circuit.days }) },
+    { icon: 'users', label: t('groupSize'), value: circuit.groupSize },
+    { icon: 'compass', label: t('tourType'), value: circuit.tourType },
+    { icon: 'gauge', label: t('level'), value: circuit.level },
   ]
 
   return (
@@ -622,14 +631,14 @@ function CircuitDetail() {
         {/* En-tête + galerie */}
         <section ref={header} className={`${W} mt-6`}>
           <nav aria-label="Breadcrumb" className="text-sm md:text-base text-slate-700">
-            <Link to="/" className="hover:underline">Home</Link> / <Link to="/circuits" className="hover:underline">Circuits</Link> / {circuit.title}
+            <Link to="/" className="hover:underline">{t('home')}</Link> / <Link to="/circuits" className="hover:underline">{t('circuits')}</Link> / {circuit.title}
           </nav>
           <h1 className="detail-title mt-5 text-4xl sm:text-5xl md:text-6xl xl:text-7xl font-semibold leading-[1.05] tracking-tight text-slate-900 max-w-5xl">{circuit.title}</h1>
           <p className="detail-meta mt-3 text-lg md:text-2xl text-slate-700 max-w-3xl">{circuit.summary}</p>
 
           <div className="detail-meta mt-5 flex flex-wrap items-center gap-x-8 gap-y-2 text-sm md:text-base text-slate-700">
             <span className="flex items-center gap-2"><Icon name="pin" className="w-5 h-5" />{circuit.stops}</span>
-            <span className="flex items-center gap-2"><Icon name="compass" className="w-5 h-5" />{circuit.region}, Madagascar</span>
+            <span className="flex items-center gap-2"><Icon name="compass" className="w-5 h-5" />{t('inMadagascar', { region: circuit.regionLabel || circuit.region })}</span>
           </div>
 
           <div className="mt-8 grid grid-cols-1 md:grid-cols-[1fr_1.5fr_1fr] gap-4 md:gap-6">
@@ -644,7 +653,7 @@ function CircuitDetail() {
         {/* Contenu + réservation */}
         <section ref={content} className={`${W} mt-12 md:mt-16 grid grid-cols-1 lg:grid-cols-[1.7fr_1fr] gap-10 lg:gap-16 items-start`}>
           <div className="min-w-0">
-            <h2 className={`gs-title ${H2}`}>Overview</h2>
+            <h2 className={`gs-title ${H2}`}>{t('overview')}</h2>
             <ul className="gs-meta mt-6 grid grid-cols-1 sm:grid-cols-2 gap-x-8 gap-y-5">
               {meta.map((m) => (
                 <li key={m.label} className="flex items-center gap-4 text-base md:text-lg text-slate-800">
@@ -658,7 +667,7 @@ function CircuitDetail() {
               {circuit.overview.map((p) => <p key={p} className="gs-text text-base md:text-lg text-slate-700 leading-relaxed">{p}</p>)}
             </div>
 
-            <h2 className={`gs-title ${H2} mt-12`}>Highlights</h2>
+            <h2 className={`gs-title ${H2} mt-12`}>{t('highlights')}</h2>
             <ul className="gs-bullets mt-6 flex flex-col gap-3 max-w-3xl">
               {circuit.highlights.map((h) => (
                 <li key={h} className="flex items-start gap-3 text-base md:text-lg text-slate-700">
@@ -669,8 +678,8 @@ function CircuitDetail() {
 
             <div className="mt-12 grid grid-cols-1 md:grid-cols-2 gap-5">
               {[
-                { title: 'Price includes', list: circuit.included, icon: 'check', color: 'text-emerald-700' },
-                { title: 'Price excludes', list: circuit.excluded, icon: 'cross', color: 'text-red-700' },
+                { title: t('includes'), list: circuit.included, icon: 'check', color: 'text-emerald-700' },
+                { title: t('excludes'), list: circuit.excluded, icon: 'cross', color: 'text-red-700' },
               ].map(({ title, list, icon, color }) => (
                 <div key={title} className="gs-incl rounded-3xl bg-white p-6 md:p-8">
                   <h3 className="text-xl font-medium text-slate-900">{title}</h3>
@@ -688,11 +697,11 @@ function CircuitDetail() {
             <Itinerary circuit={circuit} />
 
             <div className="gs-know mt-12 rounded-3xl bg-slate-900 text-white p-6 md:p-8">
-              <h3 className="text-xl font-medium">Good to know</h3>
+              <h3 className="text-xl font-medium">{t('goodToKnow')}</h3>
               <p className="mt-3 text-sm md:text-base text-white/75 leading-relaxed">
-                Best time: {circuit.bestTime}. {circuit.tip} Every circuit can be shortened, extended or combined with another one.
+                {circuit.bestTime && `${t('bestTime', { time: circuit.bestTime })} `}{circuit.tip} {t('adaptable')}
               </p>
-              <Link to="/tailor-made" className={`${BTN} ${GOLD} text-white mt-6`}>Adapt this circuit</Link>
+              <Link to="/tailor-made" className={`${BTN} ${GOLD} text-white mt-6`}>{t('adapt')}</Link>
             </div>
           </div>
 
@@ -703,8 +712,8 @@ function CircuitDetail() {
         {related.length > 0 && (
         <section ref={more} className={`${W} mt-16 md:mt-24`}>
           <div className="flex flex-wrap items-end justify-between gap-4">
-            <h2 className={`gs-title ${H2}`}>More Circuits</h2>
-            <Link to="/circuits" className="text-sm md:text-base font-medium text-[#a9813a] hover:underline">See all circuits</Link>
+            <h2 className={`gs-title ${H2}`}>{t('moreCircuits')}</h2>
+            <Link to="/circuits" className="text-sm md:text-base font-medium text-[#a9813a] hover:underline">{t('seeAll')}</Link>
           </div>
           <ul className="mt-8 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
             {related.map((c) => (
@@ -712,10 +721,10 @@ function CircuitDetail() {
                 <Link to={`/circuits/${c.slug}`} className="group relative block aspect-[4/3] overflow-hidden rounded-[1.5rem] text-white">
                   <img src={assetUrl(c.image)} alt="" className="absolute inset-0 w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" />
                   <div className="absolute inset-0 bg-gradient-to-t from-slate-950/85 via-slate-950/20 to-transparent" />
-                  <span className="absolute left-4 top-4 rounded-sm bg-[#C49849] px-3 py-1.5 text-xs sm:text-sm font-medium">{c.days} days</span>
+                  <span className="absolute left-4 top-4 rounded-sm bg-[#C49849] px-3 py-1.5 text-xs sm:text-sm font-medium">{t('days', { count: c.days })}</span>
                   <div className="absolute inset-x-0 bottom-0 p-5">
                     <p className="text-xl font-medium leading-snug">{c.title}</p>
-                    <p className="mt-1 text-sm text-white/80">From {formatPrice(c.price)}</p>
+                    <p className="mt-1 text-sm text-white/80">{t('fromPrice', { price: formatPrice(c.price, lang) })}</p>
                   </div>
                 </Link>
               </li>

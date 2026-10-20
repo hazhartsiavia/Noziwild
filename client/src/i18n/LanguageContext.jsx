@@ -109,3 +109,13 @@ export function useT(namespace) {
     [dictionary, namespace],
   )
 }
+
+// Phrase traduite contenant des éléments React (lien, montant en gras...) :
+//   <Trans text={t('follow')} values={{ link: <Link to="/account">{t('account')}</Link> }} />
+// avec "follow": "Suivez-la dans {link}." : l'ordre des mots reste celui de chaque langue.
+export function Trans({ text, values }) {
+  const parts = String(text).split(/\{(\w+)\}/g)
+  return parts.map((part, i) =>
+    i % 2 === 1 ? <React.Fragment key={i}>{part in values ? values[part] : `{${part}}`}</React.Fragment> : part,
+  )
+}
