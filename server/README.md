@@ -116,6 +116,33 @@ Champs d'un circuit : `slug`, `title`, `region`, `days`, `level`, `price` (euros
 
 Les réservations et questions envoyées depuis une page circuit arrivent dans `quick_requests` (type `circuit`).
 
+## Langues du site
+
+Le site public existe en anglais, français, allemand, italien et espagnol. Le visiteur choisit la langue
+dans la barre du haut ; elle est gardée dans son navigateur (à la première visite : la langue du navigateur).
+Les adresses des pages ne changent pas. L'espace `/admin` reste en une seule langue.
+
+**Textes des pages** : `client/src/i18n/locales/<langue>/<page>.json` (`en`, `fr`, `de`, `it`, `es`).
+L'anglais est la référence : un texte absent dans une langue s'affiche en anglais.
+Après avoir ajouté ou modifié un texte, vérifier qu'il existe dans toutes les langues :
+
+```bash
+cd client
+npm run i18n:check
+```
+
+**Circuits** : la version anglaise est dans les champs habituels, les autres langues dans la colonne
+`circuits.translations` (JSON, par langue : mêmes champs que le circuit + `itinerary[]` jour par jour).
+Dans l'admin, l'onglet *Traductions* de l'éditeur de circuit permet de les remplir ; un champ vide
+s'affiche en anglais. L'API publique prend la langue en paramètre : `/api/circuits?lang=fr`,
+`/api/circuits/:slug?lang=de`.
+
+Les traductions des 6 circuits de départ sont dans `sql/circuits.translations/<langue>.json` ;
+`npm run db:init` (et le démarrage du serveur) les ajoute aux circuits de départ qui n'en ont pas encore,
+sans toucher aux traductions déjà saisies dans l'admin.
+
+Les informations envoyées à l'équipe (formulaires, réservations) restent en anglais, quelle que soit la langue du visiteur.
+
 ## Authentification
 
 | Méthode | Route | Corps JSON | Rôle |

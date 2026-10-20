@@ -65,7 +65,7 @@ export default function LanguageSwitcher({ className = '' }) {
         onClick={() => setOpen((v) => !v)}
         aria-haspopup="listbox"
         aria-expanded={open}
-        aria-label={`${t('language')} : ${current.label}`}
+        aria-label={`${t('language')} (${current.label})`}
         className="flex items-center gap-1.5 rounded-full px-2 py-1.5 text-[14px] font-medium text-zinc-700 transition hover:text-zinc-900"
       >
         <Globe />
