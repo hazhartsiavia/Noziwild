@@ -26,7 +26,7 @@ server/
 ├── sql/schema.sql              Tables MySQL
 ├── sql/circuits.seed.json      Circuits de départ (chargés par db:init si la table est vide)
 ├── uploads/circuits/           Photos des circuits de départ (servies sur /uploads/...)
-├── uploads/files/              Photos envoyées par l'admin (hors git)
+├── uploads/files/              Photos envoyées par l'admin (hors git ; dossier réglable, voir UPLOADS_FILES_DIR)
 └── src/
     ├── server.js               Point d'entrée (Express, CORS, JSON)
     ├── config/db.js            Connexion MySQL (pool)
@@ -212,6 +212,7 @@ Variables d'environnement à définir dans le panneau de l'hébergeur (pas de fi
 | `COOKIE_SECURE` | `true` |
 | `GOOGLE_CLIENT_ID` | le même que en local |
 | `SMTP_*`, `MAIL_FROM` | pour les emails « mot de passe oublié » (sinon, liens seulement dans les journaux) |
+| `UPLOADS_FILES_DIR` | facultatif : dossier des photos envoyées depuis l'admin, **hors** du dossier déployé (voir ci-dessous) |
 
 ```bash
 # Générer une chaîne aléatoire pour JWT_SECRET ou ADMIN_TOKEN
@@ -219,7 +220,7 @@ node -e "console.log(require('crypto').randomBytes(48).toString('hex'))"
 ```
 
 Au démarrage, le serveur crée les tables et les 6 circuits de départ si la base est vide.
-Vérification : `https://ton-site/api/health` doit répondre `{"ok":true,"database":"connected"}`.
+Vérification : `https://ton-site/api/health` doit répondre `{"ok":true,"database":"connected","uploads":"persistent"}`.
 
 Sans accès en ligne de commande, pour donner le rôle admin, dans phpMyAdmin :
 
@@ -230,9 +231,21 @@ UPDATE users SET role = 'admin' WHERE email = 'ton.email@exemple.com';
 Connexion Google en ligne : ajouter l'adresse publique (`https://...`) dans
 **Origines JavaScript autorisées** du client OAuth (console Google Cloud).
 
-Attention : les photos envoyées depuis l'admin sont rangées dans `server/uploads/files/` sur le serveur.
-Si l'hébergeur repart du dépôt GitHub à chaque déploiement, vérifiez qu'il conserve ce dossier,
-sinon ces photos seront perdues (les photos de départ, elles, sont dans le dépôt).
+### Photos envoyées depuis l'admin
+
+Elles sont servies sur `/uploads/files/...` mais ne sont pas dans le dépôt : elles doivent vivre
+dans un dossier que les déploiements n'effacent pas. Le serveur choisit, dans l'ordre :
+
+1. `UPLOADS_FILES_DIR` s'il est défini (chemin absolu, ou relatif au dossier `server/`) ;
+2. chez Hostinger, détecté tout seul (chaque déploiement arrive dans un dossier neuf
+   `<domaine>/hbuilds/versions/<id>/`) : `<domaine>/noziwild-uploads`, à côté de `hbuilds/`.
+   Au démarrage, les photos restées dans les anciennes versions y sont recopiées ;
+3. sinon `server/uploads/files/` (en local).
+
+Le dossier est créé au démarrage. `/api/health` indique `"uploads"` : `"persistent"` (hors du dossier
+de l'application, conservé), `"local"` (dans `server/`, perdu si l'hébergeur repart du dépôt) ou `"not writable"`.
+Sur un autre hébergeur qui repart du dépôt à chaque déploiement, définir `UPLOADS_FILES_DIR`
+vers un dossier persistant. Les photos de départ (`uploads/circuits/`) sont dans le dépôt.
 
 Si un jour l'API est sur un autre domaine que le site : `VITE_API_URL` côté client,
 et `COOKIE_SAMESITE=none` côté serveur.

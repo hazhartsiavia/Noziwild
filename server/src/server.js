@@ -7,7 +7,7 @@ import cookieParser from 'cookie-parser'
 import routes from './routes/index.js'
 import { notFound, errorHandler } from './middlewares/errorHandler.js'
 import { checkOrigin, isAllowedOrigin } from './middlewares/checkOrigin.js'
-import { UPLOADS_DIR, CLIENT_DIST } from './config/paths.js'
+import { UPLOADS_DIR, UPLOADS_FILES_DIR, CLIENT_DIST, prepareUploadsDir } from './config/paths.js'
 import { initDatabase } from './utils/database.js'
 
 // Les sessions ne peuvent pas fonctionner sans secret : on arrête tout de suite
@@ -26,12 +26,16 @@ app.set('trust proxy', 1)
 app.use(cors({ origin: (origin, done) => done(null, !origin || isAllowedOrigin(origin)), credentials: true }))
 app.use(checkOrigin)
 
-// Photos des circuits et photos envoyées par l'admin : /uploads/...
+// Photos envoyées par l'admin (/uploads/files/..., dossier qui survit aux déploiements)
+// et photos des circuits (/uploads/circuits/...).
 // nosniff : le navigateur respecte le type annoncé (une image reste une image)
-app.use('/uploads', express.static(UPLOADS_DIR, {
+const photoOptions = {
   maxAge: '7d',
   setHeaders: (res) => res.set('X-Content-Type-Options', 'nosniff'),
-}))
+}
+app.locals.uploads = prepareUploadsDir()
+app.use('/uploads/files', express.static(UPLOADS_FILES_DIR, photoOptions))
+app.use('/uploads', express.static(UPLOADS_DIR, photoOptions))
 
 // Lit le JSON envoyé par les formulaires (un circuit complet peut peser quelques dizaines de Ko), et les cookies
 app.use(express.json({ limit: '200kb' }))

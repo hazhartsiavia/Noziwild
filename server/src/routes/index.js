@@ -26,13 +26,14 @@ import accountRoutes from './account.js'
 
 const router = Router()
 
-// Vérifie que l'API et MySQL répondent
+// Vérifie que l'API et MySQL répondent, et que les photos envoyées peuvent être enregistrées
 router.get('/health', async (req, res) => {
+  const { uploads } = req.app.locals
   try {
     await pool.query('SELECT 1')
-    res.json({ ok: true, database: 'connected' })
+    res.json({ ok: true, database: 'connected', uploads })
   } catch (error) {
-    res.status(503).json({ ok: false, database: 'disconnected', error: error.code })
+    res.status(503).json({ ok: false, database: 'disconnected', uploads, error: error.code })
   }
 })
 

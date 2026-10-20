@@ -1,23 +1,25 @@
 // Photos de l'admin :
 //   GET  /api/admin/uploads  → bibliothèque (photos de départ + photos envoyées)
 //   POST /api/admin/uploads  → envoi d'une photo (formulaire multipart, champ "image"),
-//                              rangée dans uploads/files/ ; le chemin renvoyé s'utilise ensuite dans un circuit
+//                              rangée dans UPLOADS_FILES_DIR (servie sur /uploads/files/) ; le chemin renvoyé s'utilise ensuite dans un circuit
 import crypto from 'node:crypto'
 import fs from 'node:fs/promises'
 import path from 'node:path'
 import multer from 'multer'
-import { UPLOADS_DIR } from '../config/paths.js'
+import { UPLOADS_DIR, UPLOADS_FILES_DIR } from '../config/paths.js'
 
 const MAX_SIZE = 8 * 1024 * 1024
 const IMAGE_FILE = /\.(png|jpe?g|webp)$/i
 
 // Dossiers montrés dans la bibliothèque, les envois récents d'abord
-const LIBRARY = ['files', 'circuits']
+const LIBRARY = [
+  { folder: 'files', dir: UPLOADS_FILES_DIR },
+  { folder: 'circuits', dir: path.join(UPLOADS_DIR, 'circuits') },
+]
 
 export async function listUploads(req, res) {
   const photos = []
-  for (const folder of LIBRARY) {
-    const dir = path.join(UPLOADS_DIR, folder)
+  for (const { folder, dir } of LIBRARY) {
     const names = await fs.readdir(dir).catch(() => [])
     const entries = await Promise.all(
       names.filter((name) => IMAGE_FILE.test(name)).map(async (name) => {
@@ -57,9 +59,8 @@ export function uploadImage(req, res, next) {
 
       // Nom aléatoire : pas de collision, et rien de ce que l'utilisateur a tapé ne finit dans le chemin
       const name = `${Date.now()}-${crypto.randomBytes(6).toString('hex')}.${extension}`
-      const folder = path.join(UPLOADS_DIR, 'files')
-      await fs.mkdir(folder, { recursive: true })
-      await fs.writeFile(path.join(folder, name), req.file.buffer)
+      await fs.mkdir(UPLOADS_FILES_DIR, { recursive: true })
+      await fs.writeFile(path.join(UPLOADS_FILES_DIR, name), req.file.buffer)
 
       res.status(201).json({ ok: true, path: `/uploads/files/${name}` })
     } catch (err) {
