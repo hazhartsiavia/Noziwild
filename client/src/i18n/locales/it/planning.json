@@ -1,0 +1,147 @@
+{
+  "styles": [
+    {
+      "label": "Relax",
+      "stops": [
+        "Mattinata in spiaggia a Nosy Be",
+        "Giornata a Nosy Iranja",
+        "Baia di Ramena e pranzo",
+        "Crociera in catamarano",
+        "Cena al tramonto",
+        "Pomeriggio alla spa",
+        "Piantagione di cacao ad Ambanja"
+      ]
+    },
+    {
+      "label": "Cultura",
+      "stops": [
+        "Città vecchia di Antananarivo",
+        "Visita alla collina reale",
+        "Villaggi degli Altopiani",
+        "Botteghe artigiane",
+        "Mercato e passeggiata gastronomica",
+        "Serata di musica tradizionale",
+        "Piantagione di vaniglia"
+      ]
+    },
+    {
+      "label": "Avventura",
+      "stops": [
+        "Trekking nella foresta di Andasibe",
+        "Uscita notturna dei lemuri",
+        "Escursione nei canyon",
+        "Viale dei Baobab",
+        "Strada costiera in 4x4",
+        "Kayak nella baia",
+        "Giornata delle cascate"
+      ]
+    },
+    {
+      "label": "Gastronomia",
+      "stops": [
+        "Tour dello street food",
+        "Corso di cucina",
+        "Fattoria di spezie e vaniglia",
+        "Pranzo in famiglia",
+        "Pesce sulla spiaggia",
+        "Degustazione di dolci alla vaniglia",
+        "Colazione al mercato"
+      ]
+    }
+  ],
+  "process": [
+    {
+      "title": "Ascoltiamo",
+      "text": "Una breve chiamata o un messaggio per capire date, budget, ritmo e cosa non vuoi assolutamente perdere.",
+      "deliverable": "La tua scheda di viaggio"
+    },
+    {
+      "title": "Progettiamo",
+      "text": "Costruiamo un itinerario giorno per giorno con tempi di viaggio realistici, gli alloggi giusti ed esperienze locali.",
+      "deliverable": "Prima bozza in 48 h"
+    },
+    {
+      "title": "Perfezioniamo",
+      "text": "Ci dici cosa cambiare. Modifichiamo finché ogni giornata non è perfetta.",
+      "deliverable": "Modifiche illimitate"
+    },
+    {
+      "title": "Prenotiamo e ti accompagniamo",
+      "text": "Prenotiamo tutto e restiamo disponibili prima e durante il viaggio.",
+      "deliverable": "Guida di viaggio digitale"
+    }
+  ],
+  "samples": [
+    {
+      "name": "Altopiani e costa"
+    },
+    {
+      "name": "Fuga sull'isola"
+    },
+    {
+      "name": "Nord selvaggio"
+    }
+  ],
+  "chat": [
+    {
+      "q": "Posso cambiare il programma dopo la prenotazione?",
+      "a": "Sì. Le piccole modifiche sono gratuite fino a pochi giorni prima della partenza, e ci occupiamo noi delle nuove prenotazioni."
+    },
+    {
+      "q": "Quanto tempo serve per ricevere l'itinerario?",
+      "a": "Una prima bozza arriva entro 48 ore dal nostro primo contatto. Poi la perfezioniamo insieme."
+    },
+    {
+      "q": "Organizzate viaggi per famiglie e gruppi?",
+      "a": "Certo. Adattiamo ritmo, alloggi e attività a bambini, anziani e gruppi di qualsiasi dimensione."
+    },
+    {
+      "q": "La pianificazione è gratuita?",
+      "a": "La prima bozza è gratuita e senza impegno. Una quota di organizzazione si applica solo se vuoi che prenotiamo e gestiamo tutto il viaggio, e viene scalata dalla prenotazione."
+    }
+  ],
+  "pins": [
+    "Arrivo",
+    "Altopiani",
+    "Costa",
+    "Isola"
+  ],
+  "badge": "Pianificazione del viaggio",
+  "title": "Il tuo viaggio, costruito intorno a te",
+  "intro": "Dicci cosa ami. Costruiamo l'itinerario, gli alloggi e i piccoli dettagli, giorno per giorno, così tu devi solo goderti il viaggio.",
+  "sketch": "Abbozza il mio viaggio",
+  "talk": "Parla con un consulente",
+  "routeLabel": "Un percorso tortuoso tra quattro tappe",
+  "builderTitle": "Abbozza il tuo viaggio in 30 secondi",
+  "builderText": "Un'idea rapida dell'itinerario e del budget. I nostri consulenti la trasformano poi in un vero itinerario.",
+  "style": "Stile di viaggio",
+  "length": "Durata del viaggio",
+  "days": "giorni",
+  "travelers": "Viaggiatori",
+  "fewer": "Meno viaggiatori",
+  "more": "Più viaggiatori",
+  "draft": "La bozza del tuo itinerario",
+  "day": "Giorno {n}",
+  "budget": "Budget stimato a persona",
+  "forGroup": "Per {count} viaggiatori: circa {low} – {high}",
+  "forOne": "Per 1 viaggiatore: circa {low} – {high}",
+  "custom": "Ricevi il mio programma su misura",
+  "note": "Stima indicativa che include alloggi, trasporti e attività. Il preventivo finale dipende dalla stagione e dalle scelte.",
+  "processTitle": "Come organizziamo il tuo viaggio",
+  "processText": "Quattro passi, un consulente dedicato dall'inizio alla fine.",
+  "samplesTitle": "Idee da cui partire",
+  "samplesText": "Ogni viaggio è adattato a te. Questi sono solo punti di partenza.",
+  "daysBadge": "{count} giorni",
+  "fromPerPerson": "Da {price} / persona",
+  "adapt": "Adattalo",
+  "chatTitle": "Parliamone",
+  "chatText": "Le domande che ci fanno più spesso, con le risposte del tuo consulente, come in una chat.",
+  "ctaTitle": "Descrivi il viaggio dei tuoi sogni",
+  "ctaText": "Bastano poche righe. Ti rispondiamo entro un giorno lavorativo con una prima idea, senza impegno.",
+  "ideaLabel": "Il viaggio dei tuoi sogni",
+  "ideaPlaceholder": "Quando, dove, con chi e cosa ti piacerebbe fare…",
+  "emailLabel": "La tua email",
+  "sending": "Invio…",
+  "send": "Invia la mia idea",
+  "thanks": "Grazie! Un consulente ti risponderà presto."
+}

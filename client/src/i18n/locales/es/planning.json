@@ -1,0 +1,147 @@
+{
+  "styles": [
+    {
+      "label": "Relax",
+      "stops": [
+        "Mañana de playa en Nosy Be",
+        "Día en Nosy Iranja",
+        "Bahía de Ramena y comida",
+        "Crucero en catamarán",
+        "Cena al atardecer",
+        "Tarde de spa",
+        "Plantación de cacao en Ambanja"
+      ]
+    },
+    {
+      "label": "Cultura",
+      "stops": [
+        "Casco antiguo de Antananarivo",
+        "Visita a la colina real",
+        "Pueblos de las Tierras Altas",
+        "Talleres de artesanos",
+        "Mercado y ruta gastronómica",
+        "Noche de música tradicional",
+        "Plantación de vainilla"
+      ]
+    },
+    {
+      "label": "Aventura",
+      "stops": [
+        "Trekking en el bosque de Andasibe",
+        "Paseo nocturno de lémures",
+        "Caminata por cañones",
+        "Avenida de los Baobabs",
+        "Ruta costera en 4x4",
+        "Kayak en la bahía",
+        "Día de cascadas"
+      ]
+    },
+    {
+      "label": "Gastronomía",
+      "stops": [
+        "Ruta de comida callejera",
+        "Clase de cocina",
+        "Granja de especias y vainilla",
+        "Comida con una familia",
+        "Marisco en la playa",
+        "Degustación de postres de vainilla",
+        "Desayuno en el mercado"
+      ]
+    }
+  ],
+  "process": [
+    {
+      "title": "Escuchamos",
+      "text": "Una llamada o un mensaje breve para entender sus fechas, su presupuesto, su ritmo y lo que no quiere perderse.",
+      "deliverable": "Su ficha de viaje"
+    },
+    {
+      "title": "Diseñamos",
+      "text": "Preparamos un itinerario día a día con tiempos de trayecto realistas, los alojamientos adecuados y experiencias locales.",
+      "deliverable": "Primer borrador en 48 h"
+    },
+    {
+      "title": "Ajustamos",
+      "text": "Usted nos dice qué cambiar. Ajustamos hasta que cada día sea como lo imagina.",
+      "deliverable": "Cambios ilimitados"
+    },
+    {
+      "title": "Reservamos y acompañamos",
+      "text": "Lo reservamos todo y seguimos disponibles antes y durante su viaje.",
+      "deliverable": "Guía de viaje digital"
+    }
+  ],
+  "samples": [
+    {
+      "name": "Tierras Altas y costa"
+    },
+    {
+      "name": "Escapada a las islas"
+    },
+    {
+      "name": "Norte salvaje"
+    }
+  ],
+  "chat": [
+    {
+      "q": "¿Puedo cambiar el plan una vez reservado?",
+      "a": "Sí. Los cambios pequeños son gratuitos hasta unos días antes de la salida, y nosotros nos ocupamos de las nuevas reservas."
+    },
+    {
+      "q": "¿Cuánto tarda en llegar mi itinerario?",
+      "a": "Un primer borrador llega en las 48 horas siguientes a nuestra primera conversación. Después lo afinamos juntos."
+    },
+    {
+      "q": "¿Organizan viajes para familias y grupos?",
+      "a": "Por supuesto. Adaptamos el ritmo, los alojamientos y las actividades a niños, mayores y grupos de cualquier tamaño."
+    },
+    {
+      "q": "¿La planificación es gratuita?",
+      "a": "Su primer borrador es gratuito y sin compromiso. Solo se aplica una tarifa de organización si quiere que reservemos y gestionemos todo el viaje, y se descuenta de su reserva."
+    }
+  ],
+  "pins": [
+    "Llegada",
+    "Tierras Altas",
+    "Costa",
+    "Isla"
+  ],
+  "badge": "Planificación del viaje",
+  "title": "Su viaje, diseñado a su medida",
+  "intro": "Díganos qué le gusta. Preparamos la ruta, los alojamientos y los pequeños detalles, día a día, para que solo tenga que disfrutar del viaje.",
+  "sketch": "Esbozar mi viaje",
+  "talk": "Hablar con un asesor",
+  "routeLabel": "Una ruta sinuosa entre cuatro paradas",
+  "builderTitle": "Esboce su viaje en 30 segundos",
+  "builderText": "Una idea rápida de la ruta y del presupuesto. Nuestros asesores la convierten después en un itinerario real.",
+  "style": "Estilo de viaje",
+  "length": "Duración del viaje",
+  "days": "días",
+  "travelers": "Viajeros",
+  "fewer": "Menos viajeros",
+  "more": "Más viajeros",
+  "draft": "Su borrador de ruta",
+  "day": "Día {n}",
+  "budget": "Presupuesto estimado por persona",
+  "forGroup": "Para {count} viajeros: unos {low} – {high}",
+  "forOne": "Para 1 viajero: unos {low} – {high}",
+  "custom": "Recibir mi plan a medida",
+  "note": "Estimación aproximada que incluye alojamientos, transporte y actividades. El presupuesto final depende de la temporada y de sus elecciones.",
+  "processTitle": "Cómo planificamos su viaje",
+  "processText": "Cuatro pasos, un asesor dedicado de principio a fin.",
+  "samplesTitle": "Ideas para empezar",
+  "samplesText": "Cada viaje se adapta a usted. Estos son solo puntos de partida.",
+  "daysBadge": "{count} días",
+  "fromPerPerson": "Desde {price} / persona",
+  "adapt": "Adaptarlo",
+  "chatTitle": "Hablémoslo",
+  "chatText": "Las preguntas que más nos hacen, respondidas como en un chat con su asesor.",
+  "ctaTitle": "Describa el viaje de sus sueños",
+  "ctaText": "Bastan unas líneas. Le respondemos en un día laborable con una primera idea y sin compromiso.",
+  "ideaLabel": "El viaje de sus sueños",
+  "ideaPlaceholder": "Cuándo, dónde, con quién y qué le encantaría hacer…",
+  "emailLabel": "Su correo electrónico",
+  "sending": "Enviando…",
+  "send": "Enviar mi idea",
+  "thanks": "¡Gracias! Un asesor le responderá muy pronto."
+}

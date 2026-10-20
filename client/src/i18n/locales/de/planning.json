@@ -1,0 +1,147 @@
+{
+  "styles": [
+    {
+      "label": "Entspannung",
+      "stops": [
+        "Strandvormittag auf Nosy Be",
+        "Ein Tag auf Nosy Iranja",
+        "Bucht von Ramena & Mittagessen",
+        "Katamaran-Törn",
+        "Abendessen bei Sonnenuntergang",
+        "Spa-Nachmittag",
+        "Kakaofarm in Ambanja"
+      ]
+    },
+    {
+      "label": "Kultur",
+      "stops": [
+        "Altstadt von Antananarivo",
+        "Besuch des Königshügels",
+        "Dörfer im Hochland",
+        "Handwerkerwerkstätten",
+        "Markt & kulinarischer Rundgang",
+        "Abend mit traditioneller Musik",
+        "Vanillefarm"
+      ]
+    },
+    {
+      "label": "Abenteuer",
+      "stops": [
+        "Waldtrekking in Andasibe",
+        "Nachtwanderung zu den Lemuren",
+        "Schluchtenwanderung",
+        "Baobab-Allee",
+        "Küstenroute im Geländewagen",
+        "Kajak in der Bucht",
+        "Tag der Wasserfälle"
+      ]
+    },
+    {
+      "label": "Kulinarik",
+      "stops": [
+        "Streetfood-Tour",
+        "Kochkurs",
+        "Gewürz- & Vanillefarm",
+        "Mittagessen bei einer Familie",
+        "Meeresfrüchte am Strand",
+        "Verkostung von Vanilledesserts",
+        "Frühstück auf dem Markt"
+      ]
+    }
+  ],
+  "process": [
+    {
+      "title": "Wir hören zu",
+      "text": "Ein kurzer Anruf oder eine Nachricht, um Ihre Daten, Ihr Budget, Ihr Tempo und Ihre Must-sees zu verstehen.",
+      "deliverable": "Ihr Reiseprofil"
+    },
+    {
+      "title": "Wir entwerfen",
+      "text": "Wir erstellen eine Route Tag für Tag mit realistischen Fahrzeiten, den passenden Unterkünften und lokalen Erlebnissen.",
+      "deliverable": "Erster Entwurf in 48 Std."
+    },
+    {
+      "title": "Wir verfeinern",
+      "text": "Sie sagen uns, was geändert werden soll. Wir passen an, bis jeder Tag genau stimmt.",
+      "deliverable": "Unbegrenzte Änderungen"
+    },
+    {
+      "title": "Wir buchen & begleiten",
+      "text": "Wir reservieren alles und bleiben vor und während Ihrer Reise erreichbar.",
+      "deliverable": "Digitaler Reiseführer"
+    }
+  ],
+  "samples": [
+    {
+      "name": "Hochland & Küste"
+    },
+    {
+      "name": "Inselauszeit"
+    },
+    {
+      "name": "Wilder Norden"
+    }
+  ],
+  "chat": [
+    {
+      "q": "Kann ich den Plan nach der Buchung noch ändern?",
+      "a": "Ja. Kleine Änderungen sind bis wenige Tage vor Abreise kostenlos, und wir kümmern uns um die Umbuchung."
+    },
+    {
+      "q": "Wie lange dauert es, bis ich meine Route bekomme?",
+      "a": "Ein erster Entwurf kommt innerhalb von 48 Stunden nach unserem ersten Gespräch. Danach verfeinern wir ihn gemeinsam."
+    },
+    {
+      "q": "Planen Sie auch Reisen für Familien und Gruppen?",
+      "a": "Natürlich. Wir passen Tempo, Unterkünfte und Aktivitäten an Kinder, Senioren und Gruppen jeder Größe an."
+    },
+    {
+      "q": "Ist die Planung kostenlos?",
+      "a": "Ihr erster Entwurf ist kostenlos und unverbindlich. Eine Planungsgebühr fällt nur an, wenn wir die ganze Reise buchen und betreuen sollen – und sie wird mit Ihrer Buchung verrechnet."
+    }
+  ],
+  "pins": [
+    "Ankunft",
+    "Hochland",
+    "Küste",
+    "Insel"
+  ],
+  "badge": "Reiseplanung",
+  "title": "Ihre Reise, ganz nach Ihnen gestaltet",
+  "intro": "Erzählen Sie uns, was Sie lieben. Wir planen Route, Unterkünfte und die kleinen Details Tag für Tag, damit Sie die Reise einfach genießen können.",
+  "sketch": "Meine Reise skizzieren",
+  "talk": "Mit einem Planer sprechen",
+  "routeLabel": "Eine gewundene Route mit vier Stationen",
+  "builderTitle": "Skizzieren Sie Ihre Reise in 30 Sekunden",
+  "builderText": "Ein erster Eindruck von Route und Budget. Unsere Planer machen daraus eine echte Reiseroute.",
+  "style": "Reisestil",
+  "length": "Reisedauer",
+  "days": "Tage",
+  "travelers": "Reisende",
+  "fewer": "Weniger Reisende",
+  "more": "Mehr Reisende",
+  "draft": "Ihr Routenentwurf",
+  "day": "Tag {n}",
+  "budget": "Geschätztes Budget pro Person",
+  "forGroup": "Für {count} Reisende: etwa {low} – {high}",
+  "forOne": "Für 1 Reisenden: etwa {low} – {high}",
+  "custom": "Meinen individuellen Plan erhalten",
+  "note": "Grobe Schätzung inklusive Unterkünften, Transport und Aktivitäten. Das endgültige Angebot hängt von Saison und Auswahl ab.",
+  "processTitle": "So planen wir Ihre Reise",
+  "processText": "Vier Schritte, ein persönlicher Planer von Anfang bis Ende.",
+  "samplesTitle": "Ideen als Ausgangspunkt",
+  "samplesText": "Jede Reise wird an Sie angepasst. Dies sind nur Ausgangspunkte.",
+  "daysBadge": "{count} Tage",
+  "fromPerPerson": "Ab {price} / Person",
+  "adapt": "Anpassen",
+  "chatTitle": "Sprechen wir darüber",
+  "chatText": "Die häufigsten Fragen, beantwortet wie im Chat mit Ihrem Planer.",
+  "ctaTitle": "Beschreiben Sie Ihre Traumreise",
+  "ctaText": "Ein paar Zeilen genügen. Wir melden uns innerhalb eines Werktags mit einer ersten Idee – unverbindlich.",
+  "ideaLabel": "Ihre Traumreise",
+  "ideaPlaceholder": "Wann, wohin, mit wem und was Sie gern erleben möchten…",
+  "emailLabel": "Ihre E-Mail",
+  "sending": "Wird gesendet…",
+  "send": "Meine Idee senden",
+  "thanks": "Vielen Dank! Ein Planer meldet sich bald bei Ihnen."
+}

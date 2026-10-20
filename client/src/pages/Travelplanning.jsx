@@ -9,6 +9,9 @@ import Navbar from '../components/Navbar';
 import Footer from '../components/Footer';
 import { sendRequest } from '../api';
 import { useAuth } from '../context/AuthContext';
+import { Trans, useLanguage, useT } from '../i18n/LanguageContext';
+import { localize } from '../i18n/localize';
+import { LOCALES } from '../utils/format';
 import { gsap } from 'gsap'
 import { ScrollTrigger } from 'gsap/ScrollTrigger'
 
@@ -28,34 +31,29 @@ const prefersReducedMotion = () =>
   typeof window !== 'undefined' && window.matchMedia('(prefers-reduced-motion: reduce)').matches
 
 /* ---------------------------- Données ---------------------------- */
+// Textes affichés : locales/<langue>/planning.json, posés sur ces données par localize()
 
 // perDay = budget par personne et par jour (exemples, à adapter)
-const styles = [
+const STYLES = [
   { id: 'relax', label: 'Relax', perDay: 95, stops: ['Beach morning in Nosy Be', 'Day on Nosy Iranja', 'Ramena bay & lunch', 'Catamaran cruise', 'Sunset dinner', 'Spa afternoon', 'Cocoa farm in Ambanja'] },
   { id: 'culture', label: 'Culture', perDay: 85, stops: ['Antananarivo old town', 'Royal Hill visit', 'Highland villages', 'Artisan workshops', 'Market & food walk', 'Folk music night', 'Vanilla farm'] },
   { id: 'adventure', label: 'Adventure', perDay: 110, stops: ['Andasibe forest trek', 'Lemur night walk', 'Canyon hike', 'Avenue of the Baobabs', '4x4 coastal route', 'Kayak the bay', 'Waterfall day'] },
   { id: 'food', label: 'Food', perDay: 100, stops: ['Street food walk', 'Cooking class', 'Spice & vanilla farm', 'Family lunch', 'Seafood on the beach', 'Vanilla dessert tasting', 'Market breakfast'] },
 ]
 
-const process = [
+const PROCESS = [
   { id: 1, title: 'We listen', text: 'A short call or message to understand your dates, budget, pace and the things you cannot miss.', deliverable: 'Your travel brief', tone: 'bg-white text-slate-900' },
   { id: 2, title: 'We design', text: 'We build a day-by-day itinerary with realistic travel times, the right stays and local experiences.', deliverable: 'Draft itinerary in 48 h', tone: 'bg-[#084838] text-white' },
   { id: 3, title: 'We refine', text: 'You tell us what to change. We adjust until every day feels exactly right.', deliverable: 'Unlimited edits', tone: 'bg-[#C49849] text-white' },
   { id: 4, title: 'We book & guide', text: 'We reserve everything and stay available before and during your trip.', deliverable: 'Digital travel guide', tone: 'bg-white text-slate-900' },
 ]
 
-const samples = [
+const SAMPLES = [
   { id: 1, name: 'Highlands & Coast', days: 7, price: 780, image: Tana, stops: ['Antananarivo', 'Andasibe', 'Ramena'] },
   { id: 2, name: 'Island Escape', days: 5, price: 560, image: NosyIranja, stops: ['Nosy Be', 'Nosy Iranja', 'Nosy Komba'] },
   { id: 3, name: 'Wild North', days: 10, price: 1150, image: Deux, stops: ['Diego Suarez', 'Ankarana', 'Ambanja'] },
 ]
 
-const chat = [
-  { q: 'Can I change the plan once it is booked?', a: 'Yes. Small changes are free up to a few days before departure, and we handle the rebooking for you.' },
-  { q: 'How long does it take to get my itinerary?', a: 'A first draft arrives within 48 hours of our first talk. Then we refine it together.' },
-  { q: 'Do you plan trips for families and groups?', a: 'Of course. We adapt pace, stays and activities to children, seniors and groups of any size.' },
-  { q: 'Is planning free?', a: 'Your first draft is free and without commitment. A planning fee applies only if you want us to book and manage the whole trip, and it is deducted from your booking.' },
-]
 
 /* ---------------------------- Icônes ----------------------------- */
 
@@ -92,30 +90,32 @@ function AnimatedNumber({ value }) {
 
 // Hero : texte + route dessinée à l'écran
 function Hero() {
+  const t = useT('planning')
+  const labels = t('pins')
   const pins = [
-    { x: 40, y: 360, label: 'Arrival' },
-    { x: 160, y: 200, label: 'Highlands' },
-    { x: 320, y: 160, label: 'Coast' },
-    { x: 480, y: 70, label: 'Island' },
-  ]
+    { x: 40, y: 360 },
+    { x: 160, y: 200 },
+    { x: 320, y: 160 },
+    { x: 480, y: 70 },
+  ].map((p, i) => ({ ...p, label: labels[i] }))
   const d = 'M40 360 C 120 300, 60 220, 160 200 S 300 250, 320 160 S 400 60, 480 70'
 
   return (
     <section className="grid grid-cols-1 lg:grid-cols-[1.05fr_1fr] gap-8 lg:gap-12 items-center">
       <div>
-        <span data-hero className={BADGE}>Travel Planning</span>
-        <h1 data-hero className={`${STATEMENT_TITLE} mt-5`}>Your Trip, Designed Around You</h1>
+        <span data-hero className={BADGE}>{t('badge')}</span>
+        <h1 data-hero className={`${STATEMENT_TITLE} mt-5`}>{t('title')}</h1>
         <p data-hero className={`${SECTION_SUBTITLE} mt-5 md:mt-6`}>
-          Tell us what you love. We build the route, the stays and the little details, day by day, so you can just enjoy the journey.
+          {t('intro')}
         </p>
         <div data-hero className="mt-7 flex flex-wrap items-center gap-4">
-          <a href="#builder" className={`bg-[#084838] hover:bg-[#0a5c47] text-white ${BUTTON}`}>Sketch My Trip</a>
-          <a href="/contact" className="inline-flex items-center gap-2 text-sm md:text-base font-medium text-slate-800 hover:gap-3 transition-all">Talk to a planner <ArrowIcon /></a>
+          <a href="#builder" className={`bg-[#084838] hover:bg-[#0a5c47] text-white ${BUTTON}`}>{t('sketch')}</a>
+          <a href="/contact" className="inline-flex items-center gap-2 text-sm md:text-base font-medium text-slate-800 hover:gap-3 transition-all">{t('talk')} <ArrowIcon /></a>
         </div>
       </div>
 
       <div data-hero className="rounded-3xl bg-white p-4 md:p-6">
-        <svg viewBox="0 0 540 420" className="w-full h-auto" role="img" aria-label="A winding route between four stops">
+        <svg viewBox="0 0 540 420" className="w-full h-auto" role="img" aria-label={t('routeLabel')}>
           <path d={d} fill="none" stroke="#084838" strokeOpacity="0.25" strokeWidth="3" strokeDasharray="2 10" strokeLinecap="round" />
           <path data-route d={d} fill="none" stroke="#C49849" strokeWidth="5" strokeLinecap="round" />
           {pins.map((p) => (
@@ -133,6 +133,10 @@ function Hero() {
 
 // Créateur de voyage : réglages à gauche, ébauche et budget à droite
 function Builder() {
+  const t = useT('planning')
+  const { lang } = useLanguage()
+  const styles = localize(STYLES, t('styles'))
+  const number = (value) => new Intl.NumberFormat(LOCALES[lang]).format(value)
   const [styleId, setStyleId] = useState('relax')
   const [days, setDays] = useState(7)
   const [travelers, setTravelers] = useState(2)
@@ -157,15 +161,15 @@ function Builder() {
   return (
     <div id="builder" className={`${SECTION_GAP} scroll-mt-8`}>
       <div className="mb-8 md:mb-12 flex flex-col lg:flex-row lg:items-end lg:justify-between gap-4 lg:gap-12">
-        <h2 className={`${SECTION_TITLE} lg:max-w-[52%]`}>Sketch Your Trip In 30 Seconds</h2>
-        <p className={`${SECTION_SUBTITLE} lg:max-w-md`}>A quick idea of the route and the budget. Our planners then turn it into a real itinerary.</p>
+        <h2 className={`${SECTION_TITLE} lg:max-w-[52%]`}>{t('builderTitle')}</h2>
+        <p className={`${SECTION_SUBTITLE} lg:max-w-md`}>{t('builderText')}</p>
       </div>
 
       <div className="grid grid-cols-1 lg:grid-cols-[1fr_1.1fr] gap-4 md:gap-6 items-start">
         {/* Réglages */}
         <div className="rounded-3xl bg-white p-6 md:p-10">
-          <p className="text-sm md:text-base text-slate-600">Travel style</p>
-          <div className="mt-3 flex flex-wrap gap-2" role="radiogroup" aria-label="Travel style">
+          <p className="text-sm md:text-base text-slate-600">{t('style')}</p>
+          <div className="mt-3 flex flex-wrap gap-2" role="radiogroup" aria-label={t('style')}>
             {styles.map((s) => (
               <button
                 key={s.id}
@@ -181,42 +185,42 @@ function Builder() {
           </div>
 
           <div className="mt-8 flex items-end justify-between">
-            <label htmlFor="trip-days" className="text-sm md:text-base text-slate-600">Trip length</label>
-            <p className="text-3xl md:text-4xl leading-none text-slate-800 tabular-nums">{days} <span className="text-base text-slate-600">days</span></p>
+            <label htmlFor="trip-days" className="text-sm md:text-base text-slate-600">{t('length')}</label>
+            <p className="text-3xl md:text-4xl leading-none text-slate-800 tabular-nums">{days} <span className="text-base text-slate-600">{t('days')}</span></p>
           </div>
           <input id="trip-days" type="range" min="3" max="21" value={days} onChange={(e) => setDays(Number(e.target.value))} className="mt-4 w-full accent-[#084838]" />
           <div className={`mt-1 flex justify-between ${META_TEXT} text-slate-500`}><span>3</span><span>21</span></div>
 
           <div className="mt-8 flex items-center justify-between gap-4">
-            <span className="text-sm md:text-base text-slate-600">Travelers</span>
+            <span className="text-sm md:text-base text-slate-600">{t('travelers')}</span>
             <div className="flex items-center gap-4">
-              <button type="button" onClick={() => setTravelers((n) => Math.max(1, n - 1))} aria-label="Fewer travelers" className={round}><MinusIcon /></button>
+              <button type="button" onClick={() => setTravelers((n) => Math.max(1, n - 1))} aria-label={t('fewer')} className={round}><MinusIcon /></button>
               <span className="w-6 text-center text-lg font-medium tabular-nums">{travelers}</span>
-              <button type="button" onClick={() => setTravelers((n) => Math.min(12, n + 1))} aria-label="More travelers" className={round}><PlusIcon /></button>
+              <button type="button" onClick={() => setTravelers((n) => Math.min(12, n + 1))} aria-label={t('more')} className={round}><PlusIcon /></button>
             </div>
           </div>
         </div>
 
         {/* Ébauche */}
         <div className="lg:sticky lg:top-8 rounded-3xl bg-[#084838] text-white p-6 md:p-10">
-          <p className="text-sm md:text-base text-white/70">Your draft route</p>
+          <p className="text-sm md:text-base text-white/70">{t('draft')}</p>
           <ul ref={listRef} className="mt-4 flex flex-col gap-2">
             {plan.map((p) => (
               <li key={p.stop} className="flex items-center gap-3 rounded-2xl bg-white/10 px-4 py-3">
-                <span className="shrink-0 rounded-full bg-[#C49849] px-2.5 py-1 text-xs tabular-nums">Day {p.day}</span>
+                <span className="shrink-0 rounded-full bg-[#C49849] px-2.5 py-1 text-xs tabular-nums">{t('day', { n: p.day })}</span>
                 <span className="text-sm md:text-base">{p.stop}</span>
               </li>
             ))}
           </ul>
 
           <div className="mt-6 pt-6 border-t border-white/25">
-            <p className="text-sm text-white/70">Estimated budget per person</p>
+            <p className="text-sm text-white/70">{t('budget')}</p>
             <p className="mt-1 text-3xl md:text-5xl font-medium leading-none">$<AnimatedNumber value={low} /> – $<AnimatedNumber value={high} /></p>
-            <p className="mt-2 text-sm text-white/70">For {travelers} {travelers === 1 ? 'traveler' : 'travelers'}: about ${(low * travelers).toLocaleString()} – ${(high * travelers).toLocaleString()}</p>
+            <p className="mt-2 text-sm text-white/70">{t(travelers === 1 ? 'forOne' : 'forGroup', { count: travelers, low: `$${number(low * travelers)}`, high: `$${number(high * travelers)}` })}</p>
           </div>
 
-          <a href="/contact" className={`mt-6 block text-center bg-[#C49849] hover:bg-[#b08339] text-white ${BUTTON}`}>Get My Custom Plan</a>
-          <p className="mt-3 text-xs text-white/60 leading-relaxed">Rough estimate including stays, transport and activities. The final quote depends on season and choices.</p>
+          <a href="/contact" className={`mt-6 block text-center bg-[#C49849] hover:bg-[#b08339] text-white ${BUTTON}`}>{t('custom')}</a>
+          <p className="mt-3 text-xs text-white/60 leading-relaxed">{t('note')}</p>
         </div>
       </div>
     </div>
@@ -225,11 +229,13 @@ function Builder() {
 
 // Méthode : cartes qui s'empilent au défilement (sticky)
 function Process() {
+  const t = useT('planning')
+  const process = localize(PROCESS, t('process'))
   return (
     <div className={SECTION_GAP}>
       <div className="mb-8 md:mb-12 text-center">
-        <h2 className={SECTION_TITLE}>How We Plan Your Trip</h2>
-        <p className={`mt-4 mx-auto ${SECTION_SUBTITLE}`}>Four steps, one dedicated planner from start to finish.</p>
+        <h2 className={SECTION_TITLE}>{t('processTitle')}</h2>
+        <p className={`mt-4 mx-auto ${SECTION_SUBTITLE}`}>{t('processText')}</p>
       </div>
 
       <div>
@@ -254,11 +260,13 @@ function Process() {
 
 // Exemples d'itinéraires
 function Samples() {
+  const t = useT('planning')
+  const samples = localize(SAMPLES, t('samples'))
   return (
     <div className={SECTION_GAP}>
       <div className="mb-8 md:mb-12 flex flex-col lg:flex-row lg:items-end lg:justify-between gap-4 lg:gap-12">
-        <h2 className={`${SECTION_TITLE} lg:max-w-[52%]`}>Ideas To Start From</h2>
-        <p className={`${SECTION_SUBTITLE} lg:max-w-md`}>Every trip is adapted to you. These are only starting points.</p>
+        <h2 className={`${SECTION_TITLE} lg:max-w-[52%]`}>{t('samplesTitle')}</h2>
+        <p className={`${SECTION_SUBTITLE} lg:max-w-md`}>{t('samplesText')}</p>
       </div>
 
       <div data-stagger className="grid grid-cols-1 md:grid-cols-3 gap-4 md:gap-6">
@@ -266,7 +274,7 @@ function Samples() {
           <article key={s.id} className="flex flex-col overflow-hidden rounded-3xl bg-white">
             <div className="relative aspect-[16/10] overflow-hidden">
               <img src={s.image} alt={s.name} className="w-full h-full object-cover transition-transform duration-700 hover:scale-105" />
-              <span className={`${BADGE} absolute left-4 top-4`}>{s.days} days</span>
+              <span className={`${BADGE} absolute left-4 top-4`}>{t('daysBadge', { count: s.days })}</span>
             </div>
             <div className="flex flex-col flex-1 p-5 md:p-6">
               <h3 className="text-xl md:text-2xl font-medium text-slate-900">{s.name}</h3>
@@ -279,8 +287,8 @@ function Samples() {
                 ))}
               </ol>
               <div className="mt-auto pt-6 flex items-center justify-between">
-                <p className="text-sm text-slate-600">From <span className="text-2xl font-medium text-slate-900">${s.price}</span> / person</p>
-                <a href="/contact" className="inline-flex items-center gap-1.5 text-sm font-medium text-[#084838] hover:gap-2.5 transition-all">Adapt it <ArrowIcon /></a>
+                <p className="text-sm text-slate-600"><Trans text={t('fromPerPerson')} values={{ price: <span className="text-2xl font-medium text-slate-900">${s.price}</span> }} /></p>
+                <a href="/contact" className="inline-flex items-center gap-1.5 text-sm font-medium text-[#084838] hover:gap-2.5 transition-all">{t('adapt')} <ArrowIcon /></a>
               </div>
             </div>
           </article>
@@ -292,11 +300,13 @@ function Samples() {
 
 // FAQ : conversation en bulles (questions à droite, réponses à gauche)
 function Chat() {
+  const t = useT('planning')
+  const chat = t('chat')
   return (
     <div className={SECTION_GAP}>
       <div className="mb-8 md:mb-12 text-center">
-        <h2 className={SECTION_TITLE}>Let&apos;s Talk It Through</h2>
-        <p className={`mt-4 mx-auto ${SECTION_SUBTITLE}`}>The questions we hear most, answered like a chat with your planner.</p>
+        <h2 className={SECTION_TITLE}>{t('chatTitle')}</h2>
+        <p className={`mt-4 mx-auto ${SECTION_SUBTITLE}`}>{t('chatText')}</p>
       </div>
 
       <div data-stagger className="mx-auto max-w-3xl flex flex-col gap-4 md:gap-5">
@@ -316,6 +326,7 @@ function Chat() {
 function Cta() {
   // Connecté : nom et email pré-remplis (la clé recrée le champ quand la session est connue)
   const { user } = useAuth()
+  const t = useT('planning')
   const [status, setStatus] = useState('idle') // 'idle' | 'sending' | 'sent' | 'error'
   const [error, setError] = useState('')
 
@@ -338,19 +349,19 @@ function Cta() {
   return (
     <div className={`${SECTION_GAP} grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-16 items-center rounded-3xl bg-[#084838] text-white p-6 md:p-14`}>
       <div>
-        <h2 className="text-3xl sm:text-4xl md:text-5xl font-medium leading-[1.15] tracking-tight">Describe Your Dream Trip</h2>
-        <p className="mt-4 max-w-md text-sm md:text-lg text-white/75 leading-relaxed">A few lines are enough. We come back within one working day with a first idea and no obligation.</p>
+        <h2 className="text-3xl sm:text-4xl md:text-5xl font-medium leading-[1.15] tracking-tight">{t('ctaTitle')}</h2>
+        <p className="mt-4 max-w-md text-sm md:text-lg text-white/75 leading-relaxed">{t('ctaText')}</p>
       </div>
 
       <form onSubmit={handleSubmit} className="flex flex-col gap-3">
-        <label htmlFor="trip-idea" className="sr-only">Your dream trip</label>
-        <textarea id="trip-idea" name="idea" rows={4} required placeholder="When, where, with whom, and what you would love to do…" className="w-full rounded-3xl bg-white px-6 py-4 text-sm md:text-base text-slate-800 placeholder:text-slate-500 resize-y focus:outline-none" />
+        <label htmlFor="trip-idea" className="sr-only">{t('ideaLabel')}</label>
+        <textarea id="trip-idea" name="idea" rows={4} required placeholder={t('ideaPlaceholder')} className="w-full rounded-3xl bg-white px-6 py-4 text-sm md:text-base text-slate-800 placeholder:text-slate-500 resize-y focus:outline-none" />
         <div className="flex flex-col sm:flex-row gap-2 rounded-3xl sm:rounded-full bg-white p-2 sm:pl-6">
-          <label htmlFor="trip-email" className="sr-only">Your email</label>
-          <input id="trip-email" name="email" key={`e-${user?.id}`} defaultValue={user?.email} type="email" required placeholder="Your email" className="flex-1 min-w-0 bg-transparent px-4 py-2 sm:px-0 text-sm md:text-base text-slate-800 placeholder:text-slate-500 focus:outline-none" />
-          <button type="submit" disabled={status === 'sending'} className={`shrink-0 bg-[#C49849] hover:bg-[#b08339] text-white disabled:opacity-60 disabled:cursor-wait ${BUTTON}`}>{status === 'sending' ? 'Sending…' : 'Send My Idea'}</button>
+          <label htmlFor="trip-email" className="sr-only">{t('emailLabel')}</label>
+          <input id="trip-email" name="email" key={`e-${user?.id}`} defaultValue={user?.email} type="email" required placeholder={t('emailLabel')} className="flex-1 min-w-0 bg-transparent px-4 py-2 sm:px-0 text-sm md:text-base text-slate-800 placeholder:text-slate-500 focus:outline-none" />
+          <button type="submit" disabled={status === 'sending'} className={`shrink-0 bg-[#C49849] hover:bg-[#b08339] text-white disabled:opacity-60 disabled:cursor-wait ${BUTTON}`}>{status === 'sending' ? t('sending') : t('send')}</button>
         </div>
-        {status === 'sent' && <p role="status" className="text-sm md:text-base text-[#E6C58A]">Thank you! A planner will get back to you soon.</p>}
+        {status === 'sent' && <p role="status" className="text-sm md:text-base text-[#E6C58A]">{t('thanks')}</p>}
         {status === 'error' && <p role="alert" className="text-sm md:text-base text-red-300">{error}</p>}
       </form>
     </div>

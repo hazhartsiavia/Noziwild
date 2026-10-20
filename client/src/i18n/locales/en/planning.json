@@ -1,0 +1,147 @@
+{
+  "styles": [
+    {
+      "label": "Relax",
+      "stops": [
+        "Beach morning in Nosy Be",
+        "Day on Nosy Iranja",
+        "Ramena bay & lunch",
+        "Catamaran cruise",
+        "Sunset dinner",
+        "Spa afternoon",
+        "Cocoa farm in Ambanja"
+      ]
+    },
+    {
+      "label": "Culture",
+      "stops": [
+        "Antananarivo old town",
+        "Royal Hill visit",
+        "Highland villages",
+        "Artisan workshops",
+        "Market & food walk",
+        "Folk music night",
+        "Vanilla farm"
+      ]
+    },
+    {
+      "label": "Adventure",
+      "stops": [
+        "Andasibe forest trek",
+        "Lemur night walk",
+        "Canyon hike",
+        "Avenue of the Baobabs",
+        "4x4 coastal route",
+        "Kayak the bay",
+        "Waterfall day"
+      ]
+    },
+    {
+      "label": "Food",
+      "stops": [
+        "Street food walk",
+        "Cooking class",
+        "Spice & vanilla farm",
+        "Family lunch",
+        "Seafood on the beach",
+        "Vanilla dessert tasting",
+        "Market breakfast"
+      ]
+    }
+  ],
+  "process": [
+    {
+      "title": "We listen",
+      "text": "A short call or message to understand your dates, budget, pace and the things you cannot miss.",
+      "deliverable": "Your travel brief"
+    },
+    {
+      "title": "We design",
+      "text": "We build a day-by-day itinerary with realistic travel times, the right stays and local experiences.",
+      "deliverable": "Draft itinerary in 48 h"
+    },
+    {
+      "title": "We refine",
+      "text": "You tell us what to change. We adjust until every day feels exactly right.",
+      "deliverable": "Unlimited edits"
+    },
+    {
+      "title": "We book & guide",
+      "text": "We reserve everything and stay available before and during your trip.",
+      "deliverable": "Digital travel guide"
+    }
+  ],
+  "samples": [
+    {
+      "name": "Highlands & Coast"
+    },
+    {
+      "name": "Island Escape"
+    },
+    {
+      "name": "Wild North"
+    }
+  ],
+  "chat": [
+    {
+      "q": "Can I change the plan once it is booked?",
+      "a": "Yes. Small changes are free up to a few days before departure, and we handle the rebooking for you."
+    },
+    {
+      "q": "How long does it take to get my itinerary?",
+      "a": "A first draft arrives within 48 hours of our first talk. Then we refine it together."
+    },
+    {
+      "q": "Do you plan trips for families and groups?",
+      "a": "Of course. We adapt pace, stays and activities to children, seniors and groups of any size."
+    },
+    {
+      "q": "Is planning free?",
+      "a": "Your first draft is free and without commitment. A planning fee applies only if you want us to book and manage the whole trip, and it is deducted from your booking."
+    }
+  ],
+  "pins": [
+    "Arrival",
+    "Highlands",
+    "Coast",
+    "Island"
+  ],
+  "badge": "Travel Planning",
+  "title": "Your Trip, Designed Around You",
+  "intro": "Tell us what you love. We build the route, the stays and the little details, day by day, so you can just enjoy the journey.",
+  "sketch": "Sketch My Trip",
+  "talk": "Talk to a planner",
+  "routeLabel": "A winding route between four stops",
+  "builderTitle": "Sketch Your Trip In 30 Seconds",
+  "builderText": "A quick idea of the route and the budget. Our planners then turn it into a real itinerary.",
+  "style": "Travel style",
+  "length": "Trip length",
+  "days": "days",
+  "travelers": "Travelers",
+  "fewer": "Fewer travelers",
+  "more": "More travelers",
+  "draft": "Your draft route",
+  "day": "Day {n}",
+  "budget": "Estimated budget per person",
+  "forGroup": "For {count} travelers: about {low} – {high}",
+  "forOne": "For 1 traveler: about {low} – {high}",
+  "custom": "Get My Custom Plan",
+  "note": "Rough estimate including stays, transport and activities. The final quote depends on season and choices.",
+  "processTitle": "How We Plan Your Trip",
+  "processText": "Four steps, one dedicated planner from start to finish.",
+  "samplesTitle": "Ideas To Start From",
+  "samplesText": "Every trip is adapted to you. These are only starting points.",
+  "daysBadge": "{count} days",
+  "fromPerPerson": "From {price} / person",
+  "adapt": "Adapt it",
+  "chatTitle": "Let's Talk It Through",
+  "chatText": "The questions we hear most, answered like a chat with your planner.",
+  "ctaTitle": "Describe Your Dream Trip",
+  "ctaText": "A few lines are enough. We come back within one working day with a first idea and no obligation.",
+  "ideaLabel": "Your dream trip",
+  "ideaPlaceholder": "When, where, with whom, and what you would love to do…",
+  "emailLabel": "Your email",
+  "sending": "Sending…",
+  "send": "Send My Idea",
+  "thanks": "Thank you! A planner will get back to you soon."
+}

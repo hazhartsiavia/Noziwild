@@ -1,0 +1,147 @@
+{
+  "styles": [
+    {
+      "label": "Détente",
+      "stops": [
+        "Matinée plage à Nosy Be",
+        "Journée à Nosy Iranja",
+        "Baie de Ramena et déjeuner",
+        "Croisière en catamaran",
+        "Dîner au coucher du soleil",
+        "Après-midi spa",
+        "Plantation de cacao à Ambanja"
+      ]
+    },
+    {
+      "label": "Culture",
+      "stops": [
+        "Vieille ville d'Antananarivo",
+        "Visite de la colline royale",
+        "Villages des Hautes Terres",
+        "Ateliers d'artisans",
+        "Marché et balade gourmande",
+        "Soirée musique traditionnelle",
+        "Plantation de vanille"
+      ]
+    },
+    {
+      "label": "Aventure",
+      "stops": [
+        "Randonnée en forêt à Andasibe",
+        "Balade nocturne des lémuriens",
+        "Randonnée dans les canyons",
+        "Allée des Baobabs",
+        "Route côtière en 4x4",
+        "Kayak dans la baie",
+        "Journée cascades"
+      ]
+    },
+    {
+      "label": "Gastronomie",
+      "stops": [
+        "Balade street food",
+        "Cours de cuisine",
+        "Ferme d'épices et de vanille",
+        "Déjeuner en famille",
+        "Fruits de mer sur la plage",
+        "Dégustation de desserts à la vanille",
+        "Petit-déjeuner au marché"
+      ]
+    }
+  ],
+  "process": [
+    {
+      "title": "Nous écoutons",
+      "text": "Un court appel ou un message pour comprendre vos dates, votre budget, votre rythme et ce que vous ne voulez pas manquer.",
+      "deliverable": "Votre fiche de voyage"
+    },
+    {
+      "title": "Nous concevons",
+      "text": "Nous construisons un itinéraire jour par jour avec des temps de trajet réalistes, les bons hébergements et des expériences locales.",
+      "deliverable": "Premier itinéraire en 48 h"
+    },
+    {
+      "title": "Nous ajustons",
+      "text": "Vous nous dites ce qu'il faut changer. Nous ajustons jusqu'à ce que chaque journée vous ressemble.",
+      "deliverable": "Modifications illimitées"
+    },
+    {
+      "title": "Nous réservons et accompagnons",
+      "text": "Nous réservons tout et restons disponibles avant et pendant votre voyage.",
+      "deliverable": "Guide de voyage numérique"
+    }
+  ],
+  "samples": [
+    {
+      "name": "Hautes Terres et côte"
+    },
+    {
+      "name": "Évasion insulaire"
+    },
+    {
+      "name": "Le Nord sauvage"
+    }
+  ],
+  "chat": [
+    {
+      "q": "Puis-je modifier le programme une fois réservé ?",
+      "a": "Oui. Les petits changements sont gratuits jusqu'à quelques jours avant le départ, et nous nous occupons des nouvelles réservations."
+    },
+    {
+      "q": "Combien de temps pour recevoir mon itinéraire ?",
+      "a": "Une première version arrive dans les 48 heures qui suivent notre premier échange. Ensuite, nous l'affinons ensemble."
+    },
+    {
+      "q": "Organisez-vous des voyages pour les familles et les groupes ?",
+      "a": "Bien sûr. Nous adaptons le rythme, les hébergements et les activités aux enfants, aux seniors et aux groupes de toute taille."
+    },
+    {
+      "q": "La préparation est-elle gratuite ?",
+      "a": "Votre première version est gratuite et sans engagement. Des frais d'organisation ne s'appliquent que si vous voulez que nous réservions et gérions tout le voyage, et ils sont déduits de votre réservation."
+    }
+  ],
+  "pins": [
+    "Arrivée",
+    "Hautes Terres",
+    "Côte",
+    "Île"
+  ],
+  "badge": "Organisation du voyage",
+  "title": "Votre voyage, conçu autour de vous",
+  "intro": "Dites-nous ce que vous aimez. Nous construisons l'itinéraire, les hébergements et les petits détails, jour après jour, pour que vous n'ayez plus qu'à profiter.",
+  "sketch": "Esquisser mon voyage",
+  "talk": "Parler à un conseiller",
+  "routeLabel": "Un itinéraire sinueux entre quatre étapes",
+  "builderTitle": "Esquissez votre voyage en 30 secondes",
+  "builderText": "Une première idée de l'itinéraire et du budget. Nos conseillers en font ensuite un vrai itinéraire.",
+  "style": "Style de voyage",
+  "length": "Durée du voyage",
+  "days": "jours",
+  "travelers": "Voyageurs",
+  "fewer": "Moins de voyageurs",
+  "more": "Plus de voyageurs",
+  "draft": "Votre ébauche d'itinéraire",
+  "day": "Jour {n}",
+  "budget": "Budget estimé par personne",
+  "forGroup": "Pour {count} voyageurs : environ {low} – {high}",
+  "forOne": "Pour 1 voyageur : environ {low} – {high}",
+  "custom": "Recevoir mon programme sur mesure",
+  "note": "Estimation approximative comprenant hébergements, transports et activités. Le devis final dépend de la saison et de vos choix.",
+  "processTitle": "Comment nous organisons votre voyage",
+  "processText": "Quatre étapes, un seul conseiller dédié du début à la fin.",
+  "samplesTitle": "Des idées pour commencer",
+  "samplesText": "Chaque voyage est adapté à vous. Ce ne sont que des points de départ.",
+  "daysBadge": "{count} jours",
+  "fromPerPerson": "À partir de {price} / personne",
+  "adapt": "L'adapter",
+  "chatTitle": "Parlons-en",
+  "chatText": "Les questions qu'on nous pose le plus, avec les réponses de votre conseiller, comme dans une conversation.",
+  "ctaTitle": "Décrivez le voyage de vos rêves",
+  "ctaText": "Quelques lignes suffisent. Nous revenons vers vous sous un jour ouvré avec une première idée, sans engagement.",
+  "ideaLabel": "Le voyage de vos rêves",
+  "ideaPlaceholder": "Quand, où, avec qui, et ce que vous aimeriez faire…",
+  "emailLabel": "Votre e-mail",
+  "sending": "Envoi…",
+  "send": "Envoyer mon idée",
+  "thanks": "Merci ! Un conseiller vous répondra très vite."
+}
