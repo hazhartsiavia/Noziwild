@@ -67,22 +67,28 @@ if (fs.existsSync(INDEX_HTML)) {
 app.use(notFound)
 app.use(errorHandler)
 
-// Tables à jour avant de répondre (sans risque à relancer). DB_AUTO_INIT=false pour le désactiver.
-// Si MySQL ne répond pas, le serveur démarre quand même : /api/health dira "disconnected".
-if (process.env.DB_AUTO_INIT !== 'false') {
-  try {
-    await initDatabase({ log: () => {} })
-  } catch (error) {
-    console.error('Base de données non préparée :', error.message || error.code)
+// Pas de "await" au niveau du fichier : chez Hostinger, le lanceur Node charge ce fichier
+// avec require(), qui refuse les modules contenant un await de premier niveau.
+async function start() {
+  // Tables à jour avant de répondre (sans risque à relancer). DB_AUTO_INIT=false pour le désactiver.
+  // Si MySQL ne répond pas, le serveur démarre quand même : /api/health dira "disconnected".
+  if (process.env.DB_AUTO_INIT !== 'false') {
+    try {
+      await initDatabase({ log: () => {} })
+    } catch (error) {
+      console.error('Base de données non préparée :', error.message || error.code)
+    }
   }
+
+  app.listen(PORT, (error) => {
+    // Express 5 transmet ici les erreurs de démarrage (ex. port déjà utilisé)
+    if (error) {
+      console.error(`Impossible de démarrer l'API sur le port ${PORT} :`, error.message)
+      process.exit(1)
+    }
+    const site = fs.existsSync(INDEX_HTML) ? ' (site + API)' : ''
+    console.log(`API Noziwild démarrée sur http://localhost:${PORT}${site}`)
+  })
 }
 
-app.listen(PORT, (error) => {
-  // Express 5 transmet ici les erreurs de démarrage (ex. port déjà utilisé)
-  if (error) {
-    console.error(`Impossible de démarrer l'API sur le port ${PORT} :`, error.message)
-    process.exit(1)
-  }
-  const site = fs.existsSync(INDEX_HTML) ? ' (site + API)' : ''
-  console.log(`API Noziwild démarrée sur http://localhost:${PORT}${site}`)
-})
+start()
