@@ -6,35 +6,22 @@ import GoogleButton from '../components/GoogleButton'
 import PasswordInput from '../components/PasswordInput'
 import { LABEL, FIELD, PRIMARY, FIELD_ERROR } from '../components/authStyles'
 import { useAuth } from '../context/AuthContext'
+import { useT } from '../i18n/LanguageContext'
 
 // N'accepte que des chemins internes au site (évite les redirections vers un autre site)
 function safeNext(value) {
   return value && value.startsWith('/') && !value.startsWith('//') ? value : '/account'
 }
 
+// Textes : auth.login et auth.register (locales/<langue>/auth.json)
 const COPY = {
-  login: {
-    title: 'Welcome Back',
-    text: 'Log in to follow your requests and plan your next escape in Madagascar.',
-    submit: 'Log In',
-    googleText: 'signin_with',
-    switchText: 'New to Noziwild?',
-    switchLink: 'Create an account',
-    switchTo: '/register',
-  },
-  register: {
-    title: 'Create Your Account',
-    text: 'One account to save your trip ideas and talk with our travel experts.',
-    submit: 'Create Account',
-    googleText: 'signup_with',
-    switchText: 'Already have an account?',
-    switchLink: 'Log in',
-    switchTo: '/login',
-  },
+  login: { googleText: 'signin_with', switchTo: '/register' },
+  register: { googleText: 'signup_with', switchTo: '/login' },
 }
 
 function Auth({ mode = 'login' }) {
-  const copy = COPY[mode]
+  const t = useT('auth')
+  const copy = { ...COPY[mode], ...t(mode) }
   const isRegister = mode === 'register'
   const { user, loading, login, register, googleLogin } = useAuth()
   const navigate = useNavigate()
@@ -89,31 +76,31 @@ function Auth({ mode = 'login' }) {
 
       <div className="my-8 flex items-center gap-4 text-sm text-slate-500" aria-hidden="true">
         <span className="h-px flex-1 bg-slate-200" />
-        or with your email
+        {t('orEmail')}
         <span className="h-px flex-1 bg-slate-200" />
       </div>
 
       <form onSubmit={handleSubmit} className="flex flex-col gap-5">
         {isRegister && (
           <div>
-            <label htmlFor="auth-name" className={LABEL}>Name</label>
+            <label htmlFor="auth-name" className={LABEL}>{t('name')}</label>
             <input id="auth-name" name="name" type="text" required autoComplete="name" className={FIELD} />
             {fieldErrors.name && <p className={FIELD_ERROR}>{fieldErrors.name}</p>}
           </div>
         )}
 
         <div>
-          <label htmlFor="auth-email" className={LABEL}>Email Address</label>
+          <label htmlFor="auth-email" className={LABEL}>{t('email')}</label>
           <input id="auth-email" name="email" type="email" required autoComplete="email" className={FIELD} />
           {fieldErrors.email && <p className={FIELD_ERROR}>{fieldErrors.email}</p>}
         </div>
 
         <div>
           <div className="flex items-baseline justify-between gap-4">
-            <label htmlFor="auth-password" className={LABEL}>Password</label>
+            <label htmlFor="auth-password" className={LABEL}>{t('password')}</label>
             {!isRegister && (
               <Link to="/forgot-password" className="mb-2 text-sm text-[#a9813a] hover:underline">
-                Forgot password?
+                {t('forgot')}
               </Link>
             )}
           </div>
@@ -126,13 +113,13 @@ function Auth({ mode = 'login' }) {
             autoComplete={isRegister ? 'new-password' : 'current-password'}
           />
           {isRegister && !fieldErrors.password && (
-            <p className="mt-1 pl-6 text-xs sm:text-sm text-slate-500">At least 8 characters.</p>
+            <p className="mt-1 pl-6 text-xs sm:text-sm text-slate-500">{t('minLength')}</p>
           )}
           {fieldErrors.password && <p className={FIELD_ERROR}>{fieldErrors.password}</p>}
         </div>
 
         <button type="submit" disabled={status === 'sending'} className={`mt-2 ${PRIMARY}`}>
-          {status === 'sending' ? 'Please wait…' : copy.submit}
+          {status === 'sending' ? t('wait') : copy.submit}
         </button>
 
         {status === 'error' && (

@@ -3,6 +3,7 @@
 // L'identifiant client Google est lu depuis le serveur (GOOGLE_CLIENT_ID dans server/.env).
 import React, { useEffect, useRef, useState } from 'react'
 import { fetchAuthConfig } from '../api'
+import { useLanguage, useT } from '../i18n/LanguageContext'
 
 const SCRIPT_SRC = 'https://accounts.google.com/gsi/client'
 let scriptPromise = null
@@ -28,6 +29,9 @@ function loadGoogleScript() {
 }
 
 function GoogleButton({ onCredential, text = 'continue_with' }) {
+  const t = useT('auth')
+  // Le texte du bouton est rendu par Google, dans la langue du site
+  const { lang } = useLanguage()
   const containerRef = useRef(null)
   const callbackRef = useRef(onCredential)
   const [state, setState] = useState('loading') // 'loading' | 'ready' | 'disabled' | 'error'
@@ -64,7 +68,7 @@ function GoogleButton({ onCredential, text = 'continue_with' }) {
           shape: 'pill',
           text,
           width,
-          locale: 'en',
+          locale: lang,
         })
         setState('ready')
       } catch {
@@ -76,18 +80,18 @@ function GoogleButton({ onCredential, text = 'continue_with' }) {
     return () => {
       cancelled = true
     }
-  }, [text])
+  }, [text, lang])
 
   return (
     <div className="w-full">
       <div ref={containerRef} className={`flex w-full justify-center ${state === 'disabled' ? '' : 'min-h-[44px]'}`} />
       {state === 'disabled' && (
         <p className="text-center text-xs text-slate-500">
-          Google sign-in is not configured yet.
+          {t('googleOff')}
         </p>
       )}
       {state === 'error' && (
-        <p className="text-center text-xs text-red-700">Google sign-in could not be loaded.</p>
+        <p className="text-center text-xs text-red-700">{t('googleError')}</p>
       )}
     </div>
   )

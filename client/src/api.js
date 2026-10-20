@@ -3,6 +3,16 @@
 // En production, définir VITE_API_URL si l'API est sur un autre domaine.
 const API_URL = import.meta.env.VITE_API_URL || ''
 
+// Messages d'erreur de ce fichier, dans la langue du site (posée sur <html lang> par LanguageContext)
+const MESSAGES = {
+  en: { offline: 'Our server is not reachable right now. Please try again later.', failed: 'Something went wrong. Please try again later.', photo: 'The photo could not be sent.' },
+  fr: { offline: 'Notre serveur est injoignable pour le moment. Réessayez plus tard.', failed: 'Une erreur est survenue. Réessayez plus tard.', photo: "La photo n'a pas pu être envoyée." },
+  de: { offline: 'Unser Server ist gerade nicht erreichbar. Bitte versuchen Sie es später erneut.', failed: 'Etwas ist schiefgelaufen. Bitte versuchen Sie es später erneut.', photo: 'Das Foto konnte nicht gesendet werden.' },
+  it: { offline: 'Il nostro server non è raggiungibile al momento. Riprova più tardi.', failed: 'Qualcosa è andato storto. Riprova più tardi.', photo: 'Non è stato possibile inviare la foto.' },
+  es: { offline: 'Nuestro servidor no está disponible en este momento. Inténtelo más tarde.', failed: 'Algo ha salido mal. Inténtelo más tarde.', photo: 'No se ha podido enviar la foto.' },
+}
+const message = (key) => (MESSAGES[document.documentElement.lang] || MESSAGES.en)[key]
+
 async function request(method, path, data) {
   const response = await fetch(`${API_URL}/api${path}`, {
     method,
@@ -15,14 +25,14 @@ async function request(method, path, data) {
   // Pas du JSON : ce n'est pas l'API qui a répondu (ex. l'hébergeur renvoie la page du site
   // parce que l'API n'est pas déployée à cette adresse)
   if (!response.headers.get('content-type')?.includes('application/json')) {
-    const error = new Error('Our server is not reachable right now. Please try again later.')
+    const error = new Error(message('offline'))
     error.status = response.ok ? 502 : response.status
     throw error
   }
 
   const body = await response.json().catch(() => ({}))
   if (!response.ok) {
-    const error = new Error(body.error || 'Something went wrong. Please try again later.')
+    const error = new Error(body.error || message('failed'))
     error.status = response.status
     error.fields = body.fields
     throw error
@@ -85,6 +95,6 @@ export async function adminUploadPhoto(file) {
   form.append('image', file)
   const response = await fetch(`${API_URL}/api/admin/uploads`, { method: 'POST', credentials: 'include', body: form })
   const body = await response.json().catch(() => ({}))
-  if (!response.ok) throw new Error(body.error || 'The photo could not be sent.')
+  if (!response.ok) throw new Error(body.error || message('photo'))
   return body.path
 }

@@ -4,8 +4,10 @@ import React from 'react'
 import Navbar from './Navbar'
 import Footer from './Footer'
 import NosyIranja from '../assets/images/NosyIranja.png'
+import { useT } from '../i18n/LanguageContext'
 
 function AuthLayout({ title, text, children }) {
+  const t = useT('auth')
   return (
     <>
       <section className="w-full pt-0 pb-12 md:pb-20 bg-[#D5E8E2] flex flex-col items-center">
@@ -17,7 +19,7 @@ function AuthLayout({ title, text, children }) {
             <img src={NosyIranja} alt="" className="absolute inset-0 w-full h-full object-cover" />
             <div className="absolute inset-0 bg-gradient-to-t from-slate-950/70 via-slate-950/10 to-transparent" />
             <p className="absolute bottom-10 left-10 right-10 text-3xl xl:text-4xl font-medium leading-tight text-white">
-              Your Madagascar journey starts here.
+              {t('layoutQuote')}
             </p>
           </div>
 

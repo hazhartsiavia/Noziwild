@@ -8,6 +8,8 @@ import GoogleButton from '../components/GoogleButton'
 import PasswordInput from '../components/PasswordInput'
 import { LABEL, FIELD, BUTTON, PRIMARY, SECONDARY, FIELD_ERROR } from '../components/authStyles'
 import { useAuth } from '../context/AuthContext'
+import { useLanguage, useT } from '../i18n/LanguageContext'
+import { LOCALES } from '../utils/format'
 import {
   updateProfile,
   changePassword,
@@ -21,26 +23,17 @@ const CARD = 'w-[90vw] max-w-3xl rounded-3xl bg-white p-6 sm:p-10'
 const H2 = 'text-xl sm:text-2xl font-medium tracking-tight text-slate-900'
 const MUTED = 'text-sm md:text-base text-slate-600'
 
-const KIND_LABELS = {
-  contact: 'Contact message',
-  'tailor-made': 'Tailor-made trip',
-  place: 'Place inquiry',
-  gear: 'Equipment request',
-  food: 'Food journey',
-  trip: 'Trip idea',
-  circuit: 'Circuit request',
+// Libellés des types de demande et des statuts : account.kinds et account.statuses
+const STATUS_CLASSES = {
+  new: 'bg-amber-50 text-amber-800',
+  read: 'bg-sky-50 text-sky-800',
+  in_progress: 'bg-sky-50 text-sky-800',
+  answered: 'bg-emerald-50 text-emerald-800',
+  done: 'bg-emerald-50 text-emerald-800',
 }
 
-const STATUS_LABELS = {
-  new: { text: 'Received', className: 'bg-amber-50 text-amber-800' },
-  read: { text: 'Read', className: 'bg-sky-50 text-sky-800' },
-  in_progress: { text: 'In progress', className: 'bg-sky-50 text-sky-800' },
-  answered: { text: 'Answered', className: 'bg-emerald-50 text-emerald-800' },
-  done: { text: 'Done', className: 'bg-emerald-50 text-emerald-800' },
-}
-
-const formatDate = (value, options = { day: 'numeric', month: 'long', year: 'numeric' }) =>
-  new Date(value).toLocaleDateString('en-GB', options)
+const formatDate = (value, lang, options = { day: 'numeric', month: 'long', year: 'numeric' }) =>
+  new Date(value).toLocaleDateString(LOCALES[lang] || 'en-GB', options)
 
 // Petit utilitaire : état d'envoi + messages d'erreur d'un formulaire
 function useAction() {
@@ -68,6 +61,8 @@ function ErrorText({ action }) {
    PROFIL : nom affiché
 ============================================================ */
 function ProfileCard({ user, onUpdated }) {
+  const t = useT('account')
+  const { lang } = useLanguage()
   const [editing, setEditing] = useState(false)
   const action = useAction()
 
@@ -76,7 +71,7 @@ function ProfileCard({ user, onUpdated }) {
     const { name } = Object.fromEntries(new FormData(event.currentTarget))
     const result = await action.run(() => updateProfile({ name }))
     if (result) {
-      onUpdated(result.user, 'Your name has been updated.')
+      onUpdated(result.user, t('nameUpdated'))
       setEditing(false)
     }
   }
@@ -86,12 +81,12 @@ function ProfileCard({ user, onUpdated }) {
       <div className="flex flex-col sm:flex-row sm:items-center gap-6">
         <Avatar user={user} className="w-20 h-20 text-3xl" />
         <div className="min-w-0 flex-1">
-          <p className={MUTED}>Hello,</p>
+          <p className={MUTED}>{t('hello')}</p>
           <h1 className="text-3xl sm:text-4xl font-medium tracking-tight text-slate-900 break-words">{user.name}</h1>
         </div>
         {!editing && (
           <button type="button" onClick={() => setEditing(true)} className={`self-start sm:self-center ${SECONDARY}`}>
-            Edit name
+            {t('editName')}
           </button>
         )}
       </div>
@@ -99,13 +94,13 @@ function ProfileCard({ user, onUpdated }) {
       {editing && (
         <form onSubmit={handleSubmit} className="mt-8 flex flex-col gap-4">
           <div>
-            <label htmlFor="profile-name" className={LABEL}>Name</label>
+            <label htmlFor="profile-name" className={LABEL}>{t('name')}</label>
             <input id="profile-name" name="name" defaultValue={user.name} required maxLength={120} autoComplete="name" className={FIELD} />
             {action.fields.name && <p className={FIELD_ERROR}>{action.fields.name}</p>}
           </div>
           <div className="flex flex-col sm:flex-row gap-3">
-            <button type="submit" disabled={action.sending} className={PRIMARY}>{action.sending ? 'Saving…' : 'Save'}</button>
-            <button type="button" onClick={() => { setEditing(false); action.reset() }} className={SECONDARY}>Cancel</button>
+            <button type="submit" disabled={action.sending} className={PRIMARY}>{action.sending ? t('saving') : t('save')}</button>
+            <button type="button" onClick={() => { setEditing(false); action.reset() }} className={SECONDARY}>{t('cancel')}</button>
           </div>
           <ErrorText action={action} />
         </form>
@@ -113,17 +108,17 @@ function ProfileCard({ user, onUpdated }) {
 
       <dl className="mt-10 grid grid-cols-1 sm:grid-cols-2 gap-6 border-t border-slate-200 pt-8">
         <div className="min-w-0">
-          <dt className="text-sm text-slate-500">Email</dt>
+          <dt className="text-sm text-slate-500">{t('email')}</dt>
           <dd className="mt-1 text-base md:text-lg text-slate-800 break-words">{user.email}</dd>
         </div>
         <div>
-          <dt className="text-sm text-slate-500">Member since</dt>
-          <dd className="mt-1 text-base md:text-lg text-slate-800">{formatDate(user.createdAt, { month: 'long', year: 'numeric' })}</dd>
+          <dt className="text-sm text-slate-500">{t('memberSince')}</dt>
+          <dd className="mt-1 text-base md:text-lg text-slate-800">{formatDate(user.createdAt, lang, { month: 'long', year: 'numeric' })}</dd>
         </div>
         {user.role === 'admin' && (
           <div>
-            <dt className="text-sm text-slate-500">Role</dt>
-            <dd className="mt-1 text-base md:text-lg text-slate-800">Administrator</dd>
+            <dt className="text-sm text-slate-500">{t('role')}</dt>
+            <dd className="mt-1 text-base md:text-lg text-slate-800">{t('admin')}</dd>
           </div>
         )}
       </dl>
@@ -135,13 +130,14 @@ function ProfileCard({ user, onUpdated }) {
    CONNEXION : Google + mot de passe
 ============================================================ */
 function GoogleRow({ user, onUpdated }) {
+  const t = useT('account')
   const action = useAction()
 
   const handleLink = (credential) =>
-    action.run(() => linkGoogle(credential)).then((result) => result && onUpdated(result.user, 'Your Google account is now connected.'))
+    action.run(() => linkGoogle(credential)).then((result) => result && onUpdated(result.user, t('googleConnected')))
 
   const handleUnlink = () =>
-    action.run(() => unlinkGoogle()).then((result) => result && onUpdated(result.user, 'Google has been disconnected.'))
+    action.run(() => unlinkGoogle()).then((result) => result && onUpdated(result.user, t('googleDisconnected')))
 
   return (
     <div className="flex flex-col gap-4 py-6 border-b border-slate-200">
@@ -149,7 +145,7 @@ function GoogleRow({ user, onUpdated }) {
         <div>
           <p className="text-base md:text-lg font-medium text-slate-900">Google</p>
           <p className={MUTED}>
-            {user.hasGoogle ? 'Connected. You can log in with one click.' : 'Log in with one click using your Google account.'}
+            {user.hasGoogle ? t('googleOn') : t('googleOff')}
           </p>
         </div>
         {user.hasGoogle && (
@@ -157,15 +153,15 @@ function GoogleRow({ user, onUpdated }) {
             type="button"
             onClick={handleUnlink}
             disabled={action.sending || !user.hasPassword}
-            title={user.hasPassword ? undefined : 'Set a password first'}
+            title={user.hasPassword ? undefined : t('setPasswordFirst')}
             className={`self-start sm:self-center disabled:cursor-not-allowed ${SECONDARY}`}
           >
-            {action.sending ? 'Please wait…' : 'Disconnect'}
+            {action.sending ? t('wait') : t('disconnect')}
           </button>
         )}
       </div>
       {user.hasGoogle && !user.hasPassword && (
-        <p className="text-xs sm:text-sm text-slate-500">To disconnect Google, set a password first so you can still log in.</p>
+        <p className="text-xs sm:text-sm text-slate-500">{t('disconnectHint')}</p>
       )}
       {!user.hasGoogle && (
         <div className="max-w-sm">
@@ -178,6 +174,7 @@ function GoogleRow({ user, onUpdated }) {
 }
 
 function PasswordRow({ user, onUpdated }) {
+  const t = useT('account')
   const [open, setOpen] = useState(false)
   const action = useAction()
 
@@ -187,8 +184,8 @@ function PasswordRow({ user, onUpdated }) {
     const result = await action.run(() => changePassword({ currentPassword, newPassword }))
     if (result) {
       onUpdated(result.user, user.hasPassword
-        ? 'Your password has been changed. Your other devices have been logged out.'
-        : 'Your password is set. You can now also log in with your email.')
+        ? t('passwordChanged')
+        : t('passwordSet'))
       setOpen(false)
     }
   }
@@ -197,12 +194,12 @@ function PasswordRow({ user, onUpdated }) {
     <div className="flex flex-col gap-4 py-6">
       <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
         <div>
-          <p className="text-base md:text-lg font-medium text-slate-900">Email and password</p>
-          <p className={MUTED}>{user.hasPassword ? 'Your account has a password.' : 'No password yet: you log in with Google.'}</p>
+          <p className="text-base md:text-lg font-medium text-slate-900">{t('emailPassword')}</p>
+          <p className={MUTED}>{user.hasPassword ? t('hasPassword') : t('noPassword')}</p>
         </div>
         {!open && (
           <button type="button" onClick={() => setOpen(true)} className={`self-start sm:self-center ${SECONDARY}`}>
-            {user.hasPassword ? 'Change password' : 'Set a password'}
+            {user.hasPassword ? t('changePassword') : t('setPassword')}
           </button>
         )}
       </div>
@@ -211,21 +208,21 @@ function PasswordRow({ user, onUpdated }) {
         <form onSubmit={handleSubmit} className="flex flex-col gap-4">
           {user.hasPassword && (
             <div>
-              <label htmlFor="pw-current" className={LABEL}>Current password</label>
+              <label htmlFor="pw-current" className={LABEL}>{t('currentPassword')}</label>
               <PasswordInput id="pw-current" name="currentPassword" required autoComplete="current-password" />
               {action.fields.currentPassword && <p className={FIELD_ERROR}>{action.fields.currentPassword}</p>}
             </div>
           )}
           <div>
-            <label htmlFor="pw-new" className={LABEL}>New password</label>
+            <label htmlFor="pw-new" className={LABEL}>{t('newPassword')}</label>
             <PasswordInput id="pw-new" name="newPassword" required minLength={8} maxLength={72} autoComplete="new-password" />
             {action.fields.newPassword
               ? <p className={FIELD_ERROR}>{action.fields.newPassword}</p>
-              : <p className="mt-1 pl-6 text-xs sm:text-sm text-slate-500">At least 8 characters.</p>}
+              : <p className="mt-1 pl-6 text-xs sm:text-sm text-slate-500">{t('minLength')}</p>}
           </div>
           <div className="flex flex-col sm:flex-row gap-3">
-            <button type="submit" disabled={action.sending} className={PRIMARY}>{action.sending ? 'Saving…' : 'Save password'}</button>
-            <button type="button" onClick={() => { setOpen(false); action.reset() }} className={SECONDARY}>Cancel</button>
+            <button type="submit" disabled={action.sending} className={PRIMARY}>{action.sending ? t('saving') : t('savePassword')}</button>
+            <button type="button" onClick={() => { setOpen(false); action.reset() }} className={SECONDARY}>{t('cancel')}</button>
           </div>
           {!action.fields.currentPassword && !action.fields.newPassword && <ErrorText action={action} />}
         </form>
@@ -238,6 +235,8 @@ function PasswordRow({ user, onUpdated }) {
    DEMANDES ENVOYÉES
 ============================================================ */
 function RequestsCard() {
+  const t = useT('account')
+  const { lang } = useLanguage()
   const [state, setState] = useState({ status: 'loading', requests: [], error: '' })
 
   useEffect(() => {
@@ -252,20 +251,20 @@ function RequestsCard() {
 
   return (
     <div className={CARD}>
-      <h2 className={H2}>My requests</h2>
-      <p className={`mt-2 ${MUTED}`}>Messages and trip requests linked to your account.</p>
+      <h2 className={H2}>{t('requests')}</h2>
+      <p className={`mt-2 ${MUTED}`}>{t('requestsText')}</p>
 
-      {state.status === 'loading' && <p role="status" className={`mt-6 ${MUTED}`}>Loading…</p>}
+      {state.status === 'loading' && <p role="status" className={`mt-6 ${MUTED}`}>{t('loading')}</p>}
       {state.status === 'error' && <p role="alert" className="mt-6 text-sm md:text-base text-red-700">{state.error}</p>}
 
       {state.status === 'ready' && state.requests.length === 0 && (
         <div className="mt-6 rounded-3xl bg-[#D5E8E2]/60 p-6">
-          <p className="text-base text-slate-800">You have not sent any request yet.</p>
+          <p className="text-base text-slate-800">{t('noRequests')}</p>
           <div className="mt-4 flex flex-col sm:flex-row gap-3">
             <Link to="/tailor-made" className={`text-center bg-[#C49849] hover:bg-[#b08339] active:scale-95 transition text-white ${BUTTON}`}>
-              Plan a trip
+              {t('planTrip')}
             </Link>
-            <Link to="/contact" className={`text-center ${SECONDARY}`}>Contact us</Link>
+            <Link to="/contact" className={`text-center ${SECONDARY}`}>{t('contact')}</Link>
           </div>
         </div>
       )}
@@ -273,16 +272,19 @@ function RequestsCard() {
       {state.requests.length > 0 && (
         <ul className="mt-6 divide-y divide-slate-200">
           {state.requests.map((request) => {
-            const status = STATUS_LABELS[request.status] || { text: request.status, className: 'bg-slate-100 text-slate-700' }
+            const status = {
+              text: t('statuses')[request.status] || request.status,
+              className: STATUS_CLASSES[request.status] || 'bg-slate-100 text-slate-700',
+            }
             return (
               <li key={`${request.kind}-${request.id}`} className="py-5 flex flex-col sm:flex-row sm:items-start gap-3 sm:gap-6">
                 <div className="min-w-0 flex-1">
                   <p className="text-base md:text-lg font-medium text-slate-900">
-                    {KIND_LABELS[request.kind] || request.kind}
+                    {t('kinds')[request.kind] || request.kind}
                     {request.subject && <span className="font-normal text-slate-600"> · {request.subject}</span>}
                   </p>
                   {request.details && <p className={`mt-1 line-clamp-2 break-words ${MUTED}`}>{request.details}</p>}
-                  <p className="mt-1 text-xs sm:text-sm text-slate-500">{formatDate(request.createdAt)}</p>
+                  <p className="mt-1 text-xs sm:text-sm text-slate-500">{formatDate(request.createdAt, lang)}</p>
                 </div>
                 <span className={`self-start shrink-0 rounded-full px-3 py-1 text-xs sm:text-sm font-medium ${status.className}`}>
                   {status.text}
@@ -300,6 +302,7 @@ function RequestsCard() {
    SUPPRESSION DU COMPTE
 ============================================================ */
 function DeleteCard({ user, onDeleted }) {
+  const t = useT('account')
   const [open, setOpen] = useState(false)
   const action = useAction()
 
@@ -312,35 +315,35 @@ function DeleteCard({ user, onDeleted }) {
 
   return (
     <div className={CARD}>
-      <h2 className={H2}>Delete my account</h2>
+      <h2 className={H2}>{t('deleteTitle')}</h2>
       <p className={`mt-2 ${MUTED}`}>
-        Your account and sign-in methods are removed for good. Requests you already sent stay with our team so we can still answer them.
+        {t('deleteText')}
       </p>
 
       {!open ? (
         <button type="button" onClick={() => setOpen(true)} className={`mt-6 border border-red-300 text-red-700 hover:border-red-700 active:scale-95 transition ${BUTTON}`}>
-          Delete my account
+          {t('deleteTitle')}
         </button>
       ) : (
         <form onSubmit={handleSubmit} className="mt-6 flex flex-col gap-4">
           {user.hasPassword ? (
             <div>
-              <label htmlFor="delete-password" className={LABEL}>Enter your password to confirm</label>
+              <label htmlFor="delete-password" className={LABEL}>{t('confirmPassword')}</label>
               <PasswordInput id="delete-password" name="password" required autoComplete="current-password" />
               {action.fields.password && <p className={FIELD_ERROR}>{action.fields.password}</p>}
             </div>
           ) : (
             <div>
-              <label htmlFor="delete-email" className={LABEL}>Type your email address to confirm</label>
+              <label htmlFor="delete-email" className={LABEL}>{t('confirmEmail')}</label>
               <input id="delete-email" name="confirmEmail" type="email" required autoComplete="off" placeholder={user.email} className={FIELD} />
               {action.fields.confirmEmail && <p className={FIELD_ERROR}>{action.fields.confirmEmail}</p>}
             </div>
           )}
           <div className="flex flex-col sm:flex-row gap-3">
             <button type="submit" disabled={action.sending} className={`bg-red-700 hover:bg-red-800 active:scale-95 transition text-white disabled:opacity-60 disabled:cursor-wait ${BUTTON}`}>
-              {action.sending ? 'Deleting…' : 'Delete for good'}
+              {action.sending ? t('deleting') : t('deleteForGood')}
             </button>
-            <button type="button" onClick={() => { setOpen(false); action.reset() }} className={SECONDARY}>Cancel</button>
+            <button type="button" onClick={() => { setOpen(false); action.reset() }} className={SECONDARY}>{t('cancel')}</button>
           </div>
           {!action.fields.password && !action.fields.confirmEmail && <ErrorText action={action} />}
         </form>
@@ -354,6 +357,7 @@ function DeleteCard({ user, onDeleted }) {
 ============================================================ */
 function Account() {
   const { user, loading, logout, updateUser } = useAuth()
+  const t = useT('account')
   const navigate = useNavigate()
   const location = useLocation()
   // Message de confirmation (ex. après réinitialisation du mot de passe, ou après une modification)
@@ -368,7 +372,7 @@ function Account() {
     return (
       <section className="w-full min-h-screen bg-[#D5E8E2] flex flex-col items-center">
         <Navbar />
-        <p role="status" className="mt-20 text-slate-600">Loading…</p>
+        <p role="status" className="mt-20 text-slate-600">{t('loading')}</p>
       </section>
     )
   }
@@ -401,8 +405,8 @@ function Account() {
         {notice && (
           <div role="status" className="w-[90vw] max-w-3xl mt-4 flex items-start justify-between gap-4 rounded-3xl bg-emerald-50 px-6 py-4 text-sm md:text-base text-emerald-800">
             <span>{notice}</span>
-            <button type="button" onClick={() => setNotice('')} aria-label="Close message" className="shrink-0 font-medium hover:underline">
-              OK
+            <button type="button" onClick={() => setNotice('')} aria-label={t('closeMessage')} className="shrink-0 font-medium hover:underline">
+              {t('ok')}
             </button>
           </div>
         )}
@@ -412,7 +416,7 @@ function Account() {
         </div>
 
         <div className={CARD}>
-          <h2 className={H2}>Sign-in methods</h2>
+          <h2 className={H2}>{t('signIn')}</h2>
           <GoogleRow user={user} onUpdated={handleUpdated} />
           <PasswordRow user={user} onUpdated={handleUpdated} />
         </div>
@@ -424,14 +428,14 @@ function Account() {
         <div className="w-[90vw] max-w-3xl flex flex-col sm:flex-row gap-3">
           {user.role === 'admin' && (
             <Link to="/admin" className={`text-center bg-slate-800 hover:bg-slate-700 active:scale-95 transition text-white ${BUTTON}`}>
-              Admin
+              {t('adminLink')}
             </Link>
           )}
           <Link to="/tailor-made" className={`text-center bg-[#C49849] hover:bg-[#b08339] active:scale-95 transition text-white ${BUTTON}`}>
-            Plan a trip
+            {t('planTrip')}
           </Link>
           <button type="button" onClick={handleLogout} className={`bg-white ${SECONDARY}`}>
-            Log out
+            {t('logout')}
           </button>
         </div>
       </section>

@@ -64,7 +64,7 @@ function toPayload(form) {
 function fromCircuit(circuit) {
   const translations = {}
   for (const { code } of TRANSLATION_LANGUAGES) {
-    const { itinerary, ...rest } = circuit.translations?.[code] || {}
+    const { itinerary: _days, ...rest } = circuit.translations?.[code] || {}
     translations[code] = rest
   }
   return {
