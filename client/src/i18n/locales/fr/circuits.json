@@ -1,0 +1,47 @@
+{
+  "title": "Nos circuits",
+  "home": "Accueil",
+  "crumb": "Circuits",
+  "eyebrow": "Voyager à travers Madagascar",
+  "heading": "Trouvez le circuit qui correspond à votre voyage",
+  "intro": "Des baies du Nord aux baobabs de l'Ouest, choisissez un itinéraire tout prêt ou demandez-nous de construire le vôtre.",
+  "region": "Région",
+  "duration": "Durée",
+  "all": "Toutes",
+  "regions": {
+    "North": "Nord",
+    "Highlands": "Hautes Terres",
+    "South & West": "Sud et Ouest",
+    "East": "Est"
+  },
+  "durations": [
+    "Toutes durées",
+    "1 semaine ou moins",
+    "8 à 12 jours",
+    "13 jours ou plus"
+  ],
+  "days": "{count} jours",
+  "from": "À partir de {price}",
+  "loading": "Chargement des circuits",
+  "loadError": "Les circuits n'ont pas pu être chargés. Réessayez dans un instant.",
+  "reload": "Recharger",
+  "empty": "Aucun circuit ne correspond à ces filtres.",
+  "reset": "Réinitialiser les filtres",
+  "highlights": [
+    {
+      "title": "Des guides locaux",
+      "text": "Chaque circuit est mené par un guide malgache agréé qui connaît les parcs, les routes et les villages."
+    },
+    {
+      "title": "Des petits groupes",
+      "text": "Huit voyageurs au maximum par véhicule : vous voyez plus et attendez moins."
+    },
+    {
+      "title": "Sur mesure",
+      "text": "Chaque circuit peut être raccourci, prolongé ou combiné avec un autre."
+    }
+  ],
+  "ctaTitle": "Vous cherchez un itinéraire qui n'est pas dans cette liste ?",
+  "ctaText": "Indiquez-nous vos dates et vos envies. Un expert du voyage vous répond sous un jour ouvré.",
+  "ctaButton": "Organiser mon circuit"
+}

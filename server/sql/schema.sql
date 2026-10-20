@@ -108,6 +108,8 @@ CREATE TABLE IF NOT EXISTS newsletter_subscribers (
 --   Les listes (paragraphes, points forts, inclus, photos...) sont rangées en JSON :
 --   elles s'affichent toujours en entier, jamais filtrées en SQL.
 --   Les photos sont des chemins servis par l'API, ex. /uploads/circuits/ramena.png
+--   Les textes sont en anglais ; translations contient les autres langues (fr, de, it, es),
+--   jours de l'itinéraire compris : { "fr": { "title": ..., "itinerary": [{ "title": ... }] } }
 CREATE TABLE IF NOT EXISTS circuits (
   id             INT UNSIGNED AUTO_INCREMENT PRIMARY KEY,
   slug           VARCHAR(120) NOT NULL UNIQUE,
@@ -130,6 +132,7 @@ CREATE TABLE IF NOT EXISTS circuits (
   highlights     JSON         NOT NULL,
   included       JSON         NOT NULL,
   excluded       JSON         NOT NULL,
+  translations   JSON         NULL,
   sort_order     INT          NOT NULL DEFAULT 0,
   is_published   TINYINT(1)   NOT NULL DEFAULT 1,
   created_at     TIMESTAMP    NOT NULL DEFAULT CURRENT_TIMESTAMP,

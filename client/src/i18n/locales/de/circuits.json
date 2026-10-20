@@ -1,0 +1,47 @@
+{
+  "title": "Unsere Rundreisen",
+  "home": "Startseite",
+  "crumb": "Rundreisen",
+  "eyebrow": "Unterwegs in Madagaskar",
+  "heading": "Finden Sie die Rundreise, die zu Ihnen passt",
+  "intro": "Von den Buchten im Norden bis zu den Baobabs im Westen: Wählen Sie eine fertige Route oder lassen Sie uns Ihre eigene zusammenstellen.",
+  "region": "Region",
+  "duration": "Dauer",
+  "all": "Alle",
+  "regions": {
+    "North": "Norden",
+    "Highlands": "Hochland",
+    "South & West": "Süden & Westen",
+    "East": "Osten"
+  },
+  "durations": [
+    "Beliebige Dauer",
+    "1 Woche oder weniger",
+    "8 bis 12 Tage",
+    "13 Tage oder mehr"
+  ],
+  "days": "{count} Tage",
+  "from": "Ab {price}",
+  "loading": "Rundreisen werden geladen",
+  "loadError": "Die Rundreisen konnten nicht geladen werden. Bitte versuchen Sie es gleich noch einmal.",
+  "reload": "Neu laden",
+  "empty": "Keine Rundreise entspricht diesen Filtern.",
+  "reset": "Filter zurücksetzen",
+  "highlights": [
+    {
+      "title": "Lokale Guides",
+      "text": "Jede Rundreise wird von einem lizenzierten madagassischen Guide geführt, der die Parks, die Straßen und die Dörfer kennt."
+    },
+    {
+      "title": "Kleine Gruppen",
+      "text": "Höchstens acht Reisende pro Fahrzeug – so sehen Sie mehr und warten weniger."
+    },
+    {
+      "title": "Nach Maß",
+      "text": "Jede Rundreise lässt sich verkürzen, verlängern oder mit einer anderen kombinieren."
+    }
+  ],
+  "ctaTitle": "Sie suchen eine Route, die nicht auf dieser Liste steht?",
+  "ctaText": "Nennen Sie uns Ihre Reisedaten und Interessen. Ein Reiseexperte antwortet innerhalb eines Werktags.",
+  "ctaButton": "Meine Rundreise planen"
+}

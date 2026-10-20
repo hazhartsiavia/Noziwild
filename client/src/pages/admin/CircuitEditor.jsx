@@ -6,6 +6,7 @@ import { adminCreateCircuit, adminFetchCircuit, adminFetchCircuits, adminUpdateC
 import Field from '../../components/admin/Field'
 import ListEditor from '../../components/admin/ListEditor'
 import PhotoPicker from '../../components/admin/PhotoPicker'
+import TranslationsEditor, { TRANSLATION_LANGUAGES } from '../../components/admin/TranslationsEditor'
 import { BTN_GHOST, BTN_GOLD, CARD, CARD_TITLE, ICON_BTN, INPUT, TEXTAREA, move } from '../../components/admin/ui'
 
 const LEVELS = ['Easy', 'Moderate', 'Active']
@@ -28,7 +29,7 @@ const EMPTY = {
   slug: '', title: '', region: '', level: 'Easy', days: 7, price: 1000, stops: '', summary: '',
   groupSize: '2 to 8 travellers', tourType: '', start: '', end: '', bestTime: '', tip: '',
   image: '', gallery: [], overview: [''], highlights: [''], included: DEFAULT_INCLUDED, excluded: DEFAULT_EXCLUDED,
-  sortOrder: 0, isPublished: false, itinerary: [],
+  sortOrder: 0, isPublished: false, itinerary: [], translations: {},
 }
 
 // "Nosy Be & Nosy Iranja" -> "nosy-be-nosy-iranja"
@@ -36,18 +37,47 @@ const slugify = (text) =>
   text.normalize('NFD').replace(/[̀-ͯ]/g, '').toLowerCase()
     .replace(/[^a-z0-9]+/g, '-').replace(/^-+|-+$/g, '').slice(0, 120)
 
-// Ce qui part vers l'API : sans les clés locales, nombres convertis
+// Ce qui part vers l'API : sans les clés locales, nombres convertis.
+// Les traductions des jours voyagent avec chaque jour dans le formulaire (elles suivent ses
+// déplacements) ; l'API les attend dans translations.<langue>.itinerary, dans l'ordre des jours.
 function toPayload(form) {
+  const translations = {}
+  for (const { code } of TRANSLATION_LANGUAGES) {
+    translations[code] = { ...form.translations?.[code], itinerary: form.itinerary.map((day) => day.tr?.[code] || {}) }
+  }
   return {
     ...form,
     days: Number(form.days),
     price: Number(form.price),
     sortOrder: Number(form.sortOrder) || 0,
+    translations,
     itinerary: form.itinerary.map((day) => {
       const copy = { ...day }
       delete copy._key
+      delete copy.tr
       return copy
     }),
+  }
+}
+
+// Réponse de l'API → formulaire : traductions des jours rangées dans chaque jour
+function fromCircuit(circuit) {
+  const translations = {}
+  for (const { code } of TRANSLATION_LANGUAGES) {
+    const { itinerary, ...rest } = circuit.translations?.[code] || {}
+    translations[code] = rest
+  }
+  return {
+    ...EMPTY,
+    ...circuit,
+    translations,
+    itinerary: circuit.itinerary.map((day, i) => {
+      const tr = {}
+      for (const { code } of TRANSLATION_LANGUAGES) tr[code] = circuit.translations?.[code]?.itinerary?.[i] || {}
+      return withKey({ ...day, tr })
+    }),
+    overview: circuit.overview.length ? circuit.overview : [''],
+    highlights: circuit.highlights.length ? circuit.highlights : [''],
   }
 }
 
@@ -150,13 +180,7 @@ function CircuitEditor() {
     adminFetchCircuit(slug)
       .then(({ circuit }) => {
         if (cancelled) return
-        const loaded = {
-          ...EMPTY,
-          ...circuit,
-          itinerary: circuit.itinerary.map(withKey),
-          overview: circuit.overview.length ? circuit.overview : [''],
-          highlights: circuit.highlights.length ? circuit.highlights : [''],
-        }
+        const loaded = fromCircuit(circuit)
         setForm(loaded)
         setSaved(snapshot(loaded))
       })
@@ -415,6 +439,9 @@ function CircuitEditor() {
               <Plus size={16} aria-hidden="true" /> Add a day
             </button>
           </section>
+
+          {/* Traductions */}
+          <TranslationsEditor form={form} setForm={setForm} />
         </div>
 
         {/* Colonne de droite : photos et publication */}

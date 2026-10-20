@@ -1,0 +1,47 @@
+{
+  "title": "Our Circuits",
+  "home": "Home",
+  "crumb": "Circuits",
+  "eyebrow": "Travel across Madagascar",
+  "heading": "Find The Circuit That Fits Your Trip",
+  "intro": "From the northern bays to the baobabs of the west, choose a ready-made route or ask us to build your own.",
+  "region": "Region",
+  "duration": "Duration",
+  "all": "All",
+  "regions": {
+    "North": "North",
+    "Highlands": "Highlands",
+    "South & West": "South & West",
+    "East": "East"
+  },
+  "durations": [
+    "Any length",
+    "1 week or less",
+    "8 to 12 days",
+    "13 days or more"
+  ],
+  "days": "{count} days",
+  "from": "From {price}",
+  "loading": "Loading circuits",
+  "loadError": "The circuits could not be loaded. Please try again in a moment.",
+  "reload": "Reload",
+  "empty": "No circuit matches these filters.",
+  "reset": "Reset filters",
+  "highlights": [
+    {
+      "title": "Local guides",
+      "text": "Every circuit is led by a licensed Malagasy guide who knows the parks, the roads and the villages."
+    },
+    {
+      "title": "Small groups",
+      "text": "No more than eight travellers per vehicle, so you see more and wait less."
+    },
+    {
+      "title": "Made to measure",
+      "text": "Every circuit can be shortened, extended or mixed with another one."
+    }
+  ],
+  "ctaTitle": "Want a route that is not on this list?",
+  "ctaText": "Tell us your dates and interests. A travel expert replies within one working day.",
+  "ctaButton": "Plan my circuit"
+}

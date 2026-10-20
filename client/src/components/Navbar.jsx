@@ -5,6 +5,8 @@ import icone from '../assets/icone.png'
 import { Link } from 'react-router-dom'
 import { useAuth } from '../context/AuthContext'
 import Avatar from './Avatar'
+import LanguageSwitcher, { LanguageRow } from './LanguageSwitcher'
+import { useT } from '../i18n/LanguageContext'
 
 /* ============================================================
    ÉPAULE COURBE
@@ -51,6 +53,7 @@ const Chevron = ({ className = '' }) => (
 
 function Navbar() {
   const { user, loading } = useAuth()
+  const t = useT('nav')
   const [menuOpen, setMenuOpen] = useState(false)
   const [mobileSection, setMobileSection] = useState(null)
 
@@ -72,26 +75,26 @@ function Navbar() {
      TRAVEL
   ============================================================ */
   const travelLinks = [
-    ['Activities', '/activities'],
-    ['Circuits', '/circuits'],
-    ['Excursions', '/excurssions'],
-    ['Cruise Excursions', '/cruise-excurssion'],
-    ['Long Stay', '/longstay'],
-    ['Tailor-Made', '/tailor-made'],
+    [t('links.activities'), '/activities'],
+    [t('links.circuits'), '/circuits'],
+    [t('links.excursions'), '/excurssions'],
+    [t('links.cruise'), '/cruise-excurssion'],
+    [t('links.longStay'), '/longstay'],
+    [t('links.tailorMade'), '/tailor-made'],
   ]
 
   /* ============================================================
      SERVICES
   ============================================================ */
   const serviceLinks = [
-    ['Accommodation', '/hosting'],
-    ['Transport', '/transport'],
-    ['Guides & Accompaniment', '/guide'],
-    ['Food & Dining', '/Food-dining'],
-    ['Equipment Rentals', '/equipment-rentals'],
-    ['Photography', '/photography'],
-    ['Travel Planning', '/travel-planning'],
-    ['Ticket Reservations', '/ticket-reservation'],
+    [t('links.accommodation'), '/hosting'],
+    [t('links.transport'), '/transport'],
+    [t('links.guides'), '/guide'],
+    [t('links.food'), '/Food-dining'],
+    [t('links.equipment'), '/equipment-rentals'],
+    [t('links.photography'), '/photography'],
+    [t('links.planning'), '/travel-planning'],
+    [t('links.tickets'), '/ticket-reservation'],
   ]
 
   /* ============================================================
@@ -371,12 +374,12 @@ function Navbar() {
             <Link
               ref={logoRef}
               to="/"
-              aria-label="Accueil Noziwild"
+              aria-label={t('home')}
               className="flex items-center gap-2.5"
             >
               <img
                 src={icone}
-                alt="Logo Noziwild"
+                alt={t('logo')}
                 className="h-9 w-auto lg:h-10"
               />
             </Link>
@@ -402,7 +405,7 @@ function Navbar() {
                 to="/destinations"
                 className={`nav-link-item ${link}`}
               >
-                Destinations
+                {t('destinations')}
               </Link>
 
               {/* =================================================
@@ -430,7 +433,7 @@ function Navbar() {
                     hover:text-zinc-900
                   "
                 >
-                  Travel
+                  {t('travel')}
 
                   <Chevron />
                 </Link>
@@ -512,7 +515,7 @@ function Navbar() {
                     hover:text-zinc-900
                   "
                 >
-                  Services
+                  {t('services')}
 
                   <Chevron />
                 </button>
@@ -576,7 +579,7 @@ function Navbar() {
                 to="/about"
                 className={`nav-link-item ${link}`}
               >
-                About
+                {t('about')}
               </Link>
 
               {/* =================================================
@@ -586,10 +589,15 @@ function Navbar() {
                 to="/blog"
                 className={`nav-link-item ${link}`}
               >
-                Blog
+                {t('blog')}
               </Link>
 
             </div>
+
+            {/* ==================================================
+                LANGUE
+            ================================================== */}
+            <LanguageSwitcher className="hidden md:block" />
 
             {/* ==================================================
                 COMPTE (connexion / profil)
@@ -599,7 +607,7 @@ function Navbar() {
             ) : user ? (
               <Link
                 to="/account"
-                aria-label="My account"
+                aria-label={t('myAccount')}
                 className="hidden items-center gap-2 text-[15px] text-zinc-700 transition hover:text-zinc-900 md:flex"
               >
                 <Avatar user={user} className="h-9 w-9 text-sm" />
@@ -612,7 +620,7 @@ function Navbar() {
                 to="/login"
                 className={`hidden whitespace-nowrap md:inline ${link}`}
               >
-                Log in
+                {t('login')}
               </Link>
             )}
 
@@ -640,7 +648,7 @@ function Navbar() {
                 md:inline-flex
               "
             >
-              Get a Quote
+              {t('quote')}
 
               <svg
                 width="7"
@@ -670,8 +678,8 @@ function Navbar() {
               }
               aria-label={
                 menuOpen
-                  ? 'Fermer le menu'
-                  : 'Ouvrir le menu'
+                  ? t('closeMenu')
+                  : t('openMenu')
               }
               aria-expanded={menuOpen}
               className="
@@ -770,7 +778,7 @@ function Navbar() {
                     hover:bg-zinc-50
                   "
                 >
-                  Destinations
+                  {t('destinations')}
                 </Link>
 
                 {/* =================================================
@@ -794,7 +802,7 @@ function Navbar() {
                     hover:bg-zinc-50
                   "
                 >
-                  Travel
+                  {t('travel')}
 
                   <Chevron
                     className={`
@@ -852,7 +860,7 @@ function Navbar() {
                     hover:bg-zinc-50
                   "
                 >
-                  Services
+                  {t('services')}
 
                   <Chevron
                     className={`
@@ -902,7 +910,7 @@ function Navbar() {
                     hover:bg-zinc-50
                   "
                 >
-                  About
+                  {t('about')}
                 </Link>
 
                 {/* BLOG */}
@@ -918,7 +926,7 @@ function Navbar() {
                     hover:bg-zinc-50
                   "
                 >
-                  Blog
+                  {t('blog')}
                 </Link>
 
                 {/* COMPTE MOBILE */}
@@ -941,13 +949,16 @@ function Navbar() {
                     {user ? (
                       <>
                         <Avatar user={user} className="h-7 w-7 text-xs" />
-                        My account
+                        {t('myAccount')}
                       </>
                     ) : (
-                      'Log in'
+                      t('login')
                     )}
                   </Link>
                 )}
+
+                {/* LANGUE MOBILE */}
+                <LanguageRow onChange={closeMenu} />
 
                 {/* CTA MOBILE */}
                 <Link
@@ -969,7 +980,7 @@ function Navbar() {
                     text-zinc-900
                   "
                 >
-                  Get a Quote
+                  {t('quote')}
 
                   <svg
                     width="7"

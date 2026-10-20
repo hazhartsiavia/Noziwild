@@ -1,0 +1,47 @@
+{
+  "title": "I nostri tour",
+  "home": "Home",
+  "crumb": "Tour",
+  "eyebrow": "In viaggio per il Madagascar",
+  "heading": "Trova il tour giusto per il tuo viaggio",
+  "intro": "Dalle baie del nord ai baobab dell'ovest, scegli un itinerario già pronto o chiedici di costruire il tuo.",
+  "region": "Regione",
+  "duration": "Durata",
+  "all": "Tutte",
+  "regions": {
+    "North": "Nord",
+    "Highlands": "Altopiani",
+    "South & West": "Sud e Ovest",
+    "East": "Est"
+  },
+  "durations": [
+    "Qualsiasi durata",
+    "1 settimana o meno",
+    "Da 8 a 12 giorni",
+    "13 giorni o più"
+  ],
+  "days": "{count} giorni",
+  "from": "Da {price}",
+  "loading": "Caricamento dei tour",
+  "loadError": "Non è stato possibile caricare i tour. Riprova tra un momento.",
+  "reload": "Ricarica",
+  "empty": "Nessun tour corrisponde a questi filtri.",
+  "reset": "Azzera i filtri",
+  "highlights": [
+    {
+      "title": "Guide locali",
+      "text": "Ogni tour è guidato da una guida malgascia autorizzata che conosce i parchi, le strade e i villaggi."
+    },
+    {
+      "title": "Piccoli gruppi",
+      "text": "Non più di otto viaggiatori per veicolo: vedi di più e aspetti di meno."
+    },
+    {
+      "title": "Su misura",
+      "text": "Ogni tour può essere accorciato, allungato o combinato con un altro."
+    }
+  ],
+  "ctaTitle": "Cerchi un itinerario che non è in questa lista?",
+  "ctaText": "Indicaci date e interessi. Un esperto di viaggi ti risponde entro un giorno lavorativo.",
+  "ctaButton": "Organizza il mio tour"
+}

@@ -17,6 +17,7 @@ const COLUMNS = [
   { table: 'contact_messages', column: 'user_id', definition: 'INT UNSIGNED NULL AFTER id' },
   { table: 'tailor_made_requests', column: 'user_id', definition: 'INT UNSIGNED NULL AFTER id' },
   { table: 'quick_requests', column: 'user_id', definition: 'INT UNSIGNED NULL AFTER id' },
+  { table: 'circuits', column: 'translations', definition: 'JSON NULL AFTER excluded' },
 ]
 
 // Listes de valeurs (ENUM) agrandies depuis : on remplace la définition si une valeur manque
@@ -112,8 +113,9 @@ export async function initDatabase({ log = console.log } = {}) {
   try {
     await connection.query(schema)
     await migrate(connection, dbName, log)
-    const seeded = await seedCircuits(connection)
-    if (seeded) log(`  + ${seeded} circuits ajoutés (sql/circuits.seed.json)`)
+    const { added, translated } = await seedCircuits(connection)
+    if (added) log(`  + ${added} circuits ajoutés (sql/circuits.seed.json)`)
+    if (translated) log(`  + traductions ajoutées à ${translated} circuits de départ`)
     log(`Base "${dbName}" et tables prêtes.`)
   } finally {
     await connection.end()

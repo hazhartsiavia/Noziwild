@@ -1,0 +1,297 @@
+{
+  "diego-suarez-bay-and-ramena-coast": {
+    "title": "Bahía de Diego Suarez y costa de Ramena",
+    "region": "Norte",
+    "level": "Fácil",
+    "stops": "Diego Suarez · Ramena · Mar Esmeralda",
+    "summary": "Lagunas turquesa, cañones de arenisca roja y bahías salvajes en el extremo norte de Madagascar.",
+    "groupSize": "De 2 a 8 viajeros",
+    "tourType": "Playa y naturaleza",
+    "start": "Diego Suarez (aeropuerto de Arrachart)",
+    "end": "Diego Suarez (aeropuerto de Arrachart)",
+    "bestTime": "De abril a diciembre",
+    "tip": "De junio a septiembre el alisio varatraza sopla con fuerza sobre la bahía: perfecto para el kitesurf, algo movido para las salidas en barco.",
+    "overview": [
+      "Diego Suarez se asienta en una de las mayores bahías naturales del mundo. En seis días tranquilos navegará hasta el Mar Esmeralda, caminará entre los Tsingy Rojos y recorrerá las Tres Bahías, con tiempo de sobra para largos almuerzos de pescado a la parrilla en la playa.",
+      "Las noches se reparten entre la ciudad colonial de Diego y el pueblo pesquero de Ramena, así que cada mañana empieza junto al agua."
+    ],
+    "highlights": [
+      "Navegar por el Mar Esmeralda y bañarse en sus aguas turquesa poco profundas",
+      "Caminar entre los Tsingy Rojos, agujas afiladas modeladas por la erosión",
+      "Recorrer la pista costera de las Tres Bahías: Sakalava, de las Palomas y de las Dunas",
+      "Ver lémures coronados y camaleones en el Parque Nacional de la Montaña de Ámbar"
+    ],
+    "included": [
+      "Vehículo privado con conductor experimentado",
+      "Guía local de habla inglesa o francesa",
+      "Entradas a los parques nacionales y guías locales",
+      "Alojamiento en habitación doble",
+      "5 noches en hoteles y lodges de playa",
+      "Desayuno todos los días, almuerzo los días de excursión",
+      "Salida en barco al Mar Esmeralda"
+    ],
+    "excluded": [
+      "Vuelos internacionales y visado",
+      "Seguro de viaje",
+      "Bebidas y gastos personales",
+      "Propinas para guías y conductores",
+      "Cenas"
+    ],
+    "itinerary": [
+      { "day": "Día 1", "title": "Llegada a Diego Suarez", "text": "Recibimiento en el aeropuerto de Arrachart y traslado al hotel. Paseo al final de la tarde por la antigua ciudad colonial y puesta de sol sobre la bahía y el islote del Pan de Azúcar, Nosy Lonjo.", "stay": "Diego Suarez", "meals": "Cena por su cuenta" },
+      { "day": "Día 2", "title": "Los Tsingy Rojos", "text": "Por la mañana, ruta hacia el sur hasta los Tsingy Rojos, un cañón de agujas rojas y ocres que brillan con la luz rasante. Regreso a la ciudad para una tarde libre.", "stay": "Diego Suarez", "meals": "Desayuno, almuerzo" },
+      { "day": "Día 3", "title": "Ramena y el Mar Esmeralda", "text": "Traslado a Ramena; después, un velero cruza la bahía hasta el Mar Esmeralda. Baño, snorkel y almuerzo de marisco en un islote de arena.", "stay": "Ramena", "meals": "Desayuno, almuerzo" },
+      { "day": "Día 4", "title": "Las Tres Bahías", "text": "Una pista en 4x4 sigue la costa hasta la bahía de Sakalava, la de las Palomas y la de las Dunas. Paseos cortos hasta el faro del Cabo Miné y mucho tiempo para nadar.", "stay": "Ramena", "meals": "Desayuno, almuerzo" },
+      { "day": "Día 5", "title": "Parque Nacional de la Montaña de Ámbar", "text": "Una selva fresca sobre un antiguo volcán: cascadas, lagos de cráter, lémures coronados y algunos de los camaleones más pequeños del planeta.", "stay": "Diego Suarez", "meals": "Desayuno, almuerzo" },
+      { "day": "Día 6", "title": "Salida", "text": "Mañana libre para un último café frente a la bahía y traslado al aeropuerto para su vuelo.", "meals": "Desayuno" }
+    ]
+  },
+  "nosy-be-and-nosy-iranja": {
+    "title": "Nosy Be, Nosy Komba y Nosy Iranja",
+    "region": "Norte",
+    "level": "Fácil",
+    "stops": "Nosy Be · Nosy Komba · Nosy Iranja",
+    "summary": "De isla en isla entre la perfumada Nosy Be, Nosy Komba y sus lémures, y las islas gemelas de Nosy Iranja.",
+    "groupSize": "De 2 a 8 viajeros",
+    "tourType": "Islas y playas",
+    "start": "Nosy Be (aeropuerto de Fascene)",
+    "end": "Nosy Be (aeropuerto de Fascene)",
+    "bestTime": "De abril a diciembre",
+    "tip": "Los tiburones ballena visitan las aguas de Nosy Be de octubre a diciembre, y las ballenas jorobadas de julio a septiembre.",
+    "overview": [
+      "Nosy Be huele a ylang-ylang y vainilla. Desde allí, pequeñas embarcaciones le llevan a las islas cercanas: Nosy Komba y sus simpáticos lémures negros, la reserva marina de Nosy Tanikely y Nosy Iranja, dos islas unidas por un largo banco de arena con la marea baja.",
+      "El ritmo es lento a propósito. Mañanas en el mar, tardes en la playa y una noche en Nosy Iranja para disfrutarla cuando se han ido los visitantes del día."
+    ],
+    "highlights": [
+      "Caminar por el banco de arena entre las dos islas de Nosy Iranja con la marea baja",
+      "Hacer snorkel con tortugas en la reserva marina de Nosy Tanikely",
+      "Conocer a los lémures negros en el bosque de Nosy Komba",
+      "Ver la puesta de sol sobre la bahía desde la cima del Mont Passot"
+    ],
+    "included": [
+      "Vehículo privado con conductor experimentado",
+      "Guía local de habla inglesa o francesa",
+      "Entradas a los parques nacionales y guías locales",
+      "Alojamiento en habitación doble",
+      "7 noches en hoteles de playa",
+      "Desayuno todos los días, almuerzo los días en barco",
+      "Todos los traslados en barco entre las islas"
+    ],
+    "excluded": [
+      "Vuelos internacionales y visado",
+      "Seguro de viaje",
+      "Bebidas y gastos personales",
+      "Propinas para guías y conductores",
+      "Cenas",
+      "Buceo y salidas con tiburones ballena"
+    ],
+    "itinerary": [
+      { "day": "Día 1", "title": "Llegada a Nosy Be", "text": "Recibimiento en el aeropuerto de Fascene y traslado a su hotel de playa. El resto del día es suyo.", "stay": "Nosy Be", "meals": "Cena por su cuenta" },
+      { "day": "Día 2", "title": "El bosque de Lokobe en piragua", "text": "Reme en una piragua tradicional con balancín hasta el borde de Lokobe, el último bosque primario de Nosy Be, hogar de lémures negros y camaleones pantera.", "stay": "Nosy Be", "meals": "Desayuno, almuerzo" },
+      { "day": "Día 3", "title": "Nosy Komba y Nosy Tanikely", "text": "Mañana en Nosy Komba, con sus lémures y su pueblo de bordadoras; después, snorkel en las aguas claras de la reserva marina de Nosy Tanikely.", "stay": "Nosy Be", "meals": "Desayuno, almuerzo" },
+      { "day": "Días 4 – 5", "title": "Nosy Iranja", "text": "Travesía en barco hacia el sur hasta Nosy Iranja. Paseo por el banco de arena, baño y noche en la isla. Tortugas verdes y carey anidan en sus playas.", "stay": "Nosy Iranja", "meals": "Desayuno, almuerzo" },
+      { "day": "Día 6", "title": "Ylang-ylang y Mont Passot", "text": "Regreso a Nosy Be. Visita a una destilería de ylang-ylang y a la higuera sagrada de Mahatsinjo, y puesta de sol sobre los lagos de cráter desde el Mont Passot.", "stay": "Nosy Be", "meals": "Desayuno" },
+      { "day": "Día 7", "title": "Día libre", "text": "Descanse en la playa o añada una inmersión. De octubre a diciembre, pregúntenos por una salida con tiburones ballena.", "stay": "Nosy Be", "meals": "Desayuno" },
+      { "day": "Día 8", "title": "Salida", "text": "Traslado al aeropuerto de Fascene para su vuelo.", "meals": "Desayuno" }
+    ]
+  },
+  "ambanja-cocoa-country-and-northern-wildlife": {
+    "title": "Ambanja, tierra del cacao, y la fauna del norte",
+    "region": "Norte",
+    "level": "Moderado",
+    "stops": "Ambanja · Ankarana · Montaña de Ámbar",
+    "summary": "De las plantaciones de cacao del valle del Sambirano a los tsingy grises de Ankarana.",
+    "groupSize": "De 2 a 8 viajeros",
+    "tourType": "Naturaleza y cultura",
+    "start": "Nosy Be (aeropuerto de Fascene)",
+    "end": "Diego Suarez (aeropuerto de Arrachart)",
+    "bestTime": "De mayo a noviembre",
+    "tip": "Algunos senderos de Ankarana cierran durante la temporada de lluvias, de enero a marzo.",
+    "overview": [
+      "El valle del Sambirano, alrededor de Ambanja, produce uno de los mejores cacaos del mundo. Recorrerá las plantaciones con los agricultores y seguirá la carretera hacia el norte hasta el macizo calcáreo de Ankarana, sus cuevas y su puente colgante sobre los tsingy.",
+      "El circuito termina en Diego Suarez con la selva de la Montaña de Ámbar y un día en el mar, tras cruzar todo el norte de la isla por carretera."
+    ],
+    "highlights": [
+      "Seguir el cacao del árbol al grano en una plantación del Sambirano",
+      "Cruzar el puente colgante sobre los tsingy grises de Ankarana",
+      "Explorar cuevas y ríos subterráneos con un guía del parque",
+      "Buscar de noche lémures coronados y gecos cola de hoja"
+    ],
+    "included": [
+      "Vehículo privado con conductor experimentado",
+      "Guía local de habla inglesa o francesa",
+      "Entradas a los parques nacionales y guías locales",
+      "Alojamiento en habitación doble",
+      "9 noches en hoteles y lodges",
+      "Desayuno y cena todos los días",
+      "Traslado en barco de Nosy Be a Ankify"
+    ],
+    "excluded": [
+      "Vuelos internacionales y visado",
+      "Seguro de viaje",
+      "Bebidas y gastos personales",
+      "Propinas para guías y conductores",
+      "Almuerzos"
+    ],
+    "itinerary": [
+      { "day": "Día 1", "title": "Llegada y travesía a tierra firme", "text": "Recibimiento en Nosy Be, una corta travesía en barco hasta Ankify y carretera hacia Ambanja.", "stay": "Ambanja", "meals": "Cena" },
+      { "day": "Días 2 – 3", "title": "El valle del Sambirano", "text": "Dos días entre plantaciones de cacao, vainilla, pimienta e ylang-ylang. Pruebe la pulpa fresca del cacao y descubra cómo se fermentan y se secan los granos.", "stay": "Ambanja", "meals": "Desayuno, cena" },
+      { "day": "Día 4", "title": "Hacia el norte, a Ankarana", "text": "Un largo y bonito trayecto por la RN6 entre pueblos y arrozales, hasta las puertas del Parque Nacional de Ankarana.", "stay": "Ankarana", "meals": "Desayuno, cena" },
+      { "day": "Días 5 – 6", "title": "Parque Nacional de Ankarana", "text": "Caminatas a los tsingy grises y al puente colgante, al Río Perdido y a las cuevas de murciélagos. Paseo nocturno en busca de lémures ratón y gecos.", "stay": "Ankarana", "meals": "Desayuno, cena" },
+      { "day": "Día 7", "title": "Tsingy Rojos y Diego Suarez", "text": "De camino a Diego Suarez, parada en los Tsingy Rojos y llegada a la ciudad colonial junto a la bahía.", "stay": "Diego Suarez", "meals": "Desayuno, cena" },
+      { "day": "Día 8", "title": "Parque Nacional de la Montaña de Ámbar", "text": "Cascadas, lagos de cráter y una selva fresca, hogar de lémures coronados y diminutos camaleones.", "stay": "Diego Suarez", "meals": "Desayuno, cena" },
+      { "day": "Día 9", "title": "El Mar Esmeralda", "text": "Día de navegación desde Ramena hasta la laguna turquesa del Mar Esmeralda, con baño y almuerzo en la playa.", "stay": "Diego Suarez", "meals": "Desayuno, cena" },
+      { "day": "Día 10", "title": "Salida", "text": "Traslado al aeropuerto de Arrachart para su vuelo.", "meals": "Desayuno" }
+    ]
+  },
+  "antananarivo-and-the-royal-highlands": {
+    "title": "Antananarivo y las Tierras Altas reales",
+    "region": "Tierras Altas",
+    "level": "Fácil",
+    "stops": "Antananarivo · Ambohimanga · Antsirabe",
+    "summary": "Colinas reales, arrozales en terrazas y ciudades de artesanos en el corazón de Madagascar.",
+    "groupSize": "De 2 a 8 viajeros",
+    "tourType": "Cultura e historia",
+    "start": "Antananarivo (aeropuerto de Ivato)",
+    "end": "Antananarivo (aeropuerto de Ivato)",
+    "bestTime": "Todo el año, mejor de abril a noviembre",
+    "tip": "Las Tierras Altas son frescas: de junio a agosto, por la noche se puede bajar de 10 °C. Lleve una prenda de abrigo.",
+    "overview": [
+      "En las Tierras Altas nació el reino merina. Subirá a los palacios reales de Antananarivo y a la colina sagrada de Ambohimanga y luego bajará hacia el sur por la RN7, entre arrozales en terrazas, hasta Antsirabe, la ciudad de los pousse-pousse y los artesanos.",
+      "Un circuito corto, perfecto al principio o al final de un viaje más largo."
+    ],
+    "highlights": [
+      "Visitar el Rova, el palacio de la Reina que domina Antananarivo",
+      "Recorrer la colina real sagrada de Ambohimanga, Patrimonio Mundial de la UNESCO",
+      "Ver cómo se funden a mano ollas de aluminio en Ambatolampy",
+      "Subir a un pousse-pousse en Antsirabe y caminar hasta el lago de cráter de Tritriva"
+    ],
+    "included": [
+      "Vehículo privado con conductor experimentado",
+      "Guía local de habla inglesa o francesa",
+      "Entradas a los parques nacionales y guías locales",
+      "Alojamiento en habitación doble",
+      "4 noches en hoteles",
+      "Desayuno todos los días, dos almuerzos"
+    ],
+    "excluded": [
+      "Vuelos internacionales y visado",
+      "Seguro de viaje",
+      "Bebidas y gastos personales",
+      "Propinas para guías y conductores",
+      "Cenas"
+    ],
+    "itinerary": [
+      { "day": "Día 1", "title": "Llegada a Antananarivo", "text": "Recibimiento en el aeropuerto de Ivato y traslado al hotel. Breve paseo por la ciudad alta si el horario del vuelo lo permite.", "stay": "Antananarivo", "meals": "Cena por su cuenta" },
+      { "day": "Día 2", "title": "Antananarivo real y Ambohimanga", "text": "Mañana en el Rova y la ciudad alta; después, la colina real de Ambohimanga, su palacio de madera y sus vistas sobre los arrozales.", "stay": "Antananarivo", "meals": "Desayuno, almuerzo" },
+      { "day": "Día 3", "title": "Hacia el sur por la RN7", "text": "Ruta a través de las Tierras Altas hasta Antsirabe, con una parada en Ambatolampy para conocer a los fabricantes de ollas.", "stay": "Antsirabe", "meals": "Desayuno, almuerzo" },
+      { "day": "Día 4", "title": "Antsirabe y el lago Tritriva", "text": "Recorrido en pousse-pousse por la ciudad balneario, visitas a talladores de piedras preciosas y de cuerno, y paseo alrededor del profundo lago de cráter verde de Tritriva.", "stay": "Antsirabe", "meals": "Desayuno" },
+      { "day": "Día 5", "title": "Regreso a Antananarivo", "text": "Regreso por carretera a la capital, una última parada en el mercado de artesanía de La Digue y traslado al aeropuerto.", "meals": "Desayuno" }
+    ]
+  },
+  "baobab-avenue-and-the-tsingy": {
+    "title": "La Avenida de los Baobabs y los Tsingy",
+    "region": "Sur y Oeste",
+    "level": "Moderado",
+    "stops": "Morondava · Avenida de los Baobabs · Bekopaka",
+    "summary": "Los grandes baobabs de Morondava y el bosque de piedra de los Tsingy de Bemaraha.",
+    "groupSize": "De 2 a 6 viajeros",
+    "tourType": "Aventura y paisajes",
+    "start": "Antananarivo (aeropuerto de Ivato)",
+    "end": "Antananarivo (aeropuerto de Ivato)",
+    "bestTime": "De mayo a noviembre",
+    "tip": "El parque de los Tsingy de Bemaraha y las pistas para llegar a él cierran durante la temporada de lluvias, aproximadamente de diciembre a abril.",
+    "overview": [
+      "El oeste de Madagascar es tierra de gigantes. Puesta de sol en la Avenida de los Baobabs y, después, una expedición en 4x4 hacia el norte, cruzando ríos en pequeños transbordadores, hasta los Tsingy de Bemaraha, un bosque de agujas calizas declarado Patrimonio de la UNESCO.",
+      "Es una aventura: largas jornadas por pistas de tierra, recompensadas con algunos de los paisajes más impresionantes de la isla y, para terminar, días tranquilos junto al mar en Morondava."
+    ],
+    "highlights": [
+      "Ver ponerse el sol tras la Avenida de los Baobabs",
+      "Subir escaleras y cruzar puentes de cuerda en los Grandes Tsingy",
+      "Remar por las gargantas del río Manambolo",
+      "Buscar la fosa durante un paseo por el bosque de Kirindy"
+    ],
+    "included": [
+      "Vehículo privado con conductor experimentado",
+      "Guía local de habla inglesa o francesa",
+      "Entradas a los parques nacionales y guías locales",
+      "Alojamiento en habitación doble",
+      "11 noches en hoteles y lodges",
+      "Desayuno y cena todos los días",
+      "4x4 con conductor para el oeste",
+      "Vuelos nacionales Antananarivo – Morondava"
+    ],
+    "excluded": [
+      "Vuelos internacionales y visado",
+      "Seguro de viaje",
+      "Bebidas y gastos personales",
+      "Propinas para guías y conductores",
+      "Almuerzos"
+    ],
+    "itinerary": [
+      { "day": "Día 1", "title": "Llegada a Antananarivo", "text": "Recibimiento en el aeropuerto de Ivato y traslado al hotel.", "stay": "Antananarivo", "meals": "Cena" },
+      { "day": "Día 2", "title": "Vuelo a Morondava", "text": "Vuelo corto a la costa oeste. Al final de la tarde, la Avenida de los Baobabs al atardecer.", "stay": "Morondava", "meals": "Desayuno, cena" },
+      { "day": "Día 3", "title": "El bosque de Kirindy", "text": "Paseos por el bosque seco en busca de la fosa, los sifakas de Verreaux y la rata saltadora gigante, y una salida nocturna para ver lémures ratón.", "stay": "Kirindy", "meals": "Desayuno, cena" },
+      { "day": "Día 4", "title": "Hacia el norte, a Bekopaka", "text": "Un día entero en 4x4, cruzando el río Tsiribihina en transbordador en Belo-sur-Tsiribihina, hasta llegar a Bekopaka, a las puertas de los Tsingy.", "stay": "Bekopaka", "meals": "Desayuno, cena" },
+      { "day": "Día 5", "title": "Los Grandes Tsingy", "text": "Arnés, escaleras y puentes de cuerda: una vía ferrata guiada en el corazón del bosque de piedra.", "stay": "Bekopaka", "meals": "Desayuno, cena" },
+      { "day": "Día 6", "title": "Pequeños Tsingy y gargantas del Manambolo", "text": "Senderos más fáciles en los Pequeños Tsingy y paseo en piragua por las gargantas del río Manambolo.", "stay": "Bekopaka", "meals": "Desayuno, cena" },
+      { "day": "Día 7", "title": "Regreso a Morondava", "text": "La larga ruta hacia el sur, con una parada en los Baobabs Enamorados, entrelazados entre sí.", "stay": "Morondava", "meals": "Desayuno, cena" },
+      { "day": "Días 8 – 9", "title": "Morondava junto al mar", "text": "Descanso en la playa y travesía en piragua hasta el pueblo pesquero de Betania.", "stay": "Morondava", "meals": "Desayuno, cena" },
+      { "day": "Día 10", "title": "Vuelo a Antananarivo", "text": "Vuelo de mañana de vuelta a la capital, tarde libre.", "stay": "Antananarivo", "meals": "Desayuno, cena" },
+      { "day": "Día 11", "title": "La colina real de Ambohimanga", "text": "Media jornada en la colina sagrada de Ambohimanga y una última parada de compras en el mercado de artesanía.", "stay": "Antananarivo", "meals": "Desayuno, cena" },
+      { "day": "Día 12", "title": "Salida", "text": "Traslado al aeropuerto de Ivato para su vuelo.", "meals": "Desayuno" }
+    ]
+  },
+  "rainforests-lemurs-and-indri-trails": {
+    "title": "Selvas, lémures y senderos del indri",
+    "region": "Este",
+    "level": "Exigente",
+    "stops": "Andasibe · Isla de Santa María · Masoala",
+    "summary": "El canto del indri, la isla de Santa María y la península salvaje de Masoala.",
+    "groupSize": "De 2 a 6 viajeros",
+    "tourType": "Fauna y selva",
+    "start": "Antananarivo (aeropuerto de Ivato)",
+    "end": "Antananarivo (aeropuerto de Ivato)",
+    "bestTime": "De septiembre a diciembre",
+    "tip": "La costa este es la zona más lluviosa de Madagascar. Lleve un chubasquero ligero en cualquier estación y ropa de secado rápido para Masoala.",
+    "overview": [
+      "El este es el Madagascar más verde. En Andasibe se despertará con la llamada del indri, el mayor lémur vivo. En la isla de Santa María descansará en playas tranquilas y, en temporada, verá ballenas jorobadas desde la orilla.",
+      "El viaje termina en la península de Masoala, donde la selva baja hasta el mar. Remota y lluviosa, es uno de los lugares con más fauna de la isla."
+    ],
+    "highlights": [
+      "Escuchar cantar al indri al amanecer en Andasibe",
+      "Observar ballenas jorobadas frente a la isla de Santa María de julio a septiembre",
+      "Buscar el vari rojo, que solo vive en Masoala",
+      "Hacer kayak y snorkel en el parque marino de Masoala"
+    ],
+    "included": [
+      "Vehículo privado con conductor experimentado",
+      "Guía local de habla inglesa o francesa",
+      "Entradas a los parques nacionales y guías locales",
+      "Alojamiento en habitación doble",
+      "13 noches en lodges y hoteles de playa",
+      "Pensión completa en Masoala, desayuno en el resto",
+      "Vuelos nacionales y traslados en barco"
+    ],
+    "excluded": [
+      "Vuelos internacionales y visado",
+      "Seguro de viaje",
+      "Bebidas y gastos personales",
+      "Propinas para guías y conductores",
+      "Almuerzos y cenas fuera de Masoala"
+    ],
+    "itinerary": [
+      { "day": "Día 1", "title": "Llegada a Antananarivo", "text": "Recibimiento en el aeropuerto de Ivato y traslado al hotel.", "stay": "Antananarivo", "meals": "Cena por su cuenta" },
+      { "day": "Día 2", "title": "Ruta a Andasibe", "text": "Unas cuatro horas hacia el este, de las Tierras Altas a la selva. Primer paseo nocturno en busca de camaleones y ranas.", "stay": "Andasibe", "meals": "Desayuno" },
+      { "day": "Día 3", "title": "Los indris de Analamazaotra", "text": "Paseo a primera hora para encontrar una familia de indris y escuchar su canto, la llamada más potente de todos los lémures.", "stay": "Andasibe", "meals": "Desayuno" },
+      { "day": "Día 4", "title": "Parque Nacional de Mantadia", "text": "Un bosque más salvaje, con senderos más largos, cascadas y el colorido sifaka diademado.", "stay": "Andasibe", "meals": "Desayuno" },
+      { "day": "Día 5", "title": "Regreso a Antananarivo", "text": "Regreso por carretera a la capital para tomar el vuelo de la mañana siguiente.", "stay": "Antananarivo", "meals": "Desayuno" },
+      { "day": "Día 6", "title": "Vuelo a la isla de Santa María", "text": "Un vuelo corto a la isla y la tarde en la playa.", "stay": "Isla de Santa María", "meals": "Desayuno" },
+      { "day": "Días 7 – 8", "title": "Isla de Santa María", "text": "El cementerio de los piratas, una salida en barco a la Île aux Nattes y, en temporada, avistamiento de ballenas con un operador certificado.", "stay": "Isla de Santa María", "meals": "Desayuno" },
+      { "day": "Día 9", "title": "A Maroantsetra y Masoala", "text": "Vuelo a Maroantsetra y barco a través de la bahía de Antongil hasta su lodge en la península.", "stay": "Masoala", "meals": "Desayuno, almuerzo, cena" },
+      { "day": "Días 10 – 12", "title": "Parque Nacional de Masoala", "text": "Caminatas guiadas por la selva en busca de varis rojos y gecos cola de hoja, kayak a lo largo de la costa y snorkel en el parque marino.", "stay": "Masoala", "meals": "Desayuno, almuerzo, cena" },
+      { "day": "Día 13", "title": "Regreso a Antananarivo", "text": "Barco hasta Maroantsetra y vuelo a la capital.", "stay": "Antananarivo", "meals": "Desayuno" },
+      { "day": "Día 14", "title": "Salida", "text": "Traslado al aeropuerto de Ivato para su vuelo.", "meals": "Desayuno" }
+    ]
+  }
+}

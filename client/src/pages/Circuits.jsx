@@ -8,6 +8,7 @@ import Navbar from '../components/Navbar'
 import Footer from '../components/Footer'
 import { fetchCircuits, assetUrl } from '../api'
 import { formatPrice } from '../utils/format'
+import { useLanguage, useT } from '../i18n/LanguageContext'
 
 gsap.registerPlugin(ScrollTrigger)
 
@@ -25,17 +26,12 @@ const BUTTON = 'text-sm font-medium px-5 py-2.5 rounded-full'
 // Ordre d'affichage des régions connues ; une région créée depuis l'admin s'ajoute à la fin
 const REGION_ORDER = ['North', 'Highlands', 'South & West', 'East']
 
+// Filtres de durée (libellés traduits : circuits.durations, dans le même ordre)
 const durations = [
-  { label: 'Any length', test: () => true },
-  { label: '1 week or less', test: (d) => d <= 7 },
-  { label: '8 to 12 days', test: (d) => d >= 8 && d <= 12 },
-  { label: '13 days or more', test: (d) => d >= 13 },
-]
-
-const highlights = [
-  { id: 1, title: 'Local guides', text: 'Every circuit is led by a licensed Malagasy guide who knows the parks, the roads and the villages.' },
-  { id: 2, title: 'Small groups', text: 'No more than eight travellers per vehicle, so you see more and wait less.' },
-  { id: 3, title: 'Made to measure', text: 'Every circuit can be shortened, extended or mixed with another one.' },
+  { test: () => true },
+  { test: (d) => d <= 7 },
+  { test: (d) => d >= 8 && d <= 12 },
+  { test: (d) => d >= 13 },
 ]
 
 /* ----------------------- Utilitaires GSAP ------------------------ */
@@ -64,6 +60,7 @@ const reveal = (targets, from, to, extra = {}) =>
 
 function CircuitsHero() {
   const root = useRef(null)
+  const t = useT('circuits')
 
   // Hero : l'image se dézoome, le titre se découvre comme un rideau de gauche à droite
   useGsap(root, () => {
@@ -87,10 +84,10 @@ function CircuitsHero() {
         <img src={NosyIranja} alt="" className="hero-bg absolute inset-0 w-full h-full object-cover" />
         <div className="hero-shade absolute inset-0 bg-slate-950/60" />
         <div className="relative w-full max-w-5xl mx-auto px-6 md:px-10 py-16">
-          <h1 className={`hero-title ${PAGE_TITLE}`}>Our Circuits</h1>
+          <h1 className={`hero-title ${PAGE_TITLE}`}>{t('title')}</h1>
           <hr className="hero-rule my-6 md:my-8 border-white/30" />
           <nav aria-label="Breadcrumb" className="hero-crumb text-sm md:text-base font-medium">
-            <a href="/" className="hover:underline underline-offset-4">Home</a> <span aria-hidden="true">/</span> Circuits
+            <a href="/" className="hover:underline underline-offset-4">{t('home')}</a> <span aria-hidden="true">/</span> {t('crumb')}
           </nav>
         </div>
       </section>
@@ -116,6 +113,8 @@ function Chip({ active, onClick, children }) {
 }
 
 function CircuitCard({ circuit }) {
+  const t = useT('circuits')
+  const { lang } = useLanguage()
   return (
     <Link to={`/circuits/${circuit.slug}`} className="circuit-card group flex flex-col rounded-xl bg-white p-3 text-slate-800">
       <div className="relative aspect-[4/3] overflow-hidden rounded-md">
@@ -124,23 +123,25 @@ function CircuitCard({ circuit }) {
           alt={circuit.title}
           className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
         />
-        <span className={`circuit-badge ${BADGE} absolute left-3 top-3`}>{circuit.days} days</span>
+        <span className={`circuit-badge ${BADGE} absolute left-3 top-3`}>{t('days', { count: circuit.days })}</span>
       </div>
       <div className="flex flex-1 flex-col px-3 pt-6 pb-4">
         <p className={`flex items-center gap-3 ${META_TEXT} text-slate-600`}>
-          <span>{circuit.region}</span>
+          <span>{circuit.regionLabel || circuit.region}</span>
           <span className="w-px h-4 bg-slate-700" />
           <span>{circuit.level}</span>
         </p>
         <h3 className="mt-4 text-xl md:text-2xl leading-snug group-hover:underline">{circuit.title}</h3>
         <p className={`mt-3 ${META_TEXT} text-slate-600`}>{circuit.stops}</p>
-        <p className="mt-auto pt-6 text-base md:text-lg font-medium text-slate-900">From {formatPrice(circuit.price)}</p>
+        <p className="mt-auto pt-6 text-base md:text-lg font-medium text-slate-900">{t('from', { price: formatPrice(circuit.price, lang) })}</p>
       </div>
     </Link>
   )
 }
 
 function Circuits() {
+  const t = useT('circuits')
+  const { lang } = useLanguage()
   const [region, setRegion] = useState('All')
   const [duration, setDuration] = useState(0)
   // Circuits lus depuis l'API
@@ -149,7 +150,7 @@ function Circuits() {
 
   useEffect(() => {
     let cancelled = false
-    fetchCircuits()
+    fetchCircuits(lang)
       .then((data) => {
         if (cancelled) return
         setCircuits(data.circuits)
@@ -159,7 +160,11 @@ function Circuits() {
     return () => {
       cancelled = true
     }
-  }, [])
+  }, [lang])
+
+  // Nom affiché d'une région : traduit par l'API pour les circuits, sinon par le fichier de textes
+  const regionLabel = (r) =>
+    r === 'All' ? t('all') : circuits.find((c) => c.region === r)?.regionLabel || t('regions')[r] || r
 
   const regions = [
     'All',
@@ -254,28 +259,28 @@ function Circuits() {
           <div ref={introRef}>
             <div className="text-center mb-8 md:mb-12 flex flex-col items-center">
               <p className="intro-eyebrow mb-2 text-xs sm:text-sm md:text-base uppercase tracking-wide text-slate-700">
-                Travel across Madagascar
+                {t('eyebrow')}
               </p>
-              <h2 className={`intro-title ${SECTION_TITLE}`}>Find The Circuit That Fits Your Trip</h2>
+              <h2 className={`intro-title ${SECTION_TITLE}`}>{t('heading')}</h2>
               <p className={`intro-sub ${SECTION_SUBTITLE} mt-4`}>
-                From the northern bays to the baobabs of the west, choose a ready-made route or ask us to build your own.
+                {t('intro')}
               </p>
             </div>
 
             <div className="filter-panel rounded-3xl bg-white p-5 md:p-8 flex flex-col gap-6">
               <div>
-                <p className="mb-3 text-sm md:text-base text-slate-700">Region</p>
+                <p className="mb-3 text-sm md:text-base text-slate-700">{t('region')}</p>
                 <div className="flex flex-wrap gap-3">
                   {regions.map((r) => (
-                    <Chip key={r} active={region === r} onClick={() => setRegion(r)}>{r}</Chip>
+                    <Chip key={r} active={region === r} onClick={() => setRegion(r)}>{regionLabel(r)}</Chip>
                   ))}
                 </div>
               </div>
               <div>
-                <p className="mb-3 text-sm md:text-base text-slate-700">Duration</p>
+                <p className="mb-3 text-sm md:text-base text-slate-700">{t('duration')}</p>
                 <div className="flex flex-wrap gap-3">
                   {durations.map((d, i) => (
-                    <Chip key={d.label} active={duration === i} onClick={() => setDuration(i)}>{d.label}</Chip>
+                    <Chip key={i} active={duration === i} onClick={() => setDuration(i)}>{t('durations')[i]}</Chip>
                   ))}
                 </div>
               </div>
@@ -285,7 +290,7 @@ function Circuits() {
           {/* Grille de circuits */}
           <div ref={gridRef}>
             {status === 'loading' && (
-              <div role="status" aria-label="Loading circuits" className="mt-10 md:mt-16 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-9">
+              <div role="status" aria-label={t('loading')} className="mt-10 md:mt-16 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-9">
                 {[0, 1, 2].map((n) => (
                   <div key={n} className="rounded-xl bg-white p-3 animate-pulse">
                     <div className="aspect-[4/3] rounded-md bg-slate-200" />
@@ -297,13 +302,13 @@ function Circuits() {
             )}
             {status === 'error' && (
               <div role="alert" className="mt-10 md:mt-16 rounded-3xl bg-white p-8 text-center text-slate-700">
-                <p className="text-lg">The circuits could not be loaded. Please try again in a moment.</p>
+                <p className="text-lg">{t('loadError')}</p>
                 <button
                   type="button"
                   onClick={() => window.location.reload()}
                   className={`mt-4 bg-slate-800 hover:bg-slate-700 active:scale-95 transition text-white ${BUTTON}`}
                 >
-                  Reload
+                  {t('reload')}
                 </button>
               </div>
             )}
@@ -315,13 +320,13 @@ function Circuits() {
               </div>
             ) : (
               <div role="status" className="mt-10 md:mt-16 rounded-3xl bg-white p-8 text-center text-slate-700">
-                <p className="text-lg">No circuit matches these filters.</p>
+                <p className="text-lg">{t('empty')}</p>
                 <button
                   type="button"
                   onClick={() => { setRegion('All'); setDuration(0) }}
                   className={`mt-4 bg-slate-800 hover:bg-slate-700 active:scale-95 transition text-white ${BUTTON}`}
                 >
-                  Reset filters
+                  {t('reset')}
                 </button>
               </div>
             ))}
@@ -330,8 +335,8 @@ function Circuits() {
 
         {/* Points forts */}
         <section ref={highlightsRef} className={`${SECTION_WIDTH} mt-16 md:mt-24 grid grid-cols-1 md:grid-cols-3 gap-6`}>
-          {highlights.map((item) => (
-            <div key={item.id} className="highlight rounded-3xl bg-white p-6 md:p-8">
+          {t('highlights').map((item) => (
+            <div key={item.title} className="highlight rounded-3xl bg-white p-6 md:p-8">
               <h3 className="text-xl md:text-2xl font-medium text-slate-900">{item.title}</h3>
               <p className="mt-3 text-sm md:text-base text-slate-600 leading-relaxed">{item.text}</p>
             </div>
@@ -345,14 +350,14 @@ function Circuits() {
             <div className="absolute inset-0 bg-slate-950/70" />
             <div className="relative flex flex-col md:flex-row md:items-center justify-between gap-6 p-8 md:p-12">
               <div className="cta-text max-w-2xl">
-                <h2 className="text-2xl md:text-4xl font-medium leading-snug">Want a route that is not on this list?</h2>
-                <p className="mt-3 text-sm md:text-base">Tell us your dates and interests. A travel expert replies within one working day.</p>
+                <h2 className="text-2xl md:text-4xl font-medium leading-snug">{t('ctaTitle')}</h2>
+                <p className="mt-3 text-sm md:text-base">{t('ctaText')}</p>
               </div>
               <a
                 href="/contact"
                 className={`cta-btn shrink-0 self-start md:self-center bg-[#C49849] hover:bg-[#a9813a] active:scale-95 transition text-white ${BUTTON} md:px-6 md:py-3`}
               >
-                Plan my circuit
+                {t('ctaButton')}
               </a>
             </div>
           </div>

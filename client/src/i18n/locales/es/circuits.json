@@ -1,0 +1,47 @@
+{
+  "title": "Nuestros circuitos",
+  "home": "Inicio",
+  "crumb": "Circuitos",
+  "eyebrow": "Viajar por Madagascar",
+  "heading": "Encuentre el circuito que encaja con su viaje",
+  "intro": "De las bahías del norte a los baobabs del oeste, elija una ruta ya preparada o pídanos que diseñemos la suya.",
+  "region": "Región",
+  "duration": "Duración",
+  "all": "Todas",
+  "regions": {
+    "North": "Norte",
+    "Highlands": "Tierras Altas",
+    "South & West": "Sur y Oeste",
+    "East": "Este"
+  },
+  "durations": [
+    "Cualquier duración",
+    "1 semana o menos",
+    "De 8 a 12 días",
+    "13 días o más"
+  ],
+  "days": "{count} días",
+  "from": "Desde {price}",
+  "loading": "Cargando los circuitos",
+  "loadError": "No se han podido cargar los circuitos. Inténtelo de nuevo en un momento.",
+  "reload": "Recargar",
+  "empty": "Ningún circuito coincide con estos filtros.",
+  "reset": "Restablecer filtros",
+  "highlights": [
+    {
+      "title": "Guías locales",
+      "text": "Cada circuito lo dirige un guía malgache acreditado que conoce los parques, las carreteras y los pueblos."
+    },
+    {
+      "title": "Grupos pequeños",
+      "text": "No más de ocho viajeros por vehículo: ve más y espera menos."
+    },
+    {
+      "title": "A medida",
+      "text": "Cada circuito puede acortarse, alargarse o combinarse con otro."
+    }
+  ],
+  "ctaTitle": "¿Busca una ruta que no está en esta lista?",
+  "ctaText": "Cuéntenos sus fechas e intereses. Un experto en viajes le responde en un día laborable.",
+  "ctaButton": "Planificar mi circuito"
+}

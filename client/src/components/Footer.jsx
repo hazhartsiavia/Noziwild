@@ -1,7 +1,9 @@
 import React from 'react'
 import Icone from "../assets/icone.png";
+import { useT } from "../i18n/LanguageContext";
 
 const Footer = () => {
+    const t = useT('footer')
     return (
         <>
             <style>
@@ -17,27 +19,27 @@ const Footer = () => {
 
                         <div className="w-full md:w-[45%] lg:w-[35%] flex flex-col items-start text-left">
                             {/* Logo : icone.png + nom */}
-                            <a href="/" aria-label="Noziwild home" className="flex items-center gap-3">
+                            <a href="/" aria-label={t('home')} className="flex items-center gap-3">
                                 <img src={Icone} alt="" className="h-10 w-auto object-contain" />
                                 <span className="text-3xl font-semibold tracking-tight text-black">Noziwild</span>
                             </a>
                             <div className='w-full max-w-52 h-0.5 mt-8 bg-linear-to-r from-[#24212D] to-[#24212D]/0'></div>
-                            <p className='text-sm text-black/60 mt-6 max-w-[350px] leading-relaxed'>Noziwild designs unforgettable trips across Madagascar, with local experts, handpicked stays and easy booking.</p>
+                            <p className='text-sm text-black/60 mt-6 max-w-[350px] leading-relaxed'>{t('tagline')}</p>
                         </div>
 
                         <div className="w-[45%] md:w-[45%] lg:w-[15%] flex flex-col items-start text-left">
-                            <h3 className='text-sm text-black font-medium'>Important Links</h3>
+                            <h3 className='text-sm text-black font-medium'>{t('importantLinks')}</h3>
                             <div className="flex flex-col gap-2 mt-6">
-                                <a href="#" className='text-sm text-black/60 hover:text-black transition-colors'>Home</a>
-                                <a href="#" className='text-sm text-black/60 hover:text-black transition-colors'>About</a>
-                                <a href="#" className='text-sm text-black/60 hover:text-black transition-colors'>Portfolio</a>
-                                <a href="#" className='text-sm text-black/60 hover:text-black transition-colors'>Contact</a>
-                                <a href="#" className='text-sm text-black/60 hover:text-black transition-colors'>FAQ</a>
+                                <a href="#" className='text-sm text-black/60 hover:text-black transition-colors'>{t('links.home')}</a>
+                                <a href="#" className='text-sm text-black/60 hover:text-black transition-colors'>{t('links.about')}</a>
+                                <a href="#" className='text-sm text-black/60 hover:text-black transition-colors'>{t('links.portfolio')}</a>
+                                <a href="#" className='text-sm text-black/60 hover:text-black transition-colors'>{t('links.contact')}</a>
+                                <a href="#" className='text-sm text-black/60 hover:text-black transition-colors'>{t('links.faq')}</a>
                             </div>
                         </div>
 
                         <div className="w-[45%] md:w-[45%] lg:w-[15%] flex flex-col items-start text-left">
-                            <h3 className='text-sm text-black font-medium'>Social Links</h3>
+                            <h3 className='text-sm text-black font-medium'>{t('socialLinks')}</h3>
                             <div className="flex flex-col gap-2 mt-6">
                                 <a href="#" className='text-sm text-black/60 hover:text-black transition-colors'>Twitter</a>
                                 <a href="#" className='text-sm text-black/60 hover:text-black transition-colors'>Instagram</a>
@@ -47,7 +49,7 @@ const Footer = () => {
                         </div>
 
                         <div className="flex flex-col max-md:items-center max-md:text-start gap-2 items-end">
-                            <p className="max-w-60">Making every customer feel valued—no matter the size of your audience.</p>
+                            <p className="max-w-60">{t('promise')}</p>
                             <div className="flex md:items-center gap-4 mt-3">
                                 <a href="https://dribbble.com/prebuiltui" target="_blank" rel="noreferrer">
                                     <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="lucide lucide-dribbble size-5 hover:text-[#064434]" aria-hidden="true">
@@ -88,9 +90,9 @@ const Footer = () => {
                     <div className="flex flex-wrap sm:flex-row items-center justify-between gap-y-4 gap-x-2 relative z-10">
                         <p className='text-xs text-black/60'>© 2026 Noziwild</p>
                         <div className="flex items-center gap-6 text-right">
-                            <a href='#' className='text-xs text-black/60 hover:text-black transition-colors'>Terms & Conditions</a>
+                            <a href='#' className='text-xs text-black/60 hover:text-black transition-colors'>{t('terms')}</a>
                             <div className='w-px h-4 bg-black/20'></div>
-                            <a href='#' className='text-xs text-black/60 hover:text-black transition-colors'>Privacy Policy</a>
+                            <a href='#' className='text-xs text-black/60 hover:text-black transition-colors'>{t('privacy')}</a>
                         </div>
                     </div>
 

@@ -40,8 +40,9 @@ export const deleteJSON = (path, data = {}) => request('DELETE', path, data)
 export const assetUrl = (path) => (path && path.startsWith('/') ? `${API_URL}${path}` : path)
 
 // Circuits
-export const fetchCircuits = () => getJSON('/circuits')
-export const fetchCircuit = (slug) => getJSON(`/circuits/${encodeURIComponent(slug)}`)
+// Textes dans la langue du site (l'anglais si une traduction manque)
+export const fetchCircuits = (lang = 'en') => getJSON(`/circuits?lang=${lang}`)
+export const fetchCircuit = (slug, lang = 'en') => getJSON(`/circuits/${encodeURIComponent(slug)}?lang=${lang}`)
 
 // Formulaires du site
 export const sendContact = (data) => postJSON('/contact', data)

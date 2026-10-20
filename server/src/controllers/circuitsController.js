@@ -1,6 +1,8 @@
 // Circuits : lecture publique, et gestion réservée aux administrateurs
 import pool from '../config/db.js'
-import { CARD_COLUMNS, toCircuitCard, toCircuit, validateCircuit, saveCircuit } from '../utils/circuits.js'
+import {
+  CARD_COLUMNS, toCircuitCard, toCircuit, toCircuitForAdmin, validateCircuit, saveCircuit, pickLanguage,
+} from '../utils/circuits.js'
 
 async function findCircuitRow(slug, { publishedOnly }) {
   const [rows] = await pool.execute(
@@ -31,16 +33,18 @@ function slugTaken(res) {
 
 /* ------------------------------ Public ------------------------------ */
 
-// GET /api/circuits  → cartes de la page /circuits
+// GET /api/circuits?lang=fr  → cartes de la page /circuits (textes dans la langue demandée, sinon anglais)
 export async function listCircuits(req, res) {
+  const lang = pickLanguage(req.query.lang)
   const [rows] = await pool.query(
     `SELECT ${CARD_COLUMNS} FROM circuits WHERE is_published = 1 ORDER BY sort_order, id`,
   )
-  res.json({ ok: true, circuits: rows.map(toCircuitCard) })
+  res.json({ ok: true, circuits: rows.map((row) => toCircuitCard(row, lang)) })
 }
 
-// GET /api/circuits/:slug  → détail complet + 3 autres circuits (même région d'abord)
+// GET /api/circuits/:slug?lang=fr  → détail complet + 3 autres circuits (même région d'abord)
 export async function getCircuit(req, res) {
+  const lang = pickLanguage(req.query.lang)
   const row = await findCircuitRow(req.params.slug, { publishedOnly: true })
   if (!row) return res.status(404).json({ ok: false, error: 'This circuit was not found.' })
 
@@ -52,7 +56,11 @@ export async function getCircuit(req, res) {
     [row.id, row.region],
   )
 
-  res.json({ ok: true, circuit: toCircuit(row, await loadDays(row.id)), related: related.map(toCircuitCard) })
+  res.json({
+    ok: true,
+    circuit: toCircuit(row, await loadDays(row.id), lang),
+    related: related.map((r) => toCircuitCard(r, lang)),
+  })
 }
 
 /* ------------------------------ Admin ------------------------------ */
@@ -77,7 +85,7 @@ export async function adminListCircuits(req, res) {
 export async function adminGetCircuit(req, res) {
   const row = await findCircuitRow(req.params.slug, { publishedOnly: false })
   if (!row) return res.status(404).json({ ok: false, error: 'This circuit was not found.' })
-  res.json({ ok: true, circuit: toCircuit(row, await loadDays(row.id)) })
+  res.json({ ok: true, circuit: toCircuitForAdmin(row, await loadDays(row.id)) })
 }
 
 // POST /api/admin/circuits  { ...circuit, itinerary: [...] }
@@ -94,7 +102,7 @@ export async function createCircuit(req, res) {
     throw error
   }
   const [[row]] = await pool.execute('SELECT * FROM circuits WHERE id = ?', [id])
-  res.status(201).json({ ok: true, circuit: toCircuit(row, await loadDays(id)) })
+  res.status(201).json({ ok: true, circuit: toCircuitForAdmin(row, await loadDays(id)) })
 }
 
 // PUT /api/admin/circuits/:slug  → remplace tout le circuit (le slug peut changer)
@@ -112,7 +120,7 @@ export async function updateCircuit(req, res) {
     throw error
   }
   const [[row]] = await pool.execute('SELECT * FROM circuits WHERE id = ?', [existing.id])
-  res.json({ ok: true, circuit: toCircuit(row, await loadDays(existing.id)) })
+  res.json({ ok: true, circuit: toCircuitForAdmin(row, await loadDays(existing.id)) })
 }
 
 // DELETE /api/admin/circuits/:slug  → supprime le circuit et ses jours (les photos restent sur le disque)

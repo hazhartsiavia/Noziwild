@@ -1,0 +1,31 @@
+{
+  "home": "Noziwild home",
+  "logo": "Noziwild logo",
+  "destinations": "Destinations",
+  "travel": "Travel",
+  "services": "Services",
+  "about": "About",
+  "blog": "Blog",
+  "myAccount": "My account",
+  "login": "Log in",
+  "quote": "Get a Quote",
+  "openMenu": "Open menu",
+  "closeMenu": "Close menu",
+  "language": "Language",
+  "links": {
+    "activities": "Activities",
+    "circuits": "Circuits",
+    "excursions": "Excursions",
+    "cruise": "Cruise Excursions",
+    "longStay": "Long Stay",
+    "tailorMade": "Tailor-Made",
+    "accommodation": "Accommodation",
+    "transport": "Transport",
+    "guides": "Guides & Accompaniment",
+    "food": "Food & Dining",
+    "equipment": "Equipment Rentals",
+    "photography": "Photography",
+    "planning": "Travel Planning",
+    "tickets": "Ticket Reservations"
+  }
+}
