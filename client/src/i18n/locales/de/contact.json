@@ -1,0 +1,27 @@
+{
+  "title": "Sprechen wir mit Noziwild",
+  "text": "Fragen zu einer Reise, einer individuellen Route oder einer Partnerschaft? Schreiben Sie uns – ein Reiseexperte meldet sich innerhalb eines Werktags bei Ihnen.",
+  "cta": "Jetzt Kontakt aufnehmen",
+  "address": "Antananarivo, Madagaskar",
+  "inquiryTypes": [
+    "Reise buchen",
+    "Individuelle Reise",
+    "Allgemeine Fragen",
+    "Partnerschaft",
+    "Support"
+  ],
+  "callTitle": "Möchten Sie mit unseren Reiseexperten sprechen?",
+  "callText": "Buchen Sie ein 30-minütiges Gespräch",
+  "callCta": "Kontakt",
+  "social": "Folgen Sie uns",
+  "name": "Name",
+  "phone": "Telefon",
+  "email": "E-Mail-Adresse",
+  "inquiry": "Art der Anfrage",
+  "message": "Erzählen Sie uns ein wenig von Ihrer Idee…",
+  "customers": "Über 100 zufriedene Kunden",
+  "sending": "Wird gesendet…",
+  "send": "Gespräch beginnen",
+  "sent": "Vielen Dank! Ihre Nachricht wurde gesendet, wir melden uns bald bei Ihnen.",
+  "finalCta": "Bereit für Ihr Abenteuer? Füllen Sie das Formular aus oder buchen Sie ein Gespräch – planen wir Ihre Reise noch heute!"
+}

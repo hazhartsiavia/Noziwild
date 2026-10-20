@@ -1,0 +1,57 @@
+{
+  "title": "Creating Unforgettable Journeys, Together",
+  "text": "From the first idea to the last sunset, our team plans every detail so you can simply enjoy the journey.",
+  "helpLabel": "Need Help?",
+  "label": "Our Promise",
+  "cardTitle": "Why Choose Us?",
+  "imageAlt": "A traveler jumping with a backpack",
+  "talkBadge": "Talk to a Travel Expert / Talk to a Travel Expert /",
+  "features": [
+    "Numerous Routes",
+    "Easy Booking",
+    "Accommodation",
+    "Best Tour Guidance"
+  ],
+  "missionTitle": "Our Mission & What We Believe In",
+  "missionText": "We design journeys around the people who take them, with honest advice, fair prices and local knowledge you can trust.",
+  "photoAlts": [
+    "A smiling traveler exploring a town",
+    "Two friends planning their trip with a map"
+  ],
+  "missionImageAlt": "A traveler walking along a coastal path",
+  "stats": [
+    "Destinations Worldwide",
+    "Years Travel Expertise"
+  ],
+  "pillars": [
+    "Our Vision",
+    "Our Mission",
+    "Our Value"
+  ],
+  "expertsTitle": "Meet Our Travel Experts",
+  "show": "Show {name}",
+  "previous": "Previous expert",
+  "next": "Next expert",
+  "experts": [
+    {
+      "role": "Local Experience Curator",
+      "bio": "Sarah builds trips around the places locals actually love, from family-run guesthouses to quiet beaches away from the crowds."
+    },
+    {
+      "role": "Adventure Guide",
+      "bio": "Lorem ipsum dolor sit amet consectetur. Pharetra proin eget iaculis nulla commodo sem vitae. Odio vulputate pellentesque id leo."
+    },
+    {
+      "role": "Senior Travel Consultant",
+      "bio": "With more than ten years of planning experience, Mark turns a rough idea into a smooth, well-paced itinerary."
+    },
+    {
+      "role": "Cultural Tour Specialist",
+      "bio": "Lina shares the history, food and traditions of the island, and connects travelers with the people who keep them alive."
+    },
+    {
+      "role": "Wildlife Guide",
+      "bio": "Hery leads small-group wildlife walks and knows exactly when and where to find the island’s most unusual animals."
+    }
+  ]
+}

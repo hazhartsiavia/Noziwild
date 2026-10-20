@@ -1,0 +1,57 @@
+{
+  "title": "Creare insieme viaggi indimenticabili",
+  "text": "Dalla prima idea all'ultimo tramonto, il nostro team cura ogni dettaglio perché tu possa semplicemente goderti il viaggio.",
+  "helpLabel": "Serve aiuto?",
+  "label": "La nostra promessa",
+  "cardTitle": "Perché sceglierci?",
+  "imageAlt": "Un viaggiatore che salta con uno zaino",
+  "talkBadge": "Parla con un esperto di viaggi / Parla con un esperto di viaggi /",
+  "features": [
+    "Tanti itinerari",
+    "Prenotazione facile",
+    "Alloggi",
+    "Le migliori guide"
+  ],
+  "missionTitle": "La nostra missione e ciò in cui crediamo",
+  "missionText": "Progettiamo i viaggi intorno alle persone che li vivono, con consigli onesti, prezzi giusti e una conoscenza locale di cui fidarsi.",
+  "photoAlts": [
+    "Una viaggiatrice sorridente che esplora una città",
+    "Due amici che pianificano il viaggio con una mappa"
+  ],
+  "missionImageAlt": "Un viaggiatore che cammina lungo un sentiero costiero",
+  "stats": [
+    "Destinazioni nel mondo",
+    "Anni di esperienza nei viaggi"
+  ],
+  "pillars": [
+    "La nostra visione",
+    "La nostra missione",
+    "I nostri valori"
+  ],
+  "expertsTitle": "Conosci i nostri esperti di viaggio",
+  "show": "Mostra {name}",
+  "previous": "Esperto precedente",
+  "next": "Esperto successivo",
+  "experts": [
+    {
+      "role": "Curatrice di esperienze locali",
+      "bio": "Sarah costruisce i viaggi intorno ai luoghi che la gente del posto ama davvero, dalle guesthouse a gestione familiare alle spiagge tranquille lontano dalla folla."
+    },
+    {
+      "role": "Guida d'avventura",
+      "bio": "Lorem ipsum dolor sit amet consectetur. Pharetra proin eget iaculis nulla commodo sem vitae. Odio vulputate pellentesque id leo."
+    },
+    {
+      "role": "Consulente di viaggio senior",
+      "bio": "Con oltre dieci anni di esperienza, Mark trasforma un'idea ancora vaga in un itinerario scorrevole e ben ritmato."
+    },
+    {
+      "role": "Specialista di tour culturali",
+      "bio": "Lina racconta la storia, la cucina e le tradizioni dell'isola e mette in contatto i viaggiatori con chi le tiene vive."
+    },
+    {
+      "role": "Guida naturalistica",
+      "bio": "Hery guida escursioni naturalistiche in piccoli gruppi e sa esattamente quando e dove trovare gli animali più insoliti dell'isola."
+    }
+  ]
+}

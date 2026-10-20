@@ -8,6 +8,7 @@ import Tana from "../assets/images/Tana.png";
 import Icone from "../assets/icone.png";
 import Navbar from '../components/Navbar';
 import Footer from '../components/Footer';
+import { useT } from '../i18n/LanguageContext';
 
 /* Constantes partagées : mêmes valeurs que dans Explore, Choose, Trips et Blog */
 const SECTION_WIDTH = "w-[90vw] lg:max-w-[90vw] xl:max-w-[95vw]"
@@ -21,6 +22,7 @@ const STATEMENT_TITLE = "text-4xl sm:text-5xl md:text-6xl xl:text-7xl font-mediu
 const ON_IMAGE_TITLE = "text-3xl sm:text-4xl md:text-5xl lg:text-[52px] font-medium text-white leading-[1.15] tracking-tight"
 
 /* ---------------------------- Données ---------------------------- */
+// Textes affichés : locales/<langue>/about.json (les listes suivent l'ordre de celles-ci)
 
 const content = {
   title: 'Creating Unforgettable Journeys, Together',
@@ -229,6 +231,7 @@ const ArrowIcon = ({ direction = 'right' }) => (
 
 // Badge circulaire "Talk to a Travel Expert"
 function TalkBadge() {
+  const t = useT('about')
   return (
     <div className="relative shrink-0 w-24 h-24 md:w-32 md:h-32 text-slate-700" aria-hidden="true">
       {/* Texte circulaire : tourne lentement (20s par tour). Change la durée ici. */}
@@ -241,7 +244,7 @@ function TalkBadge() {
         </defs>
         <text fontSize="10" fill="currentColor" letterSpacing="0.5">
           <textPath href="#talk-circle" textLength="326" lengthAdjust="spacing">
-            Talk to a Travel Expert / Talk to a Travel Expert /
+            {t('talkBadge')}
           </textPath>
         </text>
       </svg>
@@ -256,12 +259,13 @@ function TalkBadge() {
 
 // Pastille "Need Help?" + avatars
 function HelpPill() {
+  const t = useT('about')
   return (
     <a
       href={content.helpHref}
       className="inline-flex items-center gap-5 md:gap-8 self-start rounded-full bg-slate-800 hover:bg-slate-700 transition text-white pl-6 pr-2.5 py-2.5 md:pl-7 md:py-3"
     >
-      <span className="text-lg md:text-xl font-medium">{content.helpLabel}</span>
+      <span className="text-lg md:text-xl font-medium">{t('helpLabel')}</span>
       <span className="flex items-center">
         {team.map((person) => (
           <span
@@ -278,11 +282,11 @@ function HelpPill() {
   )
 }
 
-function FeatureCard({ feature }) {
+function FeatureCard({ feature, title }) {
   const IconComponent = feature.icon
   return (
     <div className="flex flex-row md:flex-col items-center md:items-start justify-between gap-3 md:min-h-[145px] rounded-xl border border-white/20 bg-white/10 backdrop-blur-md p-4 md:p-5 text-white">
-      <h3 className="text-sm md:text-base font-medium leading-snug">{feature.title}</h3>
+      <h3 className="text-sm md:text-base font-medium leading-snug">{title}</h3>
       <IconComponent />
     </div>
   )
@@ -290,7 +294,8 @@ function FeatureCard({ feature }) {
 
 // Deux photos inclinées avec cadre blanc
 function Polaroids() {
-  const [first, second] = mission.photos
+  const t = useT('about')
+  const [first, second] = mission.photos.map((p, i) => ({ ...p, alt: t('photoAlts')[i] }))
   const frame = "absolute w-[50%] bg-white rounded-lg md:rounded-xl p-1.5 md:p-2.5 lg:p-3 shadow-sm"
   const photo = "w-full aspect-square object-cover rounded-sm md:rounded-md"
 
@@ -307,13 +312,14 @@ function Polaroids() {
 }
 
 function MissionSection() {
+  const t = useT('about')
   return (
     <div className="mt-[50px] md:mt-[100px]">
 
       {/* Titre + texte (le texte est masqué sur mobile) */}
       <div className="mb-8 md:mb-12 flex flex-col lg:flex-row lg:items-center lg:justify-between gap-5 lg:gap-12">
-        <h2 className={`${SECTION_TITLE} lg:max-w-[52%]`}>{mission.title}</h2>
-        <p className={`hidden md:block ${SECTION_SUBTITLE} lg:max-w-lg`}>{mission.text}</p>
+        <h2 className={`${SECTION_TITLE} lg:max-w-[52%]`}>{t('missionTitle')}</h2>
+        <p className={`hidden md:block ${SECTION_SUBTITLE} lg:max-w-lg`}>{t('missionText')}</p>
       </div>
 
       {/* 2 colonnes sur mobile, 3 dès l'écran moyen */}
@@ -324,10 +330,10 @@ function MissionSection() {
           <Polaroids />
 
           <div className="flex flex-col gap-3 md:flex-row md:gap-8 lg:gap-12">
-            {mission.stats.map((stat) => (
+            {mission.stats.map((stat, i) => (
               <div key={stat.id} className="flex items-center gap-3 md:block">
                 <p className="text-3xl md:text-5xl lg:text-6xl leading-none text-slate-800">{stat.value}</p>
-                <p className="md:mt-3 text-sm md:text-base lg:text-lg leading-snug text-slate-600">{stat.label}</p>
+                <p className="md:mt-3 text-sm md:text-base lg:text-lg leading-snug text-slate-600">{t('stats')[i]}</p>
               </div>
             ))}
           </div>
@@ -337,14 +343,14 @@ function MissionSection() {
         <div className="relative min-h-[280px] md:min-h-[375px] lg:min-h-[394px] overflow-hidden rounded-2xl md:rounded-3xl">
           <img
             src={mission.image}
-            alt={mission.imageAlt}
+            alt={t('missionImageAlt')}
             className="absolute inset-0 w-full h-full object-cover"
           />
         </div>
 
         {/* Pastilles vision / mission / valeurs (masquées sur mobile) */}
         <ul className="hidden md:flex flex-col justify-center gap-3 lg:gap-4">
-          {mission.pillars.map((pillar) => {
+          {mission.pillars.map((pillar, i) => {
             const PillarIcon = pillar.icon
             return (
               <li
@@ -354,7 +360,7 @@ function MissionSection() {
                 <span className="shrink-0 w-11 h-11 lg:w-[62px] lg:h-[62px] rounded-full bg-[#C49849] flex items-center justify-center text-white">
                   <PillarIcon />
                 </span>
-                <span className="text-sm lg:text-lg leading-snug text-slate-700">{pillar.label}</span>
+                <span className="text-sm lg:text-lg leading-snug text-slate-700">{t('pillars')[i]}</span>
               </li>
             )
           })}
@@ -367,11 +373,12 @@ function MissionSection() {
 
 // Petite carte d'un expert voisin : cliquer dessus l'affiche au centre
 function ExpertSideCard({ expert, onSelect }) {
+  const t = useT('about')
   return (
     <button
       type="button"
       onClick={onSelect}
-      aria-label={`Show ${expert.name}`}
+      aria-label={t('show', { name: expert.name })}
       className="group block w-full text-left"
     >
       <div className="aspect-[17/10] overflow-hidden rounded-xl">
@@ -390,11 +397,14 @@ function ExpertSideCard({ expert, onSelect }) {
 }
 
 function ExpertsSection() {
-  const total = experts.length
+  const t = useT('about')
+  // Rôle et présentation traduits, dans l'ordre de la liste
+  const list = experts.map((expert, i) => ({ ...expert, ...t('experts')[i] }))
+  const total = list.length
   const [active, setActive] = useState(expertsSection.startIndex % total)
 
   // Défilement en boucle : après le dernier expert, on revient au premier
-  const at = (index) => experts[(index + total) % total]
+  const at = (index) => list[(index + total) % total]
   const goPrev = () => setActive((i) => (i - 1 + total) % total)
   const goNext = () => setActive((i) => (i + 1) % total)
 
@@ -409,7 +419,7 @@ function ExpertsSection() {
   return (
     <div className="mt-[50px] md:mt-[100px]">
 
-      <h2 className={`${SECTION_TITLE} text-center mb-10 md:mb-16`}>{expertsSection.title}</h2>
+      <h2 className={`${SECTION_TITLE} text-center mb-10 md:mb-16`}>{t('expertsTitle')}</h2>
 
       <div
         className={`grid gap-x-4 gap-y-10 ${
@@ -472,7 +482,7 @@ function ExpertsSection() {
 
       {/* Navigation prev / next */}
       <div className="mt-10 md:mt-14 flex items-center justify-center gap-4 md:gap-5">
-        <button type="button" onClick={goPrev} aria-label="Previous expert" className={arrowClass}>
+        <button type="button" onClick={goPrev} aria-label={t('previous')} className={arrowClass}>
           <ArrowIcon direction="left" />
         </button>
 
@@ -480,7 +490,7 @@ function ExpertsSection() {
           {String(active + 1).padStart(2, '0')} / {String(total).padStart(2, '0')}
         </span>
 
-        <button type="button" onClick={goNext} aria-label="Next expert" className={arrowClass}>
+        <button type="button" onClick={goNext} aria-label={t('next')} className={arrowClass}>
           <ArrowIcon direction="right" />
         </button>
       </div>
@@ -490,19 +500,20 @@ function ExpertsSection() {
 }
 
 function About() {
+  const t = useT('about')
   return (
     <>
     <section className="w-full pt-0 pb-12 bg-[#D5E8E2] flex flex-col items-center">
         <Navbar />
       <div className={`${SECTION_WIDTH} mt-8 md:mt-12`}>
         {/* Titre + texte + aide */}
-        <h2 className={`${STATEMENT_TITLE} max-w-5xl`}>{content.title}</h2>
+        <h2 className={`${STATEMENT_TITLE} max-w-5xl`}>{t('title')}</h2>
 
         <div className="mt-8 md:mt-10 flex flex-col lg:flex-row lg:items-center lg:justify-between gap-6 lg:gap-12">
           <div className="flex items-center gap-5 md:gap-6 max-w-2xl">
             <div className="hidden sm:block"><TalkBadge /></div>
             <p className="text-sm sm:text-base md:text-lg text-slate-600 leading-relaxed">
-              {content.text}
+              {t('text')}
             </p>
           </div>
 
@@ -513,7 +524,7 @@ function About() {
         <div className="relative mt-10 md:mt-16 overflow-hidden rounded-3xl bg-slate-900 text-white min-h-[520px] md:min-h-[625px]">
           <img
             src={content.image}
-            alt={content.imageAlt}
+            alt={t('imageAlt')}
             className="absolute inset-0 w-full h-full object-cover"
           />
           <div className="absolute inset-0 bg-gradient-to-r from-black/30 via-black/10 to-black/80" />
@@ -521,17 +532,17 @@ function About() {
           <div className="relative min-h-[inherit] flex flex-col p-5 md:p-8">
             <p className="flex items-center gap-2 text-lg md:text-xl font-medium">
               <span className="w-1.5 h-1.5 rounded-full bg-white" aria-hidden="true" />
-              {content.label}
+              {t('label')}
             </p>
 
             <div className="mt-auto pt-24">
               <h2 className={`${ON_IMAGE_TITLE} text-left md:text-center`}>
-                {content.cardTitle}
+                {t('cardTitle')}
               </h2>
 
               <div className="mt-6 md:mt-10 grid grid-cols-2 md:grid-cols-4 gap-3 md:gap-5">
-                {features.map((feature) => (
-                  <FeatureCard key={feature.id} feature={feature} />
+                {features.map((feature, i) => (
+                  <FeatureCard key={feature.id} feature={feature} title={t('features')[i]} />
                 ))}
               </div>
             </div>

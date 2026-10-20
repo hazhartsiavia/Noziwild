@@ -1,0 +1,27 @@
+{
+  "title": "Parliamone con Noziwild",
+  "text": "Domande su un viaggio, un itinerario su misura o una collaborazione? Scrivici: un esperto di viaggi ti risponderà entro un giorno lavorativo.",
+  "cta": "Contattaci ora",
+  "address": "Antananarivo, Madagascar",
+  "inquiryTypes": [
+    "Prenotare un viaggio",
+    "Tour su misura",
+    "Domande generali",
+    "Collaborazione",
+    "Assistenza"
+  ],
+  "callTitle": "Vuoi parlare con i nostri esperti di viaggio?",
+  "callText": "Prenota una chiamata di 30 minuti",
+  "callCta": "Contattaci",
+  "social": "Seguici",
+  "name": "Nome",
+  "phone": "Telefono",
+  "email": "Indirizzo email",
+  "inquiry": "Tipo di richiesta",
+  "message": "Raccontaci un po' la tua idea di viaggio…",
+  "customers": "Oltre 100 clienti soddisfatti",
+  "sending": "Invio…",
+  "send": "Inizia la conversazione",
+  "sent": "Grazie! Il tuo messaggio è stato inviato, ti risponderemo presto.",
+  "finalCta": "Pronto a partire all'avventura? Compila il modulo o prenota una chiamata e organizziamo il tuo viaggio oggi stesso!"
+}

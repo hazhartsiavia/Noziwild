@@ -1,0 +1,57 @@
+{
+  "title": "Gemeinsam unvergessliche Reisen gestalten",
+  "text": "Von der ersten Idee bis zum letzten Sonnenuntergang plant unser Team jedes Detail, damit Sie die Reise einfach genießen können.",
+  "helpLabel": "Brauchen Sie Hilfe?",
+  "label": "Unser Versprechen",
+  "cardTitle": "Warum wir?",
+  "imageAlt": "Ein Reisender, der mit einem Rucksack springt",
+  "talkBadge": "Sprechen Sie mit einem Reiseexperten / Sprechen Sie mit einem Reiseexperten /",
+  "features": [
+    "Zahlreiche Routen",
+    "Einfache Buchung",
+    "Unterkünfte",
+    "Beste Reiseführung"
+  ],
+  "missionTitle": "Unsere Mission und woran wir glauben",
+  "missionText": "Wir gestalten Reisen rund um die Menschen, die sie unternehmen – mit ehrlicher Beratung, fairen Preisen und lokalem Wissen, auf das Sie sich verlassen können.",
+  "photoAlts": [
+    "Eine lächelnde Reisende, die eine Stadt erkundet",
+    "Zwei Freunde, die ihre Reise mit einer Karte planen"
+  ],
+  "missionImageAlt": "Ein Reisender auf einem Küstenpfad",
+  "stats": [
+    "Reiseziele weltweit",
+    "Jahre Reiseerfahrung"
+  ],
+  "pillars": [
+    "Unsere Vision",
+    "Unsere Mission",
+    "Unsere Werte"
+  ],
+  "expertsTitle": "Lernen Sie unsere Reiseexperten kennen",
+  "show": "{name} anzeigen",
+  "previous": "Vorheriger Experte",
+  "next": "Nächster Experte",
+  "experts": [
+    {
+      "role": "Kuratorin für lokale Erlebnisse",
+      "bio": "Sarah plant Reisen rund um die Orte, die Einheimische wirklich lieben – von familiengeführten Gästehäusern bis zu ruhigen Stränden abseits der Menge."
+    },
+    {
+      "role": "Abenteuer-Guide",
+      "bio": "Lorem ipsum dolor sit amet consectetur. Pharetra proin eget iaculis nulla commodo sem vitae. Odio vulputate pellentesque id leo."
+    },
+    {
+      "role": "Leitender Reiseberater",
+      "bio": "Mit über zehn Jahren Planungserfahrung macht Mark aus einer groben Idee eine reibungslose Reise im richtigen Tempo."
+    },
+    {
+      "role": "Spezialistin für Kulturreisen",
+      "bio": "Lina teilt die Geschichte, die Küche und die Traditionen der Insel und bringt Reisende mit den Menschen zusammen, die sie lebendig halten."
+    },
+    {
+      "role": "Naturführer",
+      "bio": "Hery führt Tierbeobachtungen in kleinen Gruppen und weiß genau, wann und wo man die ungewöhnlichsten Tiere der Insel findet."
+    }
+  ]
+}

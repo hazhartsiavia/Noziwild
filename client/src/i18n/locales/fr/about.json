@@ -1,0 +1,57 @@
+{
+  "title": "Créer ensemble des voyages inoubliables",
+  "text": "De la première idée au dernier coucher de soleil, notre équipe organise chaque détail pour que vous n'ayez plus qu'à profiter du voyage.",
+  "helpLabel": "Besoin d'aide ?",
+  "label": "Notre promesse",
+  "cardTitle": "Pourquoi nous choisir ?",
+  "imageAlt": "Un voyageur qui saute avec un sac à dos",
+  "talkBadge": "Parlez à un expert du voyage / Parlez à un expert du voyage /",
+  "features": [
+    "De nombreux itinéraires",
+    "Réservation facile",
+    "Hébergement",
+    "Les meilleurs guides"
+  ],
+  "missionTitle": "Notre mission et nos convictions",
+  "missionText": "Nous concevons les voyages autour de ceux qui les vivent, avec des conseils honnêtes, des prix justes et une connaissance locale digne de confiance.",
+  "photoAlts": [
+    "Une voyageuse souriante qui découvre une ville",
+    "Deux amis qui préparent leur voyage avec une carte"
+  ],
+  "missionImageAlt": "Un voyageur qui marche sur un sentier côtier",
+  "stats": [
+    "Destinations dans le monde",
+    "Années d'expertise du voyage"
+  ],
+  "pillars": [
+    "Notre vision",
+    "Notre mission",
+    "Nos valeurs"
+  ],
+  "expertsTitle": "Rencontrez nos experts du voyage",
+  "show": "Afficher {name}",
+  "previous": "Expert précédent",
+  "next": "Expert suivant",
+  "experts": [
+    {
+      "role": "Créatrice d'expériences locales",
+      "bio": "Sarah construit des voyages autour des lieux que les habitants aiment vraiment, des maisons d'hôtes familiales aux plages tranquilles loin de la foule."
+    },
+    {
+      "role": "Guide d'aventure",
+      "bio": "Lorem ipsum dolor sit amet consectetur. Pharetra proin eget iaculis nulla commodo sem vitae. Odio vulputate pellentesque id leo."
+    },
+    {
+      "role": "Conseiller voyage senior",
+      "bio": "Avec plus de dix ans d'expérience, Mark transforme une idée encore floue en un itinéraire fluide et bien rythmé."
+    },
+    {
+      "role": "Spécialiste des circuits culturels",
+      "bio": "Lina partage l'histoire, la cuisine et les traditions de l'île, et met les voyageurs en relation avec ceux qui les font vivre."
+    },
+    {
+      "role": "Guide naturaliste",
+      "bio": "Hery mène des balades naturalistes en petits groupes et sait exactement quand et où trouver les animaux les plus étonnants de l'île."
+    }
+  ]
+}

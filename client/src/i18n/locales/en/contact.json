@@ -1,0 +1,27 @@
+{
+  "title": "Let’s Talk With Noziwild",
+  "text": "Questions about a trip, a custom itinerary or a partnership? Send us a message and a travel expert will get back to you within one working day.",
+  "cta": "Contact Us Now",
+  "address": "Antananarivo, Madagascar",
+  "inquiryTypes": [
+    "Booking A Trip",
+    "Custom Tour Request",
+    "General Questions",
+    "Partnership",
+    "Support"
+  ],
+  "callTitle": "Want To Connect With Our Travel Experts?",
+  "callText": "Book A 30 Minutes Call",
+  "callCta": "Contact Us",
+  "social": "Let’s Get Social",
+  "name": "Name",
+  "phone": "Phone",
+  "email": "Email Address",
+  "inquiry": "Select Inquiry Type",
+  "message": "Tell Us Little About Your Vision…",
+  "customers": "Join 100+ Happy Customers",
+  "sending": "Sending…",
+  "send": "Start A Conversation",
+  "sent": "Thank you! Your message has been sent, we will get back to you soon.",
+  "finalCta": "Ready To Start Your Adventure? Fill Out The Form Or Book A Call And Let’s Plan Your Journey Today!"
+}

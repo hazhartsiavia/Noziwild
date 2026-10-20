@@ -1,0 +1,57 @@
+{
+  "title": "Creamos juntos viajes inolvidables",
+  "text": "De la primera idea a la última puesta de sol, nuestro equipo cuida cada detalle para que usted solo tenga que disfrutar del viaje.",
+  "helpLabel": "¿Necesita ayuda?",
+  "label": "Nuestra promesa",
+  "cardTitle": "¿Por qué elegirnos?",
+  "imageAlt": "Un viajero saltando con una mochila",
+  "talkBadge": "Hable con un experto en viajes / Hable con un experto en viajes /",
+  "features": [
+    "Numerosas rutas",
+    "Reserva fácil",
+    "Alojamiento",
+    "Los mejores guías"
+  ],
+  "missionTitle": "Nuestra misión y lo que creemos",
+  "missionText": "Diseñamos los viajes en torno a quienes los viven, con consejos honestos, precios justos y un conocimiento local de confianza.",
+  "photoAlts": [
+    "Una viajera sonriente explorando una ciudad",
+    "Dos amigos planificando su viaje con un mapa"
+  ],
+  "missionImageAlt": "Un viajero caminando por un sendero costero",
+  "stats": [
+    "Destinos en todo el mundo",
+    "Años de experiencia en viajes"
+  ],
+  "pillars": [
+    "Nuestra visión",
+    "Nuestra misión",
+    "Nuestros valores"
+  ],
+  "expertsTitle": "Conozca a nuestros expertos en viajes",
+  "show": "Mostrar a {name}",
+  "previous": "Experto anterior",
+  "next": "Experto siguiente",
+  "experts": [
+    {
+      "role": "Creadora de experiencias locales",
+      "bio": "Sarah diseña viajes en torno a los lugares que los locales adoran de verdad, desde casas de huéspedes familiares hasta playas tranquilas lejos de las multitudes."
+    },
+    {
+      "role": "Guía de aventura",
+      "bio": "Lorem ipsum dolor sit amet consectetur. Pharetra proin eget iaculis nulla commodo sem vitae. Odio vulputate pellentesque id leo."
+    },
+    {
+      "role": "Asesor de viajes sénior",
+      "bio": "Con más de diez años de experiencia, Mark convierte una idea aún vaga en un itinerario fluido y bien pensado."
+    },
+    {
+      "role": "Especialista en circuitos culturales",
+      "bio": "Lina comparte la historia, la gastronomía y las tradiciones de la isla, y pone a los viajeros en contacto con quienes las mantienen vivas."
+    },
+    {
+      "role": "Guía de fauna",
+      "bio": "Hery dirige paseos de observación de fauna en grupos pequeños y sabe exactamente cuándo y dónde encontrar los animales más insólitos de la isla."
+    }
+  ]
+}

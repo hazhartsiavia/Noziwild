@@ -6,6 +6,7 @@ import Navbar from '../components/Navbar';
 import Footer from '../components/Footer';
 import { sendContact } from '../api';
 import { useAuth } from '../context/AuthContext';
+import { useT } from '../i18n/LanguageContext';
 
 
 /* Constantes partagées : mêmes valeurs que dans les autres sections */
@@ -22,6 +23,7 @@ const FIELD =
   "focus:outline-none focus:border-slate-700 focus:ring-1 focus:ring-slate-700 transition"
 
 /* ---------------------------- Données ---------------------------- */
+// Textes affichés : locales/<langue>/contact.json
 
 const contact = {
   title: 'Let’s Talk With Noziwild',
@@ -32,6 +34,7 @@ const contact = {
   address: 'Antananarivo, Madagascar',
 }
 
+// Valeur envoyée à l'équipe (en anglais, quelle que soit la langue du site) ; libellé traduit : contact.inquiryTypes
 const inquiryTypes = ['Booking A Trip', 'Custom Tour Request', 'General Questions', 'Partnership', 'Support']
 
 const call = {
@@ -139,9 +142,10 @@ function ContactItem({ icon, text, href }) {
 
 // Carte "Let's Get Social" : déborde en haut à droite du formulaire (dès l'écran moyen)
 function SocialCard() {
+  const t = useT('contact')
   return (
     <div className="relative md:absolute md:-top-12 md:right-10 z-10 w-fit mb-8 md:mb-0 rounded-2xl bg-slate-800 text-white px-6 py-4 md:px-9 md:py-5">
-      <p className="text-sm md:text-base font-medium">Let’s Get Social</p>
+      <p className="text-sm md:text-base font-medium">{t('social')}</p>
       <ul className="mt-3 md:mt-4 flex items-center gap-5 md:gap-6">
         {socials.map((social) => {
           const SocialIcon = social.icon
@@ -160,6 +164,7 @@ function SocialCard() {
 
 // Bannière "Want to connect with our travel experts?"
 function CallBanner() {
+  const t = useT('contact')
   const [first, second] = call.photos
   const frame = "absolute w-[52%] bg-white rounded-md p-1 md:p-1.5 shadow-sm"
   const photo = "w-full aspect-[4/5] object-cover rounded-sm"
@@ -182,15 +187,15 @@ function CallBanner() {
         </div>
 
         <div className="flex-1">
-          <h3 className="text-xl md:text-2xl font-medium leading-snug">{call.title}</h3>
-          <p className="mt-3 text-sm md:text-base">{call.text}</p>
+          <h3 className="text-xl md:text-2xl font-medium leading-snug">{t('callTitle')}</h3>
+          <p className="mt-3 text-sm md:text-base">{t('callText')}</p>
         </div>
 
         <a
           href={call.href}
           className={`self-start sm:self-center shrink-0 bg-[#C49849] hover:bg-[#b53d2a] active:scale-95 transition text-white ${BUTTON} md:px-6 md:py-3`}
         >
-          {call.cta}
+          {t('callCta')}
         </a>
       </div>
     </div>
@@ -200,6 +205,7 @@ function CallBanner() {
 function Contact() {
   // Connecté : nom et email pré-remplis (la clé recrée le champ quand la session est connue)
   const { user } = useAuth()
+  const t = useT('contact')
   const [status, setStatus] = useState('idle') // 'idle' | 'sending' | 'sent' | 'error'
   const [error, setError] = useState('')
 
@@ -228,15 +234,15 @@ function Contact() {
 
         {/* Titre + texte + bouton */}
         <div className="grid grid-cols-1 lg:grid-cols-[1.4fr_1fr] gap-8 lg:gap-0">
-          <h1 className={STATEMENT_TITLE}>{contact.title}</h1>
+          <h1 className={STATEMENT_TITLE}>{t('title')}</h1>
 
           <div className="flex flex-col items-start gap-8 lg:gap-10 lg:border-l lg:border-slate-900/15 lg:pl-10">
-            <p className={SECTION_SUBTITLE}>{contact.text}</p>
+            <p className={SECTION_SUBTITLE}>{t('text')}</p>
             <a
               href="#contact-form"
               className={`bg-slate-800 hover:bg-slate-700 active:scale-95 transition text-white ${BUTTON} md:px-6 md:py-3`}
             >
-              {contact.cta}
+              {t('cta')}
             </a>
           </div>
         </div>
@@ -245,7 +251,7 @@ function Contact() {
         <div className="mt-10 md:mt-16 flex flex-wrap gap-x-10 xl:gap-x-16 gap-y-6">
           <ContactItem icon={<PhoneIcon />} text={contact.phone} href={`tel:${contact.phone.replace(/\s/g, '')}`} />
           <ContactItem icon={<AtIcon />} text={contact.email} href={`mailto:${contact.email}`} />
-          <ContactItem icon={<PinIcon />} text={contact.address} />
+          <ContactItem icon={<PinIcon />} text={t('address')} />
         </div>
 
         {/* Carte du formulaire */}
@@ -256,25 +262,25 @@ function Contact() {
 
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-8">
               <div>
-                <label htmlFor="name" className={LABEL}>Name</label>
+                <label htmlFor="name" className={LABEL}>{t('name')}</label>
                 <input id="name" name="name" key={`n-${user?.id}`} defaultValue={user?.name} type="text" autoComplete="name" required className={FIELD} />
               </div>
               <div>
-                <label htmlFor="phone" className={LABEL}>Phone</label>
+                <label htmlFor="phone" className={LABEL}>{t('phone')}</label>
                 <input id="phone" name="phone" type="tel" autoComplete="tel" className={FIELD} />
               </div>
             </div>
 
             <div>
-              <label htmlFor="email" className={LABEL}>Email Address</label>
+              <label htmlFor="email" className={LABEL}>{t('email')}</label>
               <input id="email" name="email" key={`e-${user?.id}`} defaultValue={user?.email} type="email" autoComplete="email" required className={FIELD} />
             </div>
 
             {/* Type de demande : boutons radio stylés en pastilles */}
             <fieldset>
-              <legend className={LABEL}>Select Inquiry Type</legend>
+              <legend className={LABEL}>{t('inquiry')}</legend>
               <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-3">
-                {inquiryTypes.map((type) => (
+                {inquiryTypes.map((type, i) => (
                   <label key={type} className="cursor-pointer">
                     <input type="radio" name="inquiry" value={type} className="peer sr-only" />
                     <span
@@ -283,7 +289,7 @@ function Contact() {
                                  peer-checked:bg-slate-800 peer-checked:border-slate-800 peer-checked:text-white
                                  peer-focus-visible:ring-2 peer-focus-visible:ring-slate-700 peer-focus-visible:ring-offset-2"
                     >
-                      {type}
+                      {t('inquiryTypes')[i]}
                     </span>
                   </label>
                 ))}
@@ -291,7 +297,7 @@ function Contact() {
             </fieldset>
 
             <div>
-              <label htmlFor="message" className={LABEL}>Tell Us Little About Your Vision…</label>
+              <label htmlFor="message" className={LABEL}>{t('message')}</label>
               <textarea
                 id="message"
                 name="message"
@@ -306,7 +312,7 @@ function Contact() {
               <svg className="w-4 h-4 text-[#F5B800] fill-current" viewBox="0 0 20 20" aria-hidden="true">
                 <path d="M10 15l-5.878 3.09 1.123-6.545L.489 6.91l6.572-.955L10 0l2.939 5.955 6.572.955-4.756 4.635 1.123 6.545z" />
               </svg>
-              Join 100+ Happy Customers
+              {t('customers')}
             </p>
 
             <div className="flex flex-col sm:flex-row sm:items-center gap-4">
@@ -315,12 +321,12 @@ function Contact() {
                 disabled={status === 'sending'}
                 className={`self-start bg-[#C49849] hover:bg-[#b53d2a] active:scale-95 transition text-white disabled:opacity-60 disabled:cursor-wait ${BUTTON} md:px-6 md:py-3`}
               >
-                {status === 'sending' ? 'Sending…' : 'Start A Conversation'}
+                {status === 'sending' ? t('sending') : t('send')}
               </button>
 
               {status === 'sent' && (
                 <p role="status" className={`${META_TEXT} md:text-base text-emerald-700`}>
-                  Thank you! Your message has been sent, we will get back to you soon.
+                  {t('sent')}
                 </p>
               )}
               {status === 'error' && (
@@ -331,7 +337,7 @@ function Contact() {
 
           {/* Appel à l'action final */}
           <p className="mt-10 md:mt-14 text-sm md:text-base font-medium text-slate-800">
-            Ready To Start Your Adventure? Fill Out The Form Or Book A Call And Let’s Plan Your Journey Today!
+            {t('finalCta')}
           </p>
 
           <div className="mt-6 md:mt-8">

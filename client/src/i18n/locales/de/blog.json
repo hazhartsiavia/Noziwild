@@ -1,0 +1,22 @@
+{
+  "title": "Blog",
+  "home": "Startseite",
+  "crumb": "Blog",
+  "imageAlt": "Ein ruhiger Infinity-Pool bei Sonnenuntergang",
+  "featured": [
+    "Entdecken Sie Reiseziele abseits der üblichen Touristenpfade",
+    "Von Strandresorts bis zu versteckten Buchten: Hierhin reisen Familien am liebsten",
+    "Gönnen Sie sich Luxus in unseren ausgewählten Unterkünften auf der Insel"
+  ],
+  "posts": [
+    "Ein Tierabenteuer im Norden Madagaskars",
+    "Das Hochland rund um Antananarivo im Winter entdecken",
+    "Von Stränden bis zu Baobabs: alles Wissenswerte",
+    "Segeln an der Küste von Ramena",
+    "Ein entspanntes Wochenende in Ambanja und auf Nosy Be",
+    "Der komplette Guide zur Bucht von Diego Suarez"
+  ],
+  "readTime": "{count} Min. Lesezeit",
+  "eyebrow": "Aus unserem Journal",
+  "heading": "Aus unserem Reisejournal"
+}
