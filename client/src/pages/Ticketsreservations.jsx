@@ -7,6 +7,8 @@ import Ramena from "../assets/images/Ramena.png";
 import Tana from "../assets/images/Tana.png";
 import Navbar from '../components/Navbar';
 import Footer from '../components/Footer';
+import { useT } from '../i18n/LanguageContext';
+import { localize } from '../i18n/localize';
 import { gsap } from 'gsap'
 import { ScrollTrigger } from 'gsap/ScrollTrigger'
 
@@ -25,8 +27,9 @@ const prefersReducedMotion = () =>
   typeof window !== 'undefined' && window.matchMedia('(prefers-reduced-motion: reduce)').matches
 
 /* ---------------------------- Données ---------------------------- */
+// Textes affichés : locales/<langue>/tickets.json, posés sur ces données par localize()
 
-const categories = [
+const CATEGORIES = [
   { id: 'all', label: 'All Tickets' },
   { id: 'parks', label: 'Parks & Reserves' },
   { id: 'sea', label: 'Sea & Boats' },
@@ -35,7 +38,7 @@ const categories = [
 ]
 
 // Prix donnés en exemple, à adapter à tes vrais tarifs
-const tickets = [
+const TICKETS = [
   { id: 1, category: 'parks', name: 'Andasibe-Mantadia Park', place: 'Andasibe', price: 35, image: Tana, perks: ['Entry + local guide', 'Half day'] },
   { id: 2, category: 'parks', name: 'Lokobe Reserve', place: 'Nosy Be', price: 25, image: Ambanja, perks: ['Entry + guide', 'Pirogue included'] },
   { id: 3, category: 'sea', name: 'Marine Park Snorkel Trip', place: 'Nosy Be', price: 30, image: Ramena, perks: ['Boat + snorkel gear', 'Lunch option'] },
@@ -46,27 +49,12 @@ const tickets = [
   { id: 8, category: 'events', name: 'Local Festival Pass', place: 'Varies by date', price: 18, image: Ambanja, perks: ['Entry + transport tip', 'Dates on request'] },
 ]
 
-const steps = [
+const STEPS = [
   { id: 1, title: 'Pick your experience', text: 'Choose a park, boat trip, site or event and tell us the date.' },
   { id: 2, title: 'We reserve for you', text: 'We book your slot, pay fees locally and confirm within hours.' },
   { id: 3, title: 'Show your e-ticket', text: 'Your QR ticket arrives on your phone. Just scan at the entrance.' },
 ]
 
-const benefits = [
-  'Skip-the-line slots where available',
-  'Confirmation within a few hours',
-  'Free date change up to 48 h before',
-  'Local guide or driver arranged on request',
-]
-
-const faqs = [
-  { q: 'Are the tickets refundable?', a: 'Most can be moved to another date for free up to 48 hours before. Refund terms are shown in your quote before you pay.' },
-  { q: 'Do I need to print my ticket?', a: 'No. You receive an e-ticket with a QR code. Keep it on your phone and show it at the entrance.' },
-  { q: 'Can you book for a group?', a: 'Yes. For groups of 8 or more we can arrange a private time slot and a guide for the whole group.' },
-  { q: 'What if my chosen date is sold out?', a: 'We suggest the closest available dates or a similar experience nearby, and hold it for you while you decide.' },
-  { q: 'Are park fees and guides included?', a: 'Each ticket tells you exactly what is included. Park fees and mandatory local guides are included wherever they apply.' },
-  { q: 'Can you book events far in advance?', a: 'Yes, as soon as organizers open ticket sales. Tell us the dates you travel and we watch for you.' },
-]
 
 /* ---------------------------- Icônes ----------------------------- */
 
@@ -98,21 +86,22 @@ function Qr({ className = '' }) {
 
 // Hero : un grand billet avec souche détachable
 function Hero() {
+  const t = useT('tickets')
   const notch = "absolute w-8 h-8 rounded-full bg-[#D5E8E2]"
   return (
     <section data-ticket>
       <div className="relative grid grid-cols-1 lg:grid-cols-[1fr_290px] overflow-hidden rounded-3xl bg-[#084838] text-white">
         <div className="p-6 md:p-14">
-          <span data-hero className={BADGE}>Tickets & Reservations</span>
+          <span data-hero className={BADGE}>{t('badge')}</span>
           <h1 data-hero className="mt-6 text-4xl sm:text-5xl md:text-6xl xl:text-7xl font-medium uppercase leading-[1.1] tracking-tight">
-            Skip The Queue, Keep The Magic
+            {t('title')}
           </h1>
           <p data-hero className="mt-6 max-w-xl text-sm md:text-lg text-white/80 leading-relaxed">
-            Parks, boat trips, sites and events, reserved for you in advance. No lines, no guesswork, just your e-ticket on your phone.
+            {t('intro')}
           </p>
           <div data-hero className="mt-8 flex flex-wrap items-center gap-4">
-            <a href="#tickets" className={`bg-[#C49849] hover:bg-[#b08339] text-white ${BUTTON}`}>Browse Tickets</a>
-            <a href="/contact" className="inline-flex items-center gap-2 text-sm md:text-base font-medium hover:gap-3 transition-all">Ask for something else <ArrowIcon /></a>
+            <a href="#tickets" className={`bg-[#C49849] hover:bg-[#b08339] text-white ${BUTTON}`}>{t('browse')}</a>
+            <a href="/contact" className="inline-flex items-center gap-2 text-sm md:text-base font-medium hover:gap-3 transition-all">{t('ask')} <ArrowIcon /></a>
           </div>
         </div>
 
@@ -120,9 +109,9 @@ function Hero() {
         <div className="relative flex flex-col items-center justify-center gap-4 p-6 md:p-8 border-t-2 lg:border-t-0 lg:border-l-2 border-dashed border-white/35">
           <span className={`${notch} -top-4 -left-4`} />
           <span className={`${notch} -top-4 -right-4 lg:top-auto lg:right-auto lg:-bottom-4 lg:-left-4`} />
-          <p className="text-xs tracking-[0.3em] text-[#E6C58A]">ADMIT ONE</p>
+          <p className="text-xs tracking-[0.3em] text-[#E6C58A]">{t('admit')}</p>
           <Qr className="w-36 md:w-44" />
-          <p className="text-xs text-white/70 tabular-nums">No. 0001 · E-TICKET</p>
+          <p className="text-xs text-white/70 tabular-nums">{t('ticketNo')}</p>
         </div>
       </div>
     </section>
@@ -131,6 +120,7 @@ function Hero() {
 
 // Carte en forme de billet : photo, infos, souche avec prix
 function TicketCard({ t }) {
+  const tr = useT('tickets')
   const notch = "absolute -left-[9px] w-4 h-4 rounded-full bg-[#D5E8E2]"
   return (
     <article className="flex overflow-hidden rounded-2xl bg-white">
@@ -145,15 +135,18 @@ function TicketCard({ t }) {
       <div className="relative shrink-0 w-[100px] md:w-[130px] flex flex-col items-center justify-center gap-1.5 border-l-2 border-dashed border-slate-300 p-3 text-center">
         <span className={`${notch} -top-2`} />
         <span className={`${notch} -bottom-2`} />
-        <p className={`${META_TEXT} text-slate-500`}>From</p>
+        <p className={`${META_TEXT} text-slate-500`}>{tr('from')}</p>
         <p className="text-2xl md:text-3xl font-medium text-slate-900 tabular-nums">${t.price}</p>
-        <a href="/contact" className="mt-1 rounded-full bg-[#084838] hover:bg-[#0a5c47] text-white text-xs md:text-sm font-medium px-3 py-1.5 transition">Reserve</a>
+        <a href="/contact" className="mt-1 rounded-full bg-[#084838] hover:bg-[#0a5c47] text-white text-xs md:text-sm font-medium px-3 py-1.5 transition">{tr('reserve')}</a>
       </div>
     </article>
   )
 }
 
 function Browse() {
+  const tr = useT('tickets')
+  const categories = localize(CATEGORIES, tr('categories'))
+  const tickets = localize(TICKETS, tr('tickets'))
   const [category, setCategory] = useState('all')
   const gridRef = useRef(null)
   const first = useRef(true)
@@ -168,11 +161,11 @@ function Browse() {
   return (
     <div id="tickets" className={`${SECTION_GAP} scroll-mt-8`}>
       <div className="mb-8 md:mb-10 flex flex-col lg:flex-row lg:items-end lg:justify-between gap-4 lg:gap-12">
-        <h2 className={`${SECTION_TITLE} lg:max-w-[52%]`}>Find Your Ticket</h2>
-        <p className={`${SECTION_SUBTITLE} lg:max-w-md`}>Prices are per person and shown from the lowest season.</p>
+        <h2 className={`${SECTION_TITLE} lg:max-w-[52%]`}>{tr('findTitle')}</h2>
+        <p className={`${SECTION_SUBTITLE} lg:max-w-md`}>{tr('findText')}</p>
       </div>
 
-      <div className="mb-8 flex flex-wrap gap-2 md:gap-3" role="tablist" aria-label="Ticket categories">
+      <div className="mb-8 flex flex-wrap gap-2 md:gap-3" role="tablist" aria-label={tr('tabsLabel')}>
         {categories.map((c) => (
           <button
             key={c.id}
@@ -196,9 +189,11 @@ function Browse() {
 
 // Comment ça marche : 3 étapes reliées par une ligne pointillée
 function HowItWorks() {
+  const t = useT('tickets')
+  const steps = localize(STEPS, t('steps'))
   return (
     <div className={SECTION_GAP}>
-      <h2 className={`${SECTION_TITLE} text-center mb-10 md:mb-16`}>Three Steps To Your Ticket</h2>
+      <h2 className={`${SECTION_TITLE} text-center mb-10 md:mb-16`}>{t('stepsTitle')}</h2>
       <ol data-stagger className="relative grid grid-cols-1 md:grid-cols-3 gap-10 md:gap-6">
         <span className="hidden md:block absolute left-[17%] right-[17%] top-8 border-t-2 border-dashed border-[#084838]/30" aria-hidden="true" />
         {steps.map((s) => (
@@ -215,26 +210,27 @@ function HowItWorks() {
 
 // Téléphone avec e-ticket + avantages
 function AppSection() {
+  const t = useT('tickets')
   return (
     <div className={`${SECTION_GAP} grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-center`}>
       <div className="mx-auto w-[280px] md:w-[300px]">
         <div data-bob className="rounded-[2.5rem] border-[10px] border-[#084838] bg-white p-4 shadow-xl">
           <div className="mx-auto mb-4 h-1.5 w-16 rounded-full bg-slate-200" />
           <div className="rounded-2xl bg-[#D5E8E2] p-4 text-center">
-            <span className="inline-flex items-center gap-1.5 rounded-full bg-[#084838] px-3 py-1 text-xs text-white"><CheckIcon /> Confirmed</span>
-            <p className="mt-3 text-lg font-medium text-slate-900">Catamaran Sunset Cruise</p>
-            <p className={`${META_TEXT} text-slate-600`}>Sat 12 · 16:30 · 2 guests</p>
+            <span className="inline-flex items-center gap-1.5 rounded-full bg-[#084838] px-3 py-1 text-xs text-white"><CheckIcon /> {t('confirmed')}</span>
+            <p className="mt-3 text-lg font-medium text-slate-900">{t('phoneTitle')}</p>
+            <p className={`${META_TEXT} text-slate-600`}>{t('phoneMeta')}</p>
             <Qr className="mx-auto mt-4 w-40" />
-            <p className={`mt-3 ${META_TEXT} text-slate-600`}>Show this code at the entrance</p>
+            <p className={`mt-3 ${META_TEXT} text-slate-600`}>{t('phoneScan')}</p>
           </div>
         </div>
       </div>
 
       <div>
-        <p className="mb-3 text-xs sm:text-sm md:text-base uppercase tracking-wide text-slate-700">Why book with us</p>
-        <h2 className={SECTION_TITLE}>Your Tickets, Always In Your Pocket</h2>
+        <p className="mb-3 text-xs sm:text-sm md:text-base uppercase tracking-wide text-slate-700">{t('whyEyebrow')}</p>
+        <h2 className={SECTION_TITLE}>{t('whyTitle')}</h2>
         <ul className="mt-8 flex flex-col gap-4">
-          {benefits.map((b) => (
+          {t('benefits').map((b) => (
             <li key={b} className="flex items-center gap-4 text-base md:text-xl text-slate-800">
               <span className="shrink-0 w-8 h-8 rounded-full bg-[#084838] text-white flex items-center justify-center"><CheckIcon /></span>
               {b}
@@ -248,14 +244,15 @@ function AppSection() {
 
 // FAQ : toutes les réponses visibles, en grille de petites cartes
 function Faq() {
+  const t = useT('tickets')
   return (
     <div className={SECTION_GAP}>
       <div className="mb-8 md:mb-12 text-center">
-        <h2 className={SECTION_TITLE}>Quick Answers</h2>
-        <p className={`mt-4 mx-auto ${SECTION_SUBTITLE}`}>Everything you may want to know before you book.</p>
+        <h2 className={SECTION_TITLE}>{t('faqTitle')}</h2>
+        <p className={`mt-4 mx-auto ${SECTION_SUBTITLE}`}>{t('faqText')}</p>
       </div>
       <div data-stagger className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-4 md:gap-6">
-        {faqs.map((f, i) => (
+        {t('faqs').map((f, i) => (
           <article key={f.q} className="rounded-2xl bg-white p-6 md:p-7">
             <span className="w-9 h-9 rounded-full bg-[#C49849] text-white text-sm font-medium flex items-center justify-center">{i + 1}</span>
             <h3 className="mt-4 text-lg md:text-xl font-medium text-slate-900 leading-snug">{f.q}</h3>
@@ -269,17 +266,18 @@ function Faq() {
 
 // CTA : bandeau en forme de billet
 function Cta() {
+  const t = useT('tickets')
   const notch = "absolute w-8 h-8 rounded-full bg-[#D5E8E2]"
   return (
     <div className={`${SECTION_GAP} relative overflow-hidden rounded-3xl bg-[#C49849] text-white grid grid-cols-1 md:grid-cols-[1fr_auto]`}>
       <div className="p-6 md:p-12">
-        <h2 className="text-3xl sm:text-4xl md:text-5xl font-medium leading-[1.15] tracking-tight">Ready When You Are</h2>
-        <p className="mt-3 max-w-xl text-sm md:text-lg text-white/90 leading-relaxed">Send us your dates and the places you want to see. We reserve everything and confirm within one working day.</p>
+        <h2 className="text-3xl sm:text-4xl md:text-5xl font-medium leading-[1.15] tracking-tight">{t('ctaTitle')}</h2>
+        <p className="mt-3 max-w-xl text-sm md:text-lg text-white/90 leading-relaxed">{t('ctaText')}</p>
       </div>
       <div className="relative flex items-center justify-center p-6 md:p-12 border-t-2 md:border-t-0 md:border-l-2 border-dashed border-white/50">
         <span className={`${notch} -top-4 -left-4 md:left-[-16px]`} />
         <span className={`${notch} -top-4 -right-4 md:top-auto md:right-auto md:-bottom-4 md:-left-4`} />
-        <a href="/contact" className={`inline-flex items-center gap-3 bg-[#084838] hover:bg-[#0a5c47] text-white ${BUTTON}`}>Reserve My Tickets <ArrowIcon /></a>
+        <a href="/contact" className={`inline-flex items-center gap-3 bg-[#084838] hover:bg-[#0a5c47] text-white ${BUTTON}`}>{t('ctaButton')} <ArrowIcon /></a>
       </div>
     </div>
   )

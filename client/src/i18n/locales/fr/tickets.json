@@ -1,0 +1,148 @@
+{
+  "categories": [
+    {
+      "label": "Tous les billets"
+    },
+    {
+      "label": "Parcs et réserves"
+    },
+    {
+      "label": "Mer et bateaux"
+    },
+    {
+      "label": "Sites et musées"
+    },
+    {
+      "label": "Événements et spectacles"
+    }
+  ],
+  "tickets": [
+    {
+      "name": "Parc d'Andasibe-Mantadia",
+      "perks": [
+        "Entrée + guide local",
+        "Demi-journée"
+      ]
+    },
+    {
+      "name": "Réserve de Lokobe",
+      "perks": [
+        "Entrée + guide",
+        "Pirogue incluse"
+      ]
+    },
+    {
+      "name": "Snorkeling dans le parc marin",
+      "perks": [
+        "Bateau + matériel de snorkeling",
+        "Déjeuner en option"
+      ]
+    },
+    {
+      "name": "Croisière en catamaran au coucher du soleil",
+      "perks": [
+        "Boissons à bord",
+        "3 heures"
+      ]
+    },
+    {
+      "name": "Allée des Baobabs",
+      "perks": [
+        "Entrée du site",
+        "Créneau coucher de soleil"
+      ]
+    },
+    {
+      "name": "Visite de la colline royale",
+      "perks": [
+        "Entrée + guide",
+        "Sans file d'attente"
+      ]
+    },
+    {
+      "name": "Soirée musique traditionnelle",
+      "perks": [
+        "Place réservée",
+        "En soirée"
+      ]
+    },
+    {
+      "name": "Pass festival local",
+      "place": "Selon les dates",
+      "perks": [
+        "Entrée + conseils de transport",
+        "Dates sur demande"
+      ]
+    }
+  ],
+  "steps": [
+    {
+      "title": "Choisissez votre expérience",
+      "text": "Choisissez un parc, une sortie en bateau, un site ou un événement, et indiquez-nous la date."
+    },
+    {
+      "title": "Nous réservons pour vous",
+      "text": "Nous réservons votre créneau, payons les droits sur place et confirmons en quelques heures."
+    },
+    {
+      "title": "Présentez votre e-billet",
+      "text": "Votre billet avec QR code arrive sur votre téléphone. Il suffit de le scanner à l'entrée."
+    }
+  ],
+  "benefits": [
+    "Créneaux coupe-file quand c'est possible",
+    "Confirmation en quelques heures",
+    "Changement de date gratuit jusqu'à 48 h avant",
+    "Guide local ou chauffeur sur demande"
+  ],
+  "faqs": [
+    {
+      "q": "Les billets sont-ils remboursables ?",
+      "a": "La plupart peuvent être déplacés gratuitement à une autre date jusqu'à 48 heures avant. Les conditions de remboursement figurent dans votre devis avant le paiement."
+    },
+    {
+      "q": "Dois-je imprimer mon billet ?",
+      "a": "Non. Vous recevez un e-billet avec QR code. Gardez-le sur votre téléphone et présentez-le à l'entrée."
+    },
+    {
+      "q": "Pouvez-vous réserver pour un groupe ?",
+      "a": "Oui. Pour les groupes de 8 personnes ou plus, nous pouvons organiser un créneau privé et un guide pour tout le groupe."
+    },
+    {
+      "q": "Et si la date choisie est complète ?",
+      "a": "Nous vous proposons les dates disponibles les plus proches ou une expérience similaire à proximité, et nous la bloquons le temps que vous décidiez."
+    },
+    {
+      "q": "Les droits d'entrée et les guides sont-ils inclus ?",
+      "a": "Chaque billet indique précisément ce qui est inclus. Les droits d'entrée des parcs et les guides locaux obligatoires sont inclus partout où ils s'appliquent."
+    },
+    {
+      "q": "Pouvez-vous réserver des événements longtemps à l'avance ?",
+      "a": "Oui, dès que les organisateurs ouvrent la billetterie. Indiquez-nous vos dates de voyage et nous surveillons pour vous."
+    }
+  ],
+  "badge": "Billets et réservations",
+  "title": "Évitez la file, gardez la magie",
+  "intro": "Parcs, sorties en bateau, sites et événements, réservés pour vous à l'avance. Pas de file d'attente, pas d'incertitude : juste votre e-billet sur votre téléphone.",
+  "browse": "Voir les billets",
+  "ask": "Demander autre chose",
+  "admit": "ENTRÉE 1 PERSONNE",
+  "ticketNo": "N° 0001 · E-BILLET",
+  "from": "À partir de",
+  "reserve": "Réserver",
+  "findTitle": "Trouvez votre billet",
+  "findText": "Les prix sont par personne, à partir de la basse saison.",
+  "tabsLabel": "Catégories de billets",
+  "stepsTitle": "Trois étapes jusqu'à votre billet",
+  "confirmed": "Confirmé",
+  "phoneTitle": "Croisière en catamaran au coucher du soleil",
+  "phoneMeta": "Sam. 12 · 16h30 · 2 personnes",
+  "phoneScan": "Présentez ce code à l'entrée",
+  "whyEyebrow": "Pourquoi réserver avec nous",
+  "whyTitle": "Vos billets, toujours dans votre poche",
+  "faqTitle": "Réponses rapides",
+  "faqText": "Tout ce que vous pourriez vouloir savoir avant de réserver.",
+  "ctaTitle": "Prêts quand vous l'êtes",
+  "ctaText": "Envoyez-nous vos dates et les lieux que vous voulez voir. Nous réservons tout et confirmons sous un jour ouvré.",
+  "ctaButton": "Réserver mes billets"
+}

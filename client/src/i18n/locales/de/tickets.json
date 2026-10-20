@@ -1,0 +1,148 @@
+{
+  "categories": [
+    {
+      "label": "Alle Tickets"
+    },
+    {
+      "label": "Parks & Reservate"
+    },
+    {
+      "label": "Meer & Boote"
+    },
+    {
+      "label": "Sehenswürdigkeiten & Museen"
+    },
+    {
+      "label": "Events & Shows"
+    }
+  ],
+  "tickets": [
+    {
+      "name": "Nationalpark Andasibe-Mantadia",
+      "perks": [
+        "Eintritt + lokaler Guide",
+        "Halber Tag"
+      ]
+    },
+    {
+      "name": "Reservat Lokobe",
+      "perks": [
+        "Eintritt + Guide",
+        "Einbaum inklusive"
+      ]
+    },
+    {
+      "name": "Schnorcheln im Meeresnationalpark",
+      "perks": [
+        "Boot + Schnorchelausrüstung",
+        "Mittagessen optional"
+      ]
+    },
+    {
+      "name": "Katamaran-Törn bei Sonnenuntergang",
+      "perks": [
+        "Getränke an Bord",
+        "3 Stunden"
+      ]
+    },
+    {
+      "name": "Baobab-Allee",
+      "perks": [
+        "Eintritt",
+        "Zeitfenster zum Sonnenuntergang"
+      ]
+    },
+    {
+      "name": "Besuch des Königshügels",
+      "perks": [
+        "Eintritt + Guide",
+        "Ohne Anstehen"
+      ]
+    },
+    {
+      "name": "Abend mit traditioneller Musik",
+      "perks": [
+        "Reservierter Platz",
+        "Abends"
+      ]
+    },
+    {
+      "name": "Pass für lokale Feste",
+      "place": "Je nach Datum",
+      "perks": [
+        "Eintritt + Tipps zur Anreise",
+        "Daten auf Anfrage"
+      ]
+    }
+  ],
+  "steps": [
+    {
+      "title": "Erlebnis wählen",
+      "text": "Wählen Sie einen Park, einen Bootsausflug, eine Sehenswürdigkeit oder ein Event und nennen Sie uns das Datum."
+    },
+    {
+      "title": "Wir reservieren für Sie",
+      "text": "Wir buchen Ihr Zeitfenster, zahlen die Gebühren vor Ort und bestätigen innerhalb weniger Stunden."
+    },
+    {
+      "title": "E-Ticket vorzeigen",
+      "text": "Ihr QR-Ticket kommt aufs Handy. Einfach am Eingang scannen lassen."
+    }
+  ],
+  "benefits": [
+    "Zeitfenster ohne Anstehen, wo möglich",
+    "Bestätigung innerhalb weniger Stunden",
+    "Kostenlose Umbuchung bis 48 Std. vorher",
+    "Lokaler Guide oder Fahrer auf Wunsch"
+  ],
+  "faqs": [
+    {
+      "q": "Sind die Tickets erstattbar?",
+      "a": "Die meisten lassen sich bis 48 Stunden vorher kostenlos auf ein anderes Datum verschieben. Die Erstattungsbedingungen stehen vor der Zahlung in Ihrem Angebot."
+    },
+    {
+      "q": "Muss ich mein Ticket ausdrucken?",
+      "a": "Nein. Sie erhalten ein E-Ticket mit QR-Code. Bewahren Sie es auf dem Handy auf und zeigen Sie es am Eingang vor."
+    },
+    {
+      "q": "Können Sie für eine Gruppe buchen?",
+      "a": "Ja. Für Gruppen ab 8 Personen können wir ein privates Zeitfenster und einen Guide für die ganze Gruppe organisieren."
+    },
+    {
+      "q": "Was, wenn mein Wunschdatum ausgebucht ist?",
+      "a": "Wir schlagen die nächstmöglichen Termine oder ein ähnliches Erlebnis in der Nähe vor und halten es für Sie frei, während Sie sich entscheiden."
+    },
+    {
+      "q": "Sind Parkgebühren und Guides inklusive?",
+      "a": "Bei jedem Ticket steht genau, was enthalten ist. Parkgebühren und vorgeschriebene lokale Guides sind überall dort inklusive, wo sie anfallen."
+    },
+    {
+      "q": "Können Sie Events weit im Voraus buchen?",
+      "a": "Ja, sobald die Veranstalter den Ticketverkauf starten. Nennen Sie uns Ihre Reisedaten, und wir behalten es für Sie im Blick."
+    }
+  ],
+  "badge": "Tickets & Reservierungen",
+  "title": "Ohne Anstehen, voller Zauber",
+  "intro": "Parks, Bootsausflüge, Sehenswürdigkeiten und Events, im Voraus für Sie reserviert. Kein Anstehen, kein Rätselraten – nur Ihr E-Ticket auf dem Handy.",
+  "browse": "Tickets ansehen",
+  "ask": "Etwas anderes anfragen",
+  "admit": "EINLASS 1 PERSON",
+  "ticketNo": "Nr. 0001 · E-TICKET",
+  "from": "Ab",
+  "reserve": "Reservieren",
+  "findTitle": "Finden Sie Ihr Ticket",
+  "findText": "Preise pro Person, ab der Nebensaison.",
+  "tabsLabel": "Ticketkategorien",
+  "stepsTitle": "In drei Schritten zu Ihrem Ticket",
+  "confirmed": "Bestätigt",
+  "phoneTitle": "Katamaran-Törn bei Sonnenuntergang",
+  "phoneMeta": "Sa. 12. · 16:30 · 2 Gäste",
+  "phoneScan": "Zeigen Sie diesen Code am Eingang vor",
+  "whyEyebrow": "Warum bei uns buchen",
+  "whyTitle": "Ihre Tickets, immer in der Tasche",
+  "faqTitle": "Kurze Antworten",
+  "faqText": "Alles, was Sie vor der Buchung wissen möchten.",
+  "ctaTitle": "Bereit, wenn Sie es sind",
+  "ctaText": "Schicken Sie uns Ihre Daten und die Orte, die Sie sehen möchten. Wir reservieren alles und bestätigen innerhalb eines Werktags.",
+  "ctaButton": "Meine Tickets reservieren"
+}

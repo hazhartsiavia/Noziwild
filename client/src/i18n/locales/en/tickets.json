@@ -1,0 +1,148 @@
+{
+  "categories": [
+    {
+      "label": "All Tickets"
+    },
+    {
+      "label": "Parks & Reserves"
+    },
+    {
+      "label": "Sea & Boats"
+    },
+    {
+      "label": "Sites & Museums"
+    },
+    {
+      "label": "Events & Shows"
+    }
+  ],
+  "tickets": [
+    {
+      "name": "Andasibe-Mantadia Park",
+      "perks": [
+        "Entry + local guide",
+        "Half day"
+      ]
+    },
+    {
+      "name": "Lokobe Reserve",
+      "perks": [
+        "Entry + guide",
+        "Pirogue included"
+      ]
+    },
+    {
+      "name": "Marine Park Snorkel Trip",
+      "perks": [
+        "Boat + snorkel gear",
+        "Lunch option"
+      ]
+    },
+    {
+      "name": "Catamaran Sunset Cruise",
+      "perks": [
+        "Drinks on board",
+        "3 hours"
+      ]
+    },
+    {
+      "name": "Avenue Of The Baobabs",
+      "perks": [
+        "Site entry",
+        "Sunset slot"
+      ]
+    },
+    {
+      "name": "Royal Hill Visit",
+      "perks": [
+        "Entry + guide",
+        "Skip the queue"
+      ]
+    },
+    {
+      "name": "Folk Music Night",
+      "perks": [
+        "Reserved seat",
+        "Evening"
+      ]
+    },
+    {
+      "name": "Local Festival Pass",
+      "place": "Varies by date",
+      "perks": [
+        "Entry + transport tip",
+        "Dates on request"
+      ]
+    }
+  ],
+  "steps": [
+    {
+      "title": "Pick your experience",
+      "text": "Choose a park, boat trip, site or event and tell us the date."
+    },
+    {
+      "title": "We reserve for you",
+      "text": "We book your slot, pay fees locally and confirm within hours."
+    },
+    {
+      "title": "Show your e-ticket",
+      "text": "Your QR ticket arrives on your phone. Just scan at the entrance."
+    }
+  ],
+  "benefits": [
+    "Skip-the-line slots where available",
+    "Confirmation within a few hours",
+    "Free date change up to 48 h before",
+    "Local guide or driver arranged on request"
+  ],
+  "faqs": [
+    {
+      "q": "Are the tickets refundable?",
+      "a": "Most can be moved to another date for free up to 48 hours before. Refund terms are shown in your quote before you pay."
+    },
+    {
+      "q": "Do I need to print my ticket?",
+      "a": "No. You receive an e-ticket with a QR code. Keep it on your phone and show it at the entrance."
+    },
+    {
+      "q": "Can you book for a group?",
+      "a": "Yes. For groups of 8 or more we can arrange a private time slot and a guide for the whole group."
+    },
+    {
+      "q": "What if my chosen date is sold out?",
+      "a": "We suggest the closest available dates or a similar experience nearby, and hold it for you while you decide."
+    },
+    {
+      "q": "Are park fees and guides included?",
+      "a": "Each ticket tells you exactly what is included. Park fees and mandatory local guides are included wherever they apply."
+    },
+    {
+      "q": "Can you book events far in advance?",
+      "a": "Yes, as soon as organizers open ticket sales. Tell us the dates you travel and we watch for you."
+    }
+  ],
+  "badge": "Tickets & Reservations",
+  "title": "Skip The Queue, Keep The Magic",
+  "intro": "Parks, boat trips, sites and events, reserved for you in advance. No lines, no guesswork, just your e-ticket on your phone.",
+  "browse": "Browse Tickets",
+  "ask": "Ask for something else",
+  "admit": "ADMIT ONE",
+  "ticketNo": "No. 0001 · E-TICKET",
+  "from": "From",
+  "reserve": "Reserve",
+  "findTitle": "Find Your Ticket",
+  "findText": "Prices are per person and shown from the lowest season.",
+  "tabsLabel": "Ticket categories",
+  "stepsTitle": "Three Steps To Your Ticket",
+  "confirmed": "Confirmed",
+  "phoneTitle": "Catamaran Sunset Cruise",
+  "phoneMeta": "Sat 12 · 16:30 · 2 guests",
+  "phoneScan": "Show this code at the entrance",
+  "whyEyebrow": "Why book with us",
+  "whyTitle": "Your Tickets, Always In Your Pocket",
+  "faqTitle": "Quick Answers",
+  "faqText": "Everything you may want to know before you book.",
+  "ctaTitle": "Ready When You Are",
+  "ctaText": "Send us your dates and the places you want to see. We reserve everything and confirm within one working day.",
+  "ctaButton": "Reserve My Tickets"
+}

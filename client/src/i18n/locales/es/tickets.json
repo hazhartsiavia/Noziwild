@@ -1,0 +1,148 @@
+{
+  "categories": [
+    {
+      "label": "Todas las entradas"
+    },
+    {
+      "label": "Parques y reservas"
+    },
+    {
+      "label": "Mar y barcos"
+    },
+    {
+      "label": "Lugares y museos"
+    },
+    {
+      "label": "Eventos y espectáculos"
+    }
+  ],
+  "tickets": [
+    {
+      "name": "Parque de Andasibe-Mantadia",
+      "perks": [
+        "Entrada + guía local",
+        "Medio día"
+      ]
+    },
+    {
+      "name": "Reserva de Lokobe",
+      "perks": [
+        "Entrada + guía",
+        "Piragua incluida"
+      ]
+    },
+    {
+      "name": "Snorkel en el parque marino",
+      "perks": [
+        "Barco + equipo de snorkel",
+        "Comida opcional"
+      ]
+    },
+    {
+      "name": "Crucero en catamarán al atardecer",
+      "perks": [
+        "Bebidas a bordo",
+        "3 horas"
+      ]
+    },
+    {
+      "name": "Avenida de los Baobabs",
+      "perks": [
+        "Entrada al lugar",
+        "Franja del atardecer"
+      ]
+    },
+    {
+      "name": "Visita a la colina real",
+      "perks": [
+        "Entrada + guía",
+        "Sin colas"
+      ]
+    },
+    {
+      "name": "Noche de música tradicional",
+      "perks": [
+        "Asiento reservado",
+        "Por la noche"
+      ]
+    },
+    {
+      "name": "Pase para fiestas locales",
+      "place": "Según las fechas",
+      "perks": [
+        "Entrada + consejos de transporte",
+        "Fechas bajo petición"
+      ]
+    }
+  ],
+  "steps": [
+    {
+      "title": "Elija su experiencia",
+      "text": "Elija un parque, una salida en barco, un lugar o un evento y díganos la fecha."
+    },
+    {
+      "title": "Reservamos por usted",
+      "text": "Reservamos su franja horaria, pagamos las tasas en el lugar y confirmamos en pocas horas."
+    },
+    {
+      "title": "Muestre su entrada electrónica",
+      "text": "Su entrada con código QR llega a su teléfono. Solo hay que escanearla en la entrada."
+    }
+  ],
+  "benefits": [
+    "Franjas sin colas cuando es posible",
+    "Confirmación en pocas horas",
+    "Cambio de fecha gratuito hasta 48 h antes",
+    "Guía local o conductor bajo petición"
+  ],
+  "faqs": [
+    {
+      "q": "¿Las entradas son reembolsables?",
+      "a": "La mayoría pueden cambiarse de fecha gratis hasta 48 horas antes. Las condiciones de reembolso figuran en su presupuesto antes de pagar."
+    },
+    {
+      "q": "¿Tengo que imprimir la entrada?",
+      "a": "No. Recibe una entrada electrónica con código QR. Guárdela en el teléfono y muéstrela en la entrada."
+    },
+    {
+      "q": "¿Pueden reservar para un grupo?",
+      "a": "Sí. Para grupos de 8 o más personas podemos organizar una franja privada y un guía para todo el grupo."
+    },
+    {
+      "q": "¿Y si la fecha elegida está agotada?",
+      "a": "Le proponemos las fechas disponibles más cercanas o una experiencia parecida cerca, y se la reservamos mientras decide."
+    },
+    {
+      "q": "¿Las entradas a los parques y los guías están incluidos?",
+      "a": "Cada entrada indica exactamente qué incluye. Las tasas de los parques y los guías locales obligatorios están incluidos siempre que corresponda."
+    },
+    {
+      "q": "¿Pueden reservar eventos con mucha antelación?",
+      "a": "Sí, en cuanto los organizadores abren la venta. Díganos las fechas de su viaje y estaremos atentos por usted."
+    }
+  ],
+  "badge": "Entradas y reservas",
+  "title": "Sin colas, con toda la magia",
+  "intro": "Parques, salidas en barco, lugares y eventos, reservados con antelación para usted. Sin colas ni incertidumbre: solo su entrada en el móvil.",
+  "browse": "Ver entradas",
+  "ask": "Pedir otra cosa",
+  "admit": "ENTRADA 1 PERSONA",
+  "ticketNo": "N.º 0001 · ENTRADA ELECTRÓNICA",
+  "from": "Desde",
+  "reserve": "Reservar",
+  "findTitle": "Encuentre su entrada",
+  "findText": "Los precios son por persona, desde la temporada baja.",
+  "tabsLabel": "Categorías de entradas",
+  "stepsTitle": "Tres pasos hasta su entrada",
+  "confirmed": "Confirmada",
+  "phoneTitle": "Crucero en catamarán al atardecer",
+  "phoneMeta": "Sáb. 12 · 16:30 · 2 personas",
+  "phoneScan": "Muestre este código en la entrada",
+  "whyEyebrow": "Por qué reservar con nosotros",
+  "whyTitle": "Sus entradas, siempre en el bolsillo",
+  "faqTitle": "Respuestas rápidas",
+  "faqText": "Todo lo que quizá quiera saber antes de reservar.",
+  "ctaTitle": "Listos cuando usted lo esté",
+  "ctaText": "Envíenos sus fechas y los lugares que quiere ver. Lo reservamos todo y confirmamos en un día laborable.",
+  "ctaButton": "Reservar mis entradas"
+}

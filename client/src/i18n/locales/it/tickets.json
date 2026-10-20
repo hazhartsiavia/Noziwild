@@ -1,0 +1,148 @@
+{
+  "categories": [
+    {
+      "label": "Tutti i biglietti"
+    },
+    {
+      "label": "Parchi e riserve"
+    },
+    {
+      "label": "Mare e barche"
+    },
+    {
+      "label": "Siti e musei"
+    },
+    {
+      "label": "Eventi e spettacoli"
+    }
+  ],
+  "tickets": [
+    {
+      "name": "Parco di Andasibe-Mantadia",
+      "perks": [
+        "Ingresso + guida locale",
+        "Mezza giornata"
+      ]
+    },
+    {
+      "name": "Riserva di Lokobe",
+      "perks": [
+        "Ingresso + guida",
+        "Piroga inclusa"
+      ]
+    },
+    {
+      "name": "Snorkeling nel parco marino",
+      "perks": [
+        "Barca + attrezzatura da snorkeling",
+        "Pranzo opzionale"
+      ]
+    },
+    {
+      "name": "Crociera in catamarano al tramonto",
+      "perks": [
+        "Bevande a bordo",
+        "3 ore"
+      ]
+    },
+    {
+      "name": "Viale dei Baobab",
+      "perks": [
+        "Ingresso al sito",
+        "Fascia oraria del tramonto"
+      ]
+    },
+    {
+      "name": "Visita alla collina reale",
+      "perks": [
+        "Ingresso + guida",
+        "Salta la fila"
+      ]
+    },
+    {
+      "name": "Serata di musica tradizionale",
+      "perks": [
+        "Posto riservato",
+        "Di sera"
+      ]
+    },
+    {
+      "name": "Pass per le feste locali",
+      "place": "In base alle date",
+      "perks": [
+        "Ingresso + consigli sui trasporti",
+        "Date su richiesta"
+      ]
+    }
+  ],
+  "steps": [
+    {
+      "title": "Scegli l'esperienza",
+      "text": "Scegli un parco, una gita in barca, un sito o un evento e indicaci la data."
+    },
+    {
+      "title": "Prenotiamo per te",
+      "text": "Prenotiamo la tua fascia oraria, paghiamo le tasse sul posto e confermiamo in poche ore."
+    },
+    {
+      "title": "Mostra l'e-ticket",
+      "text": "Il biglietto con QR code arriva sul tuo telefono. Basta scansionarlo all'ingresso."
+    }
+  ],
+  "benefits": [
+    "Fasce salta-fila dove disponibili",
+    "Conferma in poche ore",
+    "Cambio data gratuito fino a 48 h prima",
+    "Guida locale o autista su richiesta"
+  ],
+  "faqs": [
+    {
+      "q": "I biglietti sono rimborsabili?",
+      "a": "La maggior parte può essere spostata gratuitamente a un'altra data fino a 48 ore prima. Le condizioni di rimborso sono indicate nel preventivo prima del pagamento."
+    },
+    {
+      "q": "Devo stampare il biglietto?",
+      "a": "No. Ricevi un e-ticket con QR code. Tienilo sul telefono e mostralo all'ingresso."
+    },
+    {
+      "q": "Potete prenotare per un gruppo?",
+      "a": "Sì. Per gruppi di 8 o più persone possiamo organizzare una fascia oraria privata e una guida per tutto il gruppo."
+    },
+    {
+      "q": "E se la data scelta è esaurita?",
+      "a": "Ti proponiamo le date disponibili più vicine o un'esperienza simile nei dintorni, e te la teniamo mentre decidi."
+    },
+    {
+      "q": "Ingressi ai parchi e guide sono inclusi?",
+      "a": "Ogni biglietto indica esattamente cosa è incluso. Gli ingressi ai parchi e le guide locali obbligatorie sono inclusi ovunque siano previsti."
+    },
+    {
+      "q": "Potete prenotare eventi con molto anticipo?",
+      "a": "Sì, appena gli organizzatori aprono la vendita dei biglietti. Dicci le date del viaggio e teniamo d'occhio le date per te."
+    }
+  ],
+  "badge": "Biglietti e prenotazioni",
+  "title": "Salta la fila, conserva la magia",
+  "intro": "Parchi, gite in barca, siti ed eventi, prenotati per te in anticipo. Niente code, niente incertezze: solo il tuo e-ticket sul telefono.",
+  "browse": "Sfoglia i biglietti",
+  "ask": "Chiedi qualcos'altro",
+  "admit": "INGRESSO 1 PERSONA",
+  "ticketNo": "N. 0001 · E-TICKET",
+  "from": "Da",
+  "reserve": "Prenota",
+  "findTitle": "Trova il tuo biglietto",
+  "findText": "I prezzi sono a persona, a partire dalla bassa stagione.",
+  "tabsLabel": "Categorie di biglietti",
+  "stepsTitle": "Tre passi per il tuo biglietto",
+  "confirmed": "Confermato",
+  "phoneTitle": "Crociera in catamarano al tramonto",
+  "phoneMeta": "Sab 12 · 16:30 · 2 persone",
+  "phoneScan": "Mostra questo codice all'ingresso",
+  "whyEyebrow": "Perché prenotare con noi",
+  "whyTitle": "I tuoi biglietti, sempre in tasca",
+  "faqTitle": "Risposte rapide",
+  "faqText": "Tutto quello che potresti voler sapere prima di prenotare.",
+  "ctaTitle": "Pronti quando lo sei tu",
+  "ctaText": "Mandaci le date e i luoghi che vuoi vedere. Prenotiamo tutto e confermiamo entro un giorno lavorativo.",
+  "ctaButton": "Prenota i miei biglietti"
+}
