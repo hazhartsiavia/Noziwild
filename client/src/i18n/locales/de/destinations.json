@@ -1,0 +1,435 @@
+{
+  "list": {
+    "eyebrow": "Fünf Regionen, eine Insel",
+    "title1": "Wohin",
+    "title2": "zuerst?",
+    "intro": "Madagaskar ist ein Kontinent im Kleinformat. Entdecken Sie jede Region, finden Sie die Orte, die die Fahrt wert sind, und wählen Sie den richtigen Monat.",
+    "explore": "Regionen entdecken",
+    "when": "Beste Reisezeit",
+    "regions": "Regionen",
+    "bestFrom": "Am besten von {from} bis {to}",
+    "mustSee": "Sehenswerte Orte",
+    "seeCircuits": "Rundreisen in dieser Region",
+    "plannerTitle": "Wann sollten Sie reisen?",
+    "plannerText": "Wählen Sie einen Monat, um zu sehen, welche Regionen dann am schönsten sind. Die Angaben sind Richtwerte, das Wetter variiert jedes Jahr.",
+    "noRegion": "Im {month} ist keine Region in Bestform. Versuchen Sie einen anderen Monat.",
+    "ctaTitle": "Sie wissen nicht, wo Sie anfangen sollen?",
+    "ctaText": "Erzählen Sie uns, was Sie lieben und wie viel Zeit Sie haben. Wir schlagen Ihnen die passenden Regionen vor.",
+    "ctaExpert": "Mit einem Reiseexperten sprechen",
+    "ctaCircuits": "Rundreisen ansehen"
+  },
+  "detail": {
+    "soonTitle": "Dieses Reiseziel folgt in Kürze",
+    "soonText": "Wir schreiben noch an dieser Seite. Fragen Sie uns, wir erzählen Ihnen alles darüber.",
+    "all": "Alle Reiseziele",
+    "contact": "Kontakt",
+    "placesTitle": "Sehenswürdigkeiten",
+    "previous": "Vorherige Orte",
+    "next": "Nächste Orte",
+    "readMore": "Mehr erfahren",
+    "region": "Region",
+    "best": "Beste Reisezeit",
+    "stay": "Empfohlene Dauer",
+    "home": "Startseite",
+    "destinations": "Reiseziele",
+    "discover": "{name} entdecken",
+    "todo": "Unternehmungen in {name}",
+    "getting": "Anreise",
+    "tip": "Unser Tipp",
+    "nearby": "In der Nähe: {region}",
+    "ctaTitle": "Möchten Sie {name} in Ihre Reise aufnehmen?",
+    "ctaButton": "Meine Reise planen"
+  },
+  "place": {
+    "price": "Preis",
+    "fromPerPerson": "Ab {price} pro Person",
+    "onRequest": "Auf Anfrage",
+    "booking": "Buchung",
+    "inquiry": "Anfrage",
+    "date": "Wunschdatum",
+    "guests": "Anzahl der Teilnehmer",
+    "fewer": "Weniger Teilnehmer",
+    "more": "Mehr in {name}",
+    "total": "Geschätzter Gesamtpreis",
+    "book": "Dieses Erlebnis buchen",
+    "noPayment": "Jetzt keine Zahlung. Ein Reiseexperte bestätigt die Verfügbarkeit innerhalb eines Werktags.",
+    "name": "Ihr Name",
+    "email": "E-Mail-Adresse",
+    "questions": "Ihre Fragen",
+    "sending": "Wird gesendet…",
+    "send": "Anfrage senden",
+    "thanks": "Vielen Dank! Wir antworten innerhalb eines Werktags.",
+    "notFound": "Dieser Ort wurde nicht gefunden",
+    "all": "Alle Reiseziele",
+    "duration": "Dauer",
+    "groupSize": "Gruppengröße",
+    "smallGroups": "Kleine Gruppen",
+    "type": "Art",
+    "guidedVisit": "Geführter Besuch",
+    "languages": "Sprachen",
+    "languagesValue": "Englisch, Französisch",
+    "reviews": "{rating} ({count} Bewertungen)",
+    "location": "{place}, {region}, Madagaskar",
+    "overview": "Überblick",
+    "highlights": "Höhepunkte",
+    "included": "Inklusive",
+    "excluded": "Nicht inklusive",
+    "goodToKnow": "Gut zu wissen",
+    "bestTime": "Beste Reisezeit: {time}.",
+    "home": "Startseite",
+    "destinations": "Reiseziele"
+  },
+  "items": {
+    "ambanja": {
+      "name": "Ambanja",
+      "region": "Der Norden",
+      "tagline": "Kakaotäler und das Tor nach Nosy Be",
+      "intro": [
+        "Ambanja liegt im grünen Sambirano-Tal, einem der bekanntesten Kakaoanbaugebiete der Insel. Plantagen, Gewürzfelder und Dörfer am Fluss umgeben die Stadt.",
+        "Die meisten Reisenden fahren auf dem Weg nach Nosy Be nur durch, doch ein oder zwei Tage hier zeigen Ihnen das arbeitende Hinterland hinter den Stränden."
+      ],
+      "best": "April bis November",
+      "stay": "1 bis 2 Nächte",
+      "getting": "Auf der Straße von Diego Suarez oder per Inlandsflug und Straße über Nosy Be. Boote nach Nosy Be fahren vom nahen Anleger in Ankify ab.",
+      "todo": [
+        {
+          "title": "Eine Kakaoplantage besuchen",
+          "text": "Verfolgen Sie die Bohnen vom Baum bis zum Trockengestell und probieren Sie frische Schokolade."
+        },
+        {
+          "title": "Durch Gewürzfelder spazieren",
+          "text": "Treffen Sie mit einem lokalen Guide Bauern, die Vanille, Pfeffer und Ylang-Ylang anbauen."
+        },
+        {
+          "title": "Über den Stadtmarkt bummeln",
+          "text": "Obst, Gewürze und Kunsthandwerk, am besten frühmorgens."
+        }
+      ],
+      "visit": [
+        {
+          "name": "Sambirano-Tal",
+          "text": "Sanfte Plantagenlandschaft und Blicke auf den Fluss, ideal mit Auto oder Fahrrad.",
+          "details": [
+            "Das Sambirano-Tal ist das grüne Herz der Region, mit Kakao-, Kaffee- und Gewürzfarmen entlang des Flusses.",
+            "Fahren oder radeln Sie über die Nebenstraßen, halten Sie in Dörfern und lassen Sie sich von den Bauern zeigen, wie jede Pflanze geerntet wird."
+          ],
+          "does": [
+            "Zwischen Plantagen radeln",
+            "An Ständen am Straßenrand halten",
+            "Bauern in den Dörfern treffen"
+          ],
+          "duration": "Halber bis ganzer Tag",
+          "groupSize": "Bis zu 8 Gäste",
+          "tourType": "Landpartie",
+          "overview": [
+            "Das Sambirano-Tal ist das grüne Herz der Region Ambanja. Kakao, Kaffee, Vanille und Ylang-Ylang wachsen hier Seite an Seite entlang des Flusses, und das Tal ist seit Langem für seinen feinen Kakao bekannt.",
+            "Ihr Tag folgt ruhigen Nebenstraßen zwischen Plantagen und Dörfern. Sie halten dort, wo etwas passiert: Bohnen, die in der Sonne trocknen, eine Familie bei der Ernte der Kakaofrüchte, ein Obststand.",
+            "Ein lokaler Guide begleitet Sie, übersetzt und stellt Ihnen die Bauern vor – so nehmen Sie echte Gespräche mit nach Hause, nicht nur Fotos."
+          ],
+          "highlights": [
+            "Den Kakao vom Baum bis zum Trockengestell verfolgen",
+            "Frische Schokolade und lokale Vanille probieren",
+            "Mit dem Rad oder Auto durch Dörfer am Fluss fahren",
+            "Bauern und ihre Familien kennenlernen",
+            "An Obst- und Gewürzständen am Straßenrand halten"
+          ],
+          "included": [
+            "Lokaler Guide",
+            "Privatfahrzeug oder Fahrräder",
+            "Plantagenbesuche",
+            "Verkostungen",
+            "Wasser in Flaschen"
+          ],
+          "excluded": [
+            "Mittagessen",
+            "Persönliche Einkäufe",
+            "Trinkgelder"
+          ]
+        },
+        {
+          "name": "Reservat Manongarivo",
+          "text": "Ein geschützter Wald für Wanderer, die Tiere und Ruhe suchen.",
+          "details": [
+            "Manongarivo ist ein geschütztes Waldreservat in den Bergen hinter Ambanja, reich an Pflanzen und Tieren.",
+            "Der Zugang erfordert Planung, daher organisieren wir Guides und Genehmigungen vor Ihrem Besuch."
+          ],
+          "does": [
+            "Mit einem lokalen Guide wandern",
+            "Nach Lemuren und Vögeln Ausschau halten",
+            "In der Nähe des Reservats zelten"
+          ],
+          "duration": "1 bis 2 Tage",
+          "groupSize": "Bis zu 6 Gäste",
+          "tourType": "Naturwanderung",
+          "overview": [
+            "Manongarivo ist ein geschütztes Waldreservat in den Bergen hinter Ambanja und Heimat einer großen Vielfalt an Pflanzen, Vögeln und Lemuren.",
+            "Die Wege sind rau und der Zugang will geplant sein – dieser Besuch eignet sich für Wanderer, die Ruhe schätzen und mit einfachen Bedingungen zurechtkommen.",
+            "Wir organisieren Guide, Genehmigungen und Transport im Voraus und passen die Route an Jahreszeit und Gruppe an."
+          ],
+          "highlights": [
+            "Mit einem ausgebildeten Guide auf Waldpfaden wandern",
+            "Nach Lemuren, Chamäleons und Vögeln suchen",
+            "Endemische Pflanzen am Wegesrand entdecken",
+            "Auf Wunsch Zelten in der Nähe des Reservats",
+            "Kleine Gruppen für ein ruhiges Erlebnis"
+          ],
+          "included": [
+            "Guide und Parkgenehmigungen",
+            "Transport ab Ambanja",
+            "Snacks für unterwegs",
+            "Wasser in Flaschen"
+          ],
+          "excluded": [
+            "Campingausrüstung",
+            "Mahlzeiten bei Übernachtungen",
+            "Trinkgelder"
+          ]
+        },
+        {
+          "name": "Anleger von Ankify",
+          "text": "Der Abfahrtsort der Boote nach Nosy Be.",
+          "details": [
+            "Ankify ist der kleine Hafen, von dem die Boote nach Nosy Be ablegen, etwa eine Autostunde von Ambanja entfernt.",
+            "Die Überfahrt dauert mit dem Schnellboot rund eine Stunde, die Abfahrtszeiten hängen von Gezeiten und Wetter ab."
+          ],
+          "does": [
+            "Mit dem Boot nach Nosy Be fahren",
+            "Am Wasser zu Mittag essen",
+            "Einen privaten Transfer organisieren"
+          ],
+          "duration": "2 bis 3 Stunden",
+          "groupSize": "Bis zu 12 Gäste",
+          "tourType": "Transfer mit Zwischenstopp",
+          "overview": [
+            "Ankify ist der kleine Hafen, von dem die Boote nach Nosy Be ablegen. Er liegt etwa eine Autostunde von Ambanja entfernt an einem ruhigen Küstenabschnitt.",
+            "Die Überfahrt dauert mit dem Schnellboot rund eine Stunde. Die Zeiten hängen von Gezeiten und Wetter ab, daher bestätigen wir den Fahrplan am Vortag.",
+            "Kommen Sie früh, um am Wasser zu essen, und setzen Sie dann nach Nosy Be über, während unser Team sich um Ihr Gepäck kümmert."
+          ],
+          "highlights": [
+            "Schöne Fahrt von Ambanja an die Küste",
+            "Überfahrt im Schnellboot nach Nosy Be",
+            "Mittagessen am Wasser vor der Abfahrt",
+            "Gepäck wird von unserem Team übernommen",
+            "Privater Transfer auf Wunsch möglich"
+          ],
+          "included": [
+            "Straßentransfer ab Ambanja",
+            "Bootsticket",
+            "Gepäckservice"
+          ],
+          "excluded": [
+            "Mittagessen",
+            "Trinkgelder",
+            "Hotel bei Ankunft"
+          ]
+        }
+      ],
+      "tip": "Bitten Sie uns, einen Plantagenbesuch im Voraus zu organisieren – je nach Ernte- und Trocknungszeit sehen Sie Unterschiedliches."
+    },
+    "ramena-beach": {
+      "name": "Strand von Ramena",
+      "region": "Der Norden",
+      "tagline": "Segeln, Kitesurfen und das Smaragdmeer",
+      "intro": [
+        "Ramena ist ein kleines Fischerdorf an der Bucht von Diego Suarez, bekannt für ruhiges, türkisfarbenes Wasser und beständigen Wind.",
+        "Es ist ein einfacher Tagesausflug von der Stadt aus oder eine entspannte Basis für ein paar Tage Segeln und Wassersport."
+      ],
+      "best": "April bis November",
+      "stay": "2 bis 3 Nächte",
+      "getting": "Etwa 30 Minuten mit dem Auto von Diego Suarez. Taxis und private Fahrer fahren die Strecke täglich.",
+      "todo": [
+        {
+          "title": "Über die Bucht segeln",
+          "text": "Halb- und ganztägige Bootsausflüge mit Badestopps."
+        },
+        {
+          "title": "Kitesurfen ausprobieren",
+          "text": "Kurse und Verleih für alle Niveaus an den nahen Stränden."
+        },
+        {
+          "title": "Frische Meeresfrüchte essen",
+          "text": "Einfache Strandrestaurants servieren den Fang vom Morgen."
+        }
+      ],
+      "visit": [
+        {
+          "name": "Smaragdmeer",
+          "text": "Flaches, leuchtendes Wasser, am besten mit dem Boot zu erreichen."
+        },
+        {
+          "name": "Zuckerhut",
+          "text": "Der markante Felsen, der aus der Bucht von Diego ragt."
+        },
+        {
+          "name": "Dünenbucht",
+          "text": "Wind und weißer Sand für Kitesurfer."
+        }
+      ],
+      "tip": "Der Wind ist nachmittags am stärksten – planen Sie Bootsausflüge daher für den Vormittag."
+    },
+    "nosy-iranja": {
+      "name": "Nosy Iranja",
+      "region": "Der Norden",
+      "tagline": "Zwei Inseln, eine weiße Sandbank",
+      "intro": [
+        "Nosy Iranja besteht aus zwei kleinen Inseln, die durch eine lange Sandbank verbunden sind, die bei Ebbe auftaucht. Meeresschildkröten legen an ihren Stränden ihre Eier ab.",
+        "Man erreicht sie mit dem Boot von Nosy Be, meist als Tagesausflug oder mit einer Übernachtung."
+      ],
+      "best": "April bis November",
+      "stay": "1 Tag oder 1 Nacht",
+      "getting": "Mit dem Schnell- oder Segelboot von Nosy Be, je nach Seegang etwa zwei Stunden.",
+      "todo": [
+        {
+          "title": "Über die Sandbank laufen",
+          "text": "Bei Ebbe von einer Insel zur anderen wechseln."
+        },
+        {
+          "title": "Mit Schildkröten schnorcheln",
+          "text": "Ruhiges, klares Wasser direkt am Strand."
+        },
+        {
+          "title": "Zum Leuchtturm hinaufsteigen",
+          "text": "Ein kurzer Weg mit Blick über die ganze Gegend."
+        }
+      ],
+      "visit": [
+        {
+          "name": "Die Sandbank",
+          "text": "Der berühmteste Blick der Insel."
+        },
+        {
+          "name": "Schildkrötenstrand",
+          "text": "Ein geschützter Nistplatz – bitte mit Rücksicht besuchen."
+        },
+        {
+          "name": "Nosy Lonjo",
+          "text": "Eine ruhige Nachbarinsel, oft im selben Ausflug besucht."
+        }
+      ],
+      "tip": "Prüfen Sie vorher die Gezeiten – die Sandbank ist nur bei Ebbe sichtbar."
+    },
+    "antananarivo": {
+      "name": "Antananarivo",
+      "region": "Das Hochland",
+      "tagline": "Eine Hauptstadt am Hang, voller Märkte und Geschichte",
+      "intro": [
+        "Antananarivo zieht sich über mehrere Hügel, mit engen Gassen, alten Palästen und belebten Märkten.",
+        "Die meisten Reisen beginnen hier – planen Sie ein oder zwei Tage ein, um anzukommen und die Stadt zu erkunden."
+      ],
+      "best": "Mai bis Oktober",
+      "stay": "1 bis 2 Nächte",
+      "getting": "Internationale Flüge landen am Flughafen Ivato, etwa 30 Minuten vom Zentrum entfernt.",
+      "todo": [
+        {
+          "title": "Die Altstadt erkunden",
+          "text": "Gehen Sie durch die steilen Gassen der Oberstadt."
+        },
+        {
+          "title": "Auf dem Markt von Analakely einkaufen",
+          "text": "Kunsthandwerk, Stoffe und Streetfood."
+        },
+        {
+          "title": "Den Rova besuchen",
+          "text": "Der ehemalige Königspalast hoch über der Stadt."
+        }
+      ],
+      "visit": [
+        {
+          "name": "Der Rova",
+          "text": "Eine königliche Anlage auf dem Hügel mit weitem Ausblick."
+        },
+        {
+          "name": "Anosy-See",
+          "text": "Ein ruhiger Ort mitten im Stadtzentrum."
+        },
+        {
+          "name": "Ambohimanga",
+          "text": "Ein heiliger Königshügel, eine kurze Fahrt nördlich."
+        }
+      ],
+      "tip": "Der Verkehr ist dicht – planen Sie für Flughafentransfers ausreichend Zeit ein."
+    },
+    "baobab-avenue": {
+      "name": "Baobab-Allee",
+      "region": "Der Westen",
+      "tagline": "Riesige Baobabs, die im Sonnenuntergang leuchten",
+      "intro": [
+        "In der Nähe von Morondava führt eine Sandpiste zwischen hohen Baobabs hindurch, von denen manche mehrere Hundert Jahre alt sind.",
+        "Es ist einer der meistfotografierten Orte Madagaskars, am schönsten bei Sonnenaufgang und Sonnenuntergang."
+      ],
+      "best": "Mai bis Oktober",
+      "stay": "1 bis 2 Nächte",
+      "getting": "Auf der Straße oder per Inlandsflug nach Morondava, dann etwa 45 Minuten Fahrt.",
+      "todo": [
+        {
+          "title": "Den Sonnenuntergang erleben",
+          "text": "Das Licht färbt die Stämme orange und rot."
+        },
+        {
+          "title": "Dorfbewohner kennenlernen",
+          "text": "Besuchen Sie mit einem Guide die Weiler in der Nähe."
+        },
+        {
+          "title": "Im Morgengrauen fotografieren",
+          "text": "Weniger Besucher und weicheres Licht."
+        }
+      ],
+      "visit": [
+        {
+          "name": "Die Hauptallee",
+          "text": "Die berühmte Reihe hoher Bäume."
+        },
+        {
+          "name": "Zwillings-Baobabs",
+          "text": "Zwei ineinander verschlungene Stämme."
+        },
+        {
+          "name": "Küste von Morondava",
+          "text": "Ein entspannter Badeort ganz in der Nähe."
+        }
+      ],
+      "tip": "Kommen Sie eine Stunde vor Sonnenuntergang, um die Allee vor dem Ansturm zu erkunden."
+    },
+    "andasibe": {
+      "name": "Andasibe",
+      "region": "Der Osten",
+      "tagline": "Die Rufe des Indri im Regenwald",
+      "intro": [
+        "Andasibe ist ein Regenwaldreservat, bekannt für den Indri, den größten lebenden Lemuren, dessen Rufe durch den Wald hallen.",
+        "Es liegt nah genug an der Hauptstadt für ein Wochenende – und ist mit einer Nachtwanderung noch schöner."
+      ],
+      "best": "September bis Dezember",
+      "stay": "1 bis 2 Nächte",
+      "getting": "Etwa drei bis vier Stunden mit dem Auto von Antananarivo.",
+      "todo": [
+        {
+          "title": "Den Indri aufspüren",
+          "text": "Eine geführte Morgenwanderung zu einer Familiengruppe."
+        },
+        {
+          "title": "Eine Nachtwanderung machen",
+          "text": "Entdecken Sie kleine nachtaktive Lemuren und Chamäleons."
+        },
+        {
+          "title": "Eine Lemuren-Insel besuchen",
+          "text": "Begegnen Sie geretteten Lemuren in geschützter Umgebung."
+        }
+      ],
+      "visit": [
+        {
+          "name": "Andasibe-Mantadia",
+          "text": "Der wichtigste Nationalpark und seine Waldwege."
+        },
+        {
+          "name": "Lemuren-Insel",
+          "text": "Eine kurze Bootsfahrt zu Begegnungen aus nächster Nähe."
+        },
+        {
+          "name": "Aussichtspunkte im Wald",
+          "text": "Kurze Wanderungen mit freier Sicht."
+        }
+      ],
+      "tip": "Nehmen Sie eine leichte Regenjacke mit – der Wald ist das ganze Jahr über feucht."
+    }
+  }
+}

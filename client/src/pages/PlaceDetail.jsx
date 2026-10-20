@@ -2,7 +2,9 @@ import React, { useState } from 'react'
 import { useParams } from 'react-router-dom'
 import Navbar from '../components/Navbar'
 import Footer from '../components/Footer'
-import { destinations } from './destinationsData'
+import { useDestinations } from './destinationsData'
+import { Trans, useLanguage, useT } from '../i18n/LanguageContext'
+import { formatPrice } from '../utils/format'
 import { sendRequest } from '../api'
 import { useAuth } from '../context/AuthContext'
 
@@ -26,13 +28,15 @@ const Icon = ({ name, className = 'w-6 h-6' }) => (
 function BookingCard({ place, dest }) {
   // Connecté : nom et email pré-remplis (la clé recrée le champ quand la session est connue)
   const { user } = useAuth()
+  const t = useT('destinations')
+  const { lang } = useLanguage()
   const [tab, setTab] = useState('booking')
   const [guests, setGuests] = useState(1)
   const [date, setDate] = useState('')
   const [sent, setSent] = useState(false)
   const total = place.price ? place.price * guests : null
   const bookHref = `/contact?place=${encodeURIComponent(place.name)}&guests=${guests}${date ? `&date=${date}` : ''}`
-  const tabCls = (t) => `flex-1 rounded-full py-3 text-sm md:text-base font-medium transition ${tab === t ? 'bg-slate-800 text-white' : 'text-slate-700 hover:bg-slate-100'}`
+  const tabCls = (name) => `flex-1 rounded-full py-3 text-sm md:text-base font-medium transition ${tab === name ? 'bg-slate-800 text-white' : 'text-slate-700 hover:bg-slate-100'}`
 
   const [sending, setSending] = useState(false)
   const [error, setError] = useState('')
@@ -57,45 +61,47 @@ function BookingCard({ place, dest }) {
 
   return (
     <aside className="rounded-3xl bg-white p-6 md:p-8 lg:sticky lg:top-6 self-start shadow-sm">
-      <p className="text-lg text-slate-800">Price</p>
+      <p className="text-lg text-slate-800">{t('place.price')}</p>
       <p className="mt-2 text-slate-600">
-        {place.price ? <>From <span className="text-3xl md:text-4xl font-semibold text-slate-900">€{place.price}</span> per person</> : <span className="text-2xl font-semibold text-slate-900">On request</span>}
+        {place.price
+          ? <Trans text={t('place.fromPerPerson')} values={{ price: <span className="text-3xl md:text-4xl font-semibold text-slate-900">{formatPrice(place.price, lang)}</span> }} />
+          : <span className="text-2xl font-semibold text-slate-900">{t('place.onRequest')}</span>}
       </p>
 
       <div className="mt-6 flex gap-1 rounded-full border border-slate-200 p-1" role="tablist">
-        <button role="tab" aria-selected={tab === 'booking'} onClick={() => setTab('booking')} className={tabCls('booking')}>Booking</button>
-        <button role="tab" aria-selected={tab === 'inquiry'} onClick={() => { setTab('inquiry'); setSent(false) }} className={tabCls('inquiry')}>Inquiry Form</button>
+        <button role="tab" aria-selected={tab === 'booking'} onClick={() => setTab('booking')} className={tabCls('booking')}>{t('place.booking')}</button>
+        <button role="tab" aria-selected={tab === 'inquiry'} onClick={() => { setTab('inquiry'); setSent(false) }} className={tabCls('inquiry')}>{t('place.inquiry')}</button>
       </div>
 
       {tab === 'booking' ? (
         <div className="mt-6 flex flex-col gap-5">
           <div>
-            <label htmlFor="date" className="block mb-2 text-sm md:text-base text-slate-700">Preferred date</label>
+            <label htmlFor="date" className="block mb-2 text-sm md:text-base text-slate-700">{t('place.date')}</label>
             <input id="date" type="date" value={date} onChange={(e) => setDate(e.target.value)} className={FIELD} />
           </div>
           <div>
-            <p className="mb-2 text-sm md:text-base text-slate-700">Number of guests</p>
+            <p className="mb-2 text-sm md:text-base text-slate-700">{t('place.guests')}</p>
             <div className="flex items-center justify-between rounded-full bg-[#D5E8E2] px-2 py-2">
-              <button type="button" aria-label="Fewer guests" onClick={() => setGuests(Math.max(1, guests - 1))} className="w-10 h-10 rounded-full bg-white text-xl text-slate-800 hover:bg-slate-100">−</button>
+              <button type="button" aria-label={t('place.fewer')} onClick={() => setGuests(Math.max(1, guests - 1))} className="w-10 h-10 rounded-full bg-white text-xl text-slate-800 hover:bg-slate-100">−</button>
               <span className="text-lg font-medium text-slate-900" aria-live="polite">{guests}</span>
-              <button type="button" aria-label="More guests" onClick={() => setGuests(Math.min(20, guests + 1))} className="w-10 h-10 rounded-full bg-white text-xl text-slate-800 hover:bg-slate-100">+</button>
+              <button type="button" aria-label={t('place.more')} onClick={() => setGuests(Math.min(20, guests + 1))} className="w-10 h-10 rounded-full bg-white text-xl text-slate-800 hover:bg-slate-100">+</button>
             </div>
           </div>
           {total && (
             <p className="flex justify-between text-base text-slate-700">
-              <span>Estimated total</span><span className="font-semibold text-slate-900">€{total}</span>
+              <span>{t('place.total')}</span><span className="font-semibold text-slate-900">{formatPrice(total, lang)}</span>
             </p>
           )}
-          <a href={bookHref} className={`${BTN} bg-slate-800 hover:bg-slate-700 text-white w-full`}>Book this experience</a>
-          <p className="text-xs text-slate-500 text-center">No payment now. A travel expert confirms availability within one working day.</p>
+          <a href={bookHref} className={`${BTN} bg-slate-800 hover:bg-slate-700 text-white w-full`}>{t('place.book')}</a>
+          <p className="text-xs text-slate-500 text-center">{t('place.noPayment')}</p>
         </div>
       ) : (
         <form onSubmit={submitInquiry} className="mt-6 flex flex-col gap-4">
-          <input name="name" key={`n-${user?.id}`} defaultValue={user?.name} required placeholder="Your name" aria-label="Your name" className={FIELD} />
-          <input name="email" key={`e-${user?.id}`} defaultValue={user?.email} type="email" required placeholder="Email address" aria-label="Email address" className={FIELD} />
-          <textarea name="message" rows={4} required placeholder="Your questions" aria-label="Your questions" className="w-full rounded-3xl border border-slate-300 px-5 py-3 text-base focus:outline-none focus:border-slate-700 focus:ring-1 focus:ring-slate-700" />
-          <button type="submit" disabled={sending} className={`${BTN} ${GOLD} text-white w-full disabled:opacity-60 disabled:cursor-wait`}>{sending ? 'Sending…' : 'Send inquiry'}</button>
-          {sent && <p role="status" className="text-sm text-emerald-700">Thank you! We will reply within one working day.</p>}
+          <input name="name" key={`n-${user?.id}`} defaultValue={user?.name} required placeholder={t('place.name')} aria-label={t('place.name')} className={FIELD} />
+          <input name="email" key={`e-${user?.id}`} defaultValue={user?.email} type="email" required placeholder={t('place.email')} aria-label={t('place.email')} className={FIELD} />
+          <textarea name="message" rows={4} required placeholder={t('place.questions')} aria-label={t('place.questions')} className="w-full rounded-3xl border border-slate-300 px-5 py-3 text-base focus:outline-none focus:border-slate-700 focus:ring-1 focus:ring-slate-700" />
+          <button type="submit" disabled={sending} className={`${BTN} ${GOLD} text-white w-full disabled:opacity-60 disabled:cursor-wait`}>{sending ? t('place.sending') : t('place.send')}</button>
+          {sent && <p role="status" className="text-sm text-emerald-700">{t('place.thanks')}</p>}
           {error && <p role="alert" className="text-sm text-red-700">{error}</p>}
         </form>
       )}
@@ -105,6 +111,8 @@ function BookingCard({ place, dest }) {
 
 function PlaceDetail() {
   const { slug, placeSlug } = useParams()
+  const t = useT('destinations')
+  const destinations = useDestinations()
   const d = destinations[slug]
   const place = d?.visit.find((v) => v.slug === placeSlug)
 
@@ -114,8 +122,8 @@ function PlaceDetail() {
         <main className="w-full bg-[#D5E8E2] pb-24 flex flex-col items-center">
           <Navbar />
           <section className={`${W} mt-16 rounded-3xl bg-white p-10 text-center`}>
-            <h1 className={H2}>This place was not found</h1>
-            <a href="/destinations" className={`${BTN} bg-slate-800 hover:bg-slate-700 text-white mt-6`}>All destinations</a>
+            <h1 className={H2}>{t('place.notFound')}</h1>
+            <a href="/destinations" className={`${BTN} bg-slate-800 hover:bg-slate-700 text-white mt-6`}>{t('place.all')}</a>
           </section>
         </main>
         <Footer />
@@ -127,10 +135,10 @@ function PlaceDetail() {
   const gallery = [...new Set([place.image, d.image, ...others.map((o) => o.image)])].slice(0, 3)
   const overview = place.overview || place.details || [place.text]
   const meta = [
-    { icon: 'clock', label: 'Duration', value: place.duration || d.stay },
-    { icon: 'users', label: 'Group size', value: place.groupSize || 'Small groups' },
-    { icon: 'box', label: 'Type', value: place.tourType || 'Guided visit' },
-    { icon: 'globe', label: 'Languages', value: place.language || 'English, French' },
+    { icon: 'clock', label: t('place.duration'), value: place.duration || d.stay },
+    { icon: 'users', label: t('place.groupSize'), value: place.groupSize || t('place.smallGroups') },
+    { icon: 'box', label: t('place.type'), value: place.tourType || t('place.guidedVisit') },
+    { icon: 'globe', label: t('place.languages'), value: place.language || t('place.languagesValue') },
   ]
 
   return (
@@ -141,7 +149,7 @@ function PlaceDetail() {
         {/* En-tête */}
         <section className={`${W} mt-6`}>
           <nav aria-label="Breadcrumb" className="text-sm md:text-base text-slate-700">
-            <a href="/" className="hover:underline">Home</a> / <a href="/destinations" className="hover:underline">Destinations</a> / <a href={`/destinations/${d.slug}`} className="hover:underline">{d.name}</a> / {place.name}
+            <a href="/" className="hover:underline">{t('place.home')}</a> / <a href="/destinations" className="hover:underline">{t('place.destinations')}</a> / <a href={`/destinations/${d.slug}`} className="hover:underline">{d.name}</a> / {place.name}
           </nav>
           <h1 className="mt-5 text-4xl sm:text-5xl md:text-6xl xl:text-7xl font-semibold leading-[1.05] tracking-tight text-slate-900 max-w-5xl">{place.name}</h1>
           <p className="mt-3 text-lg md:text-2xl text-slate-700 max-w-3xl">{place.text}</p>
@@ -150,10 +158,10 @@ function PlaceDetail() {
             {place.rating && (
               <span className="flex items-center gap-2">
                 <svg className="w-5 h-5 text-[#F5B800] fill-current" viewBox="0 0 20 20" aria-hidden="true"><path d="M10 15l-5.878 3.09 1.123-6.545L.489 6.91l6.572-.955L10 0l2.939 5.955 6.572.955-4.756 4.635 1.123 6.545z" /></svg>
-                {place.rating} ({place.reviews} reviews)
+                {t('place.reviews', { rating: place.rating, count: place.reviews })}
               </span>
             )}
-            <span className="flex items-center gap-2"><Icon name="pin" className="w-5 h-5" />{d.name}, {d.region}, Madagascar</span>
+            <span className="flex items-center gap-2"><Icon name="pin" className="w-5 h-5" />{t('place.location', { place: d.name, region: d.regionLabel })}</span>
           </div>
 
           {/* Galerie */}
@@ -167,7 +175,7 @@ function PlaceDetail() {
         {/* Contenu + réservation */}
         <section className={`${W} mt-12 md:mt-16 grid grid-cols-1 lg:grid-cols-[1.7fr_1fr] gap-10 lg:gap-16 items-start`}>
           <div>
-            <h2 className={H2}>Overview</h2>
+            <h2 className={H2}>{t('place.overview')}</h2>
             <ul className="mt-6 grid grid-cols-1 sm:grid-cols-2 gap-x-8 gap-y-5">
               {meta.map((m) => (
                 <li key={m.label} className="flex items-center gap-4 text-base md:text-lg text-slate-800">
@@ -181,7 +189,7 @@ function PlaceDetail() {
               {overview.map((p) => <p key={p} className="text-base md:text-lg text-slate-700 leading-relaxed">{p}</p>)}
             </div>
 
-            <h2 className={`${H2} mt-12`}>Highlights</h2>
+            <h2 className={`${H2} mt-12`}>{t('place.highlights')}</h2>
             <ul className="mt-6 flex flex-col gap-3 max-w-3xl">
               {(place.highlights || place.does || []).map((h) => (
                 <li key={h} className="flex items-start gap-3 text-base md:text-lg text-slate-700">
@@ -192,7 +200,7 @@ function PlaceDetail() {
 
             {(place.included || place.excluded) && (
               <div className="mt-12 grid grid-cols-1 md:grid-cols-2 gap-5">
-                {[['Included', place.included, '✓'], ['Not included', place.excluded, '×']].map(([title, list, mark]) => list && (
+                {[[t('place.included'), place.included, '✓'], [t('place.excluded'), place.excluded, '×']].map(([title, list, mark]) => list && (
                   <div key={title} className="rounded-3xl bg-white p-6 md:p-8">
                     <h3 className="text-xl font-medium text-slate-900">{title}</h3>
                     <ul className="mt-4 flex flex-col gap-2">
@@ -204,8 +212,8 @@ function PlaceDetail() {
             )}
 
             <div className="mt-8 rounded-3xl bg-slate-900 text-white p-6 md:p-8">
-              <h3 className="text-xl font-medium">Good to know</h3>
-              <p className="mt-3 text-sm md:text-base text-white/75 leading-relaxed">Best time: {d.best}. {d.tip}</p>
+              <h3 className="text-xl font-medium">{t('place.goodToKnow')}</h3>
+              <p className="mt-3 text-sm md:text-base text-white/75 leading-relaxed">{t('place.bestTime', { time: d.best })} {d.tip}</p>
             </div>
           </div>
 
@@ -215,7 +223,7 @@ function PlaceDetail() {
         {/* Autres lieux */}
         {others.length > 0 && (
           <section className={`${W} mt-16 md:mt-24`}>
-            <h2 className={H2}>More In {d.name}</h2>
+            <h2 className={H2}>{t('place.more', { name: d.name })}</h2>
             <ul className="mt-8 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
               {others.map((o) => (
                 <li key={o.slug}>

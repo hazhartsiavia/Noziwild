@@ -10,6 +10,8 @@ import Tana from '../assets/images/Tana.png'
 import Navbar from '../components/Navbar'
 import Footer from '../components/Footer'
 import { slugify } from './destinationsData'
+import { useLanguage, useT } from '../i18n/LanguageContext'
+import { monthName } from '../utils/format'
 
 gsap.registerPlugin(ScrollTrigger)
 
@@ -17,9 +19,10 @@ const W = 'w-[90vw] lg:max-w-[95vw]'
 const GOLD = 'bg-[#C49849] hover:bg-[#a9813a]'
 const BTN = 'inline-flex items-center justify-center text-sm font-medium px-6 py-3 rounded-full active:scale-95 transition'
 const H2 = 'text-3xl sm:text-4xl md:text-5xl lg:text-[56px] font-medium leading-[1.1] tracking-tight text-slate-900'
-const MONTHS = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec']
 
 /* ---------------------------- Données ---------------------------- */
+// Noms, accroches, textes et lieux affichés : les mêmes que la page d'accueil (home.regions, même ordre).
+// Les noms anglais des lieux servent à construire leur adresse.
 
 const regions = [
   {
@@ -106,6 +109,7 @@ function useGsap(scope, setup, deps = []) {
 
 function Hero() {
   const root = useRef(null)
+  const t = useT('destinations')
   const strip = [
     { src: Ramena, cls: 'mt-0' },
     { src: Tana, cls: 'mt-10 md:mt-16' },
@@ -142,17 +146,17 @@ function Hero() {
       <Navbar />
       <section ref={root} className={`${W} mt-6 grid grid-cols-1 lg:grid-cols-[1fr_1.1fr] gap-10 lg:gap-14 items-center`}>
         <div>
-          <p className="hero-eyebrow text-sm md:text-base text-slate-700 mb-4">Five regions, one island</p>
+          <p className="hero-eyebrow text-sm md:text-base text-slate-700 mb-4">{t('list.eyebrow')}</p>
           <h1 className="text-6xl sm:text-7xl md:text-8xl xl:text-[120px] font-semibold leading-[0.9] tracking-tight text-slate-900">
-            <span className="hero-line inline-block">Where To</span><br />
-            <span className="hero-line inline-block">Go First</span>
+            <span className="hero-line inline-block">{t('list.title1')}</span><br />
+            <span className="hero-line inline-block">{t('list.title2')}</span>
           </h1>
           <p className="hero-copy mt-6 text-base md:text-lg text-slate-700 leading-relaxed max-w-lg">
-            Madagascar is a continent in miniature. Explore each region, find the places worth the drive and pick the right month.
+            {t('list.intro')}
           </p>
           <div className="mt-8 flex flex-wrap gap-3">
-            <a href="#regions" className={`hero-cta ${BTN} bg-slate-800 hover:bg-slate-700 text-white`}>Explore the regions</a>
-            <a href="#planner" className={`hero-cta ${BTN} border border-slate-400 hover:border-slate-800 text-slate-800`}>When to go</a>
+            <a href="#regions" className={`hero-cta ${BTN} bg-slate-800 hover:bg-slate-700 text-white`}>{t('list.explore')}</a>
+            <a href="#planner" className={`hero-cta ${BTN} border border-slate-400 hover:border-slate-800 text-slate-800`}>{t('list.when')}</a>
           </div>
         </div>
 
@@ -168,6 +172,8 @@ function Hero() {
 
 function RegionNav() {
   const root = useRef(null)
+  const t = useT('destinations')
+  const names = useT('home')('regions').map((r) => r.name)
 
   useGsap(root, () => {
     // Pastille active : suit la région visible à l'écran
@@ -200,12 +206,12 @@ function RegionNav() {
   })
 
   return (
-    <nav ref={root} aria-label="Regions" id="regions" className="sticky top-3 z-20 mt-16 md:mt-24 scroll-mt-4">
+    <nav ref={root} aria-label={t('list.regions')} id="regions" className="sticky top-3 z-20 mt-16 md:mt-24 scroll-mt-4">
       <ul className="flex gap-2 rounded-full bg-white/85 backdrop-blur-md p-2 shadow-sm overflow-x-auto max-w-[90vw] [scrollbar-width:none] [&::-webkit-scrollbar]:hidden">
-        {regions.map((r) => (
+        {regions.map((r, i) => (
           <li key={r.id} className="shrink-0">
             <a href={`#${r.id}`} className="region-link block rounded-full px-5 py-2.5 text-sm md:text-base text-slate-800 hover:bg-slate-800 hover:text-white transition">
-              {r.name}
+              {names[i]}
             </a>
           </li>
         ))}
@@ -216,6 +222,8 @@ function RegionNav() {
 
 function Region({ region, flip }) {
   const root = useRef(null)
+  const t = useT('destinations')
+  const { lang } = useLanguage()
   const first = region.months[0]
   const last = region.months[region.months.length - 1]
 
@@ -253,7 +261,7 @@ function Region({ region, flip }) {
         <img src={region.image} alt={region.name} className="region-img absolute inset-0 w-full h-full object-cover" />
         <div className="absolute inset-0 bg-gradient-to-t from-slate-950/60 via-transparent to-transparent" />
         <span className="region-badge absolute left-5 top-5 bg-[#C49849] text-white text-xs sm:text-sm font-medium px-3 py-1.5 rounded-sm">
-          Best from {MONTHS[first - 1]} to {MONTHS[last - 1]}
+          {t('list.bestFrom', { from: monthName(first, lang, 'long'), to: monthName(last, lang, 'long') })}
         </span>
       </div>
 
@@ -262,21 +270,21 @@ function Region({ region, flip }) {
         <p className="mt-3 text-lg md:text-2xl text-slate-700">{region.tagline}</p>
         <p className="mt-5 text-sm md:text-base text-slate-600 leading-relaxed max-w-xl">{region.text}</p>
 
-        <p className="mt-8 mb-3 text-sm md:text-base font-medium text-slate-800">Must-see places</p>
+        <p className="mt-8 mb-3 text-sm md:text-base font-medium text-slate-800">{t('list.mustSee')}</p>
         <ul className="grid grid-cols-3 gap-3 md:gap-4">
           {region.places.map((p) => (
             <li key={p.name} className="region-place">
               <a href={`/destinations/${slugify(p.name)}`} className="group block">
                 <div className="aspect-square overflow-hidden rounded-2xl md:rounded-3xl">
-                  <img src={p.image} alt={p.name} className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" />
+                  <img src={p.image} alt={p.label} className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" />
                 </div>
-                <p className="mt-2 text-xs sm:text-sm md:text-base text-slate-800 leading-snug group-hover:underline">{p.name}</p>
+                <p className="mt-2 text-xs sm:text-sm md:text-base text-slate-800 leading-snug group-hover:underline">{p.label}</p>
               </a>
             </li>
           ))}
         </ul>
 
-        <a href="/circuits" className={`${BTN} ${GOLD} text-white mt-8`}>See circuits in this region</a>
+        <a href="/circuits" className={`${BTN} ${GOLD} text-white mt-8`}>{t('list.seeCircuits')}</a>
       </div>
     </section>
   )
@@ -285,6 +293,9 @@ function Region({ region, flip }) {
 function Planner() {
   const root = useRef(null)
   const list = useRef(null)
+  const t = useT('destinations')
+  const names = useT('home')('regions').map((r) => r.name)
+  const { lang } = useLanguage()
   const [month, setMonth] = useState(new Date().getMonth() + 1)
   const good = regions.filter((r) => r.months.includes(month))
 
@@ -320,20 +331,20 @@ function Planner() {
 
   return (
     <section ref={root} id="planner" className={`${W} mt-20 md:mt-32 scroll-mt-8 rounded-[2rem] md:rounded-[3rem] bg-slate-900 text-white p-5 sm:p-8 md:p-14`}>
-      <h2 className={`${H2} !text-white max-w-3xl`}>When Should You Go?</h2>
-      <p className="mt-4 text-sm md:text-base text-white/75 max-w-xl">Pick a month to see which regions are at their best. Dates are a guide, weather varies each year.</p>
+      <h2 className={`${H2} !text-white max-w-3xl`}>{t('list.plannerTitle')}</h2>
+      <p className="mt-4 text-sm md:text-base text-white/75 max-w-xl">{t('list.plannerText')}</p>
 
       <div className="mt-8 flex flex-wrap gap-2 md:gap-3">
-        {MONTHS.map((m, i) => (
+        {Array.from({ length: 12 }, (_, i) => (
           <button
-            key={m}
+            key={i}
             onClick={() => setMonth(i + 1)}
             aria-pressed={month === i + 1}
             className={`planner-month rounded-full px-4 py-2 text-sm transition focus:outline-none focus-visible:ring-2 focus-visible:ring-[#C49849] ${
               month === i + 1 ? 'bg-[#C49849] text-white' : 'border border-white/30 text-white/80 hover:border-white'
             }`}
           >
-            {m}
+            {monthName(i + 1, lang)}
           </button>
         ))}
       </div>
@@ -346,13 +357,13 @@ function Planner() {
                 <a href={`#${r.id}`} className="group relative block aspect-[3/4] overflow-hidden rounded-[1.5rem]">
                   <img src={r.image} alt="" className="absolute inset-0 w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" />
                   <div className="absolute inset-0 bg-gradient-to-t from-slate-950/85 to-transparent" />
-                  <p className="absolute inset-x-0 bottom-0 p-4 text-lg md:text-xl font-medium">{r.name}</p>
+                  <p className="absolute inset-x-0 bottom-0 p-4 text-lg md:text-xl font-medium">{names[regions.indexOf(r)]}</p>
                 </a>
               </li>
             ))}
           </ul>
         ) : (
-          <p role="status" className="planner-card mt-10 text-white/80">No region is at its best in {MONTHS[month - 1]}. Try another month.</p>
+          <p role="status" className="planner-card mt-10 text-white/80">{t('list.noRegion', { month: monthName(month, lang, 'long') })}</p>
         )}
       </div>
     </section>
@@ -361,6 +372,7 @@ function Planner() {
 
 function FinalCta() {
   const root = useRef(null)
+  const t = useT('destinations')
 
   useGsap(root, () => {
     // Parallaxe du fond
@@ -390,11 +402,11 @@ function FinalCta() {
       <img src={Ramena} alt="" className="cta-bg absolute inset-0 w-full h-full object-cover" />
       <div className="absolute inset-0 bg-slate-950/65" />
       <div className="cta-content relative p-8 md:p-16 max-w-3xl">
-        <h2 className="text-3xl sm:text-4xl md:text-5xl font-medium leading-[1.1] tracking-tight">Not sure where to start?</h2>
-        <p className="mt-4 text-sm md:text-lg text-white/85">Tell us what you love and how long you have. We will suggest the regions that fit.</p>
+        <h2 className="text-3xl sm:text-4xl md:text-5xl font-medium leading-[1.1] tracking-tight">{t('list.ctaTitle')}</h2>
+        <p className="mt-4 text-sm md:text-lg text-white/85">{t('list.ctaText')}</p>
         <div className="mt-8 flex flex-wrap gap-3">
-          <a href="/contact" className={`${BTN} ${GOLD} text-white`}>Talk to a travel expert</a>
-          <a href="/circuits" className={`${BTN} border border-white/50 hover:bg-white/10`}>Browse circuits</a>
+          <a href="/contact" className={`${BTN} ${GOLD} text-white`}>{t('list.ctaExpert')}</a>
+          <a href="/circuits" className={`${BTN} border border-white/50 hover:bg-white/10`}>{t('list.ctaCircuits')}</a>
         </div>
       </div>
     </section>
@@ -402,6 +414,7 @@ function FinalCta() {
 }
 
 function Destinations() {
+  const texts = useT('home')('regions')
   // Recalcule les positions une fois les images chargées
   useLayoutEffect(() => {
     const refresh = () => ScrollTrigger.refresh()
@@ -418,7 +431,13 @@ function Destinations() {
       <main className="w-full bg-[#D5E8E2] pb-16 md:pb-24 flex flex-col items-center">
         <Hero />
         <RegionNav />
-        {regions.map((r, i) => <Region key={r.id} region={r} flip={i % 2 === 1} />)}
+        {regions.map((r, i) => (
+          <Region
+            key={r.id}
+            region={{ ...r, ...texts[i], places: r.places.map((p, n) => ({ ...p, label: texts[i].places[n] })) }}
+            flip={i % 2 === 1}
+          />
+        ))}
         <Planner />
         <FinalCta />
       </main>
