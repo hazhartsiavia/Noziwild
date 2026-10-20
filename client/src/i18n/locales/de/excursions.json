@@ -1,0 +1,128 @@
+{
+  "regions": {
+    "All regions": "Alle Regionen",
+    "North": "Norden",
+    "Highlands": "Hochland",
+    "West": "Westen",
+    "East": "Osten"
+  },
+  "lengths": [
+    "Beliebige Dauer",
+    "Halbtags",
+    "Ganztags",
+    "2 Tage oder mehr"
+  ],
+  "items": [
+    {
+      "title": "Ein Tag im Tal von Kakao und Gewürzen",
+      "duration": "1 Tag",
+      "group": "Bis zu 8 Gäste",
+      "level": "Leicht",
+      "text": "Verfolgen Sie den Kakao vom Baum bis zum Trockengestell und treffen Sie Bauern am Sambirano-Fluss."
+    },
+    {
+      "title": "Segeln in der Bucht von Ramena",
+      "duration": "Halbtags",
+      "group": "Bis zu 10 Gäste",
+      "level": "Leicht",
+      "text": "Ein Vormittag auf dem Wasser mit Badestopps im Smaragdmeer."
+    },
+    {
+      "title": "Überfahrt von Ankify nach Nosy Be",
+      "duration": "3 Stunden",
+      "group": "Bis zu 12 Gäste",
+      "level": "Leicht",
+      "text": "Eine schöne Fahrt und eine Überfahrt im Schnellboot, mit Mittagessen am Wasser."
+    },
+    {
+      "title": "Ein Tag an der Sandbank von Nosy Iranja",
+      "duration": "1 Tag",
+      "group": "Bis zu 12 Gäste",
+      "level": "Leicht",
+      "text": "Laufen Sie über die weiße Sandbank, schnorcheln Sie mit Schildkröten und steigen Sie zum Leuchtturm hinauf."
+    },
+    {
+      "title": "Antananarivo und Ambohimanga",
+      "duration": "1 Tag",
+      "group": "Bis zu 8 Gäste",
+      "level": "Leicht",
+      "text": "Die Altstadt, der Rova und der heilige Königshügel nördlich der Hauptstadt."
+    },
+    {
+      "title": "Baobab-Allee im Sonnenuntergang",
+      "duration": "Halbtags",
+      "group": "Bis zu 10 Gäste",
+      "level": "Leicht",
+      "text": "Kommen Sie vor dem Ansturm und sehen Sie zu, wie das Licht die Stämme orange färbt."
+    },
+    {
+      "title": "Trekking im Wald von Manongarivo",
+      "duration": "2 Tage",
+      "group": "Bis zu 6 Gäste",
+      "level": "Sportlich",
+      "text": "Geführte Wege durch ein Schutzgebiet, auf Wunsch mit Zelten."
+    },
+    {
+      "title": "Andasibe: Indri und Nachtwanderung",
+      "duration": "2 Tage",
+      "group": "Bis zu 8 Gäste",
+      "level": "Mittel",
+      "text": "Spüren Sie im Morgengrauen den Indri auf und entdecken Sie nach Einbruch der Dunkelheit nachtaktive Lemuren."
+    }
+  ],
+  "steps": [
+    {
+      "title": "Abholung am Hotel",
+      "text": "Ihr Fahrer und Ihr Guide holen Sie am Morgen ab."
+    },
+    {
+      "title": "Geführter Besuch",
+      "text": "Stopps ohne Eile, mit Zeit für Fotos und Fragen."
+    },
+    {
+      "title": "Mittagessen bei Einheimischen",
+      "text": "Ein einfaches Essen im Dorf oder am Wasser."
+    },
+    {
+      "title": "Rückkehr am späten Nachmittag",
+      "text": "Rechtzeitig zum Ausruhen zurück im Hotel."
+    }
+  ],
+  "stops": [
+    {
+      "day": "Tag 1",
+      "text": "Ambanja, dann das Boot von Ankify nach Nosy Be"
+    },
+    {
+      "day": "Tag 2",
+      "text": "Ganzer Tag auf Nosy Iranja, Sandbank und Schildkröten"
+    },
+    {
+      "day": "Tag 3",
+      "text": "Vormittags Nosy Lonjo, nachmittags Rückfahrt"
+    }
+  ],
+  "heroAlt": "Boote in der Bucht bei Ramena",
+  "title": "Ausflüge",
+  "intro": "Vom Vormittag auf dem Wasser bis zur dreitägigen Auszeit. Sagen Sie uns, wie viel Zeit Sie haben, um den Rest kümmern wir uns.",
+  "region": "Region",
+  "length": "Dauer",
+  "find": "Ausflüge finden",
+  "from": "Ab",
+  "perPerson": "pro Person",
+  "details": "Details ansehen",
+  "resultsTitle": "Wählen Sie Ihren Ausflug",
+  "found": "{count} Ausflüge gefunden",
+  "foundOne": "1 Ausflug gefunden",
+  "empty": "Noch kein Ausflug entspricht dieser Suche.",
+  "showAll": "Alle Ausflüge anzeigen",
+  "dayTitle": "Ein Tagesausflug von Anfang bis Ende",
+  "multiAlt": "Die Sandbank von Nosy Iranja",
+  "multiBadge": "3 Tage",
+  "multiTitle": "Drei Tage auf den Inseln",
+  "multiText": "Unsere meistgefragte mehrtägige Auszeit verbindet das Festland mit den Inseln rund um Nosy Be – alle Transfers inklusive.",
+  "multiButton": "Diese Auszeit anfragen",
+  "ctaTitle": "Möchten Sie einen Ausflug nur für Sie?",
+  "ctaText": "Nennen Sie uns Ihre Daten und Interessen. Ein Reiseexperte antwortet innerhalb eines Werktags.",
+  "ctaButton": "Meinen Ausflug planen"
+}

@@ -1,0 +1,116 @@
+{
+  "facts": [
+    {
+      "value": "Da 1 a 12",
+      "label": "mesi, a tua scelta"
+    },
+    {
+      "value": "8",
+      "label": "viaggiatori max per gruppo"
+    },
+    {
+      "value": "7/7",
+      "label": "assistenza sul posto"
+    }
+  ],
+  "formats": [
+    {
+      "tab": "1 mese",
+      "title": "Un mese di viaggio lento",
+      "text": "Due o tre basi, senza fretta. Abbina una baia, gli Altopiani e un parco nazionale, con il tempo di fermarti nel mezzo.",
+      "points": [
+        "Alloggi arredati in 2-3 regioni",
+        "Autista privato per i trasferimenti",
+        "Escursioni guidate ogni settimana"
+      ],
+      "price": "Da 1.900 €"
+    },
+    {
+      "tab": "3 mesi",
+      "title": "Una stagione in Madagascar",
+      "text": "Stabilisciti in una regione, lavora da remoto o fai volontariato e partecipa a gite guidate nel fine settimana. Organizziamo alloggio, trasporti e contatti locali.",
+      "points": [
+        "Una sola base con internet affidabile",
+        "Una fuga guidata ogni mese",
+        "Lezioni di lingua e progetti solidali"
+      ],
+      "price": "Da 4.800 €"
+    },
+    {
+      "tab": "6 mesi +",
+      "title": "Vivere qui, con pieno supporto",
+      "text": "Per ricercatori, artisti, famiglie e pensionati. Ci occupiamo di alloggio e pratiche, e restiamo vicini per tutto il soggiorno.",
+      "points": [
+        "Ricerca di un alloggio a lungo termine",
+        "Pratiche e proroghe del visto",
+        "Un referente dedicato per tutto il soggiorno"
+      ],
+      "price": "Su richiesta"
+    }
+  ],
+  "weeks": [
+    {
+      "week": "Settimana 1",
+      "text": "Arrivo, sistemazione, scoperta della capitale e della collina reale di Ambohimanga."
+    },
+    {
+      "week": "Settimana 2",
+      "text": "Lavora affacciato sulla baia e naviga lungo la costa color smeraldo."
+    },
+    {
+      "week": "Settimana 3",
+      "text": "Piantagioni di cacao, mercati e fauna del Nord."
+    },
+    {
+      "week": "Settimana 4",
+      "text": "Chiudi il mese sulle isole di Nosy Iranja e Nosy Lonjo."
+    }
+  ],
+  "services": [
+    {
+      "title": "Alloggio",
+      "text": "Ville, appartamenti e guesthouse."
+    },
+    {
+      "title": "Trasporti",
+      "text": "Accoglienza in aeroporto e autisti privati."
+    },
+    {
+      "title": "Internet",
+      "text": "SIM e case connesse."
+    },
+    {
+      "title": "Pratiche",
+      "text": "Assistenza per visto e proroga."
+    },
+    {
+      "title": "Contatti locali",
+      "text": "Guide, medici, insegnanti e progetti solidali."
+    }
+  ],
+  "quote": "Siamo venuti per tre settimane e siamo rimasti tre mesi. Al nostro arrivo era tutto pronto.",
+  "quoteAuthor": "Nome del viaggiatore, paese",
+  "heroAlt": "Acqua turchese al largo di Nosy Iranja",
+  "eyebrow": "Soggiorni lunghi in Madagascar",
+  "titleLabel": "Non visitarla. Vivi l'isola.",
+  "titleLines": [
+    "Non visitarla.",
+    "Vivi l'isola."
+  ],
+  "planButton": "Organizza il mio soggiorno lungo",
+  "formatsButton": "Scopri le formule",
+  "manTitle": "Il Madagascar premia chi resta.",
+  "manText1": "Due settimane ti mostrano la cartolina. Un mese ti fa conoscere i giorni di mercato, le strade e i nomi dei vicini. Prepariamo la base perché tu passi il tempo sull'isola, non a pensare alla logistica.",
+  "manText2": "Alloggio, trasporti, connessione e contatti locali sono pronti prima del tuo arrivo.",
+  "manAlt1": "Vita di villaggio vicino ad Ambanja",
+  "manAlt2": "Paesaggio del nord del Madagascar",
+  "happy": "viaggiatori felici",
+  "formatsTitle": "Scegli il tuo ritmo",
+  "askStay": "Richiedi questo soggiorno",
+  "weeksTitle": "Un mese, settimana per settimana",
+  "weeksText": "Un modo di trascorrere quattro settimane. Scorri per scoprirlo. Lo adattiamo a te.",
+  "servicesTitle": "Tutto pronto prima del tuo arrivo",
+  "finalTitle": "Dicci quanto tempo vuoi restare.",
+  "finalText": "Raccontaci date e progetti. Un esperto di viaggi ti risponde entro un giorno lavorativo.",
+  "browse": "Sfoglia i tour"
+}

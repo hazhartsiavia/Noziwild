@@ -1,0 +1,103 @@
+{
+  "ports": [
+    {
+      "sub": "Port de Hell-Ville",
+      "text": "Des îles, une forêt à lémuriens et le pays de l'ylang-ylang."
+    },
+    {
+      "sub": "Antsiranana",
+      "text": "Une immense baie, des formations de roche rouge et une forêt humide de montagne."
+    }
+  ],
+  "tags": {
+    "Sea": "Mer",
+    "Nature": "Nature",
+    "Culture": "Culture"
+  },
+  "items": [
+    {
+      "title": "Nosy Iranja en vedette",
+      "text": "Marchez sur le banc de sable blanc, baignez-vous et nagez avec les tortues."
+    },
+    {
+      "title": "Snorkeling à Nosy Tanikely",
+      "text": "Snorkeling sur un récif calme dans un parc marin, avec un arrêt plage."
+    },
+    {
+      "title": "Forêt de Lokobe et Hell-Ville",
+      "text": "Cherchez les lémuriens avec un guide, puis flânez au marché de la ville."
+    },
+    {
+      "title": "Ylang-ylang et mont Passot",
+      "text": "Une distillerie en activité et un point de vue sur les lacs de cratère, idéal au coucher du soleil."
+    },
+    {
+      "title": "Mer d'Émeraude et Pain de Sucre",
+      "text": "Une traversée de la baie de Diego avec baignade dans une eau peu profonde et lumineuse."
+    },
+    {
+      "title": "Tsingy rouges et vieille ville",
+      "text": "Des formations de roche rouge sculptées, puis une balade dans Diego Suarez."
+    },
+    {
+      "title": "Forêt humide de la Montagne d'Ambre",
+      "text": "Cascades, lacs de cratère et caméléons dans un parc de montagne au climat frais."
+    }
+  ],
+  "promises": [
+    {
+      "title": "De retour avant l'embarquement",
+      "text": "Chaque horaire inclut les transferts depuis et vers le quai, et nous prévoyons une marge de sécurité."
+    },
+    {
+      "title": "Accueil au quai",
+      "text": "Votre guide vous attend à la sortie de la passerelle avec une pancarte à votre nom."
+    },
+    {
+      "title": "En privé ou en petit groupe",
+      "text": "Choisissez un véhicule privé pour votre famille ou un petit groupe partagé."
+    }
+  ],
+  "timeline": [
+    "Arrivée du navire au port",
+    "Rencontre avec votre guide au quai",
+    "Début de l'excursion",
+    "Retour au quai",
+    "Embarquement"
+  ],
+  "faqs": [
+    {
+      "q": "Et si mon navire est en retard ?",
+      "a": "Indiquez-nous votre navire et votre heure d'arrivée à la réservation. Nous suivons l'horaire et décalons le début de votre excursion."
+    },
+    {
+      "q": "Puis-je réserver une fois à bord ?",
+      "a": "Il est plus sûr de réserver à l'avance : véhicules et guides sont limités les jours de forte affluence au port."
+    },
+    {
+      "q": "Accueillez-vous les groupes ?",
+      "a": "Oui. Nous organisons des groupes privés, d'une famille à un grand groupe. Contactez-nous avec le nombre de personnes."
+    }
+  ],
+  "heroAlt": "Bateaux au mouillage dans la baie",
+  "eyebrow": "Pour les passagers de croisière",
+  "title": "Le meilleur de Madagascar en une escale",
+  "intro": "Des excursions calées sur votre navire, avec transferts depuis le quai et une marge garantie avant l'embarquement.",
+  "planButton": "Organiser mon escale",
+  "spare": "De retour au quai avec {minutes} min d'avance",
+  "tooLong": "Demande une escale plus longue",
+  "from": "À partir de {price}",
+  "reserve": "Réserver",
+  "planTitle": "Organisez votre escale",
+  "planText": "Choisissez votre port, puis indiquez combien de temps vous avez à terre. Nous vous montrons ce qui est possible.",
+  "ashore": "Temps disponible à terre",
+  "ashoreHint": "Entre l'accostage et l'embarquement, transferts compris.",
+  "fit": "{fit} excursions sur {total} possibles pendant votre escale à {port}",
+  "promisesTitle": "Pensé autour de l'horaire de votre navire",
+  "timelineTitle": "Une escale, heure par heure",
+  "timelineText": "Exemple d'horaire. Vos heures suivent celles de votre navire.",
+  "faqTitle": "Bon à savoir",
+  "groupTitle": "Vous voyagez en groupe ou avec tout le navire ?",
+  "groupText": "Envoyez-nous votre navire, la date et la taille du groupe. Nous construisons un programme privé et répondons sous un jour ouvré.",
+  "groupButton": "Demander un programme privé"
+}

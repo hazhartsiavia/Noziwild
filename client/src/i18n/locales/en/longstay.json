@@ -1,0 +1,116 @@
+{
+  "facts": [
+    {
+      "value": "1 to 12",
+      "label": "months, your choice"
+    },
+    {
+      "value": "8",
+      "label": "travellers max per group"
+    },
+    {
+      "value": "7/7",
+      "label": "on-site support"
+    }
+  ],
+  "formats": [
+    {
+      "tab": "1 month",
+      "title": "One Month Of Slow Travel",
+      "text": "Two or three bases, no rushing. Combine a bay, the highlands and a national park, with time to sit still in between.",
+      "points": [
+        "Furnished stays in 2 to 3 regions",
+        "Private driver for transfers",
+        "Guided excursions each week"
+      ],
+      "price": "From €1,900"
+    },
+    {
+      "tab": "3 months",
+      "title": "A Season In Madagascar",
+      "text": "Settle in one region, work remotely or volunteer, and take guided trips on weekends. We arrange housing, transport and local contacts.",
+      "points": [
+        "One home base with reliable internet",
+        "Monthly guided getaways",
+        "Language lessons and community projects"
+      ],
+      "price": "From €4,800"
+    },
+    {
+      "tab": "6 months +",
+      "title": "Live Here, Fully Supported",
+      "text": "For researchers, artists, families and retirees. We handle housing and paperwork, then stay close for the whole stay.",
+      "points": [
+        "Long-term housing search",
+        "Paperwork and visa extensions",
+        "A named contact for your whole stay"
+      ],
+      "price": "On request"
+    }
+  ],
+  "weeks": [
+    {
+      "week": "Week 1",
+      "text": "Arrive, settle in, explore the capital and the royal hill of Ambohimanga."
+    },
+    {
+      "week": "Week 2",
+      "text": "Work from the bay and sail the emerald coast."
+    },
+    {
+      "week": "Week 3",
+      "text": "Cocoa plantations, markets and northern wildlife."
+    },
+    {
+      "week": "Week 4",
+      "text": "Close the month on the islands of Nosy Iranja and Nosy Lonjo."
+    }
+  ],
+  "services": [
+    {
+      "title": "Housing",
+      "text": "Villas, apartments and guesthouses."
+    },
+    {
+      "title": "Transport",
+      "text": "Airport pick-up and private drivers."
+    },
+    {
+      "title": "Internet",
+      "text": "SIM card and connected homes."
+    },
+    {
+      "title": "Paperwork",
+      "text": "Visa and extension guidance."
+    },
+    {
+      "title": "Local contacts",
+      "text": "Guides, doctors, teachers and community projects."
+    }
+  ],
+  "quote": "We came for three weeks and stayed for three months. Everything was ready when we landed.",
+  "quoteAuthor": "Traveller name, country",
+  "heroAlt": "Turquoise water off Nosy Iranja",
+  "eyebrow": "Long stays in Madagascar",
+  "titleLabel": "Don’t Visit. Live The Island.",
+  "titleLines": [
+    "Don’t Visit.",
+    "Live The Island."
+  ],
+  "planButton": "Plan my long stay",
+  "formatsButton": "See the formats",
+  "manTitle": "Madagascar Rewards Those Who Stay.",
+  "manText1": "Two weeks show you the postcard. A month lets you learn the market days, the roads and the names of your neighbours. We build the base so you can spend your time on the island, not on logistics.",
+  "manText2": "Housing, transport, connectivity and local introductions are ready before you land.",
+  "manAlt1": "Village life near Ambanja",
+  "manAlt2": "Northern Madagascar landscape",
+  "happy": "happy travellers",
+  "formatsTitle": "Choose Your Rhythm",
+  "askStay": "Ask for this stay",
+  "weeksTitle": "A Month, Week By Week",
+  "weeksText": "One way to spend four weeks. Scroll to explore. We adapt it to you.",
+  "servicesTitle": "Everything Ready Before You Land",
+  "finalTitle": "Tell Us How Long You Want To Stay.",
+  "finalText": "Share your dates and plans. A travel expert replies within one working day.",
+  "browse": "Browse circuits"
+}

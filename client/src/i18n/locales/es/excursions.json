@@ -1,0 +1,128 @@
+{
+  "regions": {
+    "All regions": "Todas las regiones",
+    "North": "Norte",
+    "Highlands": "Tierras Altas",
+    "West": "Oeste",
+    "East": "Este"
+  },
+  "lengths": [
+    "Cualquier duración",
+    "Medio día",
+    "Día completo",
+    "2 días o más"
+  ],
+  "items": [
+    {
+      "title": "Un día en el valle del cacao y las especias",
+      "duration": "1 día",
+      "group": "Hasta 8 personas",
+      "level": "Fácil",
+      "text": "Siga el cacao del árbol al secadero y conozca a los agricultores a orillas del Sambirano."
+    },
+    {
+      "title": "En velero por la bahía de Ramena",
+      "duration": "Medio día",
+      "group": "Hasta 10 personas",
+      "level": "Fácil",
+      "text": "Una mañana en el agua con paradas para bañarse en el Mar Esmeralda."
+    },
+    {
+      "title": "Travesía de Ankify a Nosy Be",
+      "duration": "3 horas",
+      "group": "Hasta 12 personas",
+      "level": "Fácil",
+      "text": "Un bonito trayecto por carretera y una travesía en lancha rápida, con comida junto al agua."
+    },
+    {
+      "title": "Un día en el banco de arena de Nosy Iranja",
+      "duration": "1 día",
+      "group": "Hasta 12 personas",
+      "level": "Fácil",
+      "text": "Camine por el banco de arena blanca, haga snorkel con tortugas y suba al faro."
+    },
+    {
+      "title": "Antananarivo y Ambohimanga",
+      "duration": "1 día",
+      "group": "Hasta 8 personas",
+      "level": "Fácil",
+      "text": "El casco antiguo, el Rova y la colina real sagrada al norte de la capital."
+    },
+    {
+      "title": "La Avenida de los Baobabs al atardecer",
+      "duration": "Medio día",
+      "group": "Hasta 10 personas",
+      "level": "Fácil",
+      "text": "Llegue antes que la multitud y vea cómo la luz tiñe de naranja los troncos."
+    },
+    {
+      "title": "Trekking en el bosque de Manongarivo",
+      "duration": "2 días",
+      "group": "Hasta 6 personas",
+      "level": "Exigente",
+      "text": "Senderos guiados por una reserva protegida, con acampada opcional."
+    },
+    {
+      "title": "Andasibe: el indri y paseo nocturno",
+      "duration": "2 días",
+      "group": "Hasta 8 personas",
+      "level": "Moderado",
+      "text": "Busque al indri al amanecer y descubra los lémures nocturnos al anochecer."
+    }
+  ],
+  "steps": [
+    {
+      "title": "Recogida en el hotel",
+      "text": "Su conductor y su guía le recogen por la mañana."
+    },
+    {
+      "title": "Visita guiada",
+      "text": "Paradas sin prisas, con tiempo para fotos y preguntas."
+    },
+    {
+      "title": "Comida con la gente local",
+      "text": "Una comida sencilla en un pueblo o junto al agua."
+    },
+    {
+      "title": "Regreso a media tarde",
+      "text": "De vuelta en su hotel a tiempo para descansar."
+    }
+  ],
+  "stops": [
+    {
+      "day": "Día 1",
+      "text": "Ambanja y después el barco de Ankify a Nosy Be"
+    },
+    {
+      "day": "Día 2",
+      "text": "Día completo en Nosy Iranja, banco de arena y tortugas"
+    },
+    {
+      "day": "Día 3",
+      "text": "Nosy Lonjo por la mañana, regreso por la tarde"
+    }
+  ],
+  "heroAlt": "Barcos en la bahía cerca de Ramena",
+  "title": "Excursiones",
+  "intro": "De una mañana en el agua a una escapada de tres días. Díganos de cuánto tiempo dispone y nosotros nos ocupamos del resto.",
+  "region": "Región",
+  "length": "Duración",
+  "find": "Buscar excursiones",
+  "from": "Desde",
+  "perPerson": "por persona",
+  "details": "Ver detalles",
+  "resultsTitle": "Elija su excursión",
+  "found": "{count} excursiones encontradas",
+  "foundOne": "1 excursión encontrada",
+  "empty": "Todavía ninguna excursión coincide con esta búsqueda.",
+  "showAll": "Ver todas las excursiones",
+  "dayTitle": "Una excursión de un día, de principio a fin",
+  "multiAlt": "El banco de arena de Nosy Iranja",
+  "multiBadge": "3 días",
+  "multiTitle": "Tres días en las islas",
+  "multiText": "Nuestra escapada de varios días más solicitada une tierra firme con las islas que rodean Nosy Be, con todos los traslados organizados.",
+  "multiButton": "Solicitar esta escapada",
+  "ctaTitle": "¿Quiere una excursión hecha para usted?",
+  "ctaText": "Cuéntenos sus fechas e intereses. Un experto en viajes le responde en un día laborable.",
+  "ctaButton": "Planificar mi excursión"
+}

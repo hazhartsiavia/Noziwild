@@ -1,0 +1,128 @@
+{
+  "regions": {
+    "All regions": "Tutte le regioni",
+    "North": "Nord",
+    "Highlands": "Altopiani",
+    "West": "Ovest",
+    "East": "Est"
+  },
+  "lengths": [
+    "Qualsiasi durata",
+    "Mezza giornata",
+    "Giornata intera",
+    "2 giorni o più"
+  ],
+  "items": [
+    {
+      "title": "Una giornata nella valle del cacao e delle spezie",
+      "duration": "1 giorno",
+      "group": "Fino a 8 persone",
+      "level": "Facile",
+      "text": "Segui il cacao dall'albero all'essiccatoio e incontra i coltivatori lungo il fiume Sambirano."
+    },
+    {
+      "title": "In barca a vela nella baia di Ramena",
+      "duration": "Mezza giornata",
+      "group": "Fino a 10 persone",
+      "level": "Facile",
+      "text": "Una mattina sull'acqua con soste per il bagno nel Mare di Smeraldo."
+    },
+    {
+      "title": "Traversata da Ankify a Nosy Be",
+      "duration": "3 ore",
+      "group": "Fino a 12 persone",
+      "level": "Facile",
+      "text": "Una strada panoramica e una traversata in motoscafo, con pranzo in riva al mare."
+    },
+    {
+      "title": "Giornata sulla lingua di sabbia di Nosy Iranja",
+      "duration": "1 giorno",
+      "group": "Fino a 12 persone",
+      "level": "Facile",
+      "text": "Cammina sulla lingua di sabbia bianca, fai snorkeling con le tartarughe e sali al faro."
+    },
+    {
+      "title": "Antananarivo e Ambohimanga",
+      "duration": "1 giorno",
+      "group": "Fino a 8 persone",
+      "level": "Facile",
+      "text": "La città vecchia, il Rova e la collina reale sacra a nord della capitale."
+    },
+    {
+      "title": "Il Viale dei Baobab al tramonto",
+      "duration": "Mezza giornata",
+      "group": "Fino a 10 persone",
+      "level": "Facile",
+      "text": "Arriva prima della folla e guarda la luce colorare i tronchi di arancione."
+    },
+    {
+      "title": "Trekking nella foresta di Manongarivo",
+      "duration": "2 giorni",
+      "group": "Fino a 6 persone",
+      "level": "Impegnativo",
+      "text": "Sentieri guidati in una riserva protetta, con campeggio facoltativo."
+    },
+    {
+      "title": "Andasibe: l'indri e uscita notturna",
+      "duration": "2 giorni",
+      "group": "Fino a 8 persone",
+      "level": "Moderato",
+      "text": "Segui l'indri all'alba e avvista i lemuri notturni dopo il tramonto."
+    }
+  ],
+  "steps": [
+    {
+      "title": "Partenza dall'hotel",
+      "text": "Autista e guida passano a prenderti al mattino."
+    },
+    {
+      "title": "Visita guidata",
+      "text": "Soste senza fretta, con il tempo per foto e domande."
+    },
+    {
+      "title": "Pranzo con la gente del posto",
+      "text": "Un pasto semplice in un villaggio o in riva al mare."
+    },
+    {
+      "title": "Rientro nel tardo pomeriggio",
+      "text": "Riaccompagnato in hotel in tempo per riposare."
+    }
+  ],
+  "stops": [
+    {
+      "day": "Giorno 1",
+      "text": "Ambanja, poi la barca da Ankify a Nosy Be"
+    },
+    {
+      "day": "Giorno 2",
+      "text": "Giornata intera a Nosy Iranja, lingua di sabbia e tartarughe"
+    },
+    {
+      "day": "Giorno 3",
+      "text": "Nosy Lonjo al mattino, rientro nel pomeriggio"
+    }
+  ],
+  "heroAlt": "Barche nella baia vicino a Ramena",
+  "title": "Escursioni",
+  "intro": "Da una mattina sull'acqua a una fuga di tre giorni. Dicci quanto tempo hai, al resto pensiamo noi.",
+  "region": "Regione",
+  "length": "Durata",
+  "find": "Trova escursioni",
+  "from": "Da",
+  "perPerson": "a persona",
+  "details": "Vedi i dettagli",
+  "resultsTitle": "Scegli la tua escursione",
+  "found": "{count} escursioni trovate",
+  "foundOne": "1 escursione trovata",
+  "empty": "Nessuna escursione corrisponde ancora a questa ricerca.",
+  "showAll": "Mostra tutte le escursioni",
+  "dayTitle": "Una gita di un giorno, dall'inizio alla fine",
+  "multiAlt": "La lingua di sabbia di Nosy Iranja",
+  "multiBadge": "3 giorni",
+  "multiTitle": "Tre giorni sulle isole",
+  "multiText": "La nostra fuga di più giorni più richiesta collega la terraferma alle isole intorno a Nosy Be, con tutti i trasferimenti organizzati.",
+  "multiButton": "Richiedi questa fuga",
+  "ctaTitle": "Vuoi un'escursione su misura per te?",
+  "ctaText": "Indicaci date e interessi. Un esperto di viaggi ti risponde entro un giorno lavorativo.",
+  "ctaButton": "Organizza la mia escursione"
+}

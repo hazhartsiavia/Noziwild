@@ -1,0 +1,103 @@
+{
+  "ports": [
+    {
+      "sub": "Porto di Hell-Ville",
+      "text": "Isole, una foresta di lemuri e la terra dell'ylang-ylang."
+    },
+    {
+      "sub": "Antsiranana",
+      "text": "Una baia immensa, formazioni di roccia rossa e foresta pluviale di montagna."
+    }
+  ],
+  "tags": {
+    "Sea": "Mare",
+    "Nature": "Natura",
+    "Culture": "Cultura"
+  },
+  "items": [
+    {
+      "title": "Nosy Iranja in motoscafo",
+      "text": "Cammina sulla lingua di sabbia bianca, nuota e fai snorkeling con le tartarughe."
+    },
+    {
+      "title": "Snorkeling a Nosy Tanikely",
+      "text": "Snorkeling tranquillo sulla barriera in un parco marino, con sosta in spiaggia."
+    },
+    {
+      "title": "Foresta di Lokobe e Hell-Ville",
+      "text": "Cerca i lemuri con una guida, poi passeggia al mercato cittadino."
+    },
+    {
+      "title": "Ylang-ylang e Mont Passot",
+      "text": "Una distilleria in attività e un belvedere sui laghi craterici, perfetto al tramonto."
+    },
+    {
+      "title": "Mare di Smeraldo e Pan di Zucchero",
+      "text": "Una traversata della baia di Diego con bagni in acque basse e luminose."
+    },
+    {
+      "title": "Tsingy Rossi e città vecchia",
+      "text": "Formazioni di roccia rossa scolpite, poi una passeggiata a Diego Suarez."
+    },
+    {
+      "title": "Foresta pluviale della Montagne d'Ambre",
+      "text": "Cascate, laghi craterici e camaleonti in un fresco parco di montagna."
+    }
+  ],
+  "promises": [
+    {
+      "title": "Rientro prima dell'imbarco",
+      "text": "Ogni orario include i trasferimenti da e per il molo, e prevediamo un margine di sicurezza."
+    },
+    {
+      "title": "Accoglienza al molo",
+      "text": "La tua guida ti aspetta all'uscita della passerella con un cartello con il tuo nome."
+    },
+    {
+      "title": "Privato o piccolo gruppo",
+      "text": "Scegli un veicolo privato per la tua famiglia o un piccolo gruppo condiviso."
+    }
+  ],
+  "timeline": [
+    "La nave arriva in porto",
+    "Incontro con la guida al molo",
+    "Inizio dell'escursione",
+    "Rientro al molo",
+    "Tutti a bordo"
+  ],
+  "faqs": [
+    {
+      "q": "E se la mia nave è in ritardo?",
+      "a": "Indicaci la nave e l'orario di arrivo al momento della prenotazione. Seguiamo il programma e spostiamo l'inizio dell'escursione."
+    },
+    {
+      "q": "Posso prenotare una volta a bordo?",
+      "a": "Prenotare in anticipo è più sicuro: nei giorni di grande affluenza al porto veicoli e guide sono limitati."
+    },
+    {
+      "q": "Organizzate anche gruppi?",
+      "a": "Sì. Organizziamo gruppi privati, da una famiglia a una grande comitiva. Scrivici quante persone siete."
+    }
+  ],
+  "heroAlt": "Barche ormeggiate nella baia",
+  "eyebrow": "Per i crocieristi",
+  "title": "Il meglio del Madagascar in un giorno di scalo",
+  "intro": "Escursioni organizzate sugli orari della nave, con trasferimenti dal molo e un margine garantito prima dell'imbarco.",
+  "planButton": "Organizza il mio scalo",
+  "spare": "Di nuovo al molo con {minutes} min di anticipo",
+  "tooLong": "Serve uno scalo più lungo",
+  "from": "Da {price}",
+  "reserve": "Prenota",
+  "planTitle": "Organizza il tuo scalo",
+  "planText": "Scegli il porto, poi dicci quanto tempo hai a terra. Ti mostriamo cosa si può fare.",
+  "ashore": "Tempo a terra",
+  "ashoreHint": "Tra l'attracco e l'imbarco, trasferimenti inclusi.",
+  "fit": "{fit} escursioni su {total} compatibili con il tuo scalo a {port}",
+  "promisesTitle": "Pensato sugli orari della tua nave",
+  "timelineTitle": "Un giorno di scalo, ora per ora",
+  "timelineText": "Programma di esempio. I tuoi orari seguono quelli della nave.",
+  "faqTitle": "Buono a sapersi",
+  "groupTitle": "Viaggi in gruppo o con tutta la nave?",
+  "groupText": "Mandaci nave, data e numero di persone. Prepariamo un programma privato e rispondiamo entro un giorno lavorativo.",
+  "groupButton": "Richiedi un programma privato"
+}

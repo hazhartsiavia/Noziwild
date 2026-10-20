@@ -9,6 +9,7 @@ import Deux from '../assets/images/2.jpg'
 import Tana from '../assets/images/Tana.png'
 import Navbar from '../components/Navbar'
 import Footer from '../components/Footer'
+import { useT } from '../i18n/LanguageContext'
 
 gsap.registerPlugin(ScrollTrigger)
 
@@ -19,12 +20,7 @@ const BTN = 'inline-flex items-center justify-center text-sm font-medium px-6 py
 const H2 = 'text-3xl sm:text-4xl md:text-5xl lg:text-[56px] font-medium leading-[1.1] tracking-tight'
 
 /* ---------------------------- Données ---------------------------- */
-
-const facts = [
-  { value: '1 to 12', label: 'months, your choice' },
-  { value: '8', label: 'travellers max per group' },
-  { value: '7/7', label: 'on-site support' },
-]
+// Textes affichés : locales/<langue>/longstay.json (listes dans le même ordre qu'ici)
 
 const formats = [
   {
@@ -71,8 +67,6 @@ const services = [
   { title: 'Local contacts', text: 'Guides, doctors, teachers and community projects.', image: Ramena, span: 'col-span-2', pos: 'object-center' },
 ]
 
-const QUOTE = 'We came for three weeks and stayed for three months. Everything was ready when we landed.'
-
 /* ----------------------- Utilitaires GSAP ------------------------ */
 
 /* matchMedia scopé à la section (les sélecteurs ne sortent pas de leur bloc),
@@ -117,6 +111,7 @@ function Chars({ lines }) {
 
 function Hero() {
   const root = useRef(null)
+  const t = useT('longstay')
 
   // Hero : la section s'ouvre en iris depuis le bas, le titre jaillit lettre par lettre,
   // la carte vitrée glisse de la droite
@@ -135,25 +130,25 @@ function Hero() {
     <>
       <Navbar />
       <section ref={root} className={`${W} relative overflow-hidden rounded-[2rem] md:rounded-[3rem] ${DARK} text-white min-h-[560px] md:min-h-[86vh] flex items-end`}>
-        <img src={NosyIranja} alt="Turquoise water off Nosy Iranja" className="hero-bg absolute inset-0 w-full h-full object-cover" />
+        <img src={NosyIranja} alt={t('heroAlt')} className="hero-bg absolute inset-0 w-full h-full object-cover" />
         <div className="absolute inset-0 bg-gradient-to-t from-slate-950/85 via-slate-950/30 to-slate-950/10" />
 
         <div className="relative w-full grid grid-cols-1 lg:grid-cols-[1.5fr_1fr] gap-10 items-end p-6 sm:p-10 md:p-16">
           <div>
-            <p className="hero-eyebrow text-sm md:text-base text-white/80 mb-4">Long stays in Madagascar</p>
-            <h1 aria-label="Don’t Visit. Live The Island." className="text-5xl sm:text-6xl md:text-7xl xl:text-[96px] font-semibold leading-[0.95] tracking-tight">
-              <Chars lines={['Don’t Visit.', 'Live The Island.']} />
+            <p className="hero-eyebrow text-sm md:text-base text-white/80 mb-4">{t('eyebrow')}</p>
+            <h1 aria-label={t('titleLabel')} className="text-5xl sm:text-6xl md:text-7xl xl:text-[96px] font-semibold leading-[0.95] tracking-tight">
+              <Chars lines={t('titleLines')} />
             </h1>
             <div className="mt-8 flex flex-wrap gap-3">
-              <a href="/contact" className={`hero-btn ${BTN} ${GOLD} text-white`}>Plan my long stay</a>
-              <a href="#formats" className={`hero-btn ${BTN} border border-white/50 hover:bg-white/10 text-white`}>See the formats</a>
+              <a href="/contact" className={`hero-btn ${BTN} ${GOLD} text-white`}>{t('planButton')}</a>
+              <a href="#formats" className={`hero-btn ${BTN} border border-white/50 hover:bg-white/10 text-white`}>{t('formatsButton')}</a>
             </div>
           </div>
 
           {/* Carte vitrée */}
           <div className="hero-glass rounded-3xl border border-white/25 bg-white/10 backdrop-blur-md p-6 md:p-8">
             <ul className="grid grid-cols-3 gap-4">
-              {facts.map((f) => (
+              {t('facts').map((f) => (
                 <li key={f.label} className="hero-fact">
                   <p className="text-2xl md:text-4xl font-semibold">{f.value}</p>
                   <p className="mt-1 text-xs md:text-sm text-white/80 leading-snug">{f.label}</p>
@@ -169,6 +164,7 @@ function Hero() {
 
 function Manifesto() {
   const root = useRef(null)
+  const t = useT('longstay')
 
   // Texte qui se dévoile, collage dont les photos s'ouvrent puis dérivent à des vitesses
   // opposées pendant le scroll
@@ -189,23 +185,22 @@ function Manifesto() {
   return (
     <section ref={root} className={`${W} mt-20 md:mt-32 grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20 items-center`}>
       <div>
-        <h2 className={`man-title ${H2} text-slate-900`}>Madagascar Rewards Those Who Stay.</h2>
+        <h2 className={`man-title ${H2} text-slate-900`}>{t('manTitle')}</h2>
         <p className="man-text mt-6 text-base md:text-lg text-slate-700 leading-relaxed max-w-xl">
-          Two weeks show you the postcard. A month lets you learn the market days, the roads and the names of your neighbours.
-          We build the base so you can spend your time on the island, not on logistics.
+          {t('manText1')}
         </p>
         <p className="man-text mt-4 text-base md:text-lg text-slate-700 leading-relaxed max-w-xl">
-          Housing, transport, connectivity and local introductions are ready before you land.
+          {t('manText2')}
         </p>
       </div>
 
       {/* Collage */}
       <div className="relative h-[420px] sm:h-[520px] md:h-[600px]">
-        <img src={Ambanja} alt="Village life near Ambanja" className="man-img1 absolute left-0 top-0 w-[68%] h-[78%] object-cover rounded-[2rem]" />
-        <img src={Deux} alt="Northern Madagascar landscape" className="man-img2 absolute right-0 bottom-0 w-[52%] h-[52%] object-cover rounded-[2rem] border-[10px] border-[#D5E8E2]" />
+        <img src={Ambanja} alt={t('manAlt1')} className="man-img1 absolute left-0 top-0 w-[68%] h-[78%] object-cover rounded-[2rem]" />
+        <img src={Deux} alt={t('manAlt2')} className="man-img2 absolute right-0 bottom-0 w-[52%] h-[52%] object-cover rounded-[2rem] border-[10px] border-[#D5E8E2]" />
         <div className={`man-badge absolute left-[6%] bottom-[4%] rounded-2xl ${DARK} text-white px-5 py-4`}>
           <p className="text-3xl font-semibold">100+</p>
-          <p className="text-xs text-white/70">happy travellers</p>
+          <p className="text-xs text-white/70">{t('happy')}</p>
         </div>
       </div>
     </section>
@@ -213,8 +208,9 @@ function Manifesto() {
 }
 
 function Formats() {
+  const t = useT('longstay')
   const [active, setActive] = useState(0)
-  const f = formats[active]
+  const f = { ...formats[active], ...t('formats')[active] }
   const root = useRef(null)
   const prev = useRef(active)
 
@@ -239,7 +235,7 @@ function Formats() {
 
   return (
     <section ref={root} id="formats" className={`${W} mt-20 md:mt-32 rounded-[2rem] md:rounded-[3rem] ${DARK} text-white p-5 sm:p-8 md:p-14`}>
-      <h2 className={`fmt-title ${H2} max-w-3xl`}>Choose Your Rhythm</h2>
+      <h2 className={`fmt-title ${H2} max-w-3xl`}>{t('formatsTitle')}</h2>
 
       <div role="tablist" className="mt-8 flex flex-wrap gap-3">
         {formats.map((item, i) => (
@@ -252,7 +248,7 @@ function Formats() {
               active === i ? 'bg-[#C49849] text-white' : 'border border-white/30 text-white/80 hover:border-white'
             }`}
           >
-            {item.tab}
+            {t('formats')[i].tab}
           </button>
         ))}
       </div>
@@ -275,7 +271,7 @@ function Formats() {
           </ul>
           <div className="mt-8 flex flex-wrap items-center gap-5">
             <p className="text-2xl font-semibold">{f.price}</p>
-            <a href="/contact" className={`${BTN} ${GOLD} text-white`}>Ask for this stay</a>
+            <a href="/contact" className={`${BTN} ${GOLD} text-white`}>{t('askStay')}</a>
           </div>
         </div>
       </div>
@@ -285,6 +281,7 @@ function Formats() {
 
 function Weeks() {
   const root = useRef(null)
+  const t = useT('longstay')
 
   // Titre qui monte, puis chaque semaine se découvre de bas en haut, l'une après l'autre.
   // (Pas de translation sur les cartes : le conteneur défile en horizontal.)
@@ -301,12 +298,12 @@ function Weeks() {
   return (
     <section ref={root} className="w-full mt-20 md:mt-32 flex flex-col items-center">
       <div className={`wk-head ${W} flex flex-col md:flex-row md:items-end justify-between gap-4 mb-8`}>
-        <h2 className={`${H2} text-slate-900 max-w-2xl`}>A Month, Week By Week</h2>
-        <p className="text-sm md:text-base text-slate-600 max-w-sm">One way to spend four weeks. Scroll to explore. We adapt it to you.</p>
+        <h2 className={`${H2} text-slate-900 max-w-2xl`}>{t('weeksTitle')}</h2>
+        <p className="text-sm md:text-base text-slate-600 max-w-sm">{t('weeksText')}</p>
       </div>
       <div className="w-full overflow-x-auto snap-x snap-mandatory [scrollbar-width:none] [&::-webkit-scrollbar]:hidden">
         <ul className="wk-list flex gap-5 px-[5vw] pb-2 w-max">
-          {weeks.map((w) => (
+          {weeks.map((week, i) => ({ ...week, ...t('weeks')[i] })).map((w) => (
             <li key={w.week} className="wk-card snap-start relative shrink-0 w-[78vw] sm:w-[360px] md:w-[420px] aspect-[3/4] overflow-hidden rounded-[2rem] text-white">
               <img src={w.image} alt={w.place} className="wk-img absolute inset-0 w-full h-full object-cover" />
               <div className="absolute inset-0 bg-gradient-to-t from-slate-950/85 via-slate-950/10 to-transparent" />
@@ -325,6 +322,7 @@ function Weeks() {
 
 function Services() {
   const root = useRef(null)
+  const t = useT('longstay')
 
   // Les tuiles apparaissent depuis le centre de la grille vers les bords
   useGsap(root, () => {
@@ -338,9 +336,9 @@ function Services() {
 
   return (
     <section ref={root} className={`${W} mt-20 md:mt-32`}>
-      <h2 className={`svc-title ${H2} text-slate-900 max-w-3xl`}>Everything Ready Before You Land</h2>
+      <h2 className={`svc-title ${H2} text-slate-900 max-w-3xl`}>{t('servicesTitle')}</h2>
       <ul className="svc-grid mt-10 grid grid-cols-2 lg:grid-cols-4 auto-rows-[190px] md:auto-rows-[230px] gap-4 md:gap-5">
-        {services.map((s) => (
+        {services.map((service, i) => ({ ...service, ...t('services')[i] })).map((s) => (
           <li key={s.title} className={`svc-tile ${s.span} relative overflow-hidden rounded-[1.5rem] md:rounded-[2rem] text-white`}>
             <img src={s.image} alt="" className={`svc-img absolute inset-0 w-full h-full object-cover ${s.pos}`} />
             <div className="absolute inset-0 bg-gradient-to-t from-slate-950/80 via-slate-950/20 to-transparent" />
@@ -357,7 +355,9 @@ function Services() {
 
 function Quote() {
   const root = useRef(null)
-  const words = QUOTE.split(' ')
+  const t = useT('longstay')
+  const quote = t('quote')
+  const words = quote.split(' ')
 
   // La photo s'ouvre de gauche à droite ; la citation s'éclaire mot après mot,
   // au rythme du scroll
@@ -376,12 +376,12 @@ function Quote() {
     <section ref={root} className={`${W} mt-20 md:mt-32 grid grid-cols-1 md:grid-cols-[1fr_1.4fr] overflow-hidden rounded-[2rem] md:rounded-[3rem] bg-white`}>
       <img src={Tana} alt="" className="q-img w-full h-64 md:h-full object-cover" />
       <figure className="p-8 md:p-16 flex flex-col justify-center">
-        <blockquote aria-label={QUOTE} className="q-text text-2xl md:text-4xl font-medium leading-snug text-slate-900">
+        <blockquote aria-label={quote} className="q-text text-2xl md:text-4xl font-medium leading-snug text-slate-900">
           {words.map((w, i) => (
             <span key={i} aria-hidden="true" className="q-word">{w}{i < words.length - 1 ? ' ' : ''}</span>
           ))}
         </blockquote>
-        <figcaption className="q-cap mt-6 text-sm md:text-base text-slate-600">Traveller name, country</figcaption>
+        <figcaption className="q-cap mt-6 text-sm md:text-base text-slate-600">{t('quoteAuthor')}</figcaption>
       </figure>
     </section>
   )
@@ -389,6 +389,7 @@ function Quote() {
 
 function FinalCta() {
   const root = useRef(null)
+  const t = useT('longstay')
 
   // La carte se pose en grossissant, le fond passe de flou à net, texte puis boutons arrivent
   useGsap(root, () => {
@@ -404,11 +405,11 @@ function FinalCta() {
       <img src={Ramena} alt="" className="fin-bg absolute inset-0 w-full h-full object-cover" />
       <div className="absolute inset-0 bg-slate-950/65" />
       <div className="fin-text relative p-8 md:p-16 max-w-3xl">
-        <h2 className={H2}>Tell Us How Long You Want To Stay.</h2>
-        <p className="mt-4 text-sm md:text-lg text-white/85">Share your dates and plans. A travel expert replies within one working day.</p>
+        <h2 className={H2}>{t('finalTitle')}</h2>
+        <p className="mt-4 text-sm md:text-lg text-white/85">{t('finalText')}</p>
         <div className="mt-8 flex flex-wrap gap-3">
-          <a href="/contact" className={`fin-btn ${BTN} ${GOLD} text-white`}>Plan my long stay</a>
-          <a href="/circuits" className={`fin-btn ${BTN} border border-white/50 hover:bg-white/10`}>Browse circuits</a>
+          <a href="/contact" className={`fin-btn ${BTN} ${GOLD} text-white`}>{t('planButton')}</a>
+          <a href="/circuits" className={`fin-btn ${BTN} border border-white/50 hover:bg-white/10`}>{t('browse')}</a>
         </div>
       </div>
     </section>

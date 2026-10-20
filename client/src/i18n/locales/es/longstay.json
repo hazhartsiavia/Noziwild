@@ -1,0 +1,116 @@
+{
+  "facts": [
+    {
+      "value": "1 a 12",
+      "label": "meses, a su elección"
+    },
+    {
+      "value": "8",
+      "label": "viajeros máx. por grupo"
+    },
+    {
+      "value": "7/7",
+      "label": "asistencia en destino"
+    }
+  ],
+  "formats": [
+    {
+      "tab": "1 mes",
+      "title": "Un mes de viaje sin prisas",
+      "text": "Dos o tres bases, sin correr. Combine una bahía, las Tierras Altas y un parque nacional, con tiempo para detenerse entre medias.",
+      "points": [
+        "Alojamientos amueblados en 2 o 3 regiones",
+        "Conductor privado para los traslados",
+        "Excursiones guiadas cada semana"
+      ],
+      "price": "Desde 1900 €"
+    },
+    {
+      "tab": "3 meses",
+      "title": "Una temporada en Madagascar",
+      "text": "Instálese en una región, teletrabaje o haga voluntariado y salga de excursión guiada los fines de semana. Organizamos alojamiento, transporte y contactos locales.",
+      "points": [
+        "Una sola base con internet fiable",
+        "Una escapada guiada cada mes",
+        "Clases de idioma y proyectos solidarios"
+      ],
+      "price": "Desde 4800 €"
+    },
+    {
+      "tab": "6 meses +",
+      "title": "Vivir aquí, con todo el apoyo",
+      "text": "Para investigadores, artistas, familias y jubilados. Nos ocupamos del alojamiento y los trámites, y seguimos cerca durante toda la estancia.",
+      "points": [
+        "Búsqueda de alojamiento de larga duración",
+        "Trámites y prórrogas de visado",
+        "Un interlocutor fijo durante toda su estancia"
+      ],
+      "price": "A consultar"
+    }
+  ],
+  "weeks": [
+    {
+      "week": "Semana 1",
+      "text": "Llegada, instalación y descubrimiento de la capital y de la colina real de Ambohimanga."
+    },
+    {
+      "week": "Semana 2",
+      "text": "Trabaje frente a la bahía y navegue por la costa esmeralda."
+    },
+    {
+      "week": "Semana 3",
+      "text": "Plantaciones de cacao, mercados y fauna del norte."
+    },
+    {
+      "week": "Semana 4",
+      "text": "Termine el mes en las islas de Nosy Iranja y Nosy Lonjo."
+    }
+  ],
+  "services": [
+    {
+      "title": "Alojamiento",
+      "text": "Villas, apartamentos y casas de huéspedes."
+    },
+    {
+      "title": "Transporte",
+      "text": "Recogida en el aeropuerto y conductores privados."
+    },
+    {
+      "title": "Internet",
+      "text": "Tarjeta SIM y viviendas conectadas."
+    },
+    {
+      "title": "Trámites",
+      "text": "Ayuda con el visado y su prórroga."
+    },
+    {
+      "title": "Contactos locales",
+      "text": "Guías, médicos, profesores y proyectos solidarios."
+    }
+  ],
+  "quote": "Vinimos para tres semanas y nos quedamos tres meses. Todo estaba listo cuando llegamos.",
+  "quoteAuthor": "Nombre del viajero, país",
+  "heroAlt": "Agua turquesa frente a Nosy Iranja",
+  "eyebrow": "Estancias largas en Madagascar",
+  "titleLabel": "No la visite. Viva la isla.",
+  "titleLines": [
+    "No la visite.",
+    "Viva la isla."
+  ],
+  "planButton": "Planificar mi estancia larga",
+  "formatsButton": "Ver las fórmulas",
+  "manTitle": "Madagascar recompensa a quien se queda.",
+  "manText1": "Dos semanas le muestran la postal. Un mes le enseña los días de mercado, las carreteras y el nombre de sus vecinos. Preparamos la base para que dedique su tiempo a la isla y no a la logística.",
+  "manText2": "Alojamiento, transporte, conexión y contactos locales están listos antes de que aterrice.",
+  "manAlt1": "Vida de aldea cerca de Ambanja",
+  "manAlt2": "Paisaje del norte de Madagascar",
+  "happy": "viajeros felices",
+  "formatsTitle": "Elija su ritmo",
+  "askStay": "Solicitar esta estancia",
+  "weeksTitle": "Un mes, semana a semana",
+  "weeksText": "Una forma de pasar cuatro semanas. Deslice para descubrirla. La adaptamos a usted.",
+  "servicesTitle": "Todo listo antes de que aterrice",
+  "finalTitle": "Díganos cuánto tiempo quiere quedarse.",
+  "finalText": "Comparta sus fechas y sus planes. Un experto en viajes le responde en un día laborable.",
+  "browse": "Ver circuitos"
+}

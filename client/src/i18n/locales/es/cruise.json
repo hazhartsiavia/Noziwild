@@ -1,0 +1,103 @@
+{
+  "ports": [
+    {
+      "sub": "Puerto de Hell-Ville",
+      "text": "Islas, un bosque de lémures y la tierra del ylang-ylang."
+    },
+    {
+      "sub": "Antsiranana",
+      "text": "Una bahía inmensa, formaciones de roca roja y selva de montaña."
+    }
+  ],
+  "tags": {
+    "Sea": "Mar",
+    "Nature": "Naturaleza",
+    "Culture": "Cultura"
+  },
+  "items": [
+    {
+      "title": "Nosy Iranja en lancha rápida",
+      "text": "Camine por el banco de arena blanca, báñese y haga snorkel con tortugas."
+    },
+    {
+      "title": "Snorkel en Nosy Tanikely",
+      "text": "Snorkel tranquilo en un arrecife dentro de un parque marino, con parada en la playa."
+    },
+    {
+      "title": "Bosque de Lokobe y Hell-Ville",
+      "text": "Busque lémures con un guía y recorra después el mercado de la ciudad."
+    },
+    {
+      "title": "Ylang-ylang y Mont Passot",
+      "text": "Una destilería en funcionamiento y un mirador sobre lagos de cráter, ideal al atardecer."
+    },
+    {
+      "title": "Mar Esmeralda y Pan de Azúcar",
+      "text": "Una travesía en barco por la bahía de Diego con baño en aguas poco profundas y luminosas."
+    },
+    {
+      "title": "Tsingy Rojos y casco antiguo",
+      "text": "Formaciones esculpidas de roca roja y un paseo por Diego Suarez."
+    },
+    {
+      "title": "Selva de la Montaña de Ámbar",
+      "text": "Cascadas, lagos de cráter y camaleones en un fresco parque de montaña."
+    }
+  ],
+  "promises": [
+    {
+      "title": "De vuelta antes del embarque",
+      "text": "Todos los horarios incluyen los traslados desde y hasta el muelle, y prevemos un margen de seguridad."
+    },
+    {
+      "title": "Recibimiento en el muelle",
+      "text": "Su guía le espera a la salida de la pasarela con un cartel con su nombre."
+    },
+    {
+      "title": "En privado o en grupo reducido",
+      "text": "Elija un vehículo privado para su familia o un pequeño grupo compartido."
+    }
+  ],
+  "timeline": [
+    "El barco llega a puerto",
+    "Encuentro con su guía en el muelle",
+    "Empieza la excursión",
+    "De vuelta en el muelle",
+    "Todos a bordo"
+  ],
+  "faqs": [
+    {
+      "q": "¿Y si mi barco llega tarde?",
+      "a": "Indíquenos su barco y la hora de llegada al reservar. Seguimos el horario y adaptamos el inicio de su excursión."
+    },
+    {
+      "q": "¿Puedo reservar una vez a bordo?",
+      "a": "Es más seguro reservar con antelación: los vehículos y los guías son limitados los días de mucho tráfico en el puerto."
+    },
+    {
+      "q": "¿Organizan grupos?",
+      "a": "Sí. Organizamos grupos privados, desde una familia hasta un grupo grande. Escríbanos con el número de personas."
+    }
+  ],
+  "heroAlt": "Barcos fondeados en la bahía",
+  "eyebrow": "Para pasajeros de crucero",
+  "title": "Lo mejor de Madagascar en un día de escala",
+  "intro": "Excursiones ajustadas al horario de su barco, con traslados desde el muelle y un margen garantizado antes del embarque.",
+  "planButton": "Planificar mi escala",
+  "spare": "De vuelta en el muelle con {minutes} min de margen",
+  "tooLong": "Requiere una escala más larga",
+  "from": "Desde {price}",
+  "reserve": "Reservar",
+  "planTitle": "Planifique su día de escala",
+  "planText": "Elija su puerto y díganos cuánto tiempo tiene en tierra. Le mostramos lo que encaja.",
+  "ashore": "Tiempo en tierra",
+  "ashoreHint": "Entre el atraque y el embarque, traslados incluidos.",
+  "fit": "{fit} de {total} excursiones encajan con su escala en {port}",
+  "promisesTitle": "Pensado según el horario de su barco",
+  "timelineTitle": "Un día de escala, hora a hora",
+  "timelineText": "Horario de ejemplo. Sus horas siguen las de su barco.",
+  "faqTitle": "Conviene saber",
+  "groupTitle": "¿Viaja en grupo o con todo el barco?",
+  "groupText": "Envíenos su barco, la fecha y el tamaño del grupo. Preparamos un programa privado y respondemos en un día laborable.",
+  "groupButton": "Solicitar un programa privado"
+}

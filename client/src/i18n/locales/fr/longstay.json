@@ -1,0 +1,116 @@
+{
+  "facts": [
+    {
+      "value": "1 à 12",
+      "label": "mois, au choix"
+    },
+    {
+      "value": "8",
+      "label": "voyageurs max par groupe"
+    },
+    {
+      "value": "7j/7",
+      "label": "assistance sur place"
+    }
+  ],
+  "formats": [
+    {
+      "tab": "1 mois",
+      "title": "Un mois de voyage lent",
+      "text": "Deux ou trois bases, sans vous presser. Combinez une baie, les Hautes Terres et un parc national, avec du temps pour souffler entre les deux.",
+      "points": [
+        "Logements meublés dans 2 à 3 régions",
+        "Chauffeur privé pour les transferts",
+        "Excursions guidées chaque semaine"
+      ],
+      "price": "À partir de 1 900 €"
+    },
+    {
+      "tab": "3 mois",
+      "title": "Une saison à Madagascar",
+      "text": "Installez-vous dans une région, travaillez à distance ou faites du bénévolat, et partez en excursion guidée le week-end. Nous organisons logement, transport et contacts locaux.",
+      "points": [
+        "Un seul point de chute avec une connexion fiable",
+        "Une escapade guidée chaque mois",
+        "Cours de langue et projets solidaires"
+      ],
+      "price": "À partir de 4 800 €"
+    },
+    {
+      "tab": "6 mois +",
+      "title": "Vivre ici, entièrement accompagné",
+      "text": "Pour les chercheurs, les artistes, les familles et les retraités. Nous gérons le logement et les démarches, puis restons à vos côtés pendant tout le séjour.",
+      "points": [
+        "Recherche de logement longue durée",
+        "Démarches et prolongations de visa",
+        "Un interlocuteur dédié pendant tout votre séjour"
+      ],
+      "price": "Sur demande"
+    }
+  ],
+  "weeks": [
+    {
+      "week": "Semaine 1",
+      "text": "Arrivée, installation, découverte de la capitale et de la colline royale d'Ambohimanga."
+    },
+    {
+      "week": "Semaine 2",
+      "text": "Travaillez face à la baie et naviguez le long de la côte émeraude."
+    },
+    {
+      "week": "Semaine 3",
+      "text": "Plantations de cacao, marchés et faune du Nord."
+    },
+    {
+      "week": "Semaine 4",
+      "text": "Terminez le mois sur les îles de Nosy Iranja et Nosy Lonjo."
+    }
+  ],
+  "services": [
+    {
+      "title": "Logement",
+      "text": "Villas, appartements et maisons d'hôtes."
+    },
+    {
+      "title": "Transport",
+      "text": "Accueil à l'aéroport et chauffeurs privés."
+    },
+    {
+      "title": "Internet",
+      "text": "Carte SIM et logements connectés."
+    },
+    {
+      "title": "Démarches",
+      "text": "Aide pour le visa et sa prolongation."
+    },
+    {
+      "title": "Contacts locaux",
+      "text": "Guides, médecins, professeurs et projets solidaires."
+    }
+  ],
+  "quote": "Nous étions venus pour trois semaines et sommes restés trois mois. Tout était prêt à notre arrivée.",
+  "quoteAuthor": "Nom du voyageur, pays",
+  "heroAlt": "Eau turquoise au large de Nosy Iranja",
+  "eyebrow": "Longs séjours à Madagascar",
+  "titleLabel": "Ne visitez pas. Vivez l'île.",
+  "titleLines": [
+    "Ne visitez pas.",
+    "Vivez l'île."
+  ],
+  "planButton": "Organiser mon long séjour",
+  "formatsButton": "Voir les formules",
+  "manTitle": "Madagascar récompense ceux qui restent.",
+  "manText1": "Deux semaines vous montrent la carte postale. Un mois vous apprend les jours de marché, les routes et le nom de vos voisins. Nous préparons la base pour que vous passiez votre temps sur l'île, pas dans la logistique.",
+  "manText2": "Logement, transport, connexion et présentations locales sont prêts avant votre arrivée.",
+  "manAlt1": "Vie de village près d'Ambanja",
+  "manAlt2": "Paysage du nord de Madagascar",
+  "happy": "voyageurs ravis",
+  "formatsTitle": "Choisissez votre rythme",
+  "askStay": "Demander ce séjour",
+  "weeksTitle": "Un mois, semaine après semaine",
+  "weeksText": "Une façon de passer quatre semaines. Faites défiler pour explorer. Nous l'adaptons à vous.",
+  "servicesTitle": "Tout est prêt avant votre arrivée",
+  "finalTitle": "Dites-nous combien de temps vous voulez rester.",
+  "finalText": "Partagez vos dates et vos projets. Un expert du voyage vous répond sous un jour ouvré.",
+  "browse": "Voir les circuits"
+}

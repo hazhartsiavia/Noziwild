@@ -1,0 +1,103 @@
+{
+  "ports": [
+    {
+      "sub": "Hafen von Hell-Ville",
+      "text": "Inseln, ein Lemurenwald und das Land des Ylang-Ylang."
+    },
+    {
+      "sub": "Antsiranana",
+      "text": "Eine riesige Bucht, rote Felsformationen und Bergregenwald."
+    }
+  ],
+  "tags": {
+    "Sea": "Meer",
+    "Nature": "Natur",
+    "Culture": "Kultur"
+  },
+  "items": [
+    {
+      "title": "Mit dem Schnellboot nach Nosy Iranja",
+      "text": "Laufen Sie über die weiße Sandbank, baden und schnorcheln Sie mit Schildkröten."
+    },
+    {
+      "title": "Schnorcheln bei Nosy Tanikely",
+      "text": "Ruhiges Riffschnorcheln in einem Meeresschutzgebiet, mit Strandpause."
+    },
+    {
+      "title": "Lokobe-Wald und Hell-Ville",
+      "text": "Suchen Sie mit einem Guide nach Lemuren und bummeln Sie dann über den Stadtmarkt."
+    },
+    {
+      "title": "Ylang-Ylang und Mont Passot",
+      "text": "Eine aktive Destillerie und ein Aussichtspunkt über Kraterseen – perfekt zum Sonnenuntergang."
+    },
+    {
+      "title": "Smaragdmeer und Zuckerhut",
+      "text": "Eine Bootsfahrt über die Bucht von Diego mit Baden in flachem, leuchtendem Wasser."
+    },
+    {
+      "title": "Rote Tsingy und Altstadt",
+      "text": "Skulpturale rote Felsformationen, danach ein Spaziergang durch Diego Suarez."
+    },
+    {
+      "title": "Regenwald der Montagne d'Ambre",
+      "text": "Wasserfälle, Kraterseen und Chamäleons in einem kühlen Bergpark."
+    }
+  ],
+  "promises": [
+    {
+      "title": "Zurück vor dem Ablegen",
+      "text": "Alle Zeiten enthalten die Transfers zum und vom Pier, und wir planen einen Sicherheitspuffer ein."
+    },
+    {
+      "title": "Empfang am Pier",
+      "text": "Ihr Guide wartet mit einem Namensschild am Ausgang der Gangway."
+    },
+    {
+      "title": "Privat oder in kleiner Gruppe",
+      "text": "Wählen Sie ein Privatfahrzeug für Ihre Familie oder eine kleine gemeinsame Gruppe."
+    }
+  ],
+  "timeline": [
+    "Das Schiff legt an",
+    "Treffen mit Ihrem Guide am Pier",
+    "Der Ausflug beginnt",
+    "Zurück am Pier",
+    "Alle an Bord"
+  ],
+  "faqs": [
+    {
+      "q": "Was, wenn mein Schiff Verspätung hat?",
+      "a": "Nennen Sie uns bei der Buchung Ihr Schiff und die Ankunftszeit. Wir verfolgen den Fahrplan und passen den Beginn Ihres Ausflugs an."
+    },
+    {
+      "q": "Kann ich auch an Bord buchen?",
+      "a": "Vorab zu buchen ist sicherer, da Fahrzeuge und Guides an vollen Hafentagen begrenzt sind."
+    },
+    {
+      "q": "Betreuen Sie auch Gruppen?",
+      "a": "Ja. Wir organisieren private Gruppen – von der Familie bis zur großen Gesellschaft. Schreiben Sie uns die Personenzahl."
+    }
+  ],
+  "heroAlt": "In der Bucht vor Anker liegende Boote",
+  "eyebrow": "Für Kreuzfahrtgäste",
+  "title": "Das Beste von Madagaskar an einem Hafentag",
+  "intro": "Ausflüge, abgestimmt auf Ihr Schiff, mit Transfers ab Pier und einem garantierten Puffer vor dem Ablegen.",
+  "planButton": "Meinen Hafentag planen",
+  "spare": "Zurück am Pier mit {minutes} Min. Puffer",
+  "tooLong": "Benötigt einen längeren Hafenaufenthalt",
+  "from": "Ab {price}",
+  "reserve": "Reservieren",
+  "planTitle": "Planen Sie Ihren Hafentag",
+  "planText": "Wählen Sie Ihren Hafen und sagen Sie uns, wie viel Zeit Sie an Land haben. Wir zeigen, was passt.",
+  "ashore": "Zeit an Land",
+  "ashoreHint": "Zwischen Anlegen und Ablegen, Transfers inklusive.",
+  "fit": "{fit} von {total} Ausflügen passen zu Ihrem Aufenthalt in {port}",
+  "promisesTitle": "Ganz nach dem Fahrplan Ihres Schiffs",
+  "timelineTitle": "Ein Hafentag, Stunde für Stunde",
+  "timelineText": "Beispielplan. Ihre Zeiten richten sich nach Ihrem Schiff.",
+  "faqTitle": "Gut zu wissen",
+  "groupTitle": "Reisen Sie mit einer Gruppe oder dem ganzen Schiff?",
+  "groupText": "Nennen Sie uns Schiff, Datum und Gruppengröße. Wir erstellen ein privates Programm und antworten innerhalb eines Werktags.",
+  "groupButton": "Privates Programm anfragen"
+}

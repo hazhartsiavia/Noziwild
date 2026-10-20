@@ -9,6 +9,8 @@ import Deux from '../assets/images/2.jpg'
 import Tana from '../assets/images/Tana.png'
 import Navbar from '../components/Navbar'
 import Footer from '../components/Footer'
+import { useLanguage, useT } from '../i18n/LanguageContext'
+import { formatPrice } from '../utils/format'
 
 gsap.registerPlugin(ScrollTrigger)
 
@@ -19,7 +21,8 @@ const H2 = 'text-3xl sm:text-4xl md:text-5xl font-medium leading-[1.1] tracking-
 const SELECT = 'w-full h-12 rounded-full border border-slate-300 bg-white px-5 text-base text-slate-800 focus:outline-none focus:border-slate-700 focus:ring-1 focus:ring-slate-700'
 
 /* ---------------------------- Données ---------------------------- */
-/* length : 'half' | 'day' | 'multi' — href : page de détail si elle existe, sinon contact */
+/* length : 'half' | 'day' | 'multi' — href : page de détail si elle existe, sinon contact
+   Textes affichés : locales/<langue>/excursions.json (items, steps, stops : même ordre qu'ici) */
 
 const regions = ['All regions', 'North', 'Highlands', 'West', 'East']
 const lengths = [
@@ -80,6 +83,7 @@ const reveal = (targets, from, to, extra = {}) =>
 function Hero({ region, setRegion, length, setLength }) {
   const heroRef = useRef(null)
   const formRef = useRef(null)
+  const t = useT('excursions')
 
   // Hero : l'image se dézoome, le titre « respire » (espacement des lettres + flou),
   // le bloc texte dérive vers le haut quand on scrolle
@@ -114,11 +118,11 @@ function Hero({ region, setRegion, length, setLength }) {
     <>
       <Navbar />
       <section ref={heroRef} className={`${W} relative overflow-hidden rounded-[2rem] md:rounded-[3rem] bg-slate-900 text-white min-h-[460px] md:min-h-[70vh] flex items-center`}>
-        <img src={Ramena} alt="Boats on the bay near Ramena" className="hero-bg absolute inset-0 w-full h-full object-cover" />
+        <img src={Ramena} alt={t('heroAlt')} className="hero-bg absolute inset-0 w-full h-full object-cover" />
         <div className="absolute inset-0 bg-slate-950/55" />
         <div className="hero-content relative w-full px-6 sm:px-10 md:px-16 pb-16 text-center flex flex-col items-center">
-          <h1 className="hero-title text-6xl sm:text-7xl md:text-8xl xl:text-[120px] font-semibold leading-[0.95] tracking-tight">Excursions</h1>
-          <p className="hero-sub mt-5 text-base md:text-xl text-white/90 max-w-2xl">From a morning on the water to a three-day escape. Choose how long you have, we handle the rest.</p>
+          <h1 className="hero-title text-6xl sm:text-7xl md:text-8xl xl:text-[120px] font-semibold leading-[0.95] tracking-tight">{t('title')}</h1>
+          <p className="hero-sub mt-5 text-base md:text-xl text-white/90 max-w-2xl">{t('intro')}</p>
         </div>
       </section>
 
@@ -129,24 +133,26 @@ function Hero({ region, setRegion, length, setLength }) {
         className={`${W} relative z-10 -mt-10 md:-mt-12 grid grid-cols-1 md:grid-cols-[1fr_1fr_auto] gap-4 items-end rounded-[2rem] bg-white p-5 md:p-7 shadow-lg`}
       >
         <div className="hero-field">
-          <label htmlFor="region" className="block mb-2 text-sm md:text-base text-slate-700">Region</label>
+          <label htmlFor="region" className="block mb-2 text-sm md:text-base text-slate-700">{t('region')}</label>
           <select id="region" value={region} onChange={(e) => setRegion(e.target.value)} className={SELECT}>
-            {regions.map((r) => <option key={r}>{r}</option>)}
+            {regions.map((r) => <option key={r} value={r}>{t('regions')[r]}</option>)}
           </select>
         </div>
         <div className="hero-field">
-          <label htmlFor="length" className="block mb-2 text-sm md:text-base text-slate-700">Length</label>
+          <label htmlFor="length" className="block mb-2 text-sm md:text-base text-slate-700">{t('length')}</label>
           <select id="length" value={length} onChange={(e) => setLength(e.target.value)} className={SELECT}>
-            {lengths.map((l) => <option key={l.value} value={l.value}>{l.label}</option>)}
+            {lengths.map((l, i) => <option key={l.value} value={l.value}>{t('lengths')[i]}</option>)}
           </select>
         </div>
-        <button type="submit" className={`hero-find ${BTN} ${GOLD} text-white h-12 md:px-8`}>Find excursions</button>
+        <button type="submit" className={`hero-find ${BTN} ${GOLD} text-white h-12 md:px-8`}>{t('find')}</button>
       </form>
     </>
   )
 }
 
 function Row({ item }) {
+  const t = useT('excursions')
+  const { lang } = useLanguage()
   return (
     <li className="excursion-row grid grid-cols-1 md:grid-cols-[300px_1fr_auto] lg:grid-cols-[360px_1fr_auto] gap-4 md:gap-8 rounded-[2rem] bg-white p-3 md:p-4 md:items-stretch">
       <a href={item.href} className="group relative block aspect-[4/3] md:aspect-auto md:min-h-[220px] overflow-hidden rounded-[1.5rem]">
@@ -156,7 +162,7 @@ function Row({ item }) {
 
       <div className="px-2 md:px-0 md:py-4 flex flex-col justify-center">
         <p className="flex items-center gap-3 text-xs sm:text-sm text-slate-600">
-          <span>{item.place}</span><span className="w-px h-4 bg-slate-500" /><span>{item.level}</span><span className="w-px h-4 bg-slate-500" /><span>{item.group} guests</span>
+          <span>{item.place}</span><span className="w-px h-4 bg-slate-500" /><span>{item.level}</span><span className="w-px h-4 bg-slate-500" /><span>{item.group}</span>
         </p>
         <h3 className="mt-3 text-xl md:text-3xl font-medium leading-snug text-slate-900">
           <a href={item.href} className="hover:underline">{item.title}</a>
@@ -165,14 +171,15 @@ function Row({ item }) {
       </div>
 
       <div className="row-side px-2 pb-3 md:p-4 md:pr-6 flex md:flex-col items-center md:items-end justify-between md:justify-center gap-4 md:border-l md:border-slate-200 md:pl-8">
-        <p className="text-slate-600 text-sm md:text-right">From<br className="hidden md:block" /> <span className="text-2xl md:text-3xl font-semibold text-slate-900">€{item.price}</span><span className="block text-xs">per person</span></p>
-        <a href={item.href} className={`${BTN} bg-slate-800 hover:bg-slate-700 text-white`}>View details</a>
+        <p className="text-slate-600 text-sm md:text-right">{t('from')}<br className="hidden md:block" /> <span className="text-2xl md:text-3xl font-semibold text-slate-900">{formatPrice(item.price, lang)}</span><span className="block text-xs">{t('perPerson')}</span></p>
+        <a href={item.href} className={`${BTN} bg-slate-800 hover:bg-slate-700 text-white`}>{t('details')}</a>
       </div>
     </li>
   )
 }
 
 function Excursions() {
+  const t = useT('excursions')
   const [region, setRegion] = useState('All regions')
   const [length, setLength] = useState('any')
 
@@ -181,7 +188,7 @@ function Excursions() {
   const multiRef = useRef(null)
   const ctaRef = useRef(null)
 
-  const visible = excursions.filter(
+  const visible = excursions.map((e, i) => ({ ...e, ...t('items')[i] })).filter(
     (e) => (region === 'All regions' || e.region === region) && (length === 'any' || e.length === length)
   )
 
@@ -263,26 +270,26 @@ function Excursions() {
         {/* Résultats */}
         <section ref={resultsRef} id="results" className={`${W} mt-16 md:mt-24 scroll-mt-6`}>
           <div className="flex flex-col md:flex-row md:items-end justify-between gap-3 mb-8">
-            <h2 className={`res-title ${H2}`}>Choose Your Excursion</h2>
-            <p role="status" className="res-count text-sm md:text-base text-slate-700">{visible.length} {visible.length === 1 ? 'excursion' : 'excursions'} found</p>
+            <h2 className={`res-title ${H2}`}>{t('resultsTitle')}</h2>
+            <p role="status" className="res-count text-sm md:text-base text-slate-700">{visible.length === 1 ? t('foundOne') : t('found', { count: visible.length })}</p>
           </div>
 
           {visible.length > 0 ? (
             <ul className="flex flex-col gap-5">{visible.map((item) => <Row key={item.id} item={item} />)}</ul>
           ) : (
             <div className="rounded-[2rem] bg-white p-10 text-center">
-              <p className="text-lg text-slate-700">No excursion matches this search yet.</p>
-              <button type="button" onClick={() => { setRegion('All regions'); setLength('any') }} className={`${BTN} bg-slate-800 hover:bg-slate-700 text-white mt-5`}>Show all excursions</button>
+              <p className="text-lg text-slate-700">{t('empty')}</p>
+              <button type="button" onClick={() => { setRegion('All regions'); setLength('any') }} className={`${BTN} bg-slate-800 hover:bg-slate-700 text-white mt-5`}>{t('showAll')}</button>
             </div>
           )}
         </section>
 
         {/* Une journée type */}
         <section ref={dayRef} className={`${W} mt-16 md:mt-28 rounded-[2rem] md:rounded-[3rem] bg-slate-900 text-white p-6 sm:p-10 md:p-14`}>
-          <h2 className="day-title text-3xl sm:text-4xl md:text-5xl font-medium leading-[1.1] tracking-tight max-w-2xl">A Day Trip, Start To Finish</h2>
+          <h2 className="day-title text-3xl sm:text-4xl md:text-5xl font-medium leading-[1.1] tracking-tight max-w-2xl">{t('dayTitle')}</h2>
           <ol className="mt-10 grid grid-cols-1 md:grid-cols-4 gap-8">
-            {steps.map((s, i) => (
-              <li key={s.title} className="day-step border-t border-white/25 pt-5">
+            {t('steps').map((s, i) => (
+              <li key={steps[i].title} className="day-step border-t border-white/25 pt-5">
                 <span className="day-num inline-block text-[#C49849] text-lg font-semibold">{i + 1}</span>
                 <h3 className="mt-2 text-xl font-medium">{s.title}</h3>
                 <p className="mt-2 text-sm md:text-base text-white/75 leading-relaxed">{s.text}</p>
@@ -294,21 +301,21 @@ function Excursions() {
         {/* Escapade de plusieurs jours */}
         <section ref={multiRef} className={`${W} mt-16 md:mt-28 grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-16 items-center`}>
           <div className="multi-frame relative aspect-[4/3] lg:aspect-[4/5] overflow-hidden rounded-[2rem] md:rounded-[3rem]">
-            <img src={NosyIranja} alt="Nosy Iranja sandbar" className="multi-img absolute inset-0 w-full h-full object-cover" />
-            <span className="multi-badge absolute left-5 top-5 bg-[#C49849] text-white text-sm font-medium px-3 py-1.5 rounded-sm">3 days</span>
+            <img src={NosyIranja} alt={t('multiAlt')} className="multi-img absolute inset-0 w-full h-full object-cover" />
+            <span className="multi-badge absolute left-5 top-5 bg-[#C49849] text-white text-sm font-medium px-3 py-1.5 rounded-sm">{t('multiBadge')}</span>
           </div>
           <div className="multi-text">
-            <h2 className={H2}>Three Days On The Islands</h2>
-            <p className="mt-4 text-base md:text-lg text-slate-700 leading-relaxed max-w-xl">Our most requested multi-day escape links the mainland to the islands around Nosy Be, with every transfer arranged.</p>
+            <h2 className={H2}>{t('multiTitle')}</h2>
+            <p className="mt-4 text-base md:text-lg text-slate-700 leading-relaxed max-w-xl">{t('multiText')}</p>
             <ul className="mt-8 flex flex-col divide-y divide-slate-900/15 border-y border-slate-900/15">
-              {stops.map((s) => (
-                <li key={s.day} className="multi-stop flex gap-6 py-4 text-base md:text-lg text-slate-800">
+              {t('stops').map((s, i) => (
+                <li key={stops[i].day} className="multi-stop flex gap-6 py-4 text-base md:text-lg text-slate-800">
                   <span className="w-16 shrink-0 font-medium">{s.day}</span>
                   <span>{s.text}</span>
                 </li>
               ))}
             </ul>
-            <a href="/contact?place=Three%20Days%20On%20The%20Islands" className={`multi-btn ${BTN} ${GOLD} text-white mt-8`}>Ask for this escape</a>
+            <a href="/contact?place=Three%20Days%20On%20The%20Islands" className={`multi-btn ${BTN} ${GOLD} text-white mt-8`}>{t('multiButton')}</a>
           </div>
         </section>
 
@@ -317,9 +324,9 @@ function Excursions() {
           <img src={Deux} alt="" className="cta-bg absolute inset-0 w-full h-full object-cover" />
           <div className="absolute inset-0 bg-slate-950/65" />
           <div className="cta-text relative p-8 md:p-16 max-w-3xl">
-            <h2 className="text-3xl sm:text-4xl md:text-5xl font-medium leading-[1.1] tracking-tight">Want an excursion made for you?</h2>
-            <p className="mt-4 text-sm md:text-lg text-white/85">Tell us your dates and interests. A travel expert replies within one working day.</p>
-            <a href="/contact" className={`cta-btn ${BTN} ${GOLD} text-white mt-8`}>Plan my excursion</a>
+            <h2 className="text-3xl sm:text-4xl md:text-5xl font-medium leading-[1.1] tracking-tight">{t('ctaTitle')}</h2>
+            <p className="mt-4 text-sm md:text-lg text-white/85">{t('ctaText')}</p>
+            <a href="/contact" className={`cta-btn ${BTN} ${GOLD} text-white mt-8`}>{t('ctaButton')}</a>
           </div>
         </section>
       </main>
