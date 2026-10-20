@@ -1,0 +1,188 @@
+{
+  "categories": [
+    {
+      "label": "Tout le matériel"
+    },
+    {
+      "label": "Eau"
+    },
+    {
+      "label": "Trek et camping"
+    },
+    {
+      "label": "Deux-roues"
+    },
+    {
+      "label": "Photo et optique"
+    }
+  ],
+  "gear": [
+    {
+      "name": "Kit de snorkeling",
+      "specs": [
+        "Masque + palmes + tuba",
+        "Toutes les tailles"
+      ],
+      "text": "Un équipement propre et bien ajusté pour les récifs et les baies calmes."
+    },
+    {
+      "name": "Kayak biplace",
+      "specs": [
+        "2 personnes",
+        "Pagaies + gilets"
+      ],
+      "text": "Stable et facile à manier, idéal pour les eaux côtières calmes."
+    },
+    {
+      "name": "Stand-up paddle",
+      "specs": [
+        "Gonflable",
+        "Pompe + pagaie"
+      ],
+      "text": "Explorez des lagons tranquilles à votre rythme."
+    },
+    {
+      "name": "Sac de randonnée 50 L",
+      "specs": [
+        "50 L",
+        "Housse de pluie"
+      ],
+      "text": "Un portage confortable pour les randonnées de plusieurs jours et les petits treks."
+    },
+    {
+      "name": "Tente 2 personnes",
+      "specs": [
+        "2 personnes",
+        "Imperméable"
+      ],
+      "text": "Légère, rapide à monter et prête pour les nuits pluvieuses."
+    },
+    {
+      "name": "VTT",
+      "specs": [
+        "21 vitesses",
+        "Casque inclus"
+      ],
+      "text": "Découvrez villages et routes côtières sur deux roues."
+    },
+    {
+      "name": "Scooter 125 cm³",
+      "specs": [
+        "Permis obligatoire",
+        "Casque inclus"
+      ],
+      "text": "La liberté d'explorer, avec assurance et plein d'essence au départ."
+    },
+    {
+      "name": "Jumelles 8x42",
+      "specs": [
+        "8x42",
+        "Sangle + étui"
+      ],
+      "text": "Lumineuses et nettes, parfaites pour les oiseaux et les lémuriens."
+    },
+    {
+      "name": "Appareil photo étanche",
+      "specs": [
+        "Vidéo 4K",
+        "Carte 64 Go"
+      ],
+      "text": "Immortalisez snorkeling et sorties en bateau sans vous inquiéter."
+    }
+  ],
+  "arches": [
+    {
+      "label": "Eau"
+    },
+    {
+      "label": "Trek et camping"
+    },
+    {
+      "label": "Deux-roues"
+    },
+    {
+      "label": "Photo et optique"
+    }
+  ],
+  "included": [
+    "Nettoyé et vérifié avant chaque location",
+    "Couverture de base en cas de dégât",
+    "Petite démonstration à la remise",
+    "Échange gratuit en cas de défaut"
+  ],
+  "pickups": [
+    {
+      "title": "Retrait à notre agence",
+      "text": "Récupérez et rendez votre matériel à notre agence d'Antananarivo, ouverte tous les jours.",
+      "price": "Gratuit"
+    },
+    {
+      "title": "Livraison à l'hôtel",
+      "text": "Nous apportons le matériel à votre hôtel et le récupérons à la fin de votre séjour.",
+      "price": "À partir de 5 $"
+    },
+    {
+      "title": "Remise à l'aéroport",
+      "text": "Retrouvez-nous aux arrivées avec votre matériel prêt. Rendez-le avant votre vol.",
+      "price": "À partir de 10 $"
+    }
+  ],
+  "faqs": [
+    {
+      "q": "Dois-je verser une caution ?",
+      "a": "Une petite caution remboursable est demandée pour les articles plus importants comme les kayaks, les scooters et les appareils photo. Elle est rendue quand le matériel revient en bon état."
+    },
+    {
+      "q": "Et si je rends le matériel en retard ?",
+      "a": "Prévenez-nous le plus tôt possible. Un jour de retard est facturé au tarif journalier normal, et nous vous aidons à prolonger si le matériel est disponible."
+    },
+    {
+      "q": "Que se passe-t-il si quelque chose casse ?",
+      "a": "L'usure normale est couverte. En cas de dégât accidentel, nous examinons la situation ensemble, et une couverture de base s'applique à la plupart des articles."
+    },
+    {
+      "q": "Faut-il de l'expérience pour louer un kayak ou un scooter ?",
+      "a": "Les kayaks et les paddles conviennent aux débutants. Un permis de conduire valide est exigé pour les scooters, et nous vous expliquons tout à la remise."
+    },
+    {
+      "q": "Puis-je louer du matériel dans le cadre d'un voyage ?",
+      "a": "Oui. Ajoutez votre liste à un devis de voyage et nous livrons tout là où vous en avez besoin, le bon jour."
+    }
+  ],
+  "eyebrow": "Équipement et location",
+  "title": "Voyagez léger, louez malin",
+  "intro": "Laissez les gros sacs à la maison. Louez du matériel propre et vérifié pour votre voyage, livré là où vous logez.",
+  "browse": "Parcourir le catalogue",
+  "items": "{count} articles",
+  "itemOne": "1 article",
+  "perDay": "{price} / jour",
+  "add": "Ajouter",
+  "removeOne": "Retirer un {name}",
+  "addOne": "Ajouter un {name}",
+  "catalogTitle": "Composez votre liste de location",
+  "catalogText": "Ajoutez ce dont vous avez besoin, choisissez le nombre de jours et obtenez une estimation immédiate.",
+  "tabsLabel": "Catégories de matériel",
+  "listTitle": "Votre liste de location",
+  "length": "Durée de location",
+  "fewer": "Moins de jours",
+  "more": "Plus de jours",
+  "days": "{count} jours",
+  "dayOne": "1 jour",
+  "empty": "Votre liste est vide. Ajoutez du matériel depuis le catalogue et votre estimation apparaîtra ici.",
+  "discount": "Remise 7 jours et plus (−10 %)",
+  "total": "Total estimé",
+  "request": "Demander ce devis",
+  "note": "Simple estimation. Une caution remboursable peut s'appliquer à certains articles. Prix final confirmé par notre équipe.",
+  "pickupTitle": "Retrait et retour",
+  "pickupText": "Choisissez la formule qui convient à votre emploi du temps. Le retour se fait toujours au même endroit que le retrait.",
+  "faqTitle": "Questions fréquentes",
+  "faqText": "Vous ne trouvez pas votre réponse ? Notre équipe répond en quelques heures.",
+  "ctaTitle": "Vous ne trouvez pas ce qu'il vous faut ?",
+  "ctaText": "Dites-nous quel matériel vous cherchez et nous essaierons de le trouver pour vos dates.",
+  "gearLabel": "Matériel recherché",
+  "gearPlaceholder": "ex. cannes à pêche, siège enfant, tente 4 places…",
+  "emailLabel": "Votre e-mail",
+  "sending": "Envoi…",
+  "send": "Envoyer la demande",
+  "thanks": "Merci ! Nous vous répondrons très vite."
+}

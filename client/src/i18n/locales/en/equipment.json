@@ -1,0 +1,188 @@
+{
+  "categories": [
+    {
+      "label": "All Gear"
+    },
+    {
+      "label": "Water"
+    },
+    {
+      "label": "Trek & Camp"
+    },
+    {
+      "label": "Ride"
+    },
+    {
+      "label": "Photo & Optics"
+    }
+  ],
+  "gear": [
+    {
+      "name": "Snorkel Set",
+      "specs": [
+        "Mask + fins + snorkel",
+        "All sizes"
+      ],
+      "text": "Clean, well-fitted gear for reefs and calm bays."
+    },
+    {
+      "name": "Double Kayak",
+      "specs": [
+        "2 persons",
+        "Paddles + vests"
+      ],
+      "text": "Stable and easy to handle, ideal for calm coastal water."
+    },
+    {
+      "name": "Stand-Up Paddle Board",
+      "specs": [
+        "Inflatable",
+        "Pump + paddle"
+      ],
+      "text": "Explore quiet lagoons at your own pace."
+    },
+    {
+      "name": "Trekking Backpack 50L",
+      "specs": [
+        "50 L",
+        "Rain cover"
+      ],
+      "text": "Comfortable carry for multi-day walks and short treks."
+    },
+    {
+      "name": "2-Person Tent",
+      "specs": [
+        "2 persons",
+        "Waterproof"
+      ],
+      "text": "Light, quick to pitch and ready for rainy nights."
+    },
+    {
+      "name": "Mountain Bike",
+      "specs": [
+        "21 speeds",
+        "Helmet included"
+      ],
+      "text": "Discover villages and coastal roads on two wheels."
+    },
+    {
+      "name": "Scooter 125cc",
+      "specs": [
+        "Licence required",
+        "Helmet included"
+      ],
+      "text": "Freedom to explore, with insurance and a full tank at pickup."
+    },
+    {
+      "name": "Binoculars 8x42",
+      "specs": [
+        "8x42",
+        "Neck strap + case"
+      ],
+      "text": "Bright and sharp, perfect for birds and lemurs."
+    },
+    {
+      "name": "Waterproof Camera",
+      "specs": [
+        "4K video",
+        "64 GB card"
+      ],
+      "text": "Capture snorkeling and boat trips without worry."
+    }
+  ],
+  "arches": [
+    {
+      "label": "Water"
+    },
+    {
+      "label": "Trek & Camp"
+    },
+    {
+      "label": "Ride"
+    },
+    {
+      "label": "Photo & Optics"
+    }
+  ],
+  "included": [
+    "Cleaned & checked before every rental",
+    "Basic damage cover",
+    "Quick how-to at handover",
+    "Free swap if it is faulty"
+  ],
+  "pickups": [
+    {
+      "title": "Pick Up At Our Office",
+      "text": "Collect and return your gear at our Antananarivo office, open every day.",
+      "price": "Free"
+    },
+    {
+      "title": "Hotel Delivery",
+      "text": "We bring the gear to your hotel and collect it at the end of your stay.",
+      "price": "From $5"
+    },
+    {
+      "title": "Airport Handover",
+      "text": "Meet us at arrivals with your gear ready. Return it before you fly.",
+      "price": "From $10"
+    }
+  ],
+  "faqs": [
+    {
+      "q": "Do I need to pay a deposit?",
+      "a": "A small refundable deposit is asked for larger items like kayaks, scooters and cameras. It is returned when the gear comes back in good condition."
+    },
+    {
+      "q": "What if I return the gear late?",
+      "a": "Please tell us as soon as possible. A late day is charged at the normal daily rate, and we help you extend if the gear is free."
+    },
+    {
+      "q": "What happens if something breaks?",
+      "a": "Normal wear is covered. For accidental damage, we look at the situation together, and basic cover applies to most items."
+    },
+    {
+      "q": "Do I need experience to rent a kayak or scooter?",
+      "a": "Kayaks and paddle boards are beginner friendly. A valid driving licence is required for scooters, and we explain everything at handover."
+    },
+    {
+      "q": "Can I rent gear as part of a trip?",
+      "a": "Yes. Add your list to a trip quote and we deliver everything where you need it, on the right day."
+    }
+  ],
+  "eyebrow": "Equipment & Rentals",
+  "title": "Travel Light, Rent Right",
+  "intro": "Leave the heavy bags at home. Rent clean, checked gear for your trip and get it delivered where you stay.",
+  "browse": "Browse The Catalog",
+  "items": "{count} items",
+  "itemOne": "1 item",
+  "perDay": "{price} / day",
+  "add": "Add",
+  "removeOne": "Remove one {name}",
+  "addOne": "Add one {name}",
+  "catalogTitle": "Build Your Rental List",
+  "catalogText": "Add what you need, choose the number of days and get an instant estimate.",
+  "tabsLabel": "Gear categories",
+  "listTitle": "Your Rental List",
+  "length": "Rental length",
+  "fewer": "Fewer days",
+  "more": "More days",
+  "days": "{count} days",
+  "dayOne": "1 day",
+  "empty": "Your list is empty. Add gear from the catalog and your estimate appears here.",
+  "discount": "7+ days discount (−10%)",
+  "total": "Estimated total",
+  "request": "Request This Quote",
+  "note": "Estimate only. A refundable deposit may apply to some items. Final price confirmed by our team.",
+  "pickupTitle": "Pickup & Return",
+  "pickupText": "Choose the way that suits your schedule. Return is always at the same place as pickup.",
+  "faqTitle": "Frequently Asked Questions",
+  "faqText": "Can't find your answer? Our team replies within a few hours.",
+  "ctaTitle": "Can't Find What You Need?",
+  "ctaText": "Tell us the gear you are looking for and we will try to find it for your dates.",
+  "gearLabel": "Gear you need",
+  "gearPlaceholder": "e.g. Fishing rods, child seat, tent for 4…",
+  "emailLabel": "Your email",
+  "sending": "Sending…",
+  "send": "Send Request",
+  "thanks": "Thank you! We will get back to you soon."
+}

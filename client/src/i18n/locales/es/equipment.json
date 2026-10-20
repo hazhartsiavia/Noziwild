@@ -1,0 +1,188 @@
+{
+  "categories": [
+    {
+      "label": "Todo el equipo"
+    },
+    {
+      "label": "Agua"
+    },
+    {
+      "label": "Trekking y acampada"
+    },
+    {
+      "label": "Sobre ruedas"
+    },
+    {
+      "label": "Foto y óptica"
+    }
+  ],
+  "gear": [
+    {
+      "name": "Equipo de snorkel",
+      "specs": [
+        "Gafas + aletas + tubo",
+        "Todas las tallas"
+      ],
+      "text": "Equipo limpio y bien ajustado para arrecifes y bahías tranquilas."
+    },
+    {
+      "name": "Kayak doble",
+      "specs": [
+        "2 personas",
+        "Remos + chalecos"
+      ],
+      "text": "Estable y fácil de manejar, ideal para aguas costeras tranquilas."
+    },
+    {
+      "name": "Tabla de paddle surf",
+      "specs": [
+        "Hinchable",
+        "Bomba + remo"
+      ],
+      "text": "Explore lagunas tranquilas a su ritmo."
+    },
+    {
+      "name": "Mochila de trekking 50 L",
+      "specs": [
+        "50 L",
+        "Funda para la lluvia"
+      ],
+      "text": "Cómoda para caminatas de varios días y trekkings cortos."
+    },
+    {
+      "name": "Tienda para 2 personas",
+      "specs": [
+        "2 personas",
+        "Impermeable"
+      ],
+      "text": "Ligera, rápida de montar y lista para las noches de lluvia."
+    },
+    {
+      "name": "Bicicleta de montaña",
+      "specs": [
+        "21 velocidades",
+        "Casco incluido"
+      ],
+      "text": "Descubra pueblos y carreteras costeras sobre dos ruedas."
+    },
+    {
+      "name": "Scooter 125 cc",
+      "specs": [
+        "Carné obligatorio",
+        "Casco incluido"
+      ],
+      "text": "Libertad para explorar, con seguro y el depósito lleno al recogerlo."
+    },
+    {
+      "name": "Prismáticos 8x42",
+      "specs": [
+        "8x42",
+        "Correa + funda"
+      ],
+      "text": "Luminosos y nítidos, perfectos para aves y lémures."
+    },
+    {
+      "name": "Cámara sumergible",
+      "specs": [
+        "Vídeo 4K",
+        "Tarjeta de 64 GB"
+      ],
+      "text": "Capture el snorkel y las salidas en barco sin preocupaciones."
+    }
+  ],
+  "arches": [
+    {
+      "label": "Agua"
+    },
+    {
+      "label": "Trekking y acampada"
+    },
+    {
+      "label": "Sobre ruedas"
+    },
+    {
+      "label": "Foto y óptica"
+    }
+  ],
+  "included": [
+    "Limpio y revisado antes de cada alquiler",
+    "Cobertura básica de daños",
+    "Breve explicación en la entrega",
+    "Cambio gratuito si falla"
+  ],
+  "pickups": [
+    {
+      "title": "Recogida en nuestra oficina",
+      "text": "Recoja y devuelva su equipo en nuestra oficina de Antananarivo, abierta todos los días.",
+      "price": "Gratis"
+    },
+    {
+      "title": "Entrega en el hotel",
+      "text": "Llevamos el equipo a su hotel y lo recogemos al final de su estancia.",
+      "price": "Desde 5 $"
+    },
+    {
+      "title": "Entrega en el aeropuerto",
+      "text": "Nos encontramos en llegadas con su equipo listo. Devuélvalo antes de volar.",
+      "price": "Desde 10 $"
+    }
+  ],
+  "faqs": [
+    {
+      "q": "¿Tengo que pagar una fianza?",
+      "a": "Se pide una pequeña fianza reembolsable para los artículos más grandes, como kayaks, scooters y cámaras. Se devuelve cuando el equipo vuelve en buen estado."
+    },
+    {
+      "q": "¿Y si devuelvo el equipo tarde?",
+      "a": "Avísenos lo antes posible. Un día de retraso se cobra a la tarifa diaria normal, y le ayudamos a prolongar el alquiler si el equipo está libre."
+    },
+    {
+      "q": "¿Qué pasa si algo se rompe?",
+      "a": "El desgaste normal está cubierto. En caso de daño accidental, lo valoramos juntos, y la mayoría de los artículos tienen una cobertura básica."
+    },
+    {
+      "q": "¿Necesito experiencia para alquilar un kayak o un scooter?",
+      "a": "Los kayaks y las tablas de paddle surf son aptos para principiantes. Para los scooters se necesita un carné de conducir válido, y se lo explicamos todo en la entrega."
+    },
+    {
+      "q": "¿Puedo alquilar equipo como parte de un viaje?",
+      "a": "Sí. Añada su lista a un presupuesto de viaje y lo entregamos todo donde lo necesite, el día adecuado."
+    }
+  ],
+  "eyebrow": "Equipo y alquiler",
+  "title": "Viaje ligero, alquile bien",
+  "intro": "Deje en casa las maletas pesadas. Alquile equipo limpio y revisado para su viaje y recíbalo donde se aloje.",
+  "browse": "Ver el catálogo",
+  "items": "{count} artículos",
+  "itemOne": "1 artículo",
+  "perDay": "{price} / día",
+  "add": "Añadir",
+  "removeOne": "Quitar un {name}",
+  "addOne": "Añadir un {name}",
+  "catalogTitle": "Prepare su lista de alquiler",
+  "catalogText": "Añada lo que necesite, elija el número de días y obtenga una estimación al instante.",
+  "tabsLabel": "Categorías de equipo",
+  "listTitle": "Su lista de alquiler",
+  "length": "Duración del alquiler",
+  "fewer": "Menos días",
+  "more": "Más días",
+  "days": "{count} días",
+  "dayOne": "1 día",
+  "empty": "Su lista está vacía. Añada equipo del catálogo y su estimación aparecerá aquí.",
+  "discount": "Descuento desde 7 días (−10 %)",
+  "total": "Total estimado",
+  "request": "Solicitar este presupuesto",
+  "note": "Solo es una estimación. Algunos artículos pueden requerir una fianza reembolsable. Nuestro equipo confirma el precio final.",
+  "pickupTitle": "Recogida y devolución",
+  "pickupText": "Elija la opción que mejor encaje con su horario. La devolución siempre se hace en el mismo lugar que la recogida.",
+  "faqTitle": "Preguntas frecuentes",
+  "faqText": "¿No encuentra su respuesta? Nuestro equipo responde en pocas horas.",
+  "ctaTitle": "¿No encuentra lo que necesita?",
+  "ctaText": "Díganos qué equipo busca e intentaremos encontrarlo para sus fechas.",
+  "gearLabel": "Equipo que necesita",
+  "gearPlaceholder": "p. ej. cañas de pescar, silla infantil, tienda para 4…",
+  "emailLabel": "Su correo electrónico",
+  "sending": "Enviando…",
+  "send": "Enviar solicitud",
+  "thanks": "¡Gracias! Le responderemos muy pronto."
+}

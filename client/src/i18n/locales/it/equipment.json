@@ -1,0 +1,188 @@
+{
+  "categories": [
+    {
+      "label": "Tutta l'attrezzatura"
+    },
+    {
+      "label": "Acqua"
+    },
+    {
+      "label": "Trekking e campeggio"
+    },
+    {
+      "label": "Due ruote"
+    },
+    {
+      "label": "Foto e ottica"
+    }
+  ],
+  "gear": [
+    {
+      "name": "Kit da snorkeling",
+      "specs": [
+        "Maschera + pinne + boccaglio",
+        "Tutte le taglie"
+      ],
+      "text": "Attrezzatura pulita e della misura giusta per barriere coralline e baie tranquille."
+    },
+    {
+      "name": "Kayak doppio",
+      "specs": [
+        "2 persone",
+        "Pagaie + giubbotti"
+      ],
+      "text": "Stabile e facile da manovrare, ideale per acque costiere calme."
+    },
+    {
+      "name": "Tavola da SUP",
+      "specs": [
+        "Gonfiabile",
+        "Pompa + pagaia"
+      ],
+      "text": "Esplora lagune tranquille al tuo ritmo."
+    },
+    {
+      "name": "Zaino da trekking 50 L",
+      "specs": [
+        "50 L",
+        "Coprizaino antipioggia"
+      ],
+      "text": "Comodo da portare per escursioni di più giorni e brevi trekking."
+    },
+    {
+      "name": "Tenda per 2 persone",
+      "specs": [
+        "2 persone",
+        "Impermeabile"
+      ],
+      "text": "Leggera, veloce da montare e pronta per le notti di pioggia."
+    },
+    {
+      "name": "Mountain bike",
+      "specs": [
+        "21 velocità",
+        "Casco incluso"
+      ],
+      "text": "Scopri villaggi e strade costiere su due ruote."
+    },
+    {
+      "name": "Scooter 125 cc",
+      "specs": [
+        "Patente obbligatoria",
+        "Casco incluso"
+      ],
+      "text": "La libertà di esplorare, con assicurazione e pieno al ritiro."
+    },
+    {
+      "name": "Binocolo 8x42",
+      "specs": [
+        "8x42",
+        "Tracolla + custodia"
+      ],
+      "text": "Luminoso e nitido, perfetto per uccelli e lemuri."
+    },
+    {
+      "name": "Fotocamera impermeabile",
+      "specs": [
+        "Video 4K",
+        "Scheda da 64 GB"
+      ],
+      "text": "Immortala snorkeling e gite in barca senza preoccupazioni."
+    }
+  ],
+  "arches": [
+    {
+      "label": "Acqua"
+    },
+    {
+      "label": "Trekking e campeggio"
+    },
+    {
+      "label": "Due ruote"
+    },
+    {
+      "label": "Foto e ottica"
+    }
+  ],
+  "included": [
+    "Pulita e controllata prima di ogni noleggio",
+    "Copertura danni di base",
+    "Breve spiegazione alla consegna",
+    "Sostituzione gratuita in caso di guasto"
+  ],
+  "pickups": [
+    {
+      "title": "Ritiro nel nostro ufficio",
+      "text": "Ritira e restituisci l'attrezzatura nel nostro ufficio di Antananarivo, aperto tutti i giorni.",
+      "price": "Gratis"
+    },
+    {
+      "title": "Consegna in hotel",
+      "text": "Portiamo l'attrezzatura nel tuo hotel e la ritiriamo alla fine del soggiorno.",
+      "price": "Da 5 $"
+    },
+    {
+      "title": "Consegna in aeroporto",
+      "text": "Incontraci agli arrivi con l'attrezzatura pronta. Restituiscila prima del volo.",
+      "price": "Da 10 $"
+    }
+  ],
+  "faqs": [
+    {
+      "q": "Devo versare un deposito?",
+      "a": "Per gli articoli più importanti, come kayak, scooter e fotocamere, chiediamo un piccolo deposito rimborsabile. Ti viene restituito quando l'attrezzatura torna in buono stato."
+    },
+    {
+      "q": "E se restituisco l'attrezzatura in ritardo?",
+      "a": "Avvisaci il prima possibile. Un giorno in più viene addebitato alla normale tariffa giornaliera, e ti aiutiamo a prolungare se l'attrezzatura è libera."
+    },
+    {
+      "q": "Cosa succede se qualcosa si rompe?",
+      "a": "La normale usura è coperta. In caso di danni accidentali valutiamo insieme la situazione, e per la maggior parte degli articoli vale una copertura di base."
+    },
+    {
+      "q": "Serve esperienza per noleggiare un kayak o uno scooter?",
+      "a": "Kayak e tavole da SUP sono adatti ai principianti. Per gli scooter serve una patente valida, e alla consegna ti spieghiamo tutto."
+    },
+    {
+      "q": "Posso noleggiare attrezzatura nell'ambito di un viaggio?",
+      "a": "Sì. Aggiungi la tua lista a un preventivo di viaggio e consegniamo tutto dove ti serve, il giorno giusto."
+    }
+  ],
+  "eyebrow": "Attrezzatura e noleggio",
+  "title": "Viaggia leggero, noleggia bene",
+  "intro": "Lascia a casa le borse pesanti. Noleggia attrezzatura pulita e controllata per il tuo viaggio e fattela consegnare dove alloggi.",
+  "browse": "Sfoglia il catalogo",
+  "items": "{count} articoli",
+  "itemOne": "1 articolo",
+  "perDay": "{price} / giorno",
+  "add": "Aggiungi",
+  "removeOne": "Togli un {name}",
+  "addOne": "Aggiungi un {name}",
+  "catalogTitle": "Crea la tua lista di noleggio",
+  "catalogText": "Aggiungi ciò che ti serve, scegli il numero di giorni e ottieni subito una stima.",
+  "tabsLabel": "Categorie di attrezzatura",
+  "listTitle": "La tua lista di noleggio",
+  "length": "Durata del noleggio",
+  "fewer": "Meno giorni",
+  "more": "Più giorni",
+  "days": "{count} giorni",
+  "dayOne": "1 giorno",
+  "empty": "La tua lista è vuota. Aggiungi attrezzatura dal catalogo e qui comparirà la stima.",
+  "discount": "Sconto da 7 giorni (−10%)",
+  "total": "Totale stimato",
+  "request": "Richiedi questo preventivo",
+  "note": "Solo una stima. Per alcuni articoli può essere richiesto un deposito rimborsabile. Il prezzo finale è confermato dal nostro team.",
+  "pickupTitle": "Ritiro e restituzione",
+  "pickupText": "Scegli la soluzione più adatta ai tuoi orari. La restituzione avviene sempre nello stesso luogo del ritiro.",
+  "faqTitle": "Domande frequenti",
+  "faqText": "Non trovi la risposta? Il nostro team risponde in poche ore.",
+  "ctaTitle": "Non trovi quello che ti serve?",
+  "ctaText": "Dicci quale attrezzatura cerchi e proveremo a trovarla per le tue date.",
+  "gearLabel": "Attrezzatura che ti serve",
+  "gearPlaceholder": "es. canne da pesca, seggiolino per bambini, tenda per 4…",
+  "emailLabel": "La tua email",
+  "sending": "Invio…",
+  "send": "Invia la richiesta",
+  "thanks": "Grazie! Ti risponderemo presto."
+}

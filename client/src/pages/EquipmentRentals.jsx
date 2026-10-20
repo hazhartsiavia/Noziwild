@@ -9,6 +9,8 @@ import Navbar from '../components/Navbar';
 import Footer from '../components/Footer';
 import { sendRequest } from '../api';
 import { useAuth } from '../context/AuthContext';
+import { Trans, useT } from '../i18n/LanguageContext';
+import { localize } from '../i18n/localize';
 import { gsap } from 'gsap'
 import { ScrollTrigger } from 'gsap/ScrollTrigger'
 
@@ -24,8 +26,9 @@ const BUTTON = "text-sm font-medium px-5 py-2.5 rounded-full md:px-6 md:py-3 act
 const SECTION_GAP = "mt-[60px] md:mt-[120px]"
 
 /* ---------------------------- Données ---------------------------- */
+// Textes affichés : locales/<langue>/equipment.json, posés sur ces données par localize()
 
-const categories = [
+const CATEGORIES = [
   { id: 'all', label: 'All Gear' },
   { id: 'water', label: 'Water' },
   { id: 'trek', label: 'Trek & Camp' },
@@ -34,7 +37,7 @@ const categories = [
 ]
 
 // price = prix par jour (exemples, à adapter à tes vrais tarifs)
-const gear = [
+const GEAR = [
   { id: 1, category: 'water', name: 'Snorkel Set', image: Ramena, price: 6, specs: ['Mask + fins + snorkel', 'All sizes'], text: 'Clean, well-fitted gear for reefs and calm bays.' },
   { id: 2, category: 'water', name: 'Double Kayak', image: NosyIranja, price: 25, specs: ['2 persons', 'Paddles + vests'], text: 'Stable and easy to handle, ideal for calm coastal water.' },
   { id: 3, category: 'water', name: 'Stand-Up Paddle Board', image: NosyLonjo, price: 20, specs: ['Inflatable', 'Pump + paddle'], text: 'Explore quiet lagoons at your own pace.' },
@@ -46,28 +49,19 @@ const gear = [
   { id: 9, category: 'optics', name: 'Waterproof Camera', image: NosyIranja, price: 18, specs: ['4K video', '64 GB card'], text: 'Capture snorkeling and boat trips without worry.' },
 ]
 
-const arches = [
+const ARCHES = [
   { id: 'water', label: 'Water', image: Ramena },
   { id: 'trek', label: 'Trek & Camp', image: Deux },
   { id: 'ride', label: 'Ride', image: Ambanja },
   { id: 'optics', label: 'Photo & Optics', image: Tana },
 ]
 
-const included = ['Cleaned & checked before every rental', 'Basic damage cover', 'Quick how-to at handover', 'Free swap if it is faulty']
-
-const pickups = [
+const PICKUPS = [
   { id: 1, title: 'Pick Up At Our Office', text: 'Collect and return your gear at our Antananarivo office, open every day.', price: 'Free', icon: 'pin' },
   { id: 2, title: 'Hotel Delivery', text: 'We bring the gear to your hotel and collect it at the end of your stay.', price: 'From $5', icon: 'truck' },
   { id: 3, title: 'Airport Handover', text: 'Meet us at arrivals with your gear ready. Return it before you fly.', price: 'From $10', icon: 'plane' },
 ]
 
-const faqs = [
-  { q: 'Do I need to pay a deposit?', a: 'A small refundable deposit is asked for larger items like kayaks, scooters and cameras. It is returned when the gear comes back in good condition.' },
-  { q: 'What if I return the gear late?', a: 'Please tell us as soon as possible. A late day is charged at the normal daily rate, and we help you extend if the gear is free.' },
-  { q: 'What happens if something breaks?', a: 'Normal wear is covered. For accidental damage, we look at the situation together, and basic cover applies to most items.' },
-  { q: 'Do I need experience to rent a kayak or scooter?', a: 'Kayaks and paddle boards are beginner friendly. A valid driving licence is required for scooters, and we explain everything at handover.' },
-  { q: 'Can I rent gear as part of a trip?', a: 'Yes. Add your list to a trip quote and we deliver everything where you need it, on the right day.' },
-]
 
 /* ---------------------------- Icônes ----------------------------- */
 
@@ -114,18 +108,20 @@ function AnimatedNumber({ value }) {
 
 // Hero : titre + arches cliquables (filtrent le catalogue)
 function Hero({ counts, onPick }) {
+  const t = useT('equipment')
+  const arches = localize(ARCHES, t('arches'))
   return (
     <section>
       <div className="grid grid-cols-1 lg:grid-cols-[1.4fr_1fr] gap-6 lg:gap-16 lg:items-end">
         <div>
-          <p data-hero className="mb-4 text-xs sm:text-sm md:text-base uppercase tracking-wide text-slate-700">Equipment & Rentals</p>
-          <h1 data-hero className={STATEMENT_TITLE}>Travel Light, Rent Right</h1>
+          <p data-hero className="mb-4 text-xs sm:text-sm md:text-base uppercase tracking-wide text-slate-700">{t('eyebrow')}</p>
+          <h1 data-hero className={STATEMENT_TITLE}>{t('title')}</h1>
         </div>
         <div data-hero>
           <p className={SECTION_SUBTITLE}>
-            Leave the heavy bags at home. Rent clean, checked gear for your trip and get it delivered where you stay.
+            {t('intro')}
           </p>
-          <a href="#catalog" className={`mt-6 inline-block bg-[#084838] hover:bg-[#0a5c47] text-white ${BUTTON}`}>Browse The Catalog</a>
+          <a href="#catalog" className={`mt-6 inline-block bg-[#084838] hover:bg-[#0a5c47] text-white ${BUTTON}`}>{t('browse')}</a>
         </div>
       </div>
 
@@ -139,7 +135,7 @@ function Hero({ counts, onPick }) {
               <div className="mt-4 flex items-center justify-between gap-3">
                 <div>
                   <p className="text-lg md:text-2xl font-medium text-slate-900">{a.label}</p>
-                  <p className={`${META_TEXT} text-slate-600`}>{counts[a.id]} items</p>
+                  <p className={`${META_TEXT} text-slate-600`}>{counts[a.id] === 1 ? t('itemOne') : t('items', { count: counts[a.id] })}</p>
                 </div>
                 <span className="shrink-0 w-10 h-10 md:w-12 md:h-12 rounded-full bg-[#084838] text-white flex items-center justify-center transition group-hover:bg-[#C49849]">
                   <ArrowIcon />
@@ -154,7 +150,8 @@ function Hero({ counts, onPick }) {
 }
 
 function GearCard({ item, qty, onChange }) {
-  const label = categories.find((c) => c.id === item.category)?.label
+  const t = useT('equipment')
+  const label = localize(CATEGORIES, t('categories')).find((c) => c.id === item.category)?.label
   const round = "w-9 h-9 flex items-center justify-center rounded-full transition active:scale-95"
 
   return (
@@ -171,17 +168,17 @@ function GearCard({ item, qty, onChange }) {
         </ul>
 
         <div className="mt-auto pt-5 flex items-center justify-between gap-3">
-          <p className="text-sm text-slate-600"><span className="text-xl md:text-2xl font-medium text-slate-900">${item.price}</span> / day</p>
+          <p className="text-sm text-slate-600"><Trans text={t('perDay')} values={{ price: <span className="text-xl md:text-2xl font-medium text-slate-900">${item.price}</span> }} /></p>
 
           {qty === 0 ? (
             <button type="button" onClick={() => onChange(item.id, 1)} className={`inline-flex items-center gap-1.5 bg-[#084838] hover:bg-[#0a5c47] text-white text-sm font-medium px-4 py-2 rounded-full active:scale-95 transition`}>
-              <PlusIcon /> Add
+              <PlusIcon /> {t('add')}
             </button>
           ) : (
             <div className="flex items-center gap-2 rounded-full bg-[#D5E8E2] p-1">
-              <button type="button" onClick={() => onChange(item.id, -1)} aria-label={`Remove one ${item.name}`} className={`${round} bg-white text-[#084838]`}><MinusIcon /></button>
+              <button type="button" onClick={() => onChange(item.id, -1)} aria-label={t('removeOne', { name: item.name })} className={`${round} bg-white text-[#084838]`}><MinusIcon /></button>
               <span className="w-5 text-center text-sm font-medium tabular-nums" aria-live="polite">{qty}</span>
-              <button type="button" onClick={() => onChange(item.id, 1)} aria-label={`Add one ${item.name}`} className={`${round} bg-[#084838] text-white`}><PlusIcon /></button>
+              <button type="button" onClick={() => onChange(item.id, 1)} aria-label={t('addOne', { name: item.name })} className={`${round} bg-[#084838] text-white`}><PlusIcon /></button>
             </div>
           )}
         </div>
@@ -192,6 +189,9 @@ function GearCard({ item, qty, onChange }) {
 
 // Catalogue + liste de location (estimation du prix)
 function Catalog({ category, setCategory }) {
+  const t = useT('equipment')
+  const categories = localize(CATEGORIES, t('categories'))
+  const gear = localize(GEAR, t('gear'))
   const [cart, setCart] = useState({})   // id -> quantité
   const [days, setDays] = useState(3)
   const gridRef = useRef(null)
@@ -228,11 +228,11 @@ function Catalog({ category, setCategory }) {
   return (
     <div id="catalog" className={`${SECTION_GAP} scroll-mt-8`}>
       <div className="mb-8 md:mb-10 flex flex-col lg:flex-row lg:items-end lg:justify-between gap-5 lg:gap-12">
-        <h2 className={`${SECTION_TITLE} lg:max-w-[52%]`}>Build Your Rental List</h2>
-        <p className={`${SECTION_SUBTITLE} lg:max-w-md`}>Add what you need, choose the number of days and get an instant estimate.</p>
+        <h2 className={`${SECTION_TITLE} lg:max-w-[52%]`}>{t('catalogTitle')}</h2>
+        <p className={`${SECTION_SUBTITLE} lg:max-w-md`}>{t('catalogText')}</p>
       </div>
 
-      <div className="mb-6 flex flex-wrap gap-2 md:gap-3" role="tablist" aria-label="Gear categories">
+      <div className="mb-6 flex flex-wrap gap-2 md:gap-3" role="tablist" aria-label={t('tabsLabel')}>
         {categories.map((c) => (
           <button key={c.id} type="button" role="tab" aria-selected={category === c.id} onClick={() => setCategory(c.id)} className={tab(category === c.id)}>
             {c.label}
@@ -249,21 +249,21 @@ function Catalog({ category, setCategory }) {
         {/* Liste de location : reste visible au défilement sur grand écran */}
         <aside className="lg:sticky lg:top-8 rounded-3xl bg-[#084838] text-white p-5 md:p-7">
           <div className="flex items-center justify-between gap-3">
-            <h3 className="text-xl md:text-2xl font-medium">Your Rental List</h3>
-            <span className="rounded-full bg-white/15 px-3 py-1 text-sm tabular-nums">{itemCount} {itemCount === 1 ? 'item' : 'items'}</span>
+            <h3 className="text-xl md:text-2xl font-medium">{t('listTitle')}</h3>
+            <span className="rounded-full bg-white/15 px-3 py-1 text-sm tabular-nums">{itemCount === 1 ? t('itemOne') : t('items', { count: itemCount })}</span>
           </div>
 
           <div className="mt-5 flex items-center justify-between gap-3 rounded-2xl bg-white/10 p-3">
-            <span className="text-sm md:text-base">Rental length</span>
+            <span className="text-sm md:text-base">{t('length')}</span>
             <div className="flex items-center gap-3">
-              <button type="button" onClick={() => setDays((d) => Math.max(1, d - 1))} aria-label="Fewer days" className="w-9 h-9 rounded-full border border-white/40 flex items-center justify-center hover:bg-white/10 transition"><MinusIcon /></button>
-              <span className="w-16 text-center text-sm md:text-base tabular-nums">{days} {days === 1 ? 'day' : 'days'}</span>
-              <button type="button" onClick={() => setDays((d) => Math.min(30, d + 1))} aria-label="More days" className="w-9 h-9 rounded-full border border-white/40 flex items-center justify-center hover:bg-white/10 transition"><PlusIcon /></button>
+              <button type="button" onClick={() => setDays((d) => Math.max(1, d - 1))} aria-label={t('fewer')} className="w-9 h-9 rounded-full border border-white/40 flex items-center justify-center hover:bg-white/10 transition"><MinusIcon /></button>
+              <span className="w-16 text-center text-sm md:text-base tabular-nums">{days === 1 ? t('dayOne') : t('days', { count: days })}</span>
+              <button type="button" onClick={() => setDays((d) => Math.min(30, d + 1))} aria-label={t('more')} className="w-9 h-9 rounded-full border border-white/40 flex items-center justify-center hover:bg-white/10 transition"><PlusIcon /></button>
             </div>
           </div>
 
           {lines.length === 0 ? (
-            <p className="mt-6 text-sm md:text-base text-white/70 leading-relaxed">Your list is empty. Add gear from the catalog and your estimate appears here.</p>
+            <p className="mt-6 text-sm md:text-base text-white/70 leading-relaxed">{t('empty')}</p>
           ) : (
             <ul className="mt-5 flex flex-col divide-y divide-white/15">
               {lines.map((g) => (
@@ -277,16 +277,16 @@ function Catalog({ category, setCategory }) {
 
           {discount > 0 && (
             <p className="mt-2 flex items-center justify-between text-sm text-[#E6C58A]">
-              <span>7+ days discount (−10%)</span><span className="tabular-nums">−${discount}</span>
+              <span>{t('discount')}</span><span className="tabular-nums">−${discount}</span>
             </p>
           )}
 
           <div className="mt-5 pt-5 border-t border-white/25 flex items-end justify-between gap-3">
             <div>
-              <p className="text-sm text-white/70">Estimated total</p>
+              <p className="text-sm text-white/70">{t('total')}</p>
               <p className="text-4xl md:text-5xl font-medium leading-none">$<AnimatedNumber value={total} /></p>
             </div>
-            <p className="text-xs text-white/60 text-right">${perDay} / day</p>
+            <p className="text-xs text-white/60 text-right">{t('perDay', { price: `$${perDay}` })}</p>
           </div>
 
           <a
@@ -294,9 +294,9 @@ function Catalog({ category, setCategory }) {
             aria-disabled={lines.length === 0}
             className={`mt-6 block text-center bg-[#C49849] hover:bg-[#b08339] text-white ${BUTTON} ${lines.length === 0 ? 'opacity-50 pointer-events-none' : ''}`}
           >
-            Request This Quote
+            {t('request')}
           </a>
-          <p className="mt-3 text-xs text-white/60 leading-relaxed">Estimate only. A refundable deposit may apply to some items. Final price confirmed by our team.</p>
+          <p className="mt-3 text-xs text-white/60 leading-relaxed">{t('note')}</p>
         </aside>
       </div>
     </div>
@@ -305,6 +305,7 @@ function Catalog({ category, setCategory }) {
 
 // Bande "inclus dans chaque location"
 function Included() {
+  const included = useT('equipment')('included')
   return (
     <ul className={`${SECTION_GAP} grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-x-8 gap-y-4 border-y border-[#084838]/20 py-6 md:py-8`}>
       {included.map((text) => (
@@ -319,11 +320,13 @@ function Included() {
 
 // Retrait et retour : liste en lignes avec prix
 function Pickup() {
+  const t = useT('equipment')
+  const pickups = localize(PICKUPS, t('pickups'))
   return (
     <div className={`${SECTION_GAP} grid grid-cols-1 lg:grid-cols-[1fr_1.5fr] gap-8 lg:gap-16`}>
       <div>
-        <h2 className={SECTION_TITLE}>Pickup & Return</h2>
-        <p className={`mt-4 md:mt-6 ${SECTION_SUBTITLE}`}>Choose the way that suits your schedule. Return is always at the same place as pickup.</p>
+        <h2 className={SECTION_TITLE}>{t('pickupTitle')}</h2>
+        <p className={`mt-4 md:mt-6 ${SECTION_SUBTITLE}`}>{t('pickupText')}</p>
       </div>
 
       <ul className="flex flex-col gap-3">
@@ -344,13 +347,15 @@ function Pickup() {
 
 // FAQ : questions en cartes blanches à gauche, titre à droite
 function Faq() {
+  const t = useT('equipment')
+  const faqs = t('faqs')
   const [open, setOpen] = useState(0)
 
   return (
     <div className={`${SECTION_GAP} grid grid-cols-1 lg:grid-cols-[1.6fr_1fr] gap-8 lg:gap-16`}>
       <div className="lg:order-2">
-        <h2 className={SECTION_TITLE}>Frequently Asked Questions</h2>
-        <p className={`mt-4 md:mt-6 ${SECTION_SUBTITLE}`}>Can&apos;t find your answer? Our team replies within a few hours.</p>
+        <h2 className={SECTION_TITLE}>{t('faqTitle')}</h2>
+        <p className={`mt-4 md:mt-6 ${SECTION_SUBTITLE}`}>{t('faqText')}</p>
       </div>
 
       <div className="flex flex-col gap-3 lg:order-1">
@@ -375,6 +380,7 @@ function Faq() {
 function Cta() {
   // Connecté : nom et email pré-remplis (la clé recrée le champ quand la session est connue)
   const { user } = useAuth()
+  const t = useT('equipment')
   const [status, setStatus] = useState('idle') // 'idle' | 'sending' | 'sent' | 'error'
   const [error, setError] = useState('')
 
@@ -400,20 +406,20 @@ function Cta() {
       <div className="absolute inset-0 bg-[#084838]/80" />
 
       <div className="relative px-6 py-14 md:px-12 md:py-24 text-center">
-        <h2 className="mx-auto max-w-3xl text-3xl sm:text-4xl md:text-5xl font-medium leading-[1.15] tracking-tight">Can&apos;t Find What You Need?</h2>
+        <h2 className="mx-auto max-w-3xl text-3xl sm:text-4xl md:text-5xl font-medium leading-[1.15] tracking-tight">{t('ctaTitle')}</h2>
         <p className="mx-auto mt-4 max-w-xl text-sm md:text-lg text-white/80 leading-relaxed">
-          Tell us the gear you are looking for and we will try to find it for your dates.
+          {t('ctaText')}
         </p>
 
         <form onSubmit={handleSubmit} className="mx-auto mt-8 flex max-w-2xl flex-col sm:flex-row items-stretch sm:items-center gap-2 rounded-3xl sm:rounded-full bg-white p-2 sm:pl-6">
-          <label htmlFor="gear-request" className="sr-only">Gear you need</label>
-          <input id="gear-request" name="gear" type="text" required placeholder="e.g. Fishing rods, child seat, tent for 4…" className="flex-1 min-w-0 bg-transparent px-4 py-2 sm:px-0 text-sm md:text-base text-slate-800 placeholder:text-slate-500 focus:outline-none" />
-          <label htmlFor="gear-email" className="sr-only">Your email</label>
-          <input id="gear-email" name="email" key={`e-${user?.id}`} defaultValue={user?.email} type="email" required placeholder="Your email" className="sm:w-56 min-w-0 bg-transparent px-4 py-2 sm:border-l sm:border-slate-200 text-sm md:text-base text-slate-800 placeholder:text-slate-500 focus:outline-none" />
-          <button type="submit" disabled={status === 'sending'} className={`shrink-0 bg-[#C49849] hover:bg-[#b08339] text-white disabled:opacity-60 disabled:cursor-wait ${BUTTON}`}>{status === 'sending' ? 'Sending…' : 'Send Request'}</button>
+          <label htmlFor="gear-request" className="sr-only">{t('gearLabel')}</label>
+          <input id="gear-request" name="gear" type="text" required placeholder={t('gearPlaceholder')} className="flex-1 min-w-0 bg-transparent px-4 py-2 sm:px-0 text-sm md:text-base text-slate-800 placeholder:text-slate-500 focus:outline-none" />
+          <label htmlFor="gear-email" className="sr-only">{t('emailLabel')}</label>
+          <input id="gear-email" name="email" key={`e-${user?.id}`} defaultValue={user?.email} type="email" required placeholder={t('emailLabel')} className="sm:w-56 min-w-0 bg-transparent px-4 py-2 sm:border-l sm:border-slate-200 text-sm md:text-base text-slate-800 placeholder:text-slate-500 focus:outline-none" />
+          <button type="submit" disabled={status === 'sending'} className={`shrink-0 bg-[#C49849] hover:bg-[#b08339] text-white disabled:opacity-60 disabled:cursor-wait ${BUTTON}`}>{status === 'sending' ? t('sending') : t('send')}</button>
         </form>
 
-        {status === 'sent' && <p role="status" className="mt-4 text-sm md:text-base text-[#E6C58A]">Thank you! We will get back to you soon.</p>}
+        {status === 'sent' && <p role="status" className="mt-4 text-sm md:text-base text-[#E6C58A]">{t('thanks')}</p>}
         {status === 'error' && <p role="alert" className="mt-4 text-sm md:text-base text-red-300">{error}</p>}
       </div>
     </div>
@@ -424,8 +430,8 @@ function EquipmentRentals() {
   const contentRef = useRef(null)
   const [category, setCategory] = useState('all')
 
-  const counts = categories.reduce((acc, c) => {
-    acc[c.id] = c.id === 'all' ? gear.length : gear.filter((g) => g.category === c.id).length
+  const counts = CATEGORIES.reduce((acc, c) => {
+    acc[c.id] = c.id === 'all' ? GEAR.length : GEAR.filter((g) => g.category === c.id).length
     return acc
   }, {})
 
