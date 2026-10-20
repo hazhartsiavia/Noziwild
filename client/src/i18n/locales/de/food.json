@@ -1,0 +1,177 @@
+{
+  "dishes": [
+    {
+      "name": "Romazava",
+      "spice": "Mild",
+      "where": "Familientische im Hochland",
+      "text": "Das Nationalgericht: zartes Zebu-Rind, geschmort mit frischem Blattgemüse, Ingwer und Tomate."
+    },
+    {
+      "name": "Ravitoto",
+      "spice": "Mittel",
+      "where": "Lokale Garküchen in Antananarivo",
+      "text": "Gestampfte Maniokblätter, langsam mit Schweinefleisch und Knoblauch gegart, serviert mit dampfendem Reis."
+    },
+    {
+      "name": "Zebu-Spieße",
+      "spice": "Scharf",
+      "where": "Straßenstände in der Dämmerung",
+      "text": "Über Holzkohle gegrillt und mit einer feurigen hausgemachten Chilisauce serviert."
+    },
+    {
+      "name": "Kokos-Garnelen",
+      "spice": "Mild",
+      "where": "Restaurants am Strand",
+      "text": "Frische Garnelen in cremiger Kokossauce mit einem Hauch Vanille."
+    },
+    {
+      "name": "Vanilleflan",
+      "spice": "Süß",
+      "where": "Gästehäuser und Cafés",
+      "text": "Samtige Creme mit echter madagassischer Vanille, ein sanfter Abschluss für jede Mahlzeit."
+    }
+  ],
+  "menuTabs": [
+    {
+      "label": "Alle"
+    },
+    {
+      "label": "Touren"
+    },
+    {
+      "label": "Kurse"
+    },
+    {
+      "label": "Mahlzeiten"
+    }
+  ],
+  "experiences": [
+    {
+      "name": "Streetfood-Tour",
+      "duration": "3 Stunden",
+      "text": "Probieren Sie mit einem Guide sechs lokale Snacks, von Frittiertem bis zu süßem Obst."
+    },
+    {
+      "name": "Gewürz- & Vanillefarm",
+      "duration": "Halber Tag",
+      "text": "Treffen Sie die Bauern und erfahren Sie, wie Vanille und Pfeffer entstehen."
+    },
+    {
+      "name": "Kochkurs",
+      "duration": "3 Stunden",
+      "text": "Einkaufen auf dem Markt, dann drei klassische Gerichte kochen und essen."
+    },
+    {
+      "name": "Mittagessen bei einer Familie",
+      "duration": "2 Stunden",
+      "text": "Teilen Sie eine hausgemachte Mahlzeit und Geschichten am Tisch."
+    },
+    {
+      "name": "Meeresfrüchte am Strand",
+      "duration": "2 Stunden",
+      "text": "Gegrillter Tagesfang, die Füße fast im Sand."
+    },
+    {
+      "name": "Abendessen bei Sonnenuntergang",
+      "duration": "2 Stunden",
+      "text": "Ein Tisch für zwei oder für die Gruppe, mit der schönsten Aussicht, die wir kennen."
+    }
+  ],
+  "diets": [
+    "Vegetarisch",
+    "Vegan",
+    "Halal",
+    "Glutenfrei",
+    "Nussallergie",
+    "Kindermenü"
+  ],
+  "classSteps": [
+    {
+      "title": "Den Markt besuchen",
+      "text": "Wählen Sie mit Ihrem Gastgeber frisches Gemüse, Kräuter und Gewürze."
+    },
+    {
+      "title": "Gemeinsam kochen",
+      "text": "Lernen Sie Schritt für Schritt drei klassische Gerichte – selbst Hand anlegen."
+    },
+    {
+      "title": "Das Selbstgekochte genießen",
+      "text": "Setzen Sie sich zusammen und genießen Sie die Mahlzeit, die Sie zubereitet haben."
+    }
+  ],
+  "faqs": [
+    {
+      "q": "Können Sie auf meine Ernährung oder Allergien eingehen?",
+      "a": "Ja. Vegetarisch, vegan, halal, glutenfrei oder bei Allergien – alles ist möglich. Sagen Sie es uns bei der Buchung, und wir informieren jedes Restaurant und jeden Gastgeber im Voraus."
+    },
+    {
+      "q": "Ist Streetfood unbedenklich?",
+      "a": "Wir bringen Sie nur zu Ständen, die wir kennen und denen wir vertrauen, wo frisch vor Ihren Augen gekocht wird. Ihr Guide erklärt, was Sie probieren und was Sie lieber auslassen sollten."
+    },
+    {
+      "q": "Können Kinder teilnehmen?",
+      "a": "Natürlich. Die meisten unserer kulinarischen Erlebnisse sind familienfreundlich, und wir können die Schärfe anpassen und ein Kindermenü hinzufügen."
+    },
+    {
+      "q": "Wie ist es mit Trinkwasser und Getränken?",
+      "a": "Wasser in Flaschen ist immer inklusive. Lokale Getränke wie frische Säfte und Rum kosten extra – wir sagen Ihnen, was sich lohnt."
+    },
+    {
+      "q": "Wie weit im Voraus sollte ich buchen?",
+      "a": "Für die meisten Erlebnisse genügen ein paar Tage. Für Abendessen bei Sonnenuntergang und Kochkurse in der Hochsaison empfehlen wir, ein bis zwei Wochen vorher zu buchen."
+    }
+  ],
+  "ctaChoices": [
+    "Kulinarische Tour",
+    "Kochkurs",
+    "Privates Abendessen"
+  ],
+  "heroStats": [
+    "lokale Tische",
+    "kulinarische Erlebnisse",
+    "Ernährungsweisen willkommen"
+  ],
+  "spinBadge": "Lokale Aromen • Frische Meeresfrüchte • Hausmannskost •",
+  "badge": "Essen & Trinken",
+  "title": "Schmecken Sie die Insel",
+  "intro": "Brutzelnde Straßenstände, Familienküchen und frische Meeresfrüchte am Strand. Wir bringen Sie dorthin, wo die Einheimischen essen, und reservieren den Tisch für Sie.",
+  "seeExperiences": "Erlebnisse ansehen",
+  "discover": "Die Gerichte entdecken",
+  "alts": [
+    "Ein traditionelles madagassisches Gericht",
+    "Frische Meeresfrüchte",
+    "Ein süßes Vanilledessert"
+  ],
+  "dishesTitle": "Typische Gerichte",
+  "dishesText": "Fünf Geschmäcker, die Sie unbedingt probieren sollten.",
+  "spice": "Schärfe: {level}",
+  "menuTitle": "Kulinarische Erlebnisse",
+  "menuText": "Vom schnellen Snack auf der Straße bis zum Abendessen bei Kerzenschein. Preise pro Person.",
+  "menuTabsLabel": "Arten von Erlebnissen",
+  "fromPerPerson": "Ab {price} / Person",
+  "bookThis": "Buchen",
+  "perPerson": "pro Person",
+  "groups": "Gruppen ab 6 Personen erhalten einen eigenen Tisch.",
+  "dietsTitle": "Jede Ernährungsweise ist willkommen",
+  "classAlt": "Gemeinsam kochen",
+  "mostLoved": "Am beliebtesten",
+  "handsOn": "Zum Mitmachen",
+  "classTitle": "Kochen wie die Einheimischen",
+  "classText": "Nehmen Sie die Rezepte mit nach Hause. Keine Erfahrung nötig, nur Appetit.",
+  "classFacts": [
+    "Dauer",
+    "Gäste max.",
+    "pro Person"
+  ],
+  "reserve": "Einen Platz reservieren",
+  "faqTitle": "Gut zu wissen, bevor Sie essen",
+  "faqText": "Wählen Sie eine Frage. Ihre ist nicht dabei? Unser Team antwortet innerhalb weniger Stunden.",
+  "question": "Frage {n}",
+  "ctaTitle": "Planen wir Ihre kulinarische Reise",
+  "ctaText": "Sagen Sie uns, worauf Sie Lust haben. Wir reservieren Tische, Guides und Verkostungen und schicken Ihnen innerhalb eines Werktags einen klaren Plan.",
+  "mood": "Worauf haben Sie Lust?",
+  "email": "Ihre E-Mail",
+  "sending": "Wird gesendet…",
+  "send": "Anfrage senden",
+  "thanks": "Vielen Dank! Wir melden uns bald bei Ihnen."
+}

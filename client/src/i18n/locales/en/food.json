@@ -1,0 +1,177 @@
+{
+  "dishes": [
+    {
+      "name": "Romazava",
+      "spice": "Mild",
+      "where": "Family tables in the highlands",
+      "text": "The national dish: tender zebu beef simmered with fresh greens, ginger and tomato."
+    },
+    {
+      "name": "Ravitoto",
+      "spice": "Medium",
+      "where": "Local eateries in Antananarivo",
+      "text": "Pounded cassava leaves slow-cooked with pork and garlic, served with steaming rice."
+    },
+    {
+      "name": "Zebu Skewers",
+      "spice": "Hot",
+      "where": "Street stalls at dusk",
+      "text": "Grilled over charcoal and served with a fiery side of homemade chili sauce."
+    },
+    {
+      "name": "Coconut Prawns",
+      "spice": "Mild",
+      "where": "Beachfront restaurants",
+      "text": "Fresh prawns in a creamy coconut sauce with a hint of vanilla."
+    },
+    {
+      "name": "Vanilla Flan",
+      "spice": "Sweet",
+      "where": "Guesthouses and cafés",
+      "text": "Silky custard made with real Malagasy vanilla, a gentle end to any meal."
+    }
+  ],
+  "menuTabs": [
+    {
+      "label": "All"
+    },
+    {
+      "label": "Tours"
+    },
+    {
+      "label": "Classes"
+    },
+    {
+      "label": "Meals"
+    }
+  ],
+  "experiences": [
+    {
+      "name": "Street Food Walk",
+      "duration": "3 hours",
+      "text": "Taste six local snacks with a guide, from fried treats to sweet fruit."
+    },
+    {
+      "name": "Spice & Vanilla Farm",
+      "duration": "Half day",
+      "text": "Meet the growers and learn how vanilla and pepper are made."
+    },
+    {
+      "name": "Cooking Class",
+      "duration": "3 hours",
+      "text": "Shop at the market, then cook and eat three classic dishes."
+    },
+    {
+      "name": "Local Family Lunch",
+      "duration": "2 hours",
+      "text": "Share a home-cooked meal and stories around the table."
+    },
+    {
+      "name": "Seafood On The Beach",
+      "duration": "2 hours",
+      "text": "Grilled catch of the day with your feet almost in the sand."
+    },
+    {
+      "name": "Sunset Dinner",
+      "duration": "2 hours",
+      "text": "A table set for two or for the group, with the best view we know."
+    }
+  ],
+  "diets": [
+    "Vegetarian",
+    "Vegan",
+    "Halal",
+    "Gluten-free",
+    "Nut allergy",
+    "Kids menu"
+  ],
+  "classSteps": [
+    {
+      "title": "Visit the market",
+      "text": "Choose fresh vegetables, herbs and spices with your host."
+    },
+    {
+      "title": "Cook together",
+      "text": "Learn three classic dishes step by step, hands on."
+    },
+    {
+      "title": "Eat what you made",
+      "text": "Sit down together and enjoy the meal you prepared."
+    }
+  ],
+  "faqs": [
+    {
+      "q": "Can you cater to my diet or allergies?",
+      "a": "Yes. Vegetarian, vegan, halal, gluten-free and allergy needs are all possible. Tell us when you book and we brief every restaurant and host in advance."
+    },
+    {
+      "q": "Is street food safe to eat?",
+      "a": "We only take you to stalls we know and trust, where food is cooked fresh in front of you. Your guide explains what to pick and what to skip."
+    },
+    {
+      "q": "Can children join the experiences?",
+      "a": "Of course. Most of our food experiences are family friendly, and we can adjust spice levels and add a kids menu."
+    },
+    {
+      "q": "What about drinking water and drinks?",
+      "a": "Bottled water is always included. Local drinks like fresh juices and rum are available at extra cost, and we tell you what is worth trying."
+    },
+    {
+      "q": "How far ahead should I book?",
+      "a": "A few days ahead is enough for most experiences. For sunset dinners and cooking classes in high season, we recommend booking one to two weeks before."
+    }
+  ],
+  "ctaChoices": [
+    "Food Tour",
+    "Cooking Class",
+    "Private Dinner"
+  ],
+  "heroStats": [
+    "local tables",
+    "dining experiences",
+    "diets welcome"
+  ],
+  "spinBadge": "Local flavors • Fresh seafood • Home cooking •",
+  "badge": "Food & Dining",
+  "title": "Taste The Island",
+  "intro": "Sizzling street stalls, family kitchens and fresh seafood on the beach. We take you where locals eat, and book the table for you.",
+  "seeExperiences": "See Experiences",
+  "discover": "Discover the dishes",
+  "alts": [
+    "A traditional Malagasy dish",
+    "Fresh seafood",
+    "Sweet vanilla dessert"
+  ],
+  "dishesTitle": "Signature Dishes",
+  "dishesText": "Five flavors you should not leave without trying.",
+  "spice": "Spice: {level}",
+  "menuTitle": "Dining Experiences",
+  "menuText": "From a quick street snack to a candlelit dinner. Prices are per person.",
+  "menuTabsLabel": "Experience types",
+  "fromPerPerson": "From {price} / person",
+  "bookThis": "Book This",
+  "perPerson": "per person",
+  "groups": "Groups of 6 or more get a private table.",
+  "dietsTitle": "Every Diet Is Welcome",
+  "classAlt": "Cooking together",
+  "mostLoved": "Most loved",
+  "handsOn": "Hands-on",
+  "classTitle": "Learn To Cook Like A Local",
+  "classText": "Take the recipes home with you. No experience needed, just an appetite.",
+  "classFacts": [
+    "duration",
+    "guests max",
+    "per person"
+  ],
+  "reserve": "Reserve A Seat",
+  "faqTitle": "Good To Know Before You Eat",
+  "faqText": "Pick a question. Can't find yours? Our team replies within a few hours.",
+  "question": "Question {n}",
+  "ctaTitle": "Let's Plan Your Food Trip",
+  "ctaText": "Tell us what you feel like eating. We book the tables, the guides and the tastings, and send a clear plan within one working day.",
+  "mood": "What are you in the mood for?",
+  "email": "Your email",
+  "sending": "Sending…",
+  "send": "Send Request",
+  "thanks": "Thank you! We will get back to you soon."
+}

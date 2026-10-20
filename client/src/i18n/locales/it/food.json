@@ -1,0 +1,177 @@
+{
+  "dishes": [
+    {
+      "name": "Romazava",
+      "spice": "Delicato",
+      "where": "Tavole di famiglia negli Altopiani",
+      "text": "Il piatto nazionale: tenera carne di zebù stufata con verdure fresche, zenzero e pomodoro."
+    },
+    {
+      "name": "Ravitoto",
+      "spice": "Medio",
+      "where": "Trattorie locali di Antananarivo",
+      "text": "Foglie di manioca pestate, cotte a lungo con maiale e aglio, servite con riso fumante."
+    },
+    {
+      "name": "Spiedini di zebù",
+      "spice": "Piccante",
+      "where": "Bancarelle di strada al tramonto",
+      "text": "Grigliati sulla brace e serviti con una salsa al peperoncino fatta in casa molto piccante."
+    },
+    {
+      "name": "Gamberi al cocco",
+      "spice": "Delicato",
+      "where": "Ristoranti in riva al mare",
+      "text": "Gamberi freschi in una cremosa salsa al cocco con un tocco di vaniglia."
+    },
+    {
+      "name": "Flan alla vaniglia",
+      "spice": "Dolce",
+      "where": "Guesthouse e caffè",
+      "text": "Una crema vellutata alla vera vaniglia malgascia, per chiudere dolcemente ogni pasto."
+    }
+  ],
+  "menuTabs": [
+    {
+      "label": "Tutto"
+    },
+    {
+      "label": "Tour"
+    },
+    {
+      "label": "Corsi"
+    },
+    {
+      "label": "Pasti"
+    }
+  ],
+  "experiences": [
+    {
+      "name": "Tour dello street food",
+      "duration": "3 ore",
+      "text": "Assaggia sei specialità locali con una guida, dalle frittelle alla frutta dolce."
+    },
+    {
+      "name": "Fattoria di spezie e vaniglia",
+      "duration": "Mezza giornata",
+      "text": "Incontra i coltivatori e scopri come nascono la vaniglia e il pepe."
+    },
+    {
+      "name": "Corso di cucina",
+      "duration": "3 ore",
+      "text": "Fai la spesa al mercato, poi cucina e mangia tre piatti classici."
+    },
+    {
+      "name": "Pranzo in famiglia",
+      "duration": "2 ore",
+      "text": "Condividi un pasto fatto in casa e qualche storia intorno alla tavola."
+    },
+    {
+      "name": "Pesce sulla spiaggia",
+      "duration": "2 ore",
+      "text": "Il pescato del giorno alla griglia, con i piedi quasi nella sabbia."
+    },
+    {
+      "name": "Cena al tramonto",
+      "duration": "2 ore",
+      "text": "Una tavola per due o per il gruppo, con la vista più bella che conosciamo."
+    }
+  ],
+  "diets": [
+    "Vegetariano",
+    "Vegano",
+    "Halal",
+    "Senza glutine",
+    "Allergia alla frutta a guscio",
+    "Menù bambini"
+  ],
+  "classSteps": [
+    {
+      "title": "Visita il mercato",
+      "text": "Scegli verdure fresche, erbe e spezie con il tuo ospite."
+    },
+    {
+      "title": "Cucinate insieme",
+      "text": "Impara passo dopo passo tre piatti classici, con le mani in pasta."
+    },
+    {
+      "title": "Gusta ciò che hai preparato",
+      "text": "Sedetevi insieme e godetevi il pasto che avete preparato."
+    }
+  ],
+  "faqs": [
+    {
+      "q": "Potete tenere conto della mia dieta o delle mie allergie?",
+      "a": "Sì. Vegetariano, vegano, halal, senza glutine o allergie: tutto è possibile. Diccelo al momento della prenotazione e avvisiamo in anticipo ogni ristorante e ogni ospite."
+    },
+    {
+      "q": "Il cibo di strada è sicuro?",
+      "a": "Ti portiamo solo in bancarelle che conosciamo e di cui ci fidiamo, dove si cucina al momento davanti a te. La tua guida ti spiega cosa scegliere e cosa evitare."
+    },
+    {
+      "q": "I bambini possono partecipare?",
+      "a": "Certo. La maggior parte delle nostre esperienze gastronomiche è adatta alle famiglie, e possiamo regolare il piccante e aggiungere un menù bambini."
+    },
+    {
+      "q": "E l'acqua e le bevande?",
+      "a": "L'acqua in bottiglia è sempre inclusa. Le bevande locali come succhi freschi e rum sono a parte, e ti diciamo cosa vale la pena assaggiare."
+    },
+    {
+      "q": "Con quanto anticipo devo prenotare?",
+      "a": "Per la maggior parte delle esperienze bastano pochi giorni. Per le cene al tramonto e i corsi di cucina in alta stagione consigliamo di prenotare una o due settimane prima."
+    }
+  ],
+  "ctaChoices": [
+    "Tour gastronomico",
+    "Corso di cucina",
+    "Cena privata"
+  ],
+  "heroStats": [
+    "tavole locali",
+    "esperienze gastronomiche",
+    "diete benvenute"
+  ],
+  "spinBadge": "Sapori locali • Pesce fresco • Cucina di casa •",
+  "badge": "Cibo e ristorazione",
+  "title": "Assapora l'isola",
+  "intro": "Bancarelle sfrigolanti, cucine di famiglia e pesce fresco sulla spiaggia. Ti portiamo dove mangiano gli abitanti e prenotiamo il tavolo per te.",
+  "seeExperiences": "Vedi le esperienze",
+  "discover": "Scopri i piatti",
+  "alts": [
+    "Un piatto tradizionale malgascio",
+    "Pesce fresco",
+    "Un dolce alla vaniglia"
+  ],
+  "dishesTitle": "Piatti tipici",
+  "dishesText": "Cinque sapori da non perdere prima di ripartire.",
+  "spice": "Piccante: {level}",
+  "menuTitle": "Esperienze gastronomiche",
+  "menuText": "Da uno spuntino di strada a una cena a lume di candela. Prezzi a persona.",
+  "menuTabsLabel": "Tipi di esperienza",
+  "fromPerPerson": "Da {price} / persona",
+  "bookThis": "Prenota",
+  "perPerson": "a persona",
+  "groups": "I gruppi di 6 o più persone hanno un tavolo privato.",
+  "dietsTitle": "Ogni dieta è benvenuta",
+  "classAlt": "Cucinare insieme",
+  "mostLoved": "Il più amato",
+  "handsOn": "Pratico",
+  "classTitle": "Impara a cucinare come la gente del posto",
+  "classText": "Porta a casa le ricette. Non serve esperienza, solo appetito.",
+  "classFacts": [
+    "durata",
+    "ospiti max",
+    "a persona"
+  ],
+  "reserve": "Prenota un posto",
+  "faqTitle": "Buono a sapersi prima di mangiare",
+  "faqText": "Scegli una domanda. Non trovi la tua? Il nostro team risponde in poche ore.",
+  "question": "Domanda {n}",
+  "ctaTitle": "Organizziamo il tuo viaggio gastronomico",
+  "ctaText": "Dicci cosa ti va di mangiare. Prenotiamo tavoli, guide e degustazioni e ti inviamo un programma chiaro entro un giorno lavorativo.",
+  "mood": "Cosa ti va?",
+  "email": "La tua email",
+  "sending": "Invio…",
+  "send": "Invia la richiesta",
+  "thanks": "Grazie! Ti risponderemo presto."
+}

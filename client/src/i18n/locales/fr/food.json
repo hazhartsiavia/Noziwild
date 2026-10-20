@@ -1,0 +1,177 @@
+{
+  "dishes": [
+    {
+      "name": "Romazava",
+      "spice": "Doux",
+      "where": "Tables familiales des Hautes Terres",
+      "text": "Le plat national : du zébu tendre mijoté avec des brèdes fraîches, du gingembre et de la tomate."
+    },
+    {
+      "name": "Ravitoto",
+      "spice": "Moyen",
+      "where": "Gargotes d'Antananarivo",
+      "text": "Des feuilles de manioc pilées, mijotées longuement avec du porc et de l'ail, servies avec du riz fumant."
+    },
+    {
+      "name": "Brochettes de zébu",
+      "spice": "Relevé",
+      "where": "Étals de rue à la tombée du jour",
+      "text": "Grillées au charbon de bois et servies avec une sauce pimentée maison bien relevée."
+    },
+    {
+      "name": "Crevettes au coco",
+      "spice": "Doux",
+      "where": "Restaurants en bord de plage",
+      "text": "Des crevettes fraîches dans une sauce crémeuse au lait de coco, relevée d'une pointe de vanille."
+    },
+    {
+      "name": "Flan à la vanille",
+      "spice": "Sucré",
+      "where": "Maisons d'hôtes et cafés",
+      "text": "Une crème onctueuse à la vraie vanille malgache, pour finir le repas en douceur."
+    }
+  ],
+  "menuTabs": [
+    {
+      "label": "Tout"
+    },
+    {
+      "label": "Visites"
+    },
+    {
+      "label": "Cours"
+    },
+    {
+      "label": "Repas"
+    }
+  ],
+  "experiences": [
+    {
+      "name": "Balade street food",
+      "duration": "3 heures",
+      "text": "Goûtez six spécialités locales avec un guide, des beignets aux fruits sucrés."
+    },
+    {
+      "name": "Ferme d'épices et de vanille",
+      "duration": "Demi-journée",
+      "text": "Rencontrez les producteurs et découvrez comment sont produits la vanille et le poivre."
+    },
+    {
+      "name": "Cours de cuisine",
+      "duration": "3 heures",
+      "text": "Faites le marché, puis cuisinez et dégustez trois plats classiques."
+    },
+    {
+      "name": "Déjeuner en famille",
+      "duration": "2 heures",
+      "text": "Partagez un repas fait maison et des histoires autour de la table."
+    },
+    {
+      "name": "Fruits de mer sur la plage",
+      "duration": "2 heures",
+      "text": "La pêche du jour grillée, les pieds presque dans le sable."
+    },
+    {
+      "name": "Dîner au coucher du soleil",
+      "duration": "2 heures",
+      "text": "Une table dressée pour deux ou pour le groupe, avec la plus belle vue que nous connaissions."
+    }
+  ],
+  "diets": [
+    "Végétarien",
+    "Végan",
+    "Halal",
+    "Sans gluten",
+    "Allergie aux fruits à coque",
+    "Menu enfant"
+  ],
+  "classSteps": [
+    {
+      "title": "Visiter le marché",
+      "text": "Choisissez légumes frais, herbes et épices avec votre hôte."
+    },
+    {
+      "title": "Cuisiner ensemble",
+      "text": "Apprenez trois plats classiques pas à pas, les mains dans la farine."
+    },
+    {
+      "title": "Déguster votre cuisine",
+      "text": "Installez-vous ensemble et savourez le repas que vous avez préparé."
+    }
+  ],
+  "faqs": [
+    {
+      "q": "Pouvez-vous tenir compte de mon régime ou de mes allergies ?",
+      "a": "Oui. Végétarien, végan, halal, sans gluten ou allergies : tout est possible. Dites-le-nous à la réservation et nous prévenons chaque restaurant et chaque hôte à l'avance."
+    },
+    {
+      "q": "La cuisine de rue est-elle sûre ?",
+      "a": "Nous ne vous emmenons que dans des étals que nous connaissons et en qui nous avons confiance, où tout est cuisiné devant vous. Votre guide vous dit quoi choisir et quoi éviter."
+    },
+    {
+      "q": "Les enfants peuvent-ils participer ?",
+      "a": "Bien sûr. La plupart de nos expériences culinaires conviennent aux familles, et nous pouvons adapter le piment et ajouter un menu enfant."
+    },
+    {
+      "q": "Et l'eau et les boissons ?",
+      "a": "L'eau en bouteille est toujours incluse. Les boissons locales comme les jus frais et le rhum sont en supplément, et nous vous disons ce qui vaut la peine d'être goûté."
+    },
+    {
+      "q": "Combien de temps à l'avance faut-il réserver ?",
+      "a": "Quelques jours suffisent pour la plupart des expériences. Pour les dîners au coucher du soleil et les cours de cuisine en haute saison, nous conseillons de réserver une à deux semaines avant."
+    }
+  ],
+  "ctaChoices": [
+    "Visite gourmande",
+    "Cours de cuisine",
+    "Dîner privé"
+  ],
+  "heroStats": [
+    "tables locales",
+    "expériences culinaires",
+    "régimes acceptés"
+  ],
+  "spinBadge": "Saveurs locales • Fruits de mer • Cuisine maison •",
+  "badge": "Restauration",
+  "title": "Goûtez l'île",
+  "intro": "Étals de rue grésillants, cuisines familiales et fruits de mer sur la plage. Nous vous emmenons là où mangent les habitants, et nous réservons la table pour vous.",
+  "seeExperiences": "Voir les expériences",
+  "discover": "Découvrir les plats",
+  "alts": [
+    "Un plat traditionnel malgache",
+    "Fruits de mer frais",
+    "Un dessert sucré à la vanille"
+  ],
+  "dishesTitle": "Les plats incontournables",
+  "dishesText": "Cinq saveurs à ne pas manquer avant de repartir.",
+  "spice": "Piment : {level}",
+  "menuTitle": "Expériences culinaires",
+  "menuText": "D'un en-cas dans la rue à un dîner aux chandelles. Prix par personne.",
+  "menuTabsLabel": "Types d'expérience",
+  "fromPerPerson": "À partir de {price} / personne",
+  "bookThis": "Réserver",
+  "perPerson": "par personne",
+  "groups": "Les groupes de 6 personnes ou plus ont une table privée.",
+  "dietsTitle": "Tous les régimes sont les bienvenus",
+  "classAlt": "Cuisiner ensemble",
+  "mostLoved": "Le plus apprécié",
+  "handsOn": "Atelier pratique",
+  "classTitle": "Cuisinez comme un habitant",
+  "classText": "Repartez avec les recettes. Aucune expérience nécessaire, juste de l'appétit.",
+  "classFacts": [
+    "durée",
+    "participants max",
+    "par personne"
+  ],
+  "reserve": "Réserver une place",
+  "faqTitle": "Bon à savoir avant de passer à table",
+  "faqText": "Choisissez une question. Vous ne trouvez pas la vôtre ? Notre équipe répond en quelques heures.",
+  "question": "Question {n}",
+  "ctaTitle": "Organisons votre voyage gourmand",
+  "ctaText": "Dites-nous ce qui vous fait envie. Nous réservons les tables, les guides et les dégustations, et vous envoyons un programme clair sous un jour ouvré.",
+  "mood": "De quoi avez-vous envie ?",
+  "email": "Votre e-mail",
+  "sending": "Envoi…",
+  "send": "Envoyer la demande",
+  "thanks": "Merci ! Nous vous répondrons très vite."
+}

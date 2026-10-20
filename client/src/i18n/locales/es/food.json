@@ -1,0 +1,177 @@
+{
+  "dishes": [
+    {
+      "name": "Romazava",
+      "spice": "Suave",
+      "where": "Mesas familiares de las Tierras Altas",
+      "text": "El plato nacional: tierna carne de cebú guisada con verduras frescas, jengibre y tomate."
+    },
+    {
+      "name": "Ravitoto",
+      "spice": "Medio",
+      "where": "Casas de comidas de Antananarivo",
+      "text": "Hojas de mandioca machacadas y cocinadas a fuego lento con cerdo y ajo, servidas con arroz humeante."
+    },
+    {
+      "name": "Brochetas de cebú",
+      "spice": "Picante",
+      "where": "Puestos callejeros al atardecer",
+      "text": "A la brasa y servidas con una salsa de guindilla casera muy picante."
+    },
+    {
+      "name": "Gambas al coco",
+      "spice": "Suave",
+      "where": "Restaurantes frente al mar",
+      "text": "Gambas frescas en una cremosa salsa de coco con un toque de vainilla."
+    },
+    {
+      "name": "Flan de vainilla",
+      "spice": "Dulce",
+      "where": "Casas de huéspedes y cafés",
+      "text": "Una crema sedosa hecha con auténtica vainilla malgache, un final suave para cualquier comida."
+    }
+  ],
+  "menuTabs": [
+    {
+      "label": "Todo"
+    },
+    {
+      "label": "Rutas"
+    },
+    {
+      "label": "Clases"
+    },
+    {
+      "label": "Comidas"
+    }
+  ],
+  "experiences": [
+    {
+      "name": "Ruta de comida callejera",
+      "duration": "3 horas",
+      "text": "Pruebe seis bocados locales con un guía, de los fritos a la fruta dulce."
+    },
+    {
+      "name": "Granja de especias y vainilla",
+      "duration": "Medio día",
+      "text": "Conozca a los agricultores y descubra cómo se producen la vainilla y la pimienta."
+    },
+    {
+      "name": "Clase de cocina",
+      "duration": "3 horas",
+      "text": "Compre en el mercado y después cocine y coma tres platos clásicos."
+    },
+    {
+      "name": "Comida con una familia",
+      "duration": "2 horas",
+      "text": "Comparta una comida casera e historias alrededor de la mesa."
+    },
+    {
+      "name": "Marisco en la playa",
+      "duration": "2 horas",
+      "text": "La pesca del día a la parrilla, con los pies casi en la arena."
+    },
+    {
+      "name": "Cena al atardecer",
+      "duration": "2 horas",
+      "text": "Una mesa para dos o para el grupo, con la mejor vista que conocemos."
+    }
+  ],
+  "diets": [
+    "Vegetariano",
+    "Vegano",
+    "Halal",
+    "Sin gluten",
+    "Alergia a frutos secos",
+    "Menú infantil"
+  ],
+  "classSteps": [
+    {
+      "title": "Visitar el mercado",
+      "text": "Elija verduras frescas, hierbas y especias con su anfitrión."
+    },
+    {
+      "title": "Cocinar juntos",
+      "text": "Aprenda tres platos clásicos paso a paso, con las manos en la masa."
+    },
+    {
+      "title": "Comer lo que ha preparado",
+      "text": "Siéntense juntos y disfruten de la comida que han preparado."
+    }
+  ],
+  "faqs": [
+    {
+      "q": "¿Pueden adaptarse a mi dieta o a mis alergias?",
+      "a": "Sí. Vegetariano, vegano, halal, sin gluten o alergias: todo es posible. Díganoslo al reservar y avisamos con antelación a cada restaurante y anfitrión."
+    },
+    {
+      "q": "¿Es segura la comida callejera?",
+      "a": "Solo le llevamos a puestos que conocemos y en los que confiamos, donde se cocina al momento delante de usted. Su guía le explica qué elegir y qué evitar."
+    },
+    {
+      "q": "¿Pueden participar los niños?",
+      "a": "Por supuesto. La mayoría de nuestras experiencias gastronómicas son aptas para familias, y podemos ajustar el picante y añadir un menú infantil."
+    },
+    {
+      "q": "¿Y el agua y las bebidas?",
+      "a": "El agua embotellada siempre está incluida. Las bebidas locales, como zumos frescos y ron, se pagan aparte, y le decimos cuáles merecen la pena."
+    },
+    {
+      "q": "¿Con cuánta antelación debo reservar?",
+      "a": "Para la mayoría de las experiencias bastan unos días. Para las cenas al atardecer y las clases de cocina en temporada alta, recomendamos reservar una o dos semanas antes."
+    }
+  ],
+  "ctaChoices": [
+    "Ruta gastronómica",
+    "Clase de cocina",
+    "Cena privada"
+  ],
+  "heroStats": [
+    "mesas locales",
+    "experiencias gastronómicas",
+    "todas las dietas"
+  ],
+  "spinBadge": "Sabores locales • Marisco fresco • Cocina casera •",
+  "badge": "Gastronomía",
+  "title": "Saboree la isla",
+  "intro": "Puestos callejeros chisporroteantes, cocinas familiares y marisco fresco en la playa. Le llevamos donde come la gente local y le reservamos la mesa.",
+  "seeExperiences": "Ver experiencias",
+  "discover": "Descubrir los platos",
+  "alts": [
+    "Un plato tradicional malgache",
+    "Marisco fresco",
+    "Un postre dulce de vainilla"
+  ],
+  "dishesTitle": "Platos típicos",
+  "dishesText": "Cinco sabores que no debe perderse antes de irse.",
+  "spice": "Picante: {level}",
+  "menuTitle": "Experiencias gastronómicas",
+  "menuText": "De un bocado callejero a una cena a la luz de las velas. Precios por persona.",
+  "menuTabsLabel": "Tipos de experiencia",
+  "fromPerPerson": "Desde {price} / persona",
+  "bookThis": "Reservar",
+  "perPerson": "por persona",
+  "groups": "Los grupos de 6 o más personas tienen mesa privada.",
+  "dietsTitle": "Todas las dietas son bienvenidas",
+  "classAlt": "Cocinando juntos",
+  "mostLoved": "El favorito",
+  "handsOn": "Práctico",
+  "classTitle": "Aprenda a cocinar como un local",
+  "classText": "Llévese las recetas a casa. No hace falta experiencia, solo apetito.",
+  "classFacts": [
+    "duración",
+    "personas máx.",
+    "por persona"
+  ],
+  "reserve": "Reservar una plaza",
+  "faqTitle": "Conviene saber antes de comer",
+  "faqText": "Elija una pregunta. ¿No encuentra la suya? Nuestro equipo responde en pocas horas.",
+  "question": "Pregunta {n}",
+  "ctaTitle": "Planifiquemos su viaje gastronómico",
+  "ctaText": "Díganos qué le apetece comer. Reservamos las mesas, los guías y las degustaciones, y le enviamos un plan claro en un día laborable.",
+  "mood": "¿Qué le apetece?",
+  "email": "Su correo electrónico",
+  "sending": "Enviando…",
+  "send": "Enviar solicitud",
+  "thanks": "¡Gracias! Le responderemos muy pronto."
+}

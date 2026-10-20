@@ -9,6 +9,8 @@ import Navbar from '../components/Navbar';
 import Footer from '../components/Footer';
 import { sendRequest } from '../api';
 import { useAuth } from '../context/AuthContext';
+import { Trans, useT } from '../i18n/LanguageContext';
+import { localize } from '../i18n/localize';
 import { gsap } from 'gsap'
 import { ScrollTrigger } from 'gsap/ScrollTrigger'
 
@@ -28,8 +30,9 @@ const prefersReducedMotion = () =>
   typeof window !== 'undefined' && window.matchMedia('(prefers-reduced-motion: reduce)').matches
 
 /* ---------------------------- Données ---------------------------- */
+// Textes affichés : locales/<langue>/food.json, posés sur ces données par localize()
 
-const dishes = [
+const DISHES = [
   { id: 1, name: 'Romazava', image: Ambanja, spice: 'Mild', where: 'Family tables in the highlands', text: 'The national dish: tender zebu beef simmered with fresh greens, ginger and tomato.' },
   { id: 2, name: 'Ravitoto', image: Tana, spice: 'Medium', where: 'Local eateries in Antananarivo', text: 'Pounded cassava leaves slow-cooked with pork and garlic, served with steaming rice.' },
   { id: 3, name: 'Zebu Skewers', image: Deux, spice: 'Hot', where: 'Street stalls at dusk', text: 'Grilled over charcoal and served with a fiery side of homemade chili sauce.' },
@@ -38,14 +41,14 @@ const dishes = [
 ]
 
 // Prix donnés en exemple, à adapter
-const menuTabs = [
+const MENU_TABS = [
   { id: 'all', label: 'All' },
   { id: 'tour', label: 'Tours' },
   { id: 'class', label: 'Classes' },
   { id: 'meal', label: 'Meals' },
 ]
 
-const experiences = [
+const EXPERIENCES = [
   { id: 1, category: 'tour', name: 'Street Food Walk', duration: '3 hours', price: 25, image: Deux, text: 'Taste six local snacks with a guide, from fried treats to sweet fruit.' },
   { id: 2, category: 'tour', name: 'Spice & Vanilla Farm', duration: 'Half day', price: 40, image: Ambanja, text: 'Meet the growers and learn how vanilla and pepper are made.' },
   { id: 3, category: 'class', name: 'Cooking Class', duration: '3 hours', price: 45, image: Tana, text: 'Shop at the market, then cook and eat three classic dishes.' },
@@ -54,22 +57,13 @@ const experiences = [
   { id: 6, category: 'meal', name: 'Sunset Dinner', duration: '2 hours', price: 55, image: NosyIranja, text: 'A table set for two or for the group, with the best view we know.' },
 ]
 
-const diets = ['Vegetarian', 'Vegan', 'Halal', 'Gluten-free', 'Nut allergy', 'Kids menu']
-
-const classSteps = [
+const CLASS_STEPS = [
   { id: 1, title: 'Visit the market', text: 'Choose fresh vegetables, herbs and spices with your host.' },
   { id: 2, title: 'Cook together', text: 'Learn three classic dishes step by step, hands on.' },
   { id: 3, title: 'Eat what you made', text: 'Sit down together and enjoy the meal you prepared.' },
 ]
 
-const faqs = [
-  { q: 'Can you cater to my diet or allergies?', a: 'Yes. Vegetarian, vegan, halal, gluten-free and allergy needs are all possible. Tell us when you book and we brief every restaurant and host in advance.' },
-  { q: 'Is street food safe to eat?', a: 'We only take you to stalls we know and trust, where food is cooked fresh in front of you. Your guide explains what to pick and what to skip.' },
-  { q: 'Can children join the experiences?', a: 'Of course. Most of our food experiences are family friendly, and we can adjust spice levels and add a kids menu.' },
-  { q: 'What about drinking water and drinks?', a: 'Bottled water is always included. Local drinks like fresh juices and rum are available at extra cost, and we tell you what is worth trying.' },
-  { q: 'How far ahead should I book?', a: 'A few days ahead is enough for most experiences. For sunset dinners and cooking classes in high season, we recommend booking one to two weeks before.' },
-]
-
+// Envoyé à l'équipe en anglais ; libellé affiché : food.ctaChoices (même ordre)
 const ctaChoices = ['Food Tour', 'Cooking Class', 'Private Dinner']
 
 /* ---------------------------- Icônes ----------------------------- */
@@ -90,6 +84,7 @@ const ForkIcon = () => (
 
 // Badge à texte circulaire qui tourne (GSAP)
 function SpinBadge() {
+  const t = useT('food')
   return (
     <div className="relative w-full aspect-square rounded-full bg-[#084838] text-white" aria-hidden="true">
       <svg data-spin viewBox="0 0 140 140" className="absolute inset-0 w-full h-full">
@@ -98,7 +93,7 @@ function SpinBadge() {
         </defs>
         <text fontSize="10" fill="currentColor" letterSpacing="0.5">
           <textPath href="#food-circle" textLength="326" lengthAdjust="spacing">
-            Local flavors • Fresh seafood • Home cooking •
+            {t('spinBadge')}
           </textPath>
         </text>
       </svg>
@@ -108,25 +103,27 @@ function SpinBadge() {
 }
 
 const heroStats = [
-  { id: 1, value: '20+', label: 'local tables' },
-  { id: 2, value: '6', label: 'dining experiences' },
-  { id: 3, value: '100%', label: 'diets welcome' },
+  { id: 1, value: '20+' },
+  { id: 2, value: '6' },
+  { id: 3, value: '100%' },
 ]
 
 // Hero : texte + chiffres à gauche, "assiettes" rondes serrées et badge qui tourne à droite
 function Hero() {
+  const t = useT('food')
+  const alts = t('alts')
   return (
     <section className="grid grid-cols-1 lg:grid-cols-[1.05fr_1fr] gap-8 lg:gap-10 items-center">
       <div>
-        <span data-hero className={BADGE}>Food & Dining</span>
-        <h1 data-hero className={`${STATEMENT_TITLE} mt-5`}>Taste The Island</h1>
+        <span data-hero className={BADGE}>{t('badge')}</span>
+        <h1 data-hero className={`${STATEMENT_TITLE} mt-5`}>{t('title')}</h1>
         <p data-hero className={`${SECTION_SUBTITLE} mt-5 md:mt-6`}>
-          Sizzling street stalls, family kitchens and fresh seafood on the beach. We take you where locals eat, and book the table for you.
+          {t('intro')}
         </p>
         <div data-hero className="mt-7 flex flex-wrap items-center gap-4">
-          <a href="#experiences" className={`bg-[#084838] hover:bg-[#0a5c47] text-white ${BUTTON}`}>See Experiences</a>
+          <a href="#experiences" className={`bg-[#084838] hover:bg-[#0a5c47] text-white ${BUTTON}`}>{t('seeExperiences')}</a>
           <a href="#dishes" className="inline-flex items-center gap-2 text-sm md:text-base font-medium text-slate-800 hover:gap-3 transition-all">
-            Discover the dishes <ArrowIcon />
+            {t('discover')} <ArrowIcon />
           </a>
         </div>
 
@@ -134,7 +131,7 @@ function Hero() {
           {heroStats.map((st, i) => (
             <li key={st.id} className={i > 0 ? 'sm:pl-8 md:pl-12 sm:border-l sm:border-[#084838]/20' : ''}>
               <p className="text-2xl md:text-4xl leading-none text-slate-800">{st.value}</p>
-              <p className={`mt-1 ${META_TEXT} text-slate-600`}>{st.label}</p>
+              <p className={`mt-1 ${META_TEXT} text-slate-600`}>{t('heroStats')[i]}</p>
             </li>
           ))}
         </ul>
@@ -143,13 +140,13 @@ function Hero() {
       {/* Assiettes : plus grandes et plus proches pour remplir l'espace */}
       <div className="relative w-full max-w-[600px] aspect-[6/5] mx-auto lg:ml-auto">
         <div data-plate className="absolute left-0 top-[4%] w-[66%]">
-          <div data-bob><img src={Ambanja} alt="A traditional Malagasy dish" className="w-full aspect-square object-cover rounded-full" /></div>
+          <div data-bob><img src={Ambanja} alt={alts[0]} className="w-full aspect-square object-cover rounded-full" /></div>
         </div>
         <div data-plate className="absolute right-0 top-0 w-[34%]">
-          <div data-bob><img src={Ramena} alt="Fresh seafood" className="w-full aspect-square object-cover rounded-full ring-8 ring-[#D5E8E2]" /></div>
+          <div data-bob><img src={Ramena} alt={alts[1]} className="w-full aspect-square object-cover rounded-full ring-8 ring-[#D5E8E2]" /></div>
         </div>
         <div data-plate className="absolute right-[2%] bottom-[2%] w-[40%]">
-          <div data-bob><img src={NosyLonjo} alt="Sweet vanilla dessert" className="w-full aspect-square object-cover rounded-full ring-8 ring-[#D5E8E2]" /></div>
+          <div data-bob><img src={NosyLonjo} alt={alts[2]} className="w-full aspect-square object-cover rounded-full ring-8 ring-[#D5E8E2]" /></div>
         </div>
         <div data-plate className="absolute right-[38%] bottom-0 w-[22%]"><SpinBadge /></div>
       </div>
@@ -159,17 +156,19 @@ function Hero() {
 
 // Plats signature : panneaux qui s'ouvrent au survol / au clic
 function Dishes() {
+  const t = useT('food')
+  const dishes = localize(DISHES, t('dishes'))
   const [active, setActive] = useState(0)
   const isDesktop = () => window.matchMedia('(min-width: 1024px)').matches
 
   return (
     <div id="dishes" className={`${SECTION_GAP} scroll-mt-8`}>
       <div className="mb-8 md:mb-12 flex flex-col lg:flex-row lg:items-end lg:justify-between gap-4 lg:gap-12">
-        <h2 className={`${SECTION_TITLE} lg:max-w-[52%]`}>Signature Dishes</h2>
-        <p className={`${SECTION_SUBTITLE} lg:max-w-md`}>Five flavors you should not leave without trying.</p>
+        <h2 className={`${SECTION_TITLE} lg:max-w-[52%]`}>{t('dishesTitle')}</h2>
+        <p className={`${SECTION_SUBTITLE} lg:max-w-md`}>{t('dishesText')}</p>
       </div>
 
-      <div className="flex flex-col lg:flex-row gap-3 lg:h-[560px]" role="tablist" aria-label="Signature dishes">
+      <div className="flex flex-col lg:flex-row gap-3 lg:h-[560px]" role="tablist" aria-label={t('dishesTitle')}>
         {dishes.map((d, i) => {
           const isActive = i === active
           return (
@@ -198,7 +197,7 @@ function Dishes() {
               {/* Contenu quand le panneau est ouvert */}
               <span className={`absolute inset-x-0 bottom-0 block p-5 md:p-8 transition-all duration-500 ${isActive ? 'opacity-100 translate-y-0 delay-300' : 'opacity-0 translate-y-4 pointer-events-none'}`}>
                 <span className="flex flex-wrap gap-2">
-                  <span className="rounded-full bg-white/90 px-3 py-1 text-xs md:text-sm font-medium text-slate-900">Spice: {d.spice}</span>
+                  <span className="rounded-full bg-white/90 px-3 py-1 text-xs md:text-sm font-medium text-slate-900">{t('spice', { level: d.spice })}</span>
                   <span className="rounded-full border border-white/40 bg-white/10 backdrop-blur-sm px-3 py-1 text-xs md:text-sm">{d.where}</span>
                 </span>
                 <span className="mt-4 block text-3xl md:text-5xl font-medium tracking-tight">{d.name}</span>
@@ -214,6 +213,9 @@ function Dishes() {
 
 // Expériences : filtres, liste de lignes à droite, grand aperçu à gauche qui change au survol
 function Menu() {
+  const tr = useT('food')
+  const menuTabs = localize(MENU_TABS, tr('menuTabs'))
+  const experiences = localize(EXPERIENCES, tr('experiences'))
   const [category, setCategory] = useState('all')
   const [activeId, setActiveId] = useState(experiences[0].id)
   const previewRef = useRef(null)
@@ -235,11 +237,11 @@ function Menu() {
   return (
     <div id="experiences" className={`${SECTION_GAP} scroll-mt-8`}>
       <div className="mb-6 md:mb-10 flex flex-col lg:flex-row lg:items-end lg:justify-between gap-4 lg:gap-12">
-        <h2 className={`${SECTION_TITLE} lg:max-w-[52%]`}>Dining Experiences</h2>
-        <p className={`${SECTION_SUBTITLE} lg:max-w-md`}>From a quick street snack to a candlelit dinner. Prices are per person.</p>
+        <h2 className={`${SECTION_TITLE} lg:max-w-[52%]`}>{tr('menuTitle')}</h2>
+        <p className={`${SECTION_SUBTITLE} lg:max-w-md`}>{tr('menuText')}</p>
       </div>
 
-      <div className="mb-8 flex flex-wrap gap-2 md:gap-3" role="tablist" aria-label="Experience types">
+      <div className="mb-8 flex flex-wrap gap-2 md:gap-3" role="tablist" aria-label={tr('menuTabsLabel')}>
         {menuTabs.map((t) => (
           <button
             key={t.id}
@@ -266,8 +268,8 @@ function Menu() {
               <h3 className="mt-4 text-4xl font-medium tracking-tight">{current.name}</h3>
               <p className="mt-3 max-w-md text-base text-white/85 leading-relaxed">{current.text}</p>
               <div className="mt-6 flex items-center justify-between gap-4">
-                <p className="text-white/80">From <span className="text-3xl font-medium text-white">${current.price}</span> / person</p>
-                <a href="/contact" className={`bg-[#C49849] hover:bg-[#b08339] text-white ${BUTTON}`}>Book This</a>
+                <p className="text-white/80"><Trans text={tr('fromPerPerson')} values={{ price: <span className="text-3xl font-medium text-white">${current.price}</span> }} /></p>
+                <a href="/contact" className={`bg-[#C49849] hover:bg-[#b08339] text-white ${BUTTON}`}>{tr('bookThis')}</a>
               </div>
             </div>
           </div>
@@ -298,7 +300,7 @@ function Menu() {
 
                   <div className="shrink-0 text-right">
                     <p className="text-xl md:text-3xl font-medium text-slate-900 tabular-nums">${e.price}</p>
-                    <p className={`${META_TEXT} text-slate-500`}>per person</p>
+                    <p className={`${META_TEXT} text-slate-500`}>{tr('perPerson')}</p>
                   </div>
 
                   <span className={`hidden md:flex shrink-0 w-10 h-10 rounded-full items-center justify-center transition ${isActive ? 'bg-[#084838] text-white translate-x-0' : 'bg-[#084838]/10 text-[#084838] group-hover:bg-[#084838] group-hover:text-white'}`}>
@@ -311,18 +313,19 @@ function Menu() {
         </ul>
       </div>
 
-      <p className={`mt-8 ${META_TEXT} text-slate-500`}>Groups of 6 or more get a private table.</p>
+      <p className={`mt-8 ${META_TEXT} text-slate-500`}>{tr('groups')}</p>
     </div>
   )
 }
 
 // Régimes alimentaires : bande simple avec pastilles
 function Diets() {
+  const t = useT('food')
   return (
     <div className={`${SECTION_GAP} flex flex-col lg:flex-row lg:items-center gap-6 lg:gap-16 border-y border-[#084838]/20 py-8 md:py-10`}>
-      <h2 className="text-2xl md:text-4xl font-medium text-slate-900 tracking-tight lg:max-w-xs">Every Diet Is Welcome</h2>
+      <h2 className="text-2xl md:text-4xl font-medium text-slate-900 tracking-tight lg:max-w-xs">{t('dietsTitle')}</h2>
       <ul className="flex flex-wrap gap-2 md:gap-3">
-        {diets.map((d) => (
+        {t('diets').map((d) => (
           <li key={d} className="rounded-full border border-[#084838] px-4 md:px-5 py-2 text-sm md:text-base text-[#084838]">{d}</li>
         ))}
       </ul>
@@ -332,17 +335,20 @@ function Diets() {
 
 // Cours de cuisine : photo avec parallaxe + étapes
 function CookingClass() {
+  const t = useT('food')
+  const classSteps = localize(CLASS_STEPS, t('classSteps'))
+  const facts = t('classFacts')
   return (
     <div className={`${SECTION_GAP} grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-16 items-center`}>
       <div className="relative overflow-hidden rounded-3xl aspect-[4/5] md:aspect-[5/4] lg:aspect-[4/5] bg-[#084838]">
-        <img data-parallax src={Tana} alt="Cooking together" className="absolute left-0 -top-[10%] w-full h-[120%] object-cover" />
-        <span className={`${BADGE} absolute left-5 top-5`}>Most loved</span>
+        <img data-parallax src={Tana} alt={t('classAlt')} className="absolute left-0 -top-[10%] w-full h-[120%] object-cover" />
+        <span className={`${BADGE} absolute left-5 top-5`}>{t('mostLoved')}</span>
       </div>
 
       <div>
-        <p className="mb-3 text-xs sm:text-sm md:text-base uppercase tracking-wide text-slate-700">Hands-on</p>
-        <h2 className={SECTION_TITLE}>Learn To Cook Like A Local</h2>
-        <p className={`mt-5 ${SECTION_SUBTITLE}`}>Take the recipes home with you. No experience needed, just an appetite.</p>
+        <p className="mb-3 text-xs sm:text-sm md:text-base uppercase tracking-wide text-slate-700">{t('handsOn')}</p>
+        <h2 className={SECTION_TITLE}>{t('classTitle')}</h2>
+        <p className={`mt-5 ${SECTION_SUBTITLE}`}>{t('classText')}</p>
 
         <ol className="mt-8 flex flex-col gap-5">
           {classSteps.map((s) => (
@@ -357,7 +363,7 @@ function CookingClass() {
         </ol>
 
         <ul className="mt-8 grid grid-cols-3 gap-3 md:gap-5 max-w-md">
-          {[['3 h', 'duration'], ['8', 'guests max'], ['$45', 'per person']].map(([v, l]) => (
+          {[['3 h', facts[0]], ['8', facts[1]], ['$45', facts[2]]].map(([v, l]) => (
             <li key={l} className="rounded-2xl bg-white p-4 text-center">
               <p className="text-2xl md:text-3xl leading-none text-slate-800">{v}</p>
               <p className={`mt-2 ${META_TEXT} text-slate-600`}>{l}</p>
@@ -365,7 +371,7 @@ function CookingClass() {
           ))}
         </ul>
 
-        <a href="/contact" className={`mt-8 inline-block bg-[#084838] hover:bg-[#0a5c47] text-white ${BUTTON}`}>Reserve A Seat</a>
+        <a href="/contact" className={`mt-8 inline-block bg-[#084838] hover:bg-[#0a5c47] text-white ${BUTTON}`}>{t('reserve')}</a>
       </div>
     </div>
   )
@@ -373,6 +379,8 @@ function CookingClass() {
 
 // FAQ nouvelle version : liste de questions à gauche, grande réponse sur carte verte à droite
 function Faq() {
+  const t = useT('food')
+  const faqs = t('faqs')
   const [active, setActive] = useState(0)
   const answerRef = useRef(null)
   const first = useRef(true)
@@ -387,8 +395,8 @@ function Faq() {
   return (
     <div className={SECTION_GAP}>
       <div className="mb-8 md:mb-12 flex flex-col lg:flex-row lg:items-end lg:justify-between gap-4 lg:gap-12">
-        <h2 className={`${SECTION_TITLE} lg:max-w-[52%]`}>Good To Know Before You Eat</h2>
-        <p className={`${SECTION_SUBTITLE} lg:max-w-md`}>Pick a question. Can&apos;t find yours? Our team replies within a few hours.</p>
+        <h2 className={`${SECTION_TITLE} lg:max-w-[52%]`}>{t('faqTitle')}</h2>
+        <p className={`${SECTION_SUBTITLE} lg:max-w-md`}>{t('faqText')}</p>
       </div>
 
       <div className="grid grid-cols-1 lg:grid-cols-[1fr_1fr] gap-8 lg:gap-16 items-start">
@@ -417,7 +425,7 @@ function Faq() {
         {/* Grand écran : réponse sur carte verte */}
         <div className="hidden lg:block lg:sticky lg:top-8 rounded-3xl bg-[#084838] text-white p-10 min-h-[340px]">
           <div ref={answerRef}>
-            <span className={BADGE}>Question {String(active + 1).padStart(2, '0')}</span>
+            <span className={BADGE}>{t('question', { n: String(active + 1).padStart(2, '0') })}</span>
             <h3 className="mt-6 text-2xl font-medium leading-snug">{faqs[active].q}</h3>
             <p className="mt-5 text-lg text-white/80 leading-relaxed">{faqs[active].a}</p>
           </div>
@@ -431,6 +439,7 @@ function Faq() {
 function Cta() {
   // Connecté : nom et email pré-remplis (la clé recrée le champ quand la session est connue)
   const { user } = useAuth()
+  const t = useT('food')
   const [pick, setPick] = useState(ctaChoices[0])
   const [status, setStatus] = useState('idle') // 'idle' | 'sending' | 'sent' | 'error'
   const [error, setError] = useState('')
@@ -454,17 +463,17 @@ function Cta() {
   return (
     <div className={`${SECTION_GAP} grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-16 items-center rounded-3xl bg-[#084838] text-white p-6 md:p-14`}>
       <div>
-        <h2 className="text-3xl sm:text-4xl md:text-5xl font-medium leading-[1.15] tracking-tight">Let&apos;s Plan Your Food Trip</h2>
+        <h2 className="text-3xl sm:text-4xl md:text-5xl font-medium leading-[1.15] tracking-tight">{t('ctaTitle')}</h2>
         <p className="mt-4 text-sm md:text-lg text-white/75 leading-relaxed max-w-md">
-          Tell us what you feel like eating. We book the tables, the guides and the tastings, and send a clear plan within one working day.
+          {t('ctaText')}
         </p>
       </div>
 
       <form onSubmit={handleSubmit} className="rounded-3xl bg-white/10 border border-white/20 p-5 md:p-8">
         <fieldset>
-          <legend className="text-sm md:text-base text-white/80">What are you in the mood for?</legend>
+          <legend className="text-sm md:text-base text-white/80">{t('mood')}</legend>
           <div className="mt-3 flex flex-wrap gap-2">
-            {ctaChoices.map((c) => (
+            {ctaChoices.map((c, i) => (
               <button
                 key={c}
                 type="button"
@@ -472,19 +481,19 @@ function Cta() {
                 onClick={() => setPick(c)}
                 className={`rounded-full px-4 py-2 text-sm font-medium transition ${pick === c ? 'bg-[#C49849] text-white' : 'border border-white/40 text-white hover:bg-white/10'}`}
               >
-                {c}
+                {t('ctaChoices')[i]}
               </button>
             ))}
           </div>
         </fieldset>
 
-        <label htmlFor="food-email" className="mt-6 block text-sm md:text-base text-white/80">Your email</label>
+        <label htmlFor="food-email" className="mt-6 block text-sm md:text-base text-white/80">{t('email')}</label>
         <div className="mt-2 flex flex-col sm:flex-row gap-2 rounded-3xl sm:rounded-full bg-white p-2 sm:pl-6">
           <input id="food-email" name="email" key={`e-${user?.id}`} defaultValue={user?.email} type="email" required autoComplete="email" placeholder="name@example.com" className="flex-1 min-w-0 bg-transparent px-4 py-2 sm:px-0 text-sm md:text-base text-slate-800 placeholder:text-slate-500 focus:outline-none" />
-          <button type="submit" disabled={status === 'sending'} className={`shrink-0 bg-[#C49849] hover:bg-[#b08339] text-white disabled:opacity-60 disabled:cursor-wait ${BUTTON}`}>{status === 'sending' ? 'Sending…' : 'Send Request'}</button>
+          <button type="submit" disabled={status === 'sending'} className={`shrink-0 bg-[#C49849] hover:bg-[#b08339] text-white disabled:opacity-60 disabled:cursor-wait ${BUTTON}`}>{status === 'sending' ? t('sending') : t('send')}</button>
         </div>
 
-        {status === 'sent' && <p role="status" className="mt-4 text-sm md:text-base text-[#E6C58A]">Thank you! We will get back to you soon.</p>}
+        {status === 'sent' && <p role="status" className="mt-4 text-sm md:text-base text-[#E6C58A]">{t('thanks')}</p>}
         {status === 'error' && <p role="alert" className="mt-4 text-sm md:text-base text-red-300">{error}</p>}
       </form>
     </div>
