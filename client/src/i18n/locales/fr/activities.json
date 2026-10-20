@@ -1,0 +1,86 @@
+{
+  "items": [
+    {
+      "name": "Observation des oiseaux",
+      "type": "Terre",
+      "duration": "3–5 h",
+      "level": "Facile",
+      "text": "Parcourez des sentiers paisibles au lever du soleil avec un naturaliste et observez des oiseaux rares que vous ne verrez nulle part ailleurs."
+    },
+    {
+      "name": "Nature et aventure",
+      "type": "Terre",
+      "duration": "Journée entière",
+      "level": "Modéré",
+      "text": "Randonnées, points de vue et cascades cachées, avec des guides qui connaissent chaque sentier et chaque raccourci."
+    },
+    {
+      "name": "Excursions en bateau",
+      "type": "Mer",
+      "duration": "Demi-journée ou journée",
+      "level": "Facile",
+      "text": "Traversez la baie vers des îles tranquilles et des plages de sable blanc, avec déjeuner et arrêts baignade en chemin."
+    },
+    {
+      "name": "Croisière en catamaran",
+      "type": "Mer",
+      "duration": "Journée entière",
+      "level": "Facile",
+      "text": "Naviguez confortablement le long de la côte, faites du snorkeling dans une eau claire et admirez le coucher du soleil depuis le pont."
+    },
+    {
+      "name": "Découverte de la faune et de la flore",
+      "type": "Terre",
+      "duration": "2–4 h",
+      "level": "Facile",
+      "text": "Rencontrez lémuriens, caméléons et orchidées dans la nature, avec un guide qui vous explique ce que vous voyez."
+    }
+  ],
+  "faqs": [
+    {
+      "q": "Puis-je réserver une seule activité ?",
+      "a": "Oui. Vous pouvez réserver une seule activité ou en combiner plusieurs pendant votre séjour. Nous vous aidons à organiser l'ordre et les horaires."
+    },
+    {
+      "q": "Les activités conviennent-elles aux enfants ?",
+      "a": "La plupart, oui. L'observation des oiseaux, les sorties en bateau et les balades nature conviennent bien aux familles. Indiquez-nous l'âge des enfants et nous adaptons le programme."
+    },
+    {
+      "q": "Que dois-je emporter ?",
+      "a": "Des chaussures confortables, un chapeau, de la crème solaire et une bouteille d'eau. Pour les activités en mer, prévoyez un maillot de bain et une serviette. Nous vous envoyons une liste détaillée après la réservation."
+    },
+    {
+      "q": "Que se passe-t-il en cas de mauvais temps ?",
+      "a": "La sécurité passe avant tout. Si les conditions ne sont pas réunies, nous déplaçons votre activité à un autre jour ou vous remboursons."
+    },
+    {
+      "q": "Le matériel est-il fourni ?",
+      "a": "Oui. Jumelles, gilets de sauvetage et matériel de snorkeling sont fournis pour les activités qui en ont besoin."
+    }
+  ],
+  "badge": "Activités",
+  "title": "Ne vous contentez pas de regarder",
+  "intro": "Des oiseaux au lever du soleil, un catamaran au coucher et une balade en forêt entre les deux. Choisissez vos favoris, nous organisons tout.",
+  "seeAll": "Voir toutes les activités",
+  "planStay": "Organiser mon séjour",
+  "index": "Liste des activités",
+  "eyebrow": "Nos activités",
+  "heading": "Choisissez votre aventure",
+  "previous": "Activités précédentes",
+  "next": "Activités suivantes",
+  "fromPerPerson": "À partir de {price} / personne",
+  "bestTitle": "La meilleure période pour chaque activité",
+  "bestText": "Choisissez vos dates selon la saison que vous préférez.",
+  "levels": [
+    "Possible",
+    "Bonne",
+    "Idéale"
+  ],
+  "momentsTitle": "Moments de voyage",
+  "faqTitle": "Questions fréquentes",
+  "faqText": "Vous ne trouvez pas votre réponse ? Notre équipe répond en quelques heures.",
+  "ctaEyebrow": "Prêt à explorer ?",
+  "ctaTitle": "Réservez votre prochaine aventure",
+  "ctaText": "Indiquez-nous vos dates et ce que vous aimez. Nous construisons un programme jour par jour et vous envoyons un devis clair sous un jour ouvré.",
+  "ctaButton": "Réserver une activité"
+}

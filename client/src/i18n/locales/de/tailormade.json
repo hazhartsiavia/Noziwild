@@ -1,0 +1,107 @@
+{
+  "options": {
+    "Islands & beaches": "Inseln & Strände",
+    "Wildlife": "Tierwelt",
+    "Culture & villages": "Kultur & Dörfer",
+    "Hiking & adventure": "Wandern & Abenteuer",
+    "Sailing & sea": "Segeln & Meer",
+    "Slow & relaxing": "Ruhe & Entspannung",
+    "1 week": "1 Woche",
+    "2 weeks": "2 Wochen",
+    "3 weeks": "3 Wochen",
+    "1 month or more": "1 Monat oder länger",
+    "Not sure yet": "Noch unentschieden",
+    "Slow": "Gemächlich",
+    "Balanced": "Ausgewogen",
+    "Active": "Aktiv",
+    "Comfortable": "Komfortabel",
+    "Premium": "Gehoben",
+    "Luxury": "Luxus",
+    "Solo": "Allein",
+    "Couple": "Als Paar",
+    "Family": "Mit Familie",
+    "Friends": "Mit Freunden"
+  },
+  "steps": [
+    {
+      "title": "Erzählen Sie uns Ihre Wünsche",
+      "text": "Beantworten Sie ein paar Fragen oder schreiben Sie uns frei heraus."
+    },
+    {
+      "title": "Erhalten Sie einen ersten Vorschlag",
+      "text": "Ein Reiseexperte schickt Ihnen innerhalb weniger Tage eine Route Tag für Tag."
+    },
+    {
+      "title": "Gemeinsam verfeinern",
+      "text": "Ändern Sie alles, bis die Reise genau passt."
+    },
+    {
+      "title": "Reisen mit Unterstützung",
+      "text": "Lokale Guides, Transfers und ein Ansprechpartner vor Ort."
+    }
+  ],
+  "ideas": [
+    {
+      "title": "Romantische Inseln",
+      "text": "Sandbänke, Sonnenuntergänge und ruhige Unterkünfte."
+    },
+    {
+      "title": "Tierpfad für Familien",
+      "text": "Lemuren, Wälder und sanftes Abenteuer."
+    },
+    {
+      "title": "Kultur und Landleben",
+      "text": "Märkte, Königshügel und Dorfleben."
+    }
+  ],
+  "eyebrow": "Individuelle Reisen",
+  "title": "Ihr Madagaskar, ganz nach Ihrem Geschmack",
+  "intro": "Keine feste Route. Erzählen Sie uns, was Sie lieben, wie viel Zeit Sie haben und wer mitreist. Wir gestalten die Reise rund um Sie.",
+  "design": "Meine Reise gestalten",
+  "how": "So funktioniert's",
+  "stepTitles": [
+    "Ihre Interessen",
+    "Zeit",
+    "Ihr Stil",
+    "Ihre Angaben"
+  ],
+  "summary": {
+    "interests": "Interessen",
+    "length": "Dauer",
+    "month": "Monat",
+    "pace": "Tempo",
+    "comfort": "Komfort",
+    "group": "Reisende"
+  },
+  "notChosen": "Noch nicht gewählt",
+  "thanksTitle": "Vielen Dank!",
+  "thanksText": "Ihre Wünsche liegen nun bei unseren Reiseexperten. Sie erhalten in wenigen Tagen einen ersten Vorschlag per E-Mail.",
+  "another": "Neue Anfrage starten",
+  "stepOf": "Schritt {n} von 4 · {title}",
+  "love": "Was lieben Sie?",
+  "pickMany": "Wählen Sie so viele, wie Sie möchten.",
+  "howLong": "Wie lange?",
+  "month": "Wunschmonat",
+  "style": "Ihr Stil",
+  "pace": "Tempo",
+  "comfort": "Komfort",
+  "who": "Wer reist mit?",
+  "where": "Wohin dürfen wir Ihren Vorschlag schicken?",
+  "name": "Name",
+  "phone": "Telefon (optional)",
+  "email": "E-Mail-Adresse",
+  "notes": "Möchten Sie uns sonst noch etwas mitteilen?",
+  "back": "Zurück",
+  "next": "Weiter",
+  "sending": "Wird gesendet…",
+  "send": "Meine Wünsche senden",
+  "soFar": "Ihre Reise bisher",
+  "startIdea": "Mit dieser Idee starten",
+  "howTitle": "Von der Idee zur Route",
+  "howText": "Vier einfache Schritte, mit einem echten Menschen auf der anderen Seite.",
+  "ideasTitle": "Brauchen Sie einen Ausgangspunkt?",
+  "ideasText": "Wählen Sie eine Idee, und wir füllen die ersten Antworten für Sie aus.",
+  "ctaTitle": "Lieber persönlich besprechen?",
+  "ctaText": "Buchen Sie ein Gespräch oder schreiben Sie uns. Ein Reiseexperte antwortet innerhalb eines Werktags.",
+  "ctaButton": "Einen Reiseexperten kontaktieren"
+}

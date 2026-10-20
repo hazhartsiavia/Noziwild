@@ -9,6 +9,8 @@ import Navbar from '../components/Navbar';
 import Footer from '../components/Footer';
 import { gsap } from 'gsap'
 import { ScrollTrigger } from 'gsap/ScrollTrigger'
+import { Trans, useLanguage, useT } from '../i18n/LanguageContext'
+import { monthName } from '../utils/format'
 
 gsap.registerPlugin(ScrollTrigger)
 
@@ -22,6 +24,7 @@ const BUTTON = "text-sm font-medium px-5 py-2.5 rounded-full md:px-6 md:py-3 act
 const SECTION_GAP = "mt-[60px] md:mt-[120px]"
 
 /* ---------------------------- Données ---------------------------- */
+// Textes affichés : locales/<langue>/activities.json (items et faqs dans le même ordre qu'ici)
 
 const activities = [
   { id: 1, name: 'Birdwatching', type: 'Land', image: Tana, duration: '3–5 h', level: 'Easy', group: '2–8', price: 35, text: 'Walk quiet trails at sunrise with a naturalist and spot rare birds you will not see anywhere else.' },
@@ -31,7 +34,6 @@ const activities = [
   { id: 5, name: 'Wildlife & Flora Discovery', type: 'Land', image: Ambanja, duration: '2–4 h', level: 'Easy', group: '2–10', price: 30, text: 'Meet lemurs, chameleons and orchids in the wild, with a guide who explains what you are seeing.' },
 ]
 
-const months = ['J', 'F', 'M', 'A', 'M', 'J', 'J', 'A', 'S', 'O', 'N', 'D']
 // 0 = possible, 1 = bon, 2 = idéal (exemples, à adapter à tes vraies saisons)
 const seasons = [
   { name: 'Birdwatching', values: [0, 0, 0, 1, 1, 1, 1, 1, 2, 2, 2, 1] },
@@ -42,14 +44,6 @@ const seasons = [
 ]
 
 const moments = [Ramena, NosyIranja, Tana, NosyLonjo, Deux, Ambanja]
-
-const faqs = [
-  { q: 'Can I book just one activity?', a: 'Yes. You can book a single activity or combine several in one stay. We help you plan the order and the timing.' },
-  { q: 'Are the activities suitable for children?', a: 'Most of them are. Birdwatching, boat excursions and wildlife walks work well for families. Tell us the ages and we adapt the plan.' },
-  { q: 'What should I bring?', a: 'Comfortable shoes, a hat, sunscreen and a bottle of water. For sea activities, bring a swimsuit and a towel. We send a detailed list after booking.' },
-  { q: 'What happens if the weather is bad?', a: 'Safety comes first. If conditions are not right, we move your activity to another day or offer a refund.' },
-  { q: 'Is the equipment provided?', a: 'Yes. Binoculars, life jackets and snorkeling gear are provided on the activities that need them.' },
-]
 
 /* ---------------------------- Icônes ----------------------------- */
 
@@ -65,8 +59,16 @@ const ArrowIcon = () => <Svg className="w-5 h-5"><path d="M5 12h14M13 6l6 6-6 6"
 
 /* -------------------------- Composants --------------------------- */
 
+// Activités avec leurs textes dans la langue du site
+function useActivities() {
+  const items = useT('activities')('items')
+  return activities.map((a, i) => ({ ...a, ...items[i] }))
+}
+
 // Hero : grande image avec l'index des activités (comme un menu)
 function Hero() {
+  const t = useT('activities')
+  const list = useActivities()
   return (
     <section className="relative overflow-hidden rounded-3xl bg-[#084838] text-white min-h-[540px] md:min-h-[620px] flex">
       <img src={NosyLonjo} alt="" className="absolute inset-0 w-full h-full object-cover" />
@@ -74,24 +76,24 @@ function Hero() {
 
       <div className="relative w-full grid grid-cols-1 lg:grid-cols-[1.3fr_1fr] gap-8 lg:gap-12 items-end p-6 md:p-12">
         <div>
-          <span data-hero className={BADGE}>Activities</span>
+          <span data-hero className={BADGE}>{t('badge')}</span>
           <h1 data-hero className="mt-5 text-5xl sm:text-6xl md:text-7xl font-medium uppercase leading-[1.1] tracking-tight">
-            Do More Than Look
+            {t('title')}
           </h1>
           <p data-hero className="mt-5 md:mt-6 max-w-xl text-sm md:text-lg text-white/85 leading-relaxed">
-            Birds at sunrise, a catamaran at sunset and a jungle walk in between. Pick your favorites and we organize everything.
+            {t('intro')}
           </p>
           <div data-hero className="mt-8 flex flex-wrap items-center gap-4">
-            <a href="#activities" className={`bg-[#C49849] hover:bg-[#b08339] text-white ${BUTTON}`}>See All Activities</a>
+            <a href="#activities" className={`bg-[#C49849] hover:bg-[#b08339] text-white ${BUTTON}`}>{t('seeAll')}</a>
             <a href="/contact" className="inline-flex items-center gap-2 text-sm md:text-base font-medium hover:gap-3 transition-all">
-              Plan my stay <ArrowIcon />
+              {t('planStay')} <ArrowIcon />
             </a>
           </div>
         </div>
 
-        <nav data-hero aria-label="Activities index">
+        <nav data-hero aria-label={t('index')}>
           <ol className="flex flex-col gap-2 md:gap-3">
-            {activities.map((a) => (
+            {list.map((a) => (
               <li key={a.id}>
                 <a
                   href="#activities"
@@ -114,6 +116,8 @@ function Hero() {
 
 // Carrousel horizontal : cartes hautes avec défilement, boutons prev/next et barre de progression
 function ActivityCarousel() {
+  const t = useT('activities')
+  const list = useActivities()
   const trackRef = useRef(null)
   const [pos, setPos] = useState({ progress: 0, start: true, end: false })
 
@@ -146,14 +150,14 @@ function ActivityCarousel() {
     <div id="activities" className={`${SECTION_GAP} scroll-mt-8`}>
       <div className="mb-8 md:mb-12 flex items-end justify-between gap-6">
         <div>
-          <p className="mb-3 text-xs sm:text-sm md:text-base uppercase tracking-wide text-slate-700">Our activities</p>
-          <h2 className={SECTION_TITLE}>Pick Your Adventure</h2>
+          <p className="mb-3 text-xs sm:text-sm md:text-base uppercase tracking-wide text-slate-700">{t('eyebrow')}</p>
+          <h2 className={SECTION_TITLE}>{t('heading')}</h2>
         </div>
         <div className="hidden sm:flex items-center gap-3">
-          <button type="button" onClick={() => scrollByCard(-1)} disabled={pos.start} aria-label="Previous activities" className={arrowClass}>
+          <button type="button" onClick={() => scrollByCard(-1)} disabled={pos.start} aria-label={t('previous')} className={arrowClass}>
             <span className="rotate-180"><ArrowIcon /></span>
           </button>
-          <button type="button" onClick={() => scrollByCard(1)} disabled={pos.end} aria-label="Next activities" className={arrowClass}>
+          <button type="button" onClick={() => scrollByCard(1)} disabled={pos.end} aria-label={t('next')} className={arrowClass}>
             <ArrowIcon />
           </button>
         </div>
@@ -164,7 +168,7 @@ function ActivityCarousel() {
         onScroll={update}
         className="flex gap-4 overflow-x-auto snap-x snap-mandatory scroll-smooth pb-2 [scrollbar-width:none] [&::-webkit-scrollbar]:hidden"
       >
-        {activities.map((a) => (
+        {list.map((a) => (
           <a
             key={a.id}
             href="/contact"
@@ -188,7 +192,7 @@ function ActivityCarousel() {
                   <li className="flex items-center gap-1.5"><UsersIcon />{a.group}</li>
                 </ul>
                 <div className="mt-5 pt-4 border-t border-white/25 flex items-center justify-between">
-                  <p className="text-sm text-white/80">From <span className="text-xl md:text-2xl font-medium text-white">${a.price}</span> / person</p>
+                  <p className="text-sm text-white/80"><Trans text={t('fromPerPerson')} values={{ price: <span className="text-xl md:text-2xl font-medium text-white">${a.price}</span> }} /></p>
                   <span className="w-10 h-10 rounded-full bg-[#C49849] flex items-center justify-center transition group-hover:translate-x-1"><ArrowIcon /></span>
                 </div>
               </div>
@@ -207,32 +211,36 @@ function ActivityCarousel() {
 
 // Meilleure période : tableau visuel activité x mois
 function BestTime() {
+  const t = useT('activities')
+  const { lang } = useLanguage()
+  const names = t('items').map((a) => a.name)
+  const levels = t('levels')
   const cell = ['bg-[#084838]/10', 'bg-[#C49849]/40', 'bg-[#C49849]']
   return (
     <div className={SECTION_GAP}>
       <div className="mb-8 md:mb-12 flex flex-col lg:flex-row lg:items-end lg:justify-between gap-4 lg:gap-12">
-        <h2 className={`${SECTION_TITLE} lg:max-w-[52%]`}>Best Time For Each Activity</h2>
-        <p className={`${SECTION_SUBTITLE} lg:max-w-md`}>Plan your dates around the season you love most.</p>
+        <h2 className={`${SECTION_TITLE} lg:max-w-[52%]`}>{t('bestTitle')}</h2>
+        <p className={`${SECTION_SUBTITLE} lg:max-w-md`}>{t('bestText')}</p>
       </div>
 
       <div className="overflow-x-auto rounded-3xl bg-white p-4 md:p-8">
         <div className="min-w-[640px]">
           <div className="grid grid-cols-[200px_repeat(12,1fr)] md:grid-cols-[260px_repeat(12,1fr)] gap-1.5 md:gap-2 items-center">
             <span />
-            {months.map((m, i) => <span key={i} className={`text-center ${META_TEXT} text-slate-600`}>{m}</span>)}
+            {Array.from({ length: 12 }, (_, i) => <span key={i} className={`text-center ${META_TEXT} text-slate-600`}>{monthName(i + 1, lang, 'narrow')}</span>)}
 
-            {seasons.map((row) => (
+            {seasons.map((row, r) => (
               <React.Fragment key={row.name}>
-                <span className="pr-3 text-sm md:text-base font-medium text-slate-800">{row.name}</span>
+                <span className="pr-3 text-sm md:text-base font-medium text-slate-800">{names[r]}</span>
                 {row.values.map((v, i) => (
-                  <span key={i} className={`h-8 md:h-10 rounded-md ${cell[v]}`} title={['Possible', 'Good', 'Ideal'][v]} />
+                  <span key={i} className={`h-8 md:h-10 rounded-md ${cell[v]}`} title={levels[v]} />
                 ))}
               </React.Fragment>
             ))}
           </div>
 
           <ul className={`mt-6 flex flex-wrap gap-x-6 gap-y-2 ${META_TEXT} text-slate-600`}>
-            {[['Possible', 0], ['Good', 1], ['Ideal', 2]].map(([label, v]) => (
+            {levels.map((label, v) => (
               <li key={label} className="flex items-center gap-2"><span className={`w-4 h-4 rounded ${cell[v]}`} />{label}</li>
             ))}
           </ul>
@@ -244,6 +252,7 @@ function BestTime() {
 
 // Bande de photos qui défile toute seule (GSAP), pause au survol
 function Moments() {
+  const t = useT('activities')
   const trackRef = useRef(null)
   const tweenRef = useRef(null)
 
@@ -259,7 +268,7 @@ function Moments() {
 
   return (
     <div className={SECTION_GAP}>
-      <h2 className={`${SECTION_TITLE} text-center mb-8 md:mb-12`}>Moments From The Trip</h2>
+      <h2 className={`${SECTION_TITLE} text-center mb-8 md:mb-12`}>{t('momentsTitle')}</h2>
       <div
         className="overflow-x-auto motion-safe:overflow-hidden rounded-3xl"
         onMouseEnter={() => tweenRef.current?.pause()}
@@ -279,17 +288,18 @@ function Moments() {
 
 // FAQ : questions en cartes blanches à gauche, titre à droite
 function Faq() {
+  const t = useT('activities')
   const [open, setOpen] = useState(0)
 
   return (
     <div className={`${SECTION_GAP} grid grid-cols-1 lg:grid-cols-[1.6fr_1fr] gap-8 lg:gap-16`}>
       <div className="lg:order-2">
-        <h2 className={SECTION_TITLE}>Frequently Asked Questions</h2>
-        <p className={`mt-4 md:mt-6 ${SECTION_SUBTITLE}`}>Can&apos;t find your answer? Our team replies within a few hours.</p>
+        <h2 className={SECTION_TITLE}>{t('faqTitle')}</h2>
+        <p className={`mt-4 md:mt-6 ${SECTION_SUBTITLE}`}>{t('faqText')}</p>
       </div>
 
       <div className="flex flex-col gap-3 lg:order-1">
-        {faqs.map((f, i) => {
+        {t('faqs').map((f, i) => {
           const isOpen = open === i
           return (
             <div key={f.q} className="rounded-2xl bg-white">
@@ -315,19 +325,20 @@ function Faq() {
 
 // CTA : carte verte avec texte et photos empilées
 function Cta() {
+  const t = useT('activities')
   const frame = "absolute w-[46%] rounded-xl bg-white p-1.5 md:p-2.5 shadow-md"
   const photo = "w-full aspect-[4/5] object-cover rounded-md"
 
   return (
     <div className={`${SECTION_GAP} grid grid-cols-1 lg:grid-cols-2 gap-8 overflow-hidden rounded-3xl bg-[#084838] text-white p-6 md:p-12`}>
       <div className="flex flex-col justify-center">
-        <p className="mb-3 text-xs sm:text-sm md:text-base uppercase tracking-wide text-white/70">Ready to explore?</p>
-        <h2 className="text-3xl sm:text-4xl md:text-5xl font-medium leading-[1.15] tracking-tight">Book Your Next Adventure</h2>
+        <p className="mb-3 text-xs sm:text-sm md:text-base uppercase tracking-wide text-white/70">{t('ctaEyebrow')}</p>
+        <h2 className="text-3xl sm:text-4xl md:text-5xl font-medium leading-[1.15] tracking-tight">{t('ctaTitle')}</h2>
         <p className="mt-4 text-sm md:text-lg text-white/75 leading-relaxed max-w-md">
-          Tell us your dates and what you love. We build a day-by-day plan and send you a clear quote within one working day.
+          {t('ctaText')}
         </p>
         <div className="mt-8 flex flex-wrap gap-3">
-          <a href="/contact" className={`bg-[#C49849] hover:bg-[#b08339] text-white ${BUTTON}`}>Book An Activity</a>
+          <a href="/contact" className={`bg-[#C49849] hover:bg-[#b08339] text-white ${BUTTON}`}>{t('ctaButton')}</a>
           <a href="tel:+261340000000" className={`border border-white/40 hover:bg-white/10 text-white ${BUTTON}`}>+261 34 00 000 00</a>
         </div>
       </div>

@@ -1,0 +1,86 @@
+{
+  "items": [
+    {
+      "name": "Birdwatching",
+      "type": "Land",
+      "duration": "3–5 h",
+      "level": "Easy",
+      "text": "Walk quiet trails at sunrise with a naturalist and spot rare birds you will not see anywhere else."
+    },
+    {
+      "name": "Nature & Adventure",
+      "type": "Land",
+      "duration": "Full day",
+      "level": "Moderate",
+      "text": "Hikes, viewpoints and hidden waterfalls, led by guides who know every path and every shortcut."
+    },
+    {
+      "name": "Cruise Boat Excursions",
+      "type": "Sea",
+      "duration": "Half or full day",
+      "level": "Easy",
+      "text": "Cross the bay to quiet islands and white-sand beaches, with lunch and swimming stops on the way."
+    },
+    {
+      "name": "Catamaran Cruise",
+      "type": "Sea",
+      "duration": "Full day",
+      "level": "Easy",
+      "text": "Sail in comfort along the coast, snorkel in clear water and watch the sunset from the deck."
+    },
+    {
+      "name": "Wildlife & Flora Discovery",
+      "type": "Land",
+      "duration": "2–4 h",
+      "level": "Easy",
+      "text": "Meet lemurs, chameleons and orchids in the wild, with a guide who explains what you are seeing."
+    }
+  ],
+  "faqs": [
+    {
+      "q": "Can I book just one activity?",
+      "a": "Yes. You can book a single activity or combine several in one stay. We help you plan the order and the timing."
+    },
+    {
+      "q": "Are the activities suitable for children?",
+      "a": "Most of them are. Birdwatching, boat excursions and wildlife walks work well for families. Tell us the ages and we adapt the plan."
+    },
+    {
+      "q": "What should I bring?",
+      "a": "Comfortable shoes, a hat, sunscreen and a bottle of water. For sea activities, bring a swimsuit and a towel. We send a detailed list after booking."
+    },
+    {
+      "q": "What happens if the weather is bad?",
+      "a": "Safety comes first. If conditions are not right, we move your activity to another day or offer a refund."
+    },
+    {
+      "q": "Is the equipment provided?",
+      "a": "Yes. Binoculars, life jackets and snorkeling gear are provided on the activities that need them."
+    }
+  ],
+  "badge": "Activities",
+  "title": "Do More Than Look",
+  "intro": "Birds at sunrise, a catamaran at sunset and a jungle walk in between. Pick your favorites and we organize everything.",
+  "seeAll": "See All Activities",
+  "planStay": "Plan my stay",
+  "index": "Activities index",
+  "eyebrow": "Our activities",
+  "heading": "Pick Your Adventure",
+  "previous": "Previous activities",
+  "next": "Next activities",
+  "fromPerPerson": "From {price} / person",
+  "bestTitle": "Best Time For Each Activity",
+  "bestText": "Plan your dates around the season you love most.",
+  "levels": [
+    "Possible",
+    "Good",
+    "Ideal"
+  ],
+  "momentsTitle": "Moments From The Trip",
+  "faqTitle": "Frequently Asked Questions",
+  "faqText": "Can't find your answer? Our team replies within a few hours.",
+  "ctaEyebrow": "Ready to explore?",
+  "ctaTitle": "Book Your Next Adventure",
+  "ctaText": "Tell us your dates and what you love. We build a day-by-day plan and send you a clear quote within one working day.",
+  "ctaButton": "Book An Activity"
+}

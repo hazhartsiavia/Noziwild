@@ -1,0 +1,86 @@
+{
+  "items": [
+    {
+      "name": "Vogelbeobachtung",
+      "type": "Land",
+      "duration": "3–5 Std.",
+      "level": "Leicht",
+      "text": "Gehen Sie bei Sonnenaufgang mit einem Naturkundler über ruhige Pfade und entdecken Sie seltene Vögel, die Sie nirgendwo sonst sehen."
+    },
+    {
+      "name": "Natur & Abenteuer",
+      "type": "Land",
+      "duration": "Ganzer Tag",
+      "level": "Mittel",
+      "text": "Wanderungen, Aussichtspunkte und versteckte Wasserfälle, geführt von Guides, die jeden Pfad und jede Abkürzung kennen."
+    },
+    {
+      "name": "Bootsausflüge",
+      "type": "Meer",
+      "duration": "Halber oder ganzer Tag",
+      "level": "Leicht",
+      "text": "Fahren Sie über die Bucht zu ruhigen Inseln und weißen Sandstränden, mit Mittagessen und Badestopps unterwegs."
+    },
+    {
+      "name": "Katamaran-Törn",
+      "type": "Meer",
+      "duration": "Ganzer Tag",
+      "level": "Leicht",
+      "text": "Segeln Sie bequem an der Küste entlang, schnorcheln Sie in klarem Wasser und genießen Sie den Sonnenuntergang vom Deck aus."
+    },
+    {
+      "name": "Tiere & Pflanzen entdecken",
+      "type": "Land",
+      "duration": "2–4 Std.",
+      "level": "Leicht",
+      "text": "Begegnen Sie Lemuren, Chamäleons und Orchideen in freier Natur, mit einem Guide, der Ihnen erklärt, was Sie sehen."
+    }
+  ],
+  "faqs": [
+    {
+      "q": "Kann ich nur eine Aktivität buchen?",
+      "a": "Ja. Sie können eine einzelne Aktivität buchen oder mehrere während Ihres Aufenthalts kombinieren. Wir helfen Ihnen bei Reihenfolge und Zeitplan."
+    },
+    {
+      "q": "Sind die Aktivitäten für Kinder geeignet?",
+      "a": "Die meisten schon. Vogelbeobachtung, Bootsausflüge und Naturwanderungen eignen sich gut für Familien. Nennen Sie uns das Alter der Kinder, und wir passen das Programm an."
+    },
+    {
+      "q": "Was sollte ich mitbringen?",
+      "a": "Bequeme Schuhe, einen Hut, Sonnencreme und eine Flasche Wasser. Für Aktivitäten auf dem Meer Badesachen und ein Handtuch. Nach der Buchung schicken wir Ihnen eine ausführliche Liste."
+    },
+    {
+      "q": "Was passiert bei schlechtem Wetter?",
+      "a": "Sicherheit geht vor. Wenn die Bedingungen nicht stimmen, verlegen wir Ihre Aktivität auf einen anderen Tag oder erstatten den Preis."
+    },
+    {
+      "q": "Wird die Ausrüstung gestellt?",
+      "a": "Ja. Ferngläser, Schwimmwesten und Schnorchelausrüstung werden bei den Aktivitäten gestellt, die sie benötigen."
+    }
+  ],
+  "badge": "Aktivitäten",
+  "title": "Mehr als nur zuschauen",
+  "intro": "Vögel bei Sonnenaufgang, ein Katamaran bei Sonnenuntergang und dazwischen eine Dschungelwanderung. Wählen Sie Ihre Favoriten, wir organisieren alles.",
+  "seeAll": "Alle Aktivitäten ansehen",
+  "planStay": "Meinen Aufenthalt planen",
+  "index": "Übersicht der Aktivitäten",
+  "eyebrow": "Unsere Aktivitäten",
+  "heading": "Wählen Sie Ihr Abenteuer",
+  "previous": "Vorherige Aktivitäten",
+  "next": "Nächste Aktivitäten",
+  "fromPerPerson": "Ab {price} / Person",
+  "bestTitle": "Die beste Zeit für jede Aktivität",
+  "bestText": "Planen Sie Ihre Reisedaten nach Ihrer Lieblingssaison.",
+  "levels": [
+    "Möglich",
+    "Gut",
+    "Ideal"
+  ],
+  "momentsTitle": "Momente der Reise",
+  "faqTitle": "Häufige Fragen",
+  "faqText": "Keine Antwort gefunden? Unser Team antwortet innerhalb weniger Stunden.",
+  "ctaEyebrow": "Bereit zum Entdecken?",
+  "ctaTitle": "Buchen Sie Ihr nächstes Abenteuer",
+  "ctaText": "Nennen Sie uns Ihre Daten und was Sie lieben. Wir erstellen einen Plan Tag für Tag und schicken Ihnen innerhalb eines Werktags ein klares Angebot.",
+  "ctaButton": "Eine Aktivität buchen"
+}

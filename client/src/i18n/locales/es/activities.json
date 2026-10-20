@@ -1,0 +1,86 @@
+{
+  "items": [
+    {
+      "name": "Observación de aves",
+      "type": "Tierra",
+      "duration": "3–5 h",
+      "level": "Fácil",
+      "text": "Recorra senderos tranquilos al amanecer con un naturalista y descubra aves raras que no verá en ningún otro lugar."
+    },
+    {
+      "name": "Naturaleza y aventura",
+      "type": "Tierra",
+      "duration": "Día completo",
+      "level": "Moderado",
+      "text": "Caminatas, miradores y cascadas escondidas, con guías que conocen cada sendero y cada atajo."
+    },
+    {
+      "name": "Excursiones en barco",
+      "type": "Mar",
+      "duration": "Medio día o día completo",
+      "level": "Fácil",
+      "text": "Cruce la bahía hacia islas tranquilas y playas de arena blanca, con comida y paradas para bañarse por el camino."
+    },
+    {
+      "name": "Crucero en catamarán",
+      "type": "Mar",
+      "duration": "Día completo",
+      "level": "Fácil",
+      "text": "Navegue con comodidad a lo largo de la costa, haga snorkel en aguas claras y vea la puesta de sol desde la cubierta."
+    },
+    {
+      "name": "Descubrimiento de fauna y flora",
+      "type": "Tierra",
+      "duration": "2–4 h",
+      "level": "Fácil",
+      "text": "Conozca lémures, camaleones y orquídeas en libertad, con un guía que le explica lo que ve."
+    }
+  ],
+  "faqs": [
+    {
+      "q": "¿Puedo reservar una sola actividad?",
+      "a": "Sí. Puede reservar una sola actividad o combinar varias en una misma estancia. Le ayudamos a organizar el orden y los horarios."
+    },
+    {
+      "q": "¿Las actividades son aptas para niños?",
+      "a": "La mayoría sí. La observación de aves, las salidas en barco y los paseos de naturaleza son ideales para familias. Díganos la edad de los niños y adaptamos el plan."
+    },
+    {
+      "q": "¿Qué debo llevar?",
+      "a": "Calzado cómodo, sombrero, protector solar y una botella de agua. Para las actividades en el mar, traje de baño y toalla. Tras la reserva le enviamos una lista detallada."
+    },
+    {
+      "q": "¿Qué pasa si hace mal tiempo?",
+      "a": "La seguridad es lo primero. Si las condiciones no son adecuadas, trasladamos su actividad a otro día o le devolvemos el importe."
+    },
+    {
+      "q": "¿Se incluye el equipo?",
+      "a": "Sí. Prismáticos, chalecos salvavidas y equipo de snorkel se incluyen en las actividades que lo requieren."
+    }
+  ],
+  "badge": "Actividades",
+  "title": "No se limite a mirar",
+  "intro": "Aves al amanecer, un catamarán al atardecer y un paseo por la selva entre medias. Elija sus favoritas y nosotros lo organizamos todo.",
+  "seeAll": "Ver todas las actividades",
+  "planStay": "Planificar mi estancia",
+  "index": "Lista de actividades",
+  "eyebrow": "Nuestras actividades",
+  "heading": "Elija su aventura",
+  "previous": "Actividades anteriores",
+  "next": "Actividades siguientes",
+  "fromPerPerson": "Desde {price} / persona",
+  "bestTitle": "La mejor época para cada actividad",
+  "bestText": "Planifique sus fechas según la temporada que más le guste.",
+  "levels": [
+    "Posible",
+    "Buena",
+    "Ideal"
+  ],
+  "momentsTitle": "Momentos del viaje",
+  "faqTitle": "Preguntas frecuentes",
+  "faqText": "¿No encuentra su respuesta? Nuestro equipo responde en pocas horas.",
+  "ctaEyebrow": "¿Listo para explorar?",
+  "ctaTitle": "Reserve su próxima aventura",
+  "ctaText": "Cuéntenos sus fechas y lo que le gusta. Preparamos un plan día a día y le enviamos un presupuesto claro en un día laborable.",
+  "ctaButton": "Reservar una actividad"
+}

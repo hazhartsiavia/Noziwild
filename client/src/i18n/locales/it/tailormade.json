@@ -1,0 +1,107 @@
+{
+  "options": {
+    "Islands & beaches": "Isole e spiagge",
+    "Wildlife": "Fauna selvatica",
+    "Culture & villages": "Cultura e villaggi",
+    "Hiking & adventure": "Trekking e avventura",
+    "Sailing & sea": "Vela e mare",
+    "Slow & relaxing": "Calma e relax",
+    "1 week": "1 settimana",
+    "2 weeks": "2 settimane",
+    "3 weeks": "3 settimane",
+    "1 month or more": "1 mese o più",
+    "Not sure yet": "Non ancora deciso",
+    "Slow": "Tranquillo",
+    "Balanced": "Equilibrato",
+    "Active": "Attivo",
+    "Comfortable": "Confortevole",
+    "Premium": "Superiore",
+    "Luxury": "Lusso",
+    "Solo": "Da solo",
+    "Couple": "In coppia",
+    "Family": "In famiglia",
+    "Friends": "Tra amici"
+  },
+  "steps": [
+    {
+      "title": "Raccontaci i tuoi desideri",
+      "text": "Rispondi a qualche domanda o scrivici liberamente."
+    },
+    {
+      "title": "Ricevi una prima proposta",
+      "text": "Un esperto di viaggi ti invia un itinerario giorno per giorno entro pochi giorni."
+    },
+    {
+      "title": "Perfezionalo con noi",
+      "text": "Cambia tutto ciò che vuoi finché il viaggio non è perfetto."
+    },
+    {
+      "title": "Viaggia con assistenza",
+      "text": "Guide locali, trasferimenti e un referente sul posto."
+    }
+  ],
+  "ideas": [
+    {
+      "title": "Isole romantiche",
+      "text": "Lingue di sabbia, tramonti e soggiorni tranquilli."
+    },
+    {
+      "title": "Sulle tracce degli animali in famiglia",
+      "text": "Lemuri, foreste e avventura dolce."
+    },
+    {
+      "title": "Cultura e campagna",
+      "text": "Mercati, colline reali e vita di villaggio."
+    }
+  ],
+  "eyebrow": "Soggiorni su misura",
+  "title": "Il tuo Madagascar, a modo tuo",
+  "intro": "Nessun itinerario fisso. Dicci cosa ami, quanto tempo hai e chi viaggia con te. Progettiamo il viaggio intorno a te.",
+  "design": "Crea il mio viaggio",
+  "how": "Come funziona",
+  "stepTitles": [
+    "I tuoi interessi",
+    "Tempo",
+    "Il tuo stile",
+    "I tuoi dati"
+  ],
+  "summary": {
+    "interests": "Interessi",
+    "length": "Durata",
+    "month": "Mese",
+    "pace": "Ritmo",
+    "comfort": "Comfort",
+    "group": "Viaggiatori"
+  },
+  "notChosen": "Non ancora scelto",
+  "thanksTitle": "Grazie!",
+  "thanksText": "I tuoi desideri sono nelle mani dei nostri esperti di viaggio. Riceverai una prima proposta via email entro pochi giorni.",
+  "another": "Fai un'altra richiesta",
+  "stepOf": "Passo {n} di 4 · {title}",
+  "love": "Cosa ami?",
+  "pickMany": "Scegline quanti vuoi.",
+  "howLong": "Quanto tempo?",
+  "month": "Mese preferito",
+  "style": "Il tuo stile",
+  "pace": "Ritmo",
+  "comfort": "Comfort",
+  "who": "Chi viaggia?",
+  "where": "Dove ti inviamo la proposta?",
+  "name": "Nome",
+  "phone": "Telefono (facoltativo)",
+  "email": "Indirizzo email",
+  "notes": "C'è altro che dovremmo sapere?",
+  "back": "Indietro",
+  "next": "Avanti",
+  "sending": "Invio…",
+  "send": "Invia i miei desideri",
+  "soFar": "Il tuo viaggio finora",
+  "startIdea": "Parti da questa idea",
+  "howTitle": "Dall'idea all'itinerario",
+  "howText": "Quattro semplici passi, con una persona vera dall'altra parte.",
+  "ideasTitle": "Ti serve un punto di partenza?",
+  "ideasText": "Scegli un'idea e compiliamo noi le prime risposte per te.",
+  "ctaTitle": "Preferisci parlarne a voce?",
+  "ctaText": "Prenota una chiamata o scrivici. Un esperto di viaggi ti risponde entro un giorno lavorativo.",
+  "ctaButton": "Contatta un esperto di viaggi"
+}

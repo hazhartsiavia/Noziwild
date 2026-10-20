@@ -1,0 +1,107 @@
+{
+  "options": {
+    "Islands & beaches": "Islands & beaches",
+    "Wildlife": "Wildlife",
+    "Culture & villages": "Culture & villages",
+    "Hiking & adventure": "Hiking & adventure",
+    "Sailing & sea": "Sailing & sea",
+    "Slow & relaxing": "Slow & relaxing",
+    "1 week": "1 week",
+    "2 weeks": "2 weeks",
+    "3 weeks": "3 weeks",
+    "1 month or more": "1 month or more",
+    "Not sure yet": "Not sure yet",
+    "Slow": "Slow",
+    "Balanced": "Balanced",
+    "Active": "Active",
+    "Comfortable": "Comfortable",
+    "Premium": "Premium",
+    "Luxury": "Luxury",
+    "Solo": "Solo",
+    "Couple": "Couple",
+    "Family": "Family",
+    "Friends": "Friends"
+  },
+  "steps": [
+    {
+      "title": "Tell us your wishes",
+      "text": "Answer a few questions or write to us freely."
+    },
+    {
+      "title": "Get a first proposal",
+      "text": "A travel expert sends a day-by-day route within a few days."
+    },
+    {
+      "title": "Refine together",
+      "text": "Change anything until the trip feels exactly right."
+    },
+    {
+      "title": "Travel with support",
+      "text": "Local guides, transfers and a contact on the ground."
+    }
+  ],
+  "ideas": [
+    {
+      "title": "Romantic islands",
+      "text": "Sandbars, sunsets and quiet stays."
+    },
+    {
+      "title": "Family wildlife trail",
+      "text": "Lemurs, forests and gentle adventure."
+    },
+    {
+      "title": "Culture and countryside",
+      "text": "Markets, royal hills and village life."
+    }
+  ],
+  "eyebrow": "Tailor-made stays",
+  "title": "Your Madagascar, Your Way",
+  "intro": "No fixed itinerary. Tell us what you love, how long you have and who is travelling. We design the trip around you.",
+  "design": "Design my trip",
+  "how": "How it works",
+  "stepTitles": [
+    "Your interests",
+    "Time",
+    "Your style",
+    "Your details"
+  ],
+  "summary": {
+    "interests": "Interests",
+    "length": "Length",
+    "month": "Month",
+    "pace": "Pace",
+    "comfort": "Comfort",
+    "group": "Travelling"
+  },
+  "notChosen": "Not chosen yet",
+  "thanksTitle": "Thank you!",
+  "thanksText": "Your wishes are with our travel experts. Expect a first proposal by email within a few days.",
+  "another": "Start another request",
+  "stepOf": "Step {n} of 4 · {title}",
+  "love": "What do you love?",
+  "pickMany": "Pick as many as you like.",
+  "howLong": "How long?",
+  "month": "Preferred month",
+  "style": "Your style",
+  "pace": "Pace",
+  "comfort": "Comfort",
+  "who": "Who is travelling?",
+  "where": "Where do we send your proposal?",
+  "name": "Name",
+  "phone": "Phone (optional)",
+  "email": "Email address",
+  "notes": "Anything else we should know?",
+  "back": "Back",
+  "next": "Next",
+  "sending": "Sending…",
+  "send": "Send my wishes",
+  "soFar": "Your trip so far",
+  "startIdea": "Start from this idea",
+  "howTitle": "From Idea To Itinerary",
+  "howText": "Four simple steps, with a real person on the other side.",
+  "ideasTitle": "Need A Starting Point?",
+  "ideasText": "Pick an idea and we fill in the first answers for you.",
+  "ctaTitle": "Prefer to talk it through?",
+  "ctaText": "Book a call or write to us. A travel expert replies within one working day.",
+  "ctaButton": "Contact a travel expert"
+}

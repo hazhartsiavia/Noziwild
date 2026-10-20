@@ -1,0 +1,86 @@
+{
+  "items": [
+    {
+      "name": "Birdwatching",
+      "type": "Terra",
+      "duration": "3–5 h",
+      "level": "Facile",
+      "text": "Percorri sentieri tranquilli all'alba con un naturalista e avvista uccelli rari che non vedrai da nessun'altra parte."
+    },
+    {
+      "name": "Natura e avventura",
+      "type": "Terra",
+      "duration": "Giornata intera",
+      "level": "Moderato",
+      "text": "Escursioni, belvedere e cascate nascoste, con guide che conoscono ogni sentiero e ogni scorciatoia."
+    },
+    {
+      "name": "Escursioni in barca",
+      "type": "Mare",
+      "duration": "Mezza giornata o intera",
+      "level": "Facile",
+      "text": "Attraversa la baia verso isole tranquille e spiagge di sabbia bianca, con pranzo e soste per il bagno lungo il percorso."
+    },
+    {
+      "name": "Crociera in catamarano",
+      "type": "Mare",
+      "duration": "Giornata intera",
+      "level": "Facile",
+      "text": "Naviga comodamente lungo la costa, fai snorkeling in acque limpide e guarda il tramonto dal ponte."
+    },
+    {
+      "name": "Alla scoperta di fauna e flora",
+      "type": "Terra",
+      "duration": "2–4 h",
+      "level": "Facile",
+      "text": "Incontra lemuri, camaleonti e orchidee in natura, con una guida che ti spiega ciò che vedi."
+    }
+  ],
+  "faqs": [
+    {
+      "q": "Posso prenotare una sola attività?",
+      "a": "Sì. Puoi prenotare una singola attività o combinarne diverse durante il soggiorno. Ti aiutiamo a organizzare ordine e orari."
+    },
+    {
+      "q": "Le attività sono adatte ai bambini?",
+      "a": "La maggior parte sì. Birdwatching, gite in barca e passeggiate naturalistiche sono ideali per le famiglie. Dicci l'età dei bambini e adattiamo il programma."
+    },
+    {
+      "q": "Cosa devo portare?",
+      "a": "Scarpe comode, un cappello, crema solare e una bottiglia d'acqua. Per le attività in mare, costume e asciugamano. Dopo la prenotazione ti inviamo una lista dettagliata."
+    },
+    {
+      "q": "Cosa succede in caso di maltempo?",
+      "a": "La sicurezza viene prima di tutto. Se le condizioni non sono adatte, spostiamo l'attività a un altro giorno o ti rimborsiamo."
+    },
+    {
+      "q": "L'attrezzatura è fornita?",
+      "a": "Sì. Binocoli, giubbotti di salvataggio e attrezzatura da snorkeling sono forniti per le attività che li richiedono."
+    }
+  ],
+  "badge": "Attività",
+  "title": "Non limitarti a guardare",
+  "intro": "Uccelli all'alba, un catamarano al tramonto e una passeggiata nella giungla nel mezzo. Scegli le tue preferite, noi organizziamo tutto.",
+  "seeAll": "Vedi tutte le attività",
+  "planStay": "Organizza il mio soggiorno",
+  "index": "Elenco delle attività",
+  "eyebrow": "Le nostre attività",
+  "heading": "Scegli la tua avventura",
+  "previous": "Attività precedenti",
+  "next": "Attività successive",
+  "fromPerPerson": "Da {price} / persona",
+  "bestTitle": "Il periodo migliore per ogni attività",
+  "bestText": "Scegli le date in base alla stagione che preferisci.",
+  "levels": [
+    "Possibile",
+    "Buono",
+    "Ideale"
+  ],
+  "momentsTitle": "Momenti di viaggio",
+  "faqTitle": "Domande frequenti",
+  "faqText": "Non trovi la risposta? Il nostro team risponde in poche ore.",
+  "ctaEyebrow": "Pronto a esplorare?",
+  "ctaTitle": "Prenota la tua prossima avventura",
+  "ctaText": "Dicci le date e cosa ami. Costruiamo un programma giorno per giorno e ti inviamo un preventivo chiaro entro un giorno lavorativo.",
+  "ctaButton": "Prenota un'attività"
+}
