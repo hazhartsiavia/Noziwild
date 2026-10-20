@@ -4,3 +4,7 @@ export const LOCALES = { en: 'en-US', fr: 'fr-FR', de: 'de-DE', it: 'it-IT', es:
 // 1240 -> "€1,240" (en), "1 240 €" (fr), "1.240 €" (de)...
 export const formatPrice = (value, lang = 'en') =>
   new Intl.NumberFormat(LOCALES[lang] || 'en-US', { style: 'currency', currency: 'EUR', maximumFractionDigits: 0 }).format(Number(value))
+
+// Nom du mois (1 = janvier) dans la langue du site : monthName(4, 'fr') -> "avr."
+export const monthName = (month, lang = 'en', style = 'short') =>
+  new Intl.DateTimeFormat(LOCALES[lang] || 'en-US', { month: style }).format(new Date(2000, month - 1, 1))

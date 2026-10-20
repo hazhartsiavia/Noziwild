@@ -16,6 +16,8 @@ import Icone from '../assets/icone.png'
 import Navbar from '../components/Navbar'
 import Footer from '../components/Footer'
 import { slugify } from './destinationsData'
+import { Trans, useLanguage, useT } from '../i18n/LanguageContext'
+import { monthName } from '../utils/format'
 
 gsap.registerPlugin(ScrollTrigger)
 
@@ -29,10 +31,11 @@ const ON_IMAGE_TITLE = 'text-3xl sm:text-4xl md:text-5xl lg:text-[52px] font-med
 const BTN = 'inline-flex items-center justify-center text-sm md:text-base font-medium px-6 py-3 rounded-full active:scale-95 transition'
 const GOLD = 'bg-[#C49849] hover:bg-[#a9813a]'
 const GREEN = 'bg-[#074636]'
-const MONTHS = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec']
 const quoteHref = (k, v) => `/contact?type=quote&${k}=${encodeURIComponent(v)}`
 
 /* ---------------------------- Données ---------------------------- */
+// Les textes affichés viennent de locales/<langue>/home.json (mêmes listes, même ordre) ;
+// les textes anglais ci-dessous servent d'identifiants (adresses des lieux, clés React).
 
 // Les 4 façons de voyager
 const ways = [
@@ -85,7 +88,7 @@ const regions = [
 ]
 
 const trips = [
-  { name: 'Highlands & Coast', days: 7, image: Tana, text: 'From lemur forests to a quiet bay, a slow week that mixes culture, nature and the sea.', tags: ['Andasibe forest', 'Village stays', 'Ramena sunsets'], months: ['Oct', 'Nov', 'Dec'] },
+  { name: 'Highlands & Coast', days: 7, image: Tana, text: 'From lemur forests to a quiet bay, a slow week that mixes culture, nature and the sea.', tags: ['Andasibe forest', 'Village stays', 'Ramena sunsets'], months: [10, 11, 12] },
   { name: 'Island Escape', days: 5, image: NosyIranja, text: 'White sand, turquoise water and days that end on a boat.' },
   { name: 'Wild North', days: 10, image: Deux, text: 'Baobabs, canyons and empty beaches, for the ones who want more.' },
 ]
@@ -146,6 +149,7 @@ const Stars = ({ className = 'w-4 h-4' }) => (
 
 // Badge circulaire "Talk to a Travel Expert" (identique à la page About)
 function TalkBadge() {
+  const t = useT('home')
   return (
     <div className="relative shrink-0 w-24 h-24 md:w-32 md:h-32 text-slate-700" aria-hidden="true">
       <svg viewBox="0 0 140 140" className="absolute inset-0 w-full h-full animate-spin [animation-duration:20s] motion-reduce:animate-none">
@@ -154,7 +158,7 @@ function TalkBadge() {
         </defs>
         <text fontSize="10" fill="currentColor" letterSpacing="0.5">
           <textPath href="#home-talk-circle" textLength="326" lengthAdjust="spacing">
-            Talk to a Travel Expert / Talk to a Travel Expert /
+            {t('talkBadge')}
           </textPath>
         </text>
       </svg>
@@ -170,6 +174,7 @@ function TalkBadge() {
 /* Hero plein écran : photo pleine largeur sous la bande blanche de la navbar, titre géant, chiffres dans une carte vitrée */
 function Hero() {
   const root = useRef(null)
+  const t = useT('home')
 
   useGsap(root, () => {
     const tl = gsap.timeline({ defaults: { ease: 'power4.out' } })
@@ -210,7 +215,7 @@ function Hero() {
       <div className={`hero-card relative overflow-hidden border-t-[10px] border-white rounded-b-[2rem] md:rounded-b-[3rem] ${GREEN} text-white min-h-[max(640px,100svh)] flex flex-col`}>
         <img
           src={heroBeach}
-          alt="White sand beach with bungalows, pirogues and a turquoise lagoon in Madagascar"
+          alt={t('heroAlt')}
           className="hero-img absolute inset-0 w-full h-full object-cover"
           style={{ willChange: 'transform' }}
           fetchPriority="high"
@@ -225,55 +230,55 @@ function Hero() {
           <div className="flex flex-wrap items-start justify-between gap-3">
             <p className="hero-label flex items-center gap-2 text-base md:text-xl font-medium">
               <span className="w-1.5 h-1.5 rounded-full bg-white" aria-hidden="true" />
-              Your Journey Begins Here
+              {t('heroLabel')}
             </p>
             <p className="hero-rating hidden sm:flex items-center gap-2 rounded-full bg-white/90 px-4 py-2 text-sm font-medium text-slate-900">
               <Stars className="w-3.5 h-3.5" />
-              4.9 from 300+ travelers
+              {t('heroRating')}
             </p>
           </div>
 
           {/* Bas de la carte : titre pleine largeur, puis texte + boutons et chiffres */}
           <div className="hero-content mt-auto pt-10 md:pt-12">
-            <p className="hero-eyebrow text-sm md:text-base text-white/80 mb-4">Private trips across Madagascar</p>
+            <p className="hero-eyebrow text-sm md:text-base text-white/80 mb-4">{t('heroEyebrow')}</p>
             {/* Taille fluide : suit la largeur ET la hauteur de l'écran pour tenir sur le premier écran */}
-            <h1 aria-label="Explore The Soul Of Madagascar" className="text-[clamp(2.75rem,min(10vw,13vh),9rem)] font-semibold leading-[0.92] tracking-tight">
-              <span className="block overflow-hidden pb-2" aria-hidden="true"><span className="hero-line block sm:whitespace-nowrap">Explore The Soul</span></span>
-              <span className="block overflow-hidden pb-2" aria-hidden="true"><span className="hero-line block sm:whitespace-nowrap">Of <span className="text-[#E9CF8F]">Madagascar</span></span></span>
+            <h1 aria-label={t('heroTitle')} className="text-[clamp(2.75rem,min(10vw,13vh),9rem)] font-semibold leading-[0.92] tracking-tight">
+              <span className="block overflow-hidden pb-2" aria-hidden="true"><span className="hero-line block sm:whitespace-nowrap">{t('heroLine1')}</span></span>
+              <span className="block overflow-hidden pb-2" aria-hidden="true"><span className="hero-line block sm:whitespace-nowrap"><Trans text={t('heroLine2')} values={{ madagascar: <span className="text-[#E9CF8F]">{t('madagascar')}</span> }} /></span></span>
             </h1>
 
             <div className="mt-5 md:mt-7 grid grid-cols-1 xl:grid-cols-[1.3fr_1fr] gap-8 xl:gap-12 items-end">
             <div>
               <p className="hero-copy text-base md:text-lg text-white/90 leading-relaxed max-w-xl">
-                Local guides, handpicked stays and routes planned by people who live here. Tell us your dream trip and get a free quote within one working day.
+                {t('heroText')}
               </p>
               <div className="mt-6 flex flex-wrap gap-3">
                 <a
                   href="/contact?type=quote"
                   className="hero-cta group inline-flex items-center gap-4 rounded-full bg-white text-slate-900 hover:bg-[#F7EEDC] transition-colors pl-6 pr-2 py-2 md:pl-7"
                 >
-                  <span className="text-base md:text-lg font-medium">Get a Free Quote</span>
+                  <span className="text-base md:text-lg font-medium">{t('heroCta')}</span>
                   <span className={`w-10 h-10 md:w-12 md:h-12 rounded-full ${GOLD} text-white flex items-center justify-center transition-transform group-hover:translate-x-1`}>
                     <ArrowRight className="w-5 h-5" aria-hidden="true" />
                   </span>
                 </a>
-                <a href="/destinations" className={`hero-cta ${BTN} border border-white/50 hover:bg-white/10 text-white md:px-8`}>Explore destinations</a>
+                <a href="/destinations" className={`hero-cta ${BTN} border border-white/50 hover:bg-white/10 text-white md:px-8`}>{t('heroExplore')}</a>
               </div>
             </div>
 
             {/* Carte vitrée : chiffres clés */}
             <div className="hero-glass rounded-3xl border border-white/25 bg-white/10 backdrop-blur-md p-5 md:p-7 md:max-w-xl xl:max-w-none">
               <ul className="grid grid-cols-3 gap-4">
-                {stats.map((s) => (
+                {stats.map((s, i) => (
                   <li key={s.id} className="hero-fact">
                     <p className="text-2xl md:text-4xl font-semibold leading-none">{s.value}</p>
-                    <p className="mt-2 text-xs md:text-sm text-white/80 leading-snug">{s.label}</p>
+                    <p className="mt-2 text-xs md:text-sm text-white/80 leading-snug">{t('stats')[i]}</p>
                   </li>
                 ))}
               </ul>
               <div className="hero-fact mt-6 flex items-center gap-4 border-t border-white/25 pt-5">
                 <img src={Icone} alt="" className="w-11 h-11 md:w-12 md:h-12 rounded-full bg-white object-contain p-1.5" />
-                <p className="text-sm md:text-base text-white/90 leading-snug">A real planner answers you, before, during and after your trip.</p>
+                <p className="text-sm md:text-base text-white/90 leading-snug">{t('heroPlanner')}</p>
               </div>
             </div>
             </div>
@@ -287,6 +292,7 @@ function Hero() {
 /* Les 4 façons de voyager : cartes photo (même style que les cartes de la page Destinations) */
 function Ways() {
   const root = useRef(null)
+  const t = useT('home')
 
   useReveal(root, '.ways-head > *, .way-card')
 
@@ -294,17 +300,18 @@ function Ways() {
     <section ref={root} className={`${SECTION_WIDTH} ${SECTION_GAP}`}>
       <div className="ways-head flex flex-col lg:flex-row lg:items-end lg:justify-between gap-5 lg:gap-12">
         <div>
-          <p className={SECTION_LABEL}>How you travel</p>
-          <h2 className={SECTION_TITLE}>Every Way To Discover Madagascar</h2>
+          <p className={SECTION_LABEL}>{t('waysLabel')}</p>
+          <h2 className={SECTION_TITLE}>{t('waysTitle')}</h2>
         </div>
-        <p className={`${SECTION_SUBTITLE} lg:max-w-md`}>From a single morning on the water to a month on the island, pick the format that fits you.</p>
+        <p className={`${SECTION_SUBTITLE} lg:max-w-md`}>{t('waysText')}</p>
       </div>
 
       <ul className="mt-10 grid grid-cols-2 lg:grid-cols-4 gap-3 md:gap-5">
-        {ways.map((w) => {
+        {ways.map((way, i) => {
+          const w = { ...way, ...t('ways')[i] }
           const WayIcon = w.icon
           return (
-            <li key={w.title} className="way-card">
+            <li key={way.href} className="way-card">
               <a href={w.href} className="group relative block aspect-[3/4] overflow-hidden rounded-[1.5rem] md:rounded-[2rem] text-white focus:outline-none focus-visible:ring-4 focus-visible:ring-slate-800">
                 <img src={w.image} alt="" className="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" />
                 <div className="absolute inset-0 bg-gradient-to-t from-slate-950/85 via-slate-950/10 to-transparent" />
@@ -332,6 +339,7 @@ function Ways() {
 /* Qui sommes-nous : titre + badge expert, puis nos engagements */
 function Intro() {
   const root = useRef(null)
+  const t = useT('home')
 
   useReveal(root, '.intro-text > *, .intro-card')
 
@@ -339,28 +347,29 @@ function Intro() {
     <section ref={root} className={`${SECTION_WIDTH} ${SECTION_GAP}`}>
       <div className="grid grid-cols-1 lg:grid-cols-[1.3fr_1fr] gap-8 lg:gap-16 items-center">
         <div className="intro-text">
-          <p className={SECTION_LABEL}>Why Noziwild</p>
-          <h2 className={SECTION_TITLE}>A Local Team, From The First Idea To The Last Sunset</h2>
+          <p className={SECTION_LABEL}>{t('introLabel')}</p>
+          <h2 className={SECTION_TITLE}>{t('introTitle')}</h2>
           <p className={`mt-5 md:mt-6 ${SECTION_SUBTITLE}`}>
-            We live in Madagascar and plan every trip ourselves. Routes, drivers, guides and stays are chosen by people who know them personally.
+            {t('introText')}
           </p>
         </div>
 
         <div className="intro-card flex items-center gap-5 md:gap-6 rounded-3xl bg-white p-5 md:p-8">
           <TalkBadge />
           <div>
-            <p className="text-lg md:text-2xl font-medium leading-snug text-slate-900">Not sure where to start?</p>
-            <p className="mt-2 text-sm md:text-base text-slate-600">Tell us what you love. We suggest the route.</p>
-            <a href="/contact" className={`${BTN} ${GREEN} hover:bg-[#0a5f48] text-white mt-4`}>Talk to an expert</a>
+            <p className="text-lg md:text-2xl font-medium leading-snug text-slate-900">{t('notSure')}</p>
+            <p className="mt-2 text-sm md:text-base text-slate-600">{t('notSureText')}</p>
+            <a href="/contact" className={`${BTN} ${GREEN} hover:bg-[#0a5f48] text-white mt-4`}>{t('talkExpert')}</a>
           </div>
         </div>
       </div>
 
       <ul className="mt-10 md:mt-14 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3 md:gap-5">
-        {promises.map((p) => {
+        {promises.map((promise, i) => {
+          const p = { ...promise, ...t('promises')[i] }
           const PromiseIcon = p.icon
           return (
-            <li key={p.title} className="intro-card flex flex-col rounded-2xl bg-white p-5 md:p-6">
+            <li key={promise.title} className="intro-card flex flex-col rounded-2xl bg-white p-5 md:p-6">
               <span className="w-11 h-11 lg:w-[52px] lg:h-[52px] rounded-full bg-[#C49849] flex items-center justify-center text-white">
                 <PromiseIcon className="w-5 h-5 md:w-6 md:h-6" strokeWidth={1.8} aria-hidden="true" />
               </span>
@@ -378,8 +387,13 @@ function Intro() {
 function Regions() {
   const root = useRef(null)
   const panel = useRef(null)
+  const t = useT('home')
+  const { lang } = useLanguage()
   const [active, setActive] = useState(0)
-  const region = regions[active]
+  const texts = t('regions')
+  const tr = texts[active]
+  // Lieux : nom anglais pour l'adresse de la page, nom traduit à l'écran
+  const region = { ...regions[active], ...tr, places: regions[active].places.map((p, i) => ({ ...p, label: tr.places[i] })) }
   const [first, last] = region.months
 
   useReveal(root, '.regions-head > *')
@@ -394,14 +408,14 @@ function Regions() {
     <section ref={root} className={`${SECTION_WIDTH} ${SECTION_GAP}`}>
       <div className="regions-head flex flex-col lg:flex-row lg:items-end lg:justify-between gap-5 lg:gap-12">
         <div>
-          <p className={SECTION_LABEL}>Destinations</p>
-          <h2 className={SECTION_TITLE}>Five Regions, One Island</h2>
+          <p className={SECTION_LABEL}>{t('regionsLabel')}</p>
+          <h2 className={SECTION_TITLE}>{t('regionsTitle')}</h2>
         </div>
-        <p className={`${SECTION_SUBTITLE} lg:max-w-md`}>Madagascar is a continent in miniature. Pick a region to see what it is known for and when to go.</p>
+        <p className={`${SECTION_SUBTITLE} lg:max-w-md`}>{t('regionsText')}</p>
       </div>
 
       <div className="mt-8 md:mt-10 flex">
-        <ul role="tablist" aria-label="Regions" className="flex gap-2 rounded-full bg-white/85 backdrop-blur-md p-2 shadow-sm overflow-x-auto max-w-full [scrollbar-width:none] [&::-webkit-scrollbar]:hidden">
+        <ul role="tablist" aria-label={t('regionsTabs')} className="flex gap-2 rounded-full bg-white/85 backdrop-blur-md p-2 shadow-sm overflow-x-auto max-w-full [scrollbar-width:none] [&::-webkit-scrollbar]:hidden">
           {regions.map((r, i) => (
             <li key={r.id} className="shrink-0">
               <button
@@ -414,7 +428,7 @@ function Regions() {
                   i === active ? 'bg-slate-800 text-white' : 'text-slate-800 hover:bg-slate-800/10'
                 }`}
               >
-                {r.name}
+                {texts[i].name}
               </button>
             </li>
           ))}
@@ -426,7 +440,7 @@ function Regions() {
           <img src={region.image} alt={region.name} className="absolute inset-0 w-full h-full object-cover" />
           <div className="absolute inset-0 bg-gradient-to-t from-slate-950/60 via-transparent to-transparent" />
           <span className="absolute left-5 top-5 bg-[#C49849] text-white text-xs sm:text-sm font-medium px-3 py-1.5 rounded-sm">
-            Best from {MONTHS[first - 1]} to {MONTHS[last - 1]}
+            {t('bestFrom', { from: monthName(first, lang, 'long'), to: monthName(last, lang, 'long') })}
           </span>
         </div>
 
@@ -435,23 +449,23 @@ function Regions() {
           <p className="mt-3 text-lg md:text-2xl text-slate-700">{region.tagline}</p>
           <p className="mt-5 text-sm md:text-base text-slate-600 leading-relaxed max-w-xl">{region.text}</p>
 
-          <p className="mt-8 mb-3 text-sm md:text-base font-medium text-slate-800">Must-see places</p>
+          <p className="mt-8 mb-3 text-sm md:text-base font-medium text-slate-800">{t('mustSee')}</p>
           <ul className="grid grid-cols-3 gap-3 md:gap-4">
             {region.places.map((p) => (
               <li key={p.name}>
                 <a href={`/destinations/${slugify(p.name)}`} className="group block">
                   <div className="aspect-square overflow-hidden rounded-2xl md:rounded-3xl">
-                    <img src={p.image} alt={p.name} className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" />
+                    <img src={p.image} alt={p.label} className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" />
                   </div>
-                  <p className="mt-2 text-xs sm:text-sm md:text-base text-slate-800 leading-snug group-hover:underline">{p.name}</p>
+                  <p className="mt-2 text-xs sm:text-sm md:text-base text-slate-800 leading-snug group-hover:underline">{p.label}</p>
                 </a>
               </li>
             ))}
           </ul>
 
           <div className="mt-8 flex flex-wrap gap-3">
-            <a href="/destinations" className={`${BTN} ${GOLD} text-white`}>Explore this region</a>
-            <a href="/circuits" className={`${BTN} border border-slate-400 hover:border-slate-800 text-slate-800`}>See circuits</a>
+            <a href="/destinations" className={`${BTN} ${GOLD} text-white`}>{t('exploreRegion')}</a>
+            <a href="/circuits" className={`${BTN} border border-slate-400 hover:border-slate-800 text-slate-800`}>{t('seeCircuits')}</a>
           </div>
         </div>
       </div>
@@ -462,7 +476,9 @@ function Regions() {
 /* Voyages signature : une grande carte + deux petites */
 function Trips() {
   const root = useRef(null)
-  const [big, ...rest] = trips
+  const t = useT('home')
+  const { lang } = useLanguage()
+  const [big, ...rest] = trips.map((trip, i) => ({ ...trip, ...t('trips')[i] }))
   const card = 'trip-card group relative overflow-hidden rounded-3xl bg-slate-900 text-white flex focus:outline-none focus-visible:ring-4 focus-visible:ring-slate-800'
   const shade = 'absolute inset-0 bg-gradient-to-t from-black/85 via-black/25 to-transparent'
   const img = 'absolute inset-0 w-full h-full object-cover transition-transform duration-1000 group-hover:scale-105'
@@ -473,38 +489,38 @@ function Trips() {
     <section ref={root} className={`${SECTION_WIDTH} ${SECTION_GAP}`}>
       <div className="trips-head flex flex-col lg:flex-row lg:items-end lg:justify-between gap-5 lg:gap-12">
         <div>
-          <p className={SECTION_LABEL}>Signature trips</p>
-          <h2 className={`${SECTION_TITLE} max-w-3xl`}>Trips We Love To Send You On</h2>
+          <p className={SECTION_LABEL}>{t('tripsLabel')}</p>
+          <h2 className={`${SECTION_TITLE} max-w-3xl`}>{t('tripsTitle')}</h2>
         </div>
-        <p className={`${SECTION_SUBTITLE} lg:max-w-md`}>Ready-made starting points. We adapt each one to your dates, pace and budget.</p>
+        <p className={`${SECTION_SUBTITLE} lg:max-w-md`}>{t('tripsText')}</p>
       </div>
 
       <div className="mt-10 grid grid-cols-1 lg:grid-cols-[1.35fr_1fr] gap-4 md:gap-6">
         <a href={quoteHref('trip', big.name)} className={`${card} min-h-[480px] lg:min-h-[640px] lg:row-span-2`}>
           <img src={big.image} alt={big.name} className={img} /><span className={shade} />
           <span className="relative flex w-full flex-col justify-end p-6 md:p-10">
-            <span className="self-start bg-[#C49849] text-xs sm:text-sm font-medium px-3 py-1.5 rounded-sm">{big.days} days</span>
+            <span className="self-start bg-[#C49849] text-xs sm:text-sm font-medium px-3 py-1.5 rounded-sm">{t('days', { count: big.days })}</span>
             <span className="mt-4 block text-3xl md:text-5xl font-medium tracking-tight">{big.name}</span>
             <span className="mt-3 block max-w-md text-sm md:text-base text-white/85">{big.text}</span>
             <span className="mt-4 flex flex-wrap gap-2">
               {big.tags.map((h) => <span key={h} className="rounded-full border border-white/40 bg-white/10 backdrop-blur-sm px-3 py-1 text-xs md:text-sm">{h}</span>)}
             </span>
             <span className="mt-5 flex flex-wrap items-center gap-2 text-sm text-white/80">
-              Best months: {big.months.map((m) => <span key={m} className="rounded-full bg-white/90 px-3 py-1 text-xs font-medium text-slate-900">{m}</span>)}
+              {t('bestMonths')} {big.months.map((m) => <span key={m} className="rounded-full bg-white/90 px-3 py-1 text-xs font-medium text-slate-900">{monthName(m, lang)}</span>)}
             </span>
             <span className="mt-6 flex items-center justify-between border-t border-white/25 pt-5">
-              <span className="text-white/85">Free quote, no obligation</span>
+              <span className="text-white/85">{t('freeQuote')}</span>
               <span className="w-11 h-11 rounded-full bg-[#C49849] flex items-center justify-center transition group-hover:translate-x-1"><ArrowRight className="w-5 h-5" aria-hidden="true" /></span>
             </span>
           </span>
         </a>
-        {rest.map((t) => (
-          <a key={t.name} href={quoteHref('trip', t.name)} className={`${card} min-h-[310px]`}>
-            <img src={t.image} alt={t.name} className={img} /><span className={shade} />
+        {rest.map((trip) => (
+          <a key={trip.name} href={quoteHref('trip', trip.name)} className={`${card} min-h-[310px]`}>
+            <img src={trip.image} alt={trip.name} className={img} /><span className={shade} />
             <span className="relative flex w-full flex-col justify-end p-5 md:p-8">
-              <span className="self-start bg-[#C49849] text-xs font-medium px-3 py-1.5 rounded-sm">{t.days} days</span>
-              <span className="mt-3 block text-2xl md:text-3xl font-medium tracking-tight">{t.name}</span>
-              <span className="mt-2 block text-sm text-white/80">{t.text}</span>
+              <span className="self-start bg-[#C49849] text-xs font-medium px-3 py-1.5 rounded-sm">{t('days', { count: trip.days })}</span>
+              <span className="mt-3 block text-2xl md:text-3xl font-medium tracking-tight">{trip.name}</span>
+              <span className="mt-2 block text-sm text-white/80">{trip.text}</span>
             </span>
           </a>
         ))}
@@ -516,6 +532,7 @@ function Trips() {
 /* Services : bloc sombre avec les pastilles des services (comme les piliers de la page About) */
 function Services() {
   const root = useRef(null)
+  const t = useT('home')
 
   useReveal(root, '.services-head > *, .service-item')
 
@@ -523,16 +540,16 @@ function Services() {
     <section ref={root} className={`${SECTION_WIDTH} ${SECTION_GAP} rounded-[2rem] md:rounded-[3rem] ${GREEN} text-white p-5 sm:p-8 md:p-14`}>
       <div className="services-head flex flex-col lg:flex-row lg:items-end lg:justify-between gap-5 lg:gap-12">
         <div>
-          <p className="mb-3 text-xs sm:text-sm md:text-base uppercase tracking-wide text-white/70">Services</p>
-          <h2 className={`${ON_IMAGE_TITLE} max-w-3xl`}>Everything Taken Care Of</h2>
+          <p className="mb-3 text-xs sm:text-sm md:text-base uppercase tracking-wide text-white/70">{t('servicesLabel')}</p>
+          <h2 className={`${ON_IMAGE_TITLE} max-w-3xl`}>{t('servicesTitle')}</h2>
         </div>
         <p className="text-sm sm:text-base md:text-lg text-white/75 leading-relaxed lg:max-w-md">
-          Book the whole trip with us, or only the part you need. Every service is run by our team and trusted local partners.
+          {t('servicesText')}
         </p>
       </div>
 
       <ul className="mt-10 md:mt-12 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3 md:gap-4">
-        {services.map((s) => {
+        {services.map((s, i) => {
           const ServiceIcon = s.icon
           return (
             <li key={s.title} className="service-item">
@@ -543,7 +560,7 @@ function Services() {
                 <span className="shrink-0 w-11 h-11 lg:w-[52px] lg:h-[52px] rounded-full bg-[#C49849] flex items-center justify-center text-white">
                   <ServiceIcon className="w-5 h-5 md:w-6 md:h-6" strokeWidth={1.8} aria-hidden="true" />
                 </span>
-                <span className="flex-1 text-sm lg:text-base font-medium leading-snug">{s.title}</span>
+                <span className="flex-1 text-sm lg:text-base font-medium leading-snug">{t('services')[i]}</span>
                 <ArrowRight className="w-4 h-4 text-slate-500 transition-transform group-hover:translate-x-1" aria-hidden="true" />
               </a>
             </li>
@@ -557,6 +574,7 @@ function Services() {
 /* Avis : carte note + citations sur fond blanc */
 function Testimonials() {
   const root = useRef(null)
+  const t = useT('home')
   const initials = (name) => name.split(/[\s&.]+/).filter(Boolean).map((w) => w[0]).slice(0, 2).join('')
 
   useReveal(root, '.testimonial-card')
@@ -565,20 +583,20 @@ function Testimonials() {
     <section ref={root} className={`${SECTION_WIDTH} ${SECTION_GAP}`}>
       <div className="mb-10 md:mb-14 flex flex-col lg:flex-row lg:items-end lg:justify-between gap-5 lg:gap-12">
         <div>
-          <p className={SECTION_LABEL}>Kind words</p>
-          <h2 className={SECTION_TITLE}>Loved By Travelers</h2>
+          <p className={SECTION_LABEL}>{t('reviewsLabel')}</p>
+          <h2 className={SECTION_TITLE}>{t('reviewsTitle')}</h2>
         </div>
         <div className="flex items-center gap-4">
           <p className="text-5xl md:text-6xl leading-none text-slate-800">4.9<span className="text-2xl text-slate-500">/5</span></p>
           <div>
             <Stars />
-            <p className="mt-2 text-sm md:text-base text-slate-600">Average rating from 300+ travelers</p>
+            <p className="mt-2 text-sm md:text-base text-slate-600">{t('reviewsAverage')}</p>
           </div>
         </div>
       </div>
 
       <ul className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 md:gap-5">
-        {quotes.map((q) => (
+        {quotes.map((quote, i) => ({ ...quote, ...t('quotes')[i] })).map((q) => (
           <li key={q.name} className="testimonial-card">
             <figure className="flex h-full flex-col rounded-2xl bg-white p-6 md:p-7">
               <Stars />
@@ -601,6 +619,7 @@ function Testimonials() {
 /* Appel final (même carte que la page Destinations) */
 function FinalCta() {
   const root = useRef(null)
+  const t = useT('home')
 
   useGsap(root, () => {
     gsap.fromTo('.cta-bg', { scale: 1.15 }, {
@@ -618,11 +637,11 @@ function FinalCta() {
       <img src={Ramena} alt="" className="cta-bg absolute inset-0 w-full h-full object-cover" />
       <div className="absolute inset-0 bg-slate-950/65" />
       <div className="cta-content relative p-8 md:p-16 max-w-3xl">
-        <h2 className="text-3xl sm:text-4xl md:text-5xl font-medium leading-[1.1] tracking-tight">Ready To Plan Your Trip?</h2>
-        <p className="mt-4 text-sm md:text-lg text-white/85">Tell us what you love and how long you have. A real planner answers within one working day with a first idea and a free quote.</p>
+        <h2 className="text-3xl sm:text-4xl md:text-5xl font-medium leading-[1.1] tracking-tight">{t('ctaTitle')}</h2>
+        <p className="mt-4 text-sm md:text-lg text-white/85">{t('ctaText')}</p>
         <div className="mt-8 flex flex-wrap gap-3">
-          <a href="/contact?type=quote" className={`${BTN} ${GOLD} text-white`}>Get a free quote</a>
-          <a href="/tailor-made" className={`${BTN} border border-white/50 hover:bg-white/10`}>Design my own trip</a>
+          <a href="/contact?type=quote" className={`${BTN} ${GOLD} text-white`}>{t('ctaQuote')}</a>
+          <a href="/tailor-made" className={`${BTN} border border-white/50 hover:bg-white/10`}>{t('ctaDesign')}</a>
         </div>
       </div>
     </section>

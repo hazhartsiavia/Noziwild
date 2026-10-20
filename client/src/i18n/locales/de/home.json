@@ -1,0 +1,188 @@
+{
+  "talkBadge": "Sprechen Sie mit einem Reiseexperten / Sprechen Sie mit einem Reiseexperten /",
+  "heroAlt": "Weißer Sandstrand mit Bungalows, Einbäumen und einer türkisfarbenen Lagune in Madagaskar",
+  "heroLabel": "Hier beginnt Ihre Reise",
+  "heroRating": "4,9 von über 300 Reisenden",
+  "heroEyebrow": "Private Reisen durch Madagaskar",
+  "heroTitle": "Entdecken Sie die Seele Madagaskars",
+  "heroLine1": "Entdecken Sie",
+  "heroLine2": "die Seele {madagascar}",
+  "madagascar": "Madagaskars",
+  "heroText": "Lokale Guides, sorgfältig ausgewählte Unterkünfte und Routen, geplant von Menschen, die hier leben. Erzählen Sie uns von Ihrer Traumreise und erhalten Sie innerhalb eines Werktags ein kostenloses Angebot.",
+  "heroCta": "Kostenloses Angebot",
+  "heroExplore": "Reiseziele entdecken",
+  "stats": [
+    "Jahre lokale Erfahrung",
+    "Zufriedene Reisende",
+    "Durchschnittliche Bewertung"
+  ],
+  "heroPlanner": "Ein echter Reiseplaner ist für Sie da – vor, während und nach Ihrer Reise.",
+  "waysLabel": "Wie Sie reisen",
+  "waysTitle": "Alle Wege, Madagaskar zu entdecken",
+  "waysText": "Vom einzelnen Vormittag auf dem Wasser bis zu einem Monat auf der Insel: Wählen Sie das Format, das zu Ihnen passt.",
+  "ways": [
+    {
+      "title": "Rundreisen",
+      "text": "Fertige Routen quer über die Insel"
+    },
+    {
+      "title": "Ausflüge",
+      "text": "Tagesausflüge und kurze Auszeiten"
+    },
+    {
+      "title": "Langzeitaufenthalt",
+      "text": "Die Insel wochenlang erleben"
+    },
+    {
+      "title": "Individuelle Reisen",
+      "text": "Eine Reise, ganz auf Sie zugeschnitten"
+    }
+  ],
+  "introLabel": "Warum Noziwild",
+  "introTitle": "Ein lokales Team – von der ersten Idee bis zum letzten Sonnenuntergang",
+  "introText": "Wir leben in Madagaskar und planen jede Reise selbst. Routen, Fahrer, Guides und Unterkünfte werden von Menschen ausgewählt, die sie persönlich kennen.",
+  "notSure": "Sie wissen nicht, wo Sie anfangen sollen?",
+  "notSureText": "Erzählen Sie uns, was Sie lieben. Wir schlagen die Route vor.",
+  "talkExpert": "Mit einem Experten sprechen",
+  "promises": [
+    {
+      "title": "Lokal zuerst",
+      "text": "Lokale Guides, familiengeführte Unterkünfte und kleine Restaurants, die die Menschen unterstützen, die diesen Ort besonders machen."
+    },
+    {
+      "title": "Bewusst entschleunigt",
+      "text": "Weniger Stopps, mehr Zeit. Wir lassen Raum für ein langes Mittagessen, einen Umweg oder ein ungeplantes Bad."
+    },
+    {
+      "title": "Ehrliche Angebote",
+      "text": "Ein klares Angebot mit allem inklusive. Keine versteckten Kosten und keine Überraschungen am Ende."
+    },
+    {
+      "title": "Immer erreichbar",
+      "text": "Ein echter Mensch vor, während und nach Ihrer Reise, der antwortet, wenn Sie ihn brauchen."
+    }
+  ],
+  "regionsLabel": "Reiseziele",
+  "regionsTitle": "Fünf Regionen, eine Insel",
+  "regionsText": "Madagaskar ist ein Kontinent im Kleinformat. Wählen Sie eine Region, um zu sehen, wofür sie bekannt ist und wann sich die Reise lohnt.",
+  "regionsTabs": "Regionen",
+  "bestFrom": "Am besten von {from} bis {to}",
+  "mustSee": "Sehenswerte Orte",
+  "exploreRegion": "Diese Region entdecken",
+  "seeCircuits": "Rundreisen ansehen",
+  "regions": [
+    {
+      "name": "Der Norden",
+      "tagline": "Smaragdgrüne Buchten, Gewürzinseln und Trockenwälder",
+      "text": "Segeln Sie in der Bucht von Diego Suarez, wandern Sie über den scharfen Kalkstein von Ankarana und lassen Sie die Reise auf den Inseln rund um Nosy Be ausklingen.",
+      "places": [
+        "Strand von Ramena",
+        "Nosy Iranja",
+        "Ambanja"
+      ]
+    },
+    {
+      "name": "Das Hochland",
+      "tagline": "Königliche Hügel, Reisterrassen und kühle Morgen",
+      "text": "Beginnen Sie in Antananarivo, steigen Sie auf den Königshügel von Ambohimanga und fahren Sie durch terrassierte Täler nach Süden bis Antsirabe.",
+      "places": [
+        "Antananarivo",
+        "Ambohimanga",
+        "Antsirabe"
+      ]
+    },
+    {
+      "name": "Der Westen",
+      "tagline": "Baobab-Alleen und Steinwälder",
+      "text": "Fahren Sie bei Sonnenuntergang die berühmte Baobab-Allee entlang und überqueren Sie dann den Fluss zu den Tsingy de Bemaraha.",
+      "places": [
+        "Baobab-Allee",
+        "Morondava",
+        "Tsingy de Bemaraha"
+      ]
+    },
+    {
+      "name": "Der Süden",
+      "tagline": "Schluchten, weißer Sand und Küstendörfer",
+      "text": "Wandern Sie durch die Sandsteinschluchten des Isalo, baden Sie in Naturbecken und beenden Sie die Reise an der Küste der Vezo.",
+      "places": [
+        "Isalo",
+        "Küste von Ifaty",
+        "Fort Dauphin"
+      ]
+    },
+    {
+      "name": "Der Osten",
+      "tagline": "Regenwald, Lemuren und Inselstrände",
+      "text": "Lauschen Sie im Morgengrauen dem Indri in Andasibe und fahren Sie dann mit dem Boot zur Île Sainte-Marie oder auf die Halbinsel Masoala.",
+      "places": [
+        "Andasibe",
+        "Île Sainte-Marie",
+        "Masoala"
+      ]
+    }
+  ],
+  "tripsLabel": "Unsere Lieblingsreisen",
+  "tripsTitle": "Reisen, auf die wir Sie gern schicken",
+  "tripsText": "Fertige Ausgangspunkte. Wir passen jede Reise an Ihre Daten, Ihr Tempo und Ihr Budget an.",
+  "days": "{count} Tage",
+  "bestMonths": "Beste Monate:",
+  "freeQuote": "Kostenloses, unverbindliches Angebot",
+  "trips": [
+    {
+      "name": "Hochland & Küste",
+      "text": "Von Lemurenwäldern bis zu einer ruhigen Bucht – eine entspannte Woche mit Kultur, Natur und Meer.",
+      "tags": [
+        "Wald von Andasibe",
+        "Übernachten im Dorf",
+        "Sonnenuntergänge in Ramena"
+      ]
+    },
+    {
+      "name": "Inselauszeit",
+      "text": "Weißer Sand, türkisfarbenes Wasser und Tage, die auf einem Boot enden."
+    },
+    {
+      "name": "Wilder Norden",
+      "text": "Baobabs, Schluchten und menschenleere Strände – für alle, die mehr wollen."
+    }
+  ],
+  "servicesLabel": "Leistungen",
+  "servicesTitle": "Wir kümmern uns um alles",
+  "servicesText": "Buchen Sie die ganze Reise bei uns oder nur den Teil, den Sie brauchen. Jede Leistung wird von unserem Team und vertrauenswürdigen lokalen Partnern erbracht.",
+  "services": [
+    "Unterkünfte",
+    "Transport",
+    "Reiseführer",
+    "Essen & Trinken",
+    "Ausrüstungsverleih",
+    "Fotografie",
+    "Reiseplanung",
+    "Landausflüge für Kreuzfahrten"
+  ],
+  "reviewsLabel": "Was Reisende sagen",
+  "reviewsTitle": "Von Reisenden geliebt",
+  "reviewsAverage": "Durchschnittliche Bewertung von über 300 Reisenden",
+  "quotes": [
+    {
+      "text": "Sie haben jedes Detail geplant, und doch fühlte sich die Reise nie geplant an. Es war, als würden wir Freunde besuchen.",
+      "origin": "Lyon"
+    },
+    {
+      "text": "Unser Guide hat uns eine Seite der Insel gezeigt, die wir nie erwartet hätten. Das Essen, die Menschen, die kleinen Werkstätten.",
+      "origin": "Mailand"
+    },
+    {
+      "text": "Als unser Flug gestrichen wurde, hatten sie einen neuen Plan, bevor wir unseren Kaffee ausgetrunken hatten. Beeindruckend.",
+      "origin": "München"
+    },
+    {
+      "text": "Eine einzige Ansprechperson für alles – das hat unsere Familienreise völlig stressfrei gemacht. Die Kinder reden immer noch davon.",
+      "origin": "Montreal"
+    }
+  ],
+  "ctaTitle": "Bereit, Ihre Reise zu planen?",
+  "ctaText": "Erzählen Sie uns, was Sie lieben und wie viel Zeit Sie haben. Ein echter Reiseplaner antwortet innerhalb eines Werktags mit einer ersten Idee und einem kostenlosen Angebot.",
+  "ctaQuote": "Kostenloses Angebot anfordern",
+  "ctaDesign": "Meine eigene Reise gestalten"
+}

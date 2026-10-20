@@ -1,0 +1,188 @@
+{
+  "talkBadge": "Talk to a Travel Expert / Talk to a Travel Expert /",
+  "heroAlt": "White sand beach with bungalows, pirogues and a turquoise lagoon in Madagascar",
+  "heroLabel": "Your Journey Begins Here",
+  "heroRating": "4.9 from 300+ travelers",
+  "heroEyebrow": "Private trips across Madagascar",
+  "heroTitle": "Explore The Soul Of Madagascar",
+  "heroLine1": "Explore The Soul",
+  "heroLine2": "Of {madagascar}",
+  "madagascar": "Madagascar",
+  "heroText": "Local guides, handpicked stays and routes planned by people who live here. Tell us your dream trip and get a free quote within one working day.",
+  "heroCta": "Get a Free Quote",
+  "heroExplore": "Explore destinations",
+  "stats": [
+    "Years of local expertise",
+    "Happy travelers",
+    "Average rating"
+  ],
+  "heroPlanner": "A real planner answers you, before, during and after your trip.",
+  "waysLabel": "How you travel",
+  "waysTitle": "Every Way To Discover Madagascar",
+  "waysText": "From a single morning on the water to a month on the island, pick the format that fits you.",
+  "ways": [
+    {
+      "title": "Circuits",
+      "text": "Ready-made routes across the island"
+    },
+    {
+      "title": "Excursions",
+      "text": "Day trips and short escapes"
+    },
+    {
+      "title": "Long Stay",
+      "text": "Live the island for weeks"
+    },
+    {
+      "title": "Tailor-Made",
+      "text": "A trip designed around you"
+    }
+  ],
+  "introLabel": "Why Noziwild",
+  "introTitle": "A Local Team, From The First Idea To The Last Sunset",
+  "introText": "We live in Madagascar and plan every trip ourselves. Routes, drivers, guides and stays are chosen by people who know them personally.",
+  "notSure": "Not sure where to start?",
+  "notSureText": "Tell us what you love. We suggest the route.",
+  "talkExpert": "Talk to an expert",
+  "promises": [
+    {
+      "title": "Local first",
+      "text": "Local guides, family-run stays and small restaurants that support the people who make the place special."
+    },
+    {
+      "title": "Slow by design",
+      "text": "Fewer stops, more time. We leave room for a long lunch, a detour or a swim you did not plan."
+    },
+    {
+      "title": "Honest quotes",
+      "text": "One clear quote with everything in it. No hidden fees and no surprises at the end."
+    },
+    {
+      "title": "Always reachable",
+      "text": "A real person before, during and after your trip, who answers when you need it."
+    }
+  ],
+  "regionsLabel": "Destinations",
+  "regionsTitle": "Five Regions, One Island",
+  "regionsText": "Madagascar is a continent in miniature. Pick a region to see what it is known for and when to go.",
+  "regionsTabs": "Regions",
+  "bestFrom": "Best from {from} to {to}",
+  "mustSee": "Must-see places",
+  "exploreRegion": "Explore this region",
+  "seeCircuits": "See circuits",
+  "regions": [
+    {
+      "name": "The North",
+      "tagline": "Emerald bays, spice islands and dry forests",
+      "text": "Sail the bay of Diego Suarez, hike the sharp limestone of Ankarana and finish on the islands around Nosy Be.",
+      "places": [
+        "Ramena Beach",
+        "Nosy Iranja",
+        "Ambanja"
+      ]
+    },
+    {
+      "name": "The Highlands",
+      "tagline": "Royal hills, rice terraces and cool mornings",
+      "text": "Start in Antananarivo, climb to the royal hill of Ambohimanga and ride south through the terraced valleys to Antsirabe.",
+      "places": [
+        "Antananarivo",
+        "Ambohimanga",
+        "Antsirabe"
+      ]
+    },
+    {
+      "name": "The West",
+      "tagline": "Baobab avenues and stone forests",
+      "text": "Drive the famous Baobab Avenue at sunset, then cross the river to walk the Tsingy of Bemaraha.",
+      "places": [
+        "Baobab Avenue",
+        "Morondava",
+        "Tsingy de Bemaraha"
+      ]
+    },
+    {
+      "name": "The South",
+      "tagline": "Canyons, white sand and coastal villages",
+      "text": "Hike the sandstone canyons of Isalo, swim in natural pools and end the trip on the Vezo coast.",
+      "places": [
+        "Isalo",
+        "Ifaty coast",
+        "Fort Dauphin"
+      ]
+    },
+    {
+      "name": "The East",
+      "tagline": "Rainforest, lemurs and island beaches",
+      "text": "Listen for the indri at dawn in Andasibe, then take a boat to Ile Sainte-Marie or into the Masoala peninsula.",
+      "places": [
+        "Andasibe",
+        "Ile Sainte-Marie",
+        "Masoala"
+      ]
+    }
+  ],
+  "tripsLabel": "Signature trips",
+  "tripsTitle": "Trips We Love To Send You On",
+  "tripsText": "Ready-made starting points. We adapt each one to your dates, pace and budget.",
+  "days": "{count} days",
+  "bestMonths": "Best months:",
+  "freeQuote": "Free quote, no obligation",
+  "trips": [
+    {
+      "name": "Highlands & Coast",
+      "text": "From lemur forests to a quiet bay, a slow week that mixes culture, nature and the sea.",
+      "tags": [
+        "Andasibe forest",
+        "Village stays",
+        "Ramena sunsets"
+      ]
+    },
+    {
+      "name": "Island Escape",
+      "text": "White sand, turquoise water and days that end on a boat."
+    },
+    {
+      "name": "Wild North",
+      "text": "Baobabs, canyons and empty beaches, for the ones who want more."
+    }
+  ],
+  "servicesLabel": "Services",
+  "servicesTitle": "Everything Taken Care Of",
+  "servicesText": "Book the whole trip with us, or only the part you need. Every service is run by our team and trusted local partners.",
+  "services": [
+    "Accommodation",
+    "Transport",
+    "Guides",
+    "Food & Dining",
+    "Equipment Rentals",
+    "Photography",
+    "Travel Planning",
+    "Cruise Excursions"
+  ],
+  "reviewsLabel": "Kind words",
+  "reviewsTitle": "Loved By Travelers",
+  "reviewsAverage": "Average rating from 300+ travelers",
+  "quotes": [
+    {
+      "text": "They planned every detail, yet the trip never felt planned. It felt like we were visiting friends.",
+      "origin": "Lyon"
+    },
+    {
+      "text": "Our guide showed us a side of the island we never expected. The food, the people, the little workshops.",
+      "origin": "Milan"
+    },
+    {
+      "text": "When our flight was cancelled, they had a new plan before we finished our coffee. Impressive.",
+      "origin": "Munich"
+    },
+    {
+      "text": "Having one person to call for everything made our family trip stress-free. The kids still talk about it.",
+      "origin": "Montréal"
+    }
+  ],
+  "ctaTitle": "Ready To Plan Your Trip?",
+  "ctaText": "Tell us what you love and how long you have. A real planner answers within one working day with a first idea and a free quote.",
+  "ctaQuote": "Get a free quote",
+  "ctaDesign": "Design my own trip"
+}

@@ -1,0 +1,188 @@
+{
+  "talkBadge": "Parlez à un expert du voyage / Parlez à un expert du voyage /",
+  "heroAlt": "Plage de sable blanc avec bungalows, pirogues et lagon turquoise à Madagascar",
+  "heroLabel": "Votre voyage commence ici",
+  "heroRating": "4,9 selon plus de 300 voyageurs",
+  "heroEyebrow": "Voyages privés à travers Madagascar",
+  "heroTitle": "Explorez l'âme de Madagascar",
+  "heroLine1": "Explorez l'âme",
+  "heroLine2": "de {madagascar}",
+  "madagascar": "Madagascar",
+  "heroText": "Des guides locaux, des hébergements choisis avec soin et des itinéraires conçus par des gens qui vivent ici. Racontez-nous le voyage de vos rêves et recevez un devis gratuit sous un jour ouvré.",
+  "heroCta": "Obtenir un devis gratuit",
+  "heroExplore": "Explorer les destinations",
+  "stats": [
+    "Années d'expertise locale",
+    "Voyageurs ravis",
+    "Note moyenne"
+  ],
+  "heroPlanner": "Un vrai conseiller vous répond, avant, pendant et après votre voyage.",
+  "waysLabel": "Votre façon de voyager",
+  "waysTitle": "Toutes les façons de découvrir Madagascar",
+  "waysText": "D'une matinée sur l'eau à un mois sur l'île, choisissez la formule qui vous ressemble.",
+  "ways": [
+    {
+      "title": "Circuits",
+      "text": "Des itinéraires tout prêts à travers l'île"
+    },
+    {
+      "title": "Excursions",
+      "text": "Sorties d'une journée et courtes escapades"
+    },
+    {
+      "title": "Long séjour",
+      "text": "Vivre l'île pendant des semaines"
+    },
+    {
+      "title": "Sur mesure",
+      "text": "Un voyage conçu autour de vous"
+    }
+  ],
+  "introLabel": "Pourquoi Noziwild",
+  "introTitle": "Une équipe locale, de la première idée au dernier coucher de soleil",
+  "introText": "Nous vivons à Madagascar et organisons chaque voyage nous-mêmes. Itinéraires, chauffeurs, guides et hébergements sont choisis par des gens qui les connaissent personnellement.",
+  "notSure": "Vous ne savez pas par où commencer ?",
+  "notSureText": "Dites-nous ce que vous aimez. Nous vous proposons l'itinéraire.",
+  "talkExpert": "Parler à un expert",
+  "promises": [
+    {
+      "title": "Le local d'abord",
+      "text": "Des guides locaux, des hébergements familiaux et de petits restaurants qui font vivre ceux qui rendent ces lieux uniques."
+    },
+    {
+      "title": "La lenteur, par choix",
+      "text": "Moins d'étapes, plus de temps. Nous laissons la place à un long déjeuner, un détour ou une baignade imprévue."
+    },
+    {
+      "title": "Des devis honnêtes",
+      "text": "Un seul devis clair, tout compris. Pas de frais cachés, pas de surprise à la fin."
+    },
+    {
+      "title": "Toujours joignables",
+      "text": "Une vraie personne avant, pendant et après votre voyage, qui répond quand vous en avez besoin."
+    }
+  ],
+  "regionsLabel": "Destinations",
+  "regionsTitle": "Cinq régions, une seule île",
+  "regionsText": "Madagascar est un continent en miniature. Choisissez une région pour découvrir ce qui la rend célèbre et quand y aller.",
+  "regionsTabs": "Régions",
+  "bestFrom": "Idéal de {from} à {to}",
+  "mustSee": "Lieux incontournables",
+  "exploreRegion": "Explorer cette région",
+  "seeCircuits": "Voir les circuits",
+  "regions": [
+    {
+      "name": "Le Nord",
+      "tagline": "Baies émeraude, îles aux épices et forêts sèches",
+      "text": "Naviguez dans la baie de Diego Suarez, randonnez sur le calcaire acéré de l'Ankarana et terminez sur les îles autour de Nosy Be.",
+      "places": [
+        "Plage de Ramena",
+        "Nosy Iranja",
+        "Ambanja"
+      ]
+    },
+    {
+      "name": "Les Hautes Terres",
+      "tagline": "Collines royales, rizières en terrasses et matins frais",
+      "text": "Commencez à Antananarivo, montez sur la colline royale d'Ambohimanga et descendez vers le sud à travers les vallées en terrasses jusqu'à Antsirabe.",
+      "places": [
+        "Antananarivo",
+        "Ambohimanga",
+        "Antsirabe"
+      ]
+    },
+    {
+      "name": "L'Ouest",
+      "tagline": "Allées de baobabs et forêts de pierre",
+      "text": "Parcourez la célèbre Allée des Baobabs au coucher du soleil, puis traversez le fleuve pour marcher dans les Tsingy de Bemaraha.",
+      "places": [
+        "Allée des Baobabs",
+        "Morondava",
+        "Tsingy de Bemaraha"
+      ]
+    },
+    {
+      "name": "Le Sud",
+      "tagline": "Canyons, sable blanc et villages côtiers",
+      "text": "Randonnez dans les canyons de grès de l'Isalo, baignez-vous dans des piscines naturelles et terminez le voyage sur la côte vezo.",
+      "places": [
+        "Isalo",
+        "Côte d'Ifaty",
+        "Fort-Dauphin"
+      ]
+    },
+    {
+      "name": "L'Est",
+      "tagline": "Forêt tropicale, lémuriens et plages d'îles",
+      "text": "Écoutez l'indri à l'aube à Andasibe, puis prenez le bateau vers l'île Sainte-Marie ou la péninsule de Masoala.",
+      "places": [
+        "Andasibe",
+        "Île Sainte-Marie",
+        "Masoala"
+      ]
+    }
+  ],
+  "tripsLabel": "Voyages signature",
+  "tripsTitle": "Les voyages que nous aimons vous proposer",
+  "tripsText": "Des points de départ tout prêts. Nous adaptons chacun à vos dates, votre rythme et votre budget.",
+  "days": "{count} jours",
+  "bestMonths": "Meilleurs mois :",
+  "freeQuote": "Devis gratuit, sans engagement",
+  "trips": [
+    {
+      "name": "Hautes Terres et côte",
+      "text": "Des forêts à lémuriens à une baie tranquille, une semaine sans hâte entre culture, nature et mer.",
+      "tags": [
+        "Forêt d'Andasibe",
+        "Nuits chez l'habitant",
+        "Couchers de soleil à Ramena"
+      ]
+    },
+    {
+      "name": "Évasion insulaire",
+      "text": "Sable blanc, eau turquoise et journées qui se terminent en bateau."
+    },
+    {
+      "name": "Le Nord sauvage",
+      "text": "Baobabs, canyons et plages désertes, pour ceux qui en veulent plus."
+    }
+  ],
+  "servicesLabel": "Services",
+  "servicesTitle": "Nous nous occupons de tout",
+  "servicesText": "Réservez tout le voyage avec nous, ou seulement ce dont vous avez besoin. Chaque service est assuré par notre équipe et des partenaires locaux de confiance.",
+  "services": [
+    "Hébergement",
+    "Transport",
+    "Guides",
+    "Restauration",
+    "Location de matériel",
+    "Photographie",
+    "Organisation du voyage",
+    "Excursions croisière"
+  ],
+  "reviewsLabel": "Ils en parlent",
+  "reviewsTitle": "Aimé des voyageurs",
+  "reviewsAverage": "Note moyenne de plus de 300 voyageurs",
+  "quotes": [
+    {
+      "text": "Ils ont tout organisé dans les moindres détails, et pourtant le voyage n'a jamais semblé organisé. On avait l'impression de rendre visite à des amis.",
+      "origin": "Lyon"
+    },
+    {
+      "text": "Notre guide nous a montré une facette de l'île que nous n'imaginions pas. La cuisine, les gens, les petits ateliers.",
+      "origin": "Milan"
+    },
+    {
+      "text": "Quand notre vol a été annulé, ils avaient un nouveau plan avant la fin de notre café. Impressionnant.",
+      "origin": "Munich"
+    },
+    {
+      "text": "Avoir une seule personne à appeler pour tout a rendu notre voyage en famille serein. Les enfants en parlent encore.",
+      "origin": "Montréal"
+    }
+  ],
+  "ctaTitle": "Prêt à organiser votre voyage ?",
+  "ctaText": "Dites-nous ce que vous aimez et combien de temps vous avez. Un vrai conseiller vous répond sous un jour ouvré avec une première idée et un devis gratuit.",
+  "ctaQuote": "Obtenir un devis gratuit",
+  "ctaDesign": "Concevoir mon voyage"
+}
