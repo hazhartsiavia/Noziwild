@@ -1,0 +1,177 @@
+{
+  "categories": [
+    {
+      "label": "All Photos"
+    },
+    {
+      "label": "Landscapes"
+    },
+    {
+      "label": "People"
+    },
+    {
+      "label": "Sea"
+    },
+    {
+      "label": "Wildlife"
+    }
+  ],
+  "photos": [
+    {
+      "caption": "Sunrise over the island"
+    },
+    {
+      "caption": "A slow walk through the village"
+    },
+    {
+      "caption": "Morning light in the highlands"
+    },
+    {
+      "caption": "Face to face with the wild"
+    },
+    {
+      "caption": "Sailing along the coast"
+    },
+    {
+      "caption": "Friends on the shore"
+    },
+    {
+      "caption": "The road to nowhere"
+    },
+    {
+      "caption": "Quiet moment in the forest"
+    },
+    {
+      "caption": "Turquoise water, empty beach"
+    }
+  ],
+  "sessions": [
+    {
+      "name": "Sunrise Session",
+      "text": "A short, golden-hour shoot at your favorite spot.",
+      "duration": "1 hour",
+      "photos": "25 edited photos",
+      "delivery": "48 h"
+    },
+    {
+      "name": "Private Moment",
+      "text": "Couples, proposals or family portraits, relaxed and natural.",
+      "duration": "2 hours",
+      "photos": "40 edited photos",
+      "delivery": "3 days"
+    },
+    {
+      "name": "Half-Day Story",
+      "text": "We follow your day and capture the little things you would forget.",
+      "duration": "4 hours",
+      "photos": "80 edited photos",
+      "delivery": "3 days"
+    },
+    {
+      "name": "Full-Day Story",
+      "text": "From breakfast to sunset, the whole adventure told in pictures.",
+      "duration": "8 hours",
+      "photos": "200 edited photos",
+      "delivery": "5 days"
+    }
+  ],
+  "steps": [
+    {
+      "title": "Tell us your plan",
+      "text": "Dates, places and the kind of pictures you love."
+    },
+    {
+      "title": "We shoot",
+      "text": "Your photographer joins you and keeps things relaxed."
+    },
+    {
+      "title": "We edit",
+      "text": "Every photo is selected, retouched and colour-matched."
+    },
+    {
+      "title": "You receive",
+      "text": "A private online gallery, ready to download and share."
+    }
+  ],
+  "keepsakes": [
+    {
+      "title": "Fine-Art Prints",
+      "text": "Museum-quality paper, sizes from A5 to A2.",
+      "price": "From $12"
+    },
+    {
+      "title": "Photo Book",
+      "text": "Your story in 30 pages, hand-checked and bound.",
+      "price": "From $55"
+    },
+    {
+      "title": "Framed Canvas",
+      "text": "Your best shot, ready to hang on the wall.",
+      "price": "From $70"
+    },
+    {
+      "title": "Digital Gallery",
+      "text": "Private link and USB key with all your photos.",
+      "price": "Included"
+    }
+  ],
+  "faqs": [
+    {
+      "q": "Do I need to be photogenic?",
+      "a": "Not at all. Your photographer guides you and shoots natural moments. Most people forget the camera is there after ten minutes."
+    },
+    {
+      "q": "When do I receive my photos?",
+      "a": "From 48 hours for a short session, up to 5 days for a full-day story. We tell you the exact date when you book."
+    },
+    {
+      "q": "Can I get the original files?",
+      "a": "You receive all edited photos in full resolution. Unedited originals can be added on request."
+    },
+    {
+      "q": "What if the weather is bad?",
+      "a": "We move your session to another time or day. Some of the best light comes just after the rain."
+    },
+    {
+      "q": "Can I print the photos anywhere?",
+      "a": "Yes. You own the pictures for personal use and can print them anywhere, or order prints and books from us."
+    }
+  ],
+  "heroStats": [
+    "sessions shot",
+    "average rating",
+    "fastest delivery"
+  ],
+  "badge": "Photography & Memories",
+  "title": "Keep The Moment Forever",
+  "intro": "A photographer by your side, so you can live the trip and still bring every moment home.",
+  "book": "Book A Session",
+  "seeGallery": "See the gallery",
+  "viewer": "Photo viewer",
+  "close": "Close",
+  "previous": "Previous photo",
+  "next": "Next photo",
+  "galleryTitle": "Stories We Have Kept",
+  "galleryText": "A few frames from our travelers. Tap a photo to see it bigger.",
+  "tabsLabel": "Photo categories",
+  "open": "Open photo: {caption}",
+  "sessionsTitle": "Choose Your Session",
+  "sessionsText": "From one golden hour to a whole day. All sessions include editing and a private online gallery.",
+  "delivered": "Delivered in {delay}",
+  "from": "From {price}",
+  "editEyebrow": "From shoot to gallery",
+  "editTitle": "Every Photo Is Edited By Hand",
+  "beforeAlt": "Photo before editing",
+  "afterAlt": "Photo after editing",
+  "after": "After",
+  "before": "Before",
+  "compare": "Compare before and after editing",
+  "keepTitle": "Take Your Memories Home",
+  "keepText": "Beautiful ways to keep your favorite photos close, long after the trip.",
+  "faqTitle": "Frequently Asked Questions",
+  "faqText": "Can't find your answer? Our team replies within a few hours.",
+  "ctaTitle": "Your Trip, Beautifully Kept",
+  "ctaText": "Tell us when and where you are going. We match you with the right photographer and send a clear quote within one working day.",
+  "ctaBook": "Book A Photographer",
+  "ctaBack": "Back To The Gallery"
+}

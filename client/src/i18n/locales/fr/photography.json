@@ -1,0 +1,177 @@
+{
+  "categories": [
+    {
+      "label": "Toutes les photos"
+    },
+    {
+      "label": "Paysages"
+    },
+    {
+      "label": "Portraits"
+    },
+    {
+      "label": "Mer"
+    },
+    {
+      "label": "Faune"
+    }
+  ],
+  "photos": [
+    {
+      "caption": "Lever de soleil sur l'île"
+    },
+    {
+      "caption": "Une promenade tranquille dans le village"
+    },
+    {
+      "caption": "Lumière du matin sur les Hautes Terres"
+    },
+    {
+      "caption": "Face à face avec la nature sauvage"
+    },
+    {
+      "caption": "À la voile le long de la côte"
+    },
+    {
+      "caption": "Entre amis sur le rivage"
+    },
+    {
+      "caption": "La route vers nulle part"
+    },
+    {
+      "caption": "Un instant calme en forêt"
+    },
+    {
+      "caption": "Eau turquoise, plage déserte"
+    }
+  ],
+  "sessions": [
+    {
+      "name": "Séance au lever du soleil",
+      "text": "Une courte séance à l'heure dorée, à l'endroit que vous préférez.",
+      "duration": "1 heure",
+      "photos": "25 photos retouchées",
+      "delivery": "48 h"
+    },
+    {
+      "name": "Moment privé",
+      "text": "Couples, demandes en mariage ou portraits de famille, détendus et naturels.",
+      "duration": "2 heures",
+      "photos": "40 photos retouchées",
+      "delivery": "3 jours"
+    },
+    {
+      "name": "Récit d'une demi-journée",
+      "text": "Nous suivons votre journée et saisissons les petits riens que vous oublieriez.",
+      "duration": "4 heures",
+      "photos": "80 photos retouchées",
+      "delivery": "3 jours"
+    },
+    {
+      "name": "Récit d'une journée",
+      "text": "Du petit-déjeuner au coucher du soleil, toute l'aventure racontée en images.",
+      "duration": "8 heures",
+      "photos": "200 photos retouchées",
+      "delivery": "5 jours"
+    }
+  ],
+  "steps": [
+    {
+      "title": "Parlez-nous de votre projet",
+      "text": "Dates, lieux et le genre de photos que vous aimez."
+    },
+    {
+      "title": "Nous photographions",
+      "text": "Votre photographe vous accompagne dans une ambiance détendue."
+    },
+    {
+      "title": "Nous retouchons",
+      "text": "Chaque photo est sélectionnée, retouchée et harmonisée."
+    },
+    {
+      "title": "Vous recevez",
+      "text": "Une galerie en ligne privée, prête à télécharger et à partager."
+    }
+  ],
+  "keepsakes": [
+    {
+      "title": "Tirages d'art",
+      "text": "Papier qualité musée, formats du A5 au A2.",
+      "price": "À partir de 12 $"
+    },
+    {
+      "title": "Livre photo",
+      "text": "Votre histoire en 30 pages, vérifiée et reliée à la main.",
+      "price": "À partir de 55 $"
+    },
+    {
+      "title": "Toile encadrée",
+      "text": "Votre plus belle photo, prête à accrocher au mur.",
+      "price": "À partir de 70 $"
+    },
+    {
+      "title": "Galerie numérique",
+      "text": "Lien privé et clé USB avec toutes vos photos.",
+      "price": "Inclus"
+    }
+  ],
+  "faqs": [
+    {
+      "q": "Faut-il être photogénique ?",
+      "a": "Pas du tout. Votre photographe vous guide et saisit des moments naturels. La plupart des gens oublient l'appareil au bout de dix minutes."
+    },
+    {
+      "q": "Quand vais-je recevoir mes photos ?",
+      "a": "À partir de 48 heures pour une séance courte, jusqu'à 5 jours pour le récit d'une journée. Nous vous donnons la date exacte à la réservation."
+    },
+    {
+      "q": "Puis-je avoir les fichiers originaux ?",
+      "a": "Vous recevez toutes les photos retouchées en pleine résolution. Les originaux non retouchés peuvent être ajoutés sur demande."
+    },
+    {
+      "q": "Et s'il fait mauvais temps ?",
+      "a": "Nous déplaçons votre séance à un autre moment ou un autre jour. Certaines des plus belles lumières arrivent juste après la pluie."
+    },
+    {
+      "q": "Puis-je imprimer les photos où je veux ?",
+      "a": "Oui. Les photos vous appartiennent pour un usage personnel et vous pouvez les imprimer où vous voulez, ou nous commander tirages et livres."
+    }
+  ],
+  "heroStats": [
+    "séances réalisées",
+    "note moyenne",
+    "livraison la plus rapide"
+  ],
+  "badge": "Photographie et souvenirs",
+  "title": "Gardez le moment pour toujours",
+  "intro": "Un photographe à vos côtés, pour vivre pleinement le voyage tout en rapportant chaque instant.",
+  "book": "Réserver une séance",
+  "seeGallery": "Voir la galerie",
+  "viewer": "Visionneuse de photos",
+  "close": "Fermer",
+  "previous": "Photo précédente",
+  "next": "Photo suivante",
+  "galleryTitle": "Les histoires que nous avons gardées",
+  "galleryText": "Quelques images de nos voyageurs. Touchez une photo pour l'agrandir.",
+  "tabsLabel": "Catégories de photos",
+  "open": "Ouvrir la photo : {caption}",
+  "sessionsTitle": "Choisissez votre séance",
+  "sessionsText": "D'une heure dorée à une journée entière. Toutes les séances comprennent la retouche et une galerie en ligne privée.",
+  "delivered": "Livrées en {delay}",
+  "from": "À partir de {price}",
+  "editEyebrow": "De la prise de vue à la galerie",
+  "editTitle": "Chaque photo est retouchée à la main",
+  "beforeAlt": "Photo avant retouche",
+  "afterAlt": "Photo après retouche",
+  "after": "Après",
+  "before": "Avant",
+  "compare": "Comparer avant et après retouche",
+  "keepTitle": "Rapportez vos souvenirs à la maison",
+  "keepText": "De belles façons de garder vos photos préférées près de vous, bien après le voyage.",
+  "faqTitle": "Questions fréquentes",
+  "faqText": "Vous ne trouvez pas votre réponse ? Notre équipe répond en quelques heures.",
+  "ctaTitle": "Votre voyage, joliment gardé",
+  "ctaText": "Dites-nous quand et où vous partez. Nous vous associons au bon photographe et vous envoyons un devis clair sous un jour ouvré.",
+  "ctaBook": "Réserver un photographe",
+  "ctaBack": "Retour à la galerie"
+}

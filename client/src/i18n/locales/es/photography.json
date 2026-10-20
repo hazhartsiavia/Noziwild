@@ -1,0 +1,177 @@
+{
+  "categories": [
+    {
+      "label": "Todas las fotos"
+    },
+    {
+      "label": "Paisajes"
+    },
+    {
+      "label": "Personas"
+    },
+    {
+      "label": "Mar"
+    },
+    {
+      "label": "Fauna"
+    }
+  ],
+  "photos": [
+    {
+      "caption": "Amanecer sobre la isla"
+    },
+    {
+      "caption": "Un paseo tranquilo por el pueblo"
+    },
+    {
+      "caption": "Luz de la mañana en las Tierras Altas"
+    },
+    {
+      "caption": "Cara a cara con la naturaleza salvaje"
+    },
+    {
+      "caption": "Navegando a lo largo de la costa"
+    },
+    {
+      "caption": "Amigos en la orilla"
+    },
+    {
+      "caption": "La carretera hacia ninguna parte"
+    },
+    {
+      "caption": "Un momento tranquilo en el bosque"
+    },
+    {
+      "caption": "Agua turquesa, playa desierta"
+    }
+  ],
+  "sessions": [
+    {
+      "name": "Sesión al amanecer",
+      "text": "Una sesión corta a la hora dorada en su lugar favorito.",
+      "duration": "1 hora",
+      "photos": "25 fotos editadas",
+      "delivery": "48 h"
+    },
+    {
+      "name": "Momento privado",
+      "text": "Parejas, pedidas de mano o retratos de familia, relajados y naturales.",
+      "duration": "2 horas",
+      "photos": "40 fotos editadas",
+      "delivery": "3 días"
+    },
+    {
+      "name": "Historia de medio día",
+      "text": "Seguimos su día y capturamos los pequeños detalles que olvidaría.",
+      "duration": "4 horas",
+      "photos": "80 fotos editadas",
+      "delivery": "3 días"
+    },
+    {
+      "name": "Historia de un día",
+      "text": "Del desayuno a la puesta de sol, toda la aventura contada en imágenes.",
+      "duration": "8 horas",
+      "photos": "200 fotos editadas",
+      "delivery": "5 días"
+    }
+  ],
+  "steps": [
+    {
+      "title": "Cuéntenos su plan",
+      "text": "Fechas, lugares y el tipo de fotos que le gustan."
+    },
+    {
+      "title": "Fotografiamos",
+      "text": "Su fotógrafo le acompaña en un ambiente relajado."
+    },
+    {
+      "title": "Editamos",
+      "text": "Cada foto se selecciona, se retoca y se ajusta de color."
+    },
+    {
+      "title": "Usted las recibe",
+      "text": "Una galería en línea privada, lista para descargar y compartir."
+    }
+  ],
+  "keepsakes": [
+    {
+      "title": "Copias artísticas",
+      "text": "Papel de calidad museo, tamaños de A5 a A2.",
+      "price": "Desde 12 $"
+    },
+    {
+      "title": "Álbum de fotos",
+      "text": "Su historia en 30 páginas, revisada y encuadernada a mano.",
+      "price": "Desde 55 $"
+    },
+    {
+      "title": "Lienzo enmarcado",
+      "text": "Su mejor foto, lista para colgar en la pared.",
+      "price": "Desde 70 $"
+    },
+    {
+      "title": "Galería digital",
+      "text": "Enlace privado y memoria USB con todas sus fotos.",
+      "price": "Incluida"
+    }
+  ],
+  "faqs": [
+    {
+      "q": "¿Tengo que ser fotogénico?",
+      "a": "En absoluto. Su fotógrafo le guía y capta momentos naturales. La mayoría de la gente se olvida de la cámara a los diez minutos."
+    },
+    {
+      "q": "¿Cuándo recibo mis fotos?",
+      "a": "Desde 48 horas para una sesión corta hasta 5 días para la historia de un día. Le indicamos la fecha exacta al reservar."
+    },
+    {
+      "q": "¿Puedo tener los archivos originales?",
+      "a": "Recibe todas las fotos editadas en máxima resolución. Los originales sin editar pueden añadirse bajo petición."
+    },
+    {
+      "q": "¿Y si hace mal tiempo?",
+      "a": "Trasladamos su sesión a otra hora u otro día. Parte de la mejor luz llega justo después de la lluvia."
+    },
+    {
+      "q": "¿Puedo imprimir las fotos donde quiera?",
+      "a": "Sí. Las fotos son suyas para uso personal y puede imprimirlas donde quiera, o pedirnos copias y álbumes."
+    }
+  ],
+  "heroStats": [
+    "sesiones realizadas",
+    "valoración media",
+    "entrega más rápida"
+  ],
+  "badge": "Fotografía y recuerdos",
+  "title": "Guarde el momento para siempre",
+  "intro": "Un fotógrafo a su lado, para que viva el viaje y aun así se lleve a casa cada momento.",
+  "book": "Reservar una sesión",
+  "seeGallery": "Ver la galería",
+  "viewer": "Visor de fotos",
+  "close": "Cerrar",
+  "previous": "Foto anterior",
+  "next": "Foto siguiente",
+  "galleryTitle": "Historias que hemos guardado",
+  "galleryText": "Algunas imágenes de nuestros viajeros. Toque una foto para verla más grande.",
+  "tabsLabel": "Categorías de fotos",
+  "open": "Abrir la foto: {caption}",
+  "sessionsTitle": "Elija su sesión",
+  "sessionsText": "De una hora dorada a un día entero. Todas las sesiones incluyen la edición y una galería en línea privada.",
+  "delivered": "Entrega en {delay}",
+  "from": "Desde {price}",
+  "editEyebrow": "De la sesión a la galería",
+  "editTitle": "Cada foto se edita a mano",
+  "beforeAlt": "Foto antes de la edición",
+  "afterAlt": "Foto después de la edición",
+  "after": "Después",
+  "before": "Antes",
+  "compare": "Comparar antes y después de la edición",
+  "keepTitle": "Llévese sus recuerdos a casa",
+  "keepText": "Bonitas formas de tener cerca sus fotos favoritas, mucho después del viaje.",
+  "faqTitle": "Preguntas frecuentes",
+  "faqText": "¿No encuentra su respuesta? Nuestro equipo responde en pocas horas.",
+  "ctaTitle": "Su viaje, bien guardado",
+  "ctaText": "Díganos cuándo y adónde va. Le asignamos el fotógrafo adecuado y le enviamos un presupuesto claro en un día laborable.",
+  "ctaBook": "Reservar un fotógrafo",
+  "ctaBack": "Volver a la galería"
+}

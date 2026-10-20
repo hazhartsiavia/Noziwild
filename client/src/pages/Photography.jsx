@@ -8,6 +8,8 @@ import Ramena from "../assets/images/Ramena.png";
 import Tana from "../assets/images/Tana.png";
 import Navbar from '../components/Navbar';
 import Footer from '../components/Footer';
+import { Trans, useT } from '../i18n/LanguageContext';
+import { localize } from '../i18n/localize';
 import { gsap } from 'gsap'
 import { ScrollTrigger } from 'gsap/ScrollTrigger'
 
@@ -27,8 +29,9 @@ const prefersReducedMotion = () =>
   typeof window !== 'undefined' && window.matchMedia('(prefers-reduced-motion: reduce)').matches
 
 /* ---------------------------- Données ---------------------------- */
+// Textes affichés : locales/<langue>/photography.json, posés sur ces données par localize()
 
-const categories = [
+const CATEGORIES = [
   { id: 'all', label: 'All Photos' },
   { id: 'landscape', label: 'Landscapes' },
   { id: 'people', label: 'People' },
@@ -37,7 +40,7 @@ const categories = [
 ]
 
 // ratio : forme de la photo dans la grille (mosaïque)
-const photos = [
+const PHOTOS = [
   { id: 1, category: 'sea', image: NosyIranja, ratio: 'aspect-[4/3]', caption: 'Sunrise over the island' },
   { id: 2, category: 'people', image: Ambanja, ratio: 'aspect-[3/4]', caption: 'A slow walk through the village' },
   { id: 3, category: 'landscape', image: Tana, ratio: 'aspect-[4/5]', caption: 'Morning light in the highlands' },
@@ -50,34 +53,27 @@ const photos = [
 ]
 
 // Prix et contenus donnés en exemple, à adapter
-const sessions = [
+const SESSIONS = [
   { id: 1, name: 'Sunrise Session', text: 'A short, golden-hour shoot at your favorite spot.', duration: '1 hour', photos: '25 edited photos', delivery: '48 h', price: 90 },
   { id: 2, name: 'Private Moment', text: 'Couples, proposals or family portraits, relaxed and natural.', duration: '2 hours', photos: '40 edited photos', delivery: '3 days', price: 150 },
   { id: 3, name: 'Half-Day Story', text: 'We follow your day and capture the little things you would forget.', duration: '4 hours', photos: '80 edited photos', delivery: '3 days', price: 220 },
   { id: 4, name: 'Full-Day Story', text: 'From breakfast to sunset, the whole adventure told in pictures.', duration: '8 hours', photos: '200 edited photos', delivery: '5 days', price: 380 },
 ]
 
-const steps = [
+const STEPS = [
   { id: 1, title: 'Tell us your plan', text: 'Dates, places and the kind of pictures you love.' },
   { id: 2, title: 'We shoot', text: 'Your photographer joins you and keeps things relaxed.' },
   { id: 3, title: 'We edit', text: 'Every photo is selected, retouched and colour-matched.' },
   { id: 4, title: 'You receive', text: 'A private online gallery, ready to download and share.' },
 ]
 
-const keepsakes = [
+const KEEPSAKES = [
   { id: 1, title: 'Fine-Art Prints', text: 'Museum-quality paper, sizes from A5 to A2.', price: 'From $12' },
   { id: 2, title: 'Photo Book', text: 'Your story in 30 pages, hand-checked and bound.', price: 'From $55' },
   { id: 3, title: 'Framed Canvas', text: 'Your best shot, ready to hang on the wall.', price: 'From $70' },
   { id: 4, title: 'Digital Gallery', text: 'Private link and USB key with all your photos.', price: 'Included' },
 ]
 
-const faqs = [
-  { q: 'Do I need to be photogenic?', a: 'Not at all. Your photographer guides you and shoots natural moments. Most people forget the camera is there after ten minutes.' },
-  { q: 'When do I receive my photos?', a: 'From 48 hours for a short session, up to 5 days for a full-day story. We tell you the exact date when you book.' },
-  { q: 'Can I get the original files?', a: 'You receive all edited photos in full resolution. Unedited originals can be added on request.' },
-  { q: 'What if the weather is bad?', a: 'We move your session to another time or day. Some of the best light comes just after the rain.' },
-  { q: 'Can I print the photos anywhere?', a: 'Yes. You own the pictures for personal use and can print them anywhere, or order prints and books from us.' },
-]
 
 /* ---------------------------- Icônes ----------------------------- */
 
@@ -105,13 +101,14 @@ function Polaroid({ src, speed, tilt, className = '' }) {
 }
 
 const heroStats = [
-  { id: 1, value: '500+', label: 'sessions shot' },
-  { id: 2, value: '4.9/5', label: 'average rating' },
-  { id: 3, value: '48 h', label: 'fastest delivery' },
+  { id: 1, value: '500+' },
+  { id: 2, value: '4.9/5' },
+  { id: 3, value: '48 h' },
 ]
 
 // Hero : texte au centre, deux piles de polaroids sur les côtés (plus de superpositions avec le titre)
 function Hero() {
+  const t = useT('photography')
   return (
     <section data-hero-section className="grid grid-cols-1 lg:grid-cols-[1fr_1.7fr_1fr] gap-8 lg:gap-6 items-center min-h-[480px] lg:min-h-[700px] py-6 lg:py-10">
 
@@ -126,16 +123,16 @@ function Hero() {
       <div className="flex flex-col items-center text-center">
         <span data-hero className={`${BADGE} inline-flex items-center gap-2`}>
           <Svg className="w-4 h-4"><path d="M14.5 4h-5L8 6H5a2 2 0 0 0-2 2v10a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V8a2 2 0 0 0-2-2h-3z" /><circle cx="12" cy="13" r="3.5" /></Svg>
-          Photography & Memories
+          {t('badge')}
         </span>
-        <h1 data-hero className={`${STATEMENT_TITLE} mt-6`}>Keep The Moment Forever</h1>
+        <h1 data-hero className={`${STATEMENT_TITLE} mt-6`}>{t('title')}</h1>
         <p data-hero className={`${SECTION_SUBTITLE} mt-6 md:mt-8 max-w-xl`}>
-          A photographer by your side, so you can live the trip and still bring every moment home.
+          {t('intro')}
         </p>
         <div data-hero className="mt-8 flex flex-wrap items-center justify-center gap-4">
-          <a href="#sessions" className={`bg-[#084838] hover:bg-[#0a5c47] text-white ${BUTTON}`}>Book A Session</a>
+          <a href="#sessions" className={`bg-[#084838] hover:bg-[#0a5c47] text-white ${BUTTON}`}>{t('book')}</a>
           <a href="#gallery" className="inline-flex items-center gap-2 text-sm md:text-base font-medium text-slate-800 hover:gap-3 transition-all">
-            See the gallery <ArrowIcon />
+            {t('seeGallery')} <ArrowIcon />
           </a>
         </div>
 
@@ -143,7 +140,7 @@ function Hero() {
           {heroStats.map((st, i) => (
             <li key={st.id} className={`text-center ${i > 0 ? 'sm:pl-8 md:pl-12 sm:border-l sm:border-[#084838]/20' : ''}`}>
               <p className="text-2xl md:text-4xl leading-none text-slate-800">{st.value}</p>
-              <p className={`mt-1 ${META_TEXT} text-slate-600`}>{st.label}</p>
+              <p className={`mt-1 ${META_TEXT} text-slate-600`}>{t('heroStats')[i]}</p>
             </li>
           ))}
         </ul>
@@ -168,6 +165,7 @@ function Hero() {
 
 // Lightbox : photo en grand, flèches, Échap pour fermer (rendue dans <body>)
 function Lightbox({ items, index, onClose, onStep }) {
+  const t = useT('photography')
   const closeRef = useRef(null)
   const imgRef = useRef(null)
   const item = items[index]
@@ -196,14 +194,14 @@ function Lightbox({ items, index, onClose, onStep }) {
   const nav = "absolute top-1/2 -translate-y-1/2 w-11 h-11 md:w-14 md:h-14 flex items-center justify-center rounded-full bg-white/10 hover:bg-white/25 text-white transition"
 
   return createPortal(
-    <div role="dialog" aria-modal="true" aria-label="Photo viewer" className="fixed inset-0 z-50 bg-black/90 flex items-center justify-center p-4 md:p-10" onClick={onClose}>
-      <button ref={closeRef} type="button" onClick={onClose} aria-label="Close" className="absolute right-4 top-4 md:right-8 md:top-8 w-11 h-11 flex items-center justify-center rounded-full bg-white/10 hover:bg-white/25 text-white transition">
+    <div role="dialog" aria-modal="true" aria-label={t('viewer')} className="fixed inset-0 z-50 bg-black/90 flex items-center justify-center p-4 md:p-10" onClick={onClose}>
+      <button ref={closeRef} type="button" onClick={onClose} aria-label={t('close')} className="absolute right-4 top-4 md:right-8 md:top-8 w-11 h-11 flex items-center justify-center rounded-full bg-white/10 hover:bg-white/25 text-white transition">
         <CloseIcon />
       </button>
-      <button type="button" onClick={(e) => { e.stopPropagation(); onStep(-1) }} aria-label="Previous photo" className={`${nav} left-3 md:left-8`}>
+      <button type="button" onClick={(e) => { e.stopPropagation(); onStep(-1) }} aria-label={t('previous')} className={`${nav} left-3 md:left-8`}>
         <span className="rotate-180"><ArrowIcon /></span>
       </button>
-      <button type="button" onClick={(e) => { e.stopPropagation(); onStep(1) }} aria-label="Next photo" className={`${nav} right-3 md:right-8`}>
+      <button type="button" onClick={(e) => { e.stopPropagation(); onStep(1) }} aria-label={t('next')} className={`${nav} right-3 md:right-8`}>
         <ArrowIcon />
       </button>
 
@@ -221,6 +219,9 @@ function Lightbox({ items, index, onClose, onStep }) {
 
 // Galerie en mosaïque avec filtres et lightbox
 function Gallery() {
+  const t = useT('photography')
+  const categories = localize(CATEGORIES, t('categories'))
+  const photos = localize(PHOTOS, t('photos'))
   const [category, setCategory] = useState('all')
   const [open, setOpen] = useState(null) // index dans la liste filtrée, ou null
   const gridRef = useRef(null)
@@ -243,11 +244,11 @@ function Gallery() {
   return (
     <div id="gallery" className={`${SECTION_GAP} scroll-mt-8`}>
       <div className="mb-8 md:mb-10 flex flex-col lg:flex-row lg:items-end lg:justify-between gap-5 lg:gap-12">
-        <h2 className={`${SECTION_TITLE} lg:max-w-[52%]`}>Stories We Have Kept</h2>
-        <p className={`${SECTION_SUBTITLE} lg:max-w-md`}>A few frames from our travelers. Tap a photo to see it bigger.</p>
+        <h2 className={`${SECTION_TITLE} lg:max-w-[52%]`}>{t('galleryTitle')}</h2>
+        <p className={`${SECTION_SUBTITLE} lg:max-w-md`}>{t('galleryText')}</p>
       </div>
 
-      <div className="mb-8 flex flex-wrap gap-2 md:gap-3" role="tablist" aria-label="Photo categories">
+      <div className="mb-8 flex flex-wrap gap-2 md:gap-3" role="tablist" aria-label={t('tabsLabel')}>
         {categories.map((c) => (
           <button key={c.id} type="button" role="tab" aria-selected={category === c.id} onClick={() => setCategory(c.id)} className={tab(category === c.id)}>
             {c.label}
@@ -261,7 +262,7 @@ function Gallery() {
             key={p.id}
             type="button"
             onClick={() => setOpen(i)}
-            aria-label={`Open photo: ${p.caption}`}
+            aria-label={t('open', { caption: p.caption })}
             className="group relative mb-3 md:mb-5 block w-full break-inside-avoid overflow-hidden rounded-2xl"
           >
             <img src={p.image} alt={p.caption} className={`w-full ${p.ratio} object-cover transition-transform duration-700 group-hover:scale-105`} />
@@ -279,11 +280,13 @@ function Gallery() {
 
 // Séances : liste en lignes (durée, photos, délai, prix)
 function Sessions() {
+  const t = useT('photography')
+  const sessions = localize(SESSIONS, t('sessions'))
   return (
     <div id="sessions" className={`${SECTION_GAP} scroll-mt-8`}>
       <div className="mb-8 md:mb-12 text-center">
-        <h2 className={SECTION_TITLE}>Choose Your Session</h2>
-        <p className={`mt-4 mx-auto ${SECTION_SUBTITLE}`}>From one golden hour to a whole day. All sessions include editing and a private online gallery.</p>
+        <h2 className={SECTION_TITLE}>{t('sessionsTitle')}</h2>
+        <p className={`mt-4 mx-auto ${SECTION_SUBTITLE}`}>{t('sessionsText')}</p>
       </div>
 
       <ul className="border-t border-[#084838]/20">
@@ -298,12 +301,12 @@ function Sessions() {
               </div>
 
               <ul className="flex flex-wrap gap-2">
-                {[s.duration, s.photos, `Delivered in ${s.delivery}`].map((m) => (
+                {[s.duration, s.photos, t('delivered', { delay: s.delivery })].map((m) => (
                   <li key={m} className="rounded-full border border-slate-400 px-3 py-1 text-xs md:text-sm text-slate-700">{m}</li>
                 ))}
               </ul>
 
-              <p className="text-sm text-slate-600 lg:text-right">From <span className="text-2xl md:text-3xl font-medium text-slate-900">${s.price}</span></p>
+              <p className="text-sm text-slate-600 lg:text-right"><Trans text={t('from')} values={{ price: <span className="text-2xl md:text-3xl font-medium text-slate-900">${s.price}</span> }} /></p>
 
               <span className="hidden lg:flex w-10 h-10 rounded-full bg-[#084838] text-white items-center justify-center transition group-hover:bg-[#C49849] group-hover:translate-x-1">
                 <ArrowIcon />
@@ -318,6 +321,8 @@ function Sessions() {
 
 // Comparateur avant / après (le curseur s'ouvre tout seul au défilement)
 function BeforeAfter() {
+  const t = useT('photography')
+  const steps = localize(STEPS, t('steps'))
   const [pos, setPos] = useState(() => (prefersReducedMotion() ? 50 : 100)) // % de la photo "après" visible
   const boxRef = useRef(null)
 
@@ -335,8 +340,8 @@ function BeforeAfter() {
   return (
     <div className={`${SECTION_GAP} grid grid-cols-1 lg:grid-cols-[1fr_1.2fr] gap-10 lg:gap-16 items-center`}>
       <div>
-        <p className="mb-3 text-xs sm:text-sm md:text-base uppercase tracking-wide text-slate-700">From shoot to gallery</p>
-        <h2 className={SECTION_TITLE}>Every Photo Is Edited By Hand</h2>
+        <p className="mb-3 text-xs sm:text-sm md:text-base uppercase tracking-wide text-slate-700">{t('editEyebrow')}</p>
+        <h2 className={SECTION_TITLE}>{t('editTitle')}</h2>
         <ol className="mt-8 flex flex-col gap-5">
           {steps.map((s) => (
             <li key={s.id} className="flex items-start gap-4">
@@ -352,12 +357,12 @@ function BeforeAfter() {
 
       <div ref={boxRef} className="relative aspect-[4/3] overflow-hidden rounded-3xl select-none">
         {/* Avant : photo terne */}
-        <img src={NosyIranja} alt="Photo before editing" className="absolute inset-0 w-full h-full object-cover" style={{ filter: 'saturate(0.45) contrast(0.85) brightness(0.9)' }} />
+        <img src={NosyIranja} alt={t('beforeAlt')} className="absolute inset-0 w-full h-full object-cover" style={{ filter: 'saturate(0.45) contrast(0.85) brightness(0.9)' }} />
         {/* Après : photo retouchée, révélée par le curseur */}
-        <img src={NosyIranja} alt="Photo after editing" className="absolute inset-0 w-full h-full object-cover" style={{ clipPath: `inset(0 ${100 - pos}% 0 0)` }} />
+        <img src={NosyIranja} alt={t('afterAlt')} className="absolute inset-0 w-full h-full object-cover" style={{ clipPath: `inset(0 ${100 - pos}% 0 0)` }} />
 
-        <span className="absolute left-4 top-4 rounded-full bg-[#084838] px-3 py-1 text-xs md:text-sm text-white">After</span>
-        <span className="absolute right-4 top-4 rounded-full bg-white/90 px-3 py-1 text-xs md:text-sm text-slate-800">Before</span>
+        <span className="absolute left-4 top-4 rounded-full bg-[#084838] px-3 py-1 text-xs md:text-sm text-white">{t('after')}</span>
+        <span className="absolute right-4 top-4 rounded-full bg-white/90 px-3 py-1 text-xs md:text-sm text-slate-800">{t('before')}</span>
 
         <div className="absolute inset-y-0 w-0.5 bg-white pointer-events-none" style={{ left: `${pos}%` }}>
           <span className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-11 h-11 rounded-full bg-white shadow-md flex items-center justify-center text-[#084838]">
@@ -368,7 +373,7 @@ function BeforeAfter() {
         <input
           type="range" min="0" max="100" step="0.5" value={pos}
           onChange={(e) => setPos(Number(e.target.value))}
-          aria-label="Compare before and after editing"
+          aria-label={t('compare')}
           className="absolute inset-0 w-full h-full opacity-0 cursor-ew-resize"
         />
       </div>
@@ -378,11 +383,13 @@ function BeforeAfter() {
 
 // Souvenirs à ramener chez soi : bande verte en colonnes
 function Keepsakes() {
+  const t = useT('photography')
+  const keepsakes = localize(KEEPSAKES, t('keepsakes'))
   return (
     <div className={`${SECTION_GAP} rounded-3xl bg-[#084838] text-white p-6 md:p-12`}>
       <div className="flex flex-col lg:flex-row lg:items-end lg:justify-between gap-5 lg:gap-12">
-        <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-[52px] font-medium leading-[1.15] tracking-tight lg:max-w-[45%]">Take Your Memories Home</h2>
-        <p className="text-sm md:text-lg text-white/75 leading-relaxed lg:max-w-md">Beautiful ways to keep your favorite photos close, long after the trip.</p>
+        <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-[52px] font-medium leading-[1.15] tracking-tight lg:max-w-[45%]">{t('keepTitle')}</h2>
+        <p className="text-sm md:text-lg text-white/75 leading-relaxed lg:max-w-md">{t('keepText')}</p>
       </div>
 
       <ul className="mt-8 md:mt-12 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4">
@@ -400,13 +407,15 @@ function Keepsakes() {
 
 // FAQ : questions en cartes blanches à gauche, titre à droite
 function Faq() {
+  const t = useT('photography')
+  const faqs = t('faqs')
   const [open, setOpen] = useState(0)
 
   return (
     <div className={`${SECTION_GAP} grid grid-cols-1 lg:grid-cols-[1.6fr_1fr] gap-8 lg:gap-16`}>
       <div className="lg:order-2">
-        <h2 className={SECTION_TITLE}>Frequently Asked Questions</h2>
-        <p className={`mt-4 md:mt-6 ${SECTION_SUBTITLE}`}>Can&apos;t find your answer? Our team replies within a few hours.</p>
+        <h2 className={SECTION_TITLE}>{t('faqTitle')}</h2>
+        <p className={`mt-4 md:mt-6 ${SECTION_SUBTITLE}`}>{t('faqText')}</p>
       </div>
 
       <div className="flex flex-col gap-3 lg:order-1">
@@ -429,18 +438,19 @@ function Faq() {
 
 // CTA : grande image centrée
 function Cta() {
+  const t = useT('photography')
   return (
     <div className={`${SECTION_GAP} relative overflow-hidden rounded-3xl min-h-[420px] md:min-h-[520px] flex items-center justify-center text-center text-white`}>
       <img src={Ramena} alt="" className="absolute inset-0 w-full h-full object-cover" />
       <div className="absolute inset-0 bg-black/55" />
       <div className="relative px-6 py-12 max-w-3xl">
-        <h2 className="text-3xl sm:text-4xl md:text-6xl font-medium leading-[1.15] tracking-tight">Your Trip, Beautifully Kept</h2>
+        <h2 className="text-3xl sm:text-4xl md:text-6xl font-medium leading-[1.15] tracking-tight">{t('ctaTitle')}</h2>
         <p className="mt-4 text-sm md:text-lg text-white/85 leading-relaxed">
-          Tell us when and where you are going. We match you with the right photographer and send a clear quote within one working day.
+          {t('ctaText')}
         </p>
         <div className="mt-8 flex flex-wrap items-center justify-center gap-3">
-          <a href="/contact" className={`bg-[#C49849] hover:bg-[#b08339] text-white ${BUTTON}`}>Book A Photographer</a>
-          <a href="#gallery" className={`border border-white/50 hover:bg-white/10 text-white ${BUTTON}`}>Back To The Gallery</a>
+          <a href="/contact" className={`bg-[#C49849] hover:bg-[#b08339] text-white ${BUTTON}`}>{t('ctaBook')}</a>
+          <a href="#gallery" className={`border border-white/50 hover:bg-white/10 text-white ${BUTTON}`}>{t('ctaBack')}</a>
         </div>
       </div>
     </div>

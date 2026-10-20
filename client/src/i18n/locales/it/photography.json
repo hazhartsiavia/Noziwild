@@ -1,0 +1,177 @@
+{
+  "categories": [
+    {
+      "label": "Tutte le foto"
+    },
+    {
+      "label": "Paesaggi"
+    },
+    {
+      "label": "Persone"
+    },
+    {
+      "label": "Mare"
+    },
+    {
+      "label": "Fauna"
+    }
+  ],
+  "photos": [
+    {
+      "caption": "Alba sull'isola"
+    },
+    {
+      "caption": "Una passeggiata lenta nel villaggio"
+    },
+    {
+      "caption": "Luce del mattino sugli Altopiani"
+    },
+    {
+      "caption": "Faccia a faccia con la natura selvaggia"
+    },
+    {
+      "caption": "In barca a vela lungo la costa"
+    },
+    {
+      "caption": "Amici sulla riva"
+    },
+    {
+      "caption": "La strada verso il nulla"
+    },
+    {
+      "caption": "Un momento di quiete nella foresta"
+    },
+    {
+      "caption": "Acqua turchese, spiaggia deserta"
+    }
+  ],
+  "sessions": [
+    {
+      "name": "Servizio all'alba",
+      "text": "Un breve servizio all'ora d'oro nel tuo posto preferito.",
+      "duration": "1 ora",
+      "photos": "25 foto ritoccate",
+      "delivery": "48 h"
+    },
+    {
+      "name": "Momento privato",
+      "text": "Coppie, proposte di matrimonio o ritratti di famiglia, rilassati e naturali.",
+      "duration": "2 ore",
+      "photos": "40 foto ritoccate",
+      "delivery": "3 giorni"
+    },
+    {
+      "name": "Racconto di mezza giornata",
+      "text": "Seguiamo la tua giornata e catturiamo le piccole cose che dimenticheresti.",
+      "duration": "4 ore",
+      "photos": "80 foto ritoccate",
+      "delivery": "3 giorni"
+    },
+    {
+      "name": "Racconto di una giornata",
+      "text": "Dalla colazione al tramonto, tutta l'avventura raccontata per immagini.",
+      "duration": "8 ore",
+      "photos": "200 foto ritoccate",
+      "delivery": "5 giorni"
+    }
+  ],
+  "steps": [
+    {
+      "title": "Raccontaci il tuo programma",
+      "text": "Date, luoghi e il tipo di foto che ami."
+    },
+    {
+      "title": "Scattiamo",
+      "text": "Il tuo fotografo ti accompagna in un clima rilassato."
+    },
+    {
+      "title": "Ritocchiamo",
+      "text": "Ogni foto viene selezionata, ritoccata e armonizzata nei colori."
+    },
+    {
+      "title": "Ricevi le foto",
+      "text": "Una galleria online privata, pronta da scaricare e condividere."
+    }
+  ],
+  "keepsakes": [
+    {
+      "title": "Stampe fine art",
+      "text": "Carta di qualità museale, formati dall'A5 all'A2.",
+      "price": "Da 12 $"
+    },
+    {
+      "title": "Fotolibro",
+      "text": "La tua storia in 30 pagine, controllata e rilegata a mano.",
+      "price": "Da 55 $"
+    },
+    {
+      "title": "Tela incorniciata",
+      "text": "Il tuo scatto migliore, pronto da appendere.",
+      "price": "Da 70 $"
+    },
+    {
+      "title": "Galleria digitale",
+      "text": "Link privato e chiavetta USB con tutte le tue foto.",
+      "price": "Inclusa"
+    }
+  ],
+  "faqs": [
+    {
+      "q": "Devo essere fotogenico?",
+      "a": "Per niente. Il fotografo ti guida e cattura momenti naturali. Dopo dieci minuti quasi tutti si dimenticano della macchina fotografica."
+    },
+    {
+      "q": "Quando ricevo le foto?",
+      "a": "Da 48 ore per un servizio breve fino a 5 giorni per il racconto di una giornata. Ti diamo la data esatta al momento della prenotazione."
+    },
+    {
+      "q": "Posso avere i file originali?",
+      "a": "Ricevi tutte le foto ritoccate in alta risoluzione. Gli originali non ritoccati si possono aggiungere su richiesta."
+    },
+    {
+      "q": "E se il tempo è brutto?",
+      "a": "Spostiamo il servizio a un altro orario o a un altro giorno. Alcune delle luci più belle arrivano subito dopo la pioggia."
+    },
+    {
+      "q": "Posso stampare le foto dove voglio?",
+      "a": "Sì. Le foto sono tue per uso personale e puoi stamparle ovunque, oppure ordinare stampe e libri da noi."
+    }
+  ],
+  "heroStats": [
+    "servizi realizzati",
+    "valutazione media",
+    "consegna più rapida"
+  ],
+  "badge": "Fotografia e ricordi",
+  "title": "Conserva il momento per sempre",
+  "intro": "Un fotografo al tuo fianco, per vivere il viaggio e portare comunque a casa ogni momento.",
+  "book": "Prenota un servizio",
+  "seeGallery": "Vedi la galleria",
+  "viewer": "Visualizzatore di foto",
+  "close": "Chiudi",
+  "previous": "Foto precedente",
+  "next": "Foto successiva",
+  "galleryTitle": "Le storie che abbiamo conservato",
+  "galleryText": "Qualche scatto dei nostri viaggiatori. Tocca una foto per ingrandirla.",
+  "tabsLabel": "Categorie di foto",
+  "open": "Apri la foto: {caption}",
+  "sessionsTitle": "Scegli il tuo servizio",
+  "sessionsText": "Da un'ora d'oro a una giornata intera. Tutti i servizi includono il ritocco e una galleria online privata.",
+  "delivered": "Consegna in {delay}",
+  "from": "Da {price}",
+  "editEyebrow": "Dallo scatto alla galleria",
+  "editTitle": "Ogni foto è ritoccata a mano",
+  "beforeAlt": "Foto prima del ritocco",
+  "afterAlt": "Foto dopo il ritocco",
+  "after": "Dopo",
+  "before": "Prima",
+  "compare": "Confronta prima e dopo il ritocco",
+  "keepTitle": "Porta a casa i tuoi ricordi",
+  "keepText": "Bei modi per tenere vicine le tue foto preferite, anche molto dopo il viaggio.",
+  "faqTitle": "Domande frequenti",
+  "faqText": "Non trovi la risposta? Il nostro team risponde in poche ore.",
+  "ctaTitle": "Il tuo viaggio, conservato con cura",
+  "ctaText": "Dicci quando e dove vai. Ti abbiniamo al fotografo giusto e ti inviamo un preventivo chiaro entro un giorno lavorativo.",
+  "ctaBook": "Prenota un fotografo",
+  "ctaBack": "Torna alla galleria"
+}

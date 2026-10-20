@@ -1,0 +1,177 @@
+{
+  "categories": [
+    {
+      "label": "Alle Fotos"
+    },
+    {
+      "label": "Landschaften"
+    },
+    {
+      "label": "Menschen"
+    },
+    {
+      "label": "Meer"
+    },
+    {
+      "label": "Tierwelt"
+    }
+  ],
+  "photos": [
+    {
+      "caption": "Sonnenaufgang über der Insel"
+    },
+    {
+      "caption": "Ein gemütlicher Spaziergang durchs Dorf"
+    },
+    {
+      "caption": "Morgenlicht im Hochland"
+    },
+    {
+      "caption": "Auge in Auge mit der Wildnis"
+    },
+    {
+      "caption": "Segeln an der Küste entlang"
+    },
+    {
+      "caption": "Freunde am Ufer"
+    },
+    {
+      "caption": "Die Straße ins Nirgendwo"
+    },
+    {
+      "caption": "Ein stiller Moment im Wald"
+    },
+    {
+      "caption": "Türkisfarbenes Wasser, menschenleerer Strand"
+    }
+  ],
+  "sessions": [
+    {
+      "name": "Sonnenaufgangs-Shooting",
+      "text": "Ein kurzes Shooting zur goldenen Stunde an Ihrem Lieblingsort.",
+      "duration": "1 Stunde",
+      "photos": "25 bearbeitete Fotos",
+      "delivery": "48 Std."
+    },
+    {
+      "name": "Privater Moment",
+      "text": "Paare, Heiratsanträge oder Familienporträts – entspannt und natürlich.",
+      "duration": "2 Stunden",
+      "photos": "40 bearbeitete Fotos",
+      "delivery": "3 Tagen"
+    },
+    {
+      "name": "Halbtags-Geschichte",
+      "text": "Wir begleiten Ihren Tag und halten die kleinen Dinge fest, die Sie sonst vergessen würden.",
+      "duration": "4 Stunden",
+      "photos": "80 bearbeitete Fotos",
+      "delivery": "3 Tagen"
+    },
+    {
+      "name": "Ganztags-Geschichte",
+      "text": "Vom Frühstück bis zum Sonnenuntergang: das ganze Abenteuer in Bildern erzählt.",
+      "duration": "8 Stunden",
+      "photos": "200 bearbeitete Fotos",
+      "delivery": "5 Tagen"
+    }
+  ],
+  "steps": [
+    {
+      "title": "Erzählen Sie uns Ihren Plan",
+      "text": "Daten, Orte und die Art von Fotos, die Sie lieben."
+    },
+    {
+      "title": "Wir fotografieren",
+      "text": "Ihr Fotograf begleitet Sie und sorgt für eine entspannte Atmosphäre."
+    },
+    {
+      "title": "Wir bearbeiten",
+      "text": "Jedes Foto wird ausgewählt, retuschiert und farblich abgestimmt."
+    },
+    {
+      "title": "Sie erhalten",
+      "text": "Eine private Online-Galerie, bereit zum Herunterladen und Teilen."
+    }
+  ],
+  "keepsakes": [
+    {
+      "title": "Kunstdrucke",
+      "text": "Papier in Museumsqualität, Formate von A5 bis A2.",
+      "price": "Ab 12 $"
+    },
+    {
+      "title": "Fotobuch",
+      "text": "Ihre Geschichte auf 30 Seiten, von Hand geprüft und gebunden.",
+      "price": "Ab 55 $"
+    },
+    {
+      "title": "Gerahmte Leinwand",
+      "text": "Ihr bestes Bild, fertig zum Aufhängen.",
+      "price": "Ab 70 $"
+    },
+    {
+      "title": "Digitale Galerie",
+      "text": "Privater Link und USB-Stick mit all Ihren Fotos.",
+      "price": "Inklusive"
+    }
+  ],
+  "faqs": [
+    {
+      "q": "Muss ich fotogen sein?",
+      "a": "Überhaupt nicht. Ihr Fotograf leitet Sie an und fängt natürliche Momente ein. Die meisten vergessen die Kamera nach zehn Minuten."
+    },
+    {
+      "q": "Wann erhalte ich meine Fotos?",
+      "a": "Ab 48 Stunden für ein kurzes Shooting bis zu 5 Tagen für eine Ganztags-Geschichte. Das genaue Datum nennen wir Ihnen bei der Buchung."
+    },
+    {
+      "q": "Bekomme ich die Originaldateien?",
+      "a": "Sie erhalten alle bearbeiteten Fotos in voller Auflösung. Unbearbeitete Originale gibt es auf Anfrage dazu."
+    },
+    {
+      "q": "Was, wenn das Wetter schlecht ist?",
+      "a": "Wir verlegen Ihr Shooting auf eine andere Zeit oder einen anderen Tag. Manches schönste Licht kommt direkt nach dem Regen."
+    },
+    {
+      "q": "Kann ich die Fotos überall drucken lassen?",
+      "a": "Ja. Die Fotos gehören Ihnen für den privaten Gebrauch, und Sie können sie überall drucken lassen oder Abzüge und Bücher bei uns bestellen."
+    }
+  ],
+  "heroStats": [
+    "Shootings gemacht",
+    "durchschnittliche Bewertung",
+    "schnellste Lieferung"
+  ],
+  "badge": "Fotografie & Erinnerungen",
+  "title": "Halten Sie den Moment für immer fest",
+  "intro": "Ein Fotograf an Ihrer Seite – so erleben Sie die Reise voll und nehmen trotzdem jeden Moment mit nach Hause.",
+  "book": "Ein Shooting buchen",
+  "seeGallery": "Zur Galerie",
+  "viewer": "Fotobetrachter",
+  "close": "Schließen",
+  "previous": "Vorheriges Foto",
+  "next": "Nächstes Foto",
+  "galleryTitle": "Geschichten, die wir bewahrt haben",
+  "galleryText": "Ein paar Bilder unserer Reisenden. Tippen Sie auf ein Foto, um es zu vergrößern.",
+  "tabsLabel": "Fotokategorien",
+  "open": "Foto öffnen: {caption}",
+  "sessionsTitle": "Wählen Sie Ihr Shooting",
+  "sessionsText": "Von einer goldenen Stunde bis zu einem ganzen Tag. Alle Shootings beinhalten Bearbeitung und eine private Online-Galerie.",
+  "delivered": "Lieferung in {delay}",
+  "from": "Ab {price}",
+  "editEyebrow": "Vom Shooting zur Galerie",
+  "editTitle": "Jedes Foto wird von Hand bearbeitet",
+  "beforeAlt": "Foto vor der Bearbeitung",
+  "afterAlt": "Foto nach der Bearbeitung",
+  "after": "Nachher",
+  "before": "Vorher",
+  "compare": "Vorher und nachher vergleichen",
+  "keepTitle": "Nehmen Sie Ihre Erinnerungen mit nach Hause",
+  "keepText": "Schöne Möglichkeiten, Ihre Lieblingsfotos noch lange nach der Reise um sich zu haben.",
+  "faqTitle": "Häufige Fragen",
+  "faqText": "Keine Antwort gefunden? Unser Team antwortet innerhalb weniger Stunden.",
+  "ctaTitle": "Ihre Reise, schön bewahrt",
+  "ctaText": "Sagen Sie uns, wann und wohin Sie reisen. Wir finden den passenden Fotografen und schicken Ihnen innerhalb eines Werktags ein klares Angebot.",
+  "ctaBook": "Einen Fotografen buchen",
+  "ctaBack": "Zurück zur Galerie"
+}
