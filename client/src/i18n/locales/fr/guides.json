@@ -1,0 +1,253 @@
+{
+  "services": [
+    {
+      "name": "Guide culturel",
+      "text": "Marchés, histoire, cuisine et vie quotidienne racontés par quelqu'un qui a grandi ici. Demi-journée ou journée, à votre rythme.",
+      "tags": [
+        "Demi-journée / journée",
+        "1–10 voyageurs",
+        "Pauses gourmandes"
+      ]
+    },
+    {
+      "name": "Guide faune et nature",
+      "text": "Observez lémuriens, oiseaux et caméléons avec un naturaliste qui sait exactement où et quand regarder.",
+      "tags": [
+        "Entrées des parcs gérées",
+        "Petits groupes",
+        "Jumelles"
+      ]
+    },
+    {
+      "name": "Guide aventure et trek",
+      "text": "Randonnées, canyons et sentiers côtiers menés par des guides formés et diplômés en secourisme, adaptés à votre niveau.",
+      "tags": [
+        "1–5 jours",
+        "Équipement de sécurité",
+        "Porteurs sur demande"
+      ]
+    },
+    {
+      "name": "Accompagnateur de voyage",
+      "text": "Un hôte Noziwild qui vous accueille, gère la logistique et reste joignable de l'arrivée au départ.",
+      "tags": [
+        "Accueil à l'aéroport",
+        "Point quotidien",
+        "Aide 24h/24"
+      ]
+    }
+  ],
+  "guides": [
+    {
+      "role": "Guide naturaliste",
+      "langs": "Anglais · Français · Malgache",
+      "bio": "Hery mène des balades naturalistes en petits groupes et sait exactement quand et où trouver les animaux les plus étonnants de l'île.",
+      "specialties": [
+        "Lémuriens",
+        "Ornithologie",
+        "Balades nocturnes"
+      ]
+    },
+    {
+      "role": "Spécialiste culturelle",
+      "langs": "Anglais · Français · Italien",
+      "bio": "Lina partage l'histoire, la cuisine et les traditions de l'île, et met les voyageurs en relation avec ceux qui les font vivre.",
+      "specialties": [
+        "Cuisine",
+        "Artisanat",
+        "Vie de village"
+      ]
+    },
+    {
+      "role": "Guide d'aventure",
+      "langs": "Anglais · Français · Allemand",
+      "bio": "Tojo conçoit des treks adaptés à votre niveau, avec le bon rythme, les bonnes pauses et la sécurité avant tout.",
+      "specialties": [
+        "Trekking",
+        "Canyons",
+        "Sentiers côtiers"
+      ]
+    },
+    {
+      "role": "Accompagnatrice de voyage",
+      "langs": "Anglais · Français · Espagnol",
+      "bio": "Mika s'occupe de chaque détail pour que vous n'ayez plus qu'à profiter du voyage, et reste joignable à tout moment.",
+      "specialties": [
+        "Logistique",
+        "Familles",
+        "Voyages sur mesure"
+      ]
+    }
+  ],
+  "compare": {
+    "columns": [
+      "Essentiel",
+      "Guidé",
+      "Accompagnement complet"
+    ],
+    "rows": [
+      {
+        "label": "Guide de voyage numérique"
+      },
+      {
+        "label": "Ligne d'urgence"
+      },
+      {
+        "label": "Guide local les jours choisis"
+      },
+      {
+        "label": "Point quotidien"
+      },
+      {
+        "label": "Le même guide pendant tout le voyage"
+      },
+      {
+        "label": "Accueil et départ à l'aéroport"
+      }
+    ]
+  },
+  "day": [
+    {
+      "title": "Prise en charge à l'hôtel",
+      "text": "Rencontrez votre guide, découvrez le programme de la journée et adaptez-le à votre humeur et à la météo."
+    },
+    {
+      "title": "Première découverte",
+      "text": "Un marché, un sentier ou un village, selon votre guide. C'est là que les histoires commencent."
+    },
+    {
+      "title": "Déjeuner chez l'habitant",
+      "text": "Une table familiale ou un petit restaurant que votre guide adore, loin des menus touristiques."
+    },
+    {
+      "title": "Après-midi tranquille",
+      "text": "Baignade, balade ou simple détente. Le rythme est le vôtre, votre guide s'adapte."
+    },
+    {
+      "title": "Retour pour le coucher du soleil",
+      "text": "Une adresse pour le dîner, une photo au meilleur endroit et le programme du lendemain."
+    }
+  ],
+  "testimonials": [
+    {
+      "text": "Notre guide a fait tout le voyage. Il connaissait chaque sentier, chaque famille et chaque histoire. Seuls, nous n'en aurions pas trouvé la moitié.",
+      "origin": "Voyageurs de Lyon",
+      "trip": "Chauffeur-guide · 8 jours"
+    },
+    {
+      "text": "Lina nous a montré une facette de l'île que nous n'imaginions pas. La cuisine, les gens, les petits ateliers. Vraiment inoubliable.",
+      "origin": "Voyageuse de Milan",
+      "trip": "Guide culturel · 5 jours"
+    },
+    {
+      "text": "Le trek était exigeant mais parfaitement dosé. Nous nous sommes toujours sentis en sécurité, et les paysages valaient chaque pas.",
+      "origin": "Voyageur de Munich",
+      "trip": "Guide de trek · 3 jours"
+    },
+    {
+      "text": "Avoir une seule personne à appeler pour tout a rendu notre voyage en famille serein. Les enfants parlent encore de leur guide.",
+      "origin": "Voyageuse de Montréal",
+      "trip": "Accompagnateur de voyage · 10 jours"
+    },
+    {
+      "text": "Nous avons vu des lémuriens dès le premier matin grâce à Hery. Il savait exactement où aller et quand. Incroyable.",
+      "origin": "Voyageurs de Madrid",
+      "trip": "Guide naturaliste · 4 jours"
+    }
+  ],
+  "faqs": [
+    {
+      "q": "Ai-je besoin d'un guide pendant tout le voyage ?",
+      "a": "Non. Beaucoup de voyageurs ne réservent un guide que pour les journées clés, comme un parc national ou un trek, et explorent librement le reste du temps."
+    },
+    {
+      "q": "Puis-je choisir mon guide ?",
+      "a": "Oui. Indiquez-nous vos centres d'intérêt et votre langue, et nous vous proposons le guide le plus adapté. Vous pouvez aussi demander un guide que vous connaissez déjà."
+    },
+    {
+      "q": "Quelles langues parlent vos guides ?",
+      "a": "L'anglais et le français sont assurés sur tous les voyages. L'italien, l'allemand et l'espagnol sont disponibles sur demande."
+    },
+    {
+      "q": "Et si j'ai un problème pendant le voyage ?",
+      "a": "Chaque voyage comprend notre ligne d'assistance. Si besoin, un membre de l'équipe vous rejoint ou organise de l'aide sur place."
+    },
+    {
+      "q": "Les pourboires sont-ils inclus ?",
+      "a": "Non, les pourboires restent toujours facultatifs. Si vous avez apprécié la journée, un petit geste pour votre guide est très apprécié."
+    }
+  ],
+  "followList": [
+    {
+      "label": "Visites culturelles"
+    },
+    {
+      "label": "Balades nature"
+    },
+    {
+      "label": "Treks en montagne"
+    },
+    {
+      "label": "Sorties en mer"
+    }
+  ],
+  "stats": [
+    "Guides certifiés",
+    "Langues parlées",
+    "Années d'expérience",
+    "Assistance pendant le voyage"
+  ],
+  "badge": "Guides et accompagnement",
+  "title": "Des experts locaux, de vraies histoires",
+  "intro": "Un bon guide transforme un beau voyage en une histoire que l'on raconte pendant des années. Choisissez un expert local pour une journée, ou un accompagnateur Noziwild à vos côtés tout au long du voyage.",
+  "findGuide": "Trouver mon guide",
+  "meetTeam": "Rencontrer l'équipe",
+  "heroAlt1": "Un guide naturaliste sur un sentier forestier",
+  "heroAlt2": "Un guide avec des voyageurs sur la côte",
+  "happy": "98 % de voyageurs ravis",
+  "servicesTitle": "Quatre façons d'être guidé",
+  "servicesText": "Quel que soit votre style, il y a un guide pour vous.",
+  "meetTitle": "Rencontrez votre guide",
+  "guidesLabel": "Guides",
+  "previousGuide": "Guide précédent",
+  "nextGuide": "Guide suivant",
+  "years": "{count} ans d'expérience",
+  "languages": "Langues",
+  "request": "Demander {name}",
+  "compareTitle": "Comparez les niveaux d'accompagnement",
+  "compareText": "Choisissez le niveau adapté à votre voyage. Vous pouvez le faire évoluer à tout moment avant le départ.",
+  "popular": "Le plus choisi",
+  "dayTitle": "Une journée avec votre guide",
+  "dayText": "Chaque journée est différente, mais voici à quoi peut ressembler une journée type. Touchez une heure pour en savoir plus.",
+  "dayLabel": "Une journée avec votre guide",
+  "stepOf": "Étape {n} sur {total} · {time}",
+  "again": "Recommencer",
+  "nextStep": "Étape suivante",
+  "testimonialsLabel": "Témoignages",
+  "testimonialsTitle": "Ce que les voyageurs disent de nous",
+  "average": "Note moyenne de plus de 300 voyageurs",
+  "outOf5": "{rating} sur 5",
+  "show": "Afficher le témoignage {n}",
+  "previousTestimonial": "Témoignage précédent",
+  "nextTestimonial": "Témoignage suivant",
+  "faqTitle": "Questions fréquentes",
+  "faqText": "Vous ne trouvez pas votre réponse ? Notre équipe répond en quelques heures.",
+  "connected": "Restons en contact",
+  "followTitle": "Suivez l'aventure",
+  "emailLabel": "Votre adresse e-mail",
+  "emailPlaceholder": "Votre adresse e-mail",
+  "sending": "Envoi…",
+  "subscribe": "S'abonner",
+  "subscribed": "Merci ! Vous êtes bien inscrit.",
+  "photoAlts": [
+    "Faune dans la forêt",
+    "Sortie en bateau le long de la côte",
+    "Un voyageur qui admire la vue",
+    "Des voyageurs sur une route de montagne",
+    "Un voyageur qui saute de joie",
+    "Paysage d'île",
+    "Paysage des Hautes Terres"
+  ],
+  "experience": "ans d'expérience du voyage",
+  "experienceText": "Nos guides parcourent ces sentiers depuis plus de dix ans. Parlez-nous de vos projets, nous nous occupons du reste."
+}

@@ -8,6 +8,8 @@ import Tana from "../assets/images/Tana.png";
 import Navbar from '../components/Navbar';
 import Footer from '../components/Footer';
 import { subscribeNewsletter } from '../api';
+import { useT } from '../i18n/LanguageContext';
+import { localize } from '../i18n/localize';
 import { gsap } from 'gsap'
 import { ScrollTrigger } from 'gsap/ScrollTrigger'
 
@@ -24,15 +26,16 @@ const BUTTON = "text-sm font-medium px-5 py-2.5 rounded-full md:px-6 md:py-3 act
 const SECTION_GAP = "mt-[60px] md:mt-[120px]"
 
 /* ---------------------------- Données ---------------------------- */
+// Textes affichés : locales/<langue>/guides.json, posés sur ces données par localize()
 
-const services = [
+const SERVICES = [
   { id: 1, name: 'Cultural Guide', image: Tana, text: 'Markets, history, food and daily life explained by someone who grew up there. Half or full day, at your pace.', tags: ['Half / full day', '1–10 travelers', 'Food stops'] },
   { id: 2, name: 'Wildlife & Nature Guide', image: Deux, text: 'Spot lemurs, birds and chameleons with a naturalist who knows exactly where and when to look.', tags: ['Park entry handled', 'Small groups', 'Binoculars'] },
   { id: 3, name: 'Adventure & Trek Guide', image: NosyIranja, text: 'Hikes, canyons and coastal trails led by trained, first-aid certified guides, adapted to your level.', tags: ['1–5 days', 'Safety gear', 'Porters on request'] },
   { id: 4, name: 'Trip Companion', image: NosyLonjo, text: 'A Noziwild host who welcomes you, handles logistics and stays reachable from arrival to departure.', tags: ['Airport welcome', 'Daily check-in', '24/7 help'] },
 ]
 
-const guides = [
+const GUIDES = [
   { id: 1, name: 'Hery Andria', role: 'Wildlife Guide', image: Tana, langs: 'English · French · Malagasy', years: 12, bio: 'Hery leads small-group wildlife walks and knows exactly when and where to find the island’s most unusual animals.', specialties: ['Lemurs', 'Birdwatching', 'Night walks'] },
   { id: 2, name: 'Lina Rakoto', role: 'Cultural Specialist', image: Ramena, langs: 'English · French · Italian', years: 9, bio: 'Lina shares the history, food and traditions of the island and connects travelers with the people who keep them alive.', specialties: ['Cuisine', 'Crafts', 'Village life'] },
   { id: 3, name: 'Tojo Rabe', role: 'Adventure Guide', image: NosyIranja, langs: 'English · French · German', years: 8, bio: 'Tojo designs treks that match your level, with the right pace, the right stops and safety always first.', specialties: ['Trekking', 'Canyons', 'Coastal trails'] },
@@ -40,7 +43,7 @@ const guides = [
 ]
 
 // true = inclus, false = non inclus
-const compare = {
+const COMPARE = {
   columns: ['Essential', 'Guided', 'Full Companion'],
   rows: [
     { label: 'Digital travel guide', values: [true, true, true] },
@@ -52,7 +55,7 @@ const compare = {
   ],
 }
 
-const day = [
+const DAY = [
   { time: '08:00', title: 'Pickup At Your Hotel', text: 'Meet your guide, get a quick overview of the day and adjust the plan to your mood and the weather.', image: Ambanja },
   { time: '10:00', title: 'First Discovery', text: 'A market, a trail or a village, depending on your guide. This is where the stories start.', image: Tana },
   { time: '13:00', title: 'Lunch With Locals', text: 'A family table or a small restaurant your guide loves, far from the tourist menus.', image: Ramena },
@@ -61,7 +64,7 @@ const day = [
 ]
 
 // Ajoute autant de témoignages que tu veux : les boutons prev/next et la barre de progression les font défiler en boucle
-const testimonials = [
+const TESTIMONIALS = [
   { id: 1, text: 'Our guide made the whole trip. He knew every path, every family and every story. We would not have found half of it alone.', name: 'Emma & Tom', origin: 'Travelers from Lyon', trip: 'Driver-Guide · 8 days', image: Ambanja, rating: 5 },
   { id: 2, text: 'Lina showed us a side of the island we never expected. The food, the people, the little workshops. Truly unforgettable.', name: 'Giulia R.', origin: 'Traveler from Milan', trip: 'Cultural Guide · 5 days', image: Ramena, rating: 5 },
   { id: 3, text: 'The trek was challenging but perfectly paced. We always felt safe, and the views were worth every step.', name: 'Markus B.', origin: 'Traveler from Munich', trip: 'Trek Guide · 3 days', image: NosyIranja, rating: 5 },
@@ -69,7 +72,7 @@ const testimonials = [
   { id: 5, text: 'We saw lemurs on the first morning thanks to Hery. He knew exactly where to go and when. Amazing.', name: 'Daniel & Ana', origin: 'Travelers from Madrid', trip: 'Wildlife Guide · 4 days', image: Deux, rating: 4 },
 ]
 
-const faqs = [
+const FAQS = [
   { q: 'Do I need a guide for my whole trip?', a: 'No. Many travelers book a guide only for key days, like a national park or a trek, and explore freely the rest of the time.' },
   { q: 'Can I choose my guide?', a: 'Yes. Tell us your interests and language and we suggest the best match. You can also request a guide you already know.' },
   { q: 'What languages do your guides speak?', a: 'English and French are covered on all trips. Italian, German and Spanish are available on request.' },
@@ -106,32 +109,33 @@ function useSwap(ref, dep) {
 
 // Hero coupé en deux : texte à gauche, photos inclinées à droite
 function Hero() {
+  const t = useT('guides')
   return (
     <div className="grid grid-cols-1 lg:grid-cols-[1.2fr_1fr] gap-10 lg:gap-16 items-center">
       <div>
-        <span data-hero className={`${BADGE}`}>Guides & Support</span>
-        <h1 data-hero className={`${STATEMENT_TITLE} mt-6`}>Local Experts, Real Stories</h1>
+        <span data-hero className={`${BADGE}`}>{t('badge')}</span>
+        <h1 data-hero className={`${STATEMENT_TITLE} mt-6`}>{t('title')}</h1>
         <p data-hero className={`mt-6 md:mt-8 ${SECTION_SUBTITLE}`}>
-          A good guide turns a nice trip into a story you tell for years. Choose a local expert for a day, or have a Noziwild companion at your side all the way.
+          {t('intro')}
         </p>
         <div data-hero className="mt-8 flex flex-wrap items-center gap-4">
-          <a href="/contact" className={`bg-[#084838] hover:bg-[#0a5c47] text-white ${BUTTON}`}>Find My Guide</a>
+          <a href="/contact" className={`bg-[#084838] hover:bg-[#0a5c47] text-white ${BUTTON}`}>{t('findGuide')}</a>
           <a href="#guides" className="inline-flex items-center gap-2 text-sm md:text-base font-medium text-slate-800 hover:gap-3 transition-all">
-            Meet the team <ArrowIcon />
+            {t('meetTeam')} <ArrowIcon />
           </a>
         </div>
       </div>
 
       <div className="relative w-full max-w-[520px] aspect-[4/3] mx-auto lg:ml-auto">
         <div data-hero-photo className="absolute left-0 top-0 w-[52%] -rotate-6 rounded-xl bg-white p-2 md:p-3 shadow-sm">
-          <img src={Tana} alt="Wildlife guide on a forest trail" className="w-full aspect-[4/5] object-cover rounded-md" />
+          <img src={Tana} alt={t('heroAlt1')} className="w-full aspect-[4/5] object-cover rounded-md" />
         </div>
         <div data-hero-photo className="absolute right-0 top-[12%] w-[52%] rotate-6 rounded-xl bg-white p-2 md:p-3 shadow-sm">
-          <img src={Ramena} alt="Guide with travelers on the coast" className="w-full aspect-[4/5] object-cover rounded-md" />
+          <img src={Ramena} alt={t('heroAlt2')} className="w-full aspect-[4/5] object-cover rounded-md" />
         </div>
         <div data-hero-photo className="absolute left-[8%] bottom-0 flex items-center gap-3 rounded-2xl bg-[#084838] text-white px-5 py-3">
           <div className="flex gap-0.5"><StarIcon /><StarIcon /><StarIcon /><StarIcon /><StarIcon /></div>
-          <span className="text-sm font-medium">98% happy travelers</span>
+          <span className="text-sm font-medium">{t('happy')}</span>
         </div>
       </div>
     </div>
@@ -140,11 +144,12 @@ function Hero() {
 
 // Bande de chiffres simple
 function StatsStrip() {
+  const labels = useT('guides')('stats')
   const countProps = (value) => {
     const m = /^(\d+)(\+?)$/.exec(value)
     return m ? { 'data-count': m[1], 'data-suffix': m[2] } : {}
   }
-  const stats = [['40+', 'Certified guides'], ['5', 'Languages spoken'], ['12+', 'Years of experience'], ['24/7', 'Trip support']]
+  const stats = ['40+', '5', '12+', '24/7'].map((value, i) => [value, labels[i]])
   return (
     <ul data-stagger className="mt-12 md:mt-20 grid grid-cols-2 md:grid-cols-4 border-y border-[#084838]/15">
       {stats.map(([value, label], i) => (
@@ -166,11 +171,13 @@ const bentoLayout = [
 ]
 
 function Services() {
+  const tr = useT('guides')
+  const services = localize(SERVICES, tr('services'))
   return (
     <div className={SECTION_GAP}>
       <div className="mb-8 md:mb-12 flex flex-col lg:flex-row lg:items-end lg:justify-between gap-4 lg:gap-12">
-        <h2 className={`${SECTION_TITLE} lg:max-w-[52%]`}>Four Ways To Be Guided</h2>
-        <p className={`${SECTION_SUBTITLE} lg:max-w-md`}>Whatever your style, there is a guide for it.</p>
+        <h2 className={`${SECTION_TITLE} lg:max-w-[52%]`}>{tr('servicesTitle')}</h2>
+        <p className={`${SECTION_SUBTITLE} lg:max-w-md`}>{tr('servicesText')}</p>
       </div>
 
       <div data-stagger className="grid grid-cols-1 lg:grid-cols-3 gap-4 md:gap-6">
@@ -202,6 +209,8 @@ function Services() {
 
 // Choix d'un guide : liste défilante (scroll + boutons prev/next) à gauche, fiche à droite
 function GuideShowcase() {
+  const tr = useT('guides')
+  const guides = localize(GUIDES, tr('guides'))
   const total = guides.length
   const [active, setActive] = useState(0)
   const listRef = useRef(null)
@@ -232,7 +241,7 @@ function GuideShowcase() {
 
   return (
     <div id="guides" className={`${SECTION_GAP} scroll-mt-8`}>
-      <h2 className={`${SECTION_TITLE} mb-8 md:mb-12`}>Meet Your Guide</h2>
+      <h2 className={`${SECTION_TITLE} mb-8 md:mb-12`}>{tr('meetTitle')}</h2>
 
       <div className="grid grid-cols-1 lg:grid-cols-[320px_1fr] gap-4 lg:gap-8">
 
@@ -242,7 +251,7 @@ function GuideShowcase() {
             <div
               ref={listRef}
               role="tablist"
-              aria-label="Guides"
+              aria-label={tr('guidesLabel')}
               className="relative flex lg:flex-col gap-3 overflow-x-auto lg:overflow-x-hidden pb-2 lg:pb-0 lg:pr-2
                          lg:absolute lg:inset-0 lg:overflow-y-auto snap-x lg:snap-none
                          [scrollbar-width:thin] [scrollbar-color:#084838_transparent]"
@@ -270,13 +279,13 @@ function GuideShowcase() {
           </div>
 
           <div className="flex items-center gap-4">
-            <button type="button" onClick={goPrev} aria-label="Previous guide" className={arrowClass}>
+            <button type="button" onClick={goPrev} aria-label={tr('previousGuide')} className={arrowClass}>
               <span className="rotate-180"><ArrowIcon /></span>
             </button>
             <span className={`${META_TEXT} tabular-nums text-slate-700`} aria-hidden="true">
               {String(active + 1).padStart(2, '0')} / {String(total).padStart(2, '0')}
             </span>
-            <button type="button" onClick={goNext} aria-label="Next guide" className={arrowClass}>
+            <button type="button" onClick={goNext} aria-label={tr('nextGuide')} className={arrowClass}>
               <ArrowIcon />
             </button>
           </div>
@@ -288,17 +297,17 @@ function GuideShowcase() {
             <img src={g.image} alt={g.name} className="absolute inset-0 w-full h-full object-cover" />
           </div>
           <div className="p-6 md:p-10 flex flex-col">
-            <span className={`${BADGE} self-start`}>{g.years} years experience</span>
+            <span className={`${BADGE} self-start`}>{tr('years', { count: g.years })}</span>
             <h3 className="mt-5 text-2xl md:text-4xl font-medium tracking-tight text-slate-900">{g.name}</h3>
             <p className="mt-1 text-base md:text-lg text-slate-700">{g.role}</p>
             <p className="mt-5 text-sm md:text-base leading-relaxed text-slate-600">{g.bio}</p>
-            <p className={`mt-5 ${META_TEXT} text-slate-500 uppercase tracking-wide`}>Languages</p>
+            <p className={`mt-5 ${META_TEXT} text-slate-500 uppercase tracking-wide`}>{tr('languages')}</p>
             <p className="mt-1 text-sm md:text-base text-slate-800">{g.langs}</p>
             <ul className="mt-5 flex flex-wrap gap-2">
               {g.specialties.map((t) => <li key={t} className="rounded-full bg-[#D5E8E2] px-4 py-1.5 text-sm text-slate-700">{t}</li>)}
             </ul>
             <a href="/contact" className={`mt-8 self-start bg-[#C49849] hover:bg-[#b08339] text-white ${BUTTON}`}>
-              Request {g.name.split(' ')[0]}
+              {tr('request', { name: g.name.split(' ')[0] })}
             </a>
           </div>
         </article>
@@ -309,12 +318,14 @@ function GuideShowcase() {
 
 // Tableau comparatif des formules
 function Compare() {
+  const tr = useT('guides')
+  const compare = localize(COMPARE, tr('compare'))
   const cols = compare.columns
   return (
     <div className={SECTION_GAP}>
       <div className="mb-8 md:mb-12 text-center">
-        <h2 className={SECTION_TITLE}>Compare Support Levels</h2>
-        <p className={`mt-4 mx-auto ${SECTION_SUBTITLE}`}>Pick the level that fits your trip. You can upgrade at any time before departure.</p>
+        <h2 className={SECTION_TITLE}>{tr('compareTitle')}</h2>
+        <p className={`mt-4 mx-auto ${SECTION_SUBTITLE}`}>{tr('compareText')}</p>
       </div>
       <div className="overflow-x-auto rounded-3xl bg-white">
         <table className="w-full min-w-[560px] text-left">
@@ -324,7 +335,7 @@ function Compare() {
               {cols.map((c, i) => (
                 <th key={c} className={`p-4 md:p-6 text-base md:text-xl font-medium text-center ${i === 1 ? 'bg-[#084838] text-white' : 'text-slate-900'}`}>
                   {c}
-                  {i === 1 && <span className="block mt-1 text-xs font-normal text-[#E6C58A]">Most popular</span>}
+                  {i === 1 && <span className="block mt-1 text-xs font-normal text-[#E6C58A]">{tr('popular')}</span>}
                 </th>
               ))}
             </tr>
@@ -349,6 +360,8 @@ function Compare() {
 
 // Une journée type : étapes horizontales cliquables + carte de détail
 function DayTimeline() {
+  const tr = useT('guides')
+  const day = localize(DAY, tr('day'))
   const total = day.length
   const [active, setActive] = useState(0)
   const step = day[active]
@@ -358,13 +371,13 @@ function DayTimeline() {
   return (
     <div className={SECTION_GAP}>
       <div className="mb-8 md:mb-12 text-center">
-        <h2 className={SECTION_TITLE}>A Day With Your Guide</h2>
-        <p className={`mt-4 mx-auto ${SECTION_SUBTITLE}`}>Every day is different, but here is what a typical one can feel like. Tap a time to see more.</p>
+        <h2 className={SECTION_TITLE}>{tr('dayTitle')}</h2>
+        <p className={`mt-4 mx-auto ${SECTION_SUBTITLE}`}>{tr('dayText')}</p>
       </div>
 
       {/* Frise horizontale */}
       <div className="relative overflow-x-auto pb-2">
-        <ol className="relative grid grid-cols-5 min-w-[520px]" role="tablist" aria-label="A day with your guide">
+        <ol className="relative grid grid-cols-5 min-w-[520px]" role="tablist" aria-label={tr('dayLabel')}>
           <span className="absolute left-[10%] right-[10%] top-[11px] h-px bg-[#084838]/25" aria-hidden="true" />
           {day.map((d, i) => (
             <li key={d.time} className="relative">
@@ -393,7 +406,7 @@ function DayTimeline() {
           <img src={step.image} alt={step.title} className="absolute inset-0 w-full h-full object-cover" />
         </div>
         <div className="p-6 md:p-12 flex flex-col">
-          <span className={`${BADGE} self-start`}>Step {active + 1} of {total} · {step.time}</span>
+          <span className={`${BADGE} self-start`}>{tr('stepOf', { n: active + 1, total, time: step.time })}</span>
           <h3 className="mt-5 text-2xl md:text-4xl font-medium tracking-tight text-slate-900">{step.title}</h3>
           <p className="mt-4 text-sm md:text-lg leading-relaxed text-slate-600 max-w-md">{step.text}</p>
           <button
@@ -401,7 +414,7 @@ function DayTimeline() {
             onClick={() => setActive((i) => (i + 1) % total)}
             className={`mt-8 self-start inline-flex items-center gap-2 bg-[#084838] hover:bg-[#0a5c47] text-white ${BUTTON}`}
           >
-            {active === total - 1 ? 'Start again' : 'Next step'} <ArrowIcon />
+            {active === total - 1 ? tr('again') : tr('nextStep')} <ArrowIcon />
           </button>
         </div>
       </article>
@@ -411,6 +424,8 @@ function DayTimeline() {
 
 // Témoignages : grande carte verte (photo + citation) avec barre de progression et boutons prev/next
 function Testimonials() {
+  const tr = useT('guides')
+  const testimonials = localize(TESTIMONIALS, tr('testimonials'))
   const total = testimonials.length
   const [active, setActive] = useState(0)
   const goPrev = () => setActive((i) => (i - 1 + total) % total)
@@ -430,14 +445,14 @@ function Testimonials() {
       {/* Titre + note moyenne */}
       <div className="mb-8 md:mb-12 flex flex-col lg:flex-row lg:items-end lg:justify-between gap-5 lg:gap-12">
         <div>
-          <p className="mb-3 text-xs sm:text-sm md:text-base uppercase tracking-wide text-slate-700">Testimonials</p>
-          <h2 className={SECTION_TITLE}>What Travelers Say About Us</h2>
+          <p className="mb-3 text-xs sm:text-sm md:text-base uppercase tracking-wide text-slate-700">{tr('testimonialsLabel')}</p>
+          <h2 className={SECTION_TITLE}>{tr('testimonialsTitle')}</h2>
         </div>
         <div className="flex items-center gap-4">
           <p className="text-5xl md:text-6xl leading-none text-slate-900">4.9</p>
           <div>
             <div className="flex gap-0.5"><StarIcon /><StarIcon /><StarIcon /><StarIcon /><StarIcon /></div>
-            <p className={`mt-1 ${META_TEXT} text-slate-600`}>Average rating from 300+ travelers</p>
+            <p className={`mt-1 ${META_TEXT} text-slate-600`}>{tr('average')}</p>
           </div>
         </div>
       </div>
@@ -453,7 +468,7 @@ function Testimonials() {
           <div ref={textRef} aria-live="polite">
             <div className="flex items-center justify-between gap-4">
               <p className="text-6xl md:text-8xl leading-none text-[#C49849]" aria-hidden="true">“</p>
-              <div className="flex gap-0.5" aria-label={`${t.rating} out of 5`}>
+              <div className="flex gap-0.5" aria-label={tr('outOf5', { rating: t.rating })}>
                 {Array.from({ length: t.rating }).map((_, i) => <StarIcon key={i} />)}
               </div>
             </div>
@@ -468,14 +483,14 @@ function Testimonials() {
 
           {/* Navigation : barre de progression cliquable + flèches */}
           <div className="mt-auto pt-10 flex items-center gap-4 md:gap-6">
-            <div className="flex-1 flex items-center gap-2" role="tablist" aria-label="Testimonials">
+            <div className="flex-1 flex items-center gap-2" role="tablist" aria-label={tr('testimonialsLabel')}>
               {testimonials.map((item, i) => (
                 <button
                   key={item.id}
                   type="button"
                   role="tab"
                   aria-selected={i === active}
-                  aria-label={`Show testimonial ${i + 1}`}
+                  aria-label={tr('show', { n: i + 1 })}
                   onClick={() => setActive(i)}
                   className={`h-1.5 flex-1 rounded-full transition ${i === active ? 'bg-[#C49849]' : 'bg-white/25 hover:bg-white/40'}`}
                 />
@@ -485,10 +500,10 @@ function Testimonials() {
               {String(active + 1).padStart(2, '0')} / {String(total).padStart(2, '0')}
             </span>
             <div className="flex items-center gap-2">
-              <button type="button" onClick={goPrev} aria-label="Previous testimonial" className={arrowClass}>
+              <button type="button" onClick={goPrev} aria-label={tr('previousTestimonial')} className={arrowClass}>
                 <span className="rotate-180"><ArrowIcon /></span>
               </button>
-              <button type="button" onClick={goNext} aria-label="Next testimonial" className={arrowClass}>
+              <button type="button" onClick={goNext} aria-label={tr('nextTestimonial')} className={arrowClass}>
                 <ArrowIcon />
               </button>
             </div>
@@ -501,13 +516,15 @@ function Testimonials() {
 
 // FAQ : questions en cartes blanches à gauche, titre à droite
 function Faq() {
+  const tr = useT('guides')
+  const faqs = localize(FAQS, tr('faqs'))
   const [open, setOpen] = useState(0)
 
   return (
     <div className={`${SECTION_GAP} grid grid-cols-1 lg:grid-cols-[1.6fr_1fr] gap-8 lg:gap-16`}>
       <div className="lg:order-2">
-        <h2 className={SECTION_TITLE}>Frequently Asked Questions</h2>
-        <p className={`mt-4 md:mt-6 ${SECTION_SUBTITLE}`}>Can&apos;t find your answer? Our team replies within a few hours.</p>
+        <h2 className={SECTION_TITLE}>{tr('faqTitle')}</h2>
+        <p className={`mt-4 md:mt-6 ${SECTION_SUBTITLE}`}>{tr('faqText')}</p>
       </div>
 
       <div className="flex flex-col gap-3 lg:order-1">
@@ -536,7 +553,7 @@ function Faq() {
 }
 
 // CTA final : "Follow the adventure" (newsletter + mosaïque de photos)
-const followList = [
+const FOLLOW_LIST = [
   { id: 1, label: 'Cultural Tours', paths: ['M3 21h18', 'M5 21V10', 'M9 21V10', 'M15 21V10', 'M19 21V10', 'M12 3 3 9h18z'] },
   { id: 2, label: 'Wildlife Walks', paths: ['M2 12s3-7 10-7 10 7 10 7-3 7-10 7-10-7-10-7Z', 'M12 9a3 3 0 1 0 0 6 3 3 0 0 0 0-6z'] },
   { id: 3, label: 'Mountain Treks', paths: ['m8 3 4 8 5-5 5 15H2L8 3z'] },
@@ -554,6 +571,9 @@ function Photo({ src, alt = '', className = '' }) {
 }
 
 function Cta() {
+  const tr = useT('guides')
+  const followList = localize(FOLLOW_LIST, tr('followList'))
+  const alts = tr('photoAlts')
   const [status, setStatus] = useState('idle') // 'idle' | 'sending' | 'sent' | 'error'
   const [error, setError] = useState('')
 
@@ -579,29 +599,29 @@ function Cta() {
       {/* Titre + formulaire d'inscription */}
       <div className="flex flex-col lg:flex-row lg:items-end lg:justify-between gap-6 lg:gap-12">
         <div>
-          <p className="mb-2 text-xs sm:text-sm md:text-base uppercase tracking-wide text-slate-700">Stay connected</p>
-          <h2 className={SECTION_TITLE}>Follow The Adventure</h2>
+          <p className="mb-2 text-xs sm:text-sm md:text-base uppercase tracking-wide text-slate-700">{tr('connected')}</p>
+          <h2 className={SECTION_TITLE}>{tr('followTitle')}</h2>
         </div>
 
         <div className="w-full lg:max-w-xl">
           <form onSubmit={handleSubmit} className="flex items-center gap-2 rounded-full bg-white p-2 pl-6">
-            <label htmlFor="newsletter-email" className="sr-only">Your email address</label>
+            <label htmlFor="newsletter-email" className="sr-only">{tr('emailLabel')}</label>
             <input
               id="newsletter-email"
               name="email"
               type="email"
               required
               autoComplete="email"
-              placeholder="Your Email Address"
+              placeholder={tr('emailPlaceholder')}
               className="flex-1 min-w-0 bg-transparent text-sm md:text-base text-slate-800 placeholder:text-slate-500 focus:outline-none"
             />
             <button type="submit" disabled={status === 'sending'} className={`shrink-0 bg-[#C49849] hover:bg-[#b08339] text-white disabled:opacity-60 disabled:cursor-wait ${BUTTON}`}>
-              {status === 'sending' ? 'Sending…' : 'Subscribe'}
+              {status === 'sending' ? tr('sending') : tr('subscribe')}
             </button>
           </form>
           {status === 'sent' && (
             <p role="status" className={`mt-3 pl-6 ${META_TEXT} md:text-base text-emerald-700`}>
-              Thank you! You are on the list.
+              {tr('subscribed')}
             </p>
           )}
           {status === 'error' && (
@@ -612,7 +632,7 @@ function Cta() {
 
       {/* Mosaïque : ligne 1 */}
       <div data-stagger className="mt-10 md:mt-16 grid grid-cols-2 lg:grid-cols-5 gap-4 md:gap-6">
-        <Photo src={Tana} alt="Wildlife in the forest" />
+        <Photo src={Tana} alt={alts[0]} />
 
         <ul className="col-span-2 lg:col-span-1 order-first lg:order-none flex flex-col justify-center gap-4 lg:gap-5 lg:px-4">
           {followList.map((item) => (
@@ -625,30 +645,30 @@ function Cta() {
           ))}
         </ul>
 
-        <Photo src={Ramena} alt="Boat trip along the coast" />
-        <Photo src={NosyLonjo} alt="Traveler looking at the view" />
-        <Photo src={Deux} alt="Travelers on a mountain road" className="col-span-2 lg:col-span-1" />
+        <Photo src={Ramena} alt={alts[1]} />
+        <Photo src={NosyLonjo} alt={alts[2]} />
+        <Photo src={Deux} alt={alts[3]} className="col-span-2 lg:col-span-1" />
       </div>
 
       {/* Mosaïque : ligne 2 */}
       <div data-stagger className="mt-4 md:mt-6 grid grid-cols-2 lg:grid-cols-[1fr_1.5fr_1fr_1.4fr] gap-4 md:gap-6">
-        <Photo src={Ambanja} alt="Traveler jumping with joy" />
-        <Photo src={NosyIranja} alt="Island landscape" className="lg:order-none" />
-        <Photo src={Tana} alt="Highlands landscape" className="col-span-2 lg:col-span-1" />
+        <Photo src={Ambanja} alt={alts[4]} />
+        <Photo src={NosyIranja} alt={alts[5]} className="lg:order-none" />
+        <Photo src={Tana} alt={alts[6]} className="col-span-2 lg:col-span-1" />
 
         <div className="col-span-2 lg:col-span-1 flex flex-col justify-center lg:pl-8">
           <p className="text-slate-800 leading-tight">
             <span className="text-5xl md:text-6xl">10+</span>{' '}
-            <span className="text-2xl md:text-3xl font-medium">Years Of Travel Experience</span>
+            <span className="text-2xl md:text-3xl font-medium">{tr('experience')}</span>
           </p>
           <div className="mt-6 flex items-center gap-4">
             <img src={Ambanja} alt="" className="shrink-0 w-14 h-14 md:w-16 md:h-16 rounded-full object-cover" />
             <p className="text-sm md:text-base text-slate-600 leading-relaxed">
-              Our guides have walked these trails for over a decade. Tell us your plans and we will take care of the rest.
+              {tr('experienceText')}
             </p>
           </div>
           <a href="/contact" className={`mt-6 self-start bg-[#084838] hover:bg-[#0a5c47] text-white ${BUTTON}`}>
-            Find My Guide
+            {tr('findGuide')}
           </a>
         </div>
       </div>

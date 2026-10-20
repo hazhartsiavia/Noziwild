@@ -1,0 +1,253 @@
+{
+  "services": [
+    {
+      "name": "Cultural Guide",
+      "text": "Markets, history, food and daily life explained by someone who grew up there. Half or full day, at your pace.",
+      "tags": [
+        "Half / full day",
+        "1–10 travelers",
+        "Food stops"
+      ]
+    },
+    {
+      "name": "Wildlife & Nature Guide",
+      "text": "Spot lemurs, birds and chameleons with a naturalist who knows exactly where and when to look.",
+      "tags": [
+        "Park entry handled",
+        "Small groups",
+        "Binoculars"
+      ]
+    },
+    {
+      "name": "Adventure & Trek Guide",
+      "text": "Hikes, canyons and coastal trails led by trained, first-aid certified guides, adapted to your level.",
+      "tags": [
+        "1–5 days",
+        "Safety gear",
+        "Porters on request"
+      ]
+    },
+    {
+      "name": "Trip Companion",
+      "text": "A Noziwild host who welcomes you, handles logistics and stays reachable from arrival to departure.",
+      "tags": [
+        "Airport welcome",
+        "Daily check-in",
+        "24/7 help"
+      ]
+    }
+  ],
+  "guides": [
+    {
+      "role": "Wildlife Guide",
+      "langs": "English · French · Malagasy",
+      "bio": "Hery leads small-group wildlife walks and knows exactly when and where to find the island’s most unusual animals.",
+      "specialties": [
+        "Lemurs",
+        "Birdwatching",
+        "Night walks"
+      ]
+    },
+    {
+      "role": "Cultural Specialist",
+      "langs": "English · French · Italian",
+      "bio": "Lina shares the history, food and traditions of the island and connects travelers with the people who keep them alive.",
+      "specialties": [
+        "Cuisine",
+        "Crafts",
+        "Village life"
+      ]
+    },
+    {
+      "role": "Adventure Guide",
+      "langs": "English · French · German",
+      "bio": "Tojo designs treks that match your level, with the right pace, the right stops and safety always first.",
+      "specialties": [
+        "Trekking",
+        "Canyons",
+        "Coastal trails"
+      ]
+    },
+    {
+      "role": "Trip Companion",
+      "langs": "English · French · Spanish",
+      "bio": "Mika takes care of every detail so you can simply enjoy the trip, and is one call away whenever you need.",
+      "specialties": [
+        "Logistics",
+        "Families",
+        "Custom trips"
+      ]
+    }
+  ],
+  "compare": {
+    "columns": [
+      "Essential",
+      "Guided",
+      "Full Companion"
+    ],
+    "rows": [
+      {
+        "label": "Digital travel guide"
+      },
+      {
+        "label": "Emergency phone line"
+      },
+      {
+        "label": "Local guide on chosen days"
+      },
+      {
+        "label": "Daily check-in"
+      },
+      {
+        "label": "Same guide for the whole trip"
+      },
+      {
+        "label": "Airport welcome & farewell"
+      }
+    ]
+  },
+  "day": [
+    {
+      "title": "Pickup At Your Hotel",
+      "text": "Meet your guide, get a quick overview of the day and adjust the plan to your mood and the weather."
+    },
+    {
+      "title": "First Discovery",
+      "text": "A market, a trail or a village, depending on your guide. This is where the stories start."
+    },
+    {
+      "title": "Lunch With Locals",
+      "text": "A family table or a small restaurant your guide loves, far from the tourist menus."
+    },
+    {
+      "title": "Slow Afternoon",
+      "text": "Swim, walk or simply relax. The pace is yours and your guide adapts."
+    },
+    {
+      "title": "Back For Sunset",
+      "text": "A tip for tonight’s dinner, a photo at the best spot and a plan for tomorrow."
+    }
+  ],
+  "testimonials": [
+    {
+      "text": "Our guide made the whole trip. He knew every path, every family and every story. We would not have found half of it alone.",
+      "origin": "Travelers from Lyon",
+      "trip": "Driver-Guide · 8 days"
+    },
+    {
+      "text": "Lina showed us a side of the island we never expected. The food, the people, the little workshops. Truly unforgettable.",
+      "origin": "Traveler from Milan",
+      "trip": "Cultural Guide · 5 days"
+    },
+    {
+      "text": "The trek was challenging but perfectly paced. We always felt safe, and the views were worth every step.",
+      "origin": "Traveler from Munich",
+      "trip": "Trek Guide · 3 days"
+    },
+    {
+      "text": "Having one person to call for everything made our family trip stress-free. The kids still talk about their guide.",
+      "origin": "Traveler from Montréal",
+      "trip": "Trip Companion · 10 days"
+    },
+    {
+      "text": "We saw lemurs on the first morning thanks to Hery. He knew exactly where to go and when. Amazing.",
+      "origin": "Travelers from Madrid",
+      "trip": "Wildlife Guide · 4 days"
+    }
+  ],
+  "faqs": [
+    {
+      "q": "Do I need a guide for my whole trip?",
+      "a": "No. Many travelers book a guide only for key days, like a national park or a trek, and explore freely the rest of the time."
+    },
+    {
+      "q": "Can I choose my guide?",
+      "a": "Yes. Tell us your interests and language and we suggest the best match. You can also request a guide you already know."
+    },
+    {
+      "q": "What languages do your guides speak?",
+      "a": "English and French are covered on all trips. Italian, German and Spanish are available on request."
+    },
+    {
+      "q": "What if I have a problem during the trip?",
+      "a": "Every trip includes our support line. If needed, a team member reaches you or arranges help on the spot."
+    },
+    {
+      "q": "Are tips included?",
+      "a": "No, tips are always optional. If you enjoyed the day, a small tip to your guide is much appreciated."
+    }
+  ],
+  "followList": [
+    {
+      "label": "Cultural Tours"
+    },
+    {
+      "label": "Wildlife Walks"
+    },
+    {
+      "label": "Mountain Treks"
+    },
+    {
+      "label": "Sea Trips"
+    }
+  ],
+  "stats": [
+    "Certified guides",
+    "Languages spoken",
+    "Years of experience",
+    "Trip support"
+  ],
+  "badge": "Guides & Support",
+  "title": "Local Experts, Real Stories",
+  "intro": "A good guide turns a nice trip into a story you tell for years. Choose a local expert for a day, or have a Noziwild companion at your side all the way.",
+  "findGuide": "Find My Guide",
+  "meetTeam": "Meet the team",
+  "heroAlt1": "Wildlife guide on a forest trail",
+  "heroAlt2": "Guide with travelers on the coast",
+  "happy": "98% happy travelers",
+  "servicesTitle": "Four Ways To Be Guided",
+  "servicesText": "Whatever your style, there is a guide for it.",
+  "meetTitle": "Meet Your Guide",
+  "guidesLabel": "Guides",
+  "previousGuide": "Previous guide",
+  "nextGuide": "Next guide",
+  "years": "{count} years experience",
+  "languages": "Languages",
+  "request": "Request {name}",
+  "compareTitle": "Compare Support Levels",
+  "compareText": "Pick the level that fits your trip. You can upgrade at any time before departure.",
+  "popular": "Most popular",
+  "dayTitle": "A Day With Your Guide",
+  "dayText": "Every day is different, but here is what a typical one can feel like. Tap a time to see more.",
+  "dayLabel": "A day with your guide",
+  "stepOf": "Step {n} of {total} · {time}",
+  "again": "Start again",
+  "nextStep": "Next step",
+  "testimonialsLabel": "Testimonials",
+  "testimonialsTitle": "What Travelers Say About Us",
+  "average": "Average rating from 300+ travelers",
+  "outOf5": "{rating} out of 5",
+  "show": "Show testimonial {n}",
+  "previousTestimonial": "Previous testimonial",
+  "nextTestimonial": "Next testimonial",
+  "faqTitle": "Frequently Asked Questions",
+  "faqText": "Can't find your answer? Our team replies within a few hours.",
+  "connected": "Stay connected",
+  "followTitle": "Follow The Adventure",
+  "emailLabel": "Your email address",
+  "emailPlaceholder": "Your Email Address",
+  "sending": "Sending…",
+  "subscribe": "Subscribe",
+  "subscribed": "Thank you! You are on the list.",
+  "photoAlts": [
+    "Wildlife in the forest",
+    "Boat trip along the coast",
+    "Traveler looking at the view",
+    "Travelers on a mountain road",
+    "Traveler jumping with joy",
+    "Island landscape",
+    "Highlands landscape"
+  ],
+  "experience": "Years Of Travel Experience",
+  "experienceText": "Our guides have walked these trails for over a decade. Tell us your plans and we will take care of the rest."
+}
