@@ -1,0 +1,179 @@
+{
+  "hero": {
+    "title": "El trayecto también es parte del viaje",
+    "text": "4x4 privados, lanzaderas compartidas, vuelos nacionales, barcos y trenes: elegimos la mejor forma de moverse entre cada etapa y lo reservamos todo por usted.",
+    "ctaLabel": "Organizar mis traslados",
+    "label": "Nuestra flota",
+    "cardTitle": "Cada traslado, resuelto",
+    "imageAlt": "Un 4x4 recorriendo una carretera panorámica",
+    "stats": [
+      {
+        "label": "Formas de viajar"
+      },
+      {
+        "label": "Asistencia durante el viaje"
+      },
+      {
+        "label": "Conductores con licencia"
+      }
+    ]
+  },
+  "categories": [
+    {
+      "label": "Todo"
+    },
+    {
+      "label": "Tierra"
+    },
+    {
+      "label": "Aire"
+    },
+    {
+      "label": "Mar"
+    }
+  ],
+  "transports": [
+    {
+      "name": "4x4 privado",
+      "capacity": "1–6 viajeros",
+      "duration": "Flexible",
+      "text": "Su propio vehículo con conductor-guía. Pare donde quiera, a su ritmo.",
+      "perks": [
+        "Recogida puerta a puerta",
+        "Aire acondicionado",
+        "Conductor que habla inglés"
+      ]
+    },
+    {
+      "name": "Minibús compartido",
+      "capacity": "8–15 viajeros",
+      "duration": "Horario fijo",
+      "text": "Una opción cómoda y económica en las rutas principales, ideal para viajeros solos y grupos.",
+      "perks": [
+        "Asientos reservados",
+        "Equipaje incluido",
+        "Mejor precio"
+      ]
+    },
+    {
+      "name": "Vuelo nacional",
+      "capacity": "1 asiento o más",
+      "duration": "1–2 h",
+      "text": "Evite largas jornadas por carretera. Reservamos los asientos y organizamos los traslados al aeropuerto en ambos extremos.",
+      "perks": [
+        "Reserva de billetes",
+        "Traslados al aeropuerto",
+        "Fechas flexibles"
+      ]
+    },
+    {
+      "name": "Lancha rápida",
+      "capacity": "2–10 viajeros",
+      "duration": "30 min – 2 h",
+      "text": "Travesías rápidas y divertidas a las islas cercanas, con chalecos salvavidas y un capitán experto.",
+      "perks": [
+        "Equipo de seguridad",
+        "De isla en isla",
+        "Privada o compartida"
+      ]
+    },
+    {
+      "name": "Velero",
+      "capacity": "2–8 viajeros",
+      "duration": "Medio día o día completo",
+      "text": "Una forma más lenta y pintoresca de llegar a playas escondidas, con paradas para hacer snorkel y pícnic a bordo.",
+      "perks": [
+        "Equipo de snorkel",
+        "Comida a bordo",
+        "Opción puesta de sol"
+      ]
+    },
+    {
+      "name": "Tren panorámico",
+      "capacity": "Por asiento",
+      "duration": "Medio día o día completo",
+      "text": "Vea pasar pueblos y paisajes en un trayecto lento que no olvidará.",
+      "perks": [
+        "Asientos de ventanilla",
+        "Traslados a la estación",
+        "Aperitivos locales"
+      ]
+    }
+  ],
+  "steps": [
+    {
+      "title": "Cuéntenos su plan",
+      "text": "Indíquenos fechas, destinos y tamaño del grupo. ¿Aún no lo tiene claro? Le sugerimos una ruta."
+    },
+    {
+      "title": "Elegimos la mejor combinación",
+      "text": "Nuestro equipo combina carretera, aire y mar para que el viaje sea fluido, seguro y a buen ritmo."
+    },
+    {
+      "title": "Confirme y pague en línea",
+      "text": "Recibe un presupuesto claro con todo incluido y confirma en unos clics."
+    },
+    {
+      "title": "Viaje con asistencia",
+      "text": "Conozca a su conductor o capitán el día del viaje. Nuestro equipo está siempre a una llamada."
+    }
+  ],
+  "included": [
+    {
+      "title": "Conductores formados",
+      "text": "Con experiencia, licencia y conocimiento de todas las carreteras."
+    },
+    {
+      "title": "Vehículos asegurados",
+      "text": "Vehículos revisados con regularidad y con seguro a todo riesgo."
+    },
+    {
+      "title": "Precios justos y fijos",
+      "text": "Sin sorpresas: combustible, peajes y tasas están en el presupuesto."
+    },
+    {
+      "title": "Asistencia 24/7",
+      "text": "Una persona de verdad para ayudarle si cambian sus planes."
+    }
+  ],
+  "faqs": [
+    {
+      "q": "¿Puedo elegir mi transporte?",
+      "a": "Sí. Díganos qué prefiere y adaptamos el plan. Si no tiene preferencias, le recomendamos la mejor opción para cada trayecto."
+    },
+    {
+      "q": "¿Las comidas y el combustible están incluidos?",
+      "a": "El combustible, el conductor y los peajes siempre están incluidos en el presupuesto. Las comidas, solo cuando lo indica la descripción del viaje."
+    },
+    {
+      "q": "¿Cuánto equipaje puedo llevar?",
+      "a": "Lo habitual es una maleta y un bolso pequeño por persona. Los vuelos nacionales tienen límites de peso más estrictos: le indicamos la franquicia exacta al reservar."
+    },
+    {
+      "q": "¿Es seguro viajar por carretera?",
+      "a": "Seleccionamos y formamos a nuestros conductores, y evitamos conducir de noche en rutas difíciles. Adaptamos los horarios al estado de las carreteras y al tiempo."
+    },
+    {
+      "q": "¿Puedo modificar o cancelar una reserva?",
+      "a": "Puede cambiar las fechas sin coste hasta 7 días antes de la salida, según disponibilidad. Las condiciones de cancelación dependen del servicio y figuran en su presupuesto."
+    },
+    {
+      "q": "¿Ofrecen recogida en el aeropuerto?",
+      "a": "Sí. Un conductor le espera en llegadas con un cartel, aunque su vuelo se retrase."
+    }
+  ],
+  "cta": {
+    "title": "¿Listo para ponerse en marcha?",
+    "text": "Díganos adónde quiere ir y nosotros nos ocupamos del resto.",
+    "label": "Pedir presupuesto gratuito"
+  },
+  "ask": "Solicitar esta opción",
+  "typesTitle": "Elija cómo viajar",
+  "typesText": "Cada opción tiene su ritmo y su encanto. Combínelas libremente a lo largo del viaje.",
+  "tabsLabel": "Categorías de transporte",
+  "howTitle": "Cómo funciona",
+  "incTitle": "Incluido en cada traslado",
+  "incText": "La comodidad y la seguridad no son opcionales. Van con cada vehículo, barco y asiento que reservamos.",
+  "faqTitle": "Preguntas frecuentes",
+  "faqText": "¿No encuentra su respuesta? Nuestro equipo responde en pocas horas."
+}

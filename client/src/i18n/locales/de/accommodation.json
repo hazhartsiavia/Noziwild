@@ -1,0 +1,163 @@
+{
+  "intro": {
+    "label": "Wo übernachten",
+    "title": "Gut schlafen, an einem besonderen Ort aufwachen",
+    "text": "Vom Strandbungalow bis zum familiengeführten Gästehaus: Jede Noziwild-Unterkunft wird besucht, getestet und wegen ihres Komforts, ihrer Gastfreundschaft und ihrer Lage ausgewählt.",
+    "stats": [
+      {
+        "label": "Ausgewählte Unterkünfte"
+      },
+      {
+        "label": "Abgedeckte Reiseziele"
+      },
+      {
+        "label": "Durchschnittliche Gästebewertung"
+      }
+    ]
+  },
+  "categories": [
+    {
+      "label": "Alle Unterkünfte"
+    },
+    {
+      "label": "Hotels"
+    },
+    {
+      "label": "Ecolodges"
+    },
+    {
+      "label": "Strandbungalows"
+    },
+    {
+      "label": "Gästehäuser"
+    }
+  ],
+  "stays": [
+    {
+      "place": "Ramena, Diego Suarez",
+      "amenities": [
+        "Meerblick",
+        "Frühstück",
+        "Schnorcheln"
+      ]
+    },
+    {
+      "place": "Nosy Iranja",
+      "amenities": [
+        "Infinity-Pool",
+        "Spa",
+        "Restaurant"
+      ]
+    },
+    {
+      "place": "Ambanja",
+      "amenities": [
+        "Garten",
+        "Hofbesuche",
+        "Solarstrom"
+      ]
+    },
+    {
+      "place": "Antananarivo",
+      "amenities": [
+        "Familiengeführt",
+        "Frühstück",
+        "Kostenloses WLAN"
+      ]
+    },
+    {
+      "place": "Nosy Be",
+      "amenities": [
+        "Direkt am Strand",
+        "Kajaks",
+        "Abendessen auf Wunsch"
+      ]
+    },
+    {
+      "place": "Nord-Madagaskar",
+      "amenities": [
+        "Geführte Wanderungen",
+        "Vollpension",
+        "Sternbeobachtung"
+      ]
+    }
+  ],
+  "featured": {
+    "label": "Gästeliebling",
+    "text": "Ein ruhiges Inselversteck mit eigenem weißem Sandstrand, einem Infinity-Pool mit Blick auf den Sonnenuntergang und einer Küche, die den Fang vom Morgen zubereitet.",
+    "details": [
+      "12 Zimmer und Suiten",
+      "Bootstransfer inklusive",
+      "Am besten von April bis November"
+    ]
+  },
+  "criteria": [
+    {
+      "title": "Von unserem Team besucht",
+      "text": "Wir übernachten selbst dort, bevor wir eine Unterkunft empfehlen. Ohne echten Besuch wird nichts aufgenommen."
+    },
+    {
+      "title": "Lokal & verantwortungsvoll",
+      "text": "Wir bevorzugen Eigentümer aus der Region, faire Arbeitsplätze und einen umweltschonenden Betrieb."
+    },
+    {
+      "title": "Ehrliche Preise",
+      "text": "Klare Preise mit Steuern und Frühstück – das Angebot ist der Preis, den Sie zahlen."
+    }
+  ],
+  "included": [
+    {
+      "title": "Kostenlose Stornierung",
+      "text": "Bei den meisten Unterkünften bis 7 Tage vor Ankunft."
+    },
+    {
+      "title": "Abholung an Flughafen & Hafen",
+      "text": "Buchen Sie Ihren Transfer zusammen mit der Unterkunft."
+    },
+    {
+      "title": "Lokale Tipps",
+      "text": "Restaurants, Spaziergänge und versteckte Orte von unseren Experten."
+    },
+    {
+      "title": "Support rund um die Uhr",
+      "text": "Ein echter Mensch, falls etwas schiefgeht."
+    }
+  ],
+  "faqs": [
+    {
+      "q": "Gelten die Preise pro Person oder pro Zimmer?",
+      "a": "Die angezeigten Preise gelten pro Zimmer und Nacht, ab der Nebensaison. Ihr Angebot nennt den genauen Gesamtpreis für Ihre Daten und Ihre Gruppe."
+    },
+    {
+      "q": "Ist das Frühstück inklusive?",
+      "a": "Bei den meisten unserer Unterkünfte ja. Bei jeder Unterkunft steht, was inklusive ist, und wir sagen klar, wann Mahlzeiten extra kosten."
+    },
+    {
+      "q": "Finden Sie auch etwas für eine Familie oder eine große Gruppe?",
+      "a": "Ja. Sagen Sie uns, wie viele Personen reisen, und wir schlagen Familienzimmer, Verbindungszimmer oder eine private Villa vor."
+    },
+    {
+      "q": "Kann ich meine Daten nach der Buchung ändern?",
+      "a": "In den meisten Fällen ja, bis 7 Tage vor Ankunft und je nach Verfügbarkeit. Die genauen Bedingungen stehen in Ihrem Angebot."
+    },
+    {
+      "q": "Haben die Unterkünfte Strom und WLAN?",
+      "a": "Die meisten schon, doch einige abgelegene Lodges laufen mit Solarstrom und haben nur eingeschränkte Verbindung. Wir sagen es immer vorher, damit Sie wählen können."
+    }
+  ],
+  "title": "Unterkünfte",
+  "home": "Startseite",
+  "fromPerNight": "Ab {price} / Nacht",
+  "enquire": "Anfragen",
+  "staysTitle": "Finden Sie Ihre perfekte Unterkunft",
+  "tabsLabel": "Kategorien von Unterkünften",
+  "check": "Verfügbarkeit prüfen",
+  "criteriaTitle": "Wie wir unsere Unterkünfte auswählen",
+  "incTitle": "Sorglos, inklusive",
+  "incText": "Buchen Sie mit Noziwild und genießen Sie Extras, die Sie allein nicht bekämen.",
+  "faqTitle": "Häufige Fragen",
+  "faqText": "Noch eine andere Frage? Unser Team antwortet innerhalb eines Werktags.",
+  "ctaTitle": "Sie wissen nicht, wo Sie übernachten sollen?",
+  "ctaText": "Nennen Sie uns Reisedaten, Budget und Reisestil. Wir schlagen Ihnen passende Unterkünfte vor.",
+  "ctaButton": "Kostenlosen Vorschlag erhalten"
+}

@@ -1,0 +1,179 @@
+{
+  "hero": {
+    "title": "Le trajet fait partie du voyage",
+    "text": "4x4 privés, navettes partagées, vols intérieurs, bateaux et trains : nous choisissons la bonne façon de relier chaque étape, et nous réservons tout pour vous.",
+    "ctaLabel": "Organiser mes transferts",
+    "label": "Notre flotte",
+    "cardTitle": "Chaque transfert, pris en charge",
+    "imageAlt": "Un 4x4 sur une route panoramique",
+    "stats": [
+      {
+        "label": "Façons de voyager"
+      },
+      {
+        "label": "Assistance pendant le voyage"
+      },
+      {
+        "label": "Chauffeurs agréés"
+      }
+    ]
+  },
+  "categories": [
+    {
+      "label": "Tout"
+    },
+    {
+      "label": "Terre"
+    },
+    {
+      "label": "Air"
+    },
+    {
+      "label": "Mer"
+    }
+  ],
+  "transports": [
+    {
+      "name": "4x4 privé",
+      "capacity": "1–6 voyageurs",
+      "duration": "Flexible",
+      "text": "Votre propre véhicule avec chauffeur-guide. Arrêtez-vous où vous voulez, à votre rythme.",
+      "perks": [
+        "Prise en charge porte à porte",
+        "Climatisation",
+        "Chauffeur anglophone"
+      ]
+    },
+    {
+      "name": "Minibus partagé",
+      "capacity": "8–15 voyageurs",
+      "duration": "Horaires fixes",
+      "text": "Une option confortable et économique sur les grands axes, idéale pour les voyageurs solo et les groupes.",
+      "perks": [
+        "Places réservées",
+        "Bagages inclus",
+        "Meilleur prix"
+      ]
+    },
+    {
+      "name": "Vol intérieur",
+      "capacity": "1 siège ou plus",
+      "duration": "1–2 h",
+      "text": "Évitez les longues journées de route. Nous réservons les sièges et organisons les transferts aéroport à l'arrivée comme au départ.",
+      "perks": [
+        "Réservation des billets",
+        "Transferts aéroport",
+        "Dates flexibles"
+      ]
+    },
+    {
+      "name": "Vedette",
+      "capacity": "2–10 voyageurs",
+      "duration": "30 min – 2 h",
+      "text": "Des traversées rapides et amusantes vers les îles voisines, avec gilets de sauvetage et un capitaine expérimenté.",
+      "perks": [
+        "Équipement de sécurité",
+        "D'île en île",
+        "Privé ou partagé"
+      ]
+    },
+    {
+      "name": "Voilier",
+      "capacity": "2–8 voyageurs",
+      "duration": "Demi-journée ou journée",
+      "text": "Une façon plus lente et pittoresque de rejoindre des plages cachées, avec arrêts snorkeling et pique-nique à bord.",
+      "perks": [
+        "Matériel de snorkeling",
+        "Déjeuner à bord",
+        "Option coucher de soleil"
+      ]
+    },
+    {
+      "name": "Train panoramique",
+      "capacity": "À la place",
+      "duration": "Demi-journée ou journée",
+      "text": "Regardez défiler villages et paysages lors d'un trajet lent que vous n'oublierez pas.",
+      "perks": [
+        "Places côté fenêtre",
+        "Transferts à la gare",
+        "En-cas locaux"
+      ]
+    }
+  ],
+  "steps": [
+    {
+      "title": "Parlez-nous de votre projet",
+      "text": "Indiquez vos dates, vos destinations et la taille du groupe. Pas encore décidé ? Nous vous proposons un itinéraire."
+    },
+    {
+      "title": "Nous choisissons la meilleure combinaison",
+      "text": "Notre équipe combine route, air et mer pour un voyage fluide, sûr et bien rythmé."
+    },
+    {
+      "title": "Confirmez et payez en ligne",
+      "text": "Vous recevez un devis clair, tout compris, et confirmez en quelques clics."
+    },
+    {
+      "title": "Voyagez accompagné",
+      "text": "Retrouvez votre chauffeur ou votre capitaine le jour J. Notre équipe reste joignable à tout moment."
+    }
+  ],
+  "included": [
+    {
+      "title": "Chauffeurs formés",
+      "text": "Expérimentés, agréés et habitués à toutes les routes."
+    },
+    {
+      "title": "Véhicules assurés",
+      "text": "Des véhicules entretenus régulièrement et entièrement assurés."
+    },
+    {
+      "title": "Des prix justes et fixes",
+      "text": "Pas de surprise : carburant, péages et frais sont compris dans le devis."
+    },
+    {
+      "title": "Assistance 24h/24",
+      "text": "Une vraie personne pour vous aider si vos plans changent."
+    }
+  ],
+  "faqs": [
+    {
+      "q": "Puis-je choisir mon moyen de transport ?",
+      "a": "Oui. Dites-nous ce que vous préférez et nous adaptons le programme. Si vous n'avez pas de préférence, nous recommandons la meilleure option pour chaque trajet."
+    },
+    {
+      "q": "Les repas et le carburant sont-ils inclus ?",
+      "a": "Le carburant, le chauffeur et les péages sont toujours inclus dans le devis. Les repas ne le sont que si le descriptif du voyage l'indique."
+    },
+    {
+      "q": "Combien de bagages puis-je emporter ?",
+      "a": "Une valise et un petit sac par personne, c'est la règle. Les vols intérieurs ont des limites de poids plus strictes : nous vous indiquons la franchise exacte à la réservation."
+    },
+    {
+      "q": "Voyager par la route est-il sûr ?",
+      "a": "Nos chauffeurs sont sélectionnés et formés par nos soins, et nous évitons de rouler de nuit sur les routes difficiles. Nous adaptons les horaires à l'état des routes et à la météo."
+    },
+    {
+      "q": "Puis-je modifier ou annuler une réservation ?",
+      "a": "Vous pouvez changer de dates gratuitement jusqu'à 7 jours avant le départ, sous réserve de disponibilité. Les conditions d'annulation dépendent du service et figurent dans votre devis."
+    },
+    {
+      "q": "Proposez-vous l'accueil à l'aéroport ?",
+      "a": "Oui. Un chauffeur vous attend aux arrivées avec une pancarte, même si votre vol est en retard."
+    }
+  ],
+  "cta": {
+    "title": "Prêt à prendre la route ?",
+    "text": "Dites-nous où vous voulez aller, nous nous occupons du reste.",
+    "label": "Obtenir un devis gratuit"
+  },
+  "ask": "Demander cette option",
+  "typesTitle": "Choisissez votre façon de voyager",
+  "typesText": "Chaque option a son rythme et son charme. Combinez-les librement tout au long de votre voyage.",
+  "tabsLabel": "Catégories de transport",
+  "howTitle": "Comment ça marche",
+  "incTitle": "Inclus dans chaque transfert",
+  "incText": "Le confort et la sécurité ne sont pas des options. Ils accompagnent chaque véhicule, bateau et siège que nous réservons.",
+  "faqTitle": "Questions fréquentes",
+  "faqText": "Vous ne trouvez pas votre réponse ? Notre équipe répond en quelques heures."
+}

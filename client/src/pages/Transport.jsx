@@ -9,6 +9,8 @@ import Ramena from "../assets/images/Ramena.png";
 import Tana from "../assets/images/Tana.png";
 import Navbar from '../components/Navbar';
 import Footer from '../components/Footer';
+import { useT } from '../i18n/LanguageContext';
+import { localize } from '../i18n/localize';
 
 gsap.registerPlugin(ScrollTrigger)
 
@@ -24,8 +26,10 @@ const GOLD = "bg-[#C49849]"
 const GREEN = "bg-[#074636]"
 
 /* ---------------------------- Données ---------------------------- */
+// Textes affichés : locales/<langue>/transport.json, posés sur ces données par localize()
+// (mêmes clés, listes dans le même ordre)
 
-const hero = {
+const HERO = {
   title: 'Getting There Is Part of the Journey',
   text: 'Private 4x4s, shared shuttles, domestic flights, boats and trains: we choose the right way to move between every stop, and we book it all for you.',
   ctaLabel: 'Plan My Transfers',
@@ -42,14 +46,14 @@ const hero = {
 }
 
 // category : 'land' | 'air' | 'sea'
-const categories = [
+const CATEGORIES = [
   { id: 'all', label: 'All' },
   { id: 'land', label: 'Land' },
   { id: 'air', label: 'Air' },
   { id: 'sea', label: 'Sea' },
 ]
 
-const transports = [
+const TRANSPORTS = [
   {
     id: 1, category: 'land', name: 'Private 4x4',
     image: Tana, capacity: '1–6 travelers', duration: 'Flexible',
@@ -88,21 +92,21 @@ const transports = [
   },
 ]
 
-const steps = [
+const STEPS = [
   { id: 1, title: 'Tell Us Your Plan', text: 'Share your dates, destinations and group size. Not sure yet? We suggest a route.' },
   { id: 2, title: 'We Pick the Best Mix', text: 'Our team combines road, air and sea so the trip stays smooth, safe and well paced.' },
   { id: 3, title: 'Confirm & Pay Online', text: 'You receive a clear quote with everything included, and confirm in a few clicks.' },
   { id: 4, title: 'Travel With Support', text: 'Meet your driver or captain on the day. Our team is one call away the whole time.' },
 ]
 
-const included = [
+const INCLUDED = [
   { id: 1, title: 'Trained Drivers', text: 'Experienced, licensed and familiar with every road.' },
   { id: 2, title: 'Insured Vehicles', text: 'Regularly serviced vehicles with full insurance.' },
   { id: 3, title: 'Fair, Fixed Prices', text: 'No surprises: fuel, tolls and fees are in the quote.' },
   { id: 4, title: '24/7 Support', text: 'A real person to help if your plans change.' },
 ]
 
-const faqs = [
+const FAQS = [
   { id: 1, q: 'Can I choose my own transport?', a: 'Yes. Tell us what you prefer and we adapt the plan. If you have no preference, we recommend the best option for each leg.' },
   { id: 2, q: 'Are meals and fuel included?', a: 'Fuel, driver and tolls are always included in the quote. Meals are only included when the trip description says so.' },
   { id: 3, q: 'How much luggage can I bring?', a: 'One suitcase and one small bag per person is the standard. Domestic flights have stricter weight limits, and we tell you the exact allowance when you book.' },
@@ -111,7 +115,7 @@ const faqs = [
   { id: 6, q: 'Do you offer airport pickup?', a: 'Yes. A driver waits for you at arrivals with a sign, even if your flight is delayed.' },
 ]
 
-const cta = {
+const CTA = {
   title: 'Ready to Hit the Road?',
   text: 'Tell us where you want to go and we will handle the rest.',
   label: 'Get a Free Quote',
@@ -219,6 +223,7 @@ const PlusIcon = ({ open }) => (
 /* -------------------------- Composants --------------------------- */
 
 function Hero() {
+  const hero = localize(HERO, useT('transport')('hero'))
   const root = useRef(null)
   const btnRef = useRef(null)
   useMagnetic(btnRef, 0.25)
@@ -294,6 +299,7 @@ function Hero() {
 }
 
 function TransportCard({ item }) {
+  const t = useT('transport')
   return (
     <article className="t-card flex flex-col overflow-hidden rounded-2xl bg-white">
       <div className="aspect-[16/10] overflow-hidden">
@@ -315,7 +321,7 @@ function TransportCard({ item }) {
           href="#contact"
           className="mt-6 pt-5 border-t border-slate-900/10 inline-flex items-center gap-2 text-sm md:text-base font-medium text-slate-800 hover:gap-3 transition-all"
         >
-          Ask for this option <ArrowIcon />
+          {t('ask')} <ArrowIcon />
         </a>
       </div>
     </article>
@@ -323,10 +329,13 @@ function TransportCard({ item }) {
 }
 
 function TransportTypes() {
+  const t = useT('transport')
+  const categories = localize(CATEGORIES, t('categories'))
+  const transports = localize(TRANSPORTS, t('transports'))
   const [category, setCategory] = useState('all')
   const root = useRef(null)
   const prevCategory = useRef('all')
-  const list = category === 'all' ? transports : transports.filter((t) => t.category === category)
+  const list = category === 'all' ? transports : transports.filter((item) => item.category === category)
 
   // Entrée au scroll
   useGsap(root, () => {
@@ -345,13 +354,13 @@ function TransportTypes() {
   return (
     <div ref={root} className={SECTION_GAP}>
       <div className="types-head mb-8 md:mb-12 flex flex-col lg:flex-row lg:items-center lg:justify-between gap-5 lg:gap-12">
-        <h2 className={`${SECTION_TITLE} lg:max-w-[52%]`}>Choose How You Travel</h2>
+        <h2 className={`${SECTION_TITLE} lg:max-w-[52%]`}>{t('typesTitle')}</h2>
         <p className={`hidden md:block ${SECTION_SUBTITLE} lg:max-w-lg`}>
-          Each option has its own pace and charm. Mix them freely across your trip.
+          {t('typesText')}
         </p>
       </div>
 
-      <div className="tab-list mb-8 flex flex-wrap gap-2 md:gap-3" role="tablist" aria-label="Transport categories">
+      <div className="tab-list mb-8 flex flex-wrap gap-2 md:gap-3" role="tablist" aria-label={t('tabsLabel')}>
         {categories.map((c) => (
           <button
             key={c.id}
@@ -376,6 +385,8 @@ function TransportTypes() {
 }
 
 function HowItWorks() {
+  const t = useT('transport')
+  const steps = localize(STEPS, t('steps'))
   const root = useRef(null)
 
   useGsap(root, () => {
@@ -387,7 +398,7 @@ function HowItWorks() {
 
   return (
     <div ref={root} className={SECTION_GAP}>
-      <h2 className={`how-title ${SECTION_TITLE} text-center mb-10 md:mb-16`}>How It Works</h2>
+      <h2 className={`how-title ${SECTION_TITLE} text-center mb-10 md:mb-16`}>{t('howTitle')}</h2>
       <ol className="how-list grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 md:gap-6">
         {steps.map((step) => (
           <li key={step.id} className="step-card rounded-2xl bg-white p-6 md:p-7">
@@ -404,6 +415,8 @@ function HowItWorks() {
 }
 
 function Included() {
+  const t = useT('transport')
+  const included = localize(INCLUDED, t('included'))
   const root = useRef(null)
 
   useGsap(root, () => {
@@ -416,9 +429,9 @@ function Included() {
   return (
     <div ref={root} className={`${SECTION_GAP} rounded-3xl ${GREEN} text-white p-6 md:p-12`}>
       <div className="inc-head flex flex-col lg:flex-row lg:items-center lg:justify-between gap-5 lg:gap-12">
-        <h2 className={`${ON_IMAGE_TITLE} lg:max-w-[45%]`}>Included in Every Transfer</h2>
+        <h2 className={`${ON_IMAGE_TITLE} lg:max-w-[45%]`}>{t('incTitle')}</h2>
         <p className="text-sm md:text-lg text-white/70 leading-relaxed lg:max-w-lg">
-          Comfort and safety are not options. They come with every vehicle, boat and seat we book.
+          {t('incText')}
         </p>
       </div>
       <div className="mt-8 md:mt-12 grid grid-cols-2 lg:grid-cols-4 gap-3 md:gap-5">
@@ -469,6 +482,8 @@ function FaqItem({ f, isOpen, onToggle }) {
 }
 
 function Faq() {
+  const t = useT('transport')
+  const faqs = localize(FAQS, t('faqs'))
   const [open, setOpen] = useState(1)
   const root = useRef(null)
 
@@ -480,9 +495,9 @@ function Faq() {
   return (
     <div ref={root} className={`${SECTION_GAP} grid grid-cols-1 lg:grid-cols-[1fr_1.6fr] gap-8 lg:gap-16`}>
       <div className="faq-head self-start lg:sticky lg:top-6">
-        <h2 className={SECTION_TITLE}>Frequently Asked Questions</h2>
+        <h2 className={SECTION_TITLE}>{t('faqTitle')}</h2>
         <p className={`mt-4 md:mt-6 ${SECTION_SUBTITLE}`}>
-          Can&apos;t find your answer? Our team replies within a few hours.
+          {t('faqText')}
         </p>
       </div>
 
@@ -496,6 +511,7 @@ function Faq() {
 }
 
 function Cta() {
+  const cta = localize(CTA, useT('transport')('cta'))
   const root = useRef(null)
   const btnRef = useRef(null)
   useMagnetic(btnRef, 0.2)

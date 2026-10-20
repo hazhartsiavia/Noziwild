@@ -1,0 +1,163 @@
+{
+  "intro": {
+    "label": "Where To Stay",
+    "title": "Sleep Well, Wake Up Somewhere Special",
+    "text": "From beachfront bungalows to family-run guesthouses, every Noziwild stay is visited, tested and chosen for its comfort, its welcome and its setting.",
+    "stats": [
+      {
+        "label": "Handpicked Stays"
+      },
+      {
+        "label": "Destinations Covered"
+      },
+      {
+        "label": "Average Guest Rating"
+      }
+    ]
+  },
+  "categories": [
+    {
+      "label": "All Stays"
+    },
+    {
+      "label": "Hotels"
+    },
+    {
+      "label": "Eco Lodges"
+    },
+    {
+      "label": "Beach Bungalows"
+    },
+    {
+      "label": "Guesthouses"
+    }
+  ],
+  "stays": [
+    {
+      "place": "Ramena, Diego Suarez",
+      "amenities": [
+        "Sea view",
+        "Breakfast",
+        "Snorkeling"
+      ]
+    },
+    {
+      "place": "Nosy Iranja",
+      "amenities": [
+        "Infinity pool",
+        "Spa",
+        "Restaurant"
+      ]
+    },
+    {
+      "place": "Ambanja",
+      "amenities": [
+        "Garden",
+        "Farm visits",
+        "Solar power"
+      ]
+    },
+    {
+      "place": "Antananarivo",
+      "amenities": [
+        "Family-run",
+        "Breakfast",
+        "Free Wi-Fi"
+      ]
+    },
+    {
+      "place": "Nosy Be",
+      "amenities": [
+        "Beachfront",
+        "Kayaks",
+        "Dinner on request"
+      ]
+    },
+    {
+      "place": "Northern Madagascar",
+      "amenities": [
+        "Guided walks",
+        "Full board",
+        "Stargazing"
+      ]
+    }
+  ],
+  "featured": {
+    "label": "Guest Favorite",
+    "text": "A quiet island hideaway with a private stretch of white sand, an infinity pool facing the sunset and a kitchen that cooks the morning’s catch.",
+    "details": [
+      "12 rooms and suites",
+      "Boat transfer included",
+      "Best from April to November"
+    ]
+  },
+  "criteria": [
+    {
+      "title": "Visited By Our Team",
+      "text": "We sleep there before we recommend it. No stay is listed without a real visit."
+    },
+    {
+      "title": "Local & Responsible",
+      "text": "We favor owners from the region, fair jobs and low-impact ways of running a stay."
+    },
+    {
+      "title": "Honest Prices",
+      "text": "Clear rates with taxes and breakfast shown, so the quote is the price you pay."
+    }
+  ],
+  "included": [
+    {
+      "title": "Free Cancellation",
+      "text": "On most stays, up to 7 days before arrival."
+    },
+    {
+      "title": "Airport & Port Pickup",
+      "text": "Book your transfer with the stay."
+    },
+    {
+      "title": "Local Tips",
+      "text": "Restaurants, walks and hidden spots from our experts."
+    },
+    {
+      "title": "24/7 Support",
+      "text": "A real person if anything goes wrong."
+    }
+  ],
+  "faqs": [
+    {
+      "q": "Are the prices per person or per room?",
+      "a": "Prices shown are per room, per night, starting from the lowest season. Your quote shows the exact total for your dates and group."
+    },
+    {
+      "q": "Is breakfast included?",
+      "a": "On most of our stays, yes. Each stay lists what is included, and we tell you clearly when meals cost extra."
+    },
+    {
+      "q": "Can you find something for a family or large group?",
+      "a": "Yes. Tell us how many people are traveling and we suggest family rooms, connected rooms or a private villa."
+    },
+    {
+      "q": "Can I change my dates after booking?",
+      "a": "In most cases you can, up to 7 days before arrival and subject to availability. The exact terms are in your quote."
+    },
+    {
+      "q": "Do the stays have electricity and Wi-Fi?",
+      "a": "Most do, but some remote lodges run on solar power with limited connection. We always say so in advance so you can choose."
+    }
+  ],
+  "title": "Accommodation",
+  "home": "Home",
+  "fromPerNight": "From {price} / night",
+  "enquire": "Enquire",
+  "staysTitle": "Find Your Perfect Stay",
+  "tabsLabel": "Accommodation categories",
+  "check": "Check Availability",
+  "criteriaTitle": "How We Choose Our Stays",
+  "incTitle": "Peace Of Mind, Included",
+  "incText": "Book with Noziwild and enjoy extras you would not get on your own.",
+  "faqTitle": "Frequently Asked Questions",
+  "faqText": "Something else on your mind? Our team replies within one working day.",
+  "ctaTitle": "Not Sure Where To Stay?",
+  "ctaText": "Tell us your dates, budget and travel style. We will suggest the stays that fit.",
+  "ctaButton": "Get A Free Suggestion"
+}

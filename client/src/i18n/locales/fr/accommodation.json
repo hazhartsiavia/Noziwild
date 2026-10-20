@@ -1,0 +1,163 @@
+{
+  "intro": {
+    "label": "Où dormir",
+    "title": "Bien dormir, se réveiller dans un lieu unique",
+    "text": "Des bungalows les pieds dans l'eau aux maisons d'hôtes familiales, chaque hébergement Noziwild est visité, testé et choisi pour son confort, son accueil et son cadre.",
+    "stats": [
+      {
+        "label": "Hébergements sélectionnés"
+      },
+      {
+        "label": "Destinations couvertes"
+      },
+      {
+        "label": "Note moyenne des clients"
+      }
+    ]
+  },
+  "categories": [
+    {
+      "label": "Tous les hébergements"
+    },
+    {
+      "label": "Hôtels"
+    },
+    {
+      "label": "Écolodges"
+    },
+    {
+      "label": "Bungalows de plage"
+    },
+    {
+      "label": "Maisons d'hôtes"
+    }
+  ],
+  "stays": [
+    {
+      "place": "Ramena, Diego Suarez",
+      "amenities": [
+        "Vue mer",
+        "Petit-déjeuner",
+        "Snorkeling"
+      ]
+    },
+    {
+      "place": "Nosy Iranja",
+      "amenities": [
+        "Piscine à débordement",
+        "Spa",
+        "Restaurant"
+      ]
+    },
+    {
+      "place": "Ambanja",
+      "amenities": [
+        "Jardin",
+        "Visites de ferme",
+        "Énergie solaire"
+      ]
+    },
+    {
+      "place": "Antananarivo",
+      "amenities": [
+        "Tenue en famille",
+        "Petit-déjeuner",
+        "Wi-Fi gratuit"
+      ]
+    },
+    {
+      "place": "Nosy Be",
+      "amenities": [
+        "Bord de plage",
+        "Kayaks",
+        "Dîner sur demande"
+      ]
+    },
+    {
+      "place": "Nord de Madagascar",
+      "amenities": [
+        "Balades guidées",
+        "Pension complète",
+        "Observation des étoiles"
+      ]
+    }
+  ],
+  "featured": {
+    "label": "Le préféré des clients",
+    "text": "Un refuge insulaire paisible avec une plage de sable blanc privée, une piscine à débordement face au coucher du soleil et une cuisine qui prépare la pêche du matin.",
+    "details": [
+      "12 chambres et suites",
+      "Transfert en bateau inclus",
+      "Idéal d'avril à novembre"
+    ]
+  },
+  "criteria": [
+    {
+      "title": "Visités par notre équipe",
+      "text": "Nous y dormons avant de le recommander. Aucun hébergement n'est proposé sans une vraie visite."
+    },
+    {
+      "title": "Local et responsable",
+      "text": "Nous privilégions les propriétaires de la région, des emplois équitables et une gestion à faible impact."
+    },
+    {
+      "title": "Des prix honnêtes",
+      "text": "Des tarifs clairs, taxes et petit-déjeuner indiqués : le devis est le prix que vous payez."
+    }
+  ],
+  "included": [
+    {
+      "title": "Annulation gratuite",
+      "text": "Pour la plupart des hébergements, jusqu'à 7 jours avant l'arrivée."
+    },
+    {
+      "title": "Accueil à l'aéroport et au port",
+      "text": "Réservez votre transfert avec l'hébergement."
+    },
+    {
+      "title": "Conseils locaux",
+      "text": "Restaurants, balades et coins cachés recommandés par nos experts."
+    },
+    {
+      "title": "Assistance 24h/24",
+      "text": "Une vraie personne en cas de problème."
+    }
+  ],
+  "faqs": [
+    {
+      "q": "Les prix sont-ils par personne ou par chambre ?",
+      "a": "Les prix affichés sont par chambre et par nuit, à partir de la basse saison. Votre devis indique le total exact pour vos dates et votre groupe."
+    },
+    {
+      "q": "Le petit-déjeuner est-il inclus ?",
+      "a": "Dans la plupart de nos hébergements, oui. Chaque hébergement précise ce qui est inclus, et nous vous indiquons clairement quand les repas sont en supplément."
+    },
+    {
+      "q": "Pouvez-vous trouver quelque chose pour une famille ou un grand groupe ?",
+      "a": "Oui. Dites-nous combien vous êtes et nous vous proposons des chambres familiales, des chambres communicantes ou une villa privée."
+    },
+    {
+      "q": "Puis-je changer mes dates après la réservation ?",
+      "a": "Dans la plupart des cas, oui, jusqu'à 7 jours avant l'arrivée et sous réserve de disponibilité. Les conditions exactes figurent dans votre devis."
+    },
+    {
+      "q": "Les hébergements ont-ils l'électricité et le Wi-Fi ?",
+      "a": "La plupart, oui, mais certains lodges isolés fonctionnent à l'énergie solaire avec une connexion limitée. Nous le précisons toujours à l'avance pour que vous puissiez choisir."
+    }
+  ],
+  "title": "Hébergement",
+  "home": "Accueil",
+  "fromPerNight": "À partir de {price} / nuit",
+  "enquire": "Se renseigner",
+  "staysTitle": "Trouvez l'hébergement idéal",
+  "tabsLabel": "Catégories d'hébergement",
+  "check": "Vérifier la disponibilité",
+  "criteriaTitle": "Comment nous choisissons nos hébergements",
+  "incTitle": "La tranquillité d'esprit, incluse",
+  "incText": "Réservez avec Noziwild et profitez d'avantages que vous n'auriez pas seul.",
+  "faqTitle": "Questions fréquentes",
+  "faqText": "Une autre question ? Notre équipe vous répond sous un jour ouvré.",
+  "ctaTitle": "Vous ne savez pas où dormir ?",
+  "ctaText": "Indiquez-nous vos dates, votre budget et votre façon de voyager. Nous vous proposerons les hébergements qui vous correspondent.",
+  "ctaButton": "Recevoir une suggestion gratuite"
+}

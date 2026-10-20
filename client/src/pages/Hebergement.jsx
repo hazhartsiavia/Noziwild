@@ -7,6 +7,8 @@ import Ramena from "../assets/images/Ramena.png";
 import Tana from "../assets/images/Tana.png";
 import Navbar from '../components/Navbar';
 import Footer from '../components/Footer';
+import { Trans, useT } from '../i18n/LanguageContext';
+import { localize } from '../i18n/localize';
 
 /* Constantes partagées : mêmes valeurs que dans les autres pages */
 const SECTION_WIDTH = "w-[90vw] lg:max-w-[90vw] xl:max-w-[95vw]"
@@ -20,8 +22,9 @@ const BUTTON = "text-sm font-medium px-5 py-2.5 rounded-full"
 const SECTION_GAP = "mt-[50px] md:mt-[100px]"
 
 /* ---------------------------- Données ---------------------------- */
+// Textes affichés : locales/<langue>/accommodation.json, posés sur ces données par localize()
 
-const intro = {
+const INTRO = {
   label: 'Where To Stay',
   title: 'Sleep Well, Wake Up Somewhere Special',
   text: 'From beachfront bungalows to family-run guesthouses, every Noziwild stay is visited, tested and chosen for its comfort, its welcome and its setting.',
@@ -32,7 +35,7 @@ const intro = {
   ],
 }
 
-const categories = [
+const CATEGORIES = [
   { id: 'all', label: 'All Stays' },
   { id: 'hotel', label: 'Hotels' },
   { id: 'lodge', label: 'Eco Lodges' },
@@ -40,7 +43,7 @@ const categories = [
   { id: 'guesthouse', label: 'Guesthouses' },
 ]
 
-const stays = [
+const STAYS = [
   { id: 1, category: 'bungalow', name: 'Ramena Sea Bungalows', place: 'Ramena, Diego Suarez', image: Ramena, price: 65, rating: 4.8, amenities: ['Sea view', 'Breakfast', 'Snorkeling'] },
   { id: 2, category: 'hotel', name: 'Nosy Iranja Retreat', place: 'Nosy Iranja', image: NosyIranja, price: 140, rating: 4.9, amenities: ['Infinity pool', 'Spa', 'Restaurant'] },
   { id: 3, category: 'lodge', name: 'Ambanja Cocoa Lodge', place: 'Ambanja', image: Ambanja, price: 75, rating: 4.7, amenities: ['Garden', 'Farm visits', 'Solar power'] },
@@ -49,7 +52,7 @@ const stays = [
   { id: 6, category: 'lodge', name: 'Baobab Safari Camp', place: 'Northern Madagascar', image: Deux, price: 110, rating: 4.7, amenities: ['Guided walks', 'Full board', 'Stargazing'] },
 ]
 
-const featured = {
+const FEATURED = {
   label: 'Guest Favorite',
   name: 'Nosy Iranja Retreat',
   place: 'Nosy Iranja',
@@ -58,20 +61,20 @@ const featured = {
   details: ['12 rooms and suites', 'Boat transfer included', 'Best from April to November'],
 }
 
-const criteria = [
+const CRITERIA = [
   { id: 1, title: 'Visited By Our Team', text: 'We sleep there before we recommend it. No stay is listed without a real visit.' },
   { id: 2, title: 'Local & Responsible', text: 'We favor owners from the region, fair jobs and low-impact ways of running a stay.' },
   { id: 3, title: 'Honest Prices', text: 'Clear rates with taxes and breakfast shown, so the quote is the price you pay.' },
 ]
 
-const included = [
+const INCLUDED = [
   { id: 1, title: 'Free Cancellation', text: 'On most stays, up to 7 days before arrival.' },
   { id: 2, title: 'Airport & Port Pickup', text: 'Book your transfer with the stay.' },
   { id: 3, title: 'Local Tips', text: 'Restaurants, walks and hidden spots from our experts.' },
   { id: 4, title: '24/7 Support', text: 'A real person if anything goes wrong.' },
 ]
 
-const faqs = [
+const FAQS = [
   { id: 1, q: 'Are the prices per person or per room?', a: 'Prices shown are per room, per night, starting from the lowest season. Your quote shows the exact total for your dates and group.' },
   { id: 2, q: 'Is breakfast included?', a: 'On most of our stays, yes. Each stay lists what is included, and we tell you clearly when meals cost extra.' },
   { id: 3, q: 'Can you find something for a family or large group?', a: 'Yes. Tell us how many people are traveling and we suggest family rooms, connected rooms or a private villa.' },
@@ -121,15 +124,16 @@ const PlusIcon = ({ open }) => (
 /* -------------------------- Composants --------------------------- */
 
 function Hero() {
+  const t = useT('accommodation')
   return (
     <section className={`${SECTION_WIDTH} relative flex items-center overflow-hidden rounded-3xl bg-slate-900 text-white min-h-[240px] md:min-h-[360px]`}>
       <img src={NosyLonjo} alt="" className="absolute inset-0 w-full h-full object-cover" />
       <div className="absolute inset-0 bg-slate-950/60" />
       <div className="relative w-full max-w-5xl mx-auto px-6 md:px-10 py-16">
-        <h1 className={PAGE_TITLE}>Accommodation</h1>
+        <h1 className={PAGE_TITLE}>{t('title')}</h1>
         <hr className="my-6 md:my-8 border-white/30" />
         <nav aria-label="Breadcrumb" className="text-sm md:text-base font-medium">
-          <a href="/" className="hover:underline underline-offset-4">Home</a> <span aria-hidden="true">/</span> Accommodation
+          <a href="/" className="hover:underline underline-offset-4">{t('home')}</a> <span aria-hidden="true">/</span> {t('title')}
         </nav>
       </div>
     </section>
@@ -137,6 +141,7 @@ function Hero() {
 }
 
 function Intro() {
+  const intro = localize(INTRO, useT('accommodation')('intro'))
   return (
     <div className="grid grid-cols-1 lg:grid-cols-[1.3fr_1fr] gap-8 lg:gap-16 items-center">
       <div>
@@ -157,6 +162,7 @@ function Intro() {
 }
 
 function StayCard({ stay }) {
+  const t = useT('accommodation')
   return (
     <article className="group flex flex-col rounded-xl bg-white p-3">
       <div className="relative aspect-[4/3] overflow-hidden rounded-md">
@@ -174,8 +180,8 @@ function StayCard({ stay }) {
           ))}
         </ul>
         <div className="mt-auto pt-6 flex items-center justify-between gap-3">
-          <p className="text-slate-600 text-sm">From <span className="text-xl md:text-2xl font-medium text-slate-900">${stay.price}</span> / night</p>
-          <a href="/contact" className={`bg-slate-800 hover:bg-slate-700 active:scale-95 transition text-white ${BUTTON}`}>Enquire</a>
+          <p className="text-slate-600 text-sm"><Trans text={t('fromPerNight')} values={{ price: <span className="text-xl md:text-2xl font-medium text-slate-900">${stay.price}</span> }} /></p>
+          <a href="/contact" className={`bg-slate-800 hover:bg-slate-700 active:scale-95 transition text-white ${BUTTON}`}>{t('enquire')}</a>
         </div>
       </div>
     </article>
@@ -183,14 +189,17 @@ function StayCard({ stay }) {
 }
 
 function Stays() {
+  const t = useT('accommodation')
+  const categories = localize(CATEGORIES, t('categories'))
+  const stays = localize(STAYS, t('stays'))
   const [category, setCategory] = useState('all')
   const list = category === 'all' ? stays : stays.filter((s) => s.category === category)
 
   return (
     <div className={SECTION_GAP}>
-      <h2 className={`${SECTION_TITLE} text-center mb-8 md:mb-12`}>Find Your Perfect Stay</h2>
+      <h2 className={`${SECTION_TITLE} text-center mb-8 md:mb-12`}>{t('staysTitle')}</h2>
 
-      <div className="mb-8 flex flex-wrap justify-center gap-2 md:gap-3" role="tablist" aria-label="Accommodation categories">
+      <div className="mb-8 flex flex-wrap justify-center gap-2 md:gap-3" role="tablist" aria-label={t('tabsLabel')}>
         {categories.map((c) => (
           <button
             key={c.id}
@@ -215,6 +224,8 @@ function Stays() {
 }
 
 function Featured() {
+  const t = useT('accommodation')
+  const featured = localize(FEATURED, t('featured'))
   return (
     <div className={`${SECTION_GAP} relative overflow-hidden rounded-3xl bg-slate-900 text-white min-h-[480px] md:min-h-[560px]`}>
       <img src={featured.image} alt={featured.name} className="absolute inset-0 w-full h-full object-cover" />
@@ -228,7 +239,7 @@ function Featured() {
           {featured.details.map((d) => <li key={d} className="flex items-center gap-2"><CheckIcon />{d}</li>)}
         </ul>
         <a href="/contact" className={`mt-6 self-start bg-[#C49849] hover:bg-[#b08339] active:scale-95 transition text-white ${BUTTON} md:px-6 md:py-3`}>
-          Check Availability
+          {t('check')}
         </a>
       </div>
     </div>
@@ -236,9 +247,11 @@ function Featured() {
 }
 
 function Criteria() {
+  const t = useT('accommodation')
+  const criteria = localize(CRITERIA, t('criteria'))
   return (
     <div className={SECTION_GAP}>
-      <h2 className={`${SECTION_TITLE} text-center mb-10 md:mb-16`}>How We Choose Our Stays</h2>
+      <h2 className={`${SECTION_TITLE} text-center mb-10 md:mb-16`}>{t('criteriaTitle')}</h2>
       <ul className="grid grid-cols-1 md:grid-cols-3 gap-4 md:gap-6">
         {criteria.map((c) => (
           <li key={c.id} className="rounded-2xl bg-white p-6 md:p-8">
@@ -253,12 +266,14 @@ function Criteria() {
 }
 
 function Included() {
+  const t = useT('accommodation')
+  const included = localize(INCLUDED, t('included'))
   return (
     <div className={`${SECTION_GAP} rounded-3xl bg-slate-900 text-white p-6 md:p-12`}>
       <div className="flex flex-col lg:flex-row lg:items-center lg:justify-between gap-5 lg:gap-12">
-        <h2 className={`${ON_IMAGE_TITLE} lg:max-w-[45%]`}>Peace Of Mind, Included</h2>
+        <h2 className={`${ON_IMAGE_TITLE} lg:max-w-[45%]`}>{t('incTitle')}</h2>
         <p className="text-sm md:text-lg text-white/70 leading-relaxed lg:max-w-lg">
-          Book with Noziwild and enjoy extras you would not get on your own.
+          {t('incText')}
         </p>
       </div>
       <div className="mt-8 md:mt-12 grid grid-cols-2 lg:grid-cols-4 gap-3 md:gap-5">
@@ -274,13 +289,15 @@ function Included() {
 }
 
 function Faq() {
+  const t = useT('accommodation')
+  const faqs = localize(FAQS, t('faqs'))
   const [open, setOpen] = useState(1)
 
   return (
     <div className={`${SECTION_GAP} grid grid-cols-1 lg:grid-cols-[1fr_1.6fr] gap-8 lg:gap-16`}>
       <div>
-        <h2 className={SECTION_TITLE}>Frequently Asked Questions</h2>
-        <p className={`mt-4 md:mt-6 ${SECTION_SUBTITLE}`}>Something else on your mind? Our team replies within one working day.</p>
+        <h2 className={SECTION_TITLE}>{t('faqTitle')}</h2>
+        <p className={`mt-4 md:mt-6 ${SECTION_SUBTITLE}`}>{t('faqText')}</p>
       </div>
       <div className="flex flex-col gap-3">
         {faqs.map((f) => {
@@ -306,20 +323,21 @@ function Faq() {
 }
 
 function Cta() {
+  const t = useT('accommodation')
   return (
     <div className={`${SECTION_GAP} relative overflow-hidden rounded-3xl min-h-[380px] md:min-h-[460px] flex`}>
       <img src={Ramena} alt="" className="absolute inset-0 w-full h-full object-cover" />
       <div className="absolute inset-0 bg-gradient-to-r from-black/70 via-black/40 to-black/10" />
       <div className="relative flex flex-col justify-end p-6 md:p-12 max-w-2xl">
-        <h2 className={ON_IMAGE_TITLE}>Not Sure Where To Stay?</h2>
+        <h2 className={ON_IMAGE_TITLE}>{t('ctaTitle')}</h2>
         <p className="mt-4 text-sm md:text-lg text-white/85 leading-relaxed">
-          Tell us your dates, budget and travel style. We will suggest the stays that fit.
+          {t('ctaText')}
         </p>
         <a
           href="/contact"
           className="mt-6 md:mt-8 self-start inline-flex items-center gap-3 rounded-full bg-white hover:bg-white/90 transition text-slate-900 pl-6 pr-2.5 py-2.5 font-medium"
         >
-          Get A Free Suggestion
+          {t('ctaButton')}
           <span className="w-10 h-10 rounded-full bg-[#C49849] flex items-center justify-center text-white"><ArrowIcon /></span>
         </a>
       </div>

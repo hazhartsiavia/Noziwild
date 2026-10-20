@@ -1,0 +1,179 @@
+{
+  "hero": {
+    "title": "Getting There Is Part of the Journey",
+    "text": "Private 4x4s, shared shuttles, domestic flights, boats and trains: we choose the right way to move between every stop, and we book it all for you.",
+    "ctaLabel": "Plan My Transfers",
+    "label": "Our Fleet",
+    "cardTitle": "Every Transfer, Handled",
+    "imageAlt": "A 4x4 driving along a scenic road",
+    "stats": [
+      {
+        "label": "Ways to Travel"
+      },
+      {
+        "label": "Assistance on Trip"
+      },
+      {
+        "label": "Licensed Drivers"
+      }
+    ]
+  },
+  "categories": [
+    {
+      "label": "All"
+    },
+    {
+      "label": "Land"
+    },
+    {
+      "label": "Air"
+    },
+    {
+      "label": "Sea"
+    }
+  ],
+  "transports": [
+    {
+      "name": "Private 4x4",
+      "capacity": "1–6 travelers",
+      "duration": "Flexible",
+      "text": "Your own vehicle and driver-guide. Stop wherever you like, at your own pace.",
+      "perks": [
+        "Door-to-door pickup",
+        "Air conditioning",
+        "English-speaking driver"
+      ]
+    },
+    {
+      "name": "Shared Minibus",
+      "capacity": "8–15 travelers",
+      "duration": "Fixed schedule",
+      "text": "A comfortable and affordable option on the main routes, ideal for solo travelers and groups.",
+      "perks": [
+        "Reserved seats",
+        "Luggage included",
+        "Best price"
+      ]
+    },
+    {
+      "name": "Domestic Flight",
+      "capacity": "1 seat or more",
+      "duration": "1–2 h",
+      "text": "Skip long road days. We book the seats and organize the airport transfers on both ends.",
+      "perks": [
+        "Ticket booking",
+        "Airport transfers",
+        "Flexible dates"
+      ]
+    },
+    {
+      "name": "Speedboat",
+      "capacity": "2–10 travelers",
+      "duration": "30 min – 2 h",
+      "text": "Fast and fun crossings to nearby islands, with life jackets and a skilled captain.",
+      "perks": [
+        "Safety equipment",
+        "Island hopping",
+        "Private or shared"
+      ]
+    },
+    {
+      "name": "Sailing Boat",
+      "capacity": "2–8 travelers",
+      "duration": "Half or full day",
+      "text": "A slower, scenic way to reach hidden beaches, with snorkeling stops and a picnic on board.",
+      "perks": [
+        "Snorkeling gear",
+        "Lunch on board",
+        "Sunset option"
+      ]
+    },
+    {
+      "name": "Scenic Train",
+      "capacity": "Per seat",
+      "duration": "Half or full day",
+      "text": "Watch villages and landscapes roll by on a slow ride you will not forget.",
+      "perks": [
+        "Window seats",
+        "Station transfers",
+        "Local snacks"
+      ]
+    }
+  ],
+  "steps": [
+    {
+      "title": "Tell Us Your Plan",
+      "text": "Share your dates, destinations and group size. Not sure yet? We suggest a route."
+    },
+    {
+      "title": "We Pick the Best Mix",
+      "text": "Our team combines road, air and sea so the trip stays smooth, safe and well paced."
+    },
+    {
+      "title": "Confirm & Pay Online",
+      "text": "You receive a clear quote with everything included, and confirm in a few clicks."
+    },
+    {
+      "title": "Travel With Support",
+      "text": "Meet your driver or captain on the day. Our team is one call away the whole time."
+    }
+  ],
+  "included": [
+    {
+      "title": "Trained Drivers",
+      "text": "Experienced, licensed and familiar with every road."
+    },
+    {
+      "title": "Insured Vehicles",
+      "text": "Regularly serviced vehicles with full insurance."
+    },
+    {
+      "title": "Fair, Fixed Prices",
+      "text": "No surprises: fuel, tolls and fees are in the quote."
+    },
+    {
+      "title": "24/7 Support",
+      "text": "A real person to help if your plans change."
+    }
+  ],
+  "faqs": [
+    {
+      "q": "Can I choose my own transport?",
+      "a": "Yes. Tell us what you prefer and we adapt the plan. If you have no preference, we recommend the best option for each leg."
+    },
+    {
+      "q": "Are meals and fuel included?",
+      "a": "Fuel, driver and tolls are always included in the quote. Meals are only included when the trip description says so."
+    },
+    {
+      "q": "How much luggage can I bring?",
+      "a": "One suitcase and one small bag per person is the standard. Domestic flights have stricter weight limits, and we tell you the exact allowance when you book."
+    },
+    {
+      "q": "Is it safe to travel by road?",
+      "a": "Our drivers are selected and trained by us, and we avoid night driving on difficult routes. We adapt schedules to road and weather conditions."
+    },
+    {
+      "q": "Can I change or cancel a booking?",
+      "a": "You can change dates free of charge up to 7 days before departure, subject to availability. Cancellation terms depend on the service and are shown in your quote."
+    },
+    {
+      "q": "Do you offer airport pickup?",
+      "a": "Yes. A driver waits for you at arrivals with a sign, even if your flight is delayed."
+    }
+  ],
+  "cta": {
+    "title": "Ready to Hit the Road?",
+    "text": "Tell us where you want to go and we will handle the rest.",
+    "label": "Get a Free Quote"
+  },
+  "ask": "Ask for this option",
+  "typesTitle": "Choose How You Travel",
+  "typesText": "Each option has its own pace and charm. Mix them freely across your trip.",
+  "tabsLabel": "Transport categories",
+  "howTitle": "How It Works",
+  "incTitle": "Included in Every Transfer",
+  "incText": "Comfort and safety are not options. They come with every vehicle, boat and seat we book.",
+  "faqTitle": "Frequently Asked Questions",
+  "faqText": "Can't find your answer? Our team replies within a few hours."
+}

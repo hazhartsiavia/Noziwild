@@ -1,0 +1,179 @@
+{
+  "hero": {
+    "title": "Il tragitto fa parte del viaggio",
+    "text": "4x4 privati, navette condivise, voli interni, barche e treni: scegliamo il modo giusto per spostarti tra una tappa e l'altra e prenotiamo tutto per te.",
+    "ctaLabel": "Organizza i miei trasferimenti",
+    "label": "La nostra flotta",
+    "cardTitle": "Ogni trasferimento, gestito",
+    "imageAlt": "Un 4x4 su una strada panoramica",
+    "stats": [
+      {
+        "label": "Modi di viaggiare"
+      },
+      {
+        "label": "Assistenza in viaggio"
+      },
+      {
+        "label": "Autisti autorizzati"
+      }
+    ]
+  },
+  "categories": [
+    {
+      "label": "Tutti"
+    },
+    {
+      "label": "Terra"
+    },
+    {
+      "label": "Aria"
+    },
+    {
+      "label": "Mare"
+    }
+  ],
+  "transports": [
+    {
+      "name": "4x4 privato",
+      "capacity": "1–6 viaggiatori",
+      "duration": "Flessibile",
+      "text": "Il tuo veicolo con autista-guida. Fermati dove vuoi, al tuo ritmo.",
+      "perks": [
+        "Servizio porta a porta",
+        "Aria condizionata",
+        "Autista che parla inglese"
+      ]
+    },
+    {
+      "name": "Minibus condiviso",
+      "capacity": "8–15 viaggiatori",
+      "duration": "Orari fissi",
+      "text": "Un'opzione comoda ed economica sulle tratte principali, ideale per chi viaggia da solo e per i gruppi.",
+      "perks": [
+        "Posti riservati",
+        "Bagagli inclusi",
+        "Miglior prezzo"
+      ]
+    },
+    {
+      "name": "Volo interno",
+      "capacity": "1 posto o più",
+      "duration": "1–2 h",
+      "text": "Evita lunghe giornate in auto. Prenotiamo i posti e organizziamo i trasferimenti da e per l'aeroporto.",
+      "perks": [
+        "Prenotazione biglietti",
+        "Trasferimenti aeroportuali",
+        "Date flessibili"
+      ]
+    },
+    {
+      "name": "Motoscafo",
+      "capacity": "2–10 viaggiatori",
+      "duration": "30 min – 2 h",
+      "text": "Traversate veloci e divertenti verso le isole vicine, con giubbotti di salvataggio e un capitano esperto.",
+      "perks": [
+        "Dotazioni di sicurezza",
+        "Di isola in isola",
+        "Privato o condiviso"
+      ]
+    },
+    {
+      "name": "Barca a vela",
+      "capacity": "2–8 viaggiatori",
+      "duration": "Mezza giornata o intera",
+      "text": "Un modo più lento e panoramico per raggiungere spiagge nascoste, con soste per lo snorkeling e picnic a bordo.",
+      "perks": [
+        "Attrezzatura da snorkeling",
+        "Pranzo a bordo",
+        "Opzione tramonto"
+      ]
+    },
+    {
+      "name": "Treno panoramico",
+      "capacity": "A posto",
+      "duration": "Mezza giornata o intera",
+      "text": "Guarda scorrere villaggi e paesaggi in un viaggio lento che non dimenticherai.",
+      "perks": [
+        "Posti finestrino",
+        "Trasferimenti in stazione",
+        "Spuntini locali"
+      ]
+    }
+  ],
+  "steps": [
+    {
+      "title": "Raccontaci il tuo programma",
+      "text": "Indicaci date, destinazioni e numero di persone. Non hai ancora deciso? Ti suggeriamo un itinerario."
+    },
+    {
+      "title": "Scegliamo il mix migliore",
+      "text": "Il nostro team combina strada, aria e mare perché il viaggio sia fluido, sicuro e ben ritmato."
+    },
+    {
+      "title": "Conferma e paga online",
+      "text": "Ricevi un preventivo chiaro e tutto compreso, e confermi in pochi clic."
+    },
+    {
+      "title": "Viaggia con assistenza",
+      "text": "Incontri autista o capitano il giorno stesso. Il nostro team è sempre a una telefonata di distanza."
+    }
+  ],
+  "included": [
+    {
+      "title": "Autisti formati",
+      "text": "Esperti, autorizzati e abituati a ogni strada."
+    },
+    {
+      "title": "Veicoli assicurati",
+      "text": "Veicoli sottoposti a regolare manutenzione e con assicurazione completa."
+    },
+    {
+      "title": "Prezzi giusti e fissi",
+      "text": "Nessuna sorpresa: carburante, pedaggi e spese sono nel preventivo."
+    },
+    {
+      "title": "Assistenza 24 ore su 24",
+      "text": "Una persona vera che ti aiuta se i tuoi programmi cambiano."
+    }
+  ],
+  "faqs": [
+    {
+      "q": "Posso scegliere il mezzo di trasporto?",
+      "a": "Sì. Dicci cosa preferisci e adattiamo il programma. Se non hai preferenze, ti consigliamo l'opzione migliore per ogni tratta."
+    },
+    {
+      "q": "Pasti e carburante sono inclusi?",
+      "a": "Carburante, autista e pedaggi sono sempre inclusi nel preventivo. I pasti solo quando lo indica la descrizione del viaggio."
+    },
+    {
+      "q": "Quanti bagagli posso portare?",
+      "a": "Di norma una valigia e una borsa piccola a persona. I voli interni hanno limiti di peso più severi: ti indichiamo la franchigia esatta al momento della prenotazione."
+    },
+    {
+      "q": "Viaggiare su strada è sicuro?",
+      "a": "I nostri autisti sono selezionati e formati da noi, ed evitiamo di guidare di notte sulle strade difficili. Adattiamo gli orari alle condizioni delle strade e del meteo."
+    },
+    {
+      "q": "Posso modificare o annullare una prenotazione?",
+      "a": "Puoi cambiare le date gratuitamente fino a 7 giorni prima della partenza, salvo disponibilità. Le condizioni di cancellazione dipendono dal servizio e sono indicate nel preventivo."
+    },
+    {
+      "q": "Offrite il servizio di accoglienza in aeroporto?",
+      "a": "Sì. Un autista ti aspetta agli arrivi con un cartello, anche se il volo è in ritardo."
+    }
+  ],
+  "cta": {
+    "title": "Pronto a metterti in viaggio?",
+    "text": "Dicci dove vuoi andare, al resto pensiamo noi.",
+    "label": "Richiedi un preventivo gratuito"
+  },
+  "ask": "Richiedi questa opzione",
+  "typesTitle": "Scegli come viaggiare",
+  "typesText": "Ogni opzione ha il suo ritmo e il suo fascino. Combinale liberamente durante il viaggio.",
+  "tabsLabel": "Categorie di trasporto",
+  "howTitle": "Come funziona",
+  "incTitle": "Incluso in ogni trasferimento",
+  "incText": "Comfort e sicurezza non sono optional. Accompagnano ogni veicolo, barca e posto che prenotiamo.",
+  "faqTitle": "Domande frequenti",
+  "faqText": "Non trovi la risposta? Il nostro team risponde in poche ore."
+}
