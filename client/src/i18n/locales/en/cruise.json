@@ -14,36 +14,6 @@
     "Nature": "Nature",
     "Culture": "Culture"
   },
-  "items": [
-    {
-      "title": "Nosy Iranja By Speedboat",
-      "text": "Walk the white sandbar, swim and snorkel with turtles."
-    },
-    {
-      "title": "Nosy Tanikely Snorkel",
-      "text": "Calm reef snorkelling in a marine park, with a beach stop."
-    },
-    {
-      "title": "Lokobe Forest And Hell-Ville",
-      "text": "Look for lemurs with a guide, then browse the town market."
-    },
-    {
-      "title": "Ylang-Ylang And Mount Passot",
-      "text": "A working distillery and a sunset-worthy viewpoint over crater lakes."
-    },
-    {
-      "title": "Emerald Sea And Sugar Loaf",
-      "text": "A boat across Diego Bay with swimming in shallow, bright water."
-    },
-    {
-      "title": "Red Tsingy And Old Town",
-      "text": "Sculpted red rock formations, then a walk through Diego Suarez."
-    },
-    {
-      "title": "Amber Mountain Rainforest",
-      "text": "Waterfalls, crater lakes and chameleons in a cool mountain park."
-    }
-  ],
   "promises": [
     {
       "title": "Back before all-aboard",

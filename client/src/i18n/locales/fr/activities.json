@@ -1,41 +1,4 @@
 {
-  "items": [
-    {
-      "name": "Observation des oiseaux",
-      "type": "Terre",
-      "duration": "3–5 h",
-      "level": "Facile",
-      "text": "Parcourez des sentiers paisibles au lever du soleil avec un naturaliste et observez des oiseaux rares que vous ne verrez nulle part ailleurs."
-    },
-    {
-      "name": "Nature et aventure",
-      "type": "Terre",
-      "duration": "Journée entière",
-      "level": "Modéré",
-      "text": "Randonnées, points de vue et cascades cachées, avec des guides qui connaissent chaque sentier et chaque raccourci."
-    },
-    {
-      "name": "Excursions en bateau",
-      "type": "Mer",
-      "duration": "Demi-journée ou journée",
-      "level": "Facile",
-      "text": "Traversez la baie vers des îles tranquilles et des plages de sable blanc, avec déjeuner et arrêts baignade en chemin."
-    },
-    {
-      "name": "Croisière en catamaran",
-      "type": "Mer",
-      "duration": "Journée entière",
-      "level": "Facile",
-      "text": "Naviguez confortablement le long de la côte, faites du snorkeling dans une eau claire et admirez le coucher du soleil depuis le pont."
-    },
-    {
-      "name": "Découverte de la faune et de la flore",
-      "type": "Terre",
-      "duration": "2–4 h",
-      "level": "Facile",
-      "text": "Rencontrez lémuriens, caméléons et orchidées dans la nature, avec un guide qui vous explique ce que vous voyez."
-    }
-  ],
   "faqs": [
     {
       "q": "Puis-je réserver une seule activité ?",

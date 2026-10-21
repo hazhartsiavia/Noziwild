@@ -13,41 +13,6 @@
       "label": "asistencia en destino"
     }
   ],
-  "formats": [
-    {
-      "tab": "1 mes",
-      "title": "Un mes de viaje sin prisas",
-      "text": "Dos o tres bases, sin correr. Combine una bahía, las Tierras Altas y un parque nacional, con tiempo para detenerse entre medias.",
-      "points": [
-        "Alojamientos amueblados en 2 o 3 regiones",
-        "Conductor privado para los traslados",
-        "Excursiones guiadas cada semana"
-      ],
-      "price": "Desde 1900 €"
-    },
-    {
-      "tab": "3 meses",
-      "title": "Una temporada en Madagascar",
-      "text": "Instálese en una región, teletrabaje o haga voluntariado y salga de excursión guiada los fines de semana. Organizamos alojamiento, transporte y contactos locales.",
-      "points": [
-        "Una sola base con internet fiable",
-        "Una escapada guiada cada mes",
-        "Clases de idioma y proyectos solidarios"
-      ],
-      "price": "Desde 4800 €"
-    },
-    {
-      "tab": "6 meses +",
-      "title": "Vivir aquí, con todo el apoyo",
-      "text": "Para investigadores, artistas, familias y jubilados. Nos ocupamos del alojamiento y los trámites, y seguimos cerca durante toda la estancia.",
-      "points": [
-        "Búsqueda de alojamiento de larga duración",
-        "Trámites y prórrogas de visado",
-        "Un interlocutor fijo durante toda su estancia"
-      ],
-      "price": "A consultar"
-    }
-  ],
   "weeks": [
     {
       "week": "Semana 1",

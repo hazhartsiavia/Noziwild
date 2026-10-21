@@ -61,6 +61,7 @@ Les formulaires sont limités à 20 envois par adresse IP toutes les 10 minutes.
 Le site a un espace d'administration sur `/admin`, réservé aux comptes `admin` :
 
 - **Circuits** : publier / masquer, changer l'ordre, créer, modifier (textes, photos, itinéraire jour par jour), supprimer.
+- **Offers** : activités, excursions, excursions croisière, formules long séjour et idées sur mesure (mêmes réglages).
 - **Inbox** : demandes reçues (formulaires, demandes de circuits, sur-mesure, contact), newsletter, comptes.
 
 Pour donner l'accès à un compte (il doit d'abord exister : inscription sur `/register` ou connexion Google) :
@@ -115,6 +116,34 @@ Champs d'un circuit : `slug`, `title`, `region`, `days`, `level`, `price` (euros
 `day` ("Day 1"), `title`, `text`, `stay`, `meals`, `images[]`. Un champ invalide renvoie une erreur 400 qui le nomme.
 
 Les réservations et questions envoyées depuis une page circuit arrivent dans `quick_requests` (type `circuit`).
+
+## Offres (activités, excursions, croisière, long séjour, sur mesure)
+
+Les offres des pages `/activities`, `/excurssions`, `/cruise-excurssion`, `/longstay` et `/tailor-made`
+sont dans la table `offers`. Elles se gèrent dans l'admin, onglet **Offers** : créer, modifier,
+masquer, changer l'ordre, changer la photo, traduire. Au premier démarrage, les offres de
+`sql/offers.seed.json` (avec leurs traductions) sont ajoutées pour chaque type encore vide.
+
+| Type (`kind`) | Page | Champs propres |
+|---|---|---|
+| `activity` | Activités | `price`, `type`, `duration`, `level`, `group`, `months` (12 valeurs : 0 possible, 1 bon, 2 idéal) |
+| `excursion` | Excursions | `price`, `place`, `region` (North, Highlands, West, East), `length` (half, day, multi), `duration`, `group`, `level`, `link` |
+| `cruise` | Excursions croisière | `price`, `port` (nosybe, diego), `tag` (Sea, Nature, Culture), `hours` |
+| `longstay` | Long séjour | `tab`, `priceLabel`, `points[]` |
+| `idea` | Sur mesure (idées de départ) | `interests[]`, `travellers` (Solo, Couple, Family, Friends) |
+
+Toutes ont aussi `title`, `text`, `image`, `sortOrder`, `isPublished` et `translations`
+(`{ "fr": { "title": ..., "text": ..., "duration": ... } }`, un champ vide s'affiche en anglais).
+
+| Méthode | Route | Rôle |
+|---|---|---|
+| GET | `/api/offers?kind=activity&lang=fr` | Offres publiées d'un type, dans la langue demandée |
+| GET | `/api/admin/offers?kind=activity` | Toutes les offres d'un type |
+| GET | `/api/admin/offers/:id` | Une offre, avec ses traductions |
+| POST | `/api/admin/offers` | Crée une offre (`kind` obligatoire) |
+| PUT | `/api/admin/offers/:id` | Remplace une offre (son type ne change pas) |
+| PATCH | `/api/admin/offers/:id` | Réglages rapides : `isPublished`, `sortOrder` |
+| DELETE | `/api/admin/offers/:id` | Supprime une offre |
 
 ## Langues du site
 

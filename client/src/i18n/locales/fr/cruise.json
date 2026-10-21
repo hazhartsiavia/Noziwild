@@ -14,36 +14,6 @@
     "Nature": "Nature",
     "Culture": "Culture"
   },
-  "items": [
-    {
-      "title": "Nosy Iranja en vedette",
-      "text": "Marchez sur le banc de sable blanc, baignez-vous et nagez avec les tortues."
-    },
-    {
-      "title": "Snorkeling à Nosy Tanikely",
-      "text": "Snorkeling sur un récif calme dans un parc marin, avec un arrêt plage."
-    },
-    {
-      "title": "Forêt de Lokobe et Hell-Ville",
-      "text": "Cherchez les lémuriens avec un guide, puis flânez au marché de la ville."
-    },
-    {
-      "title": "Ylang-ylang et mont Passot",
-      "text": "Une distillerie en activité et un point de vue sur les lacs de cratère, idéal au coucher du soleil."
-    },
-    {
-      "title": "Mer d'Émeraude et Pain de Sucre",
-      "text": "Une traversée de la baie de Diego avec baignade dans une eau peu profonde et lumineuse."
-    },
-    {
-      "title": "Tsingy rouges et vieille ville",
-      "text": "Des formations de roche rouge sculptées, puis une balade dans Diego Suarez."
-    },
-    {
-      "title": "Forêt humide de la Montagne d'Ambre",
-      "text": "Cascades, lacs de cratère et caméléons dans un parc de montagne au climat frais."
-    }
-  ],
   "promises": [
     {
       "title": "De retour avant l'embarquement",

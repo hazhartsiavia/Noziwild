@@ -1,12 +1,13 @@
-// Cadre de l'espace admin (/admin/...) : réservé aux comptes "admin", onglets Circuits / Inbox
+// Cadre de l'espace admin (/admin/...) : réservé aux comptes "admin", onglets Circuits / Offers / Inbox
 import React from 'react'
 import { Link, Navigate, NavLink, Outlet, useLocation } from 'react-router-dom'
-import { Inbox, Map } from 'lucide-react'
+import { Inbox, LayoutGrid, Map } from 'lucide-react'
 import Navbar from '../../components/Navbar'
 import { useAuth } from '../../context/AuthContext'
 
 const TABS = [
   { to: '/admin/circuits', label: 'Circuits', icon: Map },
+  { to: '/admin/offers', label: 'Offers', icon: LayoutGrid },
   { to: '/admin/inbox', label: 'Inbox', icon: Inbox },
 ]
 

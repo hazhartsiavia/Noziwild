@@ -13,41 +13,6 @@
       "label": "Betreuung vor Ort"
     }
   ],
-  "formats": [
-    {
-      "tab": "1 Monat",
-      "title": "Ein Monat langsames Reisen",
-      "text": "Zwei oder drei Standorte, ganz ohne Eile. Kombinieren Sie eine Bucht, das Hochland und einen Nationalpark – mit Zeit zum Innehalten dazwischen.",
-      "points": [
-        "Möblierte Unterkünfte in 2 bis 3 Regionen",
-        "Privater Fahrer für die Transfers",
-        "Jede Woche geführte Ausflüge"
-      ],
-      "price": "Ab 1.900 €"
-    },
-    {
-      "tab": "3 Monate",
-      "title": "Eine Saison in Madagaskar",
-      "text": "Lassen Sie sich in einer Region nieder, arbeiten Sie remote oder engagieren Sie sich ehrenamtlich und machen Sie am Wochenende geführte Ausflüge. Wir kümmern uns um Unterkunft, Transport und lokale Kontakte.",
-      "points": [
-        "Ein fester Wohnsitz mit zuverlässigem Internet",
-        "Jeden Monat eine geführte Auszeit",
-        "Sprachunterricht und Gemeinschaftsprojekte"
-      ],
-      "price": "Ab 4.800 €"
-    },
-    {
-      "tab": "6 Monate +",
-      "title": "Hier leben, rundum betreut",
-      "text": "Für Forschende, Kunstschaffende, Familien und Ruheständler. Wir regeln Wohnung und Formalitäten und bleiben während des ganzen Aufenthalts an Ihrer Seite.",
-      "points": [
-        "Suche nach einer Langzeitunterkunft",
-        "Formalitäten und Visumverlängerungen",
-        "Ein fester Ansprechpartner für Ihren ganzen Aufenthalt"
-      ],
-      "price": "Auf Anfrage"
-    }
-  ],
   "weeks": [
     {
       "week": "Woche 1",

@@ -12,64 +12,6 @@
     "Journée entière",
     "2 jours ou plus"
   ],
-  "items": [
-    {
-      "title": "Journée dans la vallée du cacao et des épices",
-      "duration": "1 jour",
-      "group": "Jusqu'à 8 personnes",
-      "level": "Facile",
-      "text": "Suivez le cacao de l'arbre au séchoir et rencontrez les producteurs le long du Sambirano."
-    },
-    {
-      "title": "La baie de Ramena à la voile",
-      "duration": "Demi-journée",
-      "group": "Jusqu'à 10 personnes",
-      "level": "Facile",
-      "text": "Une matinée sur l'eau avec des arrêts baignade dans la mer d'Émeraude."
-    },
-    {
-      "title": "Traversée d'Ankify à Nosy Be",
-      "duration": "3 heures",
-      "group": "Jusqu'à 12 personnes",
-      "level": "Facile",
-      "text": "Une belle route et une traversée en vedette, avec déjeuner au bord de l'eau."
-    },
-    {
-      "title": "Journée au banc de sable de Nosy Iranja",
-      "duration": "1 jour",
-      "group": "Jusqu'à 12 personnes",
-      "level": "Facile",
-      "text": "Marchez sur le banc de sable blanc, nagez avec les tortues et montez au phare."
-    },
-    {
-      "title": "Antananarivo et Ambohimanga",
-      "duration": "1 jour",
-      "group": "Jusqu'à 8 personnes",
-      "level": "Facile",
-      "text": "La vieille ville, le Rova et la colline royale sacrée au nord de la capitale."
-    },
-    {
-      "title": "L'Allée des Baobabs au coucher du soleil",
-      "duration": "Demi-journée",
-      "group": "Jusqu'à 10 personnes",
-      "level": "Facile",
-      "text": "Arrivez avant la foule et regardez la lumière teinter les troncs d'orange."
-    },
-    {
-      "title": "Randonnée dans la forêt de Manongarivo",
-      "duration": "2 jours",
-      "group": "Jusqu'à 6 personnes",
-      "level": "Sportif",
-      "text": "Des sentiers guidés dans une réserve protégée, avec camping en option."
-    },
-    {
-      "title": "Andasibe : l'indri et balade nocturne",
-      "duration": "2 jours",
-      "group": "Jusqu'à 8 personnes",
-      "level": "Modéré",
-      "text": "Pistez l'indri à l'aube et observez les lémuriens nocturnes à la nuit tombée."
-    }
-  ],
   "steps": [
     {
       "title": "Prise en charge à l'hôtel",

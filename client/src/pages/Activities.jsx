@@ -9,8 +9,10 @@ import Navbar from '../components/Navbar';
 import Footer from '../components/Footer';
 import { gsap } from 'gsap'
 import { ScrollTrigger } from 'gsap/ScrollTrigger'
+import OffersStatus from '../components/OffersStatus'
 import { Trans, useLanguage, useT } from '../i18n/LanguageContext'
-import { monthName } from '../utils/format'
+import { formatPrice, monthName } from '../utils/format'
+import { useOffers } from '../utils/useOffers'
 
 gsap.registerPlugin(ScrollTrigger)
 
@@ -24,24 +26,8 @@ const BUTTON = "text-sm font-medium px-5 py-2.5 rounded-full md:px-6 md:py-3 act
 const SECTION_GAP = "mt-[60px] md:mt-[120px]"
 
 /* ---------------------------- Données ---------------------------- */
-// Textes affichés : locales/<langue>/activities.json (items et faqs dans le même ordre qu'ici)
-
-const activities = [
-  { id: 1, name: 'Birdwatching', type: 'Land', image: Tana, duration: '3–5 h', level: 'Easy', group: '2–8', price: 35, text: 'Walk quiet trails at sunrise with a naturalist and spot rare birds you will not see anywhere else.' },
-  { id: 2, name: 'Nature & Adventure', type: 'Land', image: Deux, duration: 'Full day', level: 'Moderate', group: '2–10', price: 55, text: 'Hikes, viewpoints and hidden waterfalls, led by guides who know every path and every shortcut.' },
-  { id: 3, name: 'Cruise Boat Excursions', type: 'Sea', image: NosyIranja, duration: 'Half or full day', level: 'Easy', group: '4–20', price: 45, text: 'Cross the bay to quiet islands and white-sand beaches, with lunch and swimming stops on the way.' },
-  { id: 4, name: 'Catamaran Cruise', type: 'Sea', image: Ramena, duration: 'Full day', level: 'Easy', group: '2–12', price: 85, text: 'Sail in comfort along the coast, snorkel in clear water and watch the sunset from the deck.' },
-  { id: 5, name: 'Wildlife & Flora Discovery', type: 'Land', image: Ambanja, duration: '2–4 h', level: 'Easy', group: '2–10', price: 30, text: 'Meet lemurs, chameleons and orchids in the wild, with a guide who explains what you are seeing.' },
-]
-
-// 0 = possible, 1 = bon, 2 = idéal (exemples, à adapter à tes vraies saisons)
-const seasons = [
-  { name: 'Birdwatching', values: [0, 0, 0, 1, 1, 1, 1, 1, 2, 2, 2, 1] },
-  { name: 'Nature & Adventure', values: [0, 0, 0, 1, 2, 2, 2, 2, 2, 1, 0, 0] },
-  { name: 'Cruise Boat Excursions', values: [0, 0, 0, 1, 2, 2, 2, 2, 2, 2, 1, 0] },
-  { name: 'Catamaran Cruise', values: [0, 0, 0, 1, 2, 2, 2, 2, 2, 2, 1, 0] },
-  { name: 'Wildlife & Flora Discovery', values: [1, 1, 1, 1, 2, 2, 2, 2, 2, 2, 1, 1] },
-]
+// Les activités (textes, prix, photos, meilleure période) sont en base : admin > Offers > Activities.
+// Autres textes de la page : locales/<langue>/activities.json
 
 const moments = [Ramena, NosyIranja, Tana, NosyLonjo, Deux, Ambanja]
 
@@ -59,16 +45,12 @@ const ArrowIcon = () => <Svg className="w-5 h-5"><path d="M5 12h14M13 6l6 6-6 6"
 
 /* -------------------------- Composants --------------------------- */
 
-// Activités avec leurs textes dans la langue du site
-function useActivities() {
-  const items = useT('activities')('items')
-  return activities.map((a, i) => ({ ...a, ...items[i] }))
-}
+// Numéro affiché devant chaque activité : 01, 02...
+const number = (i) => String(i + 1).padStart(2, '0')
 
 // Hero : grande image avec l'index des activités (comme un menu)
-function Hero() {
+function Hero({ list }) {
   const t = useT('activities')
-  const list = useActivities()
   return (
     <section className="relative overflow-hidden rounded-3xl bg-[#084838] text-white min-h-[540px] md:min-h-[620px] flex">
       <img src={NosyLonjo} alt="" className="absolute inset-0 w-full h-full object-cover" />
@@ -93,15 +75,15 @@ function Hero() {
 
         <nav data-hero aria-label={t('index')}>
           <ol className="flex flex-col gap-2 md:gap-3">
-            {list.map((a) => (
+            {list.map((a, i) => (
               <li key={a.id}>
                 <a
                   href="#activities"
                   className="flex items-center justify-between gap-4 rounded-2xl border border-white/20 bg-white/10 backdrop-blur-md px-5 py-3 md:py-4 hover:bg-white/20 transition"
                 >
                   <span className="flex items-center gap-4">
-                    <span className="text-sm tabular-nums text-[#E6C58A]">{String(a.id).padStart(2, '0')}</span>
-                    <span className="text-base md:text-lg font-medium">{a.name}</span>
+                    <span className="text-sm tabular-nums text-[#E6C58A]">{number(i)}</span>
+                    <span className="text-base md:text-lg font-medium">{a.title}</span>
                   </span>
                   <ArrowIcon />
                 </a>
@@ -115,9 +97,9 @@ function Hero() {
 }
 
 // Carrousel horizontal : cartes hautes avec défilement, boutons prev/next et barre de progression
-function ActivityCarousel() {
+function ActivityCarousel({ list, status }) {
   const t = useT('activities')
-  const list = useActivities()
+  const { lang } = useLanguage()
   const trackRef = useRef(null)
   const [pos, setPos] = useState({ progress: 0, start: true, end: false })
 
@@ -128,11 +110,12 @@ function ActivityCarousel() {
     setPos({ progress: max > 0 ? el.scrollLeft / max : 0, start: el.scrollLeft <= 4, end: el.scrollLeft >= max - 4 })
   }
 
+  // Recalculé quand les activités arrivent de l'API
   useEffect(() => {
     update()
     window.addEventListener('resize', update)
     return () => window.removeEventListener('resize', update)
-  }, [])
+  }, [list.length])
 
   const scrollByCard = (dir) => {
     const el = trackRef.current
@@ -163,28 +146,29 @@ function ActivityCarousel() {
         </div>
       </div>
 
+      <OffersStatus status={status} empty={list.length === 0} />
       <div
         ref={trackRef}
         onScroll={update}
         className="flex gap-4 overflow-x-auto snap-x snap-mandatory scroll-smooth pb-2 [scrollbar-width:none] [&::-webkit-scrollbar]:hidden"
       >
-        {list.map((a) => (
+        {list.map((a, i) => (
           <a
             key={a.id}
-            href="/contact"
+            href={`/contact?place=${encodeURIComponent(a.title)}`}
             className="group relative snap-start shrink-0 w-[82%] sm:w-[46%] lg:w-[31.5%] xl:w-[24%] h-[480px] md:h-[540px] overflow-hidden rounded-3xl bg-[#084838] text-white flex"
           >
-            <img src={a.image} alt={a.name} className="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" />
+            <img src={a.image} alt={a.title} className="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" />
             <div className="absolute inset-0 bg-gradient-to-t from-black/85 via-black/25 to-transparent" />
 
             <div className="relative flex flex-col justify-between w-full p-5 md:p-6">
               <div className="flex items-center justify-between">
-                <span className="rounded-full bg-white/90 text-slate-900 text-sm font-medium px-3 py-1">{String(a.id).padStart(2, '0')}</span>
+                <span className="rounded-full bg-white/90 text-slate-900 text-sm font-medium px-3 py-1">{number(i)}</span>
                 <span className="rounded-full border border-white/40 bg-white/10 backdrop-blur-sm text-xs md:text-sm px-3 py-1">{a.type}</span>
               </div>
 
               <div>
-                <h3 className="text-2xl md:text-3xl font-medium leading-tight tracking-tight">{a.name}</h3>
+                <h3 className="text-2xl md:text-3xl font-medium leading-tight tracking-tight">{a.title}</h3>
                 <p className="mt-3 text-sm text-white/85 leading-relaxed">{a.text}</p>
                 <ul className="mt-4 flex flex-wrap gap-x-4 gap-y-1 text-xs md:text-sm text-white/90">
                   <li className="flex items-center gap-1.5"><ClockIcon />{a.duration}</li>
@@ -192,7 +176,7 @@ function ActivityCarousel() {
                   <li className="flex items-center gap-1.5"><UsersIcon />{a.group}</li>
                 </ul>
                 <div className="mt-5 pt-4 border-t border-white/25 flex items-center justify-between">
-                  <p className="text-sm text-white/80"><Trans text={t('fromPerPerson')} values={{ price: <span className="text-xl md:text-2xl font-medium text-white">${a.price}</span> }} /></p>
+                  <p className="text-sm text-white/80"><Trans text={t('fromPerPerson')} values={{ price: <span className="text-xl md:text-2xl font-medium text-white">{formatPrice(a.price, lang)}</span> }} /></p>
                   <span className="w-10 h-10 rounded-full bg-[#C49849] flex items-center justify-center transition group-hover:translate-x-1"><ArrowIcon /></span>
                 </div>
               </div>
@@ -210,10 +194,9 @@ function ActivityCarousel() {
 }
 
 // Meilleure période : tableau visuel activité x mois
-function BestTime() {
+function BestTime({ list }) {
   const t = useT('activities')
   const { lang } = useLanguage()
-  const names = t('items').map((a) => a.name)
   const levels = t('levels')
   const cell = ['bg-[#084838]/10', 'bg-[#C49849]/40', 'bg-[#C49849]']
   return (
@@ -229,10 +212,10 @@ function BestTime() {
             <span />
             {Array.from({ length: 12 }, (_, i) => <span key={i} className={`text-center ${META_TEXT} text-slate-600`}>{monthName(i + 1, lang, 'narrow')}</span>)}
 
-            {seasons.map((row, r) => (
-              <React.Fragment key={row.name}>
-                <span className="pr-3 text-sm md:text-base font-medium text-slate-800">{names[r]}</span>
-                {row.values.map((v, i) => (
+            {list.map((row) => (
+              <React.Fragment key={row.id}>
+                <span className="pr-3 text-sm md:text-base font-medium text-slate-800">{row.title}</span>
+                {row.months.map((v, i) => (
                   <span key={i} className={`h-8 md:h-10 rounded-md ${cell[v]}`} title={levels[v]} />
                 ))}
               </React.Fragment>
@@ -354,6 +337,7 @@ function Cta() {
 
 function Activities() {
   const contentRef = useRef(null)
+  const { offers: list, status } = useOffers('activity')
 
   useLayoutEffect(() => {
     // Pas d'animation si l'utilisateur a demandé moins de mouvement
@@ -371,11 +355,6 @@ function Activities() {
         })
       })
 
-      // Les cartes du carrousel arrivent l'une après l'autre
-      gsap.from('#activities a', {
-        y: 40, opacity: 0, duration: 0.8, ease: 'power3.out', stagger: 0.1,
-        scrollTrigger: { trigger: '#activities', start: 'top 80%', once: true },
-      })
     }, contentRef)
 
     const refresh = () => ScrollTrigger.refresh()
@@ -387,14 +366,27 @@ function Activities() {
     }
   }, [])
 
+  // Les cartes du carrousel arrivent l'une après l'autre, une fois chargées depuis l'API
+  useLayoutEffect(() => {
+    if (status !== 'ready' || window.matchMedia('(prefers-reduced-motion: reduce)').matches) return undefined
+    const ctx = gsap.context(() => {
+      gsap.from('#activities a', {
+        y: 40, opacity: 0, duration: 0.8, ease: 'power3.out', stagger: 0.1,
+        scrollTrigger: { trigger: '#activities', start: 'top 80%', once: true },
+      })
+    }, contentRef)
+    ScrollTrigger.refresh()
+    return () => ctx.revert()
+  }, [status])
+
   return (
     <>
     <section className="w-full pt-0 pb-12 md:pb-20 bg-[#D5E8E2] flex flex-col items-center">
       <Navbar />
       <div ref={contentRef} className={`${SECTION_WIDTH} mt-8 md:mt-12`}>
-        <Hero />
-        <ActivityCarousel />
-        <BestTime />
+        <Hero list={list} />
+        <ActivityCarousel list={list} status={status} />
+        {list.length > 0 && <BestTime list={list} />}
         <Moments />
         <Faq />
         <Cta />

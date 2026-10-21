@@ -1,41 +1,4 @@
 {
-  "items": [
-    {
-      "name": "Birdwatching",
-      "type": "Land",
-      "duration": "3–5 h",
-      "level": "Easy",
-      "text": "Walk quiet trails at sunrise with a naturalist and spot rare birds you will not see anywhere else."
-    },
-    {
-      "name": "Nature & Adventure",
-      "type": "Land",
-      "duration": "Full day",
-      "level": "Moderate",
-      "text": "Hikes, viewpoints and hidden waterfalls, led by guides who know every path and every shortcut."
-    },
-    {
-      "name": "Cruise Boat Excursions",
-      "type": "Sea",
-      "duration": "Half or full day",
-      "level": "Easy",
-      "text": "Cross the bay to quiet islands and white-sand beaches, with lunch and swimming stops on the way."
-    },
-    {
-      "name": "Catamaran Cruise",
-      "type": "Sea",
-      "duration": "Full day",
-      "level": "Easy",
-      "text": "Sail in comfort along the coast, snorkel in clear water and watch the sunset from the deck."
-    },
-    {
-      "name": "Wildlife & Flora Discovery",
-      "type": "Land",
-      "duration": "2–4 h",
-      "level": "Easy",
-      "text": "Meet lemurs, chameleons and orchids in the wild, with a guide who explains what you are seeing."
-    }
-  ],
   "faqs": [
     {
       "q": "Can I book just one activity?",

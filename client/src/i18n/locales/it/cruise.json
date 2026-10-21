@@ -14,36 +14,6 @@
     "Nature": "Natura",
     "Culture": "Cultura"
   },
-  "items": [
-    {
-      "title": "Nosy Iranja in motoscafo",
-      "text": "Cammina sulla lingua di sabbia bianca, nuota e fai snorkeling con le tartarughe."
-    },
-    {
-      "title": "Snorkeling a Nosy Tanikely",
-      "text": "Snorkeling tranquillo sulla barriera in un parco marino, con sosta in spiaggia."
-    },
-    {
-      "title": "Foresta di Lokobe e Hell-Ville",
-      "text": "Cerca i lemuri con una guida, poi passeggia al mercato cittadino."
-    },
-    {
-      "title": "Ylang-ylang e Mont Passot",
-      "text": "Una distilleria in attività e un belvedere sui laghi craterici, perfetto al tramonto."
-    },
-    {
-      "title": "Mare di Smeraldo e Pan di Zucchero",
-      "text": "Una traversata della baia di Diego con bagni in acque basse e luminose."
-    },
-    {
-      "title": "Tsingy Rossi e città vecchia",
-      "text": "Formazioni di roccia rossa scolpite, poi una passeggiata a Diego Suarez."
-    },
-    {
-      "title": "Foresta pluviale della Montagne d'Ambre",
-      "text": "Cascate, laghi craterici e camaleonti in un fresco parco di montagna."
-    }
-  ],
   "promises": [
     {
       "title": "Rientro prima dell'imbarco",

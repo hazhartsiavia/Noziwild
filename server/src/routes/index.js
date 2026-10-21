@@ -17,6 +17,15 @@ import {
   deleteCircuit,
   patchCircuit,
 } from '../controllers/circuitsController.js'
+import {
+  listOffers,
+  adminListOffers,
+  adminGetOffer,
+  createOffer,
+  updateOffer,
+  patchOffer,
+  deleteOffer,
+} from '../controllers/offersController.js'
 import { listUploads, uploadImage } from '../controllers/uploadsController.js'
 import { requireAdmin } from '../middlewares/requireAdmin.js'
 import { rateLimit } from '../middlewares/rateLimit.js'
@@ -57,14 +66,23 @@ router.post('/newsletter', formLimiter, subscribeNewsletter)
 router.get('/circuits', listCircuits)
 router.get('/circuits/:slug', getCircuit)
 
-// Gestion des circuits et des photos (réservé à l'équipe Noziwild)
-// Déclarées avant /admin/:resource, sinon "circuits" serait pris pour une ressource générique
+// Offres des pages Activités, Excursions, Excursions croisière, Long séjour, Sur mesure
+router.get('/offers', listOffers)
+
+// Gestion des circuits, des offres et des photos (réservé à l'équipe Noziwild)
+// Déclarées avant /admin/:resource, sinon "circuits" ou "offers" serait pris pour une ressource générique
 router.get('/admin/circuits', requireAdmin, adminListCircuits)
 router.get('/admin/circuits/:slug', requireAdmin, adminGetCircuit)
 router.post('/admin/circuits', requireAdmin, createCircuit)
 router.put('/admin/circuits/:slug', requireAdmin, updateCircuit)
 router.patch('/admin/circuits/:slug', requireAdmin, patchCircuit)
 router.delete('/admin/circuits/:slug', requireAdmin, deleteCircuit)
+router.get('/admin/offers', requireAdmin, adminListOffers)
+router.get('/admin/offers/:id', requireAdmin, adminGetOffer)
+router.post('/admin/offers', requireAdmin, createOffer)
+router.put('/admin/offers/:id', requireAdmin, updateOffer)
+router.patch('/admin/offers/:id', requireAdmin, patchOffer)
+router.delete('/admin/offers/:id', requireAdmin, deleteOffer)
 router.get('/admin/uploads', requireAdmin, listUploads)
 router.post('/admin/uploads', requireAdmin, uploadImage)
 

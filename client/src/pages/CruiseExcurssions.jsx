@@ -1,14 +1,12 @@
 import React, { useState } from 'react'
 import Ramena from '../assets/images/Ramena.png'
 import NosyIranja from '../assets/images/NosyIranja.png'
-import NosyLonjo from '../assets/images/NosyLonjo.png'
-import Ambanja from '../assets/images/Ambanja.png'
-import Deux from '../assets/images/2.jpg'
-import Tana from '../assets/images/Tana.png'
 import Navbar from '../components/Navbar'
 import Footer from '../components/Footer'
+import OffersStatus from '../components/OffersStatus'
 import { Trans, useLanguage, useT } from '../i18n/LanguageContext'
 import { formatPrice } from '../utils/format'
+import { useOffers } from '../utils/useOffers'
 
 const W = 'w-[90vw] lg:max-w-[95vw]'
 const GOLD = 'bg-[#C49849] hover:bg-[#a9813a]'
@@ -16,22 +14,13 @@ const BTN = 'inline-flex items-center justify-center text-sm md:text-base font-m
 const H2 = 'text-3xl sm:text-4xl md:text-5xl font-medium leading-[1.1] tracking-tight text-slate-900'
 
 /* ---------------------------- Données ---------------------------- */
-/* hours = durée totale, transferts depuis et vers le quai compris
-   Textes affichés : locales/<langue>/cruise.json (listes dans le même ordre qu'ici) */
+/* Les excursions (textes, prix, photos, port, durée) sont en base : admin > Offers > Cruise excursions.
+   hours = durée totale, transferts depuis et vers le quai compris ; port = id d'un des ports ci-dessous.
+   Autres textes de la page : locales/<langue>/cruise.json (listes dans le même ordre qu'ici) */
 
 const ports = [
   { id: 'nosybe', name: 'Nosy Be', sub: 'Port of Hell-Ville', text: 'Islands, lemur forest and ylang-ylang country.', image: NosyIranja },
   { id: 'diego', name: 'Diego Suarez', sub: 'Antsiranana', text: 'A vast bay, red rock formations and mountain rainforest.', image: Ramena },
-]
-
-const excursions = [
-  { id: 1, port: 'nosybe', title: 'Nosy Iranja By Speedboat', hours: 7, price: 110, tag: 'Sea', image: NosyLonjo, text: 'Walk the white sandbar, swim and snorkel with turtles.' },
-  { id: 2, port: 'nosybe', title: 'Nosy Tanikely Snorkel', hours: 4.5, price: 70, tag: 'Sea', image: NosyIranja, text: 'Calm reef snorkelling in a marine park, with a beach stop.' },
-  { id: 3, port: 'nosybe', title: 'Lokobe Forest And Hell-Ville', hours: 4, price: 65, tag: 'Nature', image: Ambanja, text: 'Look for lemurs with a guide, then browse the town market.' },
-  { id: 4, port: 'nosybe', title: 'Ylang-Ylang And Mount Passot', hours: 3.5, price: 50, tag: 'Culture', image: Tana, text: 'A working distillery and a sunset-worthy viewpoint over crater lakes.' },
-  { id: 5, port: 'diego', title: 'Emerald Sea And Sugar Loaf', hours: 5, price: 75, tag: 'Sea', image: Ramena, text: 'A boat across Diego Bay with swimming in shallow, bright water.' },
-  { id: 6, port: 'diego', title: 'Red Tsingy And Old Town', hours: 6, price: 90, tag: 'Culture', image: Deux, text: 'Sculpted red rock formations, then a walk through Diego Suarez.' },
-  { id: 7, port: 'diego', title: 'Amber Mountain Rainforest', hours: 8, price: 120, tag: 'Nature', image: Ambanja, text: 'Waterfalls, crater lakes and chameleons in a cool mountain park.' },
 ]
 
 
@@ -102,11 +91,11 @@ function ExcursionCard({ item, ashore }) {
 
 function CruiseExcursions() {
   const t = useT('cruise')
+  const { offers, status } = useOffers('cruise')
   const [port, setPort] = useState('nosybe')
   const [ashore, setAshore] = useState(6)
 
-  const list = excursions
-    .map((e, i) => ({ ...e, ...t('items')[i] }))
+  const list = offers
     .filter((e) => e.port === port)
     .sort((a, b) => (a.hours <= ashore ? 0 : 1) - (b.hours <= ashore ? 0 : 1) || a.hours - b.hours)
   const fitting = list.filter((e) => e.hours <= ashore).length
@@ -156,10 +145,16 @@ function CruiseExcursions() {
             <p className="mt-3 text-sm text-slate-600">{t('ashoreHint')}</p>
           </div>
 
-          <p role="status" className="mt-8 mb-5 text-sm md:text-base text-slate-700">{t('fit', { fit: fitting, total: list.length, port: ports.find((p) => p.id === port).name })}</p>
-          <ul className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-5 lg:gap-7">
-            {list.map((item) => <ExcursionCard key={item.id} item={item} ashore={ashore} />)}
-          </ul>
+          {status === 'ready' ? (
+            <>
+              <p role="status" className="mt-8 mb-5 text-sm md:text-base text-slate-700">{t('fit', { fit: fitting, total: list.length, port: ports.find((p) => p.id === port).name })}</p>
+              <ul className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-5 lg:gap-7">
+                {list.map((item) => <ExcursionCard key={item.id} item={item} ashore={ashore} />)}
+              </ul>
+            </>
+          ) : (
+            <OffersStatus status={status} className="mt-8" />
+          )}
         </section>
 
         {/* Engagements */}

@@ -1,41 +1,4 @@
 {
-  "items": [
-    {
-      "name": "Birdwatching",
-      "type": "Terra",
-      "duration": "3–5 h",
-      "level": "Facile",
-      "text": "Percorri sentieri tranquilli all'alba con un naturalista e avvista uccelli rari che non vedrai da nessun'altra parte."
-    },
-    {
-      "name": "Natura e avventura",
-      "type": "Terra",
-      "duration": "Giornata intera",
-      "level": "Moderato",
-      "text": "Escursioni, belvedere e cascate nascoste, con guide che conoscono ogni sentiero e ogni scorciatoia."
-    },
-    {
-      "name": "Escursioni in barca",
-      "type": "Mare",
-      "duration": "Mezza giornata o intera",
-      "level": "Facile",
-      "text": "Attraversa la baia verso isole tranquille e spiagge di sabbia bianca, con pranzo e soste per il bagno lungo il percorso."
-    },
-    {
-      "name": "Crociera in catamarano",
-      "type": "Mare",
-      "duration": "Giornata intera",
-      "level": "Facile",
-      "text": "Naviga comodamente lungo la costa, fai snorkeling in acque limpide e guarda il tramonto dal ponte."
-    },
-    {
-      "name": "Alla scoperta di fauna e flora",
-      "type": "Terra",
-      "duration": "2–4 h",
-      "level": "Facile",
-      "text": "Incontra lemuri, camaleonti e orchidee in natura, con una guida che ti spiega ciò che vedi."
-    }
-  ],
   "faqs": [
     {
       "q": "Posso prenotare una sola attività?",

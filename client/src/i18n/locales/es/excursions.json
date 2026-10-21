@@ -12,64 +12,6 @@
     "Día completo",
     "2 días o más"
   ],
-  "items": [
-    {
-      "title": "Un día en el valle del cacao y las especias",
-      "duration": "1 día",
-      "group": "Hasta 8 personas",
-      "level": "Fácil",
-      "text": "Siga el cacao del árbol al secadero y conozca a los agricultores a orillas del Sambirano."
-    },
-    {
-      "title": "En velero por la bahía de Ramena",
-      "duration": "Medio día",
-      "group": "Hasta 10 personas",
-      "level": "Fácil",
-      "text": "Una mañana en el agua con paradas para bañarse en el Mar Esmeralda."
-    },
-    {
-      "title": "Travesía de Ankify a Nosy Be",
-      "duration": "3 horas",
-      "group": "Hasta 12 personas",
-      "level": "Fácil",
-      "text": "Un bonito trayecto por carretera y una travesía en lancha rápida, con comida junto al agua."
-    },
-    {
-      "title": "Un día en el banco de arena de Nosy Iranja",
-      "duration": "1 día",
-      "group": "Hasta 12 personas",
-      "level": "Fácil",
-      "text": "Camine por el banco de arena blanca, haga snorkel con tortugas y suba al faro."
-    },
-    {
-      "title": "Antananarivo y Ambohimanga",
-      "duration": "1 día",
-      "group": "Hasta 8 personas",
-      "level": "Fácil",
-      "text": "El casco antiguo, el Rova y la colina real sagrada al norte de la capital."
-    },
-    {
-      "title": "La Avenida de los Baobabs al atardecer",
-      "duration": "Medio día",
-      "group": "Hasta 10 personas",
-      "level": "Fácil",
-      "text": "Llegue antes que la multitud y vea cómo la luz tiñe de naranja los troncos."
-    },
-    {
-      "title": "Trekking en el bosque de Manongarivo",
-      "duration": "2 días",
-      "group": "Hasta 6 personas",
-      "level": "Exigente",
-      "text": "Senderos guiados por una reserva protegida, con acampada opcional."
-    },
-    {
-      "title": "Andasibe: el indri y paseo nocturno",
-      "duration": "2 días",
-      "group": "Hasta 8 personas",
-      "level": "Moderado",
-      "text": "Busque al indri al amanecer y descubra los lémures nocturnos al anochecer."
-    }
-  ],
   "steps": [
     {
       "title": "Recogida en el hotel",

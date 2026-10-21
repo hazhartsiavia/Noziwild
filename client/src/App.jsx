@@ -29,6 +29,8 @@ import AdminLayout from "./pages/admin/AdminLayout";
 import AdminCircuits from "./pages/admin/AdminCircuits";
 import CircuitEditor from "./pages/admin/CircuitEditor";
 import AdminInbox from "./pages/admin/AdminInbox";
+import AdminOffers from "./pages/admin/AdminOffers";
+import OfferEditor from "./pages/admin/OfferEditor";
 
 function App() {
   return (
@@ -65,6 +67,10 @@ function App() {
         <Route path="circuits" element={<AdminCircuits />} />
         <Route path="circuits/new" element={<CircuitEditor key="new" />} />
         <Route path="circuits/:slug" element={<CircuitEditor />} />
+        <Route path="offers" element={<Navigate to="activity" replace />} />
+        <Route path="offers/:kind" element={<AdminOffers />} />
+        <Route path="offers/:kind/new" element={<OfferEditor key="new" />} />
+        <Route path="offers/:kind/:id" element={<OfferEditor />} />
         <Route path="inbox" element={<AdminInbox />} />
       </Route>
     </Routes>

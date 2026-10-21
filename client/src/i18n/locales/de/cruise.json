@@ -14,36 +14,6 @@
     "Nature": "Natur",
     "Culture": "Kultur"
   },
-  "items": [
-    {
-      "title": "Mit dem Schnellboot nach Nosy Iranja",
-      "text": "Laufen Sie über die weiße Sandbank, baden und schnorcheln Sie mit Schildkröten."
-    },
-    {
-      "title": "Schnorcheln bei Nosy Tanikely",
-      "text": "Ruhiges Riffschnorcheln in einem Meeresschutzgebiet, mit Strandpause."
-    },
-    {
-      "title": "Lokobe-Wald und Hell-Ville",
-      "text": "Suchen Sie mit einem Guide nach Lemuren und bummeln Sie dann über den Stadtmarkt."
-    },
-    {
-      "title": "Ylang-Ylang und Mont Passot",
-      "text": "Eine aktive Destillerie und ein Aussichtspunkt über Kraterseen – perfekt zum Sonnenuntergang."
-    },
-    {
-      "title": "Smaragdmeer und Zuckerhut",
-      "text": "Eine Bootsfahrt über die Bucht von Diego mit Baden in flachem, leuchtendem Wasser."
-    },
-    {
-      "title": "Rote Tsingy und Altstadt",
-      "text": "Skulpturale rote Felsformationen, danach ein Spaziergang durch Diego Suarez."
-    },
-    {
-      "title": "Regenwald der Montagne d'Ambre",
-      "text": "Wasserfälle, Kraterseen und Chamäleons in einem kühlen Bergpark."
-    }
-  ],
   "promises": [
     {
       "title": "Zurück vor dem Ablegen",

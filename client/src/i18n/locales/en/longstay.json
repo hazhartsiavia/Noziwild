@@ -13,41 +13,6 @@
       "label": "on-site support"
     }
   ],
-  "formats": [
-    {
-      "tab": "1 month",
-      "title": "One Month Of Slow Travel",
-      "text": "Two or three bases, no rushing. Combine a bay, the highlands and a national park, with time to sit still in between.",
-      "points": [
-        "Furnished stays in 2 to 3 regions",
-        "Private driver for transfers",
-        "Guided excursions each week"
-      ],
-      "price": "From €1,900"
-    },
-    {
-      "tab": "3 months",
-      "title": "A Season In Madagascar",
-      "text": "Settle in one region, work remotely or volunteer, and take guided trips on weekends. We arrange housing, transport and local contacts.",
-      "points": [
-        "One home base with reliable internet",
-        "Monthly guided getaways",
-        "Language lessons and community projects"
-      ],
-      "price": "From €4,800"
-    },
-    {
-      "tab": "6 months +",
-      "title": "Live Here, Fully Supported",
-      "text": "For researchers, artists, families and retirees. We handle housing and paperwork, then stay close for the whole stay.",
-      "points": [
-        "Long-term housing search",
-        "Paperwork and visa extensions",
-        "A named contact for your whole stay"
-      ],
-      "price": "On request"
-    }
-  ],
   "weeks": [
     {
       "week": "Week 1",

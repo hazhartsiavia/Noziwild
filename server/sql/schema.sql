@@ -155,3 +155,24 @@ CREATE TABLE IF NOT EXISTS circuit_days (
   UNIQUE KEY uq_circuit_day (circuit_id, position),
   CONSTRAINT fk_day_circuit FOREIGN KEY (circuit_id) REFERENCES circuits (id) ON DELETE CASCADE
 ) ENGINE=InnoDB;
+
+-- Offres des pages Activités, Excursions, Excursions croisière, Long séjour et Sur mesure
+--   kind : activity | excursion | cruise | longstay | idea (idées de voyage de la page Sur mesure)
+--   details : champs propres à chaque type (durée, niveau, région, port, points...), en anglais
+--   translations : autres langues, { "fr": { "title": ..., "text": ..., "duration": ... } }
+--   Les photos sont des chemins servis par l'API, ex. /uploads/circuits/ramena.png
+CREATE TABLE IF NOT EXISTS offers (
+  id           INT UNSIGNED AUTO_INCREMENT PRIMARY KEY,
+  kind         ENUM('activity', 'excursion', 'cruise', 'longstay', 'idea') NOT NULL,
+  title        VARCHAR(190)  NOT NULL,
+  text         VARCHAR(1000) NOT NULL,
+  image        VARCHAR(500)  NOT NULL,
+  price        INT UNSIGNED  NULL,
+  details      JSON          NOT NULL,
+  translations JSON          NULL,
+  sort_order   INT           NOT NULL DEFAULT 0,
+  is_published TINYINT(1)    NOT NULL DEFAULT 1,
+  created_at   TIMESTAMP     NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  updated_at   TIMESTAMP     NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+  INDEX idx_offers_kind (kind, is_published, sort_order)
+) ENGINE=InnoDB;

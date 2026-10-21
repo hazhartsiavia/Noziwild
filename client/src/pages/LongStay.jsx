@@ -9,7 +9,9 @@ import Deux from '../assets/images/2.jpg'
 import Tana from '../assets/images/Tana.png'
 import Navbar from '../components/Navbar'
 import Footer from '../components/Footer'
+import OffersStatus from '../components/OffersStatus'
 import { useT } from '../i18n/LanguageContext'
+import { useOffers } from '../utils/useOffers'
 
 gsap.registerPlugin(ScrollTrigger)
 
@@ -20,37 +22,8 @@ const BTN = 'inline-flex items-center justify-center text-sm font-medium px-6 py
 const H2 = 'text-3xl sm:text-4xl md:text-5xl lg:text-[56px] font-medium leading-[1.1] tracking-tight'
 
 /* ---------------------------- Données ---------------------------- */
-// Textes affichés : locales/<langue>/longstay.json (listes dans le même ordre qu'ici)
-
-const formats = [
-  {
-    id: 'month',
-    tab: '1 month',
-    title: 'One Month Of Slow Travel',
-    text: 'Two or three bases, no rushing. Combine a bay, the highlands and a national park, with time to sit still in between.',
-    points: ['Furnished stays in 2 to 3 regions', 'Private driver for transfers', 'Guided excursions each week'],
-    price: 'From €1,900',
-    image: Ramena,
-  },
-  {
-    id: 'season',
-    tab: '3 months',
-    title: 'A Season In Madagascar',
-    text: 'Settle in one region, work remotely or volunteer, and take guided trips on weekends. We arrange housing, transport and local contacts.',
-    points: ['One home base with reliable internet', 'Monthly guided getaways', 'Language lessons and community projects'],
-    price: 'From €4,800',
-    image: Tana,
-  },
-  {
-    id: 'live',
-    tab: '6 months +',
-    title: 'Live Here, Fully Supported',
-    text: 'For researchers, artists, families and retirees. We handle housing and paperwork, then stay close for the whole stay.',
-    points: ['Long-term housing search', 'Paperwork and visa extensions', 'A named contact for your whole stay'],
-    price: 'On request',
-    image: NosyLonjo,
-  },
-]
+// Les formules (onglet, textes, points, prix, photo) sont en base : admin > Offers > Long stays.
+// Autres textes de la page : locales/<langue>/longstay.json (listes dans le même ordre qu'ici)
 
 const weeks = [
   { week: 'Week 1', place: 'Antananarivo', text: 'Arrive, settle in, explore the capital and the royal hill of Ambohimanga.', image: Tana },
@@ -209,8 +182,9 @@ function Manifesto() {
 
 function Formats() {
   const t = useT('longstay')
+  const { offers: formats, status } = useOffers('longstay')
   const [active, setActive] = useState(0)
-  const f = { ...formats[active], ...t('formats')[active] }
+  const f = formats[active] || formats[0]
   const root = useRef(null)
   const prev = useRef(active)
 
@@ -237,44 +211,49 @@ function Formats() {
     <section ref={root} id="formats" className={`${W} mt-20 md:mt-32 rounded-[2rem] md:rounded-[3rem] ${DARK} text-white p-5 sm:p-8 md:p-14`}>
       <h2 className={`fmt-title ${H2} max-w-3xl`}>{t('formatsTitle')}</h2>
 
-      <div role="tablist" className="mt-8 flex flex-wrap gap-3">
-        {formats.map((item, i) => (
-          <button
-            key={item.id}
-            role="tab"
-            aria-selected={active === i}
-            onClick={() => setActive(i)}
-            className={`fmt-tab rounded-full px-5 py-2.5 text-sm md:text-base transition focus:outline-none focus-visible:ring-2 focus-visible:ring-[#C49849] ${
-              active === i ? 'bg-[#C49849] text-white' : 'border border-white/30 text-white/80 hover:border-white'
-            }`}
-          >
-            {t('formats')[i].tab}
-          </button>
-        ))}
-      </div>
-
-      <div role="tabpanel" className="mt-10 grid grid-cols-1 lg:grid-cols-[1.2fr_1fr] gap-8 lg:gap-14 items-center">
-        <div className="fmt-frame relative aspect-[4/3] lg:aspect-[5/4] overflow-hidden rounded-[1.5rem] md:rounded-[2rem]">
-          <img key={f.id} src={f.image} alt={f.title} className="fmt-img absolute inset-0 w-full h-full object-cover" />
-          <span className="fmt-chip absolute left-4 top-4 rounded-full bg-white/90 text-slate-900 text-sm font-medium px-4 py-1.5">{f.tab}</span>
-        </div>
-        <div className="fmt-body">
-          <h3 className="text-2xl md:text-4xl font-medium leading-tight">{f.title}</h3>
-          <p className="mt-4 text-sm md:text-base text-white/75 leading-relaxed">{f.text}</p>
-          <ul className="mt-6 flex flex-col gap-3">
-            {f.points.map((p) => (
-              <li key={p} className="flex items-start gap-3 text-sm md:text-base">
-                <span className="mt-2 w-2 h-2 rounded-full bg-[#C49849] shrink-0" />
-                {p}
-              </li>
+      {!f && <OffersStatus status={status} empty dark className="mt-8" />}
+      {f && (
+        <>
+          <div role="tablist" className="mt-8 flex flex-wrap gap-3">
+            {formats.map((item, i) => (
+              <button
+                key={item.id}
+                role="tab"
+                aria-selected={active === i}
+                onClick={() => setActive(i)}
+                className={`fmt-tab rounded-full px-5 py-2.5 text-sm md:text-base transition focus:outline-none focus-visible:ring-2 focus-visible:ring-[#C49849] ${
+                  active === i ? 'bg-[#C49849] text-white' : 'border border-white/30 text-white/80 hover:border-white'
+                }`}
+              >
+                {item.tab}
+              </button>
             ))}
-          </ul>
-          <div className="mt-8 flex flex-wrap items-center gap-5">
-            <p className="text-2xl font-semibold">{f.price}</p>
-            <a href="/contact" className={`${BTN} ${GOLD} text-white`}>{t('askStay')}</a>
           </div>
-        </div>
-      </div>
+
+          <div role="tabpanel" className="mt-10 grid grid-cols-1 lg:grid-cols-[1.2fr_1fr] gap-8 lg:gap-14 items-center">
+            <div className="fmt-frame relative aspect-[4/3] lg:aspect-[5/4] overflow-hidden rounded-[1.5rem] md:rounded-[2rem]">
+              <img key={f.id} src={f.image} alt={f.title} className="fmt-img absolute inset-0 w-full h-full object-cover" />
+              <span className="fmt-chip absolute left-4 top-4 rounded-full bg-white/90 text-slate-900 text-sm font-medium px-4 py-1.5">{f.tab}</span>
+            </div>
+            <div className="fmt-body">
+              <h3 className="text-2xl md:text-4xl font-medium leading-tight">{f.title}</h3>
+              <p className="mt-4 text-sm md:text-base text-white/75 leading-relaxed">{f.text}</p>
+              <ul className="mt-6 flex flex-col gap-3">
+                {f.points.map((p) => (
+                  <li key={p} className="flex items-start gap-3 text-sm md:text-base">
+                    <span className="mt-2 w-2 h-2 rounded-full bg-[#C49849] shrink-0" />
+                    {p}
+                  </li>
+                ))}
+              </ul>
+              <div className="mt-8 flex flex-wrap items-center gap-5">
+                <p className="text-2xl font-semibold">{f.priceLabel}</p>
+                <a href={`/contact?place=${encodeURIComponent(f.title)}`} className={`${BTN} ${GOLD} text-white`}>{t('askStay')}</a>
+              </div>
+            </div>
+          </div>
+        </>
+      )}
     </section>
   )
 }

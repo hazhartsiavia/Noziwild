@@ -12,64 +12,6 @@
     "Full day",
     "2 days or more"
   ],
-  "items": [
-    {
-      "title": "Cocoa And Spice Valley Day",
-      "duration": "1 day",
-      "group": "Up to 8 guests",
-      "level": "Easy",
-      "text": "Follow cocoa from tree to drying rack and meet growers along the Sambirano river."
-    },
-    {
-      "title": "Sail The Bay Of Ramena",
-      "duration": "Half day",
-      "group": "Up to 10 guests",
-      "level": "Easy",
-      "text": "A morning on the water with swimming stops in the Emerald Sea."
-    },
-    {
-      "title": "Ankify To Nosy Be Crossing",
-      "duration": "3 hours",
-      "group": "Up to 12 guests",
-      "level": "Easy",
-      "text": "A scenic drive and a speedboat crossing, with lunch by the water."
-    },
-    {
-      "title": "Nosy Iranja Sandbar Day",
-      "duration": "1 day",
-      "group": "Up to 12 guests",
-      "level": "Easy",
-      "text": "Walk the white sandbar, snorkel with turtles and climb to the lighthouse."
-    },
-    {
-      "title": "Antananarivo And Ambohimanga",
-      "duration": "1 day",
-      "group": "Up to 8 guests",
-      "level": "Easy",
-      "text": "The old town, the Rova and the sacred royal hill north of the capital."
-    },
-    {
-      "title": "Baobab Avenue At Sunset",
-      "duration": "Half day",
-      "group": "Up to 10 guests",
-      "level": "Easy",
-      "text": "Arrive before the crowds and watch the light turn the trunks orange."
-    },
-    {
-      "title": "Manongarivo Forest Trek",
-      "duration": "2 days",
-      "group": "Up to 6 guests",
-      "level": "Active",
-      "text": "Guided trails through a protected reserve, with optional camping."
-    },
-    {
-      "title": "Andasibe Indri And Night Walk",
-      "duration": "2 days",
-      "group": "Up to 8 guests",
-      "level": "Moderate",
-      "text": "Track the indri at dawn and spot nocturnal lemurs after dark."
-    }
-  ],
   "steps": [
     {
       "title": "Hotel pick-up",

@@ -13,6 +13,7 @@ import { sendTailorMade } from '../api'
 import { useAuth } from '../context/AuthContext'
 import { useLanguage, useT } from '../i18n/LanguageContext'
 import { monthName } from '../utils/format'
+import { useOffers } from '../utils/useOffers'
 
 gsap.registerPlugin(ScrollTrigger)
 
@@ -27,6 +28,7 @@ const LABEL = 'block mb-2 text-sm md:text-base text-slate-700'
 /* ---------------------------- Données ---------------------------- */
 // Les choix du formulaire sont envoyés à l'équipe en anglais (valeurs ci-dessous) ;
 // leur libellé affiché vient de tailormade.options, les autres textes de tailormade.json.
+// Les idées de départ (titre, texte, photo, choix pré-remplis) sont en base : admin > Offers > Tailor-made ideas.
 
 const interests = [
   { id: 'Islands & beaches', image: NosyIranja },
@@ -48,12 +50,6 @@ const steps = [
   { title: 'Get a first proposal', text: 'A travel expert sends a day-by-day route within a few days.' },
   { title: 'Refine together', text: 'Change anything until the trip feels exactly right.' },
   { title: 'Travel with support', text: 'Local guides, transfers and a contact on the ground.' },
-]
-
-const ideas = [
-  { title: 'Romantic islands', text: 'Sandbars, sunsets and quiet stays.', image: NosyIranja, preset: { interests: ['Islands & beaches', 'Slow & relaxing'], group: 'Couple' } },
-  { title: 'Family wildlife trail', text: 'Lemurs, forests and gentle adventure.', image: Ambanja, preset: { interests: ['Wildlife', 'Hiking & adventure'], group: 'Family' } },
-  { title: 'Culture and countryside', text: 'Markets, royal hills and village life.', image: Tana, preset: { interests: ['Culture & villages', 'Wildlife'], group: 'Friends' } },
 ]
 
 /* ----------------------- Utilitaires GSAP ------------------------ */
@@ -417,6 +413,7 @@ function IdeaCard({ it, onSelect }) {
 
 function TailorMade() {
   const t = useT('tailormade')
+  const { offers: ideas, status: ideasStatus } = useOffers('idea')
   const [form, setForm] = useState({ interests: [], length: '2 weeks', month: 'Not sure yet', pace: 'Balanced', comfort: 'Comfortable', group: 'Couple' })
   const howRef = useRef(null)
   const ideasRef = useRef(null)
@@ -456,7 +453,7 @@ function TailorMade() {
     reveal('.idea-card', { clipPath: 'inset(100% 0% 0% 0% round 2rem)' }, { clipPath: 'inset(0% 0% 0% 0% round 2rem)', duration: 1.2, stagger: 0.14, ease: 'expo.out', scrollTrigger: trigger })
     reveal('.idea-img', { scale: 1.12 }, { scale: 1, duration: 1.4, stagger: 0.14, ease: 'power2.out', scrollTrigger: trigger })
     reveal('.idea-text > *', { y: 18, opacity: 0 }, { y: 0, opacity: 1, duration: 0.55, stagger: 0.06, delay: 0.5, ease: 'power2.out', scrollTrigger: trigger })
-  })
+  }, [ideasStatus])
 
   useGsap(ctaRef, () => {
     const tl = gsap.timeline({ scrollTrigger: { trigger: ctaRef.current, start: 'top 82%', once: true } })
@@ -520,18 +517,20 @@ function TailorMade() {
           </ol>
         </section>
 
-        {/* Idées de départ */}
-        <section ref={ideasRef} className={`${W} mt-16 md:mt-28`}>
-          <div className="ideas-head">
-            <h2 className={H2}>{t('ideasTitle')}</h2>
-            <p className="mt-3 text-base md:text-lg text-slate-700">{t('ideasText')}</p>
-          </div>
-          <ul className="ideas-list mt-8 grid grid-cols-1 md:grid-cols-3 gap-5">
-            {ideas.map((idea, i) => ({ ...idea, ...t('ideas')[i] })).map((it) => (
-              <IdeaCard key={it.image} it={it} onSelect={() => applyPreset(it.preset)} />
-            ))}
-          </ul>
-        </section>
+        {/* Idées de départ (masquées s'il n'y en a aucune ou si elles n'ont pas pu être chargées) */}
+        {ideasStatus !== 'error' && !(ideasStatus === 'ready' && ideas.length === 0) && (
+          <section ref={ideasRef} className={`${W} mt-16 md:mt-28`}>
+            <div className="ideas-head">
+              <h2 className={H2}>{t('ideasTitle')}</h2>
+              <p className="mt-3 text-base md:text-lg text-slate-700">{t('ideasText')}</p>
+            </div>
+            <ul className="ideas-list mt-8 grid grid-cols-1 md:grid-cols-3 gap-5">
+              {ideas.map((it) => (
+                <IdeaCard key={it.id} it={it} onSelect={() => applyPreset({ interests: it.interests, group: it.travellers })} />
+              ))}
+            </ul>
+          </section>
+        )}
 
         <Builder form={form} setForm={setForm} />
 

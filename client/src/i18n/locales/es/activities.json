@@ -1,41 +1,4 @@
 {
-  "items": [
-    {
-      "name": "Observación de aves",
-      "type": "Tierra",
-      "duration": "3–5 h",
-      "level": "Fácil",
-      "text": "Recorra senderos tranquilos al amanecer con un naturalista y descubra aves raras que no verá en ningún otro lugar."
-    },
-    {
-      "name": "Naturaleza y aventura",
-      "type": "Tierra",
-      "duration": "Día completo",
-      "level": "Moderado",
-      "text": "Caminatas, miradores y cascadas escondidas, con guías que conocen cada sendero y cada atajo."
-    },
-    {
-      "name": "Excursiones en barco",
-      "type": "Mar",
-      "duration": "Medio día o día completo",
-      "level": "Fácil",
-      "text": "Cruce la bahía hacia islas tranquilas y playas de arena blanca, con comida y paradas para bañarse por el camino."
-    },
-    {
-      "name": "Crucero en catamarán",
-      "type": "Mar",
-      "duration": "Día completo",
-      "level": "Fácil",
-      "text": "Navegue con comodidad a lo largo de la costa, haga snorkel en aguas claras y vea la puesta de sol desde la cubierta."
-    },
-    {
-      "name": "Descubrimiento de fauna y flora",
-      "type": "Tierra",
-      "duration": "2–4 h",
-      "level": "Fácil",
-      "text": "Conozca lémures, camaleones y orquídeas en libertad, con un guía que le explica lo que ve."
-    }
-  ],
   "faqs": [
     {
       "q": "¿Puedo reservar una sola actividad?",

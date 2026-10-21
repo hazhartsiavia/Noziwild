@@ -3,14 +3,13 @@ import gsap from 'gsap'
 import { ScrollTrigger } from 'gsap/ScrollTrigger'
 import Ramena from '../assets/images/Ramena.png'
 import NosyIranja from '../assets/images/NosyIranja.png'
-import NosyLonjo from '../assets/images/NosyLonjo.png'
-import Ambanja from '../assets/images/Ambanja.png'
 import Deux from '../assets/images/2.jpg'
-import Tana from '../assets/images/Tana.png'
 import Navbar from '../components/Navbar'
 import Footer from '../components/Footer'
+import OffersStatus from '../components/OffersStatus'
 import { useLanguage, useT } from '../i18n/LanguageContext'
 import { formatPrice } from '../utils/format'
+import { useOffers } from '../utils/useOffers'
 
 gsap.registerPlugin(ScrollTrigger)
 
@@ -21,8 +20,9 @@ const H2 = 'text-3xl sm:text-4xl md:text-5xl font-medium leading-[1.1] tracking-
 const SELECT = 'w-full h-12 rounded-full border border-slate-300 bg-white px-5 text-base text-slate-800 focus:outline-none focus:border-slate-700 focus:ring-1 focus:ring-slate-700'
 
 /* ---------------------------- Données ---------------------------- */
-/* length : 'half' | 'day' | 'multi' — href : page de détail si elle existe, sinon contact
-   Textes affichés : locales/<langue>/excursions.json (items, steps, stops : même ordre qu'ici) */
+/* Les excursions (textes, prix, photos, région, durée) sont en base : admin > Offers > Excursions.
+   region et length (half | day | multi) servent aux filtres ci-dessous.
+   Autres textes de la page : locales/<langue>/excursions.json (steps, stops : même ordre qu'ici) */
 
 const regions = ['All regions', 'North', 'Highlands', 'West', 'East']
 const lengths = [
@@ -30,17 +30,6 @@ const lengths = [
   { label: 'Half day', value: 'half' },
   { label: 'Full day', value: 'day' },
   { label: '2 days or more', value: 'multi' },
-]
-
-const excursions = [
-  { id: 1, title: 'Cocoa And Spice Valley Day', place: 'Ambanja', region: 'North', length: 'day', duration: '1 day', group: 'Up to 8', level: 'Easy', price: 85, image: Ambanja, text: 'Follow cocoa from tree to drying rack and meet growers along the Sambirano river.', href: '/destinations/ambanja/sambirano-valley' },
-  { id: 2, title: 'Sail The Bay Of Ramena', place: 'Diego Suarez', region: 'North', length: 'half', duration: 'Half day', group: 'Up to 10', level: 'Easy', price: 60, image: Ramena, text: 'A morning on the water with swimming stops in the Emerald Sea.', href: '/contact?place=Sail%20The%20Bay%20Of%20Ramena' },
-  { id: 3, title: 'Ankify To Nosy Be Crossing', place: 'Ambanja', region: 'North', length: 'half', duration: '3 hours', group: 'Up to 12', level: 'Easy', price: 45, image: NosyIranja, text: 'A scenic drive and a speedboat crossing, with lunch by the water.', href: '/destinations/ambanja/ankify-jetty' },
-  { id: 4, title: 'Nosy Iranja Sandbar Day', place: 'Nosy Be', region: 'North', length: 'day', duration: '1 day', group: 'Up to 12', level: 'Easy', price: 95, image: NosyLonjo, text: 'Walk the white sandbar, snorkel with turtles and climb to the lighthouse.', href: '/contact?place=Nosy%20Iranja%20Sandbar%20Day' },
-  { id: 5, title: 'Antananarivo And Ambohimanga', place: 'Antananarivo', region: 'Highlands', length: 'day', duration: '1 day', group: 'Up to 8', level: 'Easy', price: 70, image: Tana, text: 'The old town, the Rova and the sacred royal hill north of the capital.', href: '/contact?place=Antananarivo%20And%20Ambohimanga' },
-  { id: 6, title: 'Baobab Avenue At Sunset', place: 'Morondava', region: 'West', length: 'half', duration: 'Half day', group: 'Up to 10', level: 'Easy', price: 50, image: Deux, text: 'Arrive before the crowds and watch the light turn the trunks orange.', href: '/contact?place=Baobab%20Avenue%20At%20Sunset' },
-  { id: 7, title: 'Manongarivo Forest Trek', place: 'Ambanja', region: 'North', length: 'multi', duration: '2 days', group: 'Up to 6', level: 'Active', price: 140, image: NosyLonjo, text: 'Guided trails through a protected reserve, with optional camping.', href: '/destinations/ambanja/manongarivo-reserve' },
-  { id: 8, title: 'Andasibe Indri And Night Walk', place: 'Andasibe', region: 'East', length: 'multi', duration: '2 days', group: 'Up to 8', level: 'Moderate', price: 180, image: Ambanja, text: 'Track the indri at dawn and spot nocturnal lemurs after dark.', href: '/contact?place=Andasibe%20Indri%20And%20Night%20Walk' },
 ]
 
 const steps = [
@@ -153,9 +142,11 @@ function Hero({ region, setRegion, length, setLength }) {
 function Row({ item }) {
   const t = useT('excursions')
   const { lang } = useLanguage()
+  // Page de détail si l'admin en a indiqué une, sinon le formulaire de contact
+  const href = item.link || `/contact?place=${encodeURIComponent(item.title)}`
   return (
     <li className="excursion-row grid grid-cols-1 md:grid-cols-[300px_1fr_auto] lg:grid-cols-[360px_1fr_auto] gap-4 md:gap-8 rounded-[2rem] bg-white p-3 md:p-4 md:items-stretch">
-      <a href={item.href} className="group relative block aspect-[4/3] md:aspect-auto md:min-h-[220px] overflow-hidden rounded-[1.5rem]">
+      <a href={href} className="group relative block aspect-[4/3] md:aspect-auto md:min-h-[220px] overflow-hidden rounded-[1.5rem]">
         <img src={item.image} alt={item.title} className="row-img absolute inset-0 w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" />
         <span className="row-badge absolute left-3 top-3 bg-[#C49849] text-white text-xs sm:text-sm font-medium px-3 py-1.5 rounded-sm">{item.duration}</span>
       </a>
@@ -165,14 +156,14 @@ function Row({ item }) {
           <span>{item.place}</span><span className="w-px h-4 bg-slate-500" /><span>{item.level}</span><span className="w-px h-4 bg-slate-500" /><span>{item.group}</span>
         </p>
         <h3 className="mt-3 text-xl md:text-3xl font-medium leading-snug text-slate-900">
-          <a href={item.href} className="hover:underline">{item.title}</a>
+          <a href={href} className="hover:underline">{item.title}</a>
         </h3>
         <p className="mt-3 text-sm md:text-base text-slate-600 leading-relaxed max-w-xl">{item.text}</p>
       </div>
 
       <div className="row-side px-2 pb-3 md:p-4 md:pr-6 flex md:flex-col items-center md:items-end justify-between md:justify-center gap-4 md:border-l md:border-slate-200 md:pl-8">
         <p className="text-slate-600 text-sm md:text-right">{t('from')}<br className="hidden md:block" /> <span className="text-2xl md:text-3xl font-semibold text-slate-900">{formatPrice(item.price, lang)}</span><span className="block text-xs">{t('perPerson')}</span></p>
-        <a href={item.href} className={`${BTN} bg-slate-800 hover:bg-slate-700 text-white`}>{t('details')}</a>
+        <a href={href} className={`${BTN} bg-slate-800 hover:bg-slate-700 text-white`}>{t('details')}</a>
       </div>
     </li>
   )
@@ -180,6 +171,7 @@ function Row({ item }) {
 
 function Excursions() {
   const t = useT('excursions')
+  const { offers, status } = useOffers('excursion')
   const [region, setRegion] = useState('All regions')
   const [length, setLength] = useState('any')
 
@@ -188,7 +180,7 @@ function Excursions() {
   const multiRef = useRef(null)
   const ctaRef = useRef(null)
 
-  const visible = excursions.map((e, i) => ({ ...e, ...t('items')[i] })).filter(
+  const visible = offers.filter(
     (e) => (region === 'All regions' || e.region === region) && (length === 'any' || e.length === length)
   )
 
@@ -216,7 +208,7 @@ function Excursions() {
         reveal(batch.map((r) => r.querySelector('.row-side')), { x: 30, opacity: 0 }, { x: 0, opacity: 1, duration: 0.7, delay: 0.5, stagger: 0.15, ease: 'power2.out' })
       },
     })
-  }, [region, length])
+  }, [region, length, offers])
 
   /* Journée type : chaque étape se « dessine » de gauche à droite (la ligne du haut en premier) */
   useGsap(dayRef, () => {
@@ -271,10 +263,14 @@ function Excursions() {
         <section ref={resultsRef} id="results" className={`${W} mt-16 md:mt-24 scroll-mt-6`}>
           <div className="flex flex-col md:flex-row md:items-end justify-between gap-3 mb-8">
             <h2 className={`res-title ${H2}`}>{t('resultsTitle')}</h2>
-            <p role="status" className="res-count text-sm md:text-base text-slate-700">{visible.length === 1 ? t('foundOne') : t('found', { count: visible.length })}</p>
+            {status === 'ready' && (
+              <p role="status" className="res-count text-sm md:text-base text-slate-700">{visible.length === 1 ? t('foundOne') : t('found', { count: visible.length })}</p>
+            )}
           </div>
 
-          {visible.length > 0 ? (
+          {status !== 'ready' ? (
+            <OffersStatus status={status} />
+          ) : visible.length > 0 ? (
             <ul className="flex flex-col gap-5">{visible.map((item) => <Row key={item.id} item={item} />)}</ul>
           ) : (
             <div className="rounded-[2rem] bg-white p-10 text-center">

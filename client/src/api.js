@@ -54,6 +54,10 @@ export const assetUrl = (path) => (path && path.startsWith('/') ? `${API_URL}${p
 export const fetchCircuits = (lang = 'en') => getJSON(`/circuits?lang=${lang}`)
 export const fetchCircuit = (slug, lang = 'en') => getJSON(`/circuits/${encodeURIComponent(slug)}?lang=${lang}`)
 
+// Offres des pages Activités, Excursions, Excursions croisière, Long séjour, Sur mesure
+//   kind : 'activity' | 'excursion' | 'cruise' | 'longstay' | 'idea'
+export const fetchOffers = (kind, lang = 'en') => getJSON(`/offers?kind=${kind}&lang=${lang}`)
+
 // Formulaires du site
 export const sendContact = (data) => postJSON('/contact', data)
 export const sendTailorMade = (data) => postJSON('/tailor-made', data)
@@ -86,6 +90,13 @@ export const adminCreateCircuit = (circuit) => postJSON('/admin/circuits', circu
 export const adminUpdateCircuit = (slug, circuit) => putJSON(circuitPath(slug), circuit)
 export const adminPatchCircuit = (slug, changes) => patchJSON(circuitPath(slug), changes)
 export const adminDeleteCircuit = (slug) => deleteJSON(circuitPath(slug))
+const offerPath = (id) => `/admin/offers/${encodeURIComponent(id)}`
+export const adminFetchOffers = (kind) => getJSON(`/admin/offers?kind=${kind}`)
+export const adminFetchOffer = (id) => getJSON(offerPath(id))
+export const adminCreateOffer = (offer) => postJSON('/admin/offers', offer)
+export const adminUpdateOffer = (id, offer) => putJSON(offerPath(id), offer)
+export const adminPatchOffer = (id, changes) => patchJSON(offerPath(id), changes)
+export const adminDeleteOffer = (id) => deleteJSON(offerPath(id))
 export const adminFetchPhotos = () => getJSON('/admin/uploads')
 export const adminFetchResource = (resource, page = 1) => getJSON(`/admin/${resource}?page=${page}&limit=20`)
 

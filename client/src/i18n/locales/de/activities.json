@@ -1,41 +1,4 @@
 {
-  "items": [
-    {
-      "name": "Vogelbeobachtung",
-      "type": "Land",
-      "duration": "3–5 Std.",
-      "level": "Leicht",
-      "text": "Gehen Sie bei Sonnenaufgang mit einem Naturkundler über ruhige Pfade und entdecken Sie seltene Vögel, die Sie nirgendwo sonst sehen."
-    },
-    {
-      "name": "Natur & Abenteuer",
-      "type": "Land",
-      "duration": "Ganzer Tag",
-      "level": "Mittel",
-      "text": "Wanderungen, Aussichtspunkte und versteckte Wasserfälle, geführt von Guides, die jeden Pfad und jede Abkürzung kennen."
-    },
-    {
-      "name": "Bootsausflüge",
-      "type": "Meer",
-      "duration": "Halber oder ganzer Tag",
-      "level": "Leicht",
-      "text": "Fahren Sie über die Bucht zu ruhigen Inseln und weißen Sandstränden, mit Mittagessen und Badestopps unterwegs."
-    },
-    {
-      "name": "Katamaran-Törn",
-      "type": "Meer",
-      "duration": "Ganzer Tag",
-      "level": "Leicht",
-      "text": "Segeln Sie bequem an der Küste entlang, schnorcheln Sie in klarem Wasser und genießen Sie den Sonnenuntergang vom Deck aus."
-    },
-    {
-      "name": "Tiere & Pflanzen entdecken",
-      "type": "Land",
-      "duration": "2–4 Std.",
-      "level": "Leicht",
-      "text": "Begegnen Sie Lemuren, Chamäleons und Orchideen in freier Natur, mit einem Guide, der Ihnen erklärt, was Sie sehen."
-    }
-  ],
   "faqs": [
     {
       "q": "Kann ich nur eine Aktivität buchen?",

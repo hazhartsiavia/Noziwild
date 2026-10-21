@@ -14,36 +14,6 @@
     "Nature": "Naturaleza",
     "Culture": "Cultura"
   },
-  "items": [
-    {
-      "title": "Nosy Iranja en lancha rápida",
-      "text": "Camine por el banco de arena blanca, báñese y haga snorkel con tortugas."
-    },
-    {
-      "title": "Snorkel en Nosy Tanikely",
-      "text": "Snorkel tranquilo en un arrecife dentro de un parque marino, con parada en la playa."
-    },
-    {
-      "title": "Bosque de Lokobe y Hell-Ville",
-      "text": "Busque lémures con un guía y recorra después el mercado de la ciudad."
-    },
-    {
-      "title": "Ylang-ylang y Mont Passot",
-      "text": "Una destilería en funcionamiento y un mirador sobre lagos de cráter, ideal al atardecer."
-    },
-    {
-      "title": "Mar Esmeralda y Pan de Azúcar",
-      "text": "Una travesía en barco por la bahía de Diego con baño en aguas poco profundas y luminosas."
-    },
-    {
-      "title": "Tsingy Rojos y casco antiguo",
-      "text": "Formaciones esculpidas de roca roja y un paseo por Diego Suarez."
-    },
-    {
-      "title": "Selva de la Montaña de Ámbar",
-      "text": "Cascadas, lagos de cráter y camaleones en un fresco parque de montaña."
-    }
-  ],
   "promises": [
     {
       "title": "De vuelta antes del embarque",

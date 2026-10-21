@@ -1,6 +1,7 @@
-// Traductions d'un circuit (français, allemand, italien, espagnol).
+// Traductions d'un circuit ou d'une offre (français, allemand, italien, espagnol).
 // Chaque champ montre le texte anglais en gris : un champ laissé vide s'affiche en anglais sur le site.
 // Les listes et les jours sont traduits ligne par ligne, dans l'ordre de la version anglaise.
+// Par défaut, les champs d'un circuit ; une offre passe les siens (textFields, listFields).
 import React, { useState } from 'react'
 import Field from './Field'
 import { CARD, CARD_TITLE, INPUT, TEXTAREA } from './ui'
@@ -40,7 +41,7 @@ const DAY_FIELDS = [
 ]
 
 // Nombre de textes anglais à traduire, et combien le sont déjà dans cette langue
-function progress(form, lang) {
+function progress(form, lang, textFields, listFields) {
   const tr = form.translations?.[lang] || {}
   let total = 0
   let done = 0
@@ -49,9 +50,9 @@ function progress(form, lang) {
     total += 1
     if (translated) done += 1
   }
-  TEXT_FIELDS.forEach(({ key }) => count(form[key], tr[key]))
-  LIST_FIELDS.forEach(({ key }) => form[key].forEach((item, i) => count(item, tr[key]?.[i])))
-  form.itinerary.forEach((day) => DAY_FIELDS.forEach(({ key }) => count(day[key], day.tr?.[lang]?.[key])))
+  textFields.forEach(({ key }) => count(form[key], tr[key]))
+  listFields.forEach(({ key }) => (form[key] || []).forEach((item, i) => count(item, tr[key]?.[i])))
+  ;(form.itinerary || []).forEach((day) => DAY_FIELDS.forEach(({ key }) => count(day[key], day.tr?.[lang]?.[key])))
   return { total, done }
 }
 
@@ -59,7 +60,7 @@ function Input({ rows, ...props }) {
   return rows ? <textarea rows={rows} {...props} className={TEXTAREA} /> : <input {...props} className={INPUT} />
 }
 
-function TranslationsEditor({ form, setForm }) {
+function TranslationsEditor({ form, setForm, textFields = TEXT_FIELDS, listFields = LIST_FIELDS }) {
   const [lang, setLang] = useState('fr')
   const tr = form.translations?.[lang] || {}
 
@@ -90,7 +91,7 @@ function TranslationsEditor({ form, setForm }) {
 
       <div role="tablist" aria-label="Language" className="mt-5 flex flex-wrap gap-2">
         {TRANSLATION_LANGUAGES.map((l) => {
-          const { total, done } = progress(form, l.code)
+          const { total, done } = progress(form, l.code, textFields, listFields)
           const selected = l.code === lang
           return (
             <button
@@ -114,15 +115,15 @@ function TranslationsEditor({ form, setForm }) {
 
       <div role="tabpanel" lang={lang} className="mt-6 flex flex-col gap-8">
         <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-          {TEXT_FIELDS.map(({ key, label, wide, rows }) => (
+          {textFields.map(({ key, label, wide, rows }) => (
             <Field key={key} label={label} hint={form[key] ? `English: ${form[key]}` : undefined} className={wide ? 'sm:col-span-2' : ''}>
               {(props) => <Input {...props} rows={rows} value={tr[key] ?? ''} placeholder={form[key] || ''} onChange={(e) => setText(key, e.target.value)} />}
             </Field>
           ))}
         </div>
 
-        {LIST_FIELDS.map(({ key, label, rows }) =>
-          form[key].some(Boolean) ? (
+        {listFields.map(({ key, label, rows }) =>
+          form[key]?.some(Boolean) ? (
             <fieldset key={key}>
               <legend className="mb-2 text-sm text-slate-700">{label}</legend>
               <ol className="flex flex-col gap-2">
@@ -145,33 +146,35 @@ function TranslationsEditor({ form, setForm }) {
           ) : null,
         )}
 
-        <div>
-          <h4 className="text-sm font-medium text-slate-900">Itinerary</h4>
-          <ol className="mt-3 flex flex-col gap-4">
-            {form.itinerary.map((day, i) => (
-              <li key={day._key} className="rounded-2xl border border-slate-200 p-4">
-                <p className="text-xs font-medium uppercase tracking-wide text-slate-500">
-                  {day.day || `#${i + 1}`} · {day.title || 'Untitled day'}
-                </p>
-                <div className="mt-3 grid grid-cols-1 sm:grid-cols-2 gap-3">
-                  {DAY_FIELDS.map(({ key, label, wide, rows }) => (
-                    <Field key={key} label={label} className={wide ? 'sm:col-span-2' : ''}>
-                      {(props) => (
-                        <Input
-                          {...props}
-                          rows={rows}
-                          value={day.tr?.[lang]?.[key] ?? ''}
-                          placeholder={day[key] || ''}
-                          onChange={(e) => setDayField(day._key, key, e.target.value)}
-                        />
-                      )}
-                    </Field>
-                  ))}
-                </div>
-              </li>
-            ))}
-          </ol>
-        </div>
+        {form.itinerary && (
+          <div>
+            <h4 className="text-sm font-medium text-slate-900">Itinerary</h4>
+            <ol className="mt-3 flex flex-col gap-4">
+              {form.itinerary.map((day, i) => (
+                <li key={day._key} className="rounded-2xl border border-slate-200 p-4">
+                  <p className="text-xs font-medium uppercase tracking-wide text-slate-500">
+                    {day.day || `#${i + 1}`} · {day.title || 'Untitled day'}
+                  </p>
+                  <div className="mt-3 grid grid-cols-1 sm:grid-cols-2 gap-3">
+                    {DAY_FIELDS.map(({ key, label, wide, rows }) => (
+                      <Field key={key} label={label} className={wide ? 'sm:col-span-2' : ''}>
+                        {(props) => (
+                          <Input
+                            {...props}
+                            rows={rows}
+                            value={day.tr?.[lang]?.[key] ?? ''}
+                            placeholder={day[key] || ''}
+                            onChange={(e) => setDayField(day._key, key, e.target.value)}
+                          />
+                        )}
+                      </Field>
+                    ))}
+                  </div>
+                </li>
+              ))}
+            </ol>
+          </div>
+        )}
       </div>
     </section>
   )

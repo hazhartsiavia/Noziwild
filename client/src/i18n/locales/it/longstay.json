@@ -13,41 +13,6 @@
       "label": "assistenza sul posto"
     }
   ],
-  "formats": [
-    {
-      "tab": "1 mese",
-      "title": "Un mese di viaggio lento",
-      "text": "Due o tre basi, senza fretta. Abbina una baia, gli Altopiani e un parco nazionale, con il tempo di fermarti nel mezzo.",
-      "points": [
-        "Alloggi arredati in 2-3 regioni",
-        "Autista privato per i trasferimenti",
-        "Escursioni guidate ogni settimana"
-      ],
-      "price": "Da 1.900 €"
-    },
-    {
-      "tab": "3 mesi",
-      "title": "Una stagione in Madagascar",
-      "text": "Stabilisciti in una regione, lavora da remoto o fai volontariato e partecipa a gite guidate nel fine settimana. Organizziamo alloggio, trasporti e contatti locali.",
-      "points": [
-        "Una sola base con internet affidabile",
-        "Una fuga guidata ogni mese",
-        "Lezioni di lingua e progetti solidali"
-      ],
-      "price": "Da 4.800 €"
-    },
-    {
-      "tab": "6 mesi +",
-      "title": "Vivere qui, con pieno supporto",
-      "text": "Per ricercatori, artisti, famiglie e pensionati. Ci occupiamo di alloggio e pratiche, e restiamo vicini per tutto il soggiorno.",
-      "points": [
-        "Ricerca di un alloggio a lungo termine",
-        "Pratiche e proroghe del visto",
-        "Un referente dedicato per tutto il soggiorno"
-      ],
-      "price": "Su richiesta"
-    }
-  ],
   "weeks": [
     {
       "week": "Settimana 1",

@@ -1,0 +1,1014 @@
+[
+  {
+    "kind": "activity",
+    "title": "Birdwatching",
+    "text": "Walk quiet trails at sunrise with a naturalist and spot rare birds you will not see anywhere else.",
+    "image": "/uploads/circuits/antananarivo-rice-fields.png",
+    "price": 35,
+    "group": "2–8",
+    "months": [0, 0, 0, 1, 1, 1, 1, 1, 2, 2, 2, 1],
+    "type": "Land",
+    "duration": "3–5 h",
+    "level": "Easy",
+    "translations": {
+      "fr": {
+        "title": "Observation des oiseaux",
+        "type": "Terre",
+        "level": "Facile",
+        "text": "Parcourez des sentiers paisibles au lever du soleil avec un naturaliste et observez des oiseaux rares que vous ne verrez nulle part ailleurs."
+      },
+      "de": {
+        "title": "Vogelbeobachtung",
+        "duration": "3–5 Std.",
+        "level": "Leicht",
+        "text": "Gehen Sie bei Sonnenaufgang mit einem Naturkundler über ruhige Pfade und entdecken Sie seltene Vögel, die Sie nirgendwo sonst sehen."
+      },
+      "it": {
+        "type": "Terra",
+        "level": "Facile",
+        "text": "Percorri sentieri tranquilli all'alba con un naturalista e avvista uccelli rari che non vedrai da nessun'altra parte."
+      },
+      "es": {
+        "title": "Observación de aves",
+        "type": "Tierra",
+        "level": "Fácil",
+        "text": "Recorra senderos tranquilos al amanecer con un naturalista y descubra aves raras que no verá en ningún otro lugar."
+      }
+    }
+  },
+  {
+    "kind": "activity",
+    "title": "Nature & Adventure",
+    "text": "Hikes, viewpoints and hidden waterfalls, led by guides who know every path and every shortcut.",
+    "image": "/uploads/circuits/coastal-tsingy.jpg",
+    "price": 55,
+    "group": "2–10",
+    "months": [0, 0, 0, 1, 2, 2, 2, 2, 2, 1, 0, 0],
+    "type": "Land",
+    "duration": "Full day",
+    "level": "Moderate",
+    "translations": {
+      "fr": {
+        "title": "Nature et aventure",
+        "type": "Terre",
+        "duration": "Journée entière",
+        "level": "Modéré",
+        "text": "Randonnées, points de vue et cascades cachées, avec des guides qui connaissent chaque sentier et chaque raccourci."
+      },
+      "de": {
+        "title": "Natur & Abenteuer",
+        "duration": "Ganzer Tag",
+        "level": "Mittel",
+        "text": "Wanderungen, Aussichtspunkte und versteckte Wasserfälle, geführt von Guides, die jeden Pfad und jede Abkürzung kennen."
+      },
+      "it": {
+        "title": "Natura e avventura",
+        "type": "Terra",
+        "duration": "Giornata intera",
+        "level": "Moderato",
+        "text": "Escursioni, belvedere e cascate nascoste, con guide che conoscono ogni sentiero e ogni scorciatoia."
+      },
+      "es": {
+        "title": "Naturaleza y aventura",
+        "type": "Tierra",
+        "duration": "Día completo",
+        "level": "Moderado",
+        "text": "Caminatas, miradores y cascadas escondidas, con guías que conocen cada sendero y cada atajo."
+      }
+    }
+  },
+  {
+    "kind": "activity",
+    "title": "Cruise Boat Excursions",
+    "text": "Cross the bay to quiet islands and white-sand beaches, with lunch and swimming stops on the way.",
+    "image": "/uploads/circuits/nosy-iranja.png",
+    "price": 45,
+    "group": "4–20",
+    "months": [0, 0, 0, 1, 2, 2, 2, 2, 2, 2, 1, 0],
+    "type": "Sea",
+    "duration": "Half or full day",
+    "level": "Easy",
+    "translations": {
+      "fr": {
+        "title": "Excursions en bateau",
+        "type": "Mer",
+        "duration": "Demi-journée ou journée",
+        "level": "Facile",
+        "text": "Traversez la baie vers des îles tranquilles et des plages de sable blanc, avec déjeuner et arrêts baignade en chemin."
+      },
+      "de": {
+        "title": "Bootsausflüge",
+        "type": "Meer",
+        "duration": "Halber oder ganzer Tag",
+        "level": "Leicht",
+        "text": "Fahren Sie über die Bucht zu ruhigen Inseln und weißen Sandstränden, mit Mittagessen und Badestopps unterwegs."
+      },
+      "it": {
+        "title": "Escursioni in barca",
+        "type": "Mare",
+        "duration": "Mezza giornata o intera",
+        "level": "Facile",
+        "text": "Attraversa la baia verso isole tranquille e spiagge di sabbia bianca, con pranzo e soste per il bagno lungo il percorso."
+      },
+      "es": {
+        "title": "Excursiones en barco",
+        "type": "Mar",
+        "duration": "Medio día o día completo",
+        "level": "Fácil",
+        "text": "Cruce la bahía hacia islas tranquilas y playas de arena blanca, con comida y paradas para bañarse por el camino."
+      }
+    }
+  },
+  {
+    "kind": "activity",
+    "title": "Catamaran Cruise",
+    "text": "Sail in comfort along the coast, snorkel in clear water and watch the sunset from the deck.",
+    "image": "/uploads/circuits/ramena.png",
+    "price": 85,
+    "group": "2–12",
+    "months": [0, 0, 0, 1, 2, 2, 2, 2, 2, 2, 1, 0],
+    "type": "Sea",
+    "duration": "Full day",
+    "level": "Easy",
+    "translations": {
+      "fr": {
+        "title": "Croisière en catamaran",
+        "type": "Mer",
+        "duration": "Journée entière",
+        "level": "Facile",
+        "text": "Naviguez confortablement le long de la côte, faites du snorkeling dans une eau claire et admirez le coucher du soleil depuis le pont."
+      },
+      "de": {
+        "title": "Katamaran-Törn",
+        "type": "Meer",
+        "duration": "Ganzer Tag",
+        "level": "Leicht",
+        "text": "Segeln Sie bequem an der Küste entlang, schnorcheln Sie in klarem Wasser und genießen Sie den Sonnenuntergang vom Deck aus."
+      },
+      "it": {
+        "title": "Crociera in catamarano",
+        "type": "Mare",
+        "duration": "Giornata intera",
+        "level": "Facile",
+        "text": "Naviga comodamente lungo la costa, fai snorkeling in acque limpide e guarda il tramonto dal ponte."
+      },
+      "es": {
+        "title": "Crucero en catamarán",
+        "type": "Mar",
+        "duration": "Día completo",
+        "level": "Fácil",
+        "text": "Navegue con comodidad a lo largo de la costa, haga snorkel en aguas claras y vea la puesta de sol desde la cubierta."
+      }
+    }
+  },
+  {
+    "kind": "activity",
+    "title": "Wildlife & Flora Discovery",
+    "text": "Meet lemurs, chameleons and orchids in the wild, with a guide who explains what you are seeing.",
+    "image": "/uploads/circuits/sambirano-river.png",
+    "price": 30,
+    "group": "2–10",
+    "months": [1, 1, 1, 1, 2, 2, 2, 2, 2, 2, 1, 1],
+    "type": "Land",
+    "duration": "2–4 h",
+    "level": "Easy",
+    "translations": {
+      "fr": {
+        "title": "Découverte de la faune et de la flore",
+        "type": "Terre",
+        "level": "Facile",
+        "text": "Rencontrez lémuriens, caméléons et orchidées dans la nature, avec un guide qui vous explique ce que vous voyez."
+      },
+      "de": {
+        "title": "Tiere & Pflanzen entdecken",
+        "duration": "2–4 Std.",
+        "level": "Leicht",
+        "text": "Begegnen Sie Lemuren, Chamäleons und Orchideen in freier Natur, mit einem Guide, der Ihnen erklärt, was Sie sehen."
+      },
+      "it": {
+        "title": "Alla scoperta di fauna e flora",
+        "type": "Terra",
+        "level": "Facile",
+        "text": "Incontra lemuri, camaleonti e orchidee in natura, con una guida che ti spiega ciò che vedi."
+      },
+      "es": {
+        "title": "Descubrimiento de fauna y flora",
+        "type": "Tierra",
+        "level": "Fácil",
+        "text": "Conozca lémures, camaleones y orquídeas en libertad, con un guía que le explica lo que ve."
+      }
+    }
+  },
+  {
+    "kind": "excursion",
+    "title": "Cocoa And Spice Valley Day",
+    "text": "Follow cocoa from tree to drying rack and meet growers along the Sambirano river.",
+    "image": "/uploads/circuits/sambirano-river.png",
+    "price": 85,
+    "place": "Ambanja",
+    "region": "North",
+    "length": "day",
+    "link": "/destinations/ambanja/sambirano-valley",
+    "duration": "1 day",
+    "group": "Up to 8 guests",
+    "level": "Easy",
+    "translations": {
+      "fr": {
+        "title": "Journée dans la vallée du cacao et des épices",
+        "duration": "1 jour",
+        "group": "Jusqu'à 8 personnes",
+        "level": "Facile",
+        "text": "Suivez le cacao de l'arbre au séchoir et rencontrez les producteurs le long du Sambirano."
+      },
+      "de": {
+        "title": "Ein Tag im Tal von Kakao und Gewürzen",
+        "duration": "1 Tag",
+        "group": "Bis zu 8 Gäste",
+        "level": "Leicht",
+        "text": "Verfolgen Sie den Kakao vom Baum bis zum Trockengestell und treffen Sie Bauern am Sambirano-Fluss."
+      },
+      "it": {
+        "title": "Una giornata nella valle del cacao e delle spezie",
+        "duration": "1 giorno",
+        "group": "Fino a 8 persone",
+        "level": "Facile",
+        "text": "Segui il cacao dall'albero all'essiccatoio e incontra i coltivatori lungo il fiume Sambirano."
+      },
+      "es": {
+        "title": "Un día en el valle del cacao y las especias",
+        "duration": "1 día",
+        "group": "Hasta 8 personas",
+        "level": "Fácil",
+        "text": "Siga el cacao del árbol al secadero y conozca a los agricultores a orillas del Sambirano."
+      }
+    }
+  },
+  {
+    "kind": "excursion",
+    "title": "Sail The Bay Of Ramena",
+    "text": "A morning on the water with swimming stops in the Emerald Sea.",
+    "image": "/uploads/circuits/ramena.png",
+    "price": 60,
+    "place": "Diego Suarez",
+    "region": "North",
+    "length": "half",
+    "link": "",
+    "duration": "Half day",
+    "group": "Up to 10 guests",
+    "level": "Easy",
+    "translations": {
+      "fr": {
+        "title": "La baie de Ramena à la voile",
+        "duration": "Demi-journée",
+        "group": "Jusqu'à 10 personnes",
+        "level": "Facile",
+        "text": "Une matinée sur l'eau avec des arrêts baignade dans la mer d'Émeraude."
+      },
+      "de": {
+        "title": "Segeln in der Bucht von Ramena",
+        "duration": "Halbtags",
+        "group": "Bis zu 10 Gäste",
+        "level": "Leicht",
+        "text": "Ein Vormittag auf dem Wasser mit Badestopps im Smaragdmeer."
+      },
+      "it": {
+        "title": "In barca a vela nella baia di Ramena",
+        "duration": "Mezza giornata",
+        "group": "Fino a 10 persone",
+        "level": "Facile",
+        "text": "Una mattina sull'acqua con soste per il bagno nel Mare di Smeraldo."
+      },
+      "es": {
+        "title": "En velero por la bahía de Ramena",
+        "duration": "Medio día",
+        "group": "Hasta 10 personas",
+        "level": "Fácil",
+        "text": "Una mañana en el agua con paradas para bañarse en el Mar Esmeralda."
+      }
+    }
+  },
+  {
+    "kind": "excursion",
+    "title": "Ankify To Nosy Be Crossing",
+    "text": "A scenic drive and a speedboat crossing, with lunch by the water.",
+    "image": "/uploads/circuits/nosy-iranja.png",
+    "price": 45,
+    "place": "Ambanja",
+    "region": "North",
+    "length": "half",
+    "link": "/destinations/ambanja/ankify-jetty",
+    "duration": "3 hours",
+    "group": "Up to 12 guests",
+    "level": "Easy",
+    "translations": {
+      "fr": {
+        "title": "Traversée d'Ankify à Nosy Be",
+        "duration": "3 heures",
+        "group": "Jusqu'à 12 personnes",
+        "level": "Facile",
+        "text": "Une belle route et une traversée en vedette, avec déjeuner au bord de l'eau."
+      },
+      "de": {
+        "title": "Überfahrt von Ankify nach Nosy Be",
+        "duration": "3 Stunden",
+        "group": "Bis zu 12 Gäste",
+        "level": "Leicht",
+        "text": "Eine schöne Fahrt und eine Überfahrt im Schnellboot, mit Mittagessen am Wasser."
+      },
+      "it": {
+        "title": "Traversata da Ankify a Nosy Be",
+        "duration": "3 ore",
+        "group": "Fino a 12 persone",
+        "level": "Facile",
+        "text": "Una strada panoramica e una traversata in motoscafo, con pranzo in riva al mare."
+      },
+      "es": {
+        "title": "Travesía de Ankify a Nosy Be",
+        "duration": "3 horas",
+        "group": "Hasta 12 personas",
+        "level": "Fácil",
+        "text": "Un bonito trayecto por carretera y una travesía en lancha rápida, con comida junto al agua."
+      }
+    }
+  },
+  {
+    "kind": "excursion",
+    "title": "Nosy Iranja Sandbar Day",
+    "text": "Walk the white sandbar, snorkel with turtles and climb to the lighthouse.",
+    "image": "/uploads/circuits/nosy-lonjo.png",
+    "price": 95,
+    "place": "Nosy Be",
+    "region": "North",
+    "length": "day",
+    "link": "",
+    "duration": "1 day",
+    "group": "Up to 12 guests",
+    "level": "Easy",
+    "translations": {
+      "fr": {
+        "title": "Journée au banc de sable de Nosy Iranja",
+        "duration": "1 jour",
+        "group": "Jusqu'à 12 personnes",
+        "level": "Facile",
+        "text": "Marchez sur le banc de sable blanc, nagez avec les tortues et montez au phare."
+      },
+      "de": {
+        "title": "Ein Tag an der Sandbank von Nosy Iranja",
+        "duration": "1 Tag",
+        "group": "Bis zu 12 Gäste",
+        "level": "Leicht",
+        "text": "Laufen Sie über die weiße Sandbank, schnorcheln Sie mit Schildkröten und steigen Sie zum Leuchtturm hinauf."
+      },
+      "it": {
+        "title": "Giornata sulla lingua di sabbia di Nosy Iranja",
+        "duration": "1 giorno",
+        "group": "Fino a 12 persone",
+        "level": "Facile",
+        "text": "Cammina sulla lingua di sabbia bianca, fai snorkeling con le tartarughe e sali al faro."
+      },
+      "es": {
+        "title": "Un día en el banco de arena de Nosy Iranja",
+        "duration": "1 día",
+        "group": "Hasta 12 personas",
+        "level": "Fácil",
+        "text": "Camine por el banco de arena blanca, haga snorkel con tortugas y suba al faro."
+      }
+    }
+  },
+  {
+    "kind": "excursion",
+    "title": "Antananarivo And Ambohimanga",
+    "text": "The old town, the Rova and the sacred royal hill north of the capital.",
+    "image": "/uploads/circuits/antananarivo-rice-fields.png",
+    "price": 70,
+    "place": "Antananarivo",
+    "region": "Highlands",
+    "length": "day",
+    "link": "",
+    "duration": "1 day",
+    "group": "Up to 8 guests",
+    "level": "Easy",
+    "translations": {
+      "fr": {
+        "title": "Antananarivo et Ambohimanga",
+        "duration": "1 jour",
+        "group": "Jusqu'à 8 personnes",
+        "level": "Facile",
+        "text": "La vieille ville, le Rova et la colline royale sacrée au nord de la capitale."
+      },
+      "de": {
+        "title": "Antananarivo und Ambohimanga",
+        "duration": "1 Tag",
+        "group": "Bis zu 8 Gäste",
+        "level": "Leicht",
+        "text": "Die Altstadt, der Rova und der heilige Königshügel nördlich der Hauptstadt."
+      },
+      "it": {
+        "title": "Antananarivo e Ambohimanga",
+        "duration": "1 giorno",
+        "group": "Fino a 8 persone",
+        "level": "Facile",
+        "text": "La città vecchia, il Rova e la collina reale sacra a nord della capitale."
+      },
+      "es": {
+        "title": "Antananarivo y Ambohimanga",
+        "duration": "1 día",
+        "group": "Hasta 8 personas",
+        "level": "Fácil",
+        "text": "El casco antiguo, el Rova y la colina real sagrada al norte de la capital."
+      }
+    }
+  },
+  {
+    "kind": "excursion",
+    "title": "Baobab Avenue At Sunset",
+    "text": "Arrive before the crowds and watch the light turn the trunks orange.",
+    "image": "/uploads/circuits/coastal-tsingy.jpg",
+    "price": 50,
+    "place": "Morondava",
+    "region": "West",
+    "length": "half",
+    "link": "",
+    "duration": "Half day",
+    "group": "Up to 10 guests",
+    "level": "Easy",
+    "translations": {
+      "fr": {
+        "title": "L'Allée des Baobabs au coucher du soleil",
+        "duration": "Demi-journée",
+        "group": "Jusqu'à 10 personnes",
+        "level": "Facile",
+        "text": "Arrivez avant la foule et regardez la lumière teinter les troncs d'orange."
+      },
+      "de": {
+        "title": "Baobab-Allee im Sonnenuntergang",
+        "duration": "Halbtags",
+        "group": "Bis zu 10 Gäste",
+        "level": "Leicht",
+        "text": "Kommen Sie vor dem Ansturm und sehen Sie zu, wie das Licht die Stämme orange färbt."
+      },
+      "it": {
+        "title": "Il Viale dei Baobab al tramonto",
+        "duration": "Mezza giornata",
+        "group": "Fino a 10 persone",
+        "level": "Facile",
+        "text": "Arriva prima della folla e guarda la luce colorare i tronchi di arancione."
+      },
+      "es": {
+        "title": "La Avenida de los Baobabs al atardecer",
+        "duration": "Medio día",
+        "group": "Hasta 10 personas",
+        "level": "Fácil",
+        "text": "Llegue antes que la multitud y vea cómo la luz tiñe de naranja los troncos."
+      }
+    }
+  },
+  {
+    "kind": "excursion",
+    "title": "Manongarivo Forest Trek",
+    "text": "Guided trails through a protected reserve, with optional camping.",
+    "image": "/uploads/circuits/nosy-lonjo.png",
+    "price": 140,
+    "place": "Ambanja",
+    "region": "North",
+    "length": "multi",
+    "link": "/destinations/ambanja/manongarivo-reserve",
+    "duration": "2 days",
+    "group": "Up to 6 guests",
+    "level": "Active",
+    "translations": {
+      "fr": {
+        "title": "Randonnée dans la forêt de Manongarivo",
+        "duration": "2 jours",
+        "group": "Jusqu'à 6 personnes",
+        "level": "Sportif",
+        "text": "Des sentiers guidés dans une réserve protégée, avec camping en option."
+      },
+      "de": {
+        "title": "Trekking im Wald von Manongarivo",
+        "duration": "2 Tage",
+        "group": "Bis zu 6 Gäste",
+        "level": "Sportlich",
+        "text": "Geführte Wege durch ein Schutzgebiet, auf Wunsch mit Zelten."
+      },
+      "it": {
+        "title": "Trekking nella foresta di Manongarivo",
+        "duration": "2 giorni",
+        "group": "Fino a 6 persone",
+        "level": "Impegnativo",
+        "text": "Sentieri guidati in una riserva protetta, con campeggio facoltativo."
+      },
+      "es": {
+        "title": "Trekking en el bosque de Manongarivo",
+        "duration": "2 días",
+        "group": "Hasta 6 personas",
+        "level": "Exigente",
+        "text": "Senderos guiados por una reserva protegida, con acampada opcional."
+      }
+    }
+  },
+  {
+    "kind": "excursion",
+    "title": "Andasibe Indri And Night Walk",
+    "text": "Track the indri at dawn and spot nocturnal lemurs after dark.",
+    "image": "/uploads/circuits/sambirano-river.png",
+    "price": 180,
+    "place": "Andasibe",
+    "region": "East",
+    "length": "multi",
+    "link": "",
+    "duration": "2 days",
+    "group": "Up to 8 guests",
+    "level": "Moderate",
+    "translations": {
+      "fr": {
+        "title": "Andasibe : l'indri et balade nocturne",
+        "duration": "2 jours",
+        "group": "Jusqu'à 8 personnes",
+        "level": "Modéré",
+        "text": "Pistez l'indri à l'aube et observez les lémuriens nocturnes à la nuit tombée."
+      },
+      "de": {
+        "title": "Andasibe: Indri und Nachtwanderung",
+        "duration": "2 Tage",
+        "group": "Bis zu 8 Gäste",
+        "level": "Mittel",
+        "text": "Spüren Sie im Morgengrauen den Indri auf und entdecken Sie nach Einbruch der Dunkelheit nachtaktive Lemuren."
+      },
+      "it": {
+        "title": "Andasibe: l'indri e uscita notturna",
+        "duration": "2 giorni",
+        "group": "Fino a 8 persone",
+        "level": "Moderato",
+        "text": "Segui l'indri all'alba e avvista i lemuri notturni dopo il tramonto."
+      },
+      "es": {
+        "title": "Andasibe: el indri y paseo nocturno",
+        "duration": "2 días",
+        "group": "Hasta 8 personas",
+        "level": "Moderado",
+        "text": "Busque al indri al amanecer y descubra los lémures nocturnos al anochecer."
+      }
+    }
+  },
+  {
+    "kind": "cruise",
+    "title": "Nosy Iranja By Speedboat",
+    "text": "Walk the white sandbar, swim and snorkel with turtles.",
+    "image": "/uploads/circuits/nosy-lonjo.png",
+    "price": 110,
+    "port": "nosybe",
+    "hours": 7,
+    "tag": "Sea",
+    "translations": {
+      "fr": {
+        "title": "Nosy Iranja en vedette",
+        "text": "Marchez sur le banc de sable blanc, baignez-vous et nagez avec les tortues."
+      },
+      "de": {
+        "title": "Mit dem Schnellboot nach Nosy Iranja",
+        "text": "Laufen Sie über die weiße Sandbank, baden und schnorcheln Sie mit Schildkröten."
+      },
+      "it": {
+        "title": "Nosy Iranja in motoscafo",
+        "text": "Cammina sulla lingua di sabbia bianca, nuota e fai snorkeling con le tartarughe."
+      },
+      "es": {
+        "title": "Nosy Iranja en lancha rápida",
+        "text": "Camine por el banco de arena blanca, báñese y haga snorkel con tortugas."
+      }
+    }
+  },
+  {
+    "kind": "cruise",
+    "title": "Nosy Tanikely Snorkel",
+    "text": "Calm reef snorkelling in a marine park, with a beach stop.",
+    "image": "/uploads/circuits/nosy-iranja.png",
+    "price": 70,
+    "port": "nosybe",
+    "hours": 4.5,
+    "tag": "Sea",
+    "translations": {
+      "fr": {
+        "title": "Snorkeling à Nosy Tanikely",
+        "text": "Snorkeling sur un récif calme dans un parc marin, avec un arrêt plage."
+      },
+      "de": {
+        "title": "Schnorcheln bei Nosy Tanikely",
+        "text": "Ruhiges Riffschnorcheln in einem Meeresschutzgebiet, mit Strandpause."
+      },
+      "it": {
+        "title": "Snorkeling a Nosy Tanikely",
+        "text": "Snorkeling tranquillo sulla barriera in un parco marino, con sosta in spiaggia."
+      },
+      "es": {
+        "title": "Snorkel en Nosy Tanikely",
+        "text": "Snorkel tranquilo en un arrecife dentro de un parque marino, con parada en la playa."
+      }
+    }
+  },
+  {
+    "kind": "cruise",
+    "title": "Lokobe Forest And Hell-Ville",
+    "text": "Look for lemurs with a guide, then browse the town market.",
+    "image": "/uploads/circuits/sambirano-river.png",
+    "price": 65,
+    "port": "nosybe",
+    "hours": 4,
+    "tag": "Nature",
+    "translations": {
+      "fr": {
+        "title": "Forêt de Lokobe et Hell-Ville",
+        "text": "Cherchez les lémuriens avec un guide, puis flânez au marché de la ville."
+      },
+      "de": {
+        "title": "Lokobe-Wald und Hell-Ville",
+        "text": "Suchen Sie mit einem Guide nach Lemuren und bummeln Sie dann über den Stadtmarkt."
+      },
+      "it": {
+        "title": "Foresta di Lokobe e Hell-Ville",
+        "text": "Cerca i lemuri con una guida, poi passeggia al mercato cittadino."
+      },
+      "es": {
+        "title": "Bosque de Lokobe y Hell-Ville",
+        "text": "Busque lémures con un guía y recorra después el mercado de la ciudad."
+      }
+    }
+  },
+  {
+    "kind": "cruise",
+    "title": "Ylang-Ylang And Mount Passot",
+    "text": "A working distillery and a sunset-worthy viewpoint over crater lakes.",
+    "image": "/uploads/circuits/antananarivo-rice-fields.png",
+    "price": 50,
+    "port": "nosybe",
+    "hours": 3.5,
+    "tag": "Culture",
+    "translations": {
+      "fr": {
+        "title": "Ylang-ylang et mont Passot",
+        "text": "Une distillerie en activité et un point de vue sur les lacs de cratère, idéal au coucher du soleil."
+      },
+      "de": {
+        "title": "Ylang-Ylang und Mont Passot",
+        "text": "Eine aktive Destillerie und ein Aussichtspunkt über Kraterseen – perfekt zum Sonnenuntergang."
+      },
+      "it": {
+        "title": "Ylang-ylang e Mont Passot",
+        "text": "Una distilleria in attività e un belvedere sui laghi craterici, perfetto al tramonto."
+      },
+      "es": {
+        "title": "Ylang-ylang y Mont Passot",
+        "text": "Una destilería en funcionamiento y un mirador sobre lagos de cráter, ideal al atardecer."
+      }
+    }
+  },
+  {
+    "kind": "cruise",
+    "title": "Emerald Sea And Sugar Loaf",
+    "text": "A boat across Diego Bay with swimming in shallow, bright water.",
+    "image": "/uploads/circuits/ramena.png",
+    "price": 75,
+    "port": "diego",
+    "hours": 5,
+    "tag": "Sea",
+    "translations": {
+      "fr": {
+        "title": "Mer d'Émeraude et Pain de Sucre",
+        "text": "Une traversée de la baie de Diego avec baignade dans une eau peu profonde et lumineuse."
+      },
+      "de": {
+        "title": "Smaragdmeer und Zuckerhut",
+        "text": "Eine Bootsfahrt über die Bucht von Diego mit Baden in flachem, leuchtendem Wasser."
+      },
+      "it": {
+        "title": "Mare di Smeraldo e Pan di Zucchero",
+        "text": "Una traversata della baia di Diego con bagni in acque basse e luminose."
+      },
+      "es": {
+        "title": "Mar Esmeralda y Pan de Azúcar",
+        "text": "Una travesía en barco por la bahía de Diego con baño en aguas poco profundas y luminosas."
+      }
+    }
+  },
+  {
+    "kind": "cruise",
+    "title": "Red Tsingy And Old Town",
+    "text": "Sculpted red rock formations, then a walk through Diego Suarez.",
+    "image": "/uploads/circuits/coastal-tsingy.jpg",
+    "price": 90,
+    "port": "diego",
+    "hours": 6,
+    "tag": "Culture",
+    "translations": {
+      "fr": {
+        "title": "Tsingy rouges et vieille ville",
+        "text": "Des formations de roche rouge sculptées, puis une balade dans Diego Suarez."
+      },
+      "de": {
+        "title": "Rote Tsingy und Altstadt",
+        "text": "Skulpturale rote Felsformationen, danach ein Spaziergang durch Diego Suarez."
+      },
+      "it": {
+        "title": "Tsingy Rossi e città vecchia",
+        "text": "Formazioni di roccia rossa scolpite, poi una passeggiata a Diego Suarez."
+      },
+      "es": {
+        "title": "Tsingy Rojos y casco antiguo",
+        "text": "Formaciones esculpidas de roca roja y un paseo por Diego Suarez."
+      }
+    }
+  },
+  {
+    "kind": "cruise",
+    "title": "Amber Mountain Rainforest",
+    "text": "Waterfalls, crater lakes and chameleons in a cool mountain park.",
+    "image": "/uploads/circuits/sambirano-river.png",
+    "price": 120,
+    "port": "diego",
+    "hours": 8,
+    "tag": "Nature",
+    "translations": {
+      "fr": {
+        "title": "Forêt humide de la Montagne d'Ambre",
+        "text": "Cascades, lacs de cratère et caméléons dans un parc de montagne au climat frais."
+      },
+      "de": {
+        "title": "Regenwald der Montagne d'Ambre",
+        "text": "Wasserfälle, Kraterseen und Chamäleons in einem kühlen Bergpark."
+      },
+      "it": {
+        "title": "Foresta pluviale della Montagne d'Ambre",
+        "text": "Cascate, laghi craterici e camaleonti in un fresco parco di montagna."
+      },
+      "es": {
+        "title": "Selva de la Montaña de Ámbar",
+        "text": "Cascadas, lagos de cráter y camaleones en un fresco parque de montaña."
+      }
+    }
+  },
+  {
+    "kind": "longstay",
+    "title": "One Month Of Slow Travel",
+    "text": "Two or three bases, no rushing. Combine a bay, the highlands and a national park, with time to sit still in between.",
+    "image": "/uploads/circuits/ramena.png",
+    "tab": "1 month",
+    "points": [
+      "Furnished stays in 2 to 3 regions",
+      "Private driver for transfers",
+      "Guided excursions each week"
+    ],
+    "priceLabel": "From €1,900",
+    "translations": {
+      "fr": {
+        "tab": "1 mois",
+        "title": "Un mois de voyage lent",
+        "text": "Deux ou trois bases, sans vous presser. Combinez une baie, les Hautes Terres et un parc national, avec du temps pour souffler entre les deux.",
+        "points": [
+          "Logements meublés dans 2 à 3 régions",
+          "Chauffeur privé pour les transferts",
+          "Excursions guidées chaque semaine"
+        ],
+        "priceLabel": "À partir de 1 900 €"
+      },
+      "de": {
+        "tab": "1 Monat",
+        "title": "Ein Monat langsames Reisen",
+        "text": "Zwei oder drei Standorte, ganz ohne Eile. Kombinieren Sie eine Bucht, das Hochland und einen Nationalpark – mit Zeit zum Innehalten dazwischen.",
+        "points": [
+          "Möblierte Unterkünfte in 2 bis 3 Regionen",
+          "Privater Fahrer für die Transfers",
+          "Jede Woche geführte Ausflüge"
+        ],
+        "priceLabel": "Ab 1.900 €"
+      },
+      "it": {
+        "tab": "1 mese",
+        "title": "Un mese di viaggio lento",
+        "text": "Due o tre basi, senza fretta. Abbina una baia, gli Altopiani e un parco nazionale, con il tempo di fermarti nel mezzo.",
+        "points": [
+          "Alloggi arredati in 2-3 regioni",
+          "Autista privato per i trasferimenti",
+          "Escursioni guidate ogni settimana"
+        ],
+        "priceLabel": "Da 1.900 €"
+      },
+      "es": {
+        "tab": "1 mes",
+        "title": "Un mes de viaje sin prisas",
+        "text": "Dos o tres bases, sin correr. Combine una bahía, las Tierras Altas y un parque nacional, con tiempo para detenerse entre medias.",
+        "points": [
+          "Alojamientos amueblados en 2 o 3 regiones",
+          "Conductor privado para los traslados",
+          "Excursiones guiadas cada semana"
+        ],
+        "priceLabel": "Desde 1900 €"
+      }
+    }
+  },
+  {
+    "kind": "longstay",
+    "title": "A Season In Madagascar",
+    "text": "Settle in one region, work remotely or volunteer, and take guided trips on weekends. We arrange housing, transport and local contacts.",
+    "image": "/uploads/circuits/antananarivo-rice-fields.png",
+    "tab": "3 months",
+    "points": [
+      "One home base with reliable internet",
+      "Monthly guided getaways",
+      "Language lessons and community projects"
+    ],
+    "priceLabel": "From €4,800",
+    "translations": {
+      "fr": {
+        "tab": "3 mois",
+        "title": "Une saison à Madagascar",
+        "text": "Installez-vous dans une région, travaillez à distance ou faites du bénévolat, et partez en excursion guidée le week-end. Nous organisons logement, transport et contacts locaux.",
+        "points": [
+          "Un seul point de chute avec une connexion fiable",
+          "Une escapade guidée chaque mois",
+          "Cours de langue et projets solidaires"
+        ],
+        "priceLabel": "À partir de 4 800 €"
+      },
+      "de": {
+        "tab": "3 Monate",
+        "title": "Eine Saison in Madagaskar",
+        "text": "Lassen Sie sich in einer Region nieder, arbeiten Sie remote oder engagieren Sie sich ehrenamtlich und machen Sie am Wochenende geführte Ausflüge. Wir kümmern uns um Unterkunft, Transport und lokale Kontakte.",
+        "points": [
+          "Ein fester Wohnsitz mit zuverlässigem Internet",
+          "Jeden Monat eine geführte Auszeit",
+          "Sprachunterricht und Gemeinschaftsprojekte"
+        ],
+        "priceLabel": "Ab 4.800 €"
+      },
+      "it": {
+        "tab": "3 mesi",
+        "title": "Una stagione in Madagascar",
+        "text": "Stabilisciti in una regione, lavora da remoto o fai volontariato e partecipa a gite guidate nel fine settimana. Organizziamo alloggio, trasporti e contatti locali.",
+        "points": [
+          "Una sola base con internet affidabile",
+          "Una fuga guidata ogni mese",
+          "Lezioni di lingua e progetti solidali"
+        ],
+        "priceLabel": "Da 4.800 €"
+      },
+      "es": {
+        "tab": "3 meses",
+        "title": "Una temporada en Madagascar",
+        "text": "Instálese en una región, teletrabaje o haga voluntariado y salga de excursión guiada los fines de semana. Organizamos alojamiento, transporte y contactos locales.",
+        "points": [
+          "Una sola base con internet fiable",
+          "Una escapada guiada cada mes",
+          "Clases de idioma y proyectos solidarios"
+        ],
+        "priceLabel": "Desde 4800 €"
+      }
+    }
+  },
+  {
+    "kind": "longstay",
+    "title": "Live Here, Fully Supported",
+    "text": "For researchers, artists, families and retirees. We handle housing and paperwork, then stay close for the whole stay.",
+    "image": "/uploads/circuits/nosy-lonjo.png",
+    "tab": "6 months +",
+    "points": [
+      "Long-term housing search",
+      "Paperwork and visa extensions",
+      "A named contact for your whole stay"
+    ],
+    "priceLabel": "On request",
+    "translations": {
+      "fr": {
+        "tab": "6 mois +",
+        "title": "Vivre ici, entièrement accompagné",
+        "text": "Pour les chercheurs, les artistes, les familles et les retraités. Nous gérons le logement et les démarches, puis restons à vos côtés pendant tout le séjour.",
+        "points": [
+          "Recherche de logement longue durée",
+          "Démarches et prolongations de visa",
+          "Un interlocuteur dédié pendant tout votre séjour"
+        ],
+        "priceLabel": "Sur demande"
+      },
+      "de": {
+        "tab": "6 Monate +",
+        "title": "Hier leben, rundum betreut",
+        "text": "Für Forschende, Kunstschaffende, Familien und Ruheständler. Wir regeln Wohnung und Formalitäten und bleiben während des ganzen Aufenthalts an Ihrer Seite.",
+        "points": [
+          "Suche nach einer Langzeitunterkunft",
+          "Formalitäten und Visumverlängerungen",
+          "Ein fester Ansprechpartner für Ihren ganzen Aufenthalt"
+        ],
+        "priceLabel": "Auf Anfrage"
+      },
+      "it": {
+        "tab": "6 mesi +",
+        "title": "Vivere qui, con pieno supporto",
+        "text": "Per ricercatori, artisti, famiglie e pensionati. Ci occupiamo di alloggio e pratiche, e restiamo vicini per tutto il soggiorno.",
+        "points": [
+          "Ricerca di un alloggio a lungo termine",
+          "Pratiche e proroghe del visto",
+          "Un referente dedicato per tutto il soggiorno"
+        ],
+        "priceLabel": "Su richiesta"
+      },
+      "es": {
+        "tab": "6 meses +",
+        "title": "Vivir aquí, con todo el apoyo",
+        "text": "Para investigadores, artistas, familias y jubilados. Nos ocupamos del alojamiento y los trámites, y seguimos cerca durante toda la estancia.",
+        "points": [
+          "Búsqueda de alojamiento de larga duración",
+          "Trámites y prórrogas de visado",
+          "Un interlocutor fijo durante toda su estancia"
+        ],
+        "priceLabel": "A consultar"
+      }
+    }
+  },
+  {
+    "kind": "idea",
+    "title": "Romantic islands",
+    "text": "Sandbars, sunsets and quiet stays.",
+    "image": "/uploads/circuits/nosy-iranja.png",
+    "interests": [
+      "Islands & beaches",
+      "Slow & relaxing"
+    ],
+    "travellers": "Couple",
+    "translations": {
+      "fr": {
+        "title": "Îles romantiques",
+        "text": "Bancs de sable, couchers de soleil et séjours au calme."
+      },
+      "de": {
+        "title": "Romantische Inseln",
+        "text": "Sandbänke, Sonnenuntergänge und ruhige Unterkünfte."
+      },
+      "it": {
+        "title": "Isole romantiche",
+        "text": "Lingue di sabbia, tramonti e soggiorni tranquilli."
+      },
+      "es": {
+        "title": "Islas románticas",
+        "text": "Bancos de arena, puestas de sol y estancias tranquilas."
+      }
+    }
+  },
+  {
+    "kind": "idea",
+    "title": "Family wildlife trail",
+    "text": "Lemurs, forests and gentle adventure.",
+    "image": "/uploads/circuits/sambirano-river.png",
+    "interests": [
+      "Wildlife",
+      "Hiking & adventure"
+    ],
+    "travellers": "Family",
+    "translations": {
+      "fr": {
+        "title": "Sur la piste des animaux en famille",
+        "text": "Lémuriens, forêts et aventure en douceur."
+      },
+      "de": {
+        "title": "Tierpfad für Familien",
+        "text": "Lemuren, Wälder und sanftes Abenteuer."
+      },
+      "it": {
+        "title": "Sulle tracce degli animali in famiglia",
+        "text": "Lemuri, foreste e avventura dolce."
+      },
+      "es": {
+        "title": "Ruta de fauna en familia",
+        "text": "Lémures, bosques y aventura suave."
+      }
+    }
+  },
+  {
+    "kind": "idea",
+    "title": "Culture and countryside",
+    "text": "Markets, royal hills and village life.",
+    "image": "/uploads/circuits/antananarivo-rice-fields.png",
+    "interests": [
+      "Culture & villages",
+      "Wildlife"
+    ],
+    "travellers": "Friends",
+    "translations": {
+      "fr": {
+        "title": "Culture et campagne",
+        "text": "Marchés, collines royales et vie de village."
+      },
+      "de": {
+        "title": "Kultur und Landleben",
+        "text": "Märkte, Königshügel und Dorfleben."
+      },
+      "it": {
+        "title": "Cultura e campagna",
+        "text": "Mercati, colline reali e vita di villaggio."
+      },
+      "es": {
+        "title": "Cultura y campo",
+        "text": "Mercados, colinas reales y vida de pueblo."
+      }
+    }
+  }
+]

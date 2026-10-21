@@ -12,64 +12,6 @@
     "Ganztags",
     "2 Tage oder mehr"
   ],
-  "items": [
-    {
-      "title": "Ein Tag im Tal von Kakao und Gewürzen",
-      "duration": "1 Tag",
-      "group": "Bis zu 8 Gäste",
-      "level": "Leicht",
-      "text": "Verfolgen Sie den Kakao vom Baum bis zum Trockengestell und treffen Sie Bauern am Sambirano-Fluss."
-    },
-    {
-      "title": "Segeln in der Bucht von Ramena",
-      "duration": "Halbtags",
-      "group": "Bis zu 10 Gäste",
-      "level": "Leicht",
-      "text": "Ein Vormittag auf dem Wasser mit Badestopps im Smaragdmeer."
-    },
-    {
-      "title": "Überfahrt von Ankify nach Nosy Be",
-      "duration": "3 Stunden",
-      "group": "Bis zu 12 Gäste",
-      "level": "Leicht",
-      "text": "Eine schöne Fahrt und eine Überfahrt im Schnellboot, mit Mittagessen am Wasser."
-    },
-    {
-      "title": "Ein Tag an der Sandbank von Nosy Iranja",
-      "duration": "1 Tag",
-      "group": "Bis zu 12 Gäste",
-      "level": "Leicht",
-      "text": "Laufen Sie über die weiße Sandbank, schnorcheln Sie mit Schildkröten und steigen Sie zum Leuchtturm hinauf."
-    },
-    {
-      "title": "Antananarivo und Ambohimanga",
-      "duration": "1 Tag",
-      "group": "Bis zu 8 Gäste",
-      "level": "Leicht",
-      "text": "Die Altstadt, der Rova und der heilige Königshügel nördlich der Hauptstadt."
-    },
-    {
-      "title": "Baobab-Allee im Sonnenuntergang",
-      "duration": "Halbtags",
-      "group": "Bis zu 10 Gäste",
-      "level": "Leicht",
-      "text": "Kommen Sie vor dem Ansturm und sehen Sie zu, wie das Licht die Stämme orange färbt."
-    },
-    {
-      "title": "Trekking im Wald von Manongarivo",
-      "duration": "2 Tage",
-      "group": "Bis zu 6 Gäste",
-      "level": "Sportlich",
-      "text": "Geführte Wege durch ein Schutzgebiet, auf Wunsch mit Zelten."
-    },
-    {
-      "title": "Andasibe: Indri und Nachtwanderung",
-      "duration": "2 Tage",
-      "group": "Bis zu 8 Gäste",
-      "level": "Mittel",
-      "text": "Spüren Sie im Morgengrauen den Indri auf und entdecken Sie nach Einbruch der Dunkelheit nachtaktive Lemuren."
-    }
-  ],
   "steps": [
     {
       "title": "Abholung am Hotel",
