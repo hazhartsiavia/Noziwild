@@ -9,7 +9,8 @@ import Navbar from '../components/Navbar';
 import Footer from '../components/Footer';
 import { sendRequest } from '../api';
 import { useAuth } from '../context/AuthContext';
-import { Trans, useT } from '../i18n/LanguageContext';
+import { Trans, useLanguage, useT } from '../i18n/LanguageContext';
+import { formatPrice } from '../utils/format';
 import { localize } from '../i18n/localize';
 import { gsap } from 'gsap'
 import { ScrollTrigger } from 'gsap/ScrollTrigger'
@@ -58,8 +59,8 @@ const ARCHES = [
 
 const PICKUPS = [
   { id: 1, title: 'Pick Up At Our Office', text: 'Collect and return your gear at our Antananarivo office, open every day.', price: 'Free', icon: 'pin' },
-  { id: 2, title: 'Hotel Delivery', text: 'We bring the gear to your hotel and collect it at the end of your stay.', price: 'From $5', icon: 'truck' },
-  { id: 3, title: 'Airport Handover', text: 'Meet us at arrivals with your gear ready. Return it before you fly.', price: 'From $10', icon: 'plane' },
+  { id: 2, title: 'Hotel Delivery', text: 'We bring the gear to your hotel and collect it at the end of your stay.', price: 'From €5', icon: 'truck' },
+  { id: 3, title: 'Airport Handover', text: 'Meet us at arrivals with your gear ready. Return it before you fly.', price: 'From €10', icon: 'plane' },
 ]
 
 
@@ -82,8 +83,8 @@ const pickupIcons = {
 
 /* -------------------------- Composants --------------------------- */
 
-// Nombre qui s'anime doucement quand sa valeur change (GSAP)
-function AnimatedNumber({ value }) {
+// Prix qui s'anime doucement quand sa valeur change (GSAP), en euros dans la langue du site
+function AnimatedPrice({ value, lang }) {
   const ref = useRef(null)
   const shown = useRef(value)
 
@@ -91,19 +92,19 @@ function AnimatedNumber({ value }) {
     const el = ref.current
     if (!el) return
     if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
-      el.textContent = value
+      el.textContent = formatPrice(value, lang)
       shown.current = value
       return
     }
     const counter = { v: shown.current }
     const tween = gsap.to(counter, {
       v: value, duration: 0.5, ease: 'power2.out',
-      onUpdate: () => { shown.current = counter.v; el.textContent = Math.round(counter.v) },
+      onUpdate: () => { shown.current = counter.v; el.textContent = formatPrice(Math.round(counter.v), lang) },
     })
     return () => tween.kill()
-  }, [value])
+  }, [value, lang])
 
-  return <span ref={ref}>{value}</span>
+  return <span ref={ref}>{formatPrice(value, lang)}</span>
 }
 
 // Hero : titre + arches cliquables (filtrent le catalogue)
@@ -151,6 +152,7 @@ function Hero({ counts, onPick }) {
 
 function GearCard({ item, qty, onChange }) {
   const t = useT('equipment')
+  const { lang } = useLanguage()
   const label = localize(CATEGORIES, t('categories')).find((c) => c.id === item.category)?.label
   const round = "w-9 h-9 flex items-center justify-center rounded-full transition active:scale-95"
 
@@ -168,7 +170,7 @@ function GearCard({ item, qty, onChange }) {
         </ul>
 
         <div className="mt-auto pt-5 flex items-center justify-between gap-3">
-          <p className="text-sm text-slate-600"><Trans text={t('perDay')} values={{ price: <span className="text-xl md:text-2xl font-medium text-slate-900">${item.price}</span> }} /></p>
+          <p className="text-sm text-slate-600"><Trans text={t('perDay')} values={{ price: <span className="text-xl md:text-2xl font-medium text-slate-900">{formatPrice(item.price, lang)}</span> }} /></p>
 
           {qty === 0 ? (
             <button type="button" onClick={() => onChange(item.id, 1)} className={`inline-flex items-center gap-1.5 bg-[#084838] hover:bg-[#0a5c47] text-white text-sm font-medium px-4 py-2 rounded-full active:scale-95 transition`}>
@@ -190,6 +192,7 @@ function GearCard({ item, qty, onChange }) {
 // Catalogue + liste de location (estimation du prix)
 function Catalog({ category, setCategory }) {
   const t = useT('equipment')
+  const { lang } = useLanguage()
   const categories = localize(CATEGORIES, t('categories'))
   const gear = localize(GEAR, t('gear'))
   const [cart, setCart] = useState({})   // id -> quantité
@@ -269,7 +272,7 @@ function Catalog({ category, setCategory }) {
               {lines.map((g) => (
                 <li key={g.id} className="flex items-center justify-between gap-3 py-3 text-sm md:text-base">
                   <span>{cart[g.id]} × {g.name}</span>
-                  <span className="tabular-nums text-white/85">${g.price * cart[g.id] * days}</span>
+                  <span className="tabular-nums text-white/85">{formatPrice(g.price * cart[g.id] * days, lang)}</span>
                 </li>
               ))}
             </ul>
@@ -277,16 +280,16 @@ function Catalog({ category, setCategory }) {
 
           {discount > 0 && (
             <p className="mt-2 flex items-center justify-between text-sm text-[#E6C58A]">
-              <span>{t('discount')}</span><span className="tabular-nums">−${discount}</span>
+              <span>{t('discount')}</span><span className="tabular-nums">−{formatPrice(discount, lang)}</span>
             </p>
           )}
 
           <div className="mt-5 pt-5 border-t border-white/25 flex items-end justify-between gap-3">
             <div>
               <p className="text-sm text-white/70">{t('total')}</p>
-              <p className="text-4xl md:text-5xl font-medium leading-none">$<AnimatedNumber value={total} /></p>
+              <p className="text-4xl md:text-5xl font-medium leading-none"><AnimatedPrice value={total} lang={lang} /></p>
             </div>
-            <p className="text-xs text-white/60 text-right">{t('perDay', { price: `$${perDay}` })}</p>
+            <p className="text-xs text-white/60 text-right">{t('perDay', { price: formatPrice(perDay, lang) })}</p>
           </div>
 
           <a

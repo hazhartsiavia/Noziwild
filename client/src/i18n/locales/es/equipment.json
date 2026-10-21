@@ -119,12 +119,12 @@
     {
       "title": "Entrega en el hotel",
       "text": "Llevamos el equipo a su hotel y lo recogemos al final de su estancia.",
-      "price": "Desde 5 $"
+      "price": "Desde 5 €"
     },
     {
       "title": "Entrega en el aeropuerto",
       "text": "Nos encontramos en llegadas con su equipo listo. Devuélvalo antes de volar.",
-      "price": "Desde 10 $"
+      "price": "Desde 10 €"
     }
   ],
   "faqs": [

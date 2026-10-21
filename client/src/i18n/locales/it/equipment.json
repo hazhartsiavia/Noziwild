@@ -119,12 +119,12 @@
     {
       "title": "Consegna in hotel",
       "text": "Portiamo l'attrezzatura nel tuo hotel e la ritiriamo alla fine del soggiorno.",
-      "price": "Da 5 $"
+      "price": "Da 5 €"
     },
     {
       "title": "Consegna in aeroporto",
       "text": "Incontraci agli arrivi con l'attrezzatura pronta. Restituiscila prima del volo.",
-      "price": "Da 10 $"
+      "price": "Da 10 €"
     }
   ],
   "faqs": [

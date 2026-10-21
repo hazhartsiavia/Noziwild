@@ -8,7 +8,8 @@ import Ramena from "../assets/images/Ramena.png";
 import Tana from "../assets/images/Tana.png";
 import Navbar from '../components/Navbar';
 import Footer from '../components/Footer';
-import { Trans, useT } from '../i18n/LanguageContext';
+import { Trans, useLanguage, useT } from '../i18n/LanguageContext';
+import { formatPrice } from '../utils/format';
 import { localize } from '../i18n/localize';
 import { gsap } from 'gsap'
 import { ScrollTrigger } from 'gsap/ScrollTrigger'
@@ -68,9 +69,9 @@ const STEPS = [
 ]
 
 const KEEPSAKES = [
-  { id: 1, title: 'Fine-Art Prints', text: 'Museum-quality paper, sizes from A5 to A2.', price: 'From $12' },
-  { id: 2, title: 'Photo Book', text: 'Your story in 30 pages, hand-checked and bound.', price: 'From $55' },
-  { id: 3, title: 'Framed Canvas', text: 'Your best shot, ready to hang on the wall.', price: 'From $70' },
+  { id: 1, title: 'Fine-Art Prints', text: 'Museum-quality paper, sizes from A5 to A2.', price: 'From €12' },
+  { id: 2, title: 'Photo Book', text: 'Your story in 30 pages, hand-checked and bound.', price: 'From €55' },
+  { id: 3, title: 'Framed Canvas', text: 'Your best shot, ready to hang on the wall.', price: 'From €70' },
   { id: 4, title: 'Digital Gallery', text: 'Private link and USB key with all your photos.', price: 'Included' },
 ]
 
@@ -281,6 +282,7 @@ function Gallery() {
 // Séances : liste en lignes (durée, photos, délai, prix)
 function Sessions() {
   const t = useT('photography')
+  const { lang } = useLanguage()
   const sessions = localize(SESSIONS, t('sessions'))
   return (
     <div id="sessions" className={`${SECTION_GAP} scroll-mt-8`}>
@@ -306,7 +308,7 @@ function Sessions() {
                 ))}
               </ul>
 
-              <p className="text-sm text-slate-600 lg:text-right"><Trans text={t('from')} values={{ price: <span className="text-2xl md:text-3xl font-medium text-slate-900">${s.price}</span> }} /></p>
+              <p className="text-sm text-slate-600 lg:text-right"><Trans text={t('from')} values={{ price: <span className="text-2xl md:text-3xl font-medium text-slate-900">{formatPrice(s.price, lang)}</span> }} /></p>
 
               <span className="hidden lg:flex w-10 h-10 rounded-full bg-[#084838] text-white items-center justify-center transition group-hover:bg-[#C49849] group-hover:translate-x-1">
                 <ArrowIcon />

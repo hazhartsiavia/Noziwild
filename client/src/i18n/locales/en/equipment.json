@@ -119,12 +119,12 @@
     {
       "title": "Hotel Delivery",
       "text": "We bring the gear to your hotel and collect it at the end of your stay.",
-      "price": "From $5"
+      "price": "From €5"
     },
     {
       "title": "Airport Handover",
       "text": "Meet us at arrivals with your gear ready. Return it before you fly.",
-      "price": "From $10"
+      "price": "From €10"
     }
   ],
   "faqs": [

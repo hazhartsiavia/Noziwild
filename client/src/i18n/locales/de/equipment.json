@@ -119,12 +119,12 @@
     {
       "title": "Lieferung ins Hotel",
       "text": "Wir bringen die Ausrüstung in Ihr Hotel und holen sie am Ende Ihres Aufenthalts wieder ab.",
-      "price": "Ab 5 $"
+      "price": "Ab 5 €"
     },
     {
       "title": "Übergabe am Flughafen",
       "text": "Treffen Sie uns in der Ankunftshalle, Ihre Ausrüstung ist bereit. Rückgabe vor Ihrem Abflug.",
-      "price": "Ab 10 $"
+      "price": "Ab 10 €"
     }
   ],
   "faqs": [

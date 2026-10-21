@@ -11,7 +11,7 @@ import { sendRequest } from '../api';
 import { useAuth } from '../context/AuthContext';
 import { Trans, useLanguage, useT } from '../i18n/LanguageContext';
 import { localize } from '../i18n/localize';
-import { LOCALES } from '../utils/format';
+import { formatPrice } from '../utils/format';
 import { gsap } from 'gsap'
 import { ScrollTrigger } from 'gsap/ScrollTrigger'
 
@@ -68,24 +68,24 @@ const MinusIcon = () => <Svg><path d="M5 12h14" /></Svg>
 
 /* -------------------------- Composants --------------------------- */
 
-// Nombre qui s'anime doucement quand sa valeur change (GSAP)
-function AnimatedNumber({ value }) {
+// Prix qui s'anime doucement quand sa valeur change (GSAP), en euros dans la langue du site
+function AnimatedPrice({ value, lang }) {
   const ref = useRef(null)
   const shown = useRef(value)
 
   useEffect(() => {
     const el = ref.current
     if (!el) return
-    if (prefersReducedMotion()) { el.textContent = value; shown.current = value; return }
+    if (prefersReducedMotion()) { el.textContent = formatPrice(value, lang); shown.current = value; return }
     const counter = { v: shown.current }
     const tween = gsap.to(counter, {
       v: value, duration: 0.5, ease: 'power2.out',
-      onUpdate: () => { shown.current = counter.v; el.textContent = Math.round(counter.v) },
+      onUpdate: () => { shown.current = counter.v; el.textContent = formatPrice(Math.round(counter.v), lang) },
     })
     return () => tween.kill()
-  }, [value])
+  }, [value, lang])
 
-  return <span ref={ref}>{value}</span>
+  return <span ref={ref}>{formatPrice(value, lang)}</span>
 }
 
 // Hero : texte + route dessinée à l'écran
@@ -136,7 +136,6 @@ function Builder() {
   const t = useT('planning')
   const { lang } = useLanguage()
   const styles = localize(STYLES, t('styles'))
-  const number = (value) => new Intl.NumberFormat(LOCALES[lang]).format(value)
   const [styleId, setStyleId] = useState('relax')
   const [days, setDays] = useState(7)
   const [travelers, setTravelers] = useState(2)
@@ -215,8 +214,8 @@ function Builder() {
 
           <div className="mt-6 pt-6 border-t border-white/25">
             <p className="text-sm text-white/70">{t('budget')}</p>
-            <p className="mt-1 text-3xl md:text-5xl font-medium leading-none">$<AnimatedNumber value={low} /> – $<AnimatedNumber value={high} /></p>
-            <p className="mt-2 text-sm text-white/70">{t(travelers === 1 ? 'forOne' : 'forGroup', { count: travelers, low: `$${number(low * travelers)}`, high: `$${number(high * travelers)}` })}</p>
+            <p className="mt-1 text-3xl md:text-5xl font-medium leading-none"><AnimatedPrice value={low} lang={lang} /> – <AnimatedPrice value={high} lang={lang} /></p>
+            <p className="mt-2 text-sm text-white/70">{t(travelers === 1 ? 'forOne' : 'forGroup', { count: travelers, low: formatPrice(low * travelers, lang), high: formatPrice(high * travelers, lang) })}</p>
           </div>
 
           <a href="/contact" className={`mt-6 block text-center bg-[#C49849] hover:bg-[#b08339] text-white ${BUTTON}`}>{t('custom')}</a>
@@ -261,6 +260,7 @@ function Process() {
 // Exemples d'itinéraires
 function Samples() {
   const t = useT('planning')
+  const { lang } = useLanguage()
   const samples = localize(SAMPLES, t('samples'))
   return (
     <div className={SECTION_GAP}>
@@ -287,7 +287,7 @@ function Samples() {
                 ))}
               </ol>
               <div className="mt-auto pt-6 flex items-center justify-between">
-                <p className="text-sm text-slate-600"><Trans text={t('fromPerPerson')} values={{ price: <span className="text-2xl font-medium text-slate-900">${s.price}</span> }} /></p>
+                <p className="text-sm text-slate-600"><Trans text={t('fromPerPerson')} values={{ price: <span className="text-2xl font-medium text-slate-900">{formatPrice(s.price, lang)}</span> }} /></p>
                 <a href="/contact" className="inline-flex items-center gap-1.5 text-sm font-medium text-[#084838] hover:gap-2.5 transition-all">{t('adapt')} <ArrowIcon /></a>
               </div>
             </div>

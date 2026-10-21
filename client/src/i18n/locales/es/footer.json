@@ -5,12 +5,9 @@
   "links": {
     "home": "Inicio",
     "about": "Nosotros",
-    "portfolio": "Portafolio",
-    "contact": "Contacto",
-    "faq": "Preguntas frecuentes"
+    "circuits": "Circuitos",
+    "destinations": "Destinos",
+    "contact": "Contacto"
   },
-  "socialLinks": "Redes sociales",
-  "promise": "Cada viajero cuenta para nosotros, sea cual sea el tamaño de su grupo.",
-  "terms": "Términos y condiciones",
-  "privacy": "Política de privacidad"
+  "promise": "Su viaje a Madagascar, preparado con usted desde la primera idea hasta el último día."
 }

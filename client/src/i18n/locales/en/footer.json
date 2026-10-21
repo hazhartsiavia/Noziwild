@@ -5,12 +5,9 @@
   "links": {
     "home": "Home",
     "about": "About",
-    "portfolio": "Portfolio",
-    "contact": "Contact",
-    "faq": "FAQ"
+    "circuits": "Circuits",
+    "destinations": "Destinations",
+    "contact": "Contact"
   },
-  "socialLinks": "Social Links",
-  "promise": "Making every customer feel valued—no matter the size of your audience.",
-  "terms": "Terms & Conditions",
-  "privacy": "Privacy Policy"
+  "promise": "Your trip to Madagascar, planned with you from the first idea to the last day."
 }

@@ -119,12 +119,12 @@
     {
       "title": "Livraison à l'hôtel",
       "text": "Nous apportons le matériel à votre hôtel et le récupérons à la fin de votre séjour.",
-      "price": "À partir de 5 $"
+      "price": "À partir de 5 €"
     },
     {
       "title": "Remise à l'aéroport",
       "text": "Retrouvez-nous aux arrivées avec votre matériel prêt. Rendez-le avant votre vol.",
-      "price": "À partir de 10 $"
+      "price": "À partir de 10 €"
     }
   ],
   "faqs": [

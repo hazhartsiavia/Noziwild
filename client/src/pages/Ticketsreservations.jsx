@@ -7,7 +7,8 @@ import Ramena from "../assets/images/Ramena.png";
 import Tana from "../assets/images/Tana.png";
 import Navbar from '../components/Navbar';
 import Footer from '../components/Footer';
-import { useT } from '../i18n/LanguageContext';
+import { useLanguage, useT } from '../i18n/LanguageContext';
+import { formatPrice } from '../utils/format';
 import { localize } from '../i18n/localize';
 import { gsap } from 'gsap'
 import { ScrollTrigger } from 'gsap/ScrollTrigger'
@@ -121,6 +122,7 @@ function Hero() {
 // Carte en forme de billet : photo, infos, souche avec prix
 function TicketCard({ t }) {
   const tr = useT('tickets')
+  const { lang } = useLanguage()
   const notch = "absolute -left-[9px] w-4 h-4 rounded-full bg-[#D5E8E2]"
   return (
     <article className="flex overflow-hidden rounded-2xl bg-white">
@@ -136,7 +138,7 @@ function TicketCard({ t }) {
         <span className={`${notch} -top-2`} />
         <span className={`${notch} -bottom-2`} />
         <p className={`${META_TEXT} text-slate-500`}>{tr('from')}</p>
-        <p className="text-2xl md:text-3xl font-medium text-slate-900 tabular-nums">${t.price}</p>
+        <p className="text-2xl md:text-3xl font-medium text-slate-900 tabular-nums">{formatPrice(t.price, lang)}</p>
         <a href="/contact" className="mt-1 rounded-full bg-[#084838] hover:bg-[#0a5c47] text-white text-xs md:text-sm font-medium px-3 py-1.5 transition">{tr('reserve')}</a>
       </div>
     </article>

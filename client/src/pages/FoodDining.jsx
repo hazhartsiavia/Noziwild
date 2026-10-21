@@ -9,7 +9,8 @@ import Navbar from '../components/Navbar';
 import Footer from '../components/Footer';
 import { sendRequest } from '../api';
 import { useAuth } from '../context/AuthContext';
-import { Trans, useT } from '../i18n/LanguageContext';
+import { Trans, useLanguage, useT } from '../i18n/LanguageContext';
+import { formatPrice } from '../utils/format';
 import { localize } from '../i18n/localize';
 import { gsap } from 'gsap'
 import { ScrollTrigger } from 'gsap/ScrollTrigger'
@@ -214,6 +215,7 @@ function Dishes() {
 // Expériences : filtres, liste de lignes à droite, grand aperçu à gauche qui change au survol
 function Menu() {
   const tr = useT('food')
+  const { lang } = useLanguage()
   const menuTabs = localize(MENU_TABS, tr('menuTabs'))
   const experiences = localize(EXPERIENCES, tr('experiences'))
   const [category, setCategory] = useState('all')
@@ -268,7 +270,7 @@ function Menu() {
               <h3 className="mt-4 text-4xl font-medium tracking-tight">{current.name}</h3>
               <p className="mt-3 max-w-md text-base text-white/85 leading-relaxed">{current.text}</p>
               <div className="mt-6 flex items-center justify-between gap-4">
-                <p className="text-white/80"><Trans text={tr('fromPerPerson')} values={{ price: <span className="text-3xl font-medium text-white">${current.price}</span> }} /></p>
+                <p className="text-white/80"><Trans text={tr('fromPerPerson')} values={{ price: <span className="text-3xl font-medium text-white">{formatPrice(current.price, lang)}</span> }} /></p>
                 <a href="/contact" className={`bg-[#C49849] hover:bg-[#b08339] text-white ${BUTTON}`}>{tr('bookThis')}</a>
               </div>
             </div>
@@ -299,7 +301,7 @@ function Menu() {
                   </div>
 
                   <div className="shrink-0 text-right">
-                    <p className="text-xl md:text-3xl font-medium text-slate-900 tabular-nums">${e.price}</p>
+                    <p className="text-xl md:text-3xl font-medium text-slate-900 tabular-nums">{formatPrice(e.price, lang)}</p>
                     <p className={`${META_TEXT} text-slate-500`}>{tr('perPerson')}</p>
                   </div>
 
@@ -336,6 +338,7 @@ function Diets() {
 // Cours de cuisine : photo avec parallaxe + étapes
 function CookingClass() {
   const t = useT('food')
+  const { lang } = useLanguage()
   const classSteps = localize(CLASS_STEPS, t('classSteps'))
   const facts = t('classFacts')
   return (
@@ -363,7 +366,7 @@ function CookingClass() {
         </ol>
 
         <ul className="mt-8 grid grid-cols-3 gap-3 md:gap-5 max-w-md">
-          {[['3 h', facts[0]], ['8', facts[1]], ['$45', facts[2]]].map(([v, l]) => (
+          {[['3 h', facts[0]], ['8', facts[1]], [formatPrice(45, lang), facts[2]]].map(([v, l]) => (
             <li key={l} className="rounded-2xl bg-white p-4 text-center">
               <p className="text-2xl md:text-3xl leading-none text-slate-800">{v}</p>
               <p className={`mt-2 ${META_TEXT} text-slate-600`}>{l}</p>

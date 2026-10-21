@@ -7,7 +7,8 @@ import Ramena from "../assets/images/Ramena.png";
 import Tana from "../assets/images/Tana.png";
 import Navbar from '../components/Navbar';
 import Footer from '../components/Footer';
-import { Trans, useT } from '../i18n/LanguageContext';
+import { Trans, useLanguage, useT } from '../i18n/LanguageContext';
+import { formatPrice } from '../utils/format';
 import { localize } from '../i18n/localize';
 
 /* Constantes partagées : mêmes valeurs que dans les autres pages */
@@ -163,6 +164,7 @@ function Intro() {
 
 function StayCard({ stay }) {
   const t = useT('accommodation')
+  const { lang } = useLanguage()
   return (
     <article className="group flex flex-col rounded-xl bg-white p-3">
       <div className="relative aspect-[4/3] overflow-hidden rounded-md">
@@ -180,7 +182,7 @@ function StayCard({ stay }) {
           ))}
         </ul>
         <div className="mt-auto pt-6 flex items-center justify-between gap-3">
-          <p className="text-slate-600 text-sm"><Trans text={t('fromPerNight')} values={{ price: <span className="text-xl md:text-2xl font-medium text-slate-900">${stay.price}</span> }} /></p>
+          <p className="text-slate-600 text-sm"><Trans text={t('fromPerNight')} values={{ price: <span className="text-xl md:text-2xl font-medium text-slate-900">{formatPrice(stay.price, lang)}</span> }} /></p>
           <a href="/contact" className={`bg-slate-800 hover:bg-slate-700 active:scale-95 transition text-white ${BUTTON}`}>{t('enquire')}</a>
         </div>
       </div>
