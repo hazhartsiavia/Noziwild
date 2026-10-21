@@ -149,7 +149,6 @@
   "menuText": "Da uno spuntino di strada a una cena a lume di candela. Prezzi a persona.",
   "menuTabsLabel": "Tipi di esperienza",
   "fromPerPerson": "Da {price} / persona",
-  "bookThis": "Prenota",
   "perPerson": "a persona",
   "groups": "I gruppi di 6 o più persone hanno un tavolo privato.",
   "dietsTitle": "Ogni dieta è benvenuta",
@@ -163,7 +162,6 @@
     "ospiti max",
     "a persona"
   ],
-  "reserve": "Prenota un posto",
   "faqTitle": "Buono a sapersi prima di mangiare",
   "faqText": "Scegli una domanda. Non trovi la tua? Il nostro team risponde in poche ore.",
   "question": "Domanda {n}",

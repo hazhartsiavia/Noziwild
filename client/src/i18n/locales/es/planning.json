@@ -125,7 +125,6 @@
   "budget": "Presupuesto estimado por persona",
   "forGroup": "Para {count} viajeros: unos {low} – {high}",
   "forOne": "Para 1 viajero: unos {low} – {high}",
-  "custom": "Recibir mi plan a medida",
   "note": "Estimación aproximada que incluye alojamientos, transporte y actividades. El presupuesto final depende de la temporada y de sus elecciones.",
   "processTitle": "Cómo planificamos su viaje",
   "processText": "Cuatro pasos, un asesor dedicado de principio a fin.",
@@ -133,7 +132,6 @@
   "samplesText": "Cada viaje se adapta a usted. Estos son solo puntos de partida.",
   "daysBadge": "{count} días",
   "fromPerPerson": "Desde {price} / persona",
-  "adapt": "Adaptarlo",
   "chatTitle": "Hablémoslo",
   "chatText": "Las preguntas que más nos hacen, respondidas como en un chat con su asesor.",
   "ctaTitle": "Describa el viaje de sus sueños",
@@ -143,5 +141,6 @@
   "emailLabel": "Su correo electrónico",
   "sending": "Enviando…",
   "send": "Enviar mi idea",
-  "thanks": "¡Gracias! Un asesor le responderá muy pronto."
+  "thanks": "¡Gracias! Un asesor le responderá muy pronto.",
+  "tripTitle": "Borrador: {style}, {days} días"
 }

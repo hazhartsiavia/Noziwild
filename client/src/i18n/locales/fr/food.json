@@ -149,7 +149,6 @@
   "menuText": "D'un en-cas dans la rue à un dîner aux chandelles. Prix par personne.",
   "menuTabsLabel": "Types d'expérience",
   "fromPerPerson": "À partir de {price} / personne",
-  "bookThis": "Réserver",
   "perPerson": "par personne",
   "groups": "Les groupes de 6 personnes ou plus ont une table privée.",
   "dietsTitle": "Tous les régimes sont les bienvenus",
@@ -163,7 +162,6 @@
     "participants max",
     "par personne"
   ],
-  "reserve": "Réserver une place",
   "faqTitle": "Bon à savoir avant de passer à table",
   "faqText": "Choisissez une question. Vous ne trouvez pas la vôtre ? Notre équipe répond en quelques heures.",
   "question": "Question {n}",

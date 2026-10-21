@@ -57,7 +57,6 @@
   "spare": "De retour au quai avec {minutes} min d'avance",
   "tooLong": "Demande une escale plus longue",
   "from": "À partir de {price}",
-  "reserve": "Réserver",
   "planTitle": "Organisez votre escale",
   "planText": "Choisissez votre port, puis indiquez combien de temps vous avez à terre. Nous vous montrons ce qui est possible.",
   "ashore": "Temps disponible à terre",

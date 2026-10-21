@@ -1,5 +1,6 @@
 {
   "kinds": {
+    "quote": "Quote request",
     "contact": "Contact message",
     "tailor-made": "Tailor-made trip",
     "place": "Place inquiry",
@@ -13,7 +14,10 @@
     "read": "Read",
     "in_progress": "In progress",
     "answered": "Answered",
-    "done": "Done"
+    "done": "Done",
+    "quoted": "Quote sent",
+    "accepted": "Accepted",
+    "declined": "Declined"
   },
   "nameUpdated": "Your name has been updated.",
   "hello": "Hello,",

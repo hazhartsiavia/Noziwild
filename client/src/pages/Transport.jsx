@@ -9,6 +9,7 @@ import Ramena from "../assets/images/Ramena.png";
 import Tana from "../assets/images/Tana.png";
 import Navbar from '../components/Navbar';
 import Footer from '../components/Footer';
+import AddToTrip from '../components/AddToTrip'
 import { useT } from '../i18n/LanguageContext';
 import { localize } from '../i18n/localize';
 
@@ -33,7 +34,7 @@ const HERO = {
   title: 'Getting There Is Part of the Journey',
   text: 'Private 4x4s, shared shuttles, domestic flights, boats and trains: we choose the right way to move between every stop, and we book it all for you.',
   ctaLabel: 'Plan My Transfers',
-  ctaHref: '#contact',
+  ctaHref: '/contact',
   label: 'Our Fleet',
   cardTitle: 'Every Transfer, Handled',
   image: Deux, // à remplacer par ta photo
@@ -119,7 +120,7 @@ const CTA = {
   title: 'Ready to Hit the Road?',
   text: 'Tell us where you want to go and we will handle the rest.',
   label: 'Get a Free Quote',
-  href: '#contact',
+  href: '/contact',
   image: Tana,
 }
 
@@ -317,12 +318,11 @@ function TransportCard({ item }) {
             <li key={perk} className="flex items-center gap-2"><CheckIcon />{perk}</li>
           ))}
         </ul>
-        <a
-          href="#contact"
-          className="mt-6 pt-5 border-t border-slate-900/10 inline-flex items-center gap-2 text-sm md:text-base font-medium text-slate-800 hover:gap-3 transition-all"
-        >
-          {t('ask')} <ArrowIcon />
-        </a>
+        <div className="mt-auto pt-6">
+          <div className="pt-5 border-t border-slate-900/10">
+            <AddToTrip item={{ kind: 'transport', ref: String(item.id), title: item.name, image: item.image, link: '/transport', details: item.capacity, price: null, unit: null }} />
+          </div>
+        </div>
       </div>
     </article>
   )

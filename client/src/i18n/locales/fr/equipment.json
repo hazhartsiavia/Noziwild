@@ -171,7 +171,6 @@
   "empty": "Votre liste est vide. Ajoutez du matériel depuis le catalogue et votre estimation apparaîtra ici.",
   "discount": "Remise 7 jours et plus (−10 %)",
   "total": "Total estimé",
-  "request": "Demander ce devis",
   "note": "Simple estimation. Une caution remboursable peut s'appliquer à certains articles. Prix final confirmé par notre équipe.",
   "pickupTitle": "Retrait et retour",
   "pickupText": "Choisissez la formule qui convient à votre emploi du temps. Le retour se fait toujours au même endroit que le retrait.",
@@ -184,5 +183,7 @@
   "emailLabel": "Votre e-mail",
   "sending": "Envoi…",
   "send": "Envoyer la demande",
-  "thanks": "Merci ! Nous vous répondrons très vite."
+  "thanks": "Merci ! Nous vous répondrons très vite.",
+  "tripTitle": "Location de matériel",
+  "tripDetails": "{items} · {days}"
 }

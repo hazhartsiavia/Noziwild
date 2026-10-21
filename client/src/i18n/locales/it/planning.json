@@ -125,7 +125,6 @@
   "budget": "Budget stimato a persona",
   "forGroup": "Per {count} viaggiatori: circa {low} – {high}",
   "forOne": "Per 1 viaggiatore: circa {low} – {high}",
-  "custom": "Ricevi il mio programma su misura",
   "note": "Stima indicativa che include alloggi, trasporti e attività. Il preventivo finale dipende dalla stagione e dalle scelte.",
   "processTitle": "Come organizziamo il tuo viaggio",
   "processText": "Quattro passi, un consulente dedicato dall'inizio alla fine.",
@@ -133,7 +132,6 @@
   "samplesText": "Ogni viaggio è adattato a te. Questi sono solo punti di partenza.",
   "daysBadge": "{count} giorni",
   "fromPerPerson": "Da {price} / persona",
-  "adapt": "Adattalo",
   "chatTitle": "Parliamone",
   "chatText": "Le domande che ci fanno più spesso, con le risposte del tuo consulente, come in una chat.",
   "ctaTitle": "Descrivi il viaggio dei tuoi sogni",
@@ -143,5 +141,6 @@
   "emailLabel": "La tua email",
   "sending": "Invio…",
   "send": "Invia la mia idea",
-  "thanks": "Grazie! Un consulente ti risponderà presto."
+  "thanks": "Grazie! Un consulente ti risponderà presto.",
+  "tripTitle": "Bozza: {style}, {days} giorni"
 }

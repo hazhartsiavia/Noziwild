@@ -171,7 +171,6 @@
   "empty": "Ihre Liste ist leer. Fügen Sie Ausrüstung aus dem Katalog hinzu, dann erscheint hier Ihre Schätzung.",
   "discount": "Rabatt ab 7 Tagen (−10 %)",
   "total": "Geschätzter Gesamtpreis",
-  "request": "Dieses Angebot anfordern",
   "note": "Nur eine Schätzung. Für einige Artikel kann eine erstattbare Kaution anfallen. Der Endpreis wird von unserem Team bestätigt.",
   "pickupTitle": "Abholung & Rückgabe",
   "pickupText": "Wählen Sie, was zu Ihrem Zeitplan passt. Die Rückgabe erfolgt immer am Ort der Abholung.",
@@ -184,5 +183,7 @@
   "emailLabel": "Ihre E-Mail",
   "sending": "Wird gesendet…",
   "send": "Anfrage senden",
-  "thanks": "Vielen Dank! Wir melden uns bald bei Ihnen."
+  "thanks": "Vielen Dank! Wir melden uns bald bei Ihnen.",
+  "tripTitle": "Ausrüstungsverleih",
+  "tripDetails": "{items} · {days}"
 }

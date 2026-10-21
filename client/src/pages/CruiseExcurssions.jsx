@@ -4,6 +4,7 @@ import NosyIranja from '../assets/images/NosyIranja.png'
 import Navbar from '../components/Navbar'
 import Footer from '../components/Footer'
 import OffersStatus from '../components/OffersStatus'
+import AddToTrip from '../components/AddToTrip'
 import { Trans, useLanguage, useT } from '../i18n/LanguageContext'
 import { formatPrice } from '../utils/format'
 import { useOffers } from '../utils/useOffers'
@@ -82,7 +83,7 @@ function ExcursionCard({ item, ashore }) {
 
         <div className="mt-auto pt-5 flex items-center justify-between gap-3">
           <p className="text-slate-600 text-sm"><Trans text={t('from')} values={{ price: <span className="text-2xl font-semibold text-slate-900">{formatPrice(item.price, lang)}</span> }} /></p>
-          <a href={`/contact?place=${encodeURIComponent(item.title)}&type=cruise`} className={`${BTN} bg-slate-800 hover:bg-slate-700 text-white`}>{t('reserve')}</a>
+          <AddToTrip item={{ kind: 'cruise', ref: String(item.id), title: item.title, image: item.image, link: '/cruise-excurssion', details: fmt(item.hours), price: item.price, unit: 'person' }} />
         </div>
       </div>
     </li>

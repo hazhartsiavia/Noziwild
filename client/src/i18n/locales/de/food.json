@@ -149,7 +149,6 @@
   "menuText": "Vom schnellen Snack auf der Straße bis zum Abendessen bei Kerzenschein. Preise pro Person.",
   "menuTabsLabel": "Arten von Erlebnissen",
   "fromPerPerson": "Ab {price} / Person",
-  "bookThis": "Buchen",
   "perPerson": "pro Person",
   "groups": "Gruppen ab 6 Personen erhalten einen eigenen Tisch.",
   "dietsTitle": "Jede Ernährungsweise ist willkommen",
@@ -163,7 +162,6 @@
     "Gäste max.",
     "pro Person"
   ],
-  "reserve": "Einen Platz reservieren",
   "faqTitle": "Gut zu wissen, bevor Sie essen",
   "faqText": "Wählen Sie eine Frage. Ihre ist nicht dabei? Unser Team antwortet innerhalb weniger Stunden.",
   "question": "Frage {n}",

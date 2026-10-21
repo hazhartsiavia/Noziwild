@@ -12,6 +12,9 @@ import { useAuth } from '../context/AuthContext';
 import { Trans, useLanguage, useT } from '../i18n/LanguageContext';
 import { localize } from '../i18n/localize';
 import { formatPrice } from '../utils/format';
+import { Link } from 'react-router-dom';
+import AddToTrip, { useTripItem } from '../components/AddToTrip';
+import { useTrip } from '../context/TripContext';
 import { gsap } from 'gsap'
 import { ScrollTrigger } from 'gsap/ScrollTrigger'
 
@@ -148,6 +151,22 @@ function Builder() {
   const low = Math.round((style.perDay * days * 0.85) / 10) * 10
   const high = Math.round((style.perDay * days * 1.2) / 10) * 10
 
+  // L'ébauche part dans « Mon voyage » (prix bas de la fourchette, par personne)
+  const tt = useT('trip')
+  const { add } = useTrip()
+  const draft = {
+    kind: 'plan',
+    ref: 'builder',
+    title: t('tripTitle', { style: style.label, days }),
+    link: '/travel-planning',
+    details: plan.map((p) => p.stop).join(' · '),
+    price: low,
+    unit: 'person',
+    qty: travelers,
+  }
+  const { saved } = useTripItem(draft)
+  const upToDate = saved && saved.title === draft.title && saved.details === draft.details && saved.qty === draft.qty
+
   // Les étapes réapparaissent en cascade quand le style change
   useLayoutEffect(() => {
     if (first.current) { first.current = false; return }
@@ -218,7 +237,13 @@ function Builder() {
             <p className="mt-2 text-sm text-white/70">{t(travelers === 1 ? 'forOne' : 'forGroup', { count: travelers, low: formatPrice(low * travelers, lang), high: formatPrice(high * travelers, lang) })}</p>
           </div>
 
-          <a href="/contact" className={`mt-6 block text-center bg-[#C49849] hover:bg-[#b08339] text-white ${BUTTON}`}>{t('custom')}</a>
+          {upToDate ? (
+            <Link to="/my-trip" className={`mt-6 block text-center bg-white text-[#084838] hover:bg-white/90 ${BUTTON}`}>✓ {tt('viewTrip')}</Link>
+          ) : (
+            <button type="button" onClick={() => add(draft)} className={`mt-6 block w-full text-center bg-[#C49849] hover:bg-[#b08339] text-white ${BUTTON}`}>
+              {saved ? tt('updateTrip') : tt('add')}
+            </button>
+          )}
           <p className="mt-3 text-xs text-white/60 leading-relaxed">{t('note')}</p>
         </div>
       </div>
@@ -288,7 +313,7 @@ function Samples() {
               </ol>
               <div className="mt-auto pt-6 flex items-center justify-between">
                 <p className="text-sm text-slate-600"><Trans text={t('fromPerPerson')} values={{ price: <span className="text-2xl font-medium text-slate-900">{formatPrice(s.price, lang)}</span> }} /></p>
-                <a href="/contact" className="inline-flex items-center gap-1.5 text-sm font-medium text-[#084838] hover:gap-2.5 transition-all">{t('adapt')} <ArrowIcon /></a>
+                <AddToTrip variant="icon" item={{ kind: 'plan', ref: `sample-${s.id}`, title: s.name, image: s.image, link: '/travel-planning', details: [t('daysBadge', { count: s.days }), s.stops.join(' → ')].join(' · '), price: s.price, unit: 'person' }} />
               </div>
             </div>
           </article>

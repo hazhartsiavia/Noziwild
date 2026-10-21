@@ -125,7 +125,6 @@
   "budget": "Estimated budget per person",
   "forGroup": "For {count} travelers: about {low} – {high}",
   "forOne": "For 1 traveler: about {low} – {high}",
-  "custom": "Get My Custom Plan",
   "note": "Rough estimate including stays, transport and activities. The final quote depends on season and choices.",
   "processTitle": "How We Plan Your Trip",
   "processText": "Four steps, one dedicated planner from start to finish.",
@@ -133,7 +132,6 @@
   "samplesText": "Every trip is adapted to you. These are only starting points.",
   "daysBadge": "{count} days",
   "fromPerPerson": "From {price} / person",
-  "adapt": "Adapt it",
   "chatTitle": "Let's Talk It Through",
   "chatText": "The questions we hear most, answered like a chat with your planner.",
   "ctaTitle": "Describe Your Dream Trip",
@@ -143,5 +141,6 @@
   "emailLabel": "Your email",
   "sending": "Sending…",
   "send": "Send My Idea",
-  "thanks": "Thank you! A planner will get back to you soon."
+  "thanks": "Thank you! A planner will get back to you soon.",
+  "tripTitle": "Draft trip: {style}, {days} days"
 }

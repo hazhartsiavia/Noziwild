@@ -1,15 +1,35 @@
-// /admin/inbox : messages et demandes reçus par le site, inscrits à la newsletter, comptes
+// /admin/inbox : demandes de devis « Mon voyage », messages et demandes reçus par le site, inscrits à la newsletter, comptes
 import React, { useEffect, useState } from 'react'
 import { useSearchParams } from 'react-router-dom'
 import { ChevronLeft, ChevronRight, Mail } from 'lucide-react'
-import { adminFetchResource } from '../../api'
+import { adminFetchResource, adminSetQuoteStatus } from '../../api'
+import { formatPrice } from '../../utils/format'
 import { BTN_GHOST, CARD } from '../../components/admin/ui'
 
 const REQUEST_TYPES = { place: 'Place inquiry', gear: 'Equipment', food: 'Food journey', trip: 'Trip idea', circuit: 'Circuit' }
-const STATUS = { new: 'New', read: 'Read', answered: 'Answered', in_progress: 'In progress', done: 'Done' }
+const STATUS = { new: 'New', read: 'Read', answered: 'Answered', in_progress: 'In progress', done: 'Done', quoted: 'Quote sent', accepted: 'Accepted', declined: 'Declined' }
+const QUOTE_STATUSES = ['new', 'quoted', 'accepted', 'declined']
+const KINDS = {
+  circuit: 'Circuit', activity: 'Activity', excursion: 'Excursion', cruise: 'Cruise excursion', longstay: 'Long stay', place: 'Place',
+  stay: 'Accommodation', food: 'Food', gear: 'Equipment', ticket: 'Ticket', photo: 'Photography', guide: 'Guide', transport: 'Transport', plan: 'Trip plan',
+}
+const UNITS = { person: 'person', night: 'night' }
 
 // Pour chaque source : titre de la fiche, ligne d'information, champs détaillés (libellé, colonne)
 const SOURCES = {
+  quotes: {
+    label: 'Quotes',
+    title: (r) => `Quote #${r.id} · ${r.name}`,
+    fields: [
+      ['Phone', 'phone'],
+      ['Dates', (r) => (r.arrival_date || r.departure_date ? `${r.arrival_date || '?'} → ${r.departure_date || '?'}` : '')],
+      ['Travellers', 'travellers'],
+      ['Budget', 'budget'],
+      ['Language', (r) => r.lang?.toUpperCase()],
+      ['Estimate', (r) => (r.estimate !== null ? `From ${formatPrice(r.estimate)}` : 'Prices on request')],
+      ['Message', 'message'],
+    ],
+  },
   requests: {
     label: 'Requests',
     title: (r) => `${REQUEST_TYPES[r.type] || r.type}${r.subject ? ` · ${r.subject}` : ''}`,
@@ -41,13 +61,65 @@ const SOURCES = {
   },
 }
 
+// Prix d'un élément de devis : « €45 / person × 2 = €90 », « €90 » ou « On request »
+function itemPrice(item) {
+  if (!item.unit || item.price === null) return item.quantity > 1 ? `On request · ${item.quantity} people` : 'On request'
+  if (item.unit === 'fixed') return formatPrice(item.price)
+  const per = UNITS[item.unit] ? ` / ${UNITS[item.unit]}` : ''
+  return `${formatPrice(item.price)}${per} × ${item.quantity} = ${formatPrice(item.price * item.quantity)}`
+}
+
+// Éléments d'une demande de devis et choix du statut
+function QuoteDetails({ quote, onStatus }) {
+  const [state, setState] = useState({ saving: false, error: '' })
+  const change = async (status) => {
+    setState({ saving: true, error: '' })
+    try {
+      await adminSetQuoteStatus(quote.id, status)
+      onStatus(status)
+      setState({ saving: false, error: '' })
+    } catch (err) {
+      setState({ saving: false, error: err.message })
+    }
+  }
+  return (
+    <div className="mt-4">
+      <ol className="flex flex-col divide-y divide-slate-200 rounded-2xl border border-slate-200">
+        {quote.items.map((item, i) => (
+          <li key={i} className="flex flex-col sm:flex-row sm:items-start justify-between gap-1 sm:gap-4 px-4 py-3 text-sm">
+            <div className="min-w-0">
+              <p className="text-slate-900"><span className="text-slate-500">{KINDS[item.kind] || item.kind} · </span>{item.title}</p>
+              {item.details && <p className="text-slate-600 break-words">{item.details}</p>}
+              {item.date && <p className="text-slate-600">Date: {item.date}</p>}
+              {item.note && <p className="text-slate-600 italic break-words">“{item.note}”</p>}
+            </div>
+            <p className="shrink-0 text-slate-800 tabular-nums">{itemPrice(item)}</p>
+          </li>
+        ))}
+      </ol>
+      <label className="mt-4 flex items-center gap-3 text-sm text-slate-700">
+        Status
+        <select
+          value={quote.status}
+          disabled={state.saving}
+          onChange={(e) => change(e.target.value)}
+          className="h-9 rounded-full border border-slate-300 bg-white px-3 text-sm focus:outline-none focus:ring-1 focus:ring-slate-700"
+        >
+          {QUOTE_STATUSES.map((s) => <option key={s} value={s}>{STATUS[s]}</option>)}
+        </select>
+      </label>
+      {state.error && <p role="alert" className="mt-2 text-sm text-red-700">{state.error}</p>}
+    </div>
+  )
+}
+
 function formatDate(value) {
   return new Date(value).toLocaleString('en-GB', { day: 'numeric', month: 'short', year: 'numeric', hour: '2-digit', minute: '2-digit' })
 }
 
 function AdminInbox() {
   const [params, setParams] = useSearchParams()
-  const source = SOURCES[params.get('source')] ? params.get('source') : 'requests'
+  const source = SOURCES[params.get('source')] ? params.get('source') : 'quotes'
   const page = Math.max(Number(params.get('page')) || 1, 1)
   const [result, setResult] = useState(null) // { key, data, total, limit } ou { key, error }
   const key = `${source}-${page}`
@@ -66,6 +138,8 @@ function AdminInbox() {
   const config = SOURCES[source]
   const pages = current?.total ? Math.ceil(current.total / current.limit) : 1
   const go = (next) => setParams({ source, page: String(next) })
+  const setRowStatus = (id, status) =>
+    setResult((prev) => ({ ...prev, data: prev.data.map((row) => (row.id === id ? { ...row, status } : row)) }))
 
   return (
     <section aria-labelledby="inbox-title">
@@ -126,6 +200,7 @@ function AdminInbox() {
                       })}
                     </dl>
                   )}
+                  {source === 'quotes' && <QuoteDetails quote={row} onStatus={(status) => setRowStatus(row.id, status)} />}
                 </li>
               ))}
             </ul>

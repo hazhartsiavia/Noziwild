@@ -10,6 +10,7 @@ import Footer from '../components/Footer';
 import { gsap } from 'gsap'
 import { ScrollTrigger } from 'gsap/ScrollTrigger'
 import OffersStatus from '../components/OffersStatus'
+import AddToTrip from '../components/AddToTrip'
 import { Trans, useLanguage, useT } from '../i18n/LanguageContext'
 import { formatPrice, monthName } from '../utils/format'
 import { useOffers } from '../utils/useOffers'
@@ -153,9 +154,8 @@ function ActivityCarousel({ list, status }) {
         className="flex gap-4 overflow-x-auto snap-x snap-mandatory scroll-smooth pb-2 [scrollbar-width:none] [&::-webkit-scrollbar]:hidden"
       >
         {list.map((a, i) => (
-          <a
+          <article
             key={a.id}
-            href={`/contact?place=${encodeURIComponent(a.title)}`}
             className="group relative snap-start shrink-0 w-[82%] sm:w-[46%] lg:w-[31.5%] xl:w-[24%] h-[480px] md:h-[540px] overflow-hidden rounded-3xl bg-[#084838] text-white flex"
           >
             <img src={a.image} alt={a.title} className="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" />
@@ -177,11 +177,14 @@ function ActivityCarousel({ list, status }) {
                 </ul>
                 <div className="mt-5 pt-4 border-t border-white/25 flex items-center justify-between">
                   <p className="text-sm text-white/80"><Trans text={t('fromPerPerson')} values={{ price: <span className="text-xl md:text-2xl font-medium text-white">{formatPrice(a.price, lang)}</span> }} /></p>
-                  <span className="w-10 h-10 rounded-full bg-[#C49849] flex items-center justify-center transition group-hover:translate-x-1"><ArrowIcon /></span>
+                  <AddToTrip
+                    variant="icon"
+                    item={{ kind: 'activity', ref: String(a.id), title: a.title, image: a.image, link: '/activities', details: [a.duration, a.level].filter(Boolean).join(' · '), price: a.price, unit: 'person' }}
+                  />
                 </div>
               </div>
             </div>
-          </a>
+          </article>
         ))}
       </div>
 

@@ -62,6 +62,8 @@ export const fetchOffers = (kind, lang = 'en') => getJSON(`/offers?kind=${kind}&
 export const sendContact = (data) => postJSON('/contact', data)
 export const sendTailorMade = (data) => postJSON('/tailor-made', data)
 export const sendRequest = (type, data) => postJSON('/requests', { type, ...data })
+// Demande de devis de la page Mon voyage : coordonnées, dates et offres choisies (items)
+export const sendQuote = (data) => postJSON('/quotes', data)
 export const subscribeNewsletter = (email) => postJSON('/newsletter', { email })
 
 // Authentification
@@ -99,6 +101,7 @@ export const adminPatchOffer = (id, changes) => patchJSON(offerPath(id), changes
 export const adminDeleteOffer = (id) => deleteJSON(offerPath(id))
 export const adminFetchPhotos = () => getJSON('/admin/uploads')
 export const adminFetchResource = (resource, page = 1) => getJSON(`/admin/${resource}?page=${page}&limit=20`)
+export const adminSetQuoteStatus = (id, status) => patchJSON(`/admin/quotes/${id}`, { status })
 
 // Envoi d'une photo : formulaire multipart (le navigateur fixe lui-même le Content-Type)
 export async function adminUploadPhoto(file) {

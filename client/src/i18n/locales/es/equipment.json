@@ -171,7 +171,6 @@
   "empty": "Su lista está vacía. Añada equipo del catálogo y su estimación aparecerá aquí.",
   "discount": "Descuento desde 7 días (−10 %)",
   "total": "Total estimado",
-  "request": "Solicitar este presupuesto",
   "note": "Solo es una estimación. Algunos artículos pueden requerir una fianza reembolsable. Nuestro equipo confirma el precio final.",
   "pickupTitle": "Recogida y devolución",
   "pickupText": "Elija la opción que mejor encaje con su horario. La devolución siempre se hace en el mismo lugar que la recogida.",
@@ -184,5 +183,7 @@
   "emailLabel": "Su correo electrónico",
   "sending": "Enviando…",
   "send": "Enviar solicitud",
-  "thanks": "¡Gracias! Le responderemos muy pronto."
+  "thanks": "¡Gracias! Le responderemos muy pronto.",
+  "tripTitle": "Alquiler de equipo",
+  "tripDetails": "{items} · {days}"
 }

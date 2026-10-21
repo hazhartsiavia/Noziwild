@@ -171,7 +171,6 @@
   "empty": "La tua lista è vuota. Aggiungi attrezzatura dal catalogo e qui comparirà la stima.",
   "discount": "Sconto da 7 giorni (−10%)",
   "total": "Totale stimato",
-  "request": "Richiedi questo preventivo",
   "note": "Solo una stima. Per alcuni articoli può essere richiesto un deposito rimborsabile. Il prezzo finale è confermato dal nostro team.",
   "pickupTitle": "Ritiro e restituzione",
   "pickupText": "Scegli la soluzione più adatta ai tuoi orari. La restituzione avviene sempre nello stesso luogo del ritiro.",
@@ -184,5 +183,7 @@
   "emailLabel": "La tua email",
   "sending": "Invio…",
   "send": "Invia la richiesta",
-  "thanks": "Grazie! Ti risponderemo presto."
+  "thanks": "Grazie! Ti risponderemo presto.",
+  "tripTitle": "Noleggio attrezzatura",
+  "tripDetails": "{items} · {days}"
 }

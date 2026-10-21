@@ -1,5 +1,6 @@
 {
   "kinds": {
+    "quote": "Angebotsanfrage",
     "contact": "Kontaktnachricht",
     "tailor-made": "Individuelle Reise",
     "place": "Anfrage zu einem Ort",
@@ -13,7 +14,10 @@
     "read": "Gelesen",
     "in_progress": "In Bearbeitung",
     "answered": "Beantwortet",
-    "done": "Erledigt"
+    "done": "Erledigt",
+    "quoted": "Angebot gesendet",
+    "accepted": "Angenommen",
+    "declined": "Abgelehnt"
   },
   "nameUpdated": "Ihr Name wurde aktualisiert.",
   "hello": "Hallo,",

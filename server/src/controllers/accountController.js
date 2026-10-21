@@ -119,9 +119,14 @@ export async function myRequests(req, res) {
      UNION ALL
      SELECT type, id, subject, message, status, created_at
        FROM quick_requests WHERE user_id = ?
+     UNION ALL
+     SELECT 'quote', q.id, NULL,
+            (SELECT GROUP_CONCAT(i.title ORDER BY i.position SEPARATOR ' · ') FROM quote_items i WHERE i.quote_id = q.id),
+            q.status, q.created_at
+       FROM quote_requests q WHERE q.user_id = ?
      ORDER BY created_at DESC
      LIMIT 50`,
-    [id, id, id],
+    [id, id, id, id],
   )
   res.json({
     ok: true,

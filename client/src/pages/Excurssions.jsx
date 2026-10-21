@@ -7,6 +7,7 @@ import Deux from '../assets/images/2.jpg'
 import Navbar from '../components/Navbar'
 import Footer from '../components/Footer'
 import OffersStatus from '../components/OffersStatus'
+import AddToTrip from '../components/AddToTrip'
 import { useLanguage, useT } from '../i18n/LanguageContext'
 import { formatPrice } from '../utils/format'
 import { useOffers } from '../utils/useOffers'
@@ -142,28 +143,33 @@ function Hero({ region, setRegion, length, setLength }) {
 function Row({ item }) {
   const t = useT('excursions')
   const { lang } = useLanguage()
-  // Page de détail si l'admin en a indiqué une, sinon le formulaire de contact
-  const href = item.link || `/contact?place=${encodeURIComponent(item.title)}`
+  // Page de détail si l'admin en a indiqué une
+  const href = item.link
+  const Photo = href ? 'a' : 'div'
+  const tripItem = { kind: 'excursion', ref: String(item.id), title: item.title, image: item.image, link: item.link || '/excurssions', details: [item.duration, item.place].filter(Boolean).join(' · '), price: item.price, unit: 'person' }
   return (
     <li className="excursion-row grid grid-cols-1 md:grid-cols-[300px_1fr_auto] lg:grid-cols-[360px_1fr_auto] gap-4 md:gap-8 rounded-[2rem] bg-white p-3 md:p-4 md:items-stretch">
-      <a href={href} className="group relative block aspect-[4/3] md:aspect-auto md:min-h-[220px] overflow-hidden rounded-[1.5rem]">
+      <Photo href={href || undefined} className="group relative block aspect-[4/3] md:aspect-auto md:min-h-[220px] overflow-hidden rounded-[1.5rem]">
         <img src={item.image} alt={item.title} className="row-img absolute inset-0 w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" />
         <span className="row-badge absolute left-3 top-3 bg-[#C49849] text-white text-xs sm:text-sm font-medium px-3 py-1.5 rounded-sm">{item.duration}</span>
-      </a>
+      </Photo>
 
       <div className="px-2 md:px-0 md:py-4 flex flex-col justify-center">
         <p className="flex items-center gap-3 text-xs sm:text-sm text-slate-600">
           <span>{item.place}</span><span className="w-px h-4 bg-slate-500" /><span>{item.level}</span><span className="w-px h-4 bg-slate-500" /><span>{item.group}</span>
         </p>
         <h3 className="mt-3 text-xl md:text-3xl font-medium leading-snug text-slate-900">
-          <a href={href} className="hover:underline">{item.title}</a>
+          {href ? <a href={href} className="hover:underline">{item.title}</a> : item.title}
         </h3>
         <p className="mt-3 text-sm md:text-base text-slate-600 leading-relaxed max-w-xl">{item.text}</p>
       </div>
 
       <div className="row-side px-2 pb-3 md:p-4 md:pr-6 flex md:flex-col items-center md:items-end justify-between md:justify-center gap-4 md:border-l md:border-slate-200 md:pl-8">
         <p className="text-slate-600 text-sm md:text-right">{t('from')}<br className="hidden md:block" /> <span className="text-2xl md:text-3xl font-semibold text-slate-900">{formatPrice(item.price, lang)}</span><span className="block text-xs">{t('perPerson')}</span></p>
-        <a href={href} className={`${BTN} bg-slate-800 hover:bg-slate-700 text-white`}>{t('details')}</a>
+        <div className="flex flex-col items-end gap-2">
+          <AddToTrip item={tripItem} />
+          {href && <a href={href} className="text-sm text-slate-600 hover:underline">{t('details')}</a>}
+        </div>
       </div>
     </li>
   )
@@ -311,7 +317,11 @@ function Excursions() {
                 </li>
               ))}
             </ul>
-            <a href="/contact?place=Three%20Days%20On%20The%20Islands" className={`multi-btn ${BTN} ${GOLD} text-white mt-8`}>{t('multiButton')}</a>
+            <AddToTrip
+              variant="gold"
+              className="multi-btn mt-8"
+              item={{ kind: 'excursion', ref: 'three-days-islands', title: t('multiTitle'), image: NosyIranja, link: '/excurssions', price: null, unit: null }}
+            />
           </div>
         </section>
 

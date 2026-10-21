@@ -7,6 +7,7 @@ import {
   subscribeNewsletter,
 } from '../controllers/formsController.js'
 import { listResource } from '../controllers/adminController.js'
+import { createQuote, adminListQuotes, adminPatchQuote } from '../controllers/quotesController.js'
 import {
   listCircuits,
   getCircuit,
@@ -60,6 +61,7 @@ const formLimiter = rateLimit({ windowMs: 10 * 60 * 1000, max: 20 })
 router.post('/contact', formLimiter, createContact)
 router.post('/tailor-made', formLimiter, createTailorMade)
 router.post('/requests', formLimiter, createQuickRequest)
+router.post('/quotes', formLimiter, createQuote)
 router.post('/newsletter', formLimiter, subscribeNewsletter)
 
 // Circuits (pages /circuits et /circuits/:slug)
@@ -69,8 +71,8 @@ router.get('/circuits/:slug', getCircuit)
 // Offres des pages Activités, Excursions, Excursions croisière, Long séjour, Sur mesure
 router.get('/offers', listOffers)
 
-// Gestion des circuits, des offres et des photos (réservé à l'équipe Noziwild)
-// Déclarées avant /admin/:resource, sinon "circuits" ou "offers" serait pris pour une ressource générique
+// Gestion des circuits, des offres, des photos et des devis (réservé à l'équipe Noziwild)
+// Déclarées avant /admin/:resource, sinon "circuits", "offers" ou "quotes" serait pris pour une ressource générique
 router.get('/admin/circuits', requireAdmin, adminListCircuits)
 router.get('/admin/circuits/:slug', requireAdmin, adminGetCircuit)
 router.post('/admin/circuits', requireAdmin, createCircuit)
@@ -84,6 +86,8 @@ router.put('/admin/offers/:id', requireAdmin, updateOffer)
 router.patch('/admin/offers/:id', requireAdmin, patchOffer)
 router.delete('/admin/offers/:id', requireAdmin, deleteOffer)
 router.get('/admin/uploads', requireAdmin, listUploads)
+router.get('/admin/quotes', requireAdmin, adminListQuotes)
+router.patch('/admin/quotes/:id', requireAdmin, adminPatchQuote)
 router.post('/admin/uploads', requireAdmin, uploadImage)
 
 // Lecture des données (réservé à l'équipe Noziwild)

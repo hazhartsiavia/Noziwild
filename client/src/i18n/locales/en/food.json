@@ -149,7 +149,6 @@
   "menuText": "From a quick street snack to a candlelit dinner. Prices are per person.",
   "menuTabsLabel": "Experience types",
   "fromPerPerson": "From {price} / person",
-  "bookThis": "Book This",
   "perPerson": "per person",
   "groups": "Groups of 6 or more get a private table.",
   "dietsTitle": "Every Diet Is Welcome",
@@ -163,7 +162,6 @@
     "guests max",
     "per person"
   ],
-  "reserve": "Reserve A Seat",
   "faqTitle": "Good To Know Before You Eat",
   "faqText": "Pick a question. Can't find yours? Our team replies within a few hours.",
   "question": "Question {n}",

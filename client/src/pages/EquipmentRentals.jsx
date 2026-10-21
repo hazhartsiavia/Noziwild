@@ -1,4 +1,5 @@
 import React, { useEffect, useLayoutEffect, useRef, useState } from 'react'
+import { Link } from 'react-router-dom'
 import Deux from "../assets/images/2.jpg";
 import Ambanja from "../assets/images/Ambanja.png";
 import NosyLonjo from "../assets/images/NosyLonjo.png";
@@ -7,6 +8,8 @@ import Ramena from "../assets/images/Ramena.png";
 import Tana from "../assets/images/Tana.png";
 import Navbar from '../components/Navbar';
 import Footer from '../components/Footer';
+import { useTrip } from '../context/TripContext';
+import { useTripItem } from '../components/AddToTrip';
 import { sendRequest } from '../api';
 import { useAuth } from '../context/AuthContext';
 import { Trans, useLanguage, useT } from '../i18n/LanguageContext';
@@ -192,6 +195,7 @@ function GearCard({ item, qty, onChange }) {
 // Catalogue + liste de location (estimation du prix)
 function Catalog({ category, setCategory }) {
   const t = useT('equipment')
+  const tt = useT('trip')
   const { lang } = useLanguage()
   const categories = localize(CATEGORIES, t('categories'))
   const gear = localize(GEAR, t('gear'))
@@ -224,6 +228,20 @@ function Catalog({ category, setCategory }) {
   const discount = days >= 7 ? Math.round(subtotal * 0.1) : 0
   const total = subtotal - discount
   const itemCount = lines.reduce((sum, g) => sum + cart[g.id], 0)
+
+  // La liste entière devient un élément de « Mon voyage » (prix total, remise comprise)
+  const { add } = useTrip()
+  const rental = {
+    kind: 'gear',
+    ref: 'rental',
+    title: t('tripTitle'),
+    link: '/equipment-rentals',
+    details: t('tripDetails', { items: lines.map((g) => `${cart[g.id]} × ${g.name}`).join(', '), days: days === 1 ? t('dayOne') : t('days', { count: days }) }),
+    price: total,
+    unit: 'fixed',
+  }
+  const { saved } = useTripItem(rental)
+  const upToDate = saved && saved.details === rental.details && saved.price === rental.price
 
   const tab = (active) =>
     `rounded-full px-5 py-2 text-sm md:text-base font-medium transition ${active ? 'bg-[#084838] text-white' : 'bg-white text-slate-700 hover:bg-white/70'}`
@@ -292,13 +310,20 @@ function Catalog({ category, setCategory }) {
             <p className="text-xs text-white/60 text-right">{t('perDay', { price: formatPrice(perDay, lang) })}</p>
           </div>
 
-          <a
-            href="/contact"
-            aria-disabled={lines.length === 0}
-            className={`mt-6 block text-center bg-[#C49849] hover:bg-[#b08339] text-white ${BUTTON} ${lines.length === 0 ? 'opacity-50 pointer-events-none' : ''}`}
-          >
-            {t('request')}
-          </a>
+          {upToDate ? (
+            <Link to="/my-trip" className={`mt-6 block text-center bg-white text-[#084838] hover:bg-white/90 ${BUTTON}`}>
+              ✓ {tt('viewTrip')}
+            </Link>
+          ) : (
+            <button
+              type="button"
+              onClick={() => add(rental)}
+              disabled={lines.length === 0}
+              className={`mt-6 block w-full text-center bg-[#C49849] hover:bg-[#b08339] text-white disabled:opacity-50 disabled:cursor-not-allowed ${BUTTON}`}
+            >
+              {saved ? tt('updateTrip') : tt('add')}
+            </button>
+          )}
           <p className="mt-3 text-xs text-white/60 leading-relaxed">{t('note')}</p>
         </aside>
       </div>

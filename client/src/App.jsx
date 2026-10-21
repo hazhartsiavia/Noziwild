@@ -21,6 +21,7 @@ import PlaceDetail from "./pages/PlaceDetail";
 import Excurssions from "./pages/Excurssions";
 import CruiseExcursions from "./pages/CruiseExcurssions";
 import TailorMade from "./pages/TailorMade";
+import MyTrip from "./pages/MyTrip";
 import Auth from "./pages/Auth";
 import Account from "./pages/Account";
 import ForgotPassword from "./pages/ForgotPassword";
@@ -57,6 +58,7 @@ function App() {
       <Route path="/excurssions" element={<Excurssions/>}/>
       <Route path="/cruise-excurssion" element={<CruiseExcursions />} />
       <Route path="/tailor-made" element={<TailorMade />} />
+      <Route path="/my-trip" element={<MyTrip />} />
       <Route path="/login" element={<Auth key="login" mode="login" />} />
       <Route path="/register" element={<Auth key="register" mode="register" />} />
       <Route path="/forgot-password" element={<ForgotPassword />} />

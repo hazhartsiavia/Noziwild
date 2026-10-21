@@ -30,6 +30,9 @@ const STATUS_CLASSES = {
   in_progress: 'bg-sky-50 text-sky-800',
   answered: 'bg-emerald-50 text-emerald-800',
   done: 'bg-emerald-50 text-emerald-800',
+  quoted: 'bg-sky-50 text-sky-800',
+  accepted: 'bg-emerald-50 text-emerald-800',
+  declined: 'bg-slate-100 text-slate-700',
 }
 
 const formatDate = (value, lang, options = { day: 'numeric', month: 'long', year: 'numeric' }) =>

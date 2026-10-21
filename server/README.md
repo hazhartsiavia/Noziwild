@@ -43,8 +43,11 @@ server/
 | GET  | `/api/health` | | |
 | POST | `/api/contact` | Contact | `name`, `email`, `message`, `phone?`, `inquiry?` |
 | POST | `/api/tailor-made` | Tailor Made | `name`, `email`, `phone?`, `interests[]`, `length`, `month`, `pace`, `comfort`, `group`, `notes?` |
-| POST | `/api/requests` | PlaceDetail, Equipment, Food, Travel planning, CircuitDetail | `type` (`place`, `gear`, `food`, `trip`, `circuit`), `email`, `name?`, `subject?`, `message?` |
+| POST | `/api/requests` | Questions : PlaceDetail, Equipment, Food, Travel planning, CircuitDetail | `type` (`place`, `gear`, `food`, `trip`, `circuit`), `email`, `name?`, `subject?`, `message?` |
+| POST | `/api/quotes` | Mon voyage (`/my-trip`) | `name`, `email`, `phone?`, `arrival?`, `departure?`, `travellers?`, `budget?`, `message?`, `lang`, `items[]` (voir plus bas) |
 | POST | `/api/newsletter` | Guides | `email` |
+| GET  | `/api/admin/quotes` | Équipe Noziwild | demandes de devis avec leurs éléments |
+| PATCH | `/api/admin/quotes/:id` | Équipe Noziwild | `status` (`new`, `quoted`, `accepted`, `declined`) |
 | GET  | `/api/admin/:resource` | Équipe Noziwild | `resource` = `contacts`, `tailor-made`, `requests`, `newsletter`, `users` |
 
 Les routes `/api/admin/...` sont réservées aux comptes `admin`, ou à l'en-tête `Authorization: Bearer <ADMIN_TOKEN>`.
@@ -62,7 +65,7 @@ Le site a un espace d'administration sur `/admin`, réservé aux comptes `admin`
 
 - **Circuits** : publier / masquer, changer l'ordre, créer, modifier (textes, photos, itinéraire jour par jour), supprimer.
 - **Offers** : activités, excursions, excursions croisière, formules long séjour et idées sur mesure (mêmes réglages).
-- **Inbox** : demandes reçues (formulaires, demandes de circuits, sur-mesure, contact), newsletter, comptes.
+- **Inbox** : demandes de devis « Mon voyage » (avec leur statut), questions reçues (formulaires, sur-mesure, contact), newsletter, comptes.
 
 Pour donner l'accès à un compte (il doit d'abord exister : inscription sur `/register` ou connexion Google) :
 
@@ -115,7 +118,18 @@ Champs d'un circuit : `slug`, `title`, `region`, `days`, `level`, `price` (euros
 `included[]`, `excluded[]`, `sortOrder`, `isPublished`, et `itinerary[]` avec pour chaque jour
 `day` ("Day 1"), `title`, `text`, `stay`, `meals`, `images[]`. Un champ invalide renvoie une erreur 400 qui le nomme.
 
-Les réservations et questions envoyées depuis une page circuit arrivent dans `quick_requests` (type `circuit`).
+Les questions envoyées depuis une page circuit arrivent dans `quick_requests` (type `circuit`) ; la réservation passe par « Mon voyage ».
+
+## Demandes de devis « Mon voyage »
+
+Sur tout le site, le bouton « Ajouter à mon voyage » met une offre de côté (circuit, activité, excursion, hébergement,
+billet, matériel, transport...). La sélection est gardée dans le navigateur ; la page `/my-trip` l'envoie en une seule
+demande : `quote_requests` (coordonnées, dates, budget) et `quote_items` (un élément par offre).
+
+Chaque élément de `items[]` : `kind`, `ref`, `title`, `details?`, `price?`, `unit?` (`person`, `night`, `unit`, `fixed`),
+`qty`, `date?`, `note?`. Les prix des circuits et des offres en base sont relus par le serveur ; le total enregistré
+(`estimate`) est indicatif. Pour recevoir un email à chaque demande, remplir `QUOTES_EMAIL` dans `.env`
+(avec le SMTP configuré, voir plus bas).
 
 ## Offres (activités, excursions, croisière, long séjour, sur mesure)
 

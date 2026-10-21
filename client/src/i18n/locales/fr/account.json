@@ -1,5 +1,6 @@
 {
   "kinds": {
+    "quote": "Demande de devis",
     "contact": "Message de contact",
     "tailor-made": "Voyage sur mesure",
     "place": "Demande sur un lieu",
@@ -13,7 +14,10 @@
     "read": "Lue",
     "in_progress": "En cours",
     "answered": "Répondue",
-    "done": "Terminée"
+    "done": "Terminée",
+    "quoted": "Devis envoyé",
+    "accepted": "Acceptée",
+    "declined": "Déclinée"
   },
   "nameUpdated": "Votre nom a été mis à jour.",
   "hello": "Bonjour,",

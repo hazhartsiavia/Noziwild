@@ -125,7 +125,6 @@
   "budget": "Geschätztes Budget pro Person",
   "forGroup": "Für {count} Reisende: etwa {low} – {high}",
   "forOne": "Für 1 Reisenden: etwa {low} – {high}",
-  "custom": "Meinen individuellen Plan erhalten",
   "note": "Grobe Schätzung inklusive Unterkünften, Transport und Aktivitäten. Das endgültige Angebot hängt von Saison und Auswahl ab.",
   "processTitle": "So planen wir Ihre Reise",
   "processText": "Vier Schritte, ein persönlicher Planer von Anfang bis Ende.",
@@ -133,7 +132,6 @@
   "samplesText": "Jede Reise wird an Sie angepasst. Dies sind nur Ausgangspunkte.",
   "daysBadge": "{count} Tage",
   "fromPerPerson": "Ab {price} / Person",
-  "adapt": "Anpassen",
   "chatTitle": "Sprechen wir darüber",
   "chatText": "Die häufigsten Fragen, beantwortet wie im Chat mit Ihrem Planer.",
   "ctaTitle": "Beschreiben Sie Ihre Traumreise",
@@ -143,5 +141,6 @@
   "emailLabel": "Ihre E-Mail",
   "sending": "Wird gesendet…",
   "send": "Meine Idee senden",
-  "thanks": "Vielen Dank! Ein Planer meldet sich bald bei Ihnen."
+  "thanks": "Vielen Dank! Ein Planer meldet sich bald bei Ihnen.",
+  "tripTitle": "Entwurf: {style}, {days} Tage"
 }

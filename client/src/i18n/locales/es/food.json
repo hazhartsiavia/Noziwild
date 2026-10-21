@@ -149,7 +149,6 @@
   "menuText": "De un bocado callejero a una cena a la luz de las velas. Precios por persona.",
   "menuTabsLabel": "Tipos de experiencia",
   "fromPerPerson": "Desde {price} / persona",
-  "bookThis": "Reservar",
   "perPerson": "por persona",
   "groups": "Los grupos de 6 o más personas tienen mesa privada.",
   "dietsTitle": "Todas las dietas son bienvenidas",
@@ -163,7 +162,6 @@
     "personas máx.",
     "por persona"
   ],
-  "reserve": "Reservar una plaza",
   "faqTitle": "Conviene saber antes de comer",
   "faqText": "Elija una pregunta. ¿No encuentra la suya? Nuestro equipo responde en pocas horas.",
   "question": "Pregunta {n}",

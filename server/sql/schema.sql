@@ -97,6 +97,54 @@ CREATE TABLE IF NOT EXISTS quick_requests (
   CONSTRAINT fk_quick_user FOREIGN KEY (user_id) REFERENCES users (id) ON DELETE SET NULL
 ) ENGINE=InnoDB;
 
+-- Demandes de devis de la page « Mon voyage » : tout ce que le visiteur a mis de côté sur le site,
+-- envoyé en une seule fois. Les éléments sont dans quote_items.
+--   estimate : total indicatif en euros au moment de l'envoi (NULL si aucun prix connu)
+--   lang     : langue du site au moment de l'envoi, pour répondre dans la bonne langue
+--   status   : new → quoted (devis envoyé) → accepted | declined
+CREATE TABLE IF NOT EXISTS quote_requests (
+  id             INT UNSIGNED AUTO_INCREMENT PRIMARY KEY,
+  user_id        INT UNSIGNED NULL,
+  name           VARCHAR(120) NOT NULL,
+  email          VARCHAR(190) NOT NULL,
+  phone          VARCHAR(40)  NULL,
+  arrival_date   DATE         NULL,
+  departure_date DATE         NULL,
+  travellers     TINYINT UNSIGNED NULL,
+  budget         VARCHAR(60)  NULL,
+  message        TEXT         NULL,
+  lang           CHAR(2)      NOT NULL DEFAULT 'en',
+  estimate       INT UNSIGNED NULL,
+  status         ENUM('new', 'quoted', 'accepted', 'declined') NOT NULL DEFAULT 'new',
+  created_at     TIMESTAMP    NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  INDEX idx_quote_created (created_at),
+  INDEX idx_quote_user (user_id),
+  CONSTRAINT fk_quote_user FOREIGN KEY (user_id) REFERENCES users (id) ON DELETE SET NULL
+) ENGINE=InnoDB;
+
+-- Éléments d'une demande de devis, dans l'ordre de `position`
+--   kind : circuit | activity | excursion | cruise | longstay | place | stay | food | gear | ticket | photo | guide | transport | plan
+--   ref  : identifiant de l'offre sur le site (slug d'un circuit, id d'une offre...)
+--   title, details : copiés au moment de l'envoi, dans la langue du visiteur
+--   unit : person (prix par personne × quantity) | night (prix par nuit × quantity) | unit (prix × quantity)
+--          | fixed (prix total) ; NULL = sur devis
+CREATE TABLE IF NOT EXISTS quote_items (
+  id         INT UNSIGNED AUTO_INCREMENT PRIMARY KEY,
+  quote_id   INT UNSIGNED NOT NULL,
+  position   TINYINT UNSIGNED NOT NULL,
+  kind       VARCHAR(20)  NOT NULL,
+  ref        VARCHAR(120) NULL,
+  title      VARCHAR(190) NOT NULL,
+  details    VARCHAR(500) NULL,
+  item_date  DATE         NULL,
+  quantity   SMALLINT UNSIGNED NOT NULL DEFAULT 1,
+  unit       VARCHAR(10)  NULL,
+  unit_price INT UNSIGNED NULL,
+  note       VARCHAR(500) NULL,
+  INDEX idx_item_quote (quote_id, position),
+  CONSTRAINT fk_item_quote FOREIGN KEY (quote_id) REFERENCES quote_requests (id) ON DELETE CASCADE
+) ENGINE=InnoDB;
+
 -- Inscriptions à la newsletter (page Guides)
 CREATE TABLE IF NOT EXISTS newsletter_subscribers (
   id         INT UNSIGNED AUTO_INCREMENT PRIMARY KEY,

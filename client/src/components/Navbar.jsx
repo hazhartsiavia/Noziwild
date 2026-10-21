@@ -4,6 +4,7 @@ import gsap from 'gsap'
 import icone from '../assets/icone.png'
 import { Link } from 'react-router-dom'
 import { useAuth } from '../context/AuthContext'
+import { useTrip } from '../context/TripContext'
 import Avatar from './Avatar'
 import LanguageSwitcher, { LanguageRow } from './LanguageSwitcher'
 import { useT } from '../i18n/LanguageContext'
@@ -54,6 +55,9 @@ const Chevron = ({ className = '' }) => (
 function Navbar() {
   const { user, loading } = useAuth()
   const t = useT('nav')
+  const tt = useT('trip')
+  // Bouton devis : mène à la sélection « Mon voyage », avec le nombre d'offres mises de côté
+  const { count: tripCount } = useTrip()
   const [menuOpen, setMenuOpen] = useState(false)
   const [mobileSection, setMobileSection] = useState(null)
 
@@ -629,7 +633,8 @@ function Navbar() {
             ================================================== */}
             <Link
               ref={ctaRef}
-              to="/contact?type=quote"
+              to="/my-trip"
+              aria-label={tripCount > 0 ? `${tt('navLabel')} (${tripCount})` : undefined}
               onMouseEnter={handleCtaEnter}
               onMouseLeave={handleCtaLeave}
               className="
@@ -648,7 +653,12 @@ function Navbar() {
                 md:inline-flex
               "
             >
-              {t('quote')}
+              {tripCount > 0 ? (
+                <>
+                  {tt('navLabel')}
+                  <span className="flex h-5 min-w-5 items-center justify-center rounded-full bg-[#C49849] px-1.5 text-xs font-semibold text-white tabular-nums">{tripCount}</span>
+                </>
+              ) : t('quote')}
 
               <svg
                 width="7"
@@ -962,7 +972,7 @@ function Navbar() {
 
                 {/* CTA MOBILE */}
                 <Link
-                  to="/contact?type=quote"
+                  to="/my-trip"
                   onClick={closeMenu}
                   className="
                     mt-3
@@ -980,7 +990,12 @@ function Navbar() {
                     text-zinc-900
                   "
                 >
-                  {t('quote')}
+                  {tripCount > 0 ? (
+                    <>
+                      {tt('navLabel')}
+                      <span className="flex h-5 min-w-5 items-center justify-center rounded-full bg-[#C49849] px-1.5 text-xs font-semibold text-white tabular-nums">{tripCount}</span>
+                    </>
+                  ) : t('quote')}
 
                   <svg
                     width="7"

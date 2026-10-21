@@ -1,5 +1,6 @@
 {
   "kinds": {
+    "quote": "Solicitud de presupuesto",
     "contact": "Mensaje de contacto",
     "tailor-made": "Viaje a medida",
     "place": "Consulta sobre un lugar",
@@ -13,7 +14,10 @@
     "read": "Leída",
     "in_progress": "En curso",
     "answered": "Respondida",
-    "done": "Terminada"
+    "done": "Terminada",
+    "quoted": "Presupuesto enviado",
+    "accepted": "Aceptada",
+    "declined": "Rechazada"
   },
   "nameUpdated": "Su nombre se ha actualizado.",
   "hello": "Hola,",

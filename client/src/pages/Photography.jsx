@@ -8,6 +8,7 @@ import Ramena from "../assets/images/Ramena.png";
 import Tana from "../assets/images/Tana.png";
 import Navbar from '../components/Navbar';
 import Footer from '../components/Footer';
+import AddToTrip from '../components/AddToTrip'
 import { Trans, useLanguage, useT } from '../i18n/LanguageContext';
 import { formatPrice } from '../utils/format';
 import { localize } from '../i18n/localize';
@@ -294,7 +295,7 @@ function Sessions() {
       <ul className="border-t border-[#084838]/20">
         {sessions.map((s) => (
           <li key={s.id} className="border-b border-[#084838]/20">
-            <a href="/contact" className="group grid grid-cols-1 lg:grid-cols-[60px_1.4fr_1.6fr_auto_40px] items-center gap-3 lg:gap-8 py-6 md:py-8 px-2 md:px-4 transition hover:bg-white/60 rounded-2xl">
+            <div className="group grid grid-cols-1 lg:grid-cols-[60px_1.4fr_1.6fr_auto_40px] items-center gap-3 lg:gap-8 py-6 md:py-8 px-2 md:px-4 transition hover:bg-white/60 rounded-2xl">
               <span className="text-sm md:text-lg tabular-nums text-[#9a742f]">{String(s.id).padStart(2, '0')}</span>
 
               <div>
@@ -310,10 +311,8 @@ function Sessions() {
 
               <p className="text-sm text-slate-600 lg:text-right"><Trans text={t('from')} values={{ price: <span className="text-2xl md:text-3xl font-medium text-slate-900">{formatPrice(s.price, lang)}</span> }} /></p>
 
-              <span className="hidden lg:flex w-10 h-10 rounded-full bg-[#084838] text-white items-center justify-center transition group-hover:bg-[#C49849] group-hover:translate-x-1">
-                <ArrowIcon />
-              </span>
-            </a>
+              <AddToTrip variant="icon" item={{ kind: 'photo', ref: String(s.id), title: s.name, link: '/photography', details: [s.duration, s.photos].join(' · '), price: s.price, unit: 'unit' }} />
+            </div>
           </li>
         ))}
       </ul>

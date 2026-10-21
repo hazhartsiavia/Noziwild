@@ -7,6 +7,7 @@ import Ramena from "../assets/images/Ramena.png";
 import Tana from "../assets/images/Tana.png";
 import Navbar from '../components/Navbar';
 import Footer from '../components/Footer';
+import AddToTrip from '../components/AddToTrip'
 import { subscribeNewsletter } from '../api';
 import { useT } from '../i18n/LanguageContext';
 import { localize } from '../i18n/localize';
@@ -198,6 +199,7 @@ function Services() {
                     <li key={t} className="rounded-full border border-white/40 bg-white/10 backdrop-blur-sm px-3 py-1 text-xs md:text-sm">{t}</li>
                   ))}
                 </ul>
+                <AddToTrip variant="light" className="mt-5" item={{ kind: 'guide', ref: String(s.id), title: s.name, image: s.image, link: '/guide', price: null, unit: null }} />
               </div>
             </div>
           </article>

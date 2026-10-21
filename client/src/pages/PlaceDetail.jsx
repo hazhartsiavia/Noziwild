@@ -7,6 +7,7 @@ import { Trans, useLanguage, useT } from '../i18n/LanguageContext'
 import { formatPrice } from '../utils/format'
 import { sendRequest } from '../api'
 import { useAuth } from '../context/AuthContext'
+import { BookingAdd, useTripItem } from '../components/AddToTrip'
 
 const W = 'w-[90vw] lg:max-w-[95vw]'
 const GOLD = 'bg-[#C49849] hover:bg-[#a9813a]'
@@ -31,11 +32,24 @@ function BookingCard({ place, dest }) {
   const t = useT('destinations')
   const { lang } = useLanguage()
   const [tab, setTab] = useState('booking')
-  const [guests, setGuests] = useState(1)
-  const [date, setDate] = useState('')
+  const tripItem = {
+    kind: 'place',
+    ref: `${dest.slug}/${place.slug}`,
+    title: place.name,
+    image: place.image,
+    link: `/destinations/${dest.slug}/${place.slug}`,
+    details: dest.name,
+    price: place.price || null,
+    unit: place.price ? 'person' : null,
+  }
+  // Déjà dans la sélection « Mon voyage » : on reprend ses réglages, et chaque changement la met à jour
+  const { saved, sync } = useTripItem(tripItem)
+  const [guests, setGuestsState] = useState(saved?.qty || 1)
+  const [date, setDateState] = useState(saved?.date || '')
+  const setGuests = (qty) => { setGuestsState(qty); sync({ qty }) }
+  const setDate = (value) => { setDateState(value); sync({ date: value }) }
   const [sent, setSent] = useState(false)
   const total = place.price ? place.price * guests : null
-  const bookHref = `/contact?place=${encodeURIComponent(place.name)}&guests=${guests}${date ? `&date=${date}` : ''}`
   const tabCls = (name) => `flex-1 rounded-full py-3 text-sm md:text-base font-medium transition ${tab === name ? 'bg-slate-800 text-white' : 'text-slate-700 hover:bg-slate-100'}`
 
   const [sending, setSending] = useState(false)
@@ -92,7 +106,7 @@ function BookingCard({ place, dest }) {
               <span>{t('place.total')}</span><span className="font-semibold text-slate-900">{formatPrice(total, lang)}</span>
             </p>
           )}
-          <a href={bookHref} className={`${BTN} bg-slate-800 hover:bg-slate-700 text-white w-full`}>{t('place.book')}</a>
+          <BookingAdd item={{ ...tripItem, qty: guests, date }} />
           <p className="text-xs text-slate-500 text-center">{t('place.noPayment')}</p>
         </div>
       ) : (

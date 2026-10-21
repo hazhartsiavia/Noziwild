@@ -8,6 +8,7 @@ import Footer from '../components/Footer'
 import { sendRequest, fetchCircuit, assetUrl } from '../api'
 import { formatPrice } from '../utils/format'
 import { useAuth } from '../context/AuthContext'
+import { BookingAdd, useTripItem } from '../components/AddToTrip'
 import { Trans, useLanguage, useT } from '../i18n/LanguageContext'
 
 gsap.registerPlugin(ScrollTrigger)
@@ -313,7 +314,7 @@ function Itinerary({ circuit }) {
 }
 
 /* ============================================================
-   CARTE DE PRIX : réservation ou question
+   CARTE DE PRIX : ajout à « Mon voyage » (date + voyageurs) ou question
 ============================================================ */
 function BookingCard({ circuit }) {
   // Connecté : nom et email pré-remplis (la clé recrée le champ quand la session est connue)
@@ -321,8 +322,22 @@ function BookingCard({ circuit }) {
   const t = useT('circuitDetail')
   const { lang } = useLanguage()
   const [tab, setTab] = useState('booking')
-  const [travellers, setTravellers] = useState(2)
-  const [date, setDate] = useState('')
+  const tripItem = {
+    kind: 'circuit',
+    ref: circuit.slug,
+    title: circuit.title,
+    image: circuit.gallery?.[0] ? assetUrl(circuit.gallery[0]) : '',
+    link: `/circuits/${circuit.slug}`,
+    details: t('durationValue', { nights: circuit.days - 1, days: circuit.days }),
+    price: circuit.price,
+    unit: 'person',
+  }
+  // Déjà dans la sélection : on reprend ses réglages, et chaque changement la met à jour
+  const { saved, sync } = useTripItem(tripItem)
+  const [travellers, setTravellersState] = useState(saved?.qty || 2)
+  const [date, setDateState] = useState(saved?.date || '')
+  const setTravellers = (qty) => { setTravellersState(qty); sync({ qty }) }
+  const setDate = (value) => { setDateState(value); sync({ date: value }) }
   const [status, setStatus] = useState('idle') // 'idle' | 'sending' | 'sent' | 'error'
   const [error, setError] = useState('')
   const total = circuit.price * travellers
@@ -337,15 +352,12 @@ function BookingCard({ circuit }) {
     event.preventDefault()
     const form = event.currentTarget
     const { name, email, question } = Object.fromEntries(new FormData(form))
-    const message = tab === 'booking'
-      ? `Booking request. Start date: ${date || 'flexible'}. Travellers: ${travellers}. Estimated total: ${formatPrice(total)}.`
-      : question
 
     setStatus('sending')
     try {
-      await sendRequest('circuit', { name, email, subject: circuit.title, message })
+      await sendRequest('circuit', { name, email, subject: circuit.title, message: question })
       setStatus('sent')
-      if (tab === 'inquiry') form.reset()
+      form.reset()
     } catch (err) {
       setError(err.message)
       setStatus('error')
@@ -367,48 +379,47 @@ function BookingCard({ circuit }) {
         <button type="button" role="tab" aria-selected={tab === 'inquiry'} onClick={() => switchTab('inquiry')} className={tabCls('inquiry')}>{t('inquiry')}</button>
       </div>
 
-      <form onSubmit={submit} className="mt-6 flex flex-col gap-5">
-        {tab === 'booking' && (
-          <>
-            <div>
-              <label htmlFor="circuit-date" className={LABEL}>{t('startDate')}</label>
-              <input id="circuit-date" type="date" min={today} value={date} onChange={(e) => setDate(e.target.value)} className={FIELD} />
+      {tab === 'booking' && (
+        <div className="mt-6 flex flex-col gap-5">
+          <div>
+            <label htmlFor="circuit-date" className={LABEL}>{t('startDate')}</label>
+            <input id="circuit-date" type="date" min={today} value={date} onChange={(e) => setDate(e.target.value)} className={FIELD} />
+          </div>
+          <div>
+            <p className={LABEL} id="travellers-label">{t('travellers')}</p>
+            <div className="flex items-center justify-between rounded-full bg-[#D5E8E2] px-2 py-2" role="group" aria-labelledby="travellers-label">
+              <button type="button" aria-label={t('fewer')} onClick={() => setTravellers(Math.max(1, travellers - 1))} disabled={travellers <= 1} className="w-10 h-10 rounded-full bg-white text-xl text-slate-800 hover:bg-slate-100 disabled:opacity-40">−</button>
+              <span className="text-lg font-medium text-slate-900" aria-live="polite">{travellers}</span>
+              <button type="button" aria-label={t('more')} onClick={() => setTravellers(Math.min(12, travellers + 1))} disabled={travellers >= 12} className="w-10 h-10 rounded-full bg-white text-xl text-slate-800 hover:bg-slate-100 disabled:opacity-40">+</button>
             </div>
-            <div>
-              <p className={LABEL} id="travellers-label">{t('travellers')}</p>
-              <div className="flex items-center justify-between rounded-full bg-[#D5E8E2] px-2 py-2" role="group" aria-labelledby="travellers-label">
-                <button type="button" aria-label={t('fewer')} onClick={() => setTravellers(Math.max(1, travellers - 1))} disabled={travellers <= 1} className="w-10 h-10 rounded-full bg-white text-xl text-slate-800 hover:bg-slate-100 disabled:opacity-40">−</button>
-                <span className="text-lg font-medium text-slate-900" aria-live="polite">{travellers}</span>
-                <button type="button" aria-label={t('more')} onClick={() => setTravellers(Math.min(12, travellers + 1))} disabled={travellers >= 12} className="w-10 h-10 rounded-full bg-white text-xl text-slate-800 hover:bg-slate-100 disabled:opacity-40">+</button>
-              </div>
-            </div>
-            <p className="flex justify-between border-t border-slate-200 pt-4 text-base text-slate-700">
-              <span>{t('total')}</span><span className="font-semibold text-slate-900">{formatPrice(total, lang)}</span>
-            </p>
-          </>
-        )}
-
-        <input name="name" key={`n-${user?.id}`} defaultValue={user?.name} required autoComplete="name" placeholder={t('name')} aria-label={t('name')} className={FIELD} />
-        <input name="email" key={`e-${user?.id}`} defaultValue={user?.email} type="email" required autoComplete="email" placeholder={t('email')} aria-label={t('email')} className={FIELD} />
-        {tab === 'inquiry' && (
-          <textarea name="question" rows={4} required placeholder={t('question')} aria-label={t('question')} className="w-full rounded-3xl border border-slate-300 px-5 py-3 text-base focus:outline-none focus:border-slate-700 focus:ring-1 focus:ring-slate-700" />
-        )}
-
-        <button type="submit" disabled={status === 'sending'} className={`${BTN} w-full text-white disabled:opacity-60 disabled:cursor-wait ${tab === 'booking' ? 'bg-slate-800 hover:bg-slate-700' : GOLD}`}>
-          {status === 'sending' ? t('sending') : tab === 'booking' ? t('request') : t('send')}
-        </button>
-
-        {status === 'sent' && (
-          <p role="status" className="text-sm text-emerald-700">
-            {t('thanks')}
-            {user && <> <Trans text={t('follow')} values={{ link: <Link to="/account" className="font-medium underline">{t('followLink')}</Link> }} /></>}
+          </div>
+          <p className="flex justify-between border-t border-slate-200 pt-4 text-base text-slate-700">
+            <span>{t('total')}</span><span className="font-semibold text-slate-900">{formatPrice(total, lang)}</span>
           </p>
-        )}
-        {status === 'error' && <p role="alert" className="text-sm text-red-700">{error}</p>}
-        {tab === 'booking' && status !== 'sent' && (
+          <BookingAdd item={{ ...tripItem, qty: travellers, date }} />
           <p className="text-xs text-slate-500 text-center">{t('noPayment')}</p>
-        )}
-      </form>
+        </div>
+      )}
+
+      {tab === 'inquiry' && (
+        <form onSubmit={submit} className="mt-6 flex flex-col gap-5">
+          <input name="name" key={`n-${user?.id}`} defaultValue={user?.name} required autoComplete="name" placeholder={t('name')} aria-label={t('name')} className={FIELD} />
+          <input name="email" key={`e-${user?.id}`} defaultValue={user?.email} type="email" required autoComplete="email" placeholder={t('email')} aria-label={t('email')} className={FIELD} />
+          <textarea name="question" rows={4} required placeholder={t('question')} aria-label={t('question')} className="w-full rounded-3xl border border-slate-300 px-5 py-3 text-base focus:outline-none focus:border-slate-700 focus:ring-1 focus:ring-slate-700" />
+
+          <button type="submit" disabled={status === 'sending'} className={`${BTN} w-full text-white disabled:opacity-60 disabled:cursor-wait ${GOLD}`}>
+            {status === 'sending' ? t('sending') : t('send')}
+          </button>
+
+          {status === 'sent' && (
+            <p role="status" className="text-sm text-emerald-700">
+              {t('thanks')}
+              {user && <> <Trans text={t('follow')} values={{ link: <Link to="/account" className="font-medium underline">{t('followLink')}</Link> }} /></>}
+            </p>
+          )}
+          {status === 'error' && <p role="alert" className="text-sm text-red-700">{error}</p>}
+        </form>
+      )}
     </aside>
   )
 }

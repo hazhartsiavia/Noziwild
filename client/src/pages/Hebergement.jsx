@@ -7,6 +7,7 @@ import Ramena from "../assets/images/Ramena.png";
 import Tana from "../assets/images/Tana.png";
 import Navbar from '../components/Navbar';
 import Footer from '../components/Footer';
+import AddToTrip from '../components/AddToTrip'
 import { Trans, useLanguage, useT } from '../i18n/LanguageContext';
 import { formatPrice } from '../utils/format';
 import { localize } from '../i18n/localize';
@@ -53,7 +54,9 @@ const STAYS = [
   { id: 6, category: 'lodge', name: 'Baobab Safari Camp', place: 'Northern Madagascar', image: Deux, price: 110, rating: 4.7, amenities: ['Guided walks', 'Full board', 'Stargazing'] },
 ]
 
+// stayId : l'hébergement de STAYS mis en avant (même élément dans « Mon voyage »)
 const FEATURED = {
+  stayId: 2,
   label: 'Guest Favorite',
   name: 'Nosy Iranja Retreat',
   place: 'Nosy Iranja',
@@ -183,7 +186,7 @@ function StayCard({ stay }) {
         </ul>
         <div className="mt-auto pt-6 flex items-center justify-between gap-3">
           <p className="text-slate-600 text-sm"><Trans text={t('fromPerNight')} values={{ price: <span className="text-xl md:text-2xl font-medium text-slate-900">{formatPrice(stay.price, lang)}</span> }} /></p>
-          <a href="/contact" className={`bg-slate-800 hover:bg-slate-700 active:scale-95 transition text-white ${BUTTON}`}>{t('enquire')}</a>
+          <AddToTrip item={{ kind: 'stay', ref: String(stay.id), title: stay.name, image: stay.image, link: '/hosting', details: stay.place, price: stay.price, unit: 'night', qty: 3 }} />
         </div>
       </div>
     </article>
@@ -240,9 +243,11 @@ function Featured() {
         <ul className="mt-5 flex flex-col gap-2 text-sm md:text-base">
           {featured.details.map((d) => <li key={d} className="flex items-center gap-2"><CheckIcon />{d}</li>)}
         </ul>
-        <a href="/contact" className={`mt-6 self-start bg-[#C49849] hover:bg-[#b08339] active:scale-95 transition text-white ${BUTTON} md:px-6 md:py-3`}>
-          {t('check')}
-        </a>
+        <AddToTrip
+          variant="gold"
+          className="mt-6 self-start"
+          item={{ kind: 'stay', ref: String(featured.stayId), title: featured.name, image: featured.image, link: '/hosting', details: featured.place, price: STAYS.find((s) => s.id === featured.stayId)?.price ?? null, unit: 'night', qty: 3 }}
+        />
       </div>
     </div>
   )

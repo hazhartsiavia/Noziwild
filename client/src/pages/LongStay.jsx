@@ -10,6 +10,7 @@ import Tana from '../assets/images/Tana.png'
 import Navbar from '../components/Navbar'
 import Footer from '../components/Footer'
 import OffersStatus from '../components/OffersStatus'
+import AddToTrip from '../components/AddToTrip'
 import { useT } from '../i18n/LanguageContext'
 import { useOffers } from '../utils/useOffers'
 
@@ -248,7 +249,7 @@ function Formats() {
               </ul>
               <div className="mt-8 flex flex-wrap items-center gap-5">
                 <p className="text-2xl font-semibold">{f.priceLabel}</p>
-                <a href={`/contact?place=${encodeURIComponent(f.title)}`} className={`${BTN} ${GOLD} text-white`}>{t('askStay')}</a>
+                <AddToTrip variant="gold" item={{ kind: 'longstay', ref: String(f.id), title: f.title, image: f.image, link: '/longstay', details: [f.tab, f.priceLabel].filter(Boolean).join(' · '), price: null, unit: null }} />
               </div>
             </div>
           </div>

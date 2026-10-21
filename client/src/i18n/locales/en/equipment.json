@@ -171,7 +171,6 @@
   "empty": "Your list is empty. Add gear from the catalog and your estimate appears here.",
   "discount": "7+ days discount (−10%)",
   "total": "Estimated total",
-  "request": "Request This Quote",
   "note": "Estimate only. A refundable deposit may apply to some items. Final price confirmed by our team.",
   "pickupTitle": "Pickup & Return",
   "pickupText": "Choose the way that suits your schedule. Return is always at the same place as pickup.",
@@ -184,5 +183,7 @@
   "emailLabel": "Your email",
   "sending": "Sending…",
   "send": "Send Request",
-  "thanks": "Thank you! We will get back to you soon."
+  "thanks": "Thank you! We will get back to you soon.",
+  "tripTitle": "Equipment rental",
+  "tripDetails": "{items} · {days}"
 }

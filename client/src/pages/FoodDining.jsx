@@ -7,6 +7,7 @@ import Ramena from "../assets/images/Ramena.png";
 import Tana from "../assets/images/Tana.png";
 import Navbar from '../components/Navbar';
 import Footer from '../components/Footer';
+import AddToTrip from '../components/AddToTrip'
 import { sendRequest } from '../api';
 import { useAuth } from '../context/AuthContext';
 import { Trans, useLanguage, useT } from '../i18n/LanguageContext';
@@ -271,7 +272,7 @@ function Menu() {
               <p className="mt-3 max-w-md text-base text-white/85 leading-relaxed">{current.text}</p>
               <div className="mt-6 flex items-center justify-between gap-4">
                 <p className="text-white/80"><Trans text={tr('fromPerPerson')} values={{ price: <span className="text-3xl font-medium text-white">{formatPrice(current.price, lang)}</span> }} /></p>
-                <a href="/contact" className={`bg-[#C49849] hover:bg-[#b08339] text-white ${BUTTON}`}>{tr('bookThis')}</a>
+                <AddToTrip variant="gold" item={{ kind: 'food', ref: String(current.id), title: current.name, image: current.image, link: '/Food-dining', details: current.duration, price: current.price, unit: 'person' }} />
               </div>
             </div>
           </div>
@@ -283,8 +284,7 @@ function Menu() {
             const isActive = e.id === current.id
             return (
               <li key={e.id}>
-                <a
-                  href="/contact"
+                <div
                   onMouseEnter={() => setActiveId(e.id)}
                   onFocus={() => setActiveId(e.id)}
                   className={`group flex items-center gap-4 md:gap-5 rounded-2xl p-3 md:p-4 transition ${isActive ? 'bg-white' : 'hover:bg-white/60'}`}
@@ -305,10 +305,8 @@ function Menu() {
                     <p className={`${META_TEXT} text-slate-500`}>{tr('perPerson')}</p>
                   </div>
 
-                  <span className={`hidden md:flex shrink-0 w-10 h-10 rounded-full items-center justify-center transition ${isActive ? 'bg-[#084838] text-white translate-x-0' : 'bg-[#084838]/10 text-[#084838] group-hover:bg-[#084838] group-hover:text-white'}`}>
-                    <ArrowIcon />
-                  </span>
-                </a>
+                  <AddToTrip variant="icon" item={{ kind: 'food', ref: String(e.id), title: e.name, image: e.image, link: '/Food-dining', details: e.duration, price: e.price, unit: 'person' }} />
+                </div>
               </li>
             )
           })}
@@ -341,6 +339,8 @@ function CookingClass() {
   const { lang } = useLanguage()
   const classSteps = localize(CLASS_STEPS, t('classSteps'))
   const facts = t('classFacts')
+  // Le cours de cuisine de la liste des expériences : même élément dans « Mon voyage »
+  const lesson = localize(EXPERIENCES, t('experiences')).find((e) => e.category === 'class')
   return (
     <div className={`${SECTION_GAP} grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-16 items-center`}>
       <div className="relative overflow-hidden rounded-3xl aspect-[4/5] md:aspect-[5/4] lg:aspect-[4/5] bg-[#084838]">
@@ -374,7 +374,7 @@ function CookingClass() {
           ))}
         </ul>
 
-        <a href="/contact" className={`mt-8 inline-block bg-[#084838] hover:bg-[#0a5c47] text-white ${BUTTON}`}>{t('reserve')}</a>
+        <AddToTrip variant="green" className="mt-8" item={{ kind: 'food', ref: String(lesson.id), title: lesson.name, image: lesson.image, link: '/Food-dining', details: lesson.duration, price: lesson.price, unit: 'person' }} />
       </div>
     </div>
   )
