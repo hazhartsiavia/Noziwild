@@ -1,4 +1,20 @@
 {
+  "hero": {
+    "label": "Benvenuti",
+    "eyebrow": "Esplora l'anima del Madagascar",
+    "title1": "Vivi l'avventura nel",
+    "title2": "cuore della Grande Isola",
+    "cta": "Scopri i nostri circuiti",
+    "scroll": "Scorri",
+    "slides": [
+      "Il viale dei Baobab al tramonto",
+      "Incontra i lemuri nella loro foresta",
+      "Cieli di fuoco sull'Ovest selvaggio"
+    ],
+    "next": "Diapositiva successiva",
+    "pause": "Metti in pausa la presentazione",
+    "play": "Riprendi la presentazione"
+  },
   "talkBadge": "Parla con un esperto di viaggi / Parla con un esperto di viaggi /",
   "heroAlt": "Spiaggia di sabbia bianca con bungalow, piroghe e una laguna turchese in Madagascar",
   "heroLabel": "Il tuo viaggio comincia qui",

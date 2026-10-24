@@ -11,12 +11,11 @@ import NosyLonjo from '../assets/images/NosyLonjo.png'
 import Ambanja from '../assets/images/Ambanja.png'
 import Deux from '../assets/images/2.jpg'
 import Tana from '../assets/images/Tana.png'
-import heroBeach from '../assets/images/heroBeach.jpg'
 import Icone from '../assets/icone.png'
-import Navbar from '../components/Navbar'
 import Footer from '../components/Footer'
 import { slugify } from './destinationsData'
-import { Trans, useLanguage, useT } from '../i18n/LanguageContext'
+import { Hero, Preloader, shouldPlayPreloader } from './HomeHero'
+import { useLanguage, useT } from '../i18n/LanguageContext'
 import { monthName } from '../utils/format'
 
 gsap.registerPlugin(ScrollTrigger)
@@ -43,12 +42,6 @@ const ways = [
   { title: 'Excursions', text: 'Day trips and short escapes', href: '/excurssions', icon: Sun, image: Ramena },
   { title: 'Long Stay', text: 'Live the island for weeks', href: '/longstay', icon: Compass, image: NosyIranja },
   { title: 'Tailor-Made', text: 'A trip designed around you', href: '/tailor-made', icon: Sparkles, image: Ambanja },
-]
-
-const stats = [
-  { id: 1, value: '12+', label: 'Years of local expertise' },
-  { id: 2, value: '300+', label: 'Happy travelers' },
-  { id: 3, value: '4.9/5', label: 'Average rating' },
 ]
 
 const promises = [
@@ -170,124 +163,6 @@ function TalkBadge() {
 }
 
 /* -------------------------- Sections --------------------------- */
-
-/* Hero plein écran : photo pleine largeur sous la bande blanche de la navbar, titre géant, chiffres dans une carte vitrée */
-function Hero() {
-  const root = useRef(null)
-  const t = useT('home')
-
-  useGsap(root, () => {
-    const tl = gsap.timeline({ defaults: { ease: 'power4.out' } })
-    tl.fromTo(
-      '.hero-card',
-      { clipPath: 'inset(0% 0% 14% 0%)' },
-      { clipPath: 'inset(0% 0% 0% 0%)', duration: 1.4, ease: 'expo.out', clearProps: 'clipPath' }
-    )
-      .from('.hero-img', { scale: 1.25, duration: 1.8, ease: 'power3.out' }, 0)
-      .from('.hero-label, .hero-rating', { y: -16, opacity: 0, duration: 0.6, clearProps: 'all' }, 0.5)
-      .from('.hero-eyebrow', { y: 20, opacity: 0, duration: 0.6, clearProps: 'all' }, 0.6)
-      .from('.hero-line', { yPercent: 110, duration: 1.1, stagger: 0.12 }, 0.6)
-      .from('.hero-copy', { y: 24, opacity: 0, duration: 0.7, clearProps: 'all' }, '-=0.6')
-      .from('.hero-cta', { y: 20, opacity: 0, duration: 0.6, stagger: 0.1, clearProps: 'all' }, '-=0.5')
-      .from('.hero-glass', { x: 40, opacity: 0, duration: 0.9, clearProps: 'all' }, '-=0.8')
-      .from('.hero-fact', { y: 20, opacity: 0, duration: 0.5, stagger: 0.08, clearProps: 'all' }, '-=0.5')
-
-    // La photo glisse doucement au scroll pendant que le contenu s'estompe
-    tl.add(() => {
-      gsap.to('.hero-img', {
-        yPercent: 10,
-        scale: 1.08,
-        ease: 'none',
-        scrollTrigger: { trigger: root.current, start: 'top top', end: 'bottom top', scrub: true },
-      })
-      gsap.to('.hero-content', {
-        y: -60,
-        opacity: 0.2,
-        ease: 'none',
-        scrollTrigger: { trigger: root.current, start: 'center center', end: 'bottom top', scrub: true },
-      })
-    })
-  })
-
-  return (
-    <section ref={root} className="w-full">
-      {/* Bande blanche en haut : l'onglet de la navbar y est accroché, comme sur les autres pages à photo */}
-      <div className={`hero-card relative overflow-hidden border-t-[10px] border-white rounded-b-[2rem] md:rounded-b-[3rem] ${GREEN} text-white min-h-[max(640px,100svh)] flex flex-col`}>
-        <img
-          src={heroBeach}
-          alt={t('heroAlt')}
-          className="hero-img absolute inset-0 w-full h-full object-cover"
-          style={{ willChange: 'transform' }}
-          fetchPriority="high"
-        />
-        <div className="absolute inset-0 bg-gradient-to-t from-slate-950/85 via-slate-950/30 to-slate-950/20" />
-        <div className="absolute inset-0 bg-gradient-to-r from-slate-950/45 via-transparent to-transparent" />
-
-        <div className="relative z-20"><Navbar /></div>
-
-        <div className={`relative ${SECTION_WIDTH} mx-auto flex flex-1 flex-col pt-6 md:pt-0 pb-8 md:pb-14`}>
-          {/* Haut de la carte */}
-          <div className="flex flex-wrap items-start justify-between gap-3">
-            <p className="hero-label flex items-center gap-2 text-base md:text-xl font-medium">
-              <span className="w-1.5 h-1.5 rounded-full bg-white" aria-hidden="true" />
-              {t('heroLabel')}
-            </p>
-            <p className="hero-rating hidden sm:flex items-center gap-2 rounded-full bg-white/90 px-4 py-2 text-sm font-medium text-slate-900">
-              <Stars className="w-3.5 h-3.5" />
-              {t('heroRating')}
-            </p>
-          </div>
-
-          {/* Bas de la carte : titre pleine largeur, puis texte + boutons et chiffres */}
-          <div className="hero-content mt-auto pt-10 md:pt-12">
-            <p className="hero-eyebrow text-sm md:text-base text-white/80 mb-4">{t('heroEyebrow')}</p>
-            {/* Taille fluide : suit la largeur ET la hauteur de l'écran pour tenir sur le premier écran */}
-            <h1 aria-label={t('heroTitle')} className="text-[clamp(2.75rem,min(10vw,13vh),9rem)] font-semibold leading-[0.92] tracking-tight">
-              <span className="block overflow-hidden pb-2" aria-hidden="true"><span className="hero-line block sm:whitespace-nowrap">{t('heroLine1')}</span></span>
-              <span className="block overflow-hidden pb-2" aria-hidden="true"><span className="hero-line block sm:whitespace-nowrap"><Trans text={t('heroLine2')} values={{ madagascar: <span className="text-[#E9CF8F]">{t('madagascar')}</span> }} /></span></span>
-            </h1>
-
-            <div className="mt-5 md:mt-7 grid grid-cols-1 xl:grid-cols-[1.3fr_1fr] gap-8 xl:gap-12 items-end">
-            <div>
-              <p className="hero-copy text-base md:text-lg text-white/90 leading-relaxed max-w-xl">
-                {t('heroText')}
-              </p>
-              <div className="mt-6 flex flex-wrap gap-3">
-                <a
-                  href="/contact?type=quote"
-                  className="hero-cta group inline-flex items-center gap-4 rounded-full bg-white text-slate-900 hover:bg-[#F7EEDC] transition-colors pl-6 pr-2 py-2 md:pl-7"
-                >
-                  <span className="text-base md:text-lg font-medium">{t('heroCta')}</span>
-                  <span className={`w-10 h-10 md:w-12 md:h-12 rounded-full ${GOLD} text-white flex items-center justify-center transition-transform group-hover:translate-x-1`}>
-                    <ArrowRight className="w-5 h-5" aria-hidden="true" />
-                  </span>
-                </a>
-                <a href="/destinations" className={`hero-cta ${BTN} border border-white/50 hover:bg-white/10 text-white md:px-8`}>{t('heroExplore')}</a>
-              </div>
-            </div>
-
-            {/* Carte vitrée : chiffres clés */}
-            <div className="hero-glass rounded-3xl border border-white/25 bg-white/10 backdrop-blur-md p-5 md:p-7 md:max-w-xl xl:max-w-none">
-              <ul className="grid grid-cols-3 gap-4">
-                {stats.map((s, i) => (
-                  <li key={s.id} className="hero-fact">
-                    <p className="text-2xl md:text-4xl font-semibold leading-none">{s.value}</p>
-                    <p className="mt-2 text-xs md:text-sm text-white/80 leading-snug">{t('stats')[i]}</p>
-                  </li>
-                ))}
-              </ul>
-              <div className="hero-fact mt-6 flex items-center gap-4 border-t border-white/25 pt-5">
-                <img src={Icone} alt="" className="w-11 h-11 md:w-12 md:h-12 rounded-full bg-white object-contain p-1.5" />
-                <p className="text-sm md:text-base text-white/90 leading-snug">{t('heroPlanner')}</p>
-              </div>
-            </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-  )
-}
 
 /* Les 4 façons de voyager : cartes photo (même style que les cartes de la page Destinations) */
 function Ways() {
@@ -651,6 +526,9 @@ function FinalCta() {
 /* ================= Page ================= */
 
 function Home() {
+  // Preloader au premier affichage, puis entrée du hero
+  const [ready, setReady] = useState(() => !shouldPlayPreloader())
+
   // Recalcule les positions une fois les images chargées
   useLayoutEffect(() => {
     const refresh = () => ScrollTrigger.refresh()
@@ -664,8 +542,9 @@ function Home() {
 
   return (
     <>
+      {!ready && <Preloader onDone={() => setReady(true)} />}
       <main className="w-full bg-[#D5E8E2] pb-16 md:pb-24 flex flex-col items-center">
-        <Hero />
+        <Hero ready={ready} />
         <Ways />
         <Intro />
         <Regions />

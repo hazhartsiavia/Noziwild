@@ -1,4 +1,20 @@
 {
+  "hero": {
+    "label": "Bienvenido",
+    "eyebrow": "Explora el alma de Madagascar",
+    "title1": "Vive la aventura en el",
+    "title2": "corazón de la Gran Isla",
+    "cta": "Descubre nuestros circuitos",
+    "scroll": "Desplazar",
+    "slides": [
+      "La avenida de los Baobabs al atardecer",
+      "Conoce a los lémures en su bosque",
+      "Cielos de fuego sobre el Oeste salvaje"
+    ],
+    "next": "Diapositiva siguiente",
+    "pause": "Pausar la presentación",
+    "play": "Reanudar la presentación"
+  },
   "talkBadge": "Hable con un experto en viajes / Hable con un experto en viajes /",
   "heroAlt": "Playa de arena blanca con bungalós, piraguas y una laguna turquesa en Madagascar",
   "heroLabel": "Su viaje empieza aquí",

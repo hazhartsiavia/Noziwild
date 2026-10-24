@@ -1,4 +1,20 @@
 {
+  "hero": {
+    "label": "Willkommen",
+    "eyebrow": "Entdecken Sie die Seele Madagaskars",
+    "title1": "Erleben Sie das Abenteuer",
+    "title2": "der Großen Insel",
+    "cta": "Unsere Rundreisen entdecken",
+    "scroll": "Scrollen",
+    "slides": [
+      "Die Allee der Baobabs bei Sonnenuntergang",
+      "Begegnen Sie den Lemuren in ihrem Wald",
+      "Feuerhimmel über dem wilden Westen"
+    ],
+    "next": "Nächstes Bild",
+    "pause": "Diashow anhalten",
+    "play": "Diashow fortsetzen"
+  },
   "talkBadge": "Sprechen Sie mit einem Reiseexperten / Sprechen Sie mit einem Reiseexperten /",
   "heroAlt": "Weißer Sandstrand mit Bungalows, Einbäumen und einer türkisfarbenen Lagune in Madagaskar",
   "heroLabel": "Hier beginnt Ihre Reise",

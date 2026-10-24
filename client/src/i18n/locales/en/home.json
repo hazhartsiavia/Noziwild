@@ -1,4 +1,20 @@
 {
+  "hero": {
+    "label": "Welcome",
+    "eyebrow": "Explore the Soul of Madagascar",
+    "title1": "Live the adventure",
+    "title2": "of the Great Island",
+    "cta": "Explore our circuits",
+    "scroll": "Scroll",
+    "slides": [
+      "The Avenue of the Baobabs at sunset",
+      "Meet the lemurs in their forest",
+      "Fiery skies over the wild West"
+    ],
+    "next": "Next slide",
+    "pause": "Pause the slideshow",
+    "play": "Play the slideshow"
+  },
   "talkBadge": "Talk to a Travel Expert / Talk to a Travel Expert /",
   "heroAlt": "White sand beach with bungalows, pirogues and a turquoise lagoon in Madagascar",
   "heroLabel": "Your Journey Begins Here",

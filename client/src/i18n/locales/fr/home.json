@@ -1,4 +1,20 @@
 {
+  "hero": {
+    "label": "Bienvenue",
+    "eyebrow": "Explorez l'âme de Madagascar",
+    "title1": "Vivez l'aventure au",
+    "title2": "cœur de la Grande Île",
+    "cta": "Découvrir nos circuits",
+    "scroll": "Défiler",
+    "slides": [
+      "L'allée des Baobabs au coucher du soleil",
+      "Rencontrez les lémuriens dans leur forêt",
+      "Ciels de feu sur l'Ouest sauvage"
+    ],
+    "next": "Diapositive suivante",
+    "pause": "Mettre en pause le diaporama",
+    "play": "Relancer le diaporama"
+  },
   "talkBadge": "Parlez à un expert du voyage / Parlez à un expert du voyage /",
   "heroAlt": "Plage de sable blanc avec bungalows, pirogues et lagon turquoise à Madagascar",
   "heroLabel": "Votre voyage commence ici",

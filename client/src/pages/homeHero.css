@@ -1,0 +1,479 @@
+/* Hero de l'accueil et preloader, repris de la maquette WebsitesV2 (index.html + style.css).
+   Classes préfixées nzpl- (preloader) et nzh- (hero) pour ne pas toucher au reste du site. */
+
+.nzpl,
+.nzh {
+  --nz-green-900: #072a1f;
+  --nz-green-800: #0c3e2e;
+  --nz-gold: #b29147;
+  --nz-gold-soft: #d4b878;
+  --nz-cream: #f6f1e7;
+  --nz-font: "Figtree", system-ui, -apple-system, "Segoe UI", sans-serif;
+  --nz-ease: cubic-bezier(.76, 0, .24, 1);
+  --nz-gutter: clamp(16px, 2.2vw, 40px);
+  --nz-header-h: 84px;
+  --nz-shade:
+    linear-gradient(180deg, rgba(7, 42, 31, .55) 0%, rgba(7, 42, 31, .18) 28%, rgba(7, 42, 31, .25) 60%, rgba(7, 42, 31, .72) 100%),
+    linear-gradient(90deg, rgba(7, 42, 31, .55) 0%, rgba(7, 42, 31, 0) 55%);
+  font-family: var(--nz-font);
+  color: var(--nz-cream);
+  -webkit-font-smoothing: antialiased;
+}
+
+/* La navbar impose Geist à tous les éléments (* { … }) : le hero garde Figtree, la navbar garde Geist */
+.nzpl *,
+.nzh *:not(.nzh__nav, .nzh__nav *) { font-family: var(--nz-font); }
+
+.nzh :focus-visible { outline: 2px solid var(--nz-gold-soft); outline-offset: 4px; }
+
+/* =========================================================
+   PRELOADER
+   ========================================================= */
+
+.nzpl {
+  /* hauteur des mots NOZI / WILD */
+  --pl-h: min(9vw, 19vh);
+  position: fixed;
+  inset: 0;
+  z-index: 100;
+  display: grid;
+  place-items: center;
+  background: var(--nz-green-800);
+  overflow: hidden;
+}
+
+.nzpl__dot {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 6px;
+  height: 6px;
+  margin: -3px 0 0 -3px;
+  border-radius: 50%;
+  background: var(--nz-gold);
+  box-shadow: 0 0 0 0 rgba(178, 145, 71, .6);
+  animation: nzpl-pulse 1.2s ease-out infinite;
+}
+
+@keyframes nzpl-pulse {
+  to { box-shadow: 0 0 0 14px rgba(178, 145, 71, 0); }
+}
+
+.nzpl__row {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  column-gap: calc(var(--pl-h) * .22);
+  width: 100vw;
+  height: 100vh;
+}
+
+/* Les deux moitiés se partagent la place pour garder la fenêtre au centre,
+   et ne coupent qu'en hauteur pour que les lettres puissent sortir par les côtés. */
+.nzpl__mask {
+  flex: 1 1 0;
+  min-width: 0;
+  display: flex;
+  justify-content: flex-end;
+  height: calc(var(--pl-h) * 1.08);
+  clip-path: inset(0 -200vw);
+}
+
+.nzpl__mask:last-child { justify-content: flex-start; }
+
+.nzpl__word {
+  flex: none;
+  height: 100%;
+  transform: translateY(110%);
+}
+
+.nzpl__word svg {
+  display: block;
+  height: 100%;
+  width: auto;
+}
+
+.nzpl__window {
+  position: relative;
+  flex: 0 0 auto;
+  width: 0;
+  height: var(--pl-h);
+  overflow: hidden;
+  margin-inline: calc(var(--pl-h) * -.11);
+  visibility: hidden;
+}
+
+.nzpl__window img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  max-width: none;
+  object-fit: cover;
+  transform: scale(1.6);
+}
+
+.nzpl__shade {
+  position: absolute;
+  inset: 0;
+  background: var(--nz-shade);
+  opacity: 0;
+}
+
+/* =========================================================
+   HERO
+   ========================================================= */
+
+.nzh {
+  position: relative;
+  width: 100%;
+  height: 100vh;
+  height: 100svh;
+  min-height: 560px;
+  overflow: hidden;
+  isolation: isolate;
+  background: var(--nz-green-800);
+}
+
+.nzh__media,
+.nzh__shade {
+  position: absolute;
+  inset: 0;
+}
+
+.nzh__media { z-index: -2; background: var(--nz-green-900); }
+.nzh__shade { z-index: -1; background: var(--nz-shade); }
+
+/* ---------- navbar du site ---------- */
+
+.nzh__nav {
+  position: absolute;
+  inset: 0 0 auto;
+  z-index: 20;
+}
+
+.nzh__strip {
+  height: 10px;
+  background: #fff;
+  transform-origin: top;
+}
+
+.nzh.is-loading .nzh__strip { transform: scaleY(0); }
+
+.nzh__slide {
+  position: absolute;
+  inset: 0;
+  opacity: 0;
+  transition: opacity 1.4s ease;
+}
+
+.nzh__slide.is-active { opacity: 1; z-index: 1; }
+
+.nzh__slide img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transform: scale(1.1);
+}
+
+.nzh__slide.is-active img,
+.nzh__slide.is-leaving img { animation: nzh-kenburns 9s linear forwards; }
+
+.nzh.is-loading .nzh__slide img { animation: none; }
+
+@keyframes nzh-kenburns {
+  from { transform: scale(1.1); }
+  to   { transform: scale(1.02); }
+}
+
+.nzh__content {
+  position: absolute;
+  left: var(--nz-gutter);
+  top: 50%;
+  max-width: min(760px, 60vw);
+  transform: translateY(-12%);
+}
+
+.nzh__reveal {
+  display: block;
+  overflow: hidden;
+  padding-bottom: .08em;
+}
+
+.nzh__reveal > span { display: block; }
+
+.nzh__eyebrow {
+  margin: 0 0 clamp(20px, 3vh, 36px);
+  font-size: clamp(17px, 1.35vw, 23px);
+  font-weight: 600;
+  letter-spacing: .02em;
+  color: rgba(246, 241, 231, .92);
+}
+
+.nzh__eyebrow > .nzh__reveal > span::before {
+  content: "";
+  display: inline-block;
+  width: 28px;
+  height: 1.5px;
+  margin: 0 12px .3em 0;
+  vertical-align: middle;
+  background: var(--nz-gold);
+}
+
+.nzh__title {
+  margin: 0;
+  font-size: clamp(40px, 4.4vw, 84px);
+  font-weight: 400;
+  line-height: 1.06;
+  letter-spacing: -.025em;
+  color: var(--nz-cream);
+  text-shadow: 0 2px 30px rgba(7, 42, 31, .25);
+}
+
+.nzh__cta {
+  display: inline-flex;
+  align-items: center;
+  gap: 14px;
+  margin-top: clamp(28px, 4vh, 44px);
+  padding: 15px 18px 15px 24px;
+  border-radius: 999px;
+  border: 1px solid rgba(246, 241, 231, .4);
+  font-size: 16px;
+  font-weight: 500;
+  color: var(--nz-cream);
+  backdrop-filter: blur(6px);
+  -webkit-backdrop-filter: blur(6px);
+  transition: background .35s, border-color .35s, color .35s;
+}
+
+.nzh__cta i {
+  display: grid;
+  place-items: center;
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  background: var(--nz-gold);
+  color: var(--nz-green-900);
+  font-style: normal;
+  transition: transform .4s var(--nz-ease);
+}
+
+.nzh__cta:hover { background: var(--nz-cream); border-color: var(--nz-cream); color: var(--nz-green-900); }
+.nzh__cta:hover i { transform: rotate(-45deg); }
+
+/* ---------- carte latérale ---------- */
+
+.nzh__card {
+  position: absolute;
+  right: var(--nz-gutter);
+  inset-block: 0;
+  height: fit-content;
+  margin-block: auto;
+  width: clamp(240px, 16.5vw, 300px);
+  padding: 16px 16px 20px;
+  border-radius: 6px;
+  background: rgba(246, 241, 231, .14);
+  border: 1px solid rgba(246, 241, 231, .2);
+  backdrop-filter: blur(16px) saturate(1.2);
+  -webkit-backdrop-filter: blur(16px) saturate(1.2);
+}
+
+.nzh__card-media {
+  display: block;
+  width: 100%;
+  aspect-ratio: 16 / 10;
+  overflow: hidden;
+  border-radius: 3px;
+  cursor: pointer;
+}
+
+.nzh__card-media img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform .8s var(--nz-ease);
+}
+
+.nzh__card-media:hover img { transform: scale(1.06); }
+
+.nzh__toggle {
+  position: absolute;
+  top: 26px;
+  right: 26px;
+  display: grid;
+  place-items: center;
+  width: 34px;
+  height: 34px;
+  border-radius: 50%;
+  background: rgba(246, 241, 231, .5);
+  backdrop-filter: blur(6px);
+  -webkit-backdrop-filter: blur(6px);
+  cursor: pointer;
+  transition: background .3s;
+}
+
+.nzh__toggle:hover { background: rgba(246, 241, 231, .8); }
+
+.nzh__i-pause,
+.nzh__i-play { display: block; }
+
+.nzh__i-pause {
+  width: 10px;
+  height: 12px;
+  border-inline: 3px solid #fff;
+}
+
+.nzh__i-play {
+  width: 0;
+  height: 0;
+  margin-left: 3px;
+  border-left: 11px solid #fff;
+  border-block: 7px solid transparent;
+}
+
+.nzh__card-title {
+  margin: 18px 0 0;
+  font-size: clamp(18px, 1.3vw, 22px);
+  font-weight: 500;
+  line-height: 1.35;
+  letter-spacing: -.01em;
+}
+
+.nzh__progress {
+  height: 2px;
+  margin-top: 16px;
+  background: rgba(246, 241, 231, .2);
+  overflow: hidden;
+}
+
+.nzh__progress span {
+  display: block;
+  height: 100%;
+  background: var(--nz-gold);
+  transform: scaleX(0);
+  transform-origin: left;
+}
+
+/* ---------- grand mot ---------- */
+
+.nzh__giant {
+  position: absolute;
+  right: calc(var(--nz-gutter) * .5);
+  bottom: 0;
+  margin: 0;
+  overflow: hidden;
+  font-size: clamp(90px, 12vw, 260px);
+  font-weight: 400;
+  line-height: .74;
+  letter-spacing: -.04em;
+  color: rgba(246, 241, 231, .78);
+  pointer-events: none;
+  user-select: none;
+}
+
+.nzh__giant span { display: block; }
+
+/* ---------- indication de défilement ---------- */
+
+.nzh__scroll {
+  position: absolute;
+  left: var(--nz-gutter);
+  bottom: var(--nz-gutter);
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  font-size: 13px;
+  letter-spacing: .18em;
+  text-transform: uppercase;
+  color: rgba(246, 241, 231, .7);
+}
+
+.nzh__scroll i { font-style: normal; }
+
+.nzh__scroll span {
+  position: relative;
+  width: 1px;
+  height: 44px;
+  background: rgba(246, 241, 231, .25);
+  overflow: hidden;
+}
+
+.nzh__scroll span::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: var(--nz-gold);
+  animation: nzh-scroll-line 2s var(--nz-ease) infinite;
+}
+
+@keyframes nzh-scroll-line {
+  from { transform: translateY(-100%); }
+  to   { transform: translateY(100%); }
+}
+
+/* ---------- états avant l'apparition (GSAP) ---------- */
+
+.nzh.is-loading .nzh__card,
+.nzh.is-loading .nzh__cta,
+.nzh.is-loading .nzh__scroll { opacity: 0; }
+
+.nzh.is-loading .nzh__reveal > span,
+.nzh.is-loading .nzh__giant span { transform: translateY(105%); }
+
+/* =========================================================
+   RESPONSIVE
+   ========================================================= */
+
+@media (max-width: 900px) {
+  .nzh__content {
+    top: auto;
+    bottom: calc(var(--nz-gutter) + 120px);
+    max-width: none;
+    right: var(--nz-gutter);
+    transform: none;
+  }
+
+  .nzh__card {
+    top: calc(var(--nz-header-h) + 8px);
+    bottom: auto;
+    margin: 0;
+    width: 200px;
+    padding: 10px 10px 12px;
+  }
+
+  .nzh__toggle { top: 16px; right: 16px; width: 28px; height: 28px; }
+  .nzh__card-title { margin-top: 10px; font-size: 15px; }
+  .nzh__progress { margin-top: 10px; }
+
+  .nzh__giant { font-size: 25vw; }
+  .nzh__scroll { display: none; }
+}
+
+@media (max-width: 560px) {
+  .nzpl { --pl-h: 9.6vw; }
+
+  .nzh__card {
+    top: calc(var(--nz-header-h) - 2px);
+    width: min(46vw, 180px);
+    padding: 8px 8px 10px;
+    border-radius: 5px;
+  }
+
+  .nzh__toggle { top: 13px; right: 13px; width: 24px; height: 24px; }
+  .nzh__toggle .nzh__i-pause { width: 8px; height: 10px; border-inline-width: 2.5px; }
+  .nzh__toggle .nzh__i-play { margin-left: 2px; border-left-width: 9px; border-block-width: 6px; }
+  .nzh__card-title { margin-top: 8px; font-size: 13px; line-height: 1.3; }
+  .nzh__progress { margin-top: 8px; }
+
+  .nzh__giant { font-size: 20vw; }
+
+  .nzh__content { bottom: calc(var(--nz-gutter) + 26vw); }
+  .nzh__title { font-size: clamp(30px, 9vw, 40px); }
+  .nzh__cta { padding: 12px 14px 12px 20px; font-size: 15px; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .nzh__slide { transition: none; }
+  .nzh__slide img,
+  .nzh__scroll span::after { animation: none !important; }
+}
