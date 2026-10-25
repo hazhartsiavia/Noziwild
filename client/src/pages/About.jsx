@@ -10,6 +10,7 @@ import Navbar from '../components/Navbar';
 import Footer from '../components/Footer';
 import { useT } from '../i18n/LanguageContext';
 import { useScrollReveal } from '../utils/useScrollReveal'
+import { usePhoto } from '../sitePhotos'
 
 /* Constantes partagées : mêmes valeurs que dans Explore, Choose, Trips et Blog */
 const SECTION_WIDTH = "w-[90vw] lg:max-w-[90vw] xl:max-w-[95vw]"
@@ -295,24 +296,26 @@ function FeatureCard({ feature, title }) {
 
 // Deux photos inclinées avec cadre blanc
 function Polaroids() {
+  const photo = usePhoto()
   const t = useT('about')
   const [first, second] = mission.photos.map((p, i) => ({ ...p, alt: t('photoAlts')[i] }))
   const frame = "absolute w-[50%] bg-white rounded-lg md:rounded-xl p-1.5 md:p-2.5 lg:p-3 shadow-sm"
-  const photo = "w-full aspect-square object-cover rounded-sm md:rounded-md"
+  const photoCls = "w-full aspect-square object-cover rounded-sm md:rounded-md"
 
   return (
     <div className="relative w-full max-w-[440px] aspect-[3/2]">
       <div className={`${frame} left-0 top-0 -rotate-6`}>
-        <img src={first.src} alt={first.alt} className={photo} />
+        <img src={photo('about.mission.1')} alt={first.alt} className={photoCls} />
       </div>
       <div className={`${frame} left-[44%] top-[14%] rotate-6`}>
-        <img src={second.src} alt={second.alt} className={photo} />
+        <img src={photo('about.mission.2')} alt={second.alt} className={photoCls} />
       </div>
     </div>
   )
 }
 
 function MissionSection() {
+  const photo = usePhoto()
   const t = useT('about')
   return (
     <div className="mt-[50px] md:mt-[100px]">
@@ -343,7 +346,7 @@ function MissionSection() {
         {/* Grande image */}
         <div className="relative min-h-[280px] md:min-h-[375px] lg:min-h-[394px] overflow-hidden rounded-2xl md:rounded-3xl">
           <img
-            src={mission.image}
+            src={photo('about.mission')}
             alt={t('missionImageAlt')}
             className="absolute inset-0 w-full h-full object-cover"
           />
@@ -398,9 +401,10 @@ function ExpertSideCard({ expert, onSelect }) {
 }
 
 function ExpertsSection() {
+  const photo = usePhoto()
   const t = useT('about')
   // Rôle et présentation traduits, dans l'ordre de la liste
-  const list = experts.map((expert, i) => ({ ...expert, ...t('experts')[i] }))
+  const list = experts.map((expert, i) => ({ ...expert, ...t('experts')[i], image: photo(`about.expert.${i + 1}`) }))
   const total = list.length
   const [active, setActive] = useState(expertsSection.startIndex % total)
 
@@ -501,6 +505,7 @@ function ExpertsSection() {
 }
 
 function About() {
+  const photo = usePhoto()
   const t = useT('about')
   const root = useRef(null)
   useScrollReveal(root)
@@ -526,7 +531,7 @@ function About() {
         {/* Carte "Our Promise" */}
         <div className="relative mt-10 md:mt-16 overflow-hidden rounded-3xl bg-[#084838] text-white min-h-[520px] md:min-h-[625px]">
           <img
-            src={content.image}
+            src={photo('about.promise')}
             alt={t('imageAlt')}
             className="absolute inset-0 w-full h-full object-cover"
           />

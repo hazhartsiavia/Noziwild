@@ -14,6 +14,7 @@ import { useAuth } from '../context/AuthContext'
 import { useLanguage, useT } from '../i18n/LanguageContext'
 import { monthName } from '../utils/format'
 import { useOffers } from '../utils/useOffers'
+import { usePhoto } from '../sitePhotos'
 
 gsap.registerPlugin(ScrollTrigger)
 
@@ -31,12 +32,12 @@ const LABEL = 'block mb-2 text-sm md:text-base text-slate-700'
 // Les idées de départ (titre, texte, photo, choix pré-remplis) sont en base : admin > Offers > Tailor-made ideas.
 
 const interests = [
-  { id: 'Islands & beaches', image: NosyIranja },
-  { id: 'Wildlife', image: Ambanja },
-  { id: 'Culture & villages', image: Tana },
-  { id: 'Hiking & adventure', image: Deux },
-  { id: 'Sailing & sea', image: Ramena },
-  { id: 'Slow & relaxing', image: NosyLonjo },
+  { id: 'Islands & beaches', slot: 'tm.interest.1', image: NosyIranja },
+  { id: 'Wildlife', slot: 'tm.interest.2', image: Ambanja },
+  { id: 'Culture & villages', slot: 'tm.interest.3', image: Tana },
+  { id: 'Hiking & adventure', slot: 'tm.interest.4', image: Deux },
+  { id: 'Sailing & sea', slot: 'tm.interest.5', image: Ramena },
+  { id: 'Slow & relaxing', slot: 'tm.interest.6', image: NosyLonjo },
 ]
 const lengths = ['1 week', '2 weeks', '3 weeks', '1 month or more']
 const MONTHS = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec']
@@ -130,6 +131,7 @@ function Pill({ active, onClick, children }) {
 }
 
 function Hero() {
+  const photo = usePhoto()
   const root = useRef(null)
   const btn1Ref = useRef(null)
   const btn2Ref = useRef(null)
@@ -172,9 +174,9 @@ function Hero() {
           </div>
         </div>
         <div className="grid grid-cols-3 gap-3 md:gap-5 items-end">
-          <img src={Ambanja} alt="" className={`hero-arch ${arch} h-56 md:h-72`} />
-          <img src={NosyIranja} alt="" className={`hero-arch ${arch} h-72 md:h-[26rem]`} />
-          <img src={Tana} alt="" className={`hero-arch ${arch} h-48 md:h-60`} />
+          <img src={photo('tm.hero.1')} alt="" className={`hero-arch ${arch} h-56 md:h-72`} />
+          <img src={photo('tm.hero.2')} alt="" className={`hero-arch ${arch} h-72 md:h-[26rem]`} />
+          <img src={photo('tm.hero.3')} alt="" className={`hero-arch ${arch} h-48 md:h-60`} />
         </div>
       </section>
     </>
@@ -182,6 +184,7 @@ function Hero() {
 }
 
 function Builder({ form, setForm }) {
+  const photo = usePhoto()
   // Connecté : nom et email pré-remplis (la clé recrée le champ quand la session est connue)
   const { user } = useAuth()
   const t = useT('tailormade')
@@ -308,7 +311,7 @@ function Builder({ form, setForm }) {
                     return (
                       <button key={it.id} type="button" onClick={() => toggle(it.id)} aria-pressed={on}
                         className={`interest-card group relative aspect-[4/3] overflow-hidden rounded-[1.5rem] text-left text-white transition-transform duration-300 hover:-translate-y-1 focus:outline-none focus-visible:ring-4 focus-visible:ring-[#084838] ${on ? 'ring-4 ring-[#C49849]' : ''}`}>
-                        <img src={it.image} alt="" className="absolute inset-0 w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" />
+                        <img src={photo(it.slot)} alt="" className="absolute inset-0 w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" />
                         <div className={`absolute inset-0 ${on ? 'bg-slate-950/50' : 'bg-gradient-to-t from-slate-950/80 to-transparent'}`} />
                         <span className="absolute inset-x-0 bottom-0 p-4 text-base md:text-lg font-medium">{label(it.id)}</span>
                         {on && <span aria-hidden="true" className="absolute right-3 top-3 w-7 h-7 rounded-full bg-[#C49849] flex items-center justify-center text-sm">✓</span>}
@@ -412,6 +415,7 @@ function IdeaCard({ it, onSelect }) {
 }
 
 function TailorMade() {
+  const photo = usePhoto()
   const t = useT('tailormade')
   const { offers: ideas, status: ideasStatus } = useOffers('idea')
   const [form, setForm] = useState({ interests: [], length: '2 weeks', month: 'Not sure yet', pace: 'Balanced', comfort: 'Comfortable', group: 'Couple' })
@@ -536,7 +540,7 @@ function TailorMade() {
 
         {/* Contact direct */}
         <section ref={ctaRef} className={`${W} mt-16 md:mt-28 relative overflow-hidden rounded-[2rem] md:rounded-[3rem] text-white min-h-[340px] flex items-center`}>
-          <img src={Ramena} alt="" className="cta-bg absolute inset-0 w-full h-full object-cover" />
+          <img src={photo('tm.cta')} alt="" className="cta-bg absolute inset-0 w-full h-full object-cover" />
           <div className="absolute inset-0 bg-slate-950/65" />
           <div className="cta-text relative p-8 md:p-16 max-w-3xl">
             <h2 className="text-3xl sm:text-4xl md:text-5xl font-medium leading-[1.1] tracking-tight">{t('ctaTitle')}</h2>

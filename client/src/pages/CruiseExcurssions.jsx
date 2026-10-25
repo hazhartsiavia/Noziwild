@@ -9,6 +9,7 @@ import { Trans, useLanguage, useT } from '../i18n/LanguageContext'
 import { formatPrice } from '../utils/format'
 import { useOffers } from '../utils/useOffers'
 import { useScrollReveal } from '../utils/useScrollReveal'
+import { usePhoto } from '../sitePhotos'
 
 const W = 'w-[90vw] lg:max-w-[95vw]'
 const GOLD = 'bg-[#C49849] hover:bg-[#a9813a]'
@@ -40,12 +41,13 @@ const fmt = (h) => (Number.isInteger(h) ? `${h} h` : `${Math.floor(h)} h 30`)
 /* -------------------------- Composants --------------------------- */
 
 function Hero() {
+  const photo = usePhoto()
   const t = useT('cruise')
   return (
     <>
       <Navbar />
       <section className={`${W} relative overflow-hidden rounded-[2rem] md:rounded-[3rem] bg-[#084838] text-white min-h-[520px] md:min-h-[78vh] flex items-end`}>
-        <img src={Ramena} alt={t('heroAlt')} className="absolute inset-0 w-full h-full object-cover" />
+        <img src={photo('cruise.hero')} alt={t('heroAlt')} className="absolute inset-0 w-full h-full object-cover" />
         <div className="absolute inset-0 bg-gradient-to-t from-slate-950/85 via-slate-950/30 to-slate-950/10" />
         <div className="relative p-6 sm:p-10 md:p-16 max-w-4xl">
           <p className="text-sm md:text-base text-white/80">{t('eyebrow')}</p>
@@ -92,6 +94,7 @@ function ExcursionCard({ item, ashore }) {
 }
 
 function CruiseExcursions() {
+  const photo = usePhoto()
   const t = useT('cruise')
   const { offers, status } = useOffers('cruise')
   const root = useRef(null)
@@ -123,7 +126,7 @@ function CruiseExcursions() {
                   aria-pressed={port === p.id}
                   className={`group relative block w-full aspect-[16/9] md:aspect-[2/1] overflow-hidden rounded-[2rem] text-left text-white focus:outline-none focus-visible:ring-4 focus-visible:ring-[#084838] ${port === p.id ? 'ring-4 ring-[#C49849]' : ''}`}
                 >
-                  <img src={p.image} alt="" className="absolute inset-0 w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" />
+                  <img src={photo(`cruise.port.${p.id}`)} alt="" className="absolute inset-0 w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" />
                   <div className="absolute inset-0 bg-gradient-to-t from-slate-950/85 via-slate-950/20 to-transparent" />
                   <div className="absolute inset-x-0 bottom-0 p-6 md:p-8">
                     <p className="text-sm text-white/80">{p.sub}</p>
@@ -208,7 +211,7 @@ function CruiseExcursions() {
 
         {/* Groupe */}
         <section className={`${W} mt-16 md:mt-28 relative overflow-hidden rounded-[2rem] md:rounded-[3rem] text-white min-h-[380px] flex items-center`}>
-          <img src={NosyIranja} alt="" className="absolute inset-0 w-full h-full object-cover" />
+          <img src={photo('cruise.cta')} alt="" className="absolute inset-0 w-full h-full object-cover" />
           <div className="absolute inset-0 bg-slate-950/65" />
           <div className="relative p-8 md:p-16 max-w-3xl">
             <h2 className="text-3xl sm:text-4xl md:text-5xl font-medium leading-[1.1] tracking-tight">{t('groupTitle')}</h2>

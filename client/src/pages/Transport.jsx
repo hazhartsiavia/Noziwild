@@ -10,6 +10,7 @@ import { useT } from '../i18n/LanguageContext';
 import { localize } from '../i18n/localize';
 import OffersStatus from '../components/OffersStatus'
 import { useOffers } from '../utils/useOffers'
+import { usePhoto } from '../sitePhotos'
 
 gsap.registerPlugin(ScrollTrigger)
 
@@ -185,6 +186,7 @@ const PlusIcon = ({ open }) => (
 /* -------------------------- Composants --------------------------- */
 
 function Hero() {
+  const photo = usePhoto()
   const hero = localize(HERO, useT('transport')('hero'))
   const root = useRef(null)
   const btnRef = useRef(null)
@@ -236,7 +238,7 @@ function Hero() {
 
       {/* Grande carte avec chiffres */}
       <div className={`hero-card relative mt-10 md:mt-16 overflow-hidden rounded-3xl ${GREEN} text-white min-h-[480px] md:min-h-[560px]`}>
-        <img src={hero.image} alt={hero.imageAlt} className="hero-img absolute inset-0 w-full h-full object-cover" />
+        <img src={photo('transport.hero')} alt={hero.imageAlt} className="hero-img absolute inset-0 w-full h-full object-cover" />
         <div className="absolute inset-0 bg-gradient-to-r from-black/30 via-black/10 to-black/80" />
         <div className="relative min-h-[inherit] flex flex-col p-5 md:p-8">
           <p className="hero-label flex items-center gap-2 text-lg md:text-xl font-medium">
@@ -484,6 +486,7 @@ function Faq() {
 }
 
 function Cta() {
+  const photo = usePhoto()
   const cta = localize(CTA, useT('transport')('cta'))
   const root = useRef(null)
   const btnRef = useRef(null)
@@ -503,7 +506,7 @@ function Cta() {
 
   return (
     <div ref={root} className={`${SECTION_GAP} relative overflow-hidden rounded-3xl min-h-[380px] md:min-h-[460px] flex`}>
-      <img src={cta.image} alt="" className="cta-bg absolute inset-0 w-full h-full object-cover" />
+      <img src={photo('transport.cta')} alt="" className="cta-bg absolute inset-0 w-full h-full object-cover" />
       <div className="absolute inset-0 bg-gradient-to-r from-black/70 via-black/40 to-black/10" />
       <div className="cta-copy relative flex flex-col justify-end p-6 md:p-12 max-w-2xl">
         <h2 className={ON_IMAGE_TITLE}>{cta.title}</h2>

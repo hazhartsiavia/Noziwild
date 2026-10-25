@@ -3,20 +3,11 @@
   "home": "Home",
   "crumb": "Blog",
   "imageAlt": "Una tranquilla piscina a sfioro al tramonto",
-  "featured": [
-    "Scopri destinazioni insolite lontano dai soliti percorsi turistici",
-    "Dai resort sul mare alle baie nascoste: i posti preferiti dalle famiglie",
-    "Concediti il lusso dei nostri alloggi selezionati sull'isola"
-  ],
-  "posts": [
-    "Un'avventura naturalistica nel nord del Madagascar",
-    "Alla scoperta degli Altopiani intorno ad Antananarivo in inverno",
-    "Dalle spiagge ai baobab: tutto quello che c'è da sapere",
-    "In barca a vela lungo la costa di Ramena",
-    "Un weekend lento tra Ambanja e Nosy Be",
-    "La guida completa alla baia di Diego Suarez"
-  ],
   "readTime": "{count} min di lettura",
   "eyebrow": "Dal nostro diario",
-  "heading": "Dal nostro diario di viaggio"
+  "heading": "Dal nostro diario di viaggio",
+  "related": "Altro dal nostro diario di viaggio",
+  "allArticles": "Tutti gli articoli",
+  "notFoundTitle": "Questo articolo non è disponibile",
+  "notFoundText": "Potrebbe essere stato spostato o rimosso. Scopri le nostre altre storie."
 }

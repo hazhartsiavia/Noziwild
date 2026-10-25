@@ -12,6 +12,7 @@ import Footer from '../components/Footer'
 import { slugify } from './destinationsData'
 import { useLanguage, useT } from '../i18n/LanguageContext'
 import { monthName } from '../utils/format'
+import { usePhoto } from '../sitePhotos'
 
 gsap.registerPlugin(ScrollTrigger)
 
@@ -30,12 +31,12 @@ const regions = [
     name: 'The North',
     tagline: 'Emerald bays, spice islands and dry forests',
     text: 'Sail the bay of Diego Suarez, hike the sharp limestone of Ankarana and finish on the islands around Nosy Be.',
-    image: NosyIranja,
+    slot: 'region.north', image: NosyIranja,
     months: [4, 5, 6, 7, 8, 9, 10, 11],
     places: [
-      { name: 'Ramena Beach', image: Ramena },
-      { name: 'Nosy Iranja', image: NosyIranja },
-      { name: 'Ambanja', image: Ambanja },
+      { name: 'Ramena Beach', slot: 'region.north.1', image: Ramena },
+      { name: 'Nosy Iranja', slot: 'region.north.2', image: NosyIranja },
+      { name: 'Ambanja', slot: 'region.north.3', image: Ambanja },
     ],
   },
   {
@@ -43,12 +44,12 @@ const regions = [
     name: 'The Highlands',
     tagline: 'Royal hills, rice terraces and cool mornings',
     text: 'Start in Antananarivo, climb to the royal hill of Ambohimanga and ride south through the terraced valleys to Antsirabe.',
-    image: Tana,
+    slot: 'region.highlands', image: Tana,
     months: [5, 6, 7, 8, 9, 10],
     places: [
-      { name: 'Antananarivo', image: Tana },
-      { name: 'Ambohimanga', image: Deux },
-      { name: 'Antsirabe', image: Ambanja },
+      { name: 'Antananarivo', slot: 'region.highlands.1', image: Tana },
+      { name: 'Ambohimanga', slot: 'region.highlands.2', image: Deux },
+      { name: 'Antsirabe', slot: 'region.highlands.3', image: Ambanja },
     ],
   },
   {
@@ -56,12 +57,12 @@ const regions = [
     name: 'The West',
     tagline: 'Baobab avenues and stone forests',
     text: 'Drive the famous Baobab Avenue at sunset, then cross the river to walk the Tsingy of Bemaraha.',
-    image: Deux,
+    slot: 'region.west', image: Deux,
     months: [5, 6, 7, 8, 9, 10],
     places: [
-      { name: 'Baobab Avenue', image: Deux },
-      { name: 'Morondava', image: NosyLonjo },
-      { name: 'Tsingy de Bemaraha', image: Ambanja },
+      { name: 'Baobab Avenue', slot: 'region.west.1', image: Deux },
+      { name: 'Morondava', slot: 'region.west.2', image: NosyLonjo },
+      { name: 'Tsingy de Bemaraha', slot: 'region.west.3', image: Ambanja },
     ],
   },
   {
@@ -69,12 +70,12 @@ const regions = [
     name: 'The South',
     tagline: 'Canyons, white sand and coastal villages',
     text: 'Hike the sandstone canyons of Isalo, swim in natural pools and end the trip on the Vezo coast.',
-    image: NosyLonjo,
+    slot: 'region.south', image: NosyLonjo,
     months: [4, 5, 6, 7, 8, 9, 10, 11],
     places: [
-      { name: 'Isalo', image: NosyLonjo },
-      { name: 'Ifaty coast', image: Ramena },
-      { name: 'Fort Dauphin', image: NosyIranja },
+      { name: 'Isalo', slot: 'region.south.1', image: NosyLonjo },
+      { name: 'Ifaty coast', slot: 'region.south.2', image: Ramena },
+      { name: 'Fort Dauphin', slot: 'region.south.3', image: NosyIranja },
     ],
   },
   {
@@ -82,12 +83,12 @@ const regions = [
     name: 'The East',
     tagline: 'Rainforest, lemurs and island beaches',
     text: 'Listen for the indri at dawn in Andasibe, then take a boat to Ile Sainte-Marie or into the Masoala peninsula.',
-    image: Ambanja,
+    slot: 'region.east', image: Ambanja,
     months: [9, 10, 11, 12],
     places: [
-      { name: 'Andasibe', image: Ambanja },
-      { name: 'Ile Sainte-Marie', image: NosyIranja },
-      { name: 'Masoala', image: Tana },
+      { name: 'Andasibe', slot: 'region.east.1', image: Ambanja },
+      { name: 'Ile Sainte-Marie', slot: 'region.east.2', image: NosyIranja },
+      { name: 'Masoala', slot: 'region.east.3', image: Tana },
     ],
   },
 ]
@@ -108,12 +109,13 @@ function useGsap(scope, setup, deps = []) {
 /* -------------------------- Composants --------------------------- */
 
 function Hero() {
+  const photo = usePhoto()
   const root = useRef(null)
   const t = useT('destinations')
   const strip = [
-    { src: Ramena, cls: 'mt-0' },
-    { src: Tana, cls: 'mt-10 md:mt-16' },
-    { src: NosyLonjo, cls: 'mt-4 md:mt-6' },
+    { slot: 'dest.hero.1', cls: 'mt-0' },
+    { slot: 'dest.hero.2', cls: 'mt-10 md:mt-16' },
+    { slot: 'dest.hero.3', cls: 'mt-4 md:mt-6' },
   ]
 
   useGsap(root, () => {
@@ -162,7 +164,7 @@ function Hero() {
 
         <div className="grid grid-cols-3 gap-3 md:gap-5">
           {strip.map((s, i) => (
-            <img key={i} src={s.src} alt="" className={`hero-img ${s.cls} w-full aspect-[3/5] object-cover rounded-[1.5rem] md:rounded-[2.5rem] `} />
+            <img key={i} src={photo(s.slot)} alt="" className={`hero-img ${s.cls} w-full aspect-[3/5] object-cover rounded-[1.5rem] md:rounded-[2.5rem] `} />
           ))}
         </div>
       </section>
@@ -221,6 +223,7 @@ function RegionNav() {
 }
 
 function Region({ region, flip }) {
+  const photo = usePhoto()
   const root = useRef(null)
   const t = useT('destinations')
   const { lang } = useLanguage()
@@ -258,7 +261,7 @@ function Region({ region, flip }) {
   return (
     <section ref={root} id={region.id} className={`${W} mt-16 md:mt-28 scroll-mt-24 grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-16 items-center`}>
       <div className={`region-frame relative aspect-[4/5] sm:aspect-[4/3] lg:aspect-[4/5] overflow-hidden rounded-[2rem] md:rounded-[3rem] ${flip ? 'lg:order-2' : ''}`}>
-        <img src={region.image} alt={region.name} className="region-img absolute inset-0 w-full h-full object-cover" />
+        <img src={photo(region.slot)} alt={region.name} className="region-img absolute inset-0 w-full h-full object-cover" />
         <div className="absolute inset-0 bg-gradient-to-t from-slate-950/60 via-transparent to-transparent" />
         <span className="region-badge absolute left-5 top-5 bg-[#C49849] text-white text-xs sm:text-sm font-medium px-3 py-1.5 rounded-sm">
           {t('list.bestFrom', { from: monthName(first, lang, 'long'), to: monthName(last, lang, 'long') })}
@@ -276,7 +279,7 @@ function Region({ region, flip }) {
             <li key={p.name} className="region-place">
               <a href={`/destinations/${slugify(p.name)}`} className="group block">
                 <div className="aspect-square overflow-hidden rounded-2xl md:rounded-3xl">
-                  <img src={p.image} alt={p.label} className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" />
+                  <img src={photo(p.slot)} alt={p.label} className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" />
                 </div>
                 <p className="mt-2 text-xs sm:text-sm md:text-base text-slate-800 leading-snug group-hover:underline">{p.label}</p>
               </a>
@@ -291,6 +294,7 @@ function Region({ region, flip }) {
 }
 
 function Planner() {
+  const photo = usePhoto()
   const root = useRef(null)
   const list = useRef(null)
   const t = useT('destinations')
@@ -355,7 +359,7 @@ function Planner() {
             {good.map((r) => (
               <li key={r.id} className="planner-card">
                 <a href={`#${r.id}`} className="group relative block aspect-[3/4] overflow-hidden rounded-[1.5rem]">
-                  <img src={r.image} alt="" className="absolute inset-0 w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" />
+                  <img src={photo(r.slot)} alt="" className="absolute inset-0 w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" />
                   <div className="absolute inset-0 bg-gradient-to-t from-slate-950/85 to-transparent" />
                   <p className="absolute inset-x-0 bottom-0 p-4 text-lg md:text-xl font-medium">{names[regions.indexOf(r)]}</p>
                 </a>
@@ -371,6 +375,7 @@ function Planner() {
 }
 
 function FinalCta() {
+  const photo = usePhoto()
   const root = useRef(null)
   const t = useT('destinations')
 
@@ -399,7 +404,7 @@ function FinalCta() {
 
   return (
     <section ref={root} className={`${W} mt-20 md:mt-32 relative overflow-hidden rounded-[2rem] md:rounded-[3rem] text-white min-h-[420px] flex items-center`}>
-      <img src={Ramena} alt="" className="cta-bg absolute inset-0 w-full h-full object-cover" />
+      <img src={photo('dest.cta')} alt="" className="cta-bg absolute inset-0 w-full h-full object-cover" />
       <div className="absolute inset-0 bg-slate-950/65" />
       <div className="cta-content relative p-8 md:p-16 max-w-3xl">
         <h2 className="text-3xl sm:text-4xl md:text-5xl font-medium leading-[1.1] tracking-tight">{t('list.ctaTitle')}</h2>

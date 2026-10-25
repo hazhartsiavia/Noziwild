@@ -3,20 +3,11 @@
   "home": "Accueil",
   "crumb": "Blog",
   "imageAlt": "Une piscine à débordement paisible au coucher du soleil",
-  "featured": [
-    "Découvrez des destinations hors des sentiers battus",
-    "Des hôtels de plage aux baies cachées : les lieux préférés des familles",
-    "Offrez-vous le luxe de nos hébergements choisis à travers l'île"
-  ],
-  "posts": [
-    "Une aventure sauvage dans le nord de Madagascar",
-    "Explorer les Hautes Terres autour d'Antananarivo en hiver",
-    "Des plages aux baobabs, tout ce qu'il faut savoir",
-    "Naviguer le long de la côte de Ramena",
-    "Un week-end tranquille à Ambanja et Nosy Be",
-    "Le guide complet de la baie de Diego Suarez"
-  ],
   "readTime": "{count} min de lecture",
   "eyebrow": "Notre journal",
-  "heading": "Notre carnet de voyage"
+  "heading": "Notre carnet de voyage",
+  "related": "Plus d’histoires de notre carnet",
+  "allArticles": "Tous les articles",
+  "notFoundTitle": "Cet article n’est pas disponible",
+  "notFoundText": "Il a peut-être été déplacé ou retiré. Découvrez nos autres récits."
 }

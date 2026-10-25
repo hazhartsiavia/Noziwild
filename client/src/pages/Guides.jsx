@@ -15,6 +15,7 @@ import OffersStatus from '../components/OffersStatus'
 import { useOffers } from '../utils/useOffers'
 import { gsap } from 'gsap'
 import { ScrollTrigger } from 'gsap/ScrollTrigger'
+import { usePhoto } from '../sitePhotos'
 
 gsap.registerPlugin(ScrollTrigger)
 
@@ -107,6 +108,7 @@ function useSwap(ref, dep) {
 
 // Hero coupé en deux : texte à gauche, photos inclinées à droite
 function Hero() {
+  const photo = usePhoto()
   const t = useT('guides')
   return (
     <div className="grid grid-cols-1 lg:grid-cols-[1.2fr_1fr] gap-10 lg:gap-16 items-center">
@@ -126,10 +128,10 @@ function Hero() {
 
       <div className="relative w-full max-w-[520px] aspect-[4/3] mx-auto lg:ml-auto">
         <div data-hero-photo className="absolute left-0 top-0 w-[52%] -rotate-6 rounded-xl bg-white p-2 md:p-3 shadow-sm">
-          <img src={Tana} alt={t('heroAlt1')} className="w-full aspect-[4/5] object-cover rounded-md" />
+          <img src={photo('guides.hero.1')} alt={t('heroAlt1')} className="w-full aspect-[4/5] object-cover rounded-md" />
         </div>
         <div data-hero-photo className="absolute right-0 top-[12%] w-[52%] rotate-6 rounded-xl bg-white p-2 md:p-3 shadow-sm">
-          <img src={Ramena} alt={t('heroAlt2')} className="w-full aspect-[4/5] object-cover rounded-md" />
+          <img src={photo('guides.hero.2')} alt={t('heroAlt2')} className="w-full aspect-[4/5] object-cover rounded-md" />
         </div>
         <div data-hero-photo className="absolute left-[8%] bottom-0 flex items-center gap-3 rounded-2xl bg-[#084838] text-white px-5 py-3">
           <div className="flex gap-0.5"><StarIcon /><StarIcon /><StarIcon /><StarIcon /><StarIcon /></div>
@@ -169,6 +171,7 @@ const bentoLayout = [
 ]
 
 function Services() {
+  const photo = usePhoto()
   const tr = useT('guides')
   const services = localize(SERVICES, tr('services'))
   return (
@@ -181,7 +184,7 @@ function Services() {
       <div data-stagger className="grid grid-cols-1 lg:grid-cols-3 gap-4 md:gap-6">
         {services.map((s, i) => (
           <article key={s.id} className={`group relative overflow-hidden rounded-3xl bg-[#084838] text-white flex ${bentoLayout[i]}`}>
-            <img src={s.image} alt={s.name} className="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" />
+            <img src={photo(`guides.service.${i + 1}`)} alt={s.name} className="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" />
             <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/25 to-transparent" />
 
             <div className="relative flex flex-col justify-between w-full p-5 md:p-7">
@@ -584,6 +587,7 @@ function Photo({ src, alt = '', className = '' }) {
 }
 
 function Cta() {
+  const photo = usePhoto()
   const tr = useT('guides')
   const followList = localize(FOLLOW_LIST, tr('followList'))
   const alts = tr('photoAlts')
@@ -645,7 +649,7 @@ function Cta() {
 
       {/* Mosaïque : ligne 1 */}
       <div data-stagger className="mt-10 md:mt-16 grid grid-cols-2 lg:grid-cols-5 gap-4 md:gap-6">
-        <Photo src={Tana} alt={alts[0]} />
+        <Photo src={photo('guides.gallery.1')} alt={alts[0]} />
 
         <ul className="col-span-2 lg:col-span-1 order-first lg:order-none flex flex-col justify-center gap-4 lg:gap-5 lg:px-4">
           {followList.map((item) => (
@@ -658,16 +662,16 @@ function Cta() {
           ))}
         </ul>
 
-        <Photo src={Ramena} alt={alts[1]} />
-        <Photo src={NosyLonjo} alt={alts[2]} />
-        <Photo src={Deux} alt={alts[3]} className="col-span-2 lg:col-span-1" />
+        <Photo src={photo('guides.gallery.2')} alt={alts[1]} />
+        <Photo src={photo('guides.gallery.3')} alt={alts[2]} />
+        <Photo src={photo('guides.gallery.4')} alt={alts[3]} className="col-span-2 lg:col-span-1" />
       </div>
 
       {/* Mosaïque : ligne 2 */}
       <div data-stagger className="mt-4 md:mt-6 grid grid-cols-2 lg:grid-cols-[1fr_1.5fr_1fr_1.4fr] gap-4 md:gap-6">
-        <Photo src={Ambanja} alt={alts[4]} />
-        <Photo src={NosyIranja} alt={alts[5]} className="lg:order-none" />
-        <Photo src={Tana} alt={alts[6]} className="col-span-2 lg:col-span-1" />
+        <Photo src={photo('guides.gallery.5')} alt={alts[4]} />
+        <Photo src={photo('guides.gallery.6')} alt={alts[5]} className="lg:order-none" />
+        <Photo src={photo('guides.gallery.7')} alt={alts[6]} className="col-span-2 lg:col-span-1" />
 
         <div className="col-span-2 lg:col-span-1 flex flex-col justify-center lg:pl-8">
           <p className="text-slate-800 leading-tight">

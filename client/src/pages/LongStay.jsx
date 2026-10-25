@@ -13,6 +13,7 @@ import OffersStatus from '../components/OffersStatus'
 import AddToTrip from '../components/AddToTrip'
 import { useT } from '../i18n/LanguageContext'
 import { useOffers } from '../utils/useOffers'
+import { usePhoto } from '../sitePhotos'
 
 gsap.registerPlugin(ScrollTrigger)
 
@@ -84,6 +85,7 @@ function Chars({ lines }) {
 /* -------------------------- Composants --------------------------- */
 
 function Hero() {
+  const photo = usePhoto()
   const root = useRef(null)
   const t = useT('longstay')
 
@@ -104,7 +106,7 @@ function Hero() {
     <>
       <Navbar />
       <section ref={root} className={`${W} relative overflow-hidden rounded-[2rem] md:rounded-[3rem] ${DARK} text-white min-h-[560px] md:min-h-[86vh] flex items-end`}>
-        <img src={NosyIranja} alt={t('heroAlt')} className="hero-bg absolute inset-0 w-full h-full object-cover" />
+        <img src={photo('long.hero')} alt={t('heroAlt')} className="hero-bg absolute inset-0 w-full h-full object-cover" />
         <div className="absolute inset-0 bg-gradient-to-t from-slate-950/85 via-slate-950/30 to-slate-950/10" />
 
         <div className="relative w-full grid grid-cols-1 lg:grid-cols-[1.5fr_1fr] gap-10 items-end p-6 sm:p-10 md:p-16">
@@ -137,6 +139,7 @@ function Hero() {
 }
 
 function Manifesto() {
+  const photo = usePhoto()
   const root = useRef(null)
   const t = useT('longstay')
 
@@ -170,8 +173,8 @@ function Manifesto() {
 
       {/* Collage */}
       <div className="relative h-[420px] sm:h-[520px] md:h-[600px]">
-        <img src={Ambanja} alt={t('manAlt1')} className="man-img1 absolute left-0 top-0 w-[68%] h-[78%] object-cover rounded-[2rem]" />
-        <img src={Deux} alt={t('manAlt2')} className="man-img2 absolute right-0 bottom-0 w-[52%] h-[52%] object-cover rounded-[2rem] border-[10px] border-[#D5E8E2]" />
+        <img src={photo('long.manage.1')} alt={t('manAlt1')} className="man-img1 absolute left-0 top-0 w-[68%] h-[78%] object-cover rounded-[2rem]" />
+        <img src={photo('long.manage.2')} alt={t('manAlt2')} className="man-img2 absolute right-0 bottom-0 w-[52%] h-[52%] object-cover rounded-[2rem] border-[10px] border-[#D5E8E2]" />
         <div className={`man-badge absolute left-[6%] bottom-[4%] rounded-2xl ${DARK} text-white px-5 py-4`}>
           <p className="text-3xl font-semibold">100+</p>
           <p className="text-xs text-white/70">{t('happy')}</p>
@@ -260,6 +263,7 @@ function Formats() {
 }
 
 function Weeks() {
+  const photo = usePhoto()
   const root = useRef(null)
   const t = useT('longstay')
 
@@ -283,7 +287,7 @@ function Weeks() {
       </div>
       <div className="w-full overflow-x-auto snap-x snap-mandatory [scrollbar-width:none] [&::-webkit-scrollbar]:hidden">
         <ul className="wk-list flex gap-5 px-[5vw] pb-2 w-max">
-          {weeks.map((week, i) => ({ ...week, ...t('weeks')[i] })).map((w) => (
+          {weeks.map((week, i) => ({ ...week, ...t('weeks')[i], image: photo(`long.week.${i + 1}`) })).map((w) => (
             <li key={w.week} className="wk-card snap-start relative shrink-0 w-[78vw] sm:w-[360px] md:w-[420px] aspect-[3/4] overflow-hidden rounded-[2rem] text-white">
               <img src={w.image} alt={w.place} className="wk-img absolute inset-0 w-full h-full object-cover" />
               <div className="absolute inset-0 bg-gradient-to-t from-slate-950/85 via-slate-950/10 to-transparent" />
@@ -301,6 +305,7 @@ function Weeks() {
 }
 
 function Services() {
+  const photo = usePhoto()
   const root = useRef(null)
   const t = useT('longstay')
 
@@ -318,7 +323,7 @@ function Services() {
     <section ref={root} className={`${W} mt-20 md:mt-32`}>
       <h2 className={`svc-title ${H2} text-forest max-w-3xl`}>{t('servicesTitle')}</h2>
       <ul className="svc-grid mt-10 grid grid-cols-2 lg:grid-cols-4 auto-rows-[190px] md:auto-rows-[230px] gap-4 md:gap-5">
-        {services.map((service, i) => ({ ...service, ...t('services')[i] })).map((s) => (
+        {services.map((service, i) => ({ ...service, ...t('services')[i], image: photo(`long.service.${i + 1}`) })).map((s) => (
           <li key={s.title} className={`svc-tile ${s.span} relative overflow-hidden rounded-[1.5rem] md:rounded-[2rem] text-white`}>
             <img src={s.image} alt="" className={`svc-img absolute inset-0 w-full h-full object-cover ${s.pos}`} />
             <div className="absolute inset-0 bg-gradient-to-t from-slate-950/80 via-slate-950/20 to-transparent" />
@@ -334,6 +339,7 @@ function Services() {
 }
 
 function Quote() {
+  const photo = usePhoto()
   const root = useRef(null)
   const t = useT('longstay')
   const quote = t('quote')
@@ -354,7 +360,7 @@ function Quote() {
 
   return (
     <section ref={root} className={`${W} mt-20 md:mt-32 grid grid-cols-1 md:grid-cols-[1fr_1.4fr] overflow-hidden rounded-[2rem] md:rounded-[3rem] bg-white`}>
-      <img src={Tana} alt="" className="q-img w-full h-64 md:h-full object-cover" />
+      <img src={photo('long.quote')} alt="" className="q-img w-full h-64 md:h-full object-cover" />
       <figure className="p-8 md:p-16 flex flex-col justify-center">
         <blockquote aria-label={quote} className="q-text text-2xl md:text-4xl font-medium leading-snug text-slate-900">
           {words.map((w, i) => (
@@ -368,6 +374,7 @@ function Quote() {
 }
 
 function FinalCta() {
+  const photo = usePhoto()
   const root = useRef(null)
   const t = useT('longstay')
 
@@ -382,7 +389,7 @@ function FinalCta() {
 
   return (
     <section ref={root} className={`${W} mt-20 md:mt-32 relative overflow-hidden rounded-[2rem] md:rounded-[3rem] text-white min-h-[420px] flex items-center`}>
-      <img src={Ramena} alt="" className="fin-bg absolute inset-0 w-full h-full object-cover" />
+      <img src={photo('long.cta')} alt="" className="fin-bg absolute inset-0 w-full h-full object-cover" />
       <div className="absolute inset-0 bg-slate-950/65" />
       <div className="fin-text relative p-8 md:p-16 max-w-3xl">
         <h2 className={H2}>{t('finalTitle')}</h2>

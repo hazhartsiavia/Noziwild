@@ -3,7 +3,6 @@ import gsap from 'gsap'
 import { ScrollTrigger } from 'gsap/ScrollTrigger'
 import Ramena from '../assets/images/Ramena.png'
 import NosyIranja from '../assets/images/NosyIranja.png'
-import Deux from '../assets/images/2.jpg'
 import Navbar from '../components/Navbar'
 import Footer from '../components/Footer'
 import OffersStatus from '../components/OffersStatus'
@@ -11,6 +10,7 @@ import AddToTrip from '../components/AddToTrip'
 import { useLanguage, useT } from '../i18n/LanguageContext'
 import { formatPrice } from '../utils/format'
 import { useOffers } from '../utils/useOffers'
+import { usePhoto } from '../sitePhotos'
 
 gsap.registerPlugin(ScrollTrigger)
 
@@ -71,6 +71,7 @@ const reveal = (targets, from, to, extra = {}) =>
 /* -------------------------- Composants --------------------------- */
 
 function Hero({ region, setRegion, length, setLength }) {
+  const photo = usePhoto()
   const heroRef = useRef(null)
   const formRef = useRef(null)
   const t = useT('excursions')
@@ -108,7 +109,7 @@ function Hero({ region, setRegion, length, setLength }) {
     <>
       <Navbar />
       <section ref={heroRef} className={`${W} relative overflow-hidden rounded-[2rem] md:rounded-[3rem] bg-[#084838] text-white min-h-[460px] md:min-h-[70vh] flex items-center`}>
-        <img src={Ramena} alt={t('heroAlt')} className="hero-bg absolute inset-0 w-full h-full object-cover" />
+        <img src={photo('exc.hero')} alt={t('heroAlt')} className="hero-bg absolute inset-0 w-full h-full object-cover" />
         <div className="absolute inset-0 bg-slate-950/55" />
         <div className="hero-content relative w-full px-6 sm:px-10 md:px-16 pb-16 text-center flex flex-col items-center">
           <h1 className="hero-title text-6xl sm:text-7xl md:text-8xl xl:text-[120px] font-semibold leading-[0.95] tracking-tight">{t('title')}</h1>
@@ -176,6 +177,7 @@ function Row({ item }) {
 }
 
 function Excursions() {
+  const photo = usePhoto()
   const t = useT('excursions')
   const { offers, status } = useOffers('excursion')
   const [region, setRegion] = useState('All regions')
@@ -303,7 +305,7 @@ function Excursions() {
         {/* Escapade de plusieurs jours */}
         <section ref={multiRef} className={`${W} mt-16 md:mt-28 grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-16 items-center`}>
           <div className="multi-frame relative aspect-[4/3] lg:aspect-[4/5] overflow-hidden rounded-[2rem] md:rounded-[3rem]">
-            <img src={NosyIranja} alt={t('multiAlt')} className="multi-img absolute inset-0 w-full h-full object-cover" />
+            <img src={photo('exc.multi')} alt={t('multiAlt')} className="multi-img absolute inset-0 w-full h-full object-cover" />
             <span className="multi-badge absolute left-5 top-5 bg-[#C49849] text-white text-sm font-medium px-3 py-1.5 rounded-sm">{t('multiBadge')}</span>
           </div>
           <div className="multi-text">
@@ -320,14 +322,14 @@ function Excursions() {
             <AddToTrip
               variant="gold"
               className="multi-btn mt-8"
-              item={{ kind: 'excursion', ref: 'three-days-islands', title: t('multiTitle'), image: NosyIranja, link: '/excurssions', price: null, unit: null }}
+              item={{ kind: 'excursion', ref: 'three-days-islands', title: t('multiTitle'), image: photo('exc.multi'), link: '/excurssions', price: null, unit: null }}
             />
           </div>
         </section>
 
         {/* Appel à l'action */}
         <section ref={ctaRef} className={`${W} mt-16 md:mt-28 relative overflow-hidden rounded-[2rem] md:rounded-[3rem] text-white min-h-[380px] flex items-center`}>
-          <img src={Deux} alt="" className="cta-bg absolute inset-0 w-full h-full object-cover" />
+          <img src={photo('exc.cta')} alt="" className="cta-bg absolute inset-0 w-full h-full object-cover" />
           <div className="absolute inset-0 bg-slate-950/65" />
           <div className="cta-text relative p-8 md:p-16 max-w-3xl">
             <h2 className="text-3xl sm:text-4xl md:text-5xl font-medium leading-[1.1] tracking-tight">{t('ctaTitle')}</h2>

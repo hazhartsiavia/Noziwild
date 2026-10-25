@@ -1,6 +1,7 @@
 import { Routes, Route, Navigate } from "react-router-dom";
 import Home from "./pages/Home";
 import Blog from "./pages/Blog";
+import BlogPost from "./pages/BlogPost";
 import About from "./pages/About";
 import Contact from "./pages/Contact";
 import Transport from "./pages/Transport";
@@ -35,6 +36,9 @@ import OfferEditor from "./pages/admin/OfferEditor";
 import AdminTexts from "./pages/admin/AdminTexts";
 import AdminDestinations from "./pages/admin/AdminDestinations";
 import DestinationEditor from "./pages/admin/DestinationEditor";
+import AdminBlog from "./pages/admin/AdminBlog";
+import PostEditor from "./pages/admin/PostEditor";
+import AdminPhotos from "./pages/admin/AdminPhotos";
 import TextsEditor from "./pages/admin/TextsEditor";
 
 function App() {
@@ -42,6 +46,7 @@ function App() {
     <Routes>
       <Route path="/" element={<Home />} />
       <Route path="/blog" element={<Blog />} />
+      <Route path="/blog/:slug" element={<BlogPost />} />
       <Route path="/about" element={<About />} />
       <Route path="/contact" element={<Contact />} />
       <Route path="/transport" element={<Transport />} />
@@ -80,6 +85,10 @@ function App() {
         <Route path="destinations" element={<AdminDestinations />} />
         <Route path="destinations/new" element={<DestinationEditor key="new" />} />
         <Route path="destinations/:slug" element={<DestinationEditor />} />
+        <Route path="blog" element={<AdminBlog />} />
+        <Route path="blog/new" element={<PostEditor key="new" />} />
+        <Route path="blog/:slug" element={<PostEditor />} />
+        <Route path="photos" element={<AdminPhotos />} />
         <Route path="texts" element={<AdminTexts />} />
         <Route path="texts/:namespace" element={<TextsEditor />} />
         <Route path="inbox" element={<AdminInbox />} />

@@ -17,6 +17,7 @@ import AddToTrip, { useTripItem } from '../components/AddToTrip';
 import { useTrip } from '../context/TripContext';
 import { gsap } from 'gsap'
 import { ScrollTrigger } from 'gsap/ScrollTrigger'
+import { usePhoto } from '../sitePhotos'
 
 gsap.registerPlugin(ScrollTrigger)
 
@@ -52,9 +53,9 @@ const PROCESS = [
 ]
 
 const SAMPLES = [
-  { id: 1, name: 'Highlands & Coast', days: 7, price: 780, image: Tana, stops: ['Antananarivo', 'Andasibe', 'Ramena'] },
-  { id: 2, name: 'Island Escape', days: 5, price: 560, image: NosyIranja, stops: ['Nosy Be', 'Nosy Iranja', 'Nosy Komba'] },
-  { id: 3, name: 'Wild North', days: 10, price: 1150, image: Deux, stops: ['Diego Suarez', 'Ankarana', 'Ambanja'] },
+  { id: 1, name: 'Highlands & Coast', days: 7, price: 780, slot: 'plan.sample.1', image: Tana, stops: ['Antananarivo', 'Andasibe', 'Ramena'] },
+  { id: 2, name: 'Island Escape', days: 5, price: 560, slot: 'plan.sample.2', image: NosyIranja, stops: ['Nosy Be', 'Nosy Iranja', 'Nosy Komba'] },
+  { id: 3, name: 'Wild North', days: 10, price: 1150, slot: 'plan.sample.3', image: Deux, stops: ['Diego Suarez', 'Ankarana', 'Ambanja'] },
 ]
 
 
@@ -284,6 +285,7 @@ function Process() {
 
 // Exemples d'itinéraires
 function Samples() {
+  const photo = usePhoto()
   const t = useT('planning')
   const { lang } = useLanguage()
   const samples = localize(SAMPLES, t('samples'))
@@ -298,7 +300,7 @@ function Samples() {
         {samples.map((s) => (
           <article key={s.id} className="flex flex-col overflow-hidden rounded-3xl bg-white">
             <div className="relative aspect-[16/10] overflow-hidden">
-              <img src={s.image} alt={s.name} className="w-full h-full object-cover transition-transform duration-700 hover:scale-105" />
+              <img src={photo(s.slot)} alt={s.name} className="w-full h-full object-cover transition-transform duration-700 hover:scale-105" />
               <span className={`${BADGE} absolute left-4 top-4`}>{t('daysBadge', { count: s.days })}</span>
             </div>
             <div className="flex flex-col flex-1 p-5 md:p-6">
@@ -313,7 +315,7 @@ function Samples() {
               </ol>
               <div className="mt-auto pt-6 flex items-center justify-between">
                 <p className="text-sm text-slate-600"><Trans text={t('fromPerPerson')} values={{ price: <span className="text-2xl font-medium text-slate-900">{formatPrice(s.price, lang)}</span> }} /></p>
-                <AddToTrip variant="icon" item={{ kind: 'plan', ref: `sample-${s.id}`, title: s.name, image: s.image, link: '/travel-planning', details: [t('daysBadge', { count: s.days }), s.stops.join(' → ')].join(' · '), price: s.price, unit: 'person' }} />
+                <AddToTrip variant="icon" item={{ kind: 'plan', ref: `sample-${s.id}`, title: s.name, image: photo(s.slot), link: '/travel-planning', details: [t('daysBadge', { count: s.days }), s.stops.join(' → ')].join(' · '), price: s.price, unit: 'person' }} />
               </div>
             </div>
           </article>

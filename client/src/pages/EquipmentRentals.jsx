@@ -18,6 +18,7 @@ import OffersStatus from '../components/OffersStatus'
 import { useOffers } from '../utils/useOffers'
 import { gsap } from 'gsap'
 import { ScrollTrigger } from 'gsap/ScrollTrigger'
+import { usePhoto } from '../sitePhotos'
 
 gsap.registerPlugin(ScrollTrigger)
 
@@ -102,6 +103,7 @@ function AnimatedPrice({ value, lang }) {
 
 // Hero : titre + arches cliquables (filtrent le catalogue)
 function Hero({ counts, onPick }) {
+  const photo = usePhoto()
   const t = useT('equipment')
   const arches = localize(ARCHES, t('arches'))
   return (
@@ -124,7 +126,7 @@ function Hero({ counts, onPick }) {
           <li key={a.id} data-arch>
             <a href="#catalog" onClick={() => onPick(a.id)} className="group block">
               <div className="aspect-[3/4] overflow-hidden rounded-t-[999px] rounded-b-3xl">
-                <img src={a.image} alt="" className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" />
+                <img src={photo(`gear.arch.${a.id}`)} alt="" className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" />
               </div>
               <div className="mt-4 flex items-center justify-between gap-3">
                 <div>
@@ -401,6 +403,7 @@ function Faq() {
 
 // CTA : bannière image avec petit formulaire "il vous manque quelque chose ?"
 function Cta() {
+  const photo = usePhoto()
   // Connecté : nom et email pré-remplis (la clé recrée le champ quand la session est connue)
   const { user } = useAuth()
   const t = useT('equipment')
@@ -425,7 +428,7 @@ function Cta() {
 
   return (
     <div className={`${SECTION_GAP} relative overflow-hidden rounded-3xl bg-[#084838] text-white`}>
-      <img src={NosyIranja} alt="" className="absolute inset-0 w-full h-full object-cover" />
+      <img src={photo('gear.cta')} alt="" className="absolute inset-0 w-full h-full object-cover" />
       <div className="absolute inset-0 bg-[#084838]/80" />
 
       <div className="relative px-6 py-14 md:px-12 md:py-24 text-center">

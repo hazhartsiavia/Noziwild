@@ -257,3 +257,33 @@ CREATE TABLE IF NOT EXISTS destinations (
   updated_at   TIMESTAMP    NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
   INDEX idx_destinations_order (is_published, sort_order)
 ) ENGINE=InnoDB;
+
+-- Articles du blog (/blog et /blog/:slug)
+--   body         : blocs du corps, en anglais : heading { text }, paragraph { text }, list { items[] { lead, text } },
+--                  image { image, caption }, cta { image, title, subtitle, priceLabel, button, link }
+--   translations : autres langues, { "fr": { "title": ..., "excerpt": ..., "body": [ { "text": ... } ] } }
+--   minutes      : temps de lecture, calculé à l'enregistrement
+CREATE TABLE IF NOT EXISTS blog_posts (
+  id           INT UNSIGNED AUTO_INCREMENT PRIMARY KEY,
+  slug         VARCHAR(160) NOT NULL UNIQUE,
+  title        VARCHAR(190) NOT NULL,
+  excerpt      VARCHAR(400) NOT NULL DEFAULT '',
+  image        VARCHAR(500) NOT NULL,
+  published_on DATE         NOT NULL,
+  minutes      SMALLINT UNSIGNED NOT NULL DEFAULT 1,
+  body         JSON         NOT NULL,
+  translations JSON         NULL,
+  is_featured  TINYINT(1)   NOT NULL DEFAULT 0,
+  is_published TINYINT(1)   NOT NULL DEFAULT 1,
+  created_at   TIMESTAMP    NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  updated_at   TIMESTAMP    NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+  INDEX idx_blog_published (is_published, published_on)
+) ENGINE=InnoDB;
+
+-- Photos des pages remplacées depuis l'admin (page « Photos ») : emplacement -> photo.
+-- Un emplacement absent garde la photo d'origine du site.
+CREATE TABLE IF NOT EXISTS site_images (
+  slot       VARCHAR(80)  NOT NULL PRIMARY KEY,
+  path       VARCHAR(500) NOT NULL,
+  updated_at TIMESTAMP    NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
+) ENGINE=InnoDB;

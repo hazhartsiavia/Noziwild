@@ -8,6 +8,7 @@ import { sendContact } from '../api';
 import { useAuth } from '../context/AuthContext';
 import { useT } from '../i18n/LanguageContext';
 import { useScrollReveal } from '../utils/useScrollReveal'
+import { usePhoto } from '../sitePhotos'
 
 
 /* Constantes partagées : mêmes valeurs que dans les autres sections */
@@ -165,14 +166,15 @@ function SocialCard() {
 
 // Bannière "Want to connect with our travel experts?"
 function CallBanner() {
+  const photo = usePhoto()
   const t = useT('contact')
-  const [first, second] = call.photos
+  const [first, second] = [photo('contact.photo.1'), photo('contact.photo.2')]
   const frame = "absolute w-[52%] bg-white rounded-md p-1 md:p-1.5 shadow-sm"
-  const photo = "w-full aspect-[4/5] object-cover rounded-sm"
+  const photoCls = "w-full aspect-[4/5] object-cover rounded-sm"
 
   return (
     <div className="relative overflow-hidden rounded-xl text-white md:w-[66%]">
-      <img src={call.image} alt="" className="absolute inset-0 w-full h-full object-cover" />
+      <img src={photo('contact.banner')} alt="" className="absolute inset-0 w-full h-full object-cover" />
       <div className="absolute inset-0 bg-slate-950/70" />
 
       <div className="relative flex flex-col sm:flex-row sm:items-center gap-6 sm:gap-8 p-5 md:p-6">
@@ -180,10 +182,10 @@ function CallBanner() {
         {/* Deux photos inclinées */}
         <div className="relative shrink-0 w-36 h-32 md:w-44 md:h-40 mx-auto sm:mx-0" aria-hidden="true">
           <div className={`${frame} left-0 top-0 -rotate-6`}>
-            <img src={first} alt="" className={photo} />
+            <img src={first} alt="" className={photoCls} />
           </div>
           <div className={`${frame} left-[42%] top-[10%] rotate-6`}>
-            <img src={second} alt="" className={photo} />
+            <img src={second} alt="" className={photoCls} />
           </div>
         </div>
 

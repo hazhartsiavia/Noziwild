@@ -16,6 +16,7 @@ import OffersStatus from '../components/OffersStatus'
 import { useOffers } from '../utils/useOffers'
 import { gsap } from 'gsap'
 import { ScrollTrigger } from 'gsap/ScrollTrigger'
+import { usePhoto } from '../sitePhotos'
 
 gsap.registerPlugin(ScrollTrigger)
 
@@ -106,6 +107,7 @@ const heroStats = [
 
 // Hero : texte + chiffres à gauche, "assiettes" rondes serrées et badge qui tourne à droite
 function Hero() {
+  const photo = usePhoto()
   const t = useT('food')
   const alts = t('alts')
   return (
@@ -136,13 +138,13 @@ function Hero() {
       {/* Assiettes : plus grandes et plus proches pour remplir l'espace */}
       <div className="relative w-full max-w-[600px] aspect-[6/5] mx-auto lg:ml-auto">
         <div data-plate className="absolute left-0 top-[4%] w-[66%]">
-          <div data-bob><img src={Ambanja} alt={alts[0]} className="w-full aspect-square object-cover rounded-full" /></div>
+          <div data-bob><img src={photo('food.plate.1')} alt={alts[0]} className="w-full aspect-square object-cover rounded-full" /></div>
         </div>
         <div data-plate className="absolute right-0 top-0 w-[34%]">
-          <div data-bob><img src={Ramena} alt={alts[1]} className="w-full aspect-square object-cover rounded-full ring-8 ring-[#D5E8E2]" /></div>
+          <div data-bob><img src={photo('food.plate.2')} alt={alts[1]} className="w-full aspect-square object-cover rounded-full ring-8 ring-[#D5E8E2]" /></div>
         </div>
         <div data-plate className="absolute right-[2%] bottom-[2%] w-[40%]">
-          <div data-bob><img src={NosyLonjo} alt={alts[2]} className="w-full aspect-square object-cover rounded-full ring-8 ring-[#D5E8E2]" /></div>
+          <div data-bob><img src={photo('food.plate.3')} alt={alts[2]} className="w-full aspect-square object-cover rounded-full ring-8 ring-[#D5E8E2]" /></div>
         </div>
         <div data-plate className="absolute right-[38%] bottom-0 w-[22%]"><SpinBadge /></div>
       </div>
@@ -152,6 +154,7 @@ function Hero() {
 
 // Plats signature : panneaux qui s'ouvrent au survol / au clic
 function Dishes() {
+  const photo = usePhoto()
   const t = useT('food')
   const dishes = localize(DISHES, t('dishes'))
   const [active, setActive] = useState(0)
@@ -179,7 +182,7 @@ function Dishes() {
                 isActive ? 'h-[440px] lg:h-auto lg:flex-[4]' : 'h-[84px] lg:h-auto lg:flex-[1]'
               }`}
             >
-              <img src={d.image} alt={d.name} className="absolute inset-0 w-full h-full object-cover transition-transform duration-1000 group-hover:scale-105" />
+              <img src={photo(`food.dish.${i + 1}`)} alt={d.name} className="absolute inset-0 w-full h-full object-cover transition-transform duration-1000 group-hover:scale-105" />
               <span className={`absolute inset-0 transition-colors duration-500 ${isActive ? 'bg-gradient-to-t from-black/80 via-black/20 to-transparent' : 'bg-black/45'}`} />
 
               {/* Nom quand le panneau est fermé */}
@@ -334,6 +337,7 @@ function Diets() {
 
 // Cours de cuisine : photo avec parallaxe + étapes
 function CookingClass({ experiences }) {
+  const photo = usePhoto()
   const t = useT('food')
   const { lang } = useLanguage()
   const classSteps = localize(CLASS_STEPS, t('classSteps'))
@@ -343,7 +347,7 @@ function CookingClass({ experiences }) {
   return (
     <div className={`${SECTION_GAP} grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-16 items-center`}>
       <div className="relative overflow-hidden rounded-3xl aspect-[4/5] md:aspect-[5/4] lg:aspect-[4/5] bg-[#084838]">
-        <img data-parallax src={Tana} alt={t('classAlt')} className="absolute left-0 -top-[10%] w-full h-[120%] object-cover" />
+        <img data-parallax src={photo('food.class')} alt={t('classAlt')} className="absolute left-0 -top-[10%] w-full h-[120%] object-cover" />
         <span className={`${BADGE} absolute left-5 top-5`}>{t('mostLoved')}</span>
       </div>
 

@@ -9,6 +9,7 @@ import Footer from '../components/Footer'
 import { fetchCircuits, assetUrl } from '../api'
 import { formatPrice } from '../utils/format'
 import { useLanguage, useT } from '../i18n/LanguageContext'
+import { usePhoto } from '../sitePhotos'
 
 gsap.registerPlugin(ScrollTrigger)
 
@@ -59,6 +60,7 @@ const reveal = (targets, from, to, extra = {}) =>
 /* -------------------------- Composants --------------------------- */
 
 function CircuitsHero() {
+  const photo = usePhoto()
   const root = useRef(null)
   const t = useT('circuits')
 
@@ -81,7 +83,7 @@ function CircuitsHero() {
     <>
       <Navbar />
       <section ref={root} className={`${SECTION_WIDTH} relative flex items-center overflow-hidden rounded-3xl bg-[#084838] text-white min-h-[100px] md:min-h-[360px]`}>
-        <img src={NosyIranja} alt="" className="hero-bg absolute inset-0 w-full h-full object-cover" />
+        <img src={photo('circ.hero')} alt="" className="hero-bg absolute inset-0 w-full h-full object-cover" />
         <div className="hero-shade absolute inset-0 bg-slate-950/60" />
         <div className="relative w-full max-w-5xl mx-auto px-6 md:px-10 py-16">
           <h1 className={`hero-title ${PAGE_TITLE}`}>{t('title')}</h1>
@@ -140,6 +142,7 @@ function CircuitCard({ circuit }) {
 }
 
 function Circuits() {
+  const photo = usePhoto()
   const t = useT('circuits')
   const { lang } = useLanguage()
   const [region, setRegion] = useState('All')
@@ -346,7 +349,7 @@ function Circuits() {
         {/* Appel à l'action */}
         <section ref={ctaRef} className={`${SECTION_WIDTH} mt-16 md:mt-24`}>
           <div className="cta-card relative overflow-hidden rounded-3xl text-white">
-            <img src={Ambanja} alt="" className="cta-bg absolute inset-0 w-full h-full object-cover" />
+            <img src={photo('circ.cta')} alt="" className="cta-bg absolute inset-0 w-full h-full object-cover" />
             <div className="absolute inset-0 bg-slate-950/70" />
             <div className="relative flex flex-col md:flex-row md:items-center justify-between gap-6 p-8 md:p-12">
               <div className="cta-text max-w-2xl">

@@ -29,8 +29,9 @@ const SLUG_RE = /^[a-z0-9]+(?:-[a-z0-9]+)*$/
 // Image servie par l'API (/uploads/...) ou adresse web complète
 const IMAGE_RE = /^(\/uploads\/[\w\-/]+\.(?:png|jpe?g|webp)|https?:\/\/\S+)$/i
 
+// « Here’s Where » -> here-s-where serait laid : les apostrophes disparaissent, les accents aussi
 export const slugify = (text) =>
-  String(text || '').normalize('NFD').replace(/[̀-ͯ]/g, '').toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/(^-|-$)/g, '')
+  String(text || '').normalize('NFD').replace(/[̀-ͯ]/g, '').replace(/['’]/g, '').toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/(^-|-$)/g, '')
 
 // MySQL renvoie le JSON déjà décodé, MariaDB (XAMPP) le renvoie en texte
 function parseJson(value, fallback) {

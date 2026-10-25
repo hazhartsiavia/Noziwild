@@ -14,6 +14,7 @@ import AddToTrip from '../components/AddToTrip'
 import { Trans, useLanguage, useT } from '../i18n/LanguageContext'
 import { formatPrice, monthName } from '../utils/format'
 import { useOffers } from '../utils/useOffers'
+import { usePhoto } from '../sitePhotos'
 
 gsap.registerPlugin(ScrollTrigger)
 
@@ -51,10 +52,11 @@ const number = (i) => String(i + 1).padStart(2, '0')
 
 // Hero : grande image avec l'index des activités (comme un menu)
 function Hero({ list }) {
+  const photo = usePhoto()
   const t = useT('activities')
   return (
     <section className="relative overflow-hidden rounded-3xl bg-[#084838] text-white min-h-[540px] md:min-h-[620px] flex">
-      <img src={NosyLonjo} alt="" className="absolute inset-0 w-full h-full object-cover" />
+      <img src={photo('act.banner')} alt="" className="absolute inset-0 w-full h-full object-cover" />
       <div className="absolute inset-0 bg-gradient-to-r from-black/80 via-black/45 to-black/20" />
 
       <div className="relative w-full grid grid-cols-1 lg:grid-cols-[1.3fr_1fr] gap-8 lg:gap-12 items-end p-6 md:p-12">
@@ -311,9 +313,10 @@ function Faq() {
 
 // CTA : carte verte avec texte et photos empilées
 function Cta() {
+  const photo = usePhoto()
   const t = useT('activities')
   const frame = "absolute w-[46%] rounded-xl bg-white p-1.5 md:p-2.5 shadow-md"
-  const photo = "w-full aspect-[4/5] object-cover rounded-md"
+  const photoCls = "w-full aspect-[4/5] object-cover rounded-md"
 
   return (
     <div className={`${SECTION_GAP} grid grid-cols-1 lg:grid-cols-2 gap-8 overflow-hidden rounded-3xl bg-[#084838] text-white p-6 md:p-12`}>
@@ -330,9 +333,9 @@ function Cta() {
       </div>
 
       <div className="relative min-h-[320px] md:min-h-[400px]" aria-hidden="true">
-        <div className={`${frame} left-[2%] top-[6%] -rotate-6`}><img src={Ramena} alt="" className={photo} /></div>
-        <div className={`${frame} left-[28%] top-0 rotate-3 z-10`}><img src={Tana} alt="" className={photo} /></div>
-        <div className={`${frame} right-[2%] top-[14%] rotate-6 z-20`}><img src={NosyIranja} alt="" className={photo} /></div>
+        <div className={`${frame} left-[2%] top-[6%] -rotate-6`}><img src={photo('act.photo.1')} alt="" className={photoCls} /></div>
+        <div className={`${frame} left-[28%] top-0 rotate-3 z-10`}><img src={photo('act.photo.2')} alt="" className={photoCls} /></div>
+        <div className={`${frame} right-[2%] top-[14%] rotate-6 z-20`}><img src={photo('act.photo.3')} alt="" className={photoCls} /></div>
       </div>
     </div>
   )

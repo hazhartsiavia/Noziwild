@@ -1,7 +1,7 @@
-// Cadre de l'espace admin (/admin/...) : réservé aux comptes "admin", onglets Circuits / Destinations / Offers / Texts / Inbox
+// Cadre de l'espace admin (/admin/...) : réservé aux comptes "admin", onglets Circuits / Destinations / Offers / Blog / Photos / Texts / Inbox
 import React from 'react'
 import { Link, Navigate, NavLink, Outlet, useLocation } from 'react-router-dom'
-import { Inbox, LayoutGrid, Map, MapPin, Type } from 'lucide-react'
+import { Images, Inbox, LayoutGrid, Map, MapPin, Newspaper, Type } from 'lucide-react'
 import Navbar from '../../components/Navbar'
 import { useAuth } from '../../context/AuthContext'
 
@@ -9,6 +9,8 @@ const TABS = [
   { to: '/admin/circuits', label: 'Circuits', icon: Map },
   { to: '/admin/destinations', label: 'Destinations', icon: MapPin },
   { to: '/admin/offers', label: 'Offers', icon: LayoutGrid },
+  { to: '/admin/blog', label: 'Blog', icon: Newspaper },
+  { to: '/admin/photos', label: 'Photos', icon: Images },
   { to: '/admin/texts', label: 'Texts', icon: Type },
   { to: '/admin/inbox', label: 'Inbox', icon: Inbox },
 ]
@@ -57,7 +59,7 @@ function AdminLayout() {
             <p className="text-sm uppercase tracking-wide text-slate-600">Noziwild</p>
             <h1 className="text-3xl sm:text-4xl font-medium tracking-tight text-forest">Admin</h1>
           </div>
-          <nav aria-label="Admin sections" className="flex gap-1 self-start rounded-full bg-white p-1">
+          <nav aria-label="Admin sections" className="flex flex-wrap gap-1 self-start rounded-3xl bg-white p-1">
             {TABS.map(({ to, label, icon: Icon }) => (
               <NavLink
                 key={to}

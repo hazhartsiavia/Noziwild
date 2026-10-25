@@ -3,20 +3,11 @@
   "home": "Home",
   "crumb": "Blog",
   "imageAlt": "A quiet infinity pool at sunset",
-  "featured": [
-    "Discover Offbeat Destinations Beyond The Usual Tourist Trails",
-    "From Beach Resorts To Hidden Bays, Here’s Where Families Love To Go",
-    "Indulge In Luxury With Our Handpicked Stays Around The Island"
-  ],
-  "posts": [
-    "A Wildlife Adventure In Northern Madagascar",
-    "Exploring The Highlands Around Antananarivo In Winter",
-    "From Beaches To Baobabs, Here’s Everything",
-    "Sailing The Coast Of Ramena",
-    "A Slow Weekend In Ambanja And Nosy Be",
-    "The Complete Guide To Diego Suarez Bay"
-  ],
   "readTime": "{count} Min Read",
   "eyebrow": "From our journal",
-  "heading": "From Our Travel Journal"
+  "heading": "From Our Travel Journal",
+  "related": "More From Our Journal",
+  "allArticles": "All articles",
+  "notFoundTitle": "This article is not available",
+  "notFoundText": "It may have been moved or unpublished. Have a look at our other stories."
 }

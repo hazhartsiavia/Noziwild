@@ -1,0 +1,937 @@
+[
+  {
+    "slug": "discover-offbeat-destinations-beyond-the-usual-tourist-trails",
+    "title": "Discover Offbeat Destinations Beyond The Usual Tourist Trails",
+    "excerpt": "Red stone pinnacles, quiet reserves and river villages: the north of Madagascar still has corners few travellers see.",
+    "image": "/uploads/circuits/coastal-tsingy.jpg",
+    "date": "2025-11-20",
+    "isFeatured": true,
+    "body": [
+      {
+        "type": "heading",
+        "text": "Leave The Usual Route Behind"
+      },
+      {
+        "type": "paragraph",
+        "text": "Most trips to the north follow the same line: Diego Suarez, the Emerald Sea, then a flight to Nosy Be. It is a beautiful route, but a few extra days open a very different Madagascar, with almost no crowds and a lot of time with the people who live there."
+      },
+      {
+        "type": "list",
+        "items": [
+          {
+            "lead": "The red tsingy",
+            "text": "Sharp pinnacles of red earth shaped by the rain, a short drive from Diego Suarez. Best in the soft light of late afternoon."
+          },
+          {
+            "lead": "Ankarana",
+            "text": "Grey limestone needles, forest trails, caves and crowned lemurs, with a local guide who knows the paths."
+          },
+          {
+            "lead": "The Sambirano valley",
+            "text": "Cocoa and vanilla plantations along the river near Ambanja, where growers show you every step of the harvest."
+          }
+        ]
+      },
+      {
+        "type": "cta",
+        "image": "/uploads/circuits/coastal-tsingy.jpg",
+        "title": "Ambanja",
+        "subtitle": "Cocoa valleys and the gateway to Nosy Be",
+        "button": "Discover the destination",
+        "link": "/destinations/ambanja"
+      },
+      {
+        "type": "heading",
+        "text": "How To Plan It"
+      },
+      {
+        "type": "paragraph",
+        "text": "Roads off the main axis can be slow, so we plan shorter driving days and keep one free afternoon in each place. The dry season, from April to November, is the easiest time to travel."
+      }
+    ],
+    "translations": {
+      "fr": {
+        "title": "Découvrez des destinations hors des sentiers battus",
+        "excerpt": "Pinacles de pierre rouge, réserves tranquilles et villages au bord des rivières : le nord de Madagascar garde des coins que peu de voyageurs voient.",
+        "body": [
+          {
+            "text": "Sortir des itinéraires habituels"
+          },
+          {
+            "text": "La plupart des voyages dans le nord suivent la même ligne : Diego Suarez, la mer d'Émeraude, puis un vol pour Nosy Be. C'est un très bel itinéraire, mais quelques jours de plus ouvrent un tout autre Madagascar, presque sans foule et avec beaucoup de temps auprès des habitants."
+          },
+          {
+            "items": [
+              {
+                "lead": "Les tsingy rouges",
+                "text": "Des pinacles de terre rouge sculptés par la pluie, à peu de route de Diego Suarez. Plus beaux dans la lumière douce de fin d'après-midi."
+              },
+              {
+                "lead": "L'Ankarana",
+                "text": "Des aiguilles de calcaire gris, des sentiers en forêt, des grottes et des lémuriens couronnés, avec un guide local qui connaît les chemins."
+              },
+              {
+                "lead": "La vallée du Sambirano",
+                "text": "Des plantations de cacao et de vanille le long de la rivière près d'Ambanja, où les producteurs vous montrent chaque étape de la récolte."
+              }
+            ]
+          },
+          {
+            "title": "Ambanja",
+            "subtitle": "Vallées du cacao et porte de Nosy Be",
+            "button": "Découvrir la destination"
+          },
+          {
+            "text": "Comment l'organiser"
+          },
+          {
+            "text": "Hors de l'axe principal, les routes peuvent être lentes : nous prévoyons des journées de route plus courtes et gardons un après-midi libre à chaque étape. La saison sèche, d'avril à novembre, est la période la plus simple pour voyager."
+          }
+        ]
+      },
+      "de": {
+        "title": "Entdecken Sie Reiseziele abseits der üblichen Touristenpfade"
+      },
+      "it": {
+        "title": "Scopri destinazioni insolite lontano dai soliti percorsi turistici"
+      },
+      "es": {
+        "title": "Descubra destinos fuera de las rutas turísticas habituales"
+      }
+    }
+  },
+  {
+    "slug": "from-beach-resorts-to-hidden-bays-heres-where-families-love-to-go",
+    "title": "From Beach Resorts To Hidden Bays, Here’s Where Families Love To Go",
+    "excerpt": "Calm water, short transfers and shade at lunchtime: the beaches our families come back to, and how we organise the days.",
+    "image": "/uploads/circuits/island-beach-aerial.jpg",
+    "date": "2025-11-11",
+    "isFeatured": true,
+    "body": [
+      {
+        "type": "heading",
+        "text": "Beaches That Work For Children"
+      },
+      {
+        "type": "paragraph",
+        "text": "With children, the best beach is not always the most famous one. We look for calm water, a short trip from the hotel, shade for the middle of the day and somewhere to eat nearby."
+      },
+      {
+        "type": "list",
+        "items": [
+          {
+            "lead": "Ramena",
+            "text": "A village beach near Diego Suarez with gentle water, fishing boats and simple restaurants a few steps from the sand."
+          },
+          {
+            "lead": "Nosy Iranja",
+            "text": "Two islands joined by a sandbar at low tide. Children love walking from one island to the other."
+          },
+          {
+            "lead": "The bays around Nosy Be",
+            "text": "Quiet coves reached by boat, where a half-day trip is enough before the afternoon heat."
+          }
+        ]
+      },
+      {
+        "type": "heading",
+        "text": "Our Family Tips"
+      },
+      {
+        "type": "list",
+        "items": [
+          {
+            "lead": "Plan the boat days early",
+            "text": "The sea is usually calmer in the morning, which makes crossings easier for everyone."
+          },
+          {
+            "lead": "Bring reef shoes",
+            "text": "Some beaches have coral and shells close to the shore."
+          },
+          {
+            "lead": "Keep afternoons free",
+            "text": "A rest at the hotel after lunch keeps the whole family happy for the next day."
+          }
+        ]
+      },
+      {
+        "type": "cta",
+        "image": "/uploads/circuits/island-beach-aerial.jpg",
+        "title": "Nosy Iranja",
+        "subtitle": "The sandbar and the turtle beach",
+        "button": "Discover the island",
+        "link": "/destinations/nosy-iranja"
+      }
+    ],
+    "translations": {
+      "fr": {
+        "title": "Des hôtels de plage aux baies cachées : les lieux préférés des familles",
+        "excerpt": "Une eau calme, des transferts courts et de l'ombre à midi : les plages où nos familles reviennent, et comment nous organisons les journées.",
+        "body": [
+          {
+            "text": "Des plages adaptées aux enfants"
+          },
+          {
+            "text": "Avec des enfants, la meilleure plage n'est pas toujours la plus connue. Nous cherchons une eau calme, un trajet court depuis l'hôtel, de l'ombre au milieu de la journée et un endroit où manger à proximité."
+          },
+          {
+            "items": [
+              {
+                "lead": "Ramena",
+                "text": "Une plage de village près de Diego Suarez, avec une eau douce, des bateaux de pêche et des restaurants simples à deux pas du sable."
+              },
+              {
+                "lead": "Nosy Iranja",
+                "text": "Deux îles reliées par un banc de sable à marée basse. Les enfants adorent marcher d'une île à l'autre."
+              },
+              {
+                "lead": "Les baies autour de Nosy Be",
+                "text": "Des criques tranquilles accessibles en bateau, où une demi-journée suffit avant la chaleur de l'après-midi."
+              }
+            ]
+          },
+          {
+            "text": "Nos conseils pour les familles"
+          },
+          {
+            "items": [
+              {
+                "lead": "Prévoir les journées en bateau tôt",
+                "text": "La mer est souvent plus calme le matin, ce qui facilite les traversées pour tout le monde."
+              },
+              {
+                "lead": "Emporter des chaussures de récif",
+                "text": "Certaines plages ont du corail et des coquillages près du bord."
+              },
+              {
+                "lead": "Garder les après-midi libres",
+                "text": "Un temps de repos à l'hôtel après le déjeuner garde toute la famille en forme pour le lendemain."
+              }
+            ]
+          },
+          {
+            "title": "Nosy Iranja",
+            "subtitle": "Le banc de sable et la plage des tortues",
+            "button": "Découvrir l'île"
+          }
+        ]
+      },
+      "de": {
+        "title": "Von Strandresorts bis zu versteckten Buchten: Hierhin reisen Familien am liebsten"
+      },
+      "it": {
+        "title": "Dai resort sul mare alle baie nascoste: i posti preferiti dalle famiglie"
+      },
+      "es": {
+        "title": "De los resorts de playa a las bahías escondidas: los lugares favoritos de las familias"
+      }
+    }
+  },
+  {
+    "slug": "indulge-in-luxury-with-our-handpicked-stays-around-the-island",
+    "title": "Indulge In Luxury With Our Handpicked Stays Around The Island",
+    "excerpt": "Island lodges, private boat transfers and dinners on the sand: how we choose the stays for a slower, more comfortable trip.",
+    "image": "/uploads/circuits/nosy-lonjo.png",
+    "date": "2025-10-14",
+    "isFeatured": true,
+    "body": [
+      {
+        "type": "heading",
+        "text": "Comfort Without Losing The Island"
+      },
+      {
+        "type": "paragraph",
+        "text": "Luxury in Madagascar is less about marble and more about space, quiet and a team that takes care of every detail. The stays we recommend are small, often on the water, and run by people who know the coast well."
+      },
+      {
+        "type": "list",
+        "items": [
+          {
+            "lead": "Private transfers",
+            "text": "A boat waiting at the jetty and a driver at the airport, so you never wait in the heat."
+          },
+          {
+            "lead": "A room with a view",
+            "text": "We always ask for rooms facing the sea or the garden, never the car park."
+          },
+          {
+            "lead": "Food from the morning catch",
+            "text": "Fish and seafood bought from local fishermen and cooked the same day."
+          }
+        ]
+      },
+      {
+        "type": "cta",
+        "image": "/uploads/circuits/nosy-lonjo.png",
+        "title": "Our stays",
+        "subtitle": "Hotels, lodges and beach bungalows we have visited",
+        "button": "See the stays",
+        "link": "/hosting"
+      },
+      {
+        "type": "heading",
+        "text": "Our Advice"
+      },
+      {
+        "type": "paragraph",
+        "text": "Island lodges have few rooms and fill up early in the dry season. Booking a few months ahead gives you the widest choice of dates and rooms."
+      }
+    ],
+    "translations": {
+      "fr": {
+        "title": "Offrez-vous le luxe de nos hébergements choisis à travers l'île",
+        "excerpt": "Lodges sur les îles, transferts privés en bateau et dîners sur le sable : comment nous choisissons les hébergements pour un voyage plus doux et plus confortable.",
+        "body": [
+          {
+            "text": "Le confort sans perdre l'île"
+          },
+          {
+            "text": "À Madagascar, le luxe tient moins au marbre qu'à l'espace, au calme et à une équipe attentive à chaque détail. Les hébergements que nous recommandons sont petits, souvent au bord de l'eau, et tenus par des gens qui connaissent bien la côte."
+          },
+          {
+            "items": [
+              {
+                "lead": "Des transferts privés",
+                "text": "Un bateau qui attend à l'embarcadère et un chauffeur à l'aéroport : vous n'attendez jamais en pleine chaleur."
+              },
+              {
+                "lead": "Une chambre avec vue",
+                "text": "Nous demandons toujours des chambres face à la mer ou au jardin, jamais sur le parking."
+              },
+              {
+                "lead": "La pêche du matin",
+                "text": "Poissons et fruits de mer achetés aux pêcheurs locaux et cuisinés le jour même."
+              }
+            ]
+          },
+          {
+            "title": "Nos hébergements",
+            "subtitle": "Hôtels, lodges et bungalows de plage que nous avons visités",
+            "button": "Voir les hébergements"
+          },
+          {
+            "text": "Notre conseil"
+          },
+          {
+            "text": "Les lodges des îles ont peu de chambres et se remplissent tôt pendant la saison sèche. Réserver quelques mois à l'avance vous laisse le plus grand choix de dates et de chambres."
+          }
+        ]
+      },
+      "de": {
+        "title": "Gönnen Sie sich Luxus in unseren ausgewählten Unterkünften auf der Insel"
+      },
+      "it": {
+        "title": "Concediti il lusso dei nostri alloggi selezionati sull'isola"
+      },
+      "es": {
+        "title": "Disfrute del lujo de nuestros alojamientos seleccionados en la isla"
+      }
+    }
+  },
+  {
+    "slug": "a-wildlife-adventure-in-northern-madagascar",
+    "title": "A Wildlife Adventure In Northern Madagascar",
+    "excerpt": "Lemurs, chameleons and limestone forests: a week in the reserves of the north with a naturalist guide.",
+    "image": "/uploads/circuits/guide-with-lemur.png",
+    "date": "2023-11-17",
+    "isFeatured": false,
+    "body": [
+      {
+        "type": "heading",
+        "text": "A Week With The Wildlife Of The North"
+      },
+      {
+        "type": "paragraph",
+        "text": "The north of Madagascar packs very different landscapes into a short distance: rainforest on the slopes of Montagne d’Ambre, dry forest and limestone in Ankarana, and the protected forest of Lokobe on Nosy Be."
+      },
+      {
+        "type": "list",
+        "items": [
+          {
+            "lead": "Montagne d’Ambre",
+            "text": "Cool rainforest, waterfalls and some of the smallest chameleons in the world."
+          },
+          {
+            "lead": "Ankarana",
+            "text": "Crowned lemurs, bats in the caves and suspended bridges above the tsingy."
+          },
+          {
+            "lead": "Lokobe",
+            "text": "A short pirogue ride to a forest where black lemurs live close to the villages."
+          }
+        ]
+      },
+      {
+        "type": "heading",
+        "text": "Walking With A Guide"
+      },
+      {
+        "type": "paragraph",
+        "text": "Local guides know where the animals feed and sleep. Walks start early in the morning, when the forest is cool and most animals are active, and many reserves also offer night walks to look for chameleons and mouse lemurs."
+      },
+      {
+        "type": "cta",
+        "image": "/uploads/circuits/guide-with-lemur.png",
+        "title": "Our circuits",
+        "subtitle": "Routes through the north, ready to adapt",
+        "button": "See the circuits",
+        "link": "/circuits"
+      }
+    ],
+    "translations": {
+      "fr": {
+        "title": "Une aventure sauvage dans le nord de Madagascar",
+        "excerpt": "Lémuriens, caméléons et forêts de calcaire : une semaine dans les réserves du nord avec un guide naturaliste.",
+        "body": [
+          {
+            "text": "Une semaine avec la faune du nord"
+          },
+          {
+            "text": "Le nord de Madagascar réunit des paysages très différents sur une courte distance : la forêt humide sur les pentes de la Montagne d'Ambre, la forêt sèche et le calcaire de l'Ankarana, et la forêt protégée de Lokobe à Nosy Be."
+          },
+          {
+            "items": [
+              {
+                "lead": "La Montagne d'Ambre",
+                "text": "Une forêt humide et fraîche, des cascades et quelques-uns des plus petits caméléons du monde."
+              },
+              {
+                "lead": "L'Ankarana",
+                "text": "Des lémuriens couronnés, des chauves-souris dans les grottes et des ponts suspendus au-dessus des tsingy."
+              },
+              {
+                "lead": "Lokobe",
+                "text": "Une courte traversée en pirogue vers une forêt où les lémuriens noirs vivent tout près des villages."
+              }
+            ]
+          },
+          {
+            "text": "Marcher avec un guide"
+          },
+          {
+            "text": "Les guides locaux savent où les animaux se nourrissent et dorment. Les balades commencent tôt le matin, quand la forêt est fraîche et que la plupart des animaux sont actifs, et beaucoup de réserves proposent aussi des sorties de nuit pour chercher les caméléons et les microcèbes."
+          },
+          {
+            "title": "Nos circuits",
+            "subtitle": "Des itinéraires dans le nord, prêts à adapter",
+            "button": "Voir les circuits"
+          }
+        ]
+      },
+      "de": {
+        "title": "Ein Tierabenteuer im Norden Madagaskars"
+      },
+      "it": {
+        "title": "Un'avventura naturalistica nel nord del Madagascar"
+      },
+      "es": {
+        "title": "Una aventura de fauna salvaje en el norte de Madagascar"
+      }
+    }
+  },
+  {
+    "slug": "exploring-the-highlands-around-antananarivo-in-winter",
+    "title": "Exploring The Highlands Around Antananarivo In Winter",
+    "excerpt": "Cool mornings, clear skies and royal hills: why June to August is a lovely time for the highlands.",
+    "image": "/uploads/circuits/antananarivo-rice-fields.png",
+    "date": "2023-10-18",
+    "isFeatured": false,
+    "body": [
+      {
+        "type": "heading",
+        "text": "The Highlands In The Cool Season"
+      },
+      {
+        "type": "paragraph",
+        "text": "From June to August, the highlands around Antananarivo have cool mornings, warm afternoons and very little rain. It is a pleasant time to walk the old streets of the capital and drive through the rice terraces."
+      },
+      {
+        "type": "list",
+        "items": [
+          {
+            "lead": "The Rova",
+            "text": "The queen’s palace on the highest hill of Antananarivo, with a wide view over the city and the lakes."
+          },
+          {
+            "lead": "Ambohimanga",
+            "text": "The royal hill north of the capital, a sacred place and a UNESCO World Heritage site."
+          },
+          {
+            "lead": "Antsirabe",
+            "text": "A spa town further south, known for its colourful pousse-pousse and its craft workshops."
+          }
+        ]
+      },
+      {
+        "type": "heading",
+        "text": "What To Pack"
+      },
+      {
+        "type": "paragraph",
+        "text": "Bring a warm layer for the evenings and early mornings, and good shoes for the cobbled streets and hillside paths."
+      },
+      {
+        "type": "cta",
+        "image": "/uploads/circuits/antananarivo-rice-fields.png",
+        "title": "Antananarivo",
+        "subtitle": "The capital and its royal hills",
+        "button": "Discover the destination",
+        "link": "/destinations/antananarivo"
+      }
+    ],
+    "translations": {
+      "fr": {
+        "title": "Explorer les Hautes Terres autour d'Antananarivo en hiver",
+        "excerpt": "Matins frais, ciel dégagé et collines royales : pourquoi juin à août est une belle période pour les Hautes Terres.",
+        "body": [
+          {
+            "text": "Les Hautes Terres en saison fraîche"
+          },
+          {
+            "text": "De juin à août, les Hautes Terres autour d'Antananarivo connaissent des matins frais, des après-midi doux et très peu de pluie. C'est un moment agréable pour parcourir les vieilles rues de la capitale et traverser les rizières en terrasses."
+          },
+          {
+            "items": [
+              {
+                "lead": "Le Rova",
+                "text": "Le palais de la reine sur la plus haute colline d'Antananarivo, avec une large vue sur la ville et les lacs."
+              },
+              {
+                "lead": "Ambohimanga",
+                "text": "La colline royale au nord de la capitale, un lieu sacré inscrit au patrimoine mondial de l'UNESCO."
+              },
+              {
+                "lead": "Antsirabe",
+                "text": "Une ville thermale plus au sud, connue pour ses pousse-pousse colorés et ses ateliers d’artisans."
+              }
+            ]
+          },
+          {
+            "text": "Ce qu’il faut emporter"
+          },
+          {
+            "text": "Prévoyez une couche chaude pour le soir et le petit matin, et de bonnes chaussures pour les rues pavées et les chemins de colline."
+          },
+          {
+            "title": "Antananarivo",
+            "subtitle": "La capitale et ses collines royales",
+            "button": "Découvrir la destination"
+          }
+        ]
+      },
+      "de": {
+        "title": "Das Hochland rund um Antananarivo im Winter entdecken"
+      },
+      "it": {
+        "title": "Alla scoperta degli Altopiani intorno ad Antananarivo in inverno"
+      },
+      "es": {
+        "title": "Explorar las Tierras Altas alrededor de Antananarivo en invierno"
+      }
+    }
+  },
+  {
+    "slug": "from-beaches-to-baobabs-heres-everything",
+    "title": "From Beaches To Baobabs, Here’s Everything",
+    "excerpt": "Combining the islands of the north with the baobabs of the west: distances, flights and the right number of days.",
+    "image": "/uploads/circuits/nosy-iranja.png",
+    "date": "2023-10-05",
+    "isFeatured": false,
+    "body": [
+      {
+        "type": "heading",
+        "text": "One Trip, Two Very Different Coasts"
+      },
+      {
+        "type": "paragraph",
+        "text": "Many travellers want the white beaches of the north and the famous baobabs of the west in the same trip. It is possible, but Madagascar is a large island, and the two regions are far apart by road."
+      },
+      {
+        "type": "list",
+        "items": [
+          {
+            "lead": "Fly between the regions",
+            "text": "Domestic flights through Antananarivo save several long days on the road."
+          },
+          {
+            "lead": "Give each region time",
+            "text": "Plan at least four or five nights in the north and three in the west."
+          },
+          {
+            "lead": "Time the baobabs",
+            "text": "The Avenue of the Baobabs near Morondava is at its best at sunset, so stay nearby."
+          }
+        ]
+      },
+      {
+        "type": "cta",
+        "image": "/uploads/circuits/nosy-iranja.png",
+        "title": "Baobab Avenue",
+        "subtitle": "The giants of the west at sunset",
+        "button": "Discover the destination",
+        "link": "/destinations/baobab-avenue"
+      },
+      {
+        "type": "heading",
+        "text": "Our Advice"
+      },
+      {
+        "type": "paragraph",
+        "text": "Domestic flight schedules can change, so we always keep a buffer day before your international flight home."
+      }
+    ],
+    "translations": {
+      "fr": {
+        "title": "Des plages aux baobabs, tout ce qu'il faut savoir",
+        "excerpt": "Associer les îles du nord et les baobabs de l'ouest : distances, vols et bon nombre de jours.",
+        "body": [
+          {
+            "text": "Un voyage, deux côtes très différentes"
+          },
+          {
+            "text": "Beaucoup de voyageurs veulent les plages blanches du nord et les célèbres baobabs de l'ouest dans le même voyage. C'est possible, mais Madagascar est une grande île, et les deux régions sont loin l'une de l'autre par la route."
+          },
+          {
+            "items": [
+              {
+                "lead": "Prendre l’avion entre les régions",
+                "text": "Les vols intérieurs via Antananarivo évitent plusieurs longues journées de route."
+              },
+              {
+                "lead": "Laisser du temps à chaque région",
+                "text": "Prévoyez au moins quatre ou cinq nuits dans le nord et trois dans l'ouest."
+              },
+              {
+                "lead": "Choisir l’heure des baobabs",
+                "text": "L'allée des Baobabs près de Morondava est la plus belle au coucher du soleil : dormez à proximité."
+              }
+            ]
+          },
+          {
+            "title": "L'allée des Baobabs",
+            "subtitle": "Les géants de l'ouest au coucher du soleil",
+            "button": "Découvrir la destination"
+          },
+          {
+            "text": "Notre conseil"
+          },
+          {
+            "text": "Les horaires des vols intérieurs peuvent changer : nous gardons toujours un jour de marge avant votre vol international de retour."
+          }
+        ]
+      },
+      "de": {
+        "title": "Von Stränden bis zu Baobabs: alles Wissenswerte"
+      },
+      "it": {
+        "title": "Dalle spiagge ai baobab: tutto quello che c'è da sapere"
+      },
+      "es": {
+        "title": "De las playas a los baobabs: todo lo que hay que saber"
+      }
+    }
+  },
+  {
+    "slug": "sailing-the-coast-of-ramena",
+    "title": "Sailing The Coast Of Ramena",
+    "excerpt": "The Emerald Sea, the three bays and the fishing village of Ramena, seen from the deck of a boat.",
+    "image": "/uploads/circuits/ramena.png",
+    "date": "2023-09-22",
+    "isFeatured": false,
+    "body": [
+      {
+        "type": "heading",
+        "text": "A Day On The Water"
+      },
+      {
+        "type": "paragraph",
+        "text": "Ramena is a fishing village at the entrance of the bay of Diego Suarez. From its beach, boats leave in the morning for the Emerald Sea, a shallow lagoon of clear turquoise water protected by a reef."
+      },
+      {
+        "type": "list",
+        "items": [
+          {
+            "lead": "The Emerald Sea",
+            "text": "Swimming and snorkelling in calm, clear water, with grilled fish for lunch on the beach."
+          },
+          {
+            "lead": "The three bays",
+            "text": "Sakalava, Pigeons and Dunes bays, linked by a coastal path for walkers."
+          },
+          {
+            "lead": "The Sugar Loaf",
+            "text": "Nosy Lonjo, the sacred island in the middle of the bay, seen from the boat."
+          }
+        ]
+      },
+      {
+        "type": "heading",
+        "text": "When To Go"
+      },
+      {
+        "type": "paragraph",
+        "text": "The trade wind blows strongly in the dry season, which kitesurfers love. For a calmer crossing, leave early in the morning, before the wind picks up."
+      },
+      {
+        "type": "cta",
+        "image": "/uploads/circuits/ramena.png",
+        "title": "Ramena Beach",
+        "subtitle": "The village, the bays and the Emerald Sea",
+        "button": "Discover the destination",
+        "link": "/destinations/ramena-beach"
+      }
+    ],
+    "translations": {
+      "fr": {
+        "title": "Naviguer le long de la côte de Ramena",
+        "excerpt": "La mer d'Émeraude, les trois baies et le village de pêcheurs de Ramena, vus depuis le pont d'un bateau.",
+        "body": [
+          {
+            "text": "Une journée sur l'eau"
+          },
+          {
+            "text": "Ramena est un village de pêcheurs à l'entrée de la baie de Diego Suarez. Depuis sa plage, les bateaux partent le matin vers la mer d'Émeraude, un lagon peu profond aux eaux turquoise et limpides, protégé par un récif."
+          },
+          {
+            "items": [
+              {
+                "lead": "La mer d'Émeraude",
+                "text": "Baignade et snorkeling dans une eau calme et claire, avec du poisson grillé au déjeuner sur la plage."
+              },
+              {
+                "lead": "Les trois baies",
+                "text": "Les baies des Sakalava, des Pigeons et des Dunes, reliées par un sentier côtier pour les marcheurs."
+              },
+              {
+                "lead": "Le Pain de Sucre",
+                "text": "Nosy Lonjo, l'île sacrée au milieu de la baie, vue depuis le bateau."
+              }
+            ]
+          },
+          {
+            "text": "Quand y aller"
+          },
+          {
+            "text": "L'alizé souffle fort pendant la saison sèche, pour le plus grand bonheur des kitesurfeurs. Pour une traversée plus calme, partez tôt le matin, avant que le vent se lève."
+          },
+          {
+            "title": "Ramena",
+            "subtitle": "Le village, les baies et la mer d'Émeraude",
+            "button": "Découvrir la destination"
+          }
+        ]
+      },
+      "de": {
+        "title": "Segeln an der Küste von Ramena"
+      },
+      "it": {
+        "title": "In barca a vela lungo la costa di Ramena"
+      },
+      "es": {
+        "title": "Navegar por la costa de Ramena"
+      }
+    }
+  },
+  {
+    "slug": "a-slow-weekend-in-ambanja-and-nosy-be",
+    "title": "A Slow Weekend In Ambanja And Nosy Be",
+    "excerpt": "Cocoa farms on Saturday, the island on Sunday: a gentle weekend between Ambanja and Nosy Be.",
+    "image": "/uploads/circuits/sambirano-river.png",
+    "date": "2023-09-09",
+    "isFeatured": false,
+    "body": [
+      {
+        "type": "heading",
+        "text": "Saturday In The Sambirano"
+      },
+      {
+        "type": "paragraph",
+        "text": "Start the weekend in the green Sambirano valley around Ambanja. A local guide takes you through cocoa and vanilla plantations, where growers explain how the beans are fermented and dried."
+      },
+      {
+        "type": "list",
+        "items": [
+          {
+            "lead": "Morning",
+            "text": "Visit a plantation and taste fresh cocoa and chocolate."
+          },
+          {
+            "lead": "Afternoon",
+            "text": "Browse the town market for spices, fruit and local crafts."
+          },
+          {
+            "lead": "Evening",
+            "text": "Drive to the Ankify jetty and cross to Nosy Be before sunset."
+          }
+        ]
+      },
+      {
+        "type": "heading",
+        "text": "Sunday On Nosy Be"
+      },
+      {
+        "type": "paragraph",
+        "text": "Spend a slow day on the island: a pirogue trip to the forest of Lokobe, a long lunch by the sea, and the sunset from the top of Mont Passot."
+      },
+      {
+        "type": "cta",
+        "image": "/uploads/circuits/sambirano-river.png",
+        "title": "Ambanja",
+        "subtitle": "Cocoa valleys and the gateway to Nosy Be",
+        "button": "Discover the destination",
+        "link": "/destinations/ambanja"
+      }
+    ],
+    "translations": {
+      "fr": {
+        "title": "Un week-end tranquille à Ambanja et Nosy Be",
+        "excerpt": "Les plantations de cacao le samedi, l'île le dimanche : un week-end tranquille entre Ambanja et Nosy Be.",
+        "body": [
+          {
+            "text": "Samedi dans le Sambirano"
+          },
+          {
+            "text": "Commencez le week-end dans la verte vallée du Sambirano, autour d'Ambanja. Un guide local vous emmène dans les plantations de cacao et de vanille, où les producteurs expliquent comment les fèves sont fermentées et séchées."
+          },
+          {
+            "items": [
+              {
+                "lead": "Le matin",
+                "text": "Visitez une plantation et goûtez le cacao frais et le chocolat."
+              },
+              {
+                "lead": "L'après-midi",
+                "text": "Flânez au marché de la ville parmi les épices, les fruits et l’artisanat local."
+              },
+              {
+                "lead": "Le soir",
+                "text": "Rejoignez l'embarcadère d'Ankify et traversez vers Nosy Be avant le coucher du soleil."
+              }
+            ]
+          },
+          {
+            "text": "Dimanche à Nosy Be"
+          },
+          {
+            "text": "Passez une journée tranquille sur l'île : une sortie en pirogue vers la forêt de Lokobe, un long déjeuner au bord de la mer, et le coucher du soleil depuis le sommet du mont Passot."
+          },
+          {
+            "title": "Ambanja",
+            "subtitle": "Vallées du cacao et porte de Nosy Be",
+            "button": "Découvrir la destination"
+          }
+        ]
+      },
+      "de": {
+        "title": "Ein entspanntes Wochenende in Ambanja und auf Nosy Be"
+      },
+      "it": {
+        "title": "Un weekend lento tra Ambanja e Nosy Be"
+      },
+      "es": {
+        "title": "Un fin de semana tranquilo en Ambanja y Nosy Be"
+      }
+    }
+  },
+  {
+    "slug": "the-complete-guide-to-diego-suarez-bay",
+    "title": "The Complete Guide To Diego Suarez Bay",
+    "excerpt": "Everything you need for the bay of Diego Suarez: where to stay, what to see, how to get around and when to go.",
+    "image": "/uploads/circuits/dunes-bay.png",
+    "date": "2023-08-27",
+    "isFeatured": false,
+    "body": [
+      {
+        "type": "heading",
+        "text": "One Of The Great Bays Of The World"
+      },
+      {
+        "type": "paragraph",
+        "text": "The bay of Diego Suarez is one of the largest natural bays in the world, with a narrow entrance to the ocean and the sacred island of Nosy Lonjo in its centre. The town itself is a good base for the whole north."
+      },
+      {
+        "type": "list",
+        "items": [
+          {
+            "lead": "Where to stay",
+            "text": "In town for restaurants and easy transfers, or in Ramena for a quiet beach."
+          },
+          {
+            "lead": "What to see",
+            "text": "The Emerald Sea, the three bays, the red tsingy and the rainforest of Montagne d’Ambre."
+          },
+          {
+            "lead": "Getting around",
+            "text": "Small tuk-tuks for short trips in town, and a car with a driver for day trips."
+          }
+        ]
+      },
+      {
+        "type": "heading",
+        "text": "When To Go"
+      },
+      {
+        "type": "paragraph",
+        "text": "April to November is dry and sunny, with a strong wind in the middle of the year. The hottest and rainiest months are from December to March."
+      },
+      {
+        "type": "cta",
+        "image": "/uploads/circuits/dunes-bay.png",
+        "title": "Ramena Beach",
+        "subtitle": "The village, the bays and the Emerald Sea",
+        "button": "Discover the destination",
+        "link": "/destinations/ramena-beach"
+      }
+    ],
+    "translations": {
+      "fr": {
+        "title": "Le guide complet de la baie de Diego Suarez",
+        "excerpt": "Tout ce qu’il faut savoir sur la baie de Diego Suarez : où dormir, quoi voir, comment circuler et quand partir.",
+        "body": [
+          {
+            "text": "L’une des grandes baies du monde"
+          },
+          {
+            "text": "La baie de Diego Suarez est l'une des plus grandes baies naturelles du monde, avec une étroite ouverture sur l'océan et l'île sacrée de Nosy Lonjo en son centre. La ville elle-même est une bonne base pour tout le nord."
+          },
+          {
+            "items": [
+              {
+                "lead": "Où dormir",
+                "text": "En ville pour les restaurants et les transferts faciles, ou à Ramena pour une plage tranquille."
+              },
+              {
+                "lead": "Quoi voir",
+                "text": "La mer d'Émeraude, les trois baies, les tsingy rouges et la forêt humide de la Montagne d'Ambre."
+              },
+              {
+                "lead": "Comment circuler",
+                "text": "De petits tuk-tuks pour les courts trajets en ville, et une voiture avec chauffeur pour les excursions."
+              }
+            ]
+          },
+          {
+            "text": "Quand partir"
+          },
+          {
+            "text": "D'avril à novembre, le temps est sec et ensoleillé, avec un vent fort au milieu de l'année. Les mois les plus chauds et les plus pluvieux vont de décembre à mars."
+          },
+          {
+            "title": "Ramena",
+            "subtitle": "Le village, les baies et la mer d'Émeraude",
+            "button": "Découvrir la destination"
+          }
+        ]
+      },
+      "de": {
+        "title": "Der komplette Guide zur Bucht von Diego Suarez"
+      },
+      "it": {
+        "title": "La guida completa alla baia di Diego Suarez"
+      },
+      "es": {
+        "title": "La guía completa de la bahía de Diego Suarez"
+      }
+    }
+  }
+]

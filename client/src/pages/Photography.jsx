@@ -1,6 +1,5 @@
 import React, { useEffect, useLayoutEffect, useRef, useState } from 'react'
 import { createPortal } from 'react-dom'
-import Deux from "../assets/images/2.jpg";
 import Ambanja from "../assets/images/Ambanja.png";
 import NosyLonjo from "../assets/images/NosyLonjo.png";
 import NosyIranja from "../assets/images/NosyIranja.png";
@@ -16,6 +15,7 @@ import OffersStatus from '../components/OffersStatus'
 import { useOffers } from '../utils/useOffers'
 import { gsap } from 'gsap'
 import { ScrollTrigger } from 'gsap/ScrollTrigger'
+import { usePhoto } from '../sitePhotos'
 
 gsap.registerPlugin(ScrollTrigger)
 
@@ -95,15 +95,16 @@ const heroStats = [
 
 // Hero : texte au centre, deux piles de polaroids sur les côtés (plus de superpositions avec le titre)
 function Hero() {
+  const photo = usePhoto()
   const t = useT('photography')
   return (
     <section data-hero-section className="grid grid-cols-1 lg:grid-cols-[1fr_1.7fr_1fr] gap-8 lg:gap-6 items-center min-h-[480px] lg:min-h-[700px] py-6 lg:py-10">
 
       {/* Pile de gauche */}
       <div className="hidden lg:flex flex-col">
-        <Polaroid src={Ramena} speed={-10} tilt="-rotate-6" className="self-start" />
-        <Polaroid src={Ambanja} speed={6} tilt="rotate-3" className="self-end -mt-10 relative z-10" />
-        <Polaroid src={Deux} speed={-6} tilt="-rotate-3" className="self-start -mt-10 relative z-20" />
+        <Polaroid src={photo('photo.hero.1')} speed={-10} tilt="-rotate-6" className="self-start" />
+        <Polaroid src={photo('photo.hero.2')} speed={6} tilt="rotate-3" className="self-end -mt-10 relative z-10" />
+        <Polaroid src={photo('photo.hero.3')} speed={-6} tilt="-rotate-3" className="self-start -mt-10 relative z-20" />
       </div>
 
       {/* Texte */}
@@ -135,14 +136,14 @@ function Hero() {
 
       {/* Pile de droite */}
       <div className="hidden lg:flex flex-col">
-        <Polaroid src={NosyIranja} speed={10} tilt="rotate-6" className="self-end" />
-        <Polaroid src={NosyLonjo} speed={-6} tilt="-rotate-3" className="self-start -mt-10 relative z-10" />
-        <Polaroid src={Tana} speed={6} tilt="rotate-3" className="self-end -mt-10 relative z-20" />
+        <Polaroid src={photo('photo.hero.4')} speed={10} tilt="rotate-6" className="self-end" />
+        <Polaroid src={photo('photo.hero.5')} speed={-6} tilt="-rotate-3" className="self-start -mt-10 relative z-10" />
+        <Polaroid src={photo('photo.hero.6')} speed={6} tilt="rotate-3" className="self-end -mt-10 relative z-20" />
       </div>
 
       {/* Tablette / mobile : rangée de photos sous le texte */}
       <div data-hero className="lg:hidden grid grid-cols-3 md:grid-cols-6 gap-3">
-        {[Ramena, Ambanja, Tana, NosyIranja, NosyLonjo, Deux].map((src, i) => (
+        {[1, 2, 6, 4, 5, 3].map((n) => photo(`photo.hero.${n}`)).map((src, i) => (
           <img key={i} src={src} alt="" className="w-full aspect-square object-cover rounded-xl" />
         ))}
       </div>
@@ -311,6 +312,7 @@ function Sessions() {
 
 // Comparateur avant / après (le curseur s'ouvre tout seul au défilement)
 function BeforeAfter() {
+  const photo = usePhoto()
   const t = useT('photography')
   const steps = localize(STEPS, t('steps'))
   const [pos, setPos] = useState(() => (prefersReducedMotion() ? 50 : 100)) // % de la photo "après" visible
@@ -347,9 +349,9 @@ function BeforeAfter() {
 
       <div ref={boxRef} className="relative aspect-[4/3] overflow-hidden rounded-3xl select-none">
         {/* Avant : photo terne */}
-        <img src={NosyIranja} alt={t('beforeAlt')} className="absolute inset-0 w-full h-full object-cover" style={{ filter: 'saturate(0.45) contrast(0.85) brightness(0.9)' }} />
+        <img src={photo('photo.edit')} alt={t('beforeAlt')} className="absolute inset-0 w-full h-full object-cover" style={{ filter: 'saturate(0.45) contrast(0.85) brightness(0.9)' }} />
         {/* Après : photo retouchée, révélée par le curseur */}
-        <img src={NosyIranja} alt={t('afterAlt')} className="absolute inset-0 w-full h-full object-cover" style={{ clipPath: `inset(0 ${100 - pos}% 0 0)` }} />
+        <img src={photo('photo.edit')} alt={t('afterAlt')} className="absolute inset-0 w-full h-full object-cover" style={{ clipPath: `inset(0 ${100 - pos}% 0 0)` }} />
 
         <span className="absolute left-4 top-4 rounded-full bg-[#084838] px-3 py-1 text-xs md:text-sm text-white">{t('after')}</span>
         <span className="absolute right-4 top-4 rounded-full bg-white/90 px-3 py-1 text-xs md:text-sm text-slate-800">{t('before')}</span>
@@ -428,10 +430,11 @@ function Faq() {
 
 // CTA : grande image centrée
 function Cta() {
+  const photo = usePhoto()
   const t = useT('photography')
   return (
     <div className={`${SECTION_GAP} relative overflow-hidden rounded-3xl min-h-[420px] md:min-h-[520px] flex items-center justify-center text-center text-white`}>
-      <img src={Ramena} alt="" className="absolute inset-0 w-full h-full object-cover" />
+      <img src={photo('photo.cta')} alt="" className="absolute inset-0 w-full h-full object-cover" />
       <div className="absolute inset-0 bg-black/55" />
       <div className="relative px-6 py-12 max-w-3xl">
         <h2 className="text-3xl sm:text-4xl md:text-6xl font-medium leading-[1.15] tracking-tight">{t('ctaTitle')}</h2>

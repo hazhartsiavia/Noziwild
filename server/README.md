@@ -69,6 +69,10 @@ Le site a un espace d'administration sur `/admin`, réservé aux comptes `admin`
 - **Offers** : activités, excursions, excursions croisière, formules long séjour et idées sur mesure (mêmes réglages),
   et les catalogues des pages de services : hébergements, transports, guides, expériences culinaires, séances photo,
   galerie photo, matériel à louer, billets.
+- **Blog** : articles du journal (`/blog` et `/blog/:slug`) : titre, date, couverture, « à la une », corps en blocs
+  (intertitre, paragraphe, liste, photo, bandeau d'offre), dans les 5 langues.
+- **Photos** : les bannières, grands blocs et cartes de chaque page (132 emplacements), à remplacer par une photo
+  de la bibliothèque ; retirer la photo remet celle d'origine.
 - **Texts** : tous les textes des pages (titres, paragraphes, boutons, FAQ, pied de page...), dans les 5 langues.
 - **Inbox** : demandes de devis « Mon voyage » (avec leur statut), questions reçues (formulaires, sur-mesure, contact), newsletter, comptes.
 
@@ -192,6 +196,30 @@ forme (listes alignées sur l'anglais). L'adresse d'un lieu vient de son nom ang
 | DELETE | `/api/admin/destinations/:slug` | Supprime une destination |
 
 Les cartes des régions (accueil et `/destinations`) restent des textes de page : admin, onglet **Texts**, page *Home*.
+
+## Blog
+
+Les articles sont dans la table `blog_posts`. Le corps (`body`) est une liste de blocs : `heading { text }`,
+`paragraph { text }` (une ligne vide fait un nouveau paragraphe), `list { items[] { lead, text } }` (mot-clé en gras),
+`image { image, caption }` et `cta { image, title, subtitle, priceLabel, button, link }` (bandeau d'offre).
+Les autres langues sont dans `translations`, blocs alignés sur l'anglais. Le temps de lecture est calculé à
+l'enregistrement (200 mots par minute). Les 3 articles « à la une » les plus récents ouvrent la page `/blog`.
+Au premier démarrage, les 9 articles de `sql/blog.seed.json` sont ajoutés si la table est vide.
+
+| Méthode | Route | Rôle |
+|---|---|---|
+| GET | `/api/posts?lang=fr` | Articles publiés, les plus récents d'abord (sans le corps) |
+| GET | `/api/posts/:slug?lang=fr` | Un article + 3 autres articles récents (`related`) |
+| GET | `/api/admin/posts` | Tous les articles, publiés ou non |
+| GET / POST / PUT / DELETE | `/api/admin/posts/:slug` | Lire, créer (`POST /api/admin/posts`), remplacer, supprimer |
+| PATCH | `/api/admin/posts/:slug` | Réglages rapides : `isPublished`, `isFeatured` |
+
+## Photos des pages
+
+Chaque emplacement de photo (`blog.hero`, `region.north.2`...) a sa photo d'origine dans le site
+(`client/src/sitePhotos.jsx`, qui liste aussi les emplacements de l'admin). La table `site_images` ne garde que
+les photos remplacées. Le site les lit sur `GET /api/images` ; l'admin les change avec
+`PUT /api/admin/images/:emplacement` `{ path }` et les retire avec `DELETE` (retour à l'origine).
 
 ## Textes du site modifiés depuis l'admin
 

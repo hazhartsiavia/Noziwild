@@ -1,15 +1,12 @@
-import React, { useLayoutEffect, useRef } from 'react'
-import Ramena from '../assets/images/Ramena.png'
-import NosyIranja from '../assets/images/NosyIranja.png'
-import NosyLonjo from '../assets/images/NosyLonjo.png'
-import Ambanja from '../assets/images/Ambanja.png'
-import Deux from '../assets/images/2.jpg'
-import Tana from '../assets/images/Tana.png'
+import React, { useEffect, useLayoutEffect, useRef, useState } from 'react'
 import Navbar from '../components/Navbar'
 import Footer from '../components/Footer'
+import OffersStatus from '../components/OffersStatus'
 import { gsap } from 'gsap'
 import { ScrollTrigger } from 'gsap/ScrollTrigger'
+import { assetUrl, fetchPosts } from '../api'
 import { useLanguage, useT } from '../i18n/LanguageContext'
+import { usePhoto } from '../sitePhotos'
 import { formatDate } from '../utils/format'
 
 gsap.registerPlugin(ScrollTrigger)
@@ -20,32 +17,30 @@ const META_TEXT = 'text-xs sm:text-sm'
 const PAGE_TITLE = 'text-5xl sm:text-6xl md:text-7xl lg:text-[80px] font-bold uppercase leading-none tracking-tight'
 const BADGE = 'inline-block bg-[#C49849] text-white text-xs sm:text-sm font-medium px-3 py-1.5 rounded-sm'
 
-// Titres : locales/<langue>/blog.json (featured et posts, dans cet ordre). Dates au format AAAA-MM-JJ.
-const featured = {
-  image: NosyIranja,
-  posts: [
-    { id: 1, date: '2025-11-20', thumb: Deux },
-    { id: 2, date: '2025-11-11', thumb: Ambanja },
-    { id: 3, date: '2025-10-14', thumb: NosyLonjo },
-  ],
+// Articles : dans la base, gérés depuis /admin/blog. « À la une » : les 3 plus récents cochés comme tels.
+export function usePosts() {
+  const { lang } = useLanguage()
+  const [state, setState] = useState({ posts: [], status: 'loading' })
+  useEffect(() => {
+    let cancelled = false
+    fetchPosts(lang)
+      .then(({ posts }) => !cancelled && setState({ posts: posts.map((p) => ({ ...p, image: assetUrl(p.image) })), status: 'ready' }))
+      .catch(() => !cancelled && setState((s) => ({ ...s, status: 'error' })))
+    return () => {
+      cancelled = true
+    }
+  }, [lang])
+  return state
 }
-
-const posts = [
-  { id: 1, image: Deux, date: '2023-11-17', minutes: 6 },
-  { id: 2, image: Tana, date: '2023-10-18', minutes: 6 },
-  { id: 3, image: NosyIranja, date: '2023-10-05', minutes: 6 },
-  { id: 4, image: Ramena, date: '2023-09-22', minutes: 5 },
-  { id: 5, image: Ambanja, date: '2023-09-09', minutes: 7 },
-  { id: 6, image: NosyLonjo, date: '2023-08-27', minutes: 4 },
-]
 
 function BlogHero() {
   const t = useT('blog')
+  const photo = usePhoto()
   return (
     <>
       <Navbar />
       <section className={`${SECTION_WIDTH} relative flex items-center overflow-hidden rounded-3xl bg-[#084838] text-white min-h-[100px] md:min-h-[360px]`}>
-        <img src={Ramena} alt="" className="absolute inset-0 w-full h-full object-cover" />
+        <img src={photo('blog.hero')} alt="" className="absolute inset-0 w-full h-full object-cover" />
         <div className="absolute inset-0 bg-slate-950/60" />
         <div className="relative w-full max-w-5xl mx-auto px-6 md:px-10 py-16">
           <h1 className={PAGE_TITLE}>{t('title')}</h1>
@@ -59,31 +54,59 @@ function BlogHero() {
   )
 }
 
-function FeaturedJournal() {
+function FeaturedJournal({ posts }) {
   const t = useT('blog')
   const { lang } = useLanguage()
   return (
     <div className="grid grid-cols-1 lg:grid-cols-[5fr_7fr] overflow-hidden rounded-3xl bg-white">
-      <div className="relative min-h-[260px] sm:min-h-[340px] lg:min-h-full">
-        <img src={featured.image} alt={t('imageAlt')} className="absolute inset-0 w-full h-full object-cover" />
-      </div>
+      <a href={`/blog/${posts[0].slug}`} className="relative block min-h-[260px] sm:min-h-[340px] lg:min-h-full">
+        <img src={posts[0].image} alt={t('imageAlt')} className="absolute inset-0 w-full h-full object-cover" />
+      </a>
       <ul className="flex flex-col divide-y divide-slate-200 px-5 py-2 md:px-12 md:py-6">
-        {featured.posts.map((post, i) => <li key={post.id}><a href="#" className="group flex items-center justify-between gap-4 py-6 text-slate-800"><div><span className={BADGE}>{formatDate(post.date, lang)}</span><h3 className="mt-4 text-lg md:text-2xl leading-snug group-hover:underline">{t('featured')[i]}</h3></div><img src={post.thumb} alt="" className="shrink-0 w-24 h-24 sm:w-40 sm:h-32 rounded-xl object-cover" /></a></li>)}
+        {posts.map((post) => (
+          <li key={post.slug}>
+            <a href={`/blog/${post.slug}`} className="group flex items-center justify-between gap-4 py-6 text-slate-800">
+              <div>
+                <span className={BADGE}>{formatDate(post.date, lang)}</span>
+                <h3 className="mt-4 text-lg md:text-2xl leading-snug group-hover:underline">{post.title}</h3>
+              </div>
+              <img src={post.image} alt="" className="shrink-0 w-24 h-24 sm:w-40 sm:h-32 rounded-xl object-cover" />
+            </a>
+          </li>
+        ))}
       </ul>
     </div>
   )
 }
 
-function PostCard({ post, title }) {
+export function PostCard({ post }) {
   const t = useT('blog')
   const { lang } = useLanguage()
-  return <a href="#" className="group flex flex-col rounded-xl bg-white p-3 text-slate-800"><div className="aspect-[4/3] overflow-hidden rounded-md"><img src={post.image} alt={title} className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" /></div><div className="px-3 pt-6 pb-6"><p className={`flex items-center gap-3 ${META_TEXT} text-slate-600`}><span>{formatDate(post.date, lang)}</span><span className="w-px h-4 bg-slate-700" /><span>{t('readTime', { count: post.minutes })}</span></p><h3 className="mt-4 text-xl md:text-2xl leading-snug group-hover:underline">{title}</h3></div></a>
+  return (
+    <a href={`/blog/${post.slug}`} className="group flex flex-col rounded-xl bg-white p-3 text-slate-800">
+      <div className="aspect-[4/3] overflow-hidden rounded-md">
+        <img src={post.image} alt={post.title} className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" />
+      </div>
+      <div className="px-3 pt-6 pb-6">
+        <p className={`flex items-center gap-3 ${META_TEXT} text-slate-600`}>
+          <span>{formatDate(post.date, lang)}</span>
+          <span className="w-px h-4 bg-slate-700" />
+          <span>{t('readTime', { count: post.minutes })}</span>
+        </p>
+        <h3 className="mt-4 text-xl md:text-2xl leading-snug group-hover:underline">{post.title}</h3>
+      </div>
+    </a>
+  )
 }
 
 function Blog() {
   const t = useT('blog')
   const mainRef = useRef(null)
   const bgRef = useRef(null)
+  const { posts, status } = usePosts()
+  const featured = posts.filter((p) => p.isFeatured).slice(0, 3)
+  // Sans article à la une, tout va dans la grille
+  const grid = featured.length ? posts.filter((p) => !featured.includes(p)) : posts
 
   useLayoutEffect(() => {
     const ctx = gsap.context(() => {
@@ -138,14 +161,16 @@ function Blog() {
               </h2>
             </div>
 
-            <FeaturedJournal />
+            <OffersStatus status={status} empty={posts.length === 0} />
+
+            {featured.length > 0 && <FeaturedJournal posts={featured} />}
 
             {/* Grille d'articles */}
-            <div className="mt-10 md:mt-16 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-9">
-              {posts.map((post, i) => (
-                <PostCard key={post.id} post={post} title={t('posts')[i]} />
-              ))}
-            </div>
+            {grid.length > 0 && (
+              <div className="mt-10 md:mt-16 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-9">
+                {grid.map((post) => <PostCard key={post.slug} post={post} />)}
+              </div>
+            )}
           </section>
         </div>
       </main>

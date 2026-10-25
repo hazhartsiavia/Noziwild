@@ -62,6 +62,13 @@ export const fetchOffers = (kind, lang = 'en') => getJSON(`/offers?kind=${kind}&
 // Destinations et leurs lieux à visiter, dans la langue du site
 export const fetchDestinations = (lang = 'en') => getJSON(`/destinations?lang=${lang}`)
 
+// Blog : liste (sans le corps), puis un article avec 3 autres articles récents
+export const fetchPosts = (lang = 'en') => getJSON(`/posts?lang=${lang}`)
+export const fetchPost = (slug, lang = 'en') => getJSON(`/posts/${encodeURIComponent(slug)}?lang=${lang}`)
+
+// Photos des pages remplacées depuis l'admin : { images: { 'blog.hero': '/uploads/...' } }
+export const fetchSitePhotos = () => getJSON('/images')
+
 // Textes du site modifiés depuis l'admin, d'une langue : { texts: { home: {...}, ... } }
 export const fetchTexts = (lang = 'en') => getJSON(`/texts?lang=${lang}`)
 
@@ -114,6 +121,16 @@ export const adminCreateDestination = (destination) => postJSON('/admin/destinat
 export const adminUpdateDestination = (slug, destination) => putJSON(destinationPath(slug), destination)
 export const adminPatchDestination = (slug, changes) => patchJSON(destinationPath(slug), changes)
 export const adminDeleteDestination = (slug) => deleteJSON(destinationPath(slug))
+const postPath = (slug) => `/admin/posts/${encodeURIComponent(slug)}`
+export const adminFetchPosts = () => getJSON('/admin/posts')
+export const adminFetchPost = (slug) => getJSON(postPath(slug))
+export const adminCreatePost = (post) => postJSON('/admin/posts', post)
+export const adminUpdatePost = (slug, post) => putJSON(postPath(slug), post)
+export const adminPatchPost = (slug, changes) => patchJSON(postPath(slug), changes)
+export const adminDeletePost = (slug) => deleteJSON(postPath(slug))
+// Photos des pages : remplacer celle d'un emplacement, ou revenir à celle d'origine
+export const adminSaveSitePhoto = (key, path) => putJSON(`/admin/images/${encodeURIComponent(key)}`, { path })
+export const adminResetSitePhoto = (key) => deleteJSON(`/admin/images/${encodeURIComponent(key)}`)
 // Textes du site : fichiers modifiés, puis textes modifiés d'un fichier (toutes les langues)
 const textsPath = (namespace, lang) => `/admin/texts/${encodeURIComponent(namespace)}${lang ? `/${lang}` : ''}`
 export const adminFetchTextFiles = () => getJSON('/admin/texts')

@@ -11,6 +11,7 @@ import { localize } from '../i18n/localize';
 import OffersStatus from '../components/OffersStatus'
 import { useOffers } from '../utils/useOffers'
 import { useScrollReveal } from '../utils/useScrollReveal'
+import { usePhoto } from '../sitePhotos'
 
 /* Constantes partagées : mêmes valeurs que dans les autres pages */
 const SECTION_WIDTH = "w-[90vw] lg:max-w-[90vw] xl:max-w-[95vw]"
@@ -120,10 +121,11 @@ const PlusIcon = ({ open }) => (
 /* -------------------------- Composants --------------------------- */
 
 function Hero() {
+  const photo = usePhoto()
   const t = useT('accommodation')
   return (
     <section className={`${SECTION_WIDTH} relative flex items-center overflow-hidden rounded-3xl bg-[#084838] text-white min-h-[240px] md:min-h-[360px]`}>
-      <img src={NosyLonjo} alt="" className="absolute inset-0 w-full h-full object-cover" />
+      <img src={photo('hosting.hero')} alt="" className="absolute inset-0 w-full h-full object-cover" />
       <div className="absolute inset-0 bg-slate-950/60" />
       <div className="relative w-full max-w-5xl mx-auto px-6 md:px-10 py-16">
         <h1 className={PAGE_TITLE}>{t('title')}</h1>
@@ -226,12 +228,13 @@ function Stays({ stays, status }) {
 }
 
 function Featured({ stays }) {
+  const photo = usePhoto()
   const t = useT('accommodation')
   const featured = localize(FEATURED, t('featured'))
   const stay = stays.find((s) => s.name === featured.name)
   return (
     <div className={`${SECTION_GAP} relative overflow-hidden rounded-3xl bg-[#084838] text-white min-h-[480px] md:min-h-[560px]`}>
-      <img src={featured.image} alt={featured.name} className="absolute inset-0 w-full h-full object-cover" />
+      <img src={photo('hosting.featured')} alt={featured.name} className="absolute inset-0 w-full h-full object-cover" />
       <div className="absolute inset-0 bg-gradient-to-r from-black/80 via-black/30 to-black/10" />
       <div className="relative min-h-[inherit] flex flex-col justify-end p-5 md:p-10 max-w-2xl">
         <span className={`${BADGE} self-start`}>{featured.label}</span>
@@ -244,7 +247,7 @@ function Featured({ stays }) {
         <AddToTrip
           variant="gold"
           className="mt-6 self-start"
-          item={{ kind: 'stay', ref: String(stay?.id ?? 'featured'), title: featured.name, image: featured.image, link: '/hosting', details: featured.place, price: stay?.price ?? null, unit: 'night', qty: 3 }}
+          item={{ kind: 'stay', ref: String(stay?.id ?? 'featured'), title: featured.name, image: photo('hosting.featured'), link: '/hosting', details: featured.place, price: stay?.price ?? null, unit: 'night', qty: 3 }}
         />
       </div>
     </div>
@@ -328,10 +331,11 @@ function Faq() {
 }
 
 function Cta() {
+  const photo = usePhoto()
   const t = useT('accommodation')
   return (
     <div className={`${SECTION_GAP} relative overflow-hidden rounded-3xl min-h-[380px] md:min-h-[460px] flex`}>
-      <img src={Ramena} alt="" className="absolute inset-0 w-full h-full object-cover" />
+      <img src={photo('hosting.cta')} alt="" className="absolute inset-0 w-full h-full object-cover" />
       <div className="absolute inset-0 bg-gradient-to-r from-black/70 via-black/40 to-black/10" />
       <div className="relative flex flex-col justify-end p-6 md:p-12 max-w-2xl">
         <h2 className={ON_IMAGE_TITLE}>{t('ctaTitle')}</h2>

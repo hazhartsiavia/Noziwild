@@ -38,6 +38,8 @@ import {
   patchDestination,
   deleteDestination,
 } from '../controllers/destinationsController.js'
+import { listPosts, getPost, adminListPosts, adminGetPost, createPost, updatePost, patchPost, deletePost } from '../controllers/postsController.js'
+import { listImages, adminSaveImage, adminResetImage } from '../controllers/imagesController.js'
 import { requireAdmin } from '../middlewares/requireAdmin.js'
 import { rateLimit } from '../middlewares/rateLimit.js'
 import { loadUser } from '../middlewares/auth.js'
@@ -87,8 +89,13 @@ router.get('/texts', listTexts)
 // Destinations et lieux à visiter (pages /destinations/...)
 router.get('/destinations', listDestinations)
 
+// Blog, et photos des pages remplacées depuis l'admin
+router.get('/posts', listPosts)
+router.get('/posts/:slug', getPost)
+router.get('/images', listImages)
+
 // Gestion des circuits, des offres, des destinations, des photos, des textes et des devis (réservé à l'équipe Noziwild)
-// Déclarées avant /admin/:resource, sinon "circuits", "offers", "destinations", "texts" ou "quotes" serait pris pour une ressource générique
+// Déclarées avant /admin/:resource, sinon "circuits", "offers", "destinations", "posts", "texts" ou "quotes" serait pris pour une ressource générique
 router.get('/admin/circuits', requireAdmin, adminListCircuits)
 router.get('/admin/circuits/:slug', requireAdmin, adminGetCircuit)
 router.post('/admin/circuits', requireAdmin, createCircuit)
@@ -111,6 +118,14 @@ router.post('/admin/destinations', requireAdmin, createDestination)
 router.put('/admin/destinations/:slug', requireAdmin, updateDestination)
 router.patch('/admin/destinations/:slug', requireAdmin, patchDestination)
 router.delete('/admin/destinations/:slug', requireAdmin, deleteDestination)
+router.get('/admin/posts', requireAdmin, adminListPosts)
+router.get('/admin/posts/:slug', requireAdmin, adminGetPost)
+router.post('/admin/posts', requireAdmin, createPost)
+router.put('/admin/posts/:slug', requireAdmin, updatePost)
+router.patch('/admin/posts/:slug', requireAdmin, patchPost)
+router.delete('/admin/posts/:slug', requireAdmin, deletePost)
+router.put('/admin/images/:key', requireAdmin, adminSaveImage)
+router.delete('/admin/images/:key', requireAdmin, adminResetImage)
 router.get('/admin/texts', requireAdmin, adminListTexts)
 router.get('/admin/texts/:namespace', requireAdmin, adminGetTexts)
 router.put('/admin/texts/:namespace/:lang', requireAdmin, adminSaveTexts)

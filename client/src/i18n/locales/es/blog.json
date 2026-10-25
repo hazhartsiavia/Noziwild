@@ -3,20 +3,11 @@
   "home": "Inicio",
   "crumb": "Blog",
   "imageAlt": "Una tranquila piscina infinita al atardecer",
-  "featured": [
-    "Descubra destinos fuera de las rutas turísticas habituales",
-    "De los resorts de playa a las bahías escondidas: los lugares favoritos de las familias",
-    "Disfrute del lujo de nuestros alojamientos seleccionados en la isla"
-  ],
-  "posts": [
-    "Una aventura de fauna salvaje en el norte de Madagascar",
-    "Explorar las Tierras Altas alrededor de Antananarivo en invierno",
-    "De las playas a los baobabs: todo lo que hay que saber",
-    "Navegar por la costa de Ramena",
-    "Un fin de semana tranquilo en Ambanja y Nosy Be",
-    "La guía completa de la bahía de Diego Suarez"
-  ],
   "readTime": "{count} min de lectura",
   "eyebrow": "De nuestro diario",
-  "heading": "De nuestro diario de viaje"
+  "heading": "De nuestro diario de viaje",
+  "related": "Más de nuestro diario de viaje",
+  "allArticles": "Todos los artículos",
+  "notFoundTitle": "Este artículo no está disponible",
+  "notFoundText": "Puede que se haya movido o retirado. Descubra nuestras otras historias."
 }

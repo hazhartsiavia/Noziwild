@@ -19,6 +19,7 @@ import bg4Small from '../assets/images/hero/bg4-1200.jpg'
 import bg5 from '../assets/images/hero/bg5-2400.jpg'
 import bg5Small from '../assets/images/hero/bg5-1200.jpg'
 import './homeHero.css'
+import { usePhoto } from '../sitePhotos'
 
 gsap.registerPlugin(ScrollTrigger)
 
@@ -32,6 +33,17 @@ const slides = [
 ]
 const SLIDE_DURATION = 7
 const srcSet = (s) => `${s.small} 1200w, ${s.image} 2400w`
+// Taille servie selon l'écran ; une photo remplacée dans l'admin n'a qu'une taille
+const imgProps = (s) => (s.small ? { src: s.image, srcSet: srcSet(s), sizes: '100vw' } : { src: s.image })
+
+// Diapositives avec les photos choisies dans l'admin (emplacements home.hero.1 à 5)
+function useSlides() {
+  const photo = usePhoto()
+  return slides.map((s, i) => {
+    const custom = photo(`home.hero.${i + 1}`)
+    return custom === s.image ? s : { ...s, image: custom, small: null }
+  })
+}
 
 const reduceMotion =() => window.matchMedia('(prefers-reduced-motion: reduce)').matches
 
@@ -55,6 +67,7 @@ const imageReady = (img, timeout = 4000) =>
 /* ----------------------------- Preloader ----------------------------- */
 
 export function Preloader({ onDone }) {
+  const slides = useSlides()
   const root = useRef(null)
 
   useLayoutEffect(() => {
@@ -130,7 +143,7 @@ export function Preloader({ onDone }) {
           </div>
         </div>
         <div className="nzpl__window">
-          <img src={slides[0].image} srcSet={srcSet(slides[0])} sizes="100vw" alt="" fetchPriority="high" />
+          <img {...imgProps(slides[0])} alt="" fetchPriority="high" />
           <span className="nzpl__shade" />
         </div>
         <div className="nzpl__mask">
@@ -147,6 +160,7 @@ export function Preloader({ onDone }) {
 
 // ready : le preloader est terminé (ou n'a pas lieu d'être), le hero peut faire son entrée
 export function Hero({ ready }) {
+  const slides = useSlides()
   const root = useRef(null)
   const bar = useRef(null)
   const card = useRef(null)
@@ -247,7 +261,7 @@ export function Hero({ ready }) {
       <div className="nzh__media" aria-hidden="true">
         {slides.map((s, i) => (
           <div key={s.image} className={`nzh__slide${i === index ? ' is-active' : ''}${i === leaving ? ' is-leaving' : ''}`}>
-            <img src={s.image} srcSet={srcSet(s)} sizes="100vw" alt="" loading={i === 0 ? undefined : 'lazy'} fetchPriority={i === 0 ? 'high' : undefined} />
+            <img {...imgProps(s)} alt="" loading={i === 0 ? undefined : 'lazy'} fetchPriority={i === 0 ? 'high' : undefined} />
           </div>
         ))}
       </div>

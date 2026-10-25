@@ -17,6 +17,7 @@ import { slugify } from './destinationsData'
 import { Hero, Preloader, shouldPlayPreloader } from './HomeHero'
 import { useLanguage, useT } from '../i18n/LanguageContext'
 import { monthName } from '../utils/format'
+import { usePhoto } from '../sitePhotos'
 
 gsap.registerPlugin(ScrollTrigger)
 
@@ -38,10 +39,10 @@ const quoteHref = (k, v) => `/contact?type=quote&${k}=${encodeURIComponent(v)}`
 
 // Les 4 façons de voyager
 const ways = [
-  { title: 'Circuits', text: 'Ready-made routes across the island', href: '/circuits', icon: Route, image: Tana },
-  { title: 'Excursions', text: 'Day trips and short escapes', href: '/excurssions', icon: Sun, image: Ramena },
-  { title: 'Long Stay', text: 'Live the island for weeks', href: '/longstay', icon: Compass, image: NosyIranja },
-  { title: 'Tailor-Made', text: 'A trip designed around you', href: '/tailor-made', icon: Sparkles, image: Ambanja },
+  { title: 'Circuits', text: 'Ready-made routes across the island', href: '/circuits', icon: Route, slot: 'home.ways.1', image: Tana },
+  { title: 'Excursions', text: 'Day trips and short escapes', href: '/excurssions', icon: Sun, slot: 'home.ways.2', image: Ramena },
+  { title: 'Long Stay', text: 'Live the island for weeks', href: '/longstay', icon: Compass, slot: 'home.ways.3', image: NosyIranja },
+  { title: 'Tailor-Made', text: 'A trip designed around you', href: '/tailor-made', icon: Sparkles, slot: 'home.ways.4', image: Ambanja },
 ]
 
 const promises = [
@@ -54,36 +55,36 @@ const promises = [
 // Mêmes régions que la page Destinations (version courte)
 const regions = [
   {
-    id: 'north', name: 'The North', tagline: 'Emerald bays, spice islands and dry forests', image: NosyIranja, months: [4, 11],
+    id: 'north', name: 'The North', tagline: 'Emerald bays, spice islands and dry forests', slot: 'region.north', image: NosyIranja, months: [4, 11],
     text: 'Sail the bay of Diego Suarez, hike the sharp limestone of Ankarana and finish on the islands around Nosy Be.',
-    places: [{ name: 'Ramena Beach', image: Ramena }, { name: 'Nosy Iranja', image: NosyIranja }, { name: 'Ambanja', image: Ambanja }],
+    places: [{ name: 'Ramena Beach', slot: 'region.north.1', image: Ramena }, { name: 'Nosy Iranja', slot: 'region.north.2', image: NosyIranja }, { name: 'Ambanja', slot: 'region.north.3', image: Ambanja }],
   },
   {
-    id: 'highlands', name: 'The Highlands', tagline: 'Royal hills, rice terraces and cool mornings', image: Tana, months: [5, 10],
+    id: 'highlands', name: 'The Highlands', tagline: 'Royal hills, rice terraces and cool mornings', slot: 'region.highlands', image: Tana, months: [5, 10],
     text: 'Start in Antananarivo, climb to the royal hill of Ambohimanga and ride south through the terraced valleys to Antsirabe.',
-    places: [{ name: 'Antananarivo', image: Tana }, { name: 'Ambohimanga', image: Deux }, { name: 'Antsirabe', image: Ambanja }],
+    places: [{ name: 'Antananarivo', slot: 'region.highlands.1', image: Tana }, { name: 'Ambohimanga', slot: 'region.highlands.2', image: Deux }, { name: 'Antsirabe', slot: 'region.highlands.3', image: Ambanja }],
   },
   {
-    id: 'west', name: 'The West', tagline: 'Baobab avenues and stone forests', image: Deux, months: [5, 10],
+    id: 'west', name: 'The West', tagline: 'Baobab avenues and stone forests', slot: 'region.west', image: Deux, months: [5, 10],
     text: 'Drive the famous Baobab Avenue at sunset, then cross the river to walk the Tsingy of Bemaraha.',
-    places: [{ name: 'Baobab Avenue', image: Deux }, { name: 'Morondava', image: NosyLonjo }, { name: 'Tsingy de Bemaraha', image: Ambanja }],
+    places: [{ name: 'Baobab Avenue', slot: 'region.west.1', image: Deux }, { name: 'Morondava', slot: 'region.west.2', image: NosyLonjo }, { name: 'Tsingy de Bemaraha', slot: 'region.west.3', image: Ambanja }],
   },
   {
-    id: 'south', name: 'The South', tagline: 'Canyons, white sand and coastal villages', image: NosyLonjo, months: [4, 11],
+    id: 'south', name: 'The South', tagline: 'Canyons, white sand and coastal villages', slot: 'region.south', image: NosyLonjo, months: [4, 11],
     text: 'Hike the sandstone canyons of Isalo, swim in natural pools and end the trip on the Vezo coast.',
-    places: [{ name: 'Isalo', image: NosyLonjo }, { name: 'Ifaty coast', image: Ramena }, { name: 'Fort Dauphin', image: NosyIranja }],
+    places: [{ name: 'Isalo', slot: 'region.south.1', image: NosyLonjo }, { name: 'Ifaty coast', slot: 'region.south.2', image: Ramena }, { name: 'Fort Dauphin', slot: 'region.south.3', image: NosyIranja }],
   },
   {
-    id: 'east', name: 'The East', tagline: 'Rainforest, lemurs and island beaches', image: Ambanja, months: [9, 12],
+    id: 'east', name: 'The East', tagline: 'Rainforest, lemurs and island beaches', slot: 'region.east', image: Ambanja, months: [9, 12],
     text: 'Listen for the indri at dawn in Andasibe, then take a boat to Ile Sainte-Marie or into the Masoala peninsula.',
-    places: [{ name: 'Andasibe', image: Ambanja }, { name: 'Ile Sainte-Marie', image: NosyIranja }, { name: 'Masoala', image: Tana }],
+    places: [{ name: 'Andasibe', slot: 'region.east.1', image: Ambanja }, { name: 'Ile Sainte-Marie', slot: 'region.east.2', image: NosyIranja }, { name: 'Masoala', slot: 'region.east.3', image: Tana }],
   },
 ]
 
 const trips = [
-  { name: 'Highlands & Coast', days: 7, image: Tana, text: 'From lemur forests to a quiet bay, a slow week that mixes culture, nature and the sea.', tags: ['Andasibe forest', 'Village stays', 'Ramena sunsets'], months: [10, 11, 12] },
-  { name: 'Island Escape', days: 5, image: NosyIranja, text: 'White sand, turquoise water and days that end on a boat.' },
-  { name: 'Wild North', days: 10, image: Deux, text: 'Baobabs, canyons and empty beaches, for the ones who want more.' },
+  { name: 'Highlands & Coast', days: 7, slot: 'home.trips.1', image: Tana, text: 'From lemur forests to a quiet bay, a slow week that mixes culture, nature and the sea.', tags: ['Andasibe forest', 'Village stays', 'Ramena sunsets'], months: [10, 11, 12] },
+  { name: 'Island Escape', days: 5, slot: 'home.trips.2', image: NosyIranja, text: 'White sand, turquoise water and days that end on a boat.' },
+  { name: 'Wild North', days: 10, slot: 'home.trips.3', image: Deux, text: 'Baobabs, canyons and empty beaches, for the ones who want more.' },
 ]
 
 const services = [
@@ -166,6 +167,7 @@ function TalkBadge() {
 
 /* Les 4 façons de voyager : cartes photo (même style que les cartes de la page Destinations) */
 function Ways() {
+  const photo = usePhoto()
   const root = useRef(null)
   const t = useT('home')
 
@@ -188,7 +190,7 @@ function Ways() {
           return (
             <li key={way.href} className="way-card">
               <a href={w.href} className="group relative block aspect-[3/4] overflow-hidden rounded-[1.5rem] md:rounded-[2rem] text-white focus:outline-none focus-visible:ring-4 focus-visible:ring-[#084838]">
-                <img src={w.image} alt="" className="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" />
+                <img src={photo(w.slot)} alt="" className="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" />
                 <div className="absolute inset-0 bg-gradient-to-t from-slate-950/85 via-slate-950/10 to-transparent" />
                 <span className="absolute left-4 top-4 md:left-5 md:top-5 w-10 h-10 md:w-12 md:h-12 rounded-full bg-white/15 backdrop-blur-md border border-white/30 flex items-center justify-center">
                   <WayIcon className="w-5 h-5 md:w-6 md:h-6" strokeWidth={1.6} aria-hidden="true" />
@@ -260,6 +262,7 @@ function Intro() {
 
 /* Les régions : onglets + aperçu (même style que la page Destinations) */
 function Regions() {
+  const photo = usePhoto()
   const root = useRef(null)
   const panel = useRef(null)
   const t = useT('home')
@@ -312,7 +315,7 @@ function Regions() {
 
       <div ref={panel} id="region-panel" role="tabpanel" className="mt-8 md:mt-10 grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-16 items-center">
         <div className="region-frame relative aspect-[4/3] overflow-hidden rounded-[2rem] md:rounded-[3rem]">
-          <img src={region.image} alt={region.name} className="absolute inset-0 w-full h-full object-cover" />
+          <img src={photo(region.slot)} alt={region.name} className="absolute inset-0 w-full h-full object-cover" />
           <div className="absolute inset-0 bg-gradient-to-t from-slate-950/60 via-transparent to-transparent" />
           <span className="absolute left-5 top-5 bg-[#C49849] text-white text-xs sm:text-sm font-medium px-3 py-1.5 rounded-sm">
             {t('bestFrom', { from: monthName(first, lang, 'long'), to: monthName(last, lang, 'long') })}
@@ -330,7 +333,7 @@ function Regions() {
               <li key={p.name}>
                 <a href={`/destinations/${slugify(p.name)}`} className="group block">
                   <div className="aspect-square overflow-hidden rounded-2xl md:rounded-3xl">
-                    <img src={p.image} alt={p.label} className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" />
+                    <img src={photo(p.slot)} alt={p.label} className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" />
                   </div>
                   <p className="mt-2 text-xs sm:text-sm md:text-base text-slate-800 leading-snug group-hover:underline">{p.label}</p>
                 </a>
@@ -350,6 +353,7 @@ function Regions() {
 
 /* Voyages signature : une grande carte + deux petites */
 function Trips() {
+  const photo = usePhoto()
   const root = useRef(null)
   const t = useT('home')
   const { lang } = useLanguage()
@@ -372,7 +376,7 @@ function Trips() {
 
       <div className="mt-10 grid grid-cols-1 lg:grid-cols-[1.35fr_1fr] gap-4 md:gap-6">
         <a href={quoteHref('trip', big.name)} className={`${card} min-h-[480px] lg:min-h-[640px] lg:row-span-2`}>
-          <img src={big.image} alt={big.name} className={img} /><span className={shade} />
+          <img src={photo(big.slot)} alt={big.name} className={img} /><span className={shade} />
           <span className="relative flex w-full flex-col justify-end p-6 md:p-10">
             <span className="self-start bg-[#C49849] text-xs sm:text-sm font-medium px-3 py-1.5 rounded-sm">{t('days', { count: big.days })}</span>
             <span className="mt-4 block text-3xl md:text-5xl font-medium tracking-tight">{big.name}</span>
@@ -391,7 +395,7 @@ function Trips() {
         </a>
         {rest.map((trip) => (
           <a key={trip.name} href={quoteHref('trip', trip.name)} className={`${card} min-h-[310px]`}>
-            <img src={trip.image} alt={trip.name} className={img} /><span className={shade} />
+            <img src={photo(trip.slot)} alt={trip.name} className={img} /><span className={shade} />
             <span className="relative flex w-full flex-col justify-end p-5 md:p-8">
               <span className="self-start bg-[#C49849] text-xs font-medium px-3 py-1.5 rounded-sm">{t('days', { count: trip.days })}</span>
               <span className="mt-3 block text-2xl md:text-3xl font-medium tracking-tight">{trip.name}</span>
@@ -493,6 +497,7 @@ function Testimonials() {
 
 /* Appel final (même carte que la page Destinations) */
 function FinalCta() {
+  const photo = usePhoto()
   const root = useRef(null)
   const t = useT('home')
 
@@ -509,7 +514,7 @@ function FinalCta() {
 
   return (
     <section ref={root} className={`${SECTION_WIDTH} ${SECTION_GAP} relative overflow-hidden rounded-[2rem] md:rounded-[3rem] text-white min-h-[420px] flex items-center`}>
-      <img src={Ramena} alt="" className="cta-bg absolute inset-0 w-full h-full object-cover" />
+      <img src={photo('home.cta')} alt="" className="cta-bg absolute inset-0 w-full h-full object-cover" />
       <div className="absolute inset-0 bg-slate-950/65" />
       <div className="cta-content relative p-8 md:p-16 max-w-3xl">
         <h2 className="text-3xl sm:text-4xl md:text-5xl font-medium leading-[1.1] tracking-tight">{t('ctaTitle')}</h2>
