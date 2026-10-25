@@ -1,16 +1,10 @@
-import crypto from 'node:crypto'
 import bcrypt from 'bcryptjs'
 import pool from '../config/db.js'
 import { clean, check, checkPassword } from '../utils/validate.js'
 import { endSession } from '../utils/session.js'
 import { signIn, touchLastLogin, claimRequests } from '../utils/users.js'
 import { verifyGoogleCredential } from '../utils/google.js'
-import { sendMail } from '../utils/mailer.js'
-import { clientUrl } from '../middlewares/checkOrigin.js'
-
-const RESET_LINK_MINUTES = 60
-
-const sha256 = (value) => crypto.createHash('sha256').update(value).digest('hex')
+import { sendPasswordLink, sha256 } from '../utils/passwordLinks.js'
 
 // POST /api/auth/register  { name, email, password }
 export async function register(req, res) {
@@ -132,38 +126,11 @@ export async function forgotPassword(req, res) {
   const email = clean(req.body.email, 190)?.toLowerCase()
   check({ required: { email }, email })
 
-  const [rows] = await pool.execute('SELECT id, name FROM users WHERE email = ?', [email])
+  const [rows] = await pool.execute('SELECT id, name, email FROM users WHERE email = ? AND disabled_at IS NULL', [email])
   const user = rows[0]
 
-  if (user) {
-    const token = crypto.randomBytes(32).toString('hex')
-    // Un seul lien actif à la fois : les précédents ne marchent plus
-    await pool.execute('DELETE FROM password_resets WHERE user_id = ?', [user.id])
-    await pool.execute(
-      `INSERT INTO password_resets (user_id, token_hash, expires_at)
-       VALUES (?, ?, DATE_ADD(CURRENT_TIMESTAMP, INTERVAL ${RESET_LINK_MINUTES} MINUTE))`,
-      [user.id, sha256(token)],
-    )
-
-    const link = `${clientUrl()}/reset-password?token=${token}`
-    // Pas de "await" : la réponse part aussi vite que l'email existe ou non
-    sendMail({
-      to: email,
-      subject: 'Reset your Noziwild password',
-      text:
-        `Hello ${user.name},\n\n` +
-        `Someone asked to reset the password of your Noziwild account. To choose a new password, open this link:\n\n${link}\n\n` +
-        `The link works once and expires in ${RESET_LINK_MINUTES} minutes.\n` +
-        `If you did not ask for this, you can ignore this email: your password stays the same.\n\nThe Noziwild team`,
-      html:
-        `<p>Hello ${escapeHtml(user.name)},</p>` +
-        `<p>Someone asked to reset the password of your Noziwild account. To choose a new password, click the button below.</p>` +
-        `<p><a href="${link}" style="display:inline-block;padding:12px 24px;border-radius:999px;background:#C49849;color:#fff;text-decoration:none">Choose a new password</a></p>` +
-        `<p style="color:#64748b;font-size:14px">The link works once and expires in ${RESET_LINK_MINUTES} minutes. ` +
-        `If you did not ask for this, you can ignore this email: your password stays the same.</p>` +
-        `<p>The Noziwild team</p>`,
-    }).catch((error) => console.error('Envoi de l\'email de réinitialisation impossible :', error.message))
-  }
+  // Lien envoyé par email (utils/passwordLinks.js) ; rien pour un compte suspendu
+  if (user) await sendPasswordLink(user, 'reset')
 
   res.json({ ok: true, message: 'If an account exists with this email, we have sent a link to reset your password.' })
 }
@@ -180,7 +147,7 @@ export async function resetPassword(req, res) {
 
   const [rows] = await pool.execute(
     `SELECT r.id, r.user_id, u.email FROM password_resets r JOIN users u ON u.id = r.user_id
-      WHERE r.token_hash = ? AND r.used_at IS NULL AND r.expires_at > CURRENT_TIMESTAMP`,
+      WHERE r.token_hash = ? AND r.used_at IS NULL AND r.expires_at > CURRENT_TIMESTAMP AND u.disabled_at IS NULL`,
     [sha256(token)],
   )
   const reset = rows[0]
@@ -224,8 +191,4 @@ export function logout(req, res) {
 // GET /api/auth/config  → indique au frontend si Google est configuré
 export function authConfig(req, res) {
   res.json({ ok: true, googleClientId: process.env.GOOGLE_CLIENT_ID || null })
-}
-
-function escapeHtml(text) {
-  return String(text).replace(/[&<>"']/g, (c) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' })[c])
 }

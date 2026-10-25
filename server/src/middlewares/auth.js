@@ -7,8 +7,8 @@ export async function loadUser(req, res, next) {
   const session = readSession(req)
   if (session) {
     const found = await findUser(session.userId)
-    // Un cookie émis avant un changement de mot de passe n'est plus accepté
-    if (found && found.sessionVersion === session.version) req.user = found.user
+    // Un cookie émis avant un changement de mot de passe n'est plus accepté, ni celui d'un compte suspendu
+    if (found && !found.disabled && found.sessionVersion === session.version) req.user = found.user
   }
   next()
 }

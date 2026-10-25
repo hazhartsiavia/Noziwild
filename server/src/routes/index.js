@@ -40,6 +40,15 @@ import {
 } from '../controllers/destinationsController.js'
 import { listPosts, getPost, adminListPosts, adminGetPost, createPost, updatePost, patchPost, deletePost } from '../controllers/postsController.js'
 import { listImages, adminSaveImage, adminResetImage } from '../controllers/imagesController.js'
+import {
+  listAccounts,
+  getAccount,
+  createAccount,
+  updateAccount,
+  sendAccountPasswordLink,
+  signOutAccount,
+  deleteAccountByAdmin,
+} from '../controllers/usersController.js'
 import { requireAdmin } from '../middlewares/requireAdmin.js'
 import { rateLimit } from '../middlewares/rateLimit.js'
 import { loadUser } from '../middlewares/auth.js'
@@ -94,7 +103,7 @@ router.get('/posts', listPosts)
 router.get('/posts/:slug', getPost)
 router.get('/images', listImages)
 
-// Gestion des circuits, des offres, des destinations, des photos, des textes et des devis (réservé à l'équipe Noziwild)
+// Gestion des circuits, des offres, des destinations, des photos, des textes, des comptes et des devis (réservé à l'équipe Noziwild)
 // Déclarées avant /admin/:resource, sinon "circuits", "offers", "destinations", "posts", "texts" ou "quotes" serait pris pour une ressource générique
 router.get('/admin/circuits', requireAdmin, adminListCircuits)
 router.get('/admin/circuits/:slug', requireAdmin, adminGetCircuit)
@@ -126,6 +135,13 @@ router.patch('/admin/posts/:slug', requireAdmin, patchPost)
 router.delete('/admin/posts/:slug', requireAdmin, deletePost)
 router.put('/admin/images/:key', requireAdmin, adminSaveImage)
 router.delete('/admin/images/:key', requireAdmin, adminResetImage)
+router.get('/admin/accounts', requireAdmin, listAccounts)
+router.get('/admin/accounts/:id', requireAdmin, getAccount)
+router.post('/admin/accounts', requireAdmin, createAccount)
+router.patch('/admin/accounts/:id', requireAdmin, updateAccount)
+router.post('/admin/accounts/:id/password-link', requireAdmin, sendAccountPasswordLink)
+router.post('/admin/accounts/:id/sign-out', requireAdmin, signOutAccount)
+router.delete('/admin/accounts/:id', requireAdmin, deleteAccountByAdmin)
 router.get('/admin/texts', requireAdmin, adminListTexts)
 router.get('/admin/texts/:namespace', requireAdmin, adminGetTexts)
 router.put('/admin/texts/:namespace/:lang', requireAdmin, adminSaveTexts)

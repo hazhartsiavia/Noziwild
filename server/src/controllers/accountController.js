@@ -3,7 +3,7 @@ import bcrypt from 'bcryptjs'
 import pool from '../config/db.js'
 import { clean, check, checkPassword } from '../utils/validate.js'
 import { endSession } from '../utils/session.js'
-import { findUser, signIn, claimRequests } from '../utils/users.js'
+import { findUser, signIn, claimRequests, requestsOf } from '../utils/users.js'
 import { verifyGoogleCredential } from '../utils/google.js'
 
 async function passwordMatches(userId, password) {
@@ -109,34 +109,5 @@ export async function deleteAccount(req, res) {
 
 // GET /api/account/requests  → les demandes envoyées par l'utilisateur, toutes pages confondues
 export async function myRequests(req, res) {
-  const id = req.user.id
-  const [rows] = await pool.execute(
-    `SELECT 'contact' AS kind, id, inquiry_type AS subject, message AS details, status, created_at
-       FROM contact_messages WHERE user_id = ?
-     UNION ALL
-     SELECT 'tailor-made', id, CONCAT_WS(' · ', trip_length, travel_month), interests, status, created_at
-       FROM tailor_made_requests WHERE user_id = ?
-     UNION ALL
-     SELECT type, id, subject, message, status, created_at
-       FROM quick_requests WHERE user_id = ?
-     UNION ALL
-     SELECT 'quote', q.id, NULL,
-            (SELECT GROUP_CONCAT(i.title ORDER BY i.position SEPARATOR ' · ') FROM quote_items i WHERE i.quote_id = q.id),
-            q.status, q.created_at
-       FROM quote_requests q WHERE q.user_id = ?
-     ORDER BY created_at DESC
-     LIMIT 50`,
-    [id, id, id, id],
-  )
-  res.json({
-    ok: true,
-    requests: rows.map((row) => ({
-      kind: row.kind,
-      id: row.id,
-      subject: row.subject,
-      details: row.details,
-      status: row.status,
-      createdAt: row.created_at,
-    })),
-  })
+  res.json({ ok: true, requests: await requestsOf(req.user.id) })
 }

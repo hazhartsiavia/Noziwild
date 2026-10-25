@@ -21,6 +21,7 @@ const COLUMNS = [
   { table: 'tailor_made_requests', column: 'user_id', definition: 'INT UNSIGNED NULL AFTER id' },
   { table: 'quick_requests', column: 'user_id', definition: 'INT UNSIGNED NULL AFTER id' },
   { table: 'circuits', column: 'translations', definition: 'JSON NULL AFTER excluded' },
+  { table: 'users', column: 'disabled_at', definition: 'TIMESTAMP NULL AFTER session_version' },
 ]
 
 // Types d'offres : les catalogues (hébergements, transports...) ont été ajoutés après les premiers types

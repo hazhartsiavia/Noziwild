@@ -74,7 +74,10 @@ Le site a un espace d'administration sur `/admin`, réservé aux comptes `admin`
 - **Photos** : les bannières, grands blocs et cartes de chaque page (132 emplacements), à remplacer par une photo
   de la bibliothèque ; retirer la photo remet celle d'origine.
 - **Texts** : tous les textes des pages (titres, paragraphes, boutons, FAQ, pied de page...), dans les 5 langues.
-- **Inbox** : demandes de devis « Mon voyage » (avec leur statut), questions reçues (formulaires, sur-mesure, contact), newsletter, comptes.
+- **Users** : les comptes (recherche, filtres), création d'un compte (la personne reçoit un lien pour choisir son
+  mot de passe), nom, rôle administrateur, suspension, lien de mot de passe, déconnexion partout, suppression,
+  et les demandes envoyées depuis chaque compte.
+- **Inbox** : demandes de devis « Mon voyage » (avec leur statut), questions reçues (formulaires, sur-mesure, contact), newsletter.
 
 Pour donner l'accès à un compte (il doit d'abord exister : inscription sur `/register` ou connexion Google) :
 
@@ -196,6 +199,22 @@ forme (listes alignées sur l'anglais). L'adresse d'un lieu vient de son nom ang
 | DELETE | `/api/admin/destinations/:slug` | Supprime une destination |
 
 Les cartes des régions (accueil et `/destinations`) restent des textes de page : admin, onglet **Texts**, page *Home*.
+
+## Comptes (onglet Users)
+
+| Méthode | Route | Rôle |
+|---|---|---|
+| GET | `/api/admin/accounts?search=&role=all\|admin\|user&status=all\|active\|suspended&page=1` | Liste des comptes, avec le nombre de demandes de chacun |
+| GET | `/api/admin/accounts/:id` | Un compte et ses demandes |
+| POST | `/api/admin/accounts` | `{ name, email, role }` : crée le compte et envoie un lien pour choisir le mot de passe (7 jours) |
+| PATCH | `/api/admin/accounts/:id` | `{ name?, role?, disabled? }` |
+| POST | `/api/admin/accounts/:id/password-link` | Envoie un lien pour choisir un nouveau mot de passe (1 heure) |
+| POST | `/api/admin/accounts/:id/sign-out` | Ferme toutes les sessions du compte |
+| DELETE | `/api/admin/accounts/:id` | Supprime le compte (ses demandes restent, sans lien vers lui) |
+
+Un compte suspendu (`users.disabled_at`) est déconnecté et ne peut plus se connecter, ni recevoir de lien.
+On ne peut pas changer son propre rôle, ni se suspendre ou se supprimer soi-même, et il reste toujours un
+administrateur actif. `npm run make-admin` reste utile pour donner le premier accès.
 
 ## Blog
 

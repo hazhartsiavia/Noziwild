@@ -1,7 +1,7 @@
-// Cadre de l'espace admin (/admin/...) : réservé aux comptes "admin", onglets Circuits / Destinations / Offers / Blog / Photos / Texts / Inbox
+// Cadre de l'espace admin (/admin/...) : réservé aux comptes "admin", onglets Circuits / Destinations / Offers / Blog / Photos / Texts / Users / Inbox
 import React from 'react'
 import { Link, Navigate, NavLink, Outlet, useLocation } from 'react-router-dom'
-import { Images, Inbox, LayoutGrid, Map, MapPin, Newspaper, Type } from 'lucide-react'
+import { Images, Inbox, LayoutGrid, Map, MapPin, Newspaper, Type, Users } from 'lucide-react'
 import Navbar from '../../components/Navbar'
 import { useAuth } from '../../context/AuthContext'
 
@@ -12,6 +12,7 @@ const TABS = [
   { to: '/admin/blog', label: 'Blog', icon: Newspaper },
   { to: '/admin/photos', label: 'Photos', icon: Images },
   { to: '/admin/texts', label: 'Texts', icon: Type },
+  { to: '/admin/users', label: 'Users', icon: Users },
   { to: '/admin/inbox', label: 'Inbox', icon: Inbox },
 ]
 

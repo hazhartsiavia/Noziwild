@@ -1,4 +1,4 @@
-// /admin/inbox : demandes de devis « Mon voyage », messages et demandes reçus par le site, inscrits à la newsletter, comptes
+// /admin/inbox : demandes de devis « Mon voyage », messages et demandes reçus par le site, inscrits à la newsletter
 import React, { useEffect, useState } from 'react'
 import { useSearchParams } from 'react-router-dom'
 import { ChevronLeft, ChevronRight, Mail } from 'lucide-react'
@@ -49,17 +49,8 @@ const SOURCES = {
     ],
   },
   newsletter: { label: 'Newsletter', title: () => 'Subscriber', fields: [] },
-  users: {
-    label: 'Accounts',
-    title: (r) => r.name,
-    fields: [
-      ['Role', 'role'],
-      ['Sign-in', (r) => [r.has_google && 'Google', r.has_password && 'Password'].filter(Boolean).join(' + ')],
-      ['Email verified', (r) => (r.email_verified_at ? 'Yes' : 'No')],
-      ['Last login', (r) => (r.last_login_at ? formatDate(r.last_login_at) : 'Never')],
-    ],
-  },
 }
+// Les comptes se gèrent dans l'onglet Users (/admin/users)
 
 // Prix d'un élément de devis : « €45 / person × 2 = €90 », « €90 » ou « On request »
 function itemPrice(item) {

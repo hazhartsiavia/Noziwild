@@ -128,6 +128,16 @@ export const adminCreatePost = (post) => postJSON('/admin/posts', post)
 export const adminUpdatePost = (slug, post) => putJSON(postPath(slug), post)
 export const adminPatchPost = (slug, changes) => patchJSON(postPath(slug), changes)
 export const adminDeletePost = (slug) => deleteJSON(postPath(slug))
+// Comptes : liste (recherche, rôle, statut), fiche, création (lien envoyé par email), rôle / suspension, actions
+const accountPath = (id) => `/admin/accounts/${encodeURIComponent(id)}`
+export const adminFetchAccounts = ({ search = '', role = 'all', status = 'all', page = 1 } = {}) =>
+  getJSON(`/admin/accounts?${new URLSearchParams({ search, role, status, page })}`)
+export const adminFetchAccount = (id) => getJSON(accountPath(id))
+export const adminCreateAccount = (data) => postJSON('/admin/accounts', data)
+export const adminUpdateAccount = (id, changes) => patchJSON(accountPath(id), changes)
+export const adminSendPasswordLink = (id) => postJSON(`${accountPath(id)}/password-link`)
+export const adminSignOutAccount = (id) => postJSON(`${accountPath(id)}/sign-out`)
+export const adminDeleteAccount = (id) => deleteJSON(accountPath(id))
 // Photos des pages : remplacer celle d'un emplacement, ou revenir à celle d'origine
 export const adminSaveSitePhoto = (key, path) => putJSON(`/admin/images/${encodeURIComponent(key)}`, { path })
 export const adminResetSitePhoto = (key) => deleteJSON(`/admin/images/${encodeURIComponent(key)}`)

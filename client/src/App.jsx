@@ -39,6 +39,8 @@ import DestinationEditor from "./pages/admin/DestinationEditor";
 import AdminBlog from "./pages/admin/AdminBlog";
 import PostEditor from "./pages/admin/PostEditor";
 import AdminPhotos from "./pages/admin/AdminPhotos";
+import AdminUsers from "./pages/admin/AdminUsers";
+import AdminUser from "./pages/admin/AdminUser";
 import TextsEditor from "./pages/admin/TextsEditor";
 
 function App() {
@@ -91,6 +93,8 @@ function App() {
         <Route path="photos" element={<AdminPhotos />} />
         <Route path="texts" element={<AdminTexts />} />
         <Route path="texts/:namespace" element={<TextsEditor />} />
+        <Route path="users" element={<AdminUsers />} />
+        <Route path="users/:id" element={<AdminUser />} />
         <Route path="inbox" element={<AdminInbox />} />
       </Route>
     </Routes>

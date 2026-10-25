@@ -12,6 +12,7 @@ USE noziwild;
 --                       (connexion Google ou lien de réinitialisation reçu par email)
 --   session_version   : augmente à chaque changement de mot de passe, ce qui déconnecte
 --                       toutes les anciennes sessions
+--   disabled_at       : compte suspendu depuis l'admin (plus de connexion possible), NULL sinon
 CREATE TABLE IF NOT EXISTS users (
   id            INT UNSIGNED AUTO_INCREMENT PRIMARY KEY,
   name          VARCHAR(120) NOT NULL,
@@ -22,6 +23,7 @@ CREATE TABLE IF NOT EXISTS users (
   role          ENUM('user', 'admin') NOT NULL DEFAULT 'user',
   email_verified_at TIMESTAMP NULL,
   session_version   INT UNSIGNED NOT NULL DEFAULT 0,
+  disabled_at       TIMESTAMP    NULL,
   created_at    TIMESTAMP    NOT NULL DEFAULT CURRENT_TIMESTAMP,
   last_login_at TIMESTAMP    NULL
 ) ENGINE=InnoDB;
