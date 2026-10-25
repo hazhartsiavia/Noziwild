@@ -21,7 +21,7 @@ function OffersStatus({ status, empty = false, dark = false, className = '' }) {
         <button
           type="button"
           onClick={() => window.location.reload()}
-          className="mt-4 rounded-full bg-slate-800 px-6 py-3 text-sm font-medium text-white transition hover:bg-slate-700 active:scale-95"
+          className="mt-4 rounded-full bg-[#084838] px-6 py-3 text-sm font-medium text-white transition hover:bg-[#0a5c47] active:scale-95"
         >
           {t('reload')}
         </button>

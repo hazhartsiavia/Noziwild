@@ -106,7 +106,7 @@ function TripToast({ title, onClose }) {
   return (
     <div
       role="status"
-      className="fixed inset-x-4 bottom-4 z-[60] mx-auto flex max-w-md items-center gap-3 rounded-2xl bg-slate-900 px-4 py-3 text-white shadow-lg sm:inset-x-auto sm:right-6 sm:bottom-6"
+      className="fixed inset-x-4 bottom-4 z-[60] mx-auto flex max-w-md items-center gap-3 rounded-2xl bg-[#084838] px-4 py-3 text-white shadow-lg sm:inset-x-auto sm:right-6 sm:bottom-6"
       onMouseEnter={() => clearTimeout(timer.current)}
     >
       <span className="flex h-8 w-8 shrink-0 items-center justify-center rounded-full bg-[#C49849]"><Check size={16} aria-hidden="true" /></span>

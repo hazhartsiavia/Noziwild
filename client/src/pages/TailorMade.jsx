@@ -121,7 +121,7 @@ function Pill({ active, onClick, children }) {
       onClick={handleClick}
       aria-pressed={active}
       className={`pill rounded-full border px-5 py-2.5 text-sm md:text-base transition-colors duration-200 focus:outline-none focus-visible:ring-2 focus-visible:ring-slate-700 focus-visible:ring-offset-2 ${
-        active ? 'bg-slate-800 border-slate-800 text-white' : 'bg-white border-slate-300 text-slate-700 hover:border-slate-500'
+        active ? 'bg-[#084838] border-[#084838] text-white' : 'bg-white border-slate-300 text-slate-700 hover:border-slate-500'
       }`}
     >
       {children}
@@ -289,7 +289,7 @@ function Builder({ form, setForm }) {
           <div role="status" className="thanks py-8 text-center">
             <h2 className={H2}>{t('thanksTitle')}</h2>
             <p className="mt-4 text-base md:text-lg text-slate-700 max-w-xl mx-auto">{t('thanksText')}</p>
-            <button type="button" onClick={() => { setSent(false); setStep(0) }} className={`${BTN} bg-slate-800 hover:bg-slate-700 text-white mt-8`}>{t('another')}</button>
+            <button type="button" onClick={() => { setSent(false); setStep(0) }} className={`${BTN} bg-[#084838] hover:bg-[#0a5c47] text-white mt-8`}>{t('another')}</button>
           </div>
         ) : (
           <>
@@ -307,7 +307,7 @@ function Builder({ form, setForm }) {
                     const on = form.interests.includes(it.id)
                     return (
                       <button key={it.id} type="button" onClick={() => toggle(it.id)} aria-pressed={on}
-                        className={`interest-card group relative aspect-[4/3] overflow-hidden rounded-[1.5rem] text-left text-white transition-transform duration-300 hover:-translate-y-1 focus:outline-none focus-visible:ring-4 focus-visible:ring-slate-800 ${on ? 'ring-4 ring-[#C49849]' : ''}`}>
+                        className={`interest-card group relative aspect-[4/3] overflow-hidden rounded-[1.5rem] text-left text-white transition-transform duration-300 hover:-translate-y-1 focus:outline-none focus-visible:ring-4 focus-visible:ring-[#084838] ${on ? 'ring-4 ring-[#C49849]' : ''}`}>
                         <img src={it.image} alt="" className="absolute inset-0 w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" />
                         <div className={`absolute inset-0 ${on ? 'bg-slate-950/50' : 'bg-gradient-to-t from-slate-950/80 to-transparent'}`} />
                         <span className="absolute inset-x-0 bottom-0 p-4 text-base md:text-lg font-medium">{label(it.id)}</span>
@@ -364,7 +364,7 @@ function Builder({ form, setForm }) {
             <div className="mt-10 flex items-center justify-between gap-3">
               <button type="button" onClick={() => setStep(step - 1)} disabled={step === 0} className={`${BTN} border border-slate-300 text-slate-800 hover:border-slate-700`}>{t('back')}</button>
               {step < 3 ? (
-                <button type="button" onClick={() => setStep(step + 1)} disabled={step === 0 && form.interests.length === 0} className={`${BTN} bg-slate-800 hover:bg-slate-700 text-white`}>{t('next')}</button>
+                <button type="button" onClick={() => setStep(step + 1)} disabled={step === 0 && form.interests.length === 0} className={`${BTN} bg-[#084838] hover:bg-[#0a5c47] text-white`}>{t('next')}</button>
               ) : (
                 <button type="submit" form="tailor-form" disabled={sending} className={`${BTN} ${GOLD} text-white disabled:opacity-60 disabled:cursor-wait`}>{sending ? t('sending') : t('send')}</button>
               )}
@@ -397,7 +397,7 @@ function IdeaCard({ it, onSelect }) {
       <button
         type="button"
         onClick={onSelect}
-        className="group relative block w-full aspect-[4/5] overflow-hidden rounded-[2rem] text-left text-white focus:outline-none focus-visible:ring-4 focus-visible:ring-slate-800"
+        className="group relative block w-full aspect-[4/5] overflow-hidden rounded-[2rem] text-left text-white focus:outline-none focus-visible:ring-4 focus-visible:ring-[#084838]"
       >
         <img src={it.image} alt="" className="idea-img absolute inset-0 w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" />
         <div className="absolute inset-0 bg-gradient-to-t from-slate-950/85 via-slate-950/10 to-transparent" />

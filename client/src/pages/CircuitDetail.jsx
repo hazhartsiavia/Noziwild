@@ -127,7 +127,7 @@ function Lightbox({ photos, index, title, onClose, onMove }) {
 function Endpoint({ icon, label, place }) {
   return (
     <li className="relative pl-14 md:pl-16">
-      <span className="route-end absolute left-0 top-0 z-10 flex w-10 h-10 md:w-12 md:h-12 items-center justify-center rounded-full bg-slate-800 text-white">
+      <span className="route-end absolute left-0 top-0 z-10 flex w-10 h-10 md:w-12 md:h-12 items-center justify-center rounded-full bg-[#084838] text-white">
         <Icon name={icon} className="w-5 h-5 md:w-6 md:h-6" />
       </span>
       <p className="pt-2 md:pt-3 text-base md:text-lg text-slate-800">
@@ -364,7 +364,7 @@ function BookingCard({ circuit }) {
     }
   }
 
-  const tabCls = (name) => `flex-1 rounded-full py-3 text-sm md:text-base font-medium transition ${tab === name ? 'bg-slate-800 text-white' : 'text-slate-700 hover:bg-slate-100'}`
+  const tabCls = (name) => `flex-1 rounded-full py-3 text-sm md:text-base font-medium transition ${tab === name ? 'bg-[#084838] text-white' : 'text-slate-700 hover:bg-slate-100'}`
 
   return (
     <aside id="booking" className="booking-card scroll-mt-6 rounded-3xl bg-white p-6 md:p-8 lg:sticky lg:top-6 self-start shadow-sm">
@@ -453,7 +453,7 @@ function MobileBookingBar({ circuit }) {
           type="button"
           tabIndex={cardVisible ? -1 : 0}
           onClick={() => document.getElementById('booking')?.scrollIntoView({ behavior: 'smooth' })}
-          className={`${BTN} bg-slate-800 hover:bg-slate-700 text-white`}
+          className={`${BTN} bg-[#084838] hover:bg-[#0a5c47] text-white`}
         >
           {t('bookNow')}
         </button>
@@ -618,7 +618,7 @@ function CircuitDetail() {
               {!notFound && (
                 <button type="button" onClick={() => window.location.reload()} className={`${BTN} ${GOLD} text-white`}>{t('tryAgain')}</button>
               )}
-              <Link to="/circuits" className={`${BTN} bg-slate-800 hover:bg-slate-700 text-white`}>{t('allCircuits')}</Link>
+              <Link to="/circuits" className={`${BTN} bg-[#084838] hover:bg-[#0a5c47] text-white`}>{t('allCircuits')}</Link>
             </div>
           </section>
         </main>
@@ -707,7 +707,7 @@ function CircuitDetail() {
 
             <Itinerary circuit={circuit} />
 
-            <div className="gs-know mt-12 rounded-3xl bg-slate-900 text-white p-6 md:p-8">
+            <div className="gs-know mt-12 rounded-3xl bg-[#084838] text-white p-6 md:p-8">
               <h3 className="text-xl font-medium">{t('goodToKnow')}</h3>
               <p className="mt-3 text-sm md:text-base text-white/75 leading-relaxed">
                 {circuit.bestTime && `${t('bestTime', { time: circuit.bestTime })} `}{circuit.tip} {t('adaptable')}

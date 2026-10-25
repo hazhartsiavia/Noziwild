@@ -12,7 +12,7 @@ import { useT } from '../i18n/LanguageContext'
 const BASE = 'inline-flex items-center justify-center gap-2 rounded-full text-sm font-medium transition active:scale-95 disabled:opacity-50 disabled:cursor-not-allowed'
 const SIZE = 'px-5 py-2.5 md:px-6 md:py-3'
 const VARIANTS = {
-  dark: { off: 'bg-slate-800 hover:bg-slate-700 text-white', on: 'bg-emerald-50 text-emerald-800 ring-1 ring-emerald-700/30 hover:bg-emerald-100' },
+  dark: { off: 'bg-[#084838] hover:bg-[#0a5c47] text-white', on: 'bg-emerald-50 text-emerald-800 ring-1 ring-emerald-700/30 hover:bg-emerald-100' },
   gold: { off: 'bg-[#C49849] hover:bg-[#b08339] text-white', on: 'bg-white text-emerald-800 hover:bg-white/90' },
   green: { off: 'bg-[#084838] hover:bg-[#0a5c47] text-white', on: 'bg-emerald-50 text-emerald-800 ring-1 ring-emerald-700/30 hover:bg-emerald-100' },
   light: { off: 'bg-white hover:bg-white/90 text-slate-900', on: 'bg-[#C49849] text-white hover:bg-[#b08339]' },

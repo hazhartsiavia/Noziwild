@@ -107,7 +107,7 @@ function Hero({ region, setRegion, length, setLength }) {
   return (
     <>
       <Navbar />
-      <section ref={heroRef} className={`${W} relative overflow-hidden rounded-[2rem] md:rounded-[3rem] bg-slate-900 text-white min-h-[460px] md:min-h-[70vh] flex items-center`}>
+      <section ref={heroRef} className={`${W} relative overflow-hidden rounded-[2rem] md:rounded-[3rem] bg-[#084838] text-white min-h-[460px] md:min-h-[70vh] flex items-center`}>
         <img src={Ramena} alt={t('heroAlt')} className="hero-bg absolute inset-0 w-full h-full object-cover" />
         <div className="absolute inset-0 bg-slate-950/55" />
         <div className="hero-content relative w-full px-6 sm:px-10 md:px-16 pb-16 text-center flex flex-col items-center">
@@ -281,13 +281,13 @@ function Excursions() {
           ) : (
             <div className="rounded-[2rem] bg-white p-10 text-center">
               <p className="text-lg text-slate-700">{t('empty')}</p>
-              <button type="button" onClick={() => { setRegion('All regions'); setLength('any') }} className={`${BTN} bg-slate-800 hover:bg-slate-700 text-white mt-5`}>{t('showAll')}</button>
+              <button type="button" onClick={() => { setRegion('All regions'); setLength('any') }} className={`${BTN} bg-[#084838] hover:bg-[#0a5c47] text-white mt-5`}>{t('showAll')}</button>
             </div>
           )}
         </section>
 
         {/* Une journée type */}
-        <section ref={dayRef} className={`${W} mt-16 md:mt-28 rounded-[2rem] md:rounded-[3rem] bg-slate-900 text-white p-6 sm:p-10 md:p-14`}>
+        <section ref={dayRef} className={`${W} mt-16 md:mt-28 rounded-[2rem] md:rounded-[3rem] bg-[#084838] text-white p-6 sm:p-10 md:p-14`}>
           <h2 className="day-title text-3xl sm:text-4xl md:text-5xl font-medium leading-[1.1] tracking-tight max-w-2xl">{t('dayTitle')}</h2>
           <ol className="mt-10 grid grid-cols-1 md:grid-cols-4 gap-8">
             {t('steps').map((s, i) => (

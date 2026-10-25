@@ -44,7 +44,7 @@ function BlogHero() {
   return (
     <>
       <Navbar />
-      <section className={`${SECTION_WIDTH} relative flex items-center overflow-hidden rounded-3xl bg-slate-900 text-white min-h-[100px] md:min-h-[360px]`}>
+      <section className={`${SECTION_WIDTH} relative flex items-center overflow-hidden rounded-3xl bg-[#084838] text-white min-h-[100px] md:min-h-[360px]`}>
         <img src={Ramena} alt="" className="absolute inset-0 w-full h-full object-cover" />
         <div className="absolute inset-0 bg-slate-950/60" />
         <div className="relative w-full max-w-5xl mx-auto px-6 md:px-10 py-16">

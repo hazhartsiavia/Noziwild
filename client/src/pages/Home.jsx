@@ -187,7 +187,7 @@ function Ways() {
           const WayIcon = w.icon
           return (
             <li key={way.href} className="way-card">
-              <a href={w.href} className="group relative block aspect-[3/4] overflow-hidden rounded-[1.5rem] md:rounded-[2rem] text-white focus:outline-none focus-visible:ring-4 focus-visible:ring-slate-800">
+              <a href={w.href} className="group relative block aspect-[3/4] overflow-hidden rounded-[1.5rem] md:rounded-[2rem] text-white focus:outline-none focus-visible:ring-4 focus-visible:ring-[#084838]">
                 <img src={w.image} alt="" className="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" />
                 <div className="absolute inset-0 bg-gradient-to-t from-slate-950/85 via-slate-950/10 to-transparent" />
                 <span className="absolute left-4 top-4 md:left-5 md:top-5 w-10 h-10 md:w-12 md:h-12 rounded-full bg-white/15 backdrop-blur-md border border-white/30 flex items-center justify-center">
@@ -300,7 +300,7 @@ function Regions() {
                 aria-controls="region-panel"
                 onClick={() => setActive(i)}
                 className={`block rounded-full px-5 py-2.5 text-sm md:text-base transition focus:outline-none focus-visible:ring-2 focus-visible:ring-[#C49849] ${
-                  i === active ? 'bg-slate-800 text-white' : 'text-slate-800 hover:bg-slate-800/10'
+                  i === active ? 'bg-[#084838] text-white' : 'text-slate-800 hover:bg-[#084838]/10'
                 }`}
               >
                 {texts[i].name}
@@ -354,7 +354,7 @@ function Trips() {
   const t = useT('home')
   const { lang } = useLanguage()
   const [big, ...rest] = trips.map((trip, i) => ({ ...trip, ...t('trips')[i] }))
-  const card = 'trip-card group relative overflow-hidden rounded-3xl bg-slate-900 text-white flex focus:outline-none focus-visible:ring-4 focus-visible:ring-slate-800'
+  const card = 'trip-card group relative overflow-hidden rounded-3xl bg-[#084838] text-white flex focus:outline-none focus-visible:ring-4 focus-visible:ring-[#084838]'
   const shade = 'absolute inset-0 bg-gradient-to-t from-black/85 via-black/25 to-transparent'
   const img = 'absolute inset-0 w-full h-full object-cover transition-transform duration-1000 group-hover:scale-105'
 

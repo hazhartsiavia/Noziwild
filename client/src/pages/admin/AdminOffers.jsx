@@ -30,7 +30,7 @@ export function KindTabs({ current }) {
           to={`/admin/offers/${name}`}
           aria-current={name === current ? 'page' : undefined}
           className={`rounded-full px-4 py-2 text-sm font-medium transition ${
-            name === current ? 'bg-slate-800 text-white' : 'border border-slate-300 bg-white text-slate-700 hover:border-slate-700'
+            name === current ? 'bg-[#084838] text-white' : 'border border-slate-300 bg-white text-slate-700 hover:border-slate-700'
           }`}
         >
           {OFFER_KINDS[name].label}

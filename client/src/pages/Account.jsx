@@ -430,7 +430,7 @@ function Account() {
 
         <div className="w-[90vw] max-w-3xl flex flex-col sm:flex-row gap-3">
           {user.role === 'admin' && (
-            <Link to="/admin" className={`text-center bg-slate-800 hover:bg-slate-700 active:scale-95 transition text-white ${BUTTON}`}>
+            <Link to="/admin" className={`text-center bg-[#084838] hover:bg-[#0a5c47] active:scale-95 transition text-white ${BUTTON}`}>
               {t('adminLink')}
             </Link>
           )}

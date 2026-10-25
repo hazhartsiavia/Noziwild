@@ -155,7 +155,7 @@ function Hero() {
             {t('list.intro')}
           </p>
           <div className="mt-8 flex flex-wrap gap-3">
-            <a href="#regions" className={`hero-cta ${BTN} bg-slate-800 hover:bg-slate-700 text-white`}>{t('list.explore')}</a>
+            <a href="#regions" className={`hero-cta ${BTN} bg-[#084838] hover:bg-[#0a5c47] text-white`}>{t('list.explore')}</a>
             <a href="#planner" className={`hero-cta ${BTN} border border-slate-400 hover:border-slate-800 text-slate-800`}>{t('list.when')}</a>
           </div>
         </div>
@@ -181,7 +181,7 @@ function RegionNav() {
     const setActive = (id) =>
       links.forEach((l) => {
         const on = l.getAttribute('href') === `#${id}`
-        l.classList.toggle('bg-slate-800', on)
+        l.classList.toggle('bg-[#084838]', on)
         l.classList.toggle('text-white', on)
       })
 
@@ -210,7 +210,7 @@ function RegionNav() {
       <ul className="flex gap-2 rounded-full bg-white/85 backdrop-blur-md p-2 shadow-sm overflow-x-auto max-w-[90vw] [scrollbar-width:none] [&::-webkit-scrollbar]:hidden">
         {regions.map((r, i) => (
           <li key={r.id} className="shrink-0">
-            <a href={`#${r.id}`} className="region-link block rounded-full px-5 py-2.5 text-sm md:text-base text-slate-800 hover:bg-slate-800 hover:text-white transition">
+            <a href={`#${r.id}`} className="region-link block rounded-full px-5 py-2.5 text-sm md:text-base text-slate-800 hover:bg-[#084838] hover:text-white transition">
               {names[i]}
             </a>
           </li>
@@ -330,7 +330,7 @@ function Planner() {
   }, [month])
 
   return (
-    <section ref={root} id="planner" className={`${W} mt-20 md:mt-32 scroll-mt-8 rounded-[2rem] md:rounded-[3rem] bg-slate-900 text-white p-5 sm:p-8 md:p-14`}>
+    <section ref={root} id="planner" className={`${W} mt-20 md:mt-32 scroll-mt-8 rounded-[2rem] md:rounded-[3rem] bg-[#084838] text-white p-5 sm:p-8 md:p-14`}>
       <h2 className={`${H2} !text-white max-w-3xl`}>{t('list.plannerTitle')}</h2>
       <p className="mt-4 text-sm md:text-base text-white/75 max-w-xl">{t('list.plannerText')}</p>
 

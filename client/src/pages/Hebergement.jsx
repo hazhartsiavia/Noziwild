@@ -130,7 +130,7 @@ const PlusIcon = ({ open }) => (
 function Hero() {
   const t = useT('accommodation')
   return (
-    <section className={`${SECTION_WIDTH} relative flex items-center overflow-hidden rounded-3xl bg-slate-900 text-white min-h-[240px] md:min-h-[360px]`}>
+    <section className={`${SECTION_WIDTH} relative flex items-center overflow-hidden rounded-3xl bg-[#084838] text-white min-h-[240px] md:min-h-[360px]`}>
       <img src={NosyLonjo} alt="" className="absolute inset-0 w-full h-full object-cover" />
       <div className="absolute inset-0 bg-slate-950/60" />
       <div className="relative w-full max-w-5xl mx-auto px-6 md:px-10 py-16">
@@ -213,7 +213,7 @@ function Stays() {
             aria-selected={category === c.id}
             onClick={() => setCategory(c.id)}
             className={`rounded-full px-5 py-2 text-sm md:text-base font-medium transition ${
-              category === c.id ? 'bg-slate-800 text-white' : 'bg-white text-slate-700 hover:bg-white/70'
+              category === c.id ? 'bg-[#084838] text-white' : 'bg-white text-slate-700 hover:bg-white/70'
             }`}
           >
             {c.label}
@@ -232,7 +232,7 @@ function Featured() {
   const t = useT('accommodation')
   const featured = localize(FEATURED, t('featured'))
   return (
-    <div className={`${SECTION_GAP} relative overflow-hidden rounded-3xl bg-slate-900 text-white min-h-[480px] md:min-h-[560px]`}>
+    <div className={`${SECTION_GAP} relative overflow-hidden rounded-3xl bg-[#084838] text-white min-h-[480px] md:min-h-[560px]`}>
       <img src={featured.image} alt={featured.name} className="absolute inset-0 w-full h-full object-cover" />
       <div className="absolute inset-0 bg-gradient-to-r from-black/80 via-black/30 to-black/10" />
       <div className="relative min-h-[inherit] flex flex-col justify-end p-5 md:p-10 max-w-2xl">
@@ -276,7 +276,7 @@ function Included() {
   const t = useT('accommodation')
   const included = localize(INCLUDED, t('included'))
   return (
-    <div className={`${SECTION_GAP} rounded-3xl bg-slate-900 text-white p-6 md:p-12`}>
+    <div className={`${SECTION_GAP} rounded-3xl bg-[#084838] text-white p-6 md:p-12`}>
       <div className="flex flex-col lg:flex-row lg:items-center lg:justify-between gap-5 lg:gap-12">
         <h2 className={`${ON_IMAGE_TITLE} lg:max-w-[45%]`}>{t('incTitle')}</h2>
         <p className="text-sm md:text-lg text-white/70 leading-relaxed lg:max-w-lg">

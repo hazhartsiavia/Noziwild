@@ -263,14 +263,14 @@ function HelpPill() {
   return (
     <a
       href={content.helpHref}
-      className="inline-flex items-center gap-5 md:gap-8 self-start rounded-full bg-slate-800 hover:bg-slate-700 transition text-white pl-6 pr-2.5 py-2.5 md:pl-7 md:py-3"
+      className="inline-flex items-center gap-5 md:gap-8 self-start rounded-full bg-[#084838] hover:bg-[#0a5c47] transition text-white pl-6 pr-2.5 py-2.5 md:pl-7 md:py-3"
     >
       <span className="text-lg md:text-xl font-medium">{t('helpLabel')}</span>
       <span className="flex items-center">
         {team.map((person) => (
           <span
             key={person.name}
-            className={`-ml-3 first:ml-0 w-11 h-11 md:w-14 md:h-14 rounded-full overflow-hidden ring-2 ring-slate-800 flex items-center justify-center text-slate-800 font-medium ${person.bg}`}
+            className={`-ml-3 first:ml-0 w-11 h-11 md:w-14 md:h-14 rounded-full overflow-hidden ring-2 ring-[#084838] flex items-center justify-center text-slate-800 font-medium ${person.bg}`}
           >
             {person.image
               ? <img src={person.image} alt={person.name} className="w-full h-full object-cover" />
@@ -413,7 +413,7 @@ function ExpertsSection() {
 
   const arrowClass =
     "w-10 h-10 md:w-12 md:h-12 flex items-center justify-center rounded-full border border-slate-700 text-slate-800 " +
-    "hover:bg-slate-800/10 active:bg-slate-800/20 transition " +
+    "hover:bg-[#084838]/10 active:bg-[#084838]/20 transition " +
     "focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-slate-800"
 
   return (
@@ -521,7 +521,7 @@ function About() {
         </div>
 
         {/* Carte "Our Promise" */}
-        <div className="relative mt-10 md:mt-16 overflow-hidden rounded-3xl bg-slate-900 text-white min-h-[520px] md:min-h-[625px]">
+        <div className="relative mt-10 md:mt-16 overflow-hidden rounded-3xl bg-[#084838] text-white min-h-[520px] md:min-h-[625px]">
           <img
             src={content.image}
             alt={t('imageAlt')}

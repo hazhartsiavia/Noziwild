@@ -101,7 +101,7 @@ function TranslationsEditor({ form, setForm, textFields = TEXT_FIELDS, listField
               aria-selected={selected}
               onClick={() => setLang(l.code)}
               className={`rounded-full px-4 py-2 text-sm font-medium transition ${
-                selected ? 'bg-slate-800 text-white' : 'border border-slate-300 bg-white text-slate-700 hover:border-slate-700'
+                selected ? 'bg-[#084838] text-white' : 'border border-slate-300 bg-white text-slate-700 hover:border-slate-700'
               }`}
             >
               {l.label}

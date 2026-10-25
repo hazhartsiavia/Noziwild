@@ -144,7 +144,7 @@ function ContactItem({ icon, text, href }) {
 function SocialCard() {
   const t = useT('contact')
   return (
-    <div className="relative md:absolute md:-top-12 md:right-10 z-10 w-fit mb-8 md:mb-0 rounded-2xl bg-slate-800 text-white px-6 py-4 md:px-9 md:py-5">
+    <div className="relative md:absolute md:-top-12 md:right-10 z-10 w-fit mb-8 md:mb-0 rounded-2xl bg-[#084838] text-white px-6 py-4 md:px-9 md:py-5">
       <p className="text-sm md:text-base font-medium">{t('social')}</p>
       <ul className="mt-3 md:mt-4 flex items-center gap-5 md:gap-6">
         {socials.map((social) => {
@@ -240,7 +240,7 @@ function Contact() {
             <p className={SECTION_SUBTITLE}>{t('text')}</p>
             <a
               href="#contact-form"
-              className={`bg-slate-800 hover:bg-slate-700 active:scale-95 transition text-white ${BUTTON} md:px-6 md:py-3`}
+              className={`bg-[#084838] hover:bg-[#0a5c47] active:scale-95 transition text-white ${BUTTON} md:px-6 md:py-3`}
             >
               {t('cta')}
             </a>
@@ -286,7 +286,7 @@ function Contact() {
                     <span
                       className="block text-center rounded-full border border-slate-300 px-3 py-3 text-sm text-slate-700 transition
                                  hover:border-slate-500
-                                 peer-checked:bg-slate-800 peer-checked:border-slate-800 peer-checked:text-white
+                                 peer-checked:bg-[#084838] peer-checked:border-[#084838] peer-checked:text-white
                                  peer-focus-visible:ring-2 peer-focus-visible:ring-slate-700 peer-focus-visible:ring-offset-2"
                     >
                       {t('inquiryTypes')[i]}

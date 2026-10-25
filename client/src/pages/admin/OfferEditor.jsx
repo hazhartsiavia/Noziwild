@@ -71,7 +71,7 @@ function MultiField({ label, options, value, error, onChange }) {
           <label
             key={o.value}
             className={`cursor-pointer rounded-full px-4 py-2 text-sm transition ${
-              value.includes(o.value) ? 'bg-slate-800 text-white' : 'border border-slate-300 bg-white text-slate-700 hover:border-slate-700'
+              value.includes(o.value) ? 'bg-[#084838] text-white' : 'border border-slate-300 bg-white text-slate-700 hover:border-slate-700'
             }`}
           >
             <input type="checkbox" checked={value.includes(o.value)} onChange={() => toggle(o.value)} className="sr-only" />

@@ -50,7 +50,7 @@ function BookingCard({ place, dest }) {
   const setDate = (value) => { setDateState(value); sync({ date: value }) }
   const [sent, setSent] = useState(false)
   const total = place.price ? place.price * guests : null
-  const tabCls = (name) => `flex-1 rounded-full py-3 text-sm md:text-base font-medium transition ${tab === name ? 'bg-slate-800 text-white' : 'text-slate-700 hover:bg-slate-100'}`
+  const tabCls = (name) => `flex-1 rounded-full py-3 text-sm md:text-base font-medium transition ${tab === name ? 'bg-[#084838] text-white' : 'text-slate-700 hover:bg-slate-100'}`
 
   const [sending, setSending] = useState(false)
   const [error, setError] = useState('')
@@ -137,7 +137,7 @@ function PlaceDetail() {
           <Navbar />
           <section className={`${W} mt-16 rounded-3xl bg-white p-10 text-center`}>
             <h1 className={H2}>{t('place.notFound')}</h1>
-            <a href="/destinations" className={`${BTN} bg-slate-800 hover:bg-slate-700 text-white mt-6`}>{t('place.all')}</a>
+            <a href="/destinations" className={`${BTN} bg-[#084838] hover:bg-[#0a5c47] text-white mt-6`}>{t('place.all')}</a>
           </section>
         </main>
         <Footer />
@@ -225,7 +225,7 @@ function PlaceDetail() {
               </div>
             )}
 
-            <div className="mt-8 rounded-3xl bg-slate-900 text-white p-6 md:p-8">
+            <div className="mt-8 rounded-3xl bg-[#084838] text-white p-6 md:p-8">
               <h3 className="text-xl font-medium">{t('place.goodToKnow')}</h3>
               <p className="mt-3 text-sm md:text-base text-white/75 leading-relaxed">{t('place.bestTime', { time: d.best })} {d.tip}</p>
             </div>

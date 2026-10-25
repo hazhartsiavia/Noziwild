@@ -80,7 +80,7 @@ function CircuitsHero() {
   return (
     <>
       <Navbar />
-      <section ref={root} className={`${SECTION_WIDTH} relative flex items-center overflow-hidden rounded-3xl bg-slate-900 text-white min-h-[100px] md:min-h-[360px]`}>
+      <section ref={root} className={`${SECTION_WIDTH} relative flex items-center overflow-hidden rounded-3xl bg-[#084838] text-white min-h-[100px] md:min-h-[360px]`}>
         <img src={NosyIranja} alt="" className="hero-bg absolute inset-0 w-full h-full object-cover" />
         <div className="hero-shade absolute inset-0 bg-slate-950/60" />
         <div className="relative w-full max-w-5xl mx-auto px-6 md:px-10 py-16">
@@ -103,7 +103,7 @@ function Chip({ active, onClick, children }) {
       aria-pressed={active}
       className={`chip rounded-full border px-4 py-2 text-sm transition focus:outline-none focus-visible:ring-2 focus-visible:ring-slate-700 focus-visible:ring-offset-2 ${
         active
-          ? 'bg-slate-800 border-slate-800 text-white'
+          ? 'bg-[#084838] border-[#084838] text-white'
           : 'bg-white border-slate-300 text-slate-700 hover:border-slate-500'
       }`}
     >
@@ -306,7 +306,7 @@ function Circuits() {
                 <button
                   type="button"
                   onClick={() => window.location.reload()}
-                  className={`mt-4 bg-slate-800 hover:bg-slate-700 active:scale-95 transition text-white ${BUTTON}`}
+                  className={`mt-4 bg-[#084838] hover:bg-[#0a5c47] active:scale-95 transition text-white ${BUTTON}`}
                 >
                   {t('reload')}
                 </button>
@@ -324,7 +324,7 @@ function Circuits() {
                 <button
                   type="button"
                   onClick={() => { setRegion('All'); setDuration(0) }}
-                  className={`mt-4 bg-slate-800 hover:bg-slate-700 active:scale-95 transition text-white ${BUTTON}`}
+                  className={`mt-4 bg-[#084838] hover:bg-[#0a5c47] active:scale-95 transition text-white ${BUTTON}`}
                 >
                   {t('reset')}
                 </button>

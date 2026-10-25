@@ -154,7 +154,7 @@ function AdminInbox() {
             role="tab"
             aria-selected={id === source}
             onClick={() => setParams({ source: id })}
-            className={`rounded-full border px-4 py-2 text-sm transition ${id === source ? 'border-slate-800 bg-slate-800 text-white' : 'border-slate-300 bg-white text-slate-700 hover:border-slate-500'}`}
+            className={`rounded-full border px-4 py-2 text-sm transition ${id === source ? 'border-[#084838] bg-[#084838] text-white' : 'border-slate-300 bg-white text-slate-700 hover:border-slate-500'}`}
           >
             {s.label}
           </button>

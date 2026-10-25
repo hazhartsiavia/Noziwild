@@ -41,7 +41,7 @@ function AdminLayout() {
           <p className="mt-3 text-slate-600">
             Your account ({user.email}) does not have access to this area. Ask the Noziwild team to give you the administrator role.
           </p>
-          <Link to="/" className="mt-6 inline-flex rounded-full bg-slate-800 px-6 py-3 text-sm font-medium text-white hover:bg-slate-700">Back to the site</Link>
+          <Link to="/" className="mt-6 inline-flex rounded-full bg-[#084838] px-6 py-3 text-sm font-medium text-white hover:bg-[#0a5c47]">Back to the site</Link>
         </section>
       </Shell>
     )
@@ -61,7 +61,7 @@ function AdminLayout() {
                 key={to}
                 to={to}
                 className={({ isActive }) =>
-                  `flex items-center gap-2 rounded-full px-4 py-2 text-sm font-medium transition ${isActive ? 'bg-slate-800 text-white' : 'text-slate-700 hover:bg-slate-100'}`
+                  `flex items-center gap-2 rounded-full px-4 py-2 text-sm font-medium transition ${isActive ? 'bg-[#084838] text-white' : 'text-slate-700 hover:bg-slate-100'}`
                 }
               >
                 <Icon size={16} aria-hidden="true" /> {label}

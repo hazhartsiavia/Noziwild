@@ -20,7 +20,7 @@ function NotFound() {
           <h1 className={H2}>{t('detail.soonTitle')}</h1>
           <p className="mt-4 text-slate-600">{t('detail.soonText')}</p>
           <div className="mt-6 flex justify-center gap-3">
-            <a href="/destinations" className={`${BTN} bg-slate-800 hover:bg-slate-700 text-white`}>{t('detail.all')}</a>
+            <a href="/destinations" className={`${BTN} bg-[#084838] hover:bg-[#0a5c47] text-white`}>{t('detail.all')}</a>
             <a href="/contact" className={`${BTN} ${GOLD} text-white`}>{t('detail.contact')}</a>
           </div>
         </section>
@@ -34,7 +34,7 @@ function PlacesCarousel({ d }) {
   const ref = useRef(null)
   const t = useT('destinations')
   const scroll = (dir) => ref.current?.scrollBy({ left: dir * ref.current.clientWidth * 0.8, behavior: 'smooth' })
-  const arrow = 'w-11 h-11 rounded-full border border-slate-300 text-slate-800 hover:bg-slate-800 hover:text-white transition flex items-center justify-center text-xl focus:outline-none focus-visible:ring-2 focus-visible:ring-slate-700'
+  const arrow = 'w-11 h-11 rounded-full border border-slate-300 text-slate-800 hover:bg-[#084838] hover:text-white transition flex items-center justify-center text-xl focus:outline-none focus-visible:ring-2 focus-visible:ring-slate-700'
   return (
     <section className={`${W} mt-16 md:mt-24 rounded-[2rem] md:rounded-[3rem] bg-white p-5 sm:p-8 md:p-14`}>
       <div className="flex items-end justify-between gap-4">
@@ -84,7 +84,7 @@ function DestinationDetail() {
         <Navbar />
 
         {/* Hero */}
-        <section className={`${W} relative overflow-hidden rounded-[2rem] md:rounded-[3rem] bg-slate-900 text-white min-h-[520px] md:min-h-[78vh] flex items-end`}>
+        <section className={`${W} relative overflow-hidden rounded-[2rem] md:rounded-[3rem] bg-[#084838] text-white min-h-[520px] md:min-h-[78vh] flex items-end`}>
           <img src={d.image} alt={d.name} className="absolute inset-0 w-full h-full object-cover" />
           <div className="absolute inset-0 bg-gradient-to-t from-slate-950/85 via-slate-950/25 to-slate-950/10" />
           <div className="relative p-6 sm:p-10 md:p-16">
@@ -134,7 +134,7 @@ function DestinationDetail() {
         <PlacesCarousel d={d} />
 
         {/* Pratique */}
-        <section className={`${W} mt-16 md:mt-24 rounded-[2rem] md:rounded-[3rem] bg-slate-900 text-white p-6 sm:p-10 md:p-14 grid grid-cols-1 md:grid-cols-2 gap-10`}>
+        <section className={`${W} mt-16 md:mt-24 rounded-[2rem] md:rounded-[3rem] bg-[#084838] text-white p-6 sm:p-10 md:p-14 grid grid-cols-1 md:grid-cols-2 gap-10`}>
           <div>
             <h3 className="text-xl md:text-2xl font-medium">{t('detail.getting')}</h3>
             <p className="mt-3 text-sm md:text-base text-white/75 leading-relaxed">{d.getting}</p>

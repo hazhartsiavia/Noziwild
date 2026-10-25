@@ -43,7 +43,7 @@ function Hero() {
   return (
     <>
       <Navbar />
-      <section className={`${W} relative overflow-hidden rounded-[2rem] md:rounded-[3rem] bg-slate-900 text-white min-h-[520px] md:min-h-[78vh] flex items-end`}>
+      <section className={`${W} relative overflow-hidden rounded-[2rem] md:rounded-[3rem] bg-[#084838] text-white min-h-[520px] md:min-h-[78vh] flex items-end`}>
         <img src={Ramena} alt={t('heroAlt')} className="absolute inset-0 w-full h-full object-cover" />
         <div className="absolute inset-0 bg-gradient-to-t from-slate-950/85 via-slate-950/30 to-slate-950/10" />
         <div className="relative p-6 sm:p-10 md:p-16 max-w-4xl">
@@ -118,7 +118,7 @@ function CruiseExcursions() {
                   type="button"
                   onClick={() => setPort(p.id)}
                   aria-pressed={port === p.id}
-                  className={`group relative block w-full aspect-[16/9] md:aspect-[2/1] overflow-hidden rounded-[2rem] text-left text-white focus:outline-none focus-visible:ring-4 focus-visible:ring-slate-800 ${port === p.id ? 'ring-4 ring-[#C49849]' : ''}`}
+                  className={`group relative block w-full aspect-[16/9] md:aspect-[2/1] overflow-hidden rounded-[2rem] text-left text-white focus:outline-none focus-visible:ring-4 focus-visible:ring-[#084838] ${port === p.id ? 'ring-4 ring-[#C49849]' : ''}`}
                 >
                   <img src={p.image} alt="" className="absolute inset-0 w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" />
                   <div className="absolute inset-0 bg-gradient-to-t from-slate-950/85 via-slate-950/20 to-transparent" />
@@ -159,7 +159,7 @@ function CruiseExcursions() {
         </section>
 
         {/* Engagements */}
-        <section className={`${W} mt-16 md:mt-28 rounded-[2rem] md:rounded-[3rem] bg-slate-900 text-white p-6 sm:p-10 md:p-14`}>
+        <section className={`${W} mt-16 md:mt-28 rounded-[2rem] md:rounded-[3rem] bg-[#084838] text-white p-6 sm:p-10 md:p-14`}>
           <h2 className="text-3xl sm:text-4xl md:text-5xl font-medium leading-[1.1] tracking-tight max-w-2xl">{t('promisesTitle')}</h2>
           <ul className="mt-10 grid grid-cols-1 md:grid-cols-3 gap-8">
             {t('promises').map((p) => (
