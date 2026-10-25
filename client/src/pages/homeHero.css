@@ -20,9 +20,9 @@
   -webkit-font-smoothing: antialiased;
 }
 
-/* La navbar impose Geist à tous les éléments (* { … }) : le hero garde Figtree, la navbar garde Geist */
+/* La navbar impose Geist à tous les éléments (* { … }) : le hero et sa navbar gardent Figtree */
 .nzpl *,
-.nzh *:not(.nzh__nav, .nzh__nav *) { font-family: var(--nz-font); }
+.nzh * { font-family: var(--nz-font); }
 
 .nzh :focus-visible { outline: 2px solid var(--nz-gold-soft); outline-offset: 4px; }
 

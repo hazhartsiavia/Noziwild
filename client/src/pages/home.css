@@ -1,0 +1,12 @@
+@import url('https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,300..600&display=swap');
+
+/* Accueil en Figtree, navbar et pied de page compris (ailleurs, la navbar et le pied de page imposent Geist à tout avec * { … }) */
+.nz-home,
+.nz-home * { font-family: "Figtree", system-ui, -apple-system, "Segoe UI", sans-serif; }
+
+/* Grands titres en Fraunces, serif doux qui accompagne Figtree */
+.nz-home .nz-serif {
+  font-family: "Fraunces", Georgia, serif;
+  font-weight: 400;
+  letter-spacing: -0.01em;
+}
