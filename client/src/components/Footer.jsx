@@ -16,13 +16,6 @@ const Footer = () => {
     const t = useT('footer')
     return (
         <>
-            <style>
-                {`
-                    @import url('https://fonts.googleapis.com/css2?family=Geist:wght@100..900&display=swap');
-                    *{ font-family: "Geist", sans-serif; }
-                `}
-            </style>
-
             <footer className='flex flex-col justify-end bg-white pt-20 px-4 sm:px-6 lg:px-8 overflow-hidden w-full'>
                 <div className='w-full max-w-7xl mx-auto'>
                     <div className="flex flex-wrap justify-between gap-y-12 lg:gap-x-8">
@@ -38,7 +31,7 @@ const Footer = () => {
                         </div>
 
                         <div className="w-[45%] md:w-[45%] lg:w-[15%] flex flex-col items-start text-left">
-                            <h3 className='text-sm text-black font-medium'>{t('importantLinks')}</h3>
+                            <h3 className='text-sm text-forest font-medium'>{t('importantLinks')}</h3>
                             <div className="flex flex-col gap-2 mt-6">
                                 {LINKS.map(({ to, key }) => (
                                     <Link key={key} to={to} className='text-sm text-black/60 hover:text-black transition-colors'>{t(`links.${key}`)}</Link>
@@ -60,7 +53,7 @@ const Footer = () => {
 
                     {/* Grand nom en fond : "Noziwild" a moins de lettres que "Prebuiltui", donc la taille max est augmentée */}
                     <div className="w-full flex justify-center mt-6 md:mt-12 md:mb-[-0.5%]">
-                        <h1 className="text-center font-extrabold tracking-tighter leading-[0.70] text-zinc-100 text-[clamp(4.5rem,24vw,31rem)] pointer-events-none select-none">
+                        <h1 className="font-sans text-center font-extrabold tracking-tighter leading-[0.70] text-zinc-100 text-[clamp(4.5rem,24vw,31rem)] pointer-events-none select-none">
                             Noziwild
                         </h1>
                     </div>

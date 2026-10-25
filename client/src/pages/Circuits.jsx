@@ -14,7 +14,7 @@ gsap.registerPlugin(ScrollTrigger)
 
 /* Constantes partagées : mêmes valeurs que Blog et Contact */
 const SECTION_WIDTH = 'w-[90vw] lg:max-w-[95vw]'
-const SECTION_TITLE = 'text-3xl sm:text-4xl md:text-5xl lg:text-[52px] font-medium text-slate-900 leading-[1.15] tracking-tight'
+const SECTION_TITLE = 'text-3xl sm:text-4xl md:text-5xl lg:text-[52px] font-medium text-forest leading-[1.15] tracking-tight'
 const SECTION_SUBTITLE = 'text-sm sm:text-base md:text-lg text-slate-600 leading-relaxed max-w-3xl'
 const META_TEXT = 'text-xs sm:text-sm'
 const PAGE_TITLE = 'text-5xl sm:text-6xl md:text-7xl lg:text-[80px] font-bold uppercase leading-none tracking-tight'
@@ -337,7 +337,7 @@ function Circuits() {
         <section ref={highlightsRef} className={`${SECTION_WIDTH} mt-16 md:mt-24 grid grid-cols-1 md:grid-cols-3 gap-6`}>
           {t('highlights').map((item) => (
             <div key={item.title} className="highlight rounded-3xl bg-white p-6 md:p-8">
-              <h3 className="text-xl md:text-2xl font-medium text-slate-900">{item.title}</h3>
+              <h3 className="text-xl md:text-2xl font-medium text-forest">{item.title}</h3>
               <p className="mt-3 text-sm md:text-base text-slate-600 leading-relaxed">{item.text}</p>
             </div>
           ))}

@@ -71,7 +71,7 @@ function ExcursionCard({ item, ashore }) {
         <span className="absolute right-3 top-3 bg-white/90 text-slate-900 text-xs sm:text-sm font-medium px-3 py-1.5 rounded-full">{fmt(item.hours)}</span>
       </div>
       <div className="flex flex-1 flex-col px-3 pt-5 pb-3">
-        <h3 className="text-xl md:text-2xl font-medium leading-snug text-slate-900">{item.title}</h3>
+        <h3 className="text-xl md:text-2xl font-medium leading-snug text-forest">{item.title}</h3>
         <p className="mt-2 text-sm md:text-base text-slate-600 leading-relaxed">{item.text}</p>
 
         <div className="mt-5" aria-hidden="true">

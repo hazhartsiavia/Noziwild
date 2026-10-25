@@ -644,7 +644,7 @@ function CircuitDetail() {
           <nav aria-label="Breadcrumb" className="text-sm md:text-base text-slate-700">
             <Link to="/" className="hover:underline">{t('home')}</Link> / <Link to="/circuits" className="hover:underline">{t('circuits')}</Link> / {circuit.title}
           </nav>
-          <h1 className="detail-title mt-5 text-4xl sm:text-5xl md:text-6xl xl:text-7xl font-semibold leading-[1.05] tracking-tight text-slate-900 max-w-5xl">{circuit.title}</h1>
+          <h1 className="detail-title mt-5 text-4xl sm:text-5xl md:text-6xl xl:text-7xl font-semibold leading-[1.05] tracking-tight text-forest max-w-5xl">{circuit.title}</h1>
           <p className="detail-meta mt-3 text-lg md:text-2xl text-slate-700 max-w-3xl">{circuit.summary}</p>
 
           <div className="detail-meta mt-5 flex flex-wrap items-center gap-x-8 gap-y-2 text-sm md:text-base text-slate-700">
@@ -693,7 +693,7 @@ function CircuitDetail() {
                 { title: t('excludes'), list: circuit.excluded, icon: 'cross', color: 'text-red-700' },
               ].map(({ title, list, icon, color }) => (
                 <div key={title} className="gs-incl rounded-3xl bg-white p-6 md:p-8">
-                  <h3 className="text-xl font-medium text-slate-900">{title}</h3>
+                  <h3 className="text-xl font-medium text-forest">{title}</h3>
                   <ul className="mt-4 flex flex-col gap-3">
                     {list.map((x) => (
                       <li key={x} className="flex gap-3 text-sm md:text-base text-slate-700">

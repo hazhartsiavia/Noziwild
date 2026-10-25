@@ -12,12 +12,12 @@ import { useT } from '../i18n/LanguageContext';
 
 /* Constantes partagées : mêmes valeurs que dans Explore, Choose, Trips et Blog */
 const SECTION_WIDTH = "w-[90vw] lg:max-w-[90vw] xl:max-w-[95vw]"
-const SECTION_TITLE = "text-3xl sm:text-4xl md:text-5xl lg:text-[52px] font-medium text-slate-900 leading-[1.15] tracking-tight"
+const SECTION_TITLE = "text-3xl sm:text-4xl md:text-5xl lg:text-[52px] font-medium text-forest leading-[1.15] tracking-tight"
 const SECTION_SUBTITLE = "text-sm sm:text-base md:text-lg text-slate-600 leading-relaxed max-w-3xl"
 const META_TEXT = "text-xs sm:text-sm"
 
 // Propres à cette section
-const STATEMENT_TITLE = "text-4xl sm:text-5xl md:text-6xl xl:text-7xl font-medium uppercase leading-[1.15] tracking-tight text-slate-900"
+const STATEMENT_TITLE = "text-4xl sm:text-5xl md:text-6xl xl:text-7xl font-medium uppercase leading-[1.15] tracking-tight text-forest"
 // Même échelle que SECTION_TITLE, en blanc pour être posé sur l'image
 const ON_IMAGE_TITLE = "text-3xl sm:text-4xl md:text-5xl lg:text-[52px] font-medium text-white leading-[1.15] tracking-tight"
 
@@ -388,7 +388,7 @@ function ExpertSideCard({ expert, onSelect }) {
           className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
         />
       </div>
-      <h3 className="mt-4 md:mt-8 text-lg md:text-2xl font-medium leading-snug text-slate-900">
+      <h3 className="mt-4 md:mt-8 text-lg md:text-2xl font-medium leading-snug text-forest">
         {expert.name}
       </h3>
       <p className="mt-1 md:mt-3 text-sm md:text-base text-slate-600">{expert.role}</p>
@@ -451,7 +451,7 @@ function ExpertsSection() {
           <hr className="mt-6 md:mt-9 border-slate-900/15" />
 
           <div className="mt-6 md:mt-8 flex flex-wrap items-center gap-x-4 gap-y-1">
-            <h3 className="text-2xl md:text-3xl lg:text-4xl font-medium tracking-tight leading-tight text-slate-900">
+            <h3 className="text-2xl md:text-3xl lg:text-4xl font-medium tracking-tight leading-tight text-forest">
               {current.name}
             </h3>
             <span className="hidden sm:block w-px h-5 bg-slate-500" aria-hidden="true" />

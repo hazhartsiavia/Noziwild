@@ -217,7 +217,7 @@ function OfferEditor() {
           <Link to={backTo} className="inline-flex items-center gap-1.5 text-sm text-slate-700 hover:underline">
             <ArrowLeft size={15} aria-hidden="true" /> All {config.label.toLowerCase()}
           </Link>
-          <h2 className="mt-1 truncate text-xl sm:text-2xl font-medium text-slate-900">
+          <h2 className="mt-1 truncate text-xl sm:text-2xl font-medium text-forest">
             {isNew ? `New ${config.singular}` : form.title || 'Untitled'}
           </h2>
         </div>

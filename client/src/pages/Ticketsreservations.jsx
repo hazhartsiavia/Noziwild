@@ -18,7 +18,7 @@ gsap.registerPlugin(ScrollTrigger)
 
 /* Constantes partagées : mêmes valeurs que dans les autres pages */
 const SECTION_WIDTH = "w-[90vw] lg:max-w-[90vw] xl:max-w-[95vw]"
-const SECTION_TITLE = "text-3xl sm:text-4xl md:text-5xl lg:text-[52px] font-medium text-slate-900 leading-[1.15] tracking-tight"
+const SECTION_TITLE = "text-3xl sm:text-4xl md:text-5xl lg:text-[52px] font-medium text-forest leading-[1.15] tracking-tight"
 const SECTION_SUBTITLE = "text-sm sm:text-base md:text-lg text-slate-600 leading-relaxed max-w-3xl"
 const META_TEXT = "text-xs sm:text-sm"
 const BADGE = "inline-block bg-[#C49849] text-white text-xs sm:text-sm font-medium px-3 py-1.5 rounded-sm"
@@ -130,7 +130,7 @@ function TicketCard({ t }) {
       <img src={t.image} alt={t.name} className="w-[30%] sm:w-[34%] object-cover" />
       <div className="flex-1 min-w-0 p-4 md:p-5">
         <p className={`flex items-center gap-1.5 ${META_TEXT} text-slate-600`}><PinIcon />{t.place}</p>
-        <h3 className="mt-1 text-lg md:text-2xl font-medium leading-snug text-slate-900">{t.name}</h3>
+        <h3 className="mt-1 text-lg md:text-2xl font-medium leading-snug text-forest">{t.name}</h3>
         <ul className="mt-3 flex flex-wrap gap-2">
           {t.perks.map((p) => <li key={p} className="rounded-full bg-[#D5E8E2] px-3 py-1 text-xs text-slate-700">{p}</li>)}
         </ul>
@@ -202,7 +202,7 @@ function HowItWorks() {
         {steps.map((s) => (
           <li key={s.id} className="relative flex flex-col items-center text-center">
             <span className="w-16 h-16 rounded-full bg-[#C49849] text-white text-2xl font-medium flex items-center justify-center ring-8 ring-[#D5E8E2]">{s.id}</span>
-            <h3 className="mt-6 text-xl md:text-2xl font-medium text-slate-900">{s.title}</h3>
+            <h3 className="mt-6 text-xl md:text-2xl font-medium text-forest">{s.title}</h3>
             <p className="mt-2 max-w-xs text-sm md:text-base text-slate-600 leading-relaxed">{s.text}</p>
           </li>
         ))}
@@ -258,7 +258,7 @@ function Faq() {
         {t('faqs').map((f, i) => (
           <article key={f.q} className="rounded-2xl bg-white p-6 md:p-7">
             <span className="w-9 h-9 rounded-full bg-[#C49849] text-white text-sm font-medium flex items-center justify-center">{i + 1}</span>
-            <h3 className="mt-4 text-lg md:text-xl font-medium text-slate-900 leading-snug">{f.q}</h3>
+            <h3 className="mt-4 text-lg md:text-xl font-medium text-forest leading-snug">{f.q}</h3>
             <p className="mt-2 text-sm md:text-base text-slate-600 leading-relaxed">{f.a}</p>
           </article>
         ))}

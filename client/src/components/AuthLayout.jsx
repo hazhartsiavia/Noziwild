@@ -25,7 +25,7 @@ function AuthLayout({ title, text, children }) {
 
           {/* Contenu */}
           <div className="p-6 sm:p-10 md:p-14">
-            <h1 className="text-3xl sm:text-4xl md:text-5xl font-medium uppercase leading-[1.15] tracking-tight text-slate-900">
+            <h1 className="text-3xl sm:text-4xl md:text-5xl font-medium uppercase leading-[1.15] tracking-tight text-forest">
               {title}
             </h1>
             <p className="mt-4 text-sm sm:text-base md:text-lg text-slate-600 leading-relaxed">{text}</p>

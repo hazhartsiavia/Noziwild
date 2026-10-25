@@ -158,7 +158,7 @@ function Row({ item }) {
         <p className="flex items-center gap-3 text-xs sm:text-sm text-slate-600">
           <span>{item.place}</span><span className="w-px h-4 bg-slate-500" /><span>{item.level}</span><span className="w-px h-4 bg-slate-500" /><span>{item.group}</span>
         </p>
-        <h3 className="mt-3 text-xl md:text-3xl font-medium leading-snug text-slate-900">
+        <h3 className="mt-3 text-xl md:text-3xl font-medium leading-snug text-forest">
           {href ? <a href={href} className="hover:underline">{item.title}</a> : item.title}
         </h3>
         <p className="mt-3 text-sm md:text-base text-slate-600 leading-relaxed max-w-xl">{item.text}</p>

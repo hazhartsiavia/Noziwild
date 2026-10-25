@@ -15,7 +15,7 @@ import { formatDate } from '../utils/format'
 gsap.registerPlugin(ScrollTrigger)
 
 const SECTION_WIDTH = 'w-[90vw] lg:max-w-[95vw]'
-const SECTION_TITLE = 'text-3xl sm:text-4xl md:text-5xl lg:text-[52px] font-medium text-slate-900 leading-[1.15] tracking-tight'
+const SECTION_TITLE = 'text-3xl sm:text-4xl md:text-5xl lg:text-[52px] font-medium text-forest leading-[1.15] tracking-tight'
 const META_TEXT = 'text-xs sm:text-sm'
 const PAGE_TITLE = 'text-5xl sm:text-6xl md:text-7xl lg:text-[80px] font-bold uppercase leading-none tracking-tight'
 const BADGE = 'inline-block bg-[#C49849] text-white text-xs sm:text-sm font-medium px-3 py-1.5 rounded-sm'

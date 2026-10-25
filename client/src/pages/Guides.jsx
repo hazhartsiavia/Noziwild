@@ -18,10 +18,10 @@ gsap.registerPlugin(ScrollTrigger)
 
 /* Constantes partagées : mêmes valeurs que dans les autres pages */
 const SECTION_WIDTH = "w-[90vw] lg:max-w-[90vw] xl:max-w-[95vw]"
-const SECTION_TITLE = "text-3xl sm:text-4xl md:text-5xl lg:text-[52px] font-medium text-slate-900 leading-[1.15] tracking-tight"
+const SECTION_TITLE = "text-3xl sm:text-4xl md:text-5xl lg:text-[52px] font-medium text-forest leading-[1.15] tracking-tight"
 const SECTION_SUBTITLE = "text-sm sm:text-base md:text-lg text-slate-600 leading-relaxed max-w-3xl"
 const META_TEXT = "text-xs sm:text-sm"
-const STATEMENT_TITLE = "text-4xl sm:text-5xl md:text-6xl xl:text-7xl font-medium uppercase leading-[1.15] tracking-tight text-slate-900"
+const STATEMENT_TITLE = "text-4xl sm:text-5xl md:text-6xl xl:text-7xl font-medium uppercase leading-[1.15] tracking-tight text-forest"
 const BADGE = "inline-block bg-[#C49849] text-white text-xs sm:text-sm font-medium px-3 py-1.5 rounded-sm"
 const BUTTON = "text-sm font-medium px-5 py-2.5 rounded-full md:px-6 md:py-3 active:scale-95 transition"
 const SECTION_GAP = "mt-[60px] md:mt-[120px]"
@@ -300,7 +300,7 @@ function GuideShowcase() {
           </div>
           <div className="p-6 md:p-10 flex flex-col">
             <span className={`${BADGE} self-start`}>{tr('years', { count: g.years })}</span>
-            <h3 className="mt-5 text-2xl md:text-4xl font-medium tracking-tight text-slate-900">{g.name}</h3>
+            <h3 className="mt-5 text-2xl md:text-4xl font-medium tracking-tight text-forest">{g.name}</h3>
             <p className="mt-1 text-base md:text-lg text-slate-700">{g.role}</p>
             <p className="mt-5 text-sm md:text-base leading-relaxed text-slate-600">{g.bio}</p>
             <p className={`mt-5 ${META_TEXT} text-slate-500 uppercase tracking-wide`}>{tr('languages')}</p>
@@ -409,7 +409,7 @@ function DayTimeline() {
         </div>
         <div className="p-6 md:p-12 flex flex-col">
           <span className={`${BADGE} self-start`}>{tr('stepOf', { n: active + 1, total, time: step.time })}</span>
-          <h3 className="mt-5 text-2xl md:text-4xl font-medium tracking-tight text-slate-900">{step.title}</h3>
+          <h3 className="mt-5 text-2xl md:text-4xl font-medium tracking-tight text-forest">{step.title}</h3>
           <p className="mt-4 text-sm md:text-lg leading-relaxed text-slate-600 max-w-md">{step.text}</p>
           <button
             type="button"

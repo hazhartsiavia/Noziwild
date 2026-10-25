@@ -20,10 +20,10 @@ gsap.registerPlugin(ScrollTrigger)
 
 /* Constantes partagées : mêmes valeurs que dans les autres pages */
 const SECTION_WIDTH = "w-[90vw] lg:max-w-[90vw] xl:max-w-[95vw]"
-const SECTION_TITLE = "text-3xl sm:text-4xl md:text-5xl lg:text-[52px] font-medium text-slate-900 leading-[1.15] tracking-tight"
+const SECTION_TITLE = "text-3xl sm:text-4xl md:text-5xl lg:text-[52px] font-medium text-forest leading-[1.15] tracking-tight"
 const SECTION_SUBTITLE = "text-sm sm:text-base md:text-lg text-slate-600 leading-relaxed max-w-3xl"
 const META_TEXT = "text-xs sm:text-sm"
-const STATEMENT_TITLE = "text-4xl sm:text-5xl md:text-6xl xl:text-7xl font-medium uppercase leading-[1.15] tracking-tight text-slate-900"
+const STATEMENT_TITLE = "text-4xl sm:text-5xl md:text-6xl xl:text-7xl font-medium uppercase leading-[1.15] tracking-tight text-forest"
 const BADGE = "inline-block bg-[#C49849] text-white text-xs sm:text-sm font-medium px-3 py-1.5 rounded-sm"
 const BUTTON = "text-sm font-medium px-5 py-2.5 rounded-full md:px-6 md:py-3 active:scale-95 transition"
 const SECTION_GAP = "mt-[60px] md:mt-[120px]"
@@ -293,7 +293,7 @@ function Menu() {
                   <span className="hidden lg:block w-8 text-sm tabular-nums text-[#9a742f]">{String(i + 1).padStart(2, '0')}</span>
 
                   <div className="flex-1 min-w-0">
-                    <h3 className="text-lg md:text-2xl font-medium text-slate-900 leading-snug">{e.name}</h3>
+                    <h3 className="text-lg md:text-2xl font-medium text-forest leading-snug">{e.name}</h3>
                     <p className="mt-1 flex flex-wrap items-center gap-x-3 text-sm text-slate-600">
                       <span className="rounded-full border border-slate-400 px-2.5 py-0.5 text-xs md:text-sm text-slate-700">{e.duration}</span>
                       <span className="lg:hidden">{e.text}</span>
@@ -323,7 +323,7 @@ function Diets() {
   const t = useT('food')
   return (
     <div className={`${SECTION_GAP} flex flex-col lg:flex-row lg:items-center gap-6 lg:gap-16 border-y border-[#084838]/20 py-8 md:py-10`}>
-      <h2 className="text-2xl md:text-4xl font-medium text-slate-900 tracking-tight lg:max-w-xs">{t('dietsTitle')}</h2>
+      <h2 className="text-2xl md:text-4xl font-medium text-forest tracking-tight lg:max-w-xs">{t('dietsTitle')}</h2>
       <ul className="flex flex-wrap gap-2 md:gap-3">
         {t('diets').map((d) => (
           <li key={d} className="rounded-full border border-[#084838] px-4 md:px-5 py-2 text-sm md:text-base text-[#084838]">{d}</li>
@@ -358,7 +358,7 @@ function CookingClass() {
             <li key={s.id} className="flex items-start gap-4">
               <span className="shrink-0 w-9 h-9 rounded-full bg-[#C49849] text-white flex items-center justify-center text-sm font-medium">{s.id}</span>
               <div>
-                <h3 className="text-lg md:text-xl font-medium text-slate-900">{s.title}</h3>
+                <h3 className="text-lg md:text-xl font-medium text-forest">{s.title}</h3>
                 <p className="mt-1 text-sm md:text-base text-slate-600 leading-relaxed">{s.text}</p>
               </div>
             </li>

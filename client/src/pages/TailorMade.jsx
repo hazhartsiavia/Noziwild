@@ -162,7 +162,7 @@ function Hero() {
       <section ref={root} className={`${W} mt-6 grid grid-cols-1 lg:grid-cols-[1.1fr_1fr] gap-10 lg:gap-14 items-center`}>
         <div>
           <p className="hero-eyebrow text-sm md:text-base text-slate-700 mb-4">{t('eyebrow')}</p>
-          <h1 aria-label={t('title')} className="text-5xl sm:text-6xl md:text-7xl xl:text-[100px] font-semibold leading-[0.95] tracking-tight text-slate-900">
+          <h1 aria-label={t('title')} className="text-5xl sm:text-6xl md:text-7xl xl:text-[100px] font-semibold leading-[0.95] tracking-tight text-forest">
             <Words text={t('title')} className="hero-word" />
           </h1>
           <p className="hero-copy mt-6 text-base md:text-lg text-slate-700 leading-relaxed max-w-xl">{t('intro')}</p>
@@ -509,7 +509,7 @@ function TailorMade() {
               <li key={steps[i].title} className="step-item flex gap-6 md:gap-10 border-t border-slate-900/15 py-8 transition-colors duration-300 hover:bg-slate-900/[0.02] rounded-xl">
                 <span className="step-num text-5xl md:text-7xl font-semibold text-[#C49849] leading-none w-14 md:w-24 shrink-0">{i + 1}</span>
                 <div>
-                  <h3 className="text-xl md:text-3xl font-medium text-slate-900">{s.title}</h3>
+                  <h3 className="text-xl md:text-3xl font-medium text-forest">{s.title}</h3>
                   <p className="mt-2 text-sm md:text-base text-slate-600 leading-relaxed">{s.text}</p>
                 </div>
               </li>

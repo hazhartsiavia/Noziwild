@@ -17,10 +17,10 @@ gsap.registerPlugin(ScrollTrigger)
 
 /* Constantes partagées : mêmes valeurs que dans About, Explore, Choose, Trips et Blog */
 const SECTION_WIDTH = "w-[90vw] lg:max-w-[90vw] xl:max-w-[95vw]"
-const SECTION_TITLE = "text-3xl sm:text-4xl md:text-5xl lg:text-[52px] font-medium text-slate-900 leading-[1.15] tracking-tight"
+const SECTION_TITLE = "text-3xl sm:text-4xl md:text-5xl lg:text-[52px] font-medium text-forest leading-[1.15] tracking-tight"
 const SECTION_SUBTITLE = "text-sm sm:text-base md:text-lg text-slate-600 leading-relaxed max-w-3xl"
 const META_TEXT = "text-xs sm:text-sm"
-const STATEMENT_TITLE = "text-4xl sm:text-5xl md:text-6xl xl:text-7xl font-medium uppercase leading-[1.15] tracking-tight text-slate-900"
+const STATEMENT_TITLE = "text-4xl sm:text-5xl md:text-6xl xl:text-7xl font-medium uppercase leading-[1.15] tracking-tight text-forest"
 const ON_IMAGE_TITLE = "text-3xl sm:text-4xl md:text-5xl lg:text-[52px] font-medium text-white leading-[1.15] tracking-tight"
 const SECTION_GAP = "mt-[50px] md:mt-[100px]"
 const GOLD = "bg-[#C49849]"
@@ -307,7 +307,7 @@ function TransportCard({ item }) {
         <img src={item.image} alt={item.name} className="w-full h-full object-cover transition-transform duration-500 hover:scale-105" />
       </div>
       <div className="flex flex-col flex-1 p-5 md:p-6">
-        <h3 className="text-xl md:text-2xl font-medium text-slate-900">{item.name}</h3>
+        <h3 className="text-xl md:text-2xl font-medium text-forest">{item.name}</h3>
         <div className={`mt-3 flex flex-wrap gap-x-5 gap-y-1 ${META_TEXT} text-slate-600`}>
           <span className="flex items-center gap-1.5"><UsersIcon />{item.capacity}</span>
           <span className="flex items-center gap-1.5"><ClockIcon />{item.duration}</span>
@@ -405,7 +405,7 @@ function HowItWorks() {
             <span className={`step-badge w-12 h-12 rounded-full ${GOLD} flex items-center justify-center text-white text-lg font-medium`}>
               {step.id}
             </span>
-            <h3 className="mt-6 text-xl md:text-2xl font-medium text-slate-900 leading-snug">{step.title}</h3>
+            <h3 className="mt-6 text-xl md:text-2xl font-medium text-forest leading-snug">{step.title}</h3>
             <p className="mt-3 text-sm md:text-base leading-relaxed text-slate-600">{step.text}</p>
           </li>
         ))}

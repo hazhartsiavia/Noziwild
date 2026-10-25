@@ -288,7 +288,7 @@ function CircuitEditor() {
           <Link to="/admin/circuits" className="inline-flex items-center gap-1.5 text-sm text-slate-700 hover:underline">
             <ArrowLeft size={15} aria-hidden="true" /> All circuits
           </Link>
-          <h2 className="mt-1 truncate text-xl sm:text-2xl font-medium text-slate-900">{isNew ? 'New circuit' : form.title || 'Untitled circuit'}</h2>
+          <h2 className="mt-1 truncate text-xl sm:text-2xl font-medium text-forest">{isNew ? 'New circuit' : form.title || 'Untitled circuit'}</h2>
         </div>
         {!isNew && saved && JSON.parse(saved).isPublished && (
           <a href={`/circuits/${slug}`} target="_blank" rel="noreferrer" className={BTN_GHOST}>

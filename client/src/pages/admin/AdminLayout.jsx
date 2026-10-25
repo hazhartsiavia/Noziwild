@@ -37,7 +37,7 @@ function AdminLayout() {
     return (
       <Shell>
         <section className="w-[90vw] max-w-2xl mt-16 rounded-3xl bg-white p-8 sm:p-10 text-center">
-          <h1 className="text-2xl sm:text-3xl font-medium text-slate-900">Administrators only</h1>
+          <h1 className="text-2xl sm:text-3xl font-medium text-forest">Administrators only</h1>
           <p className="mt-3 text-slate-600">
             Your account ({user.email}) does not have access to this area. Ask the Noziwild team to give you the administrator role.
           </p>
@@ -53,7 +53,7 @@ function AdminLayout() {
         <header className="flex flex-col sm:flex-row sm:items-end justify-between gap-4">
           <div>
             <p className="text-sm uppercase tracking-wide text-slate-600">Noziwild</p>
-            <h1 className="text-3xl sm:text-4xl font-medium tracking-tight text-slate-900">Admin</h1>
+            <h1 className="text-3xl sm:text-4xl font-medium tracking-tight text-forest">Admin</h1>
           </div>
           <nav aria-label="Admin sections" className="flex gap-1 self-start rounded-full bg-white p-1">
             {TABS.map(({ to, label, icon: Icon }) => (

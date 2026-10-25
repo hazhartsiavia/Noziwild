@@ -22,10 +22,10 @@ gsap.registerPlugin(ScrollTrigger)
 
 /* Constantes partagées : mêmes valeurs que dans les autres pages */
 const SECTION_WIDTH = "w-[90vw] lg:max-w-[90vw] xl:max-w-[95vw]"
-const SECTION_TITLE = "text-3xl sm:text-4xl md:text-5xl lg:text-[52px] font-medium text-slate-900 leading-[1.15] tracking-tight"
+const SECTION_TITLE = "text-3xl sm:text-4xl md:text-5xl lg:text-[52px] font-medium text-forest leading-[1.15] tracking-tight"
 const SECTION_SUBTITLE = "text-sm sm:text-base md:text-lg text-slate-600 leading-relaxed max-w-3xl"
 const META_TEXT = "text-xs sm:text-sm"
-const STATEMENT_TITLE = "text-4xl sm:text-5xl md:text-6xl xl:text-7xl font-medium uppercase leading-[1.15] tracking-tight text-slate-900"
+const STATEMENT_TITLE = "text-4xl sm:text-5xl md:text-6xl xl:text-7xl font-medium uppercase leading-[1.15] tracking-tight text-forest"
 const BUTTON = "text-sm font-medium px-5 py-2.5 rounded-full md:px-6 md:py-3 active:scale-95 transition"
 const SECTION_GAP = "mt-[60px] md:mt-[120px]"
 
@@ -166,7 +166,7 @@ function GearCard({ item, qty, onChange }) {
         <span className="absolute left-3 top-3 rounded-full bg-white/90 px-3 py-1 text-xs font-medium text-slate-800">{label}</span>
       </div>
       <div className="flex flex-col flex-1 p-4 md:p-5">
-        <h3 className="text-lg md:text-xl font-medium text-slate-900">{item.name}</h3>
+        <h3 className="text-lg md:text-xl font-medium text-forest">{item.name}</h3>
         <p className="mt-2 text-sm text-slate-600 leading-relaxed">{item.text}</p>
         <ul className="mt-3 flex flex-wrap gap-2">
           {item.specs.map((s) => <li key={s} className="rounded-full bg-[#D5E8E2] px-3 py-1 text-xs text-slate-700">{s}</li>)}
@@ -362,7 +362,7 @@ function Pickup() {
           <li key={p.id} className="flex items-center gap-4 md:gap-6 rounded-2xl bg-white p-4 md:p-6">
             <span className="shrink-0 w-12 h-12 md:w-16 md:h-16 rounded-full bg-[#084838] text-white flex items-center justify-center">{pickupIcons[p.icon]}</span>
             <div className="flex-1">
-              <h3 className="text-base md:text-2xl font-medium text-slate-900">{p.title}</h3>
+              <h3 className="text-base md:text-2xl font-medium text-forest">{p.title}</h3>
               <p className="mt-1 text-sm md:text-base text-slate-600 leading-relaxed">{p.text}</p>
             </div>
             <span className="shrink-0 rounded-full border border-[#084838] px-3 py-1.5 text-sm font-medium text-[#084838]">{p.price}</span>

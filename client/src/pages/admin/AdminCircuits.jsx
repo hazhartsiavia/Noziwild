@@ -57,7 +57,7 @@ function AdminCircuits() {
     <section aria-labelledby="circuits-title">
       <div className="flex flex-wrap items-center justify-between gap-4">
         <div>
-          <h2 id="circuits-title" className="text-xl sm:text-2xl font-medium text-slate-900">Circuits</h2>
+          <h2 id="circuits-title" className="text-xl sm:text-2xl font-medium text-forest">Circuits</h2>
           <p className="text-sm text-slate-600">The order below is the order on the site.</p>
         </div>
         <Link to="/admin/circuits/new" className={BTN_GOLD}>

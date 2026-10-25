@@ -16,18 +16,17 @@ import Footer from '../components/Footer'
 import { slugify } from './destinationsData'
 import { Hero, Preloader, shouldPlayPreloader } from './HomeHero'
 import { useLanguage, useT } from '../i18n/LanguageContext'
-import './home.css'
 import { monthName } from '../utils/format'
 
 gsap.registerPlugin(ScrollTrigger)
 
 /* Constantes partagées : mêmes valeurs que About, Transport, Hébergement et Destinations */
 const SECTION_WIDTH = 'w-[90vw] lg:max-w-[90vw] xl:max-w-[95vw]'
-const SECTION_TITLE = 'nz-serif text-3xl sm:text-4xl md:text-5xl lg:text-[52px] font-medium text-slate-900 leading-[1.15] tracking-tight'
+const SECTION_TITLE = 'text-3xl sm:text-4xl md:text-5xl lg:text-[52px] font-medium text-forest leading-[1.15] tracking-tight'
 const SECTION_SUBTITLE = 'text-sm sm:text-base md:text-lg text-slate-600 leading-relaxed max-w-3xl'
 const SECTION_GAP = 'mt-[50px] md:mt-[100px]'
 const SECTION_LABEL = 'mb-3 text-xs sm:text-sm md:text-base uppercase tracking-wide text-slate-700'
-const ON_IMAGE_TITLE = 'nz-serif text-3xl sm:text-4xl md:text-5xl lg:text-[52px] font-medium text-white leading-[1.15] tracking-tight'
+const ON_IMAGE_TITLE = 'text-3xl sm:text-4xl md:text-5xl lg:text-[52px] font-medium text-white leading-[1.15] tracking-tight'
 const BTN = 'inline-flex items-center justify-center text-sm md:text-base font-medium px-6 py-3 rounded-full active:scale-95 transition'
 const GOLD = 'bg-[#C49849] hover:bg-[#a9813a]'
 const GREEN = 'bg-[#074636]'
@@ -249,7 +248,7 @@ function Intro() {
               <span className="w-11 h-11 lg:w-[52px] lg:h-[52px] rounded-full bg-[#C49849] flex items-center justify-center text-white">
                 <PromiseIcon className="w-5 h-5 md:w-6 md:h-6" strokeWidth={1.8} aria-hidden="true" />
               </span>
-              <h3 className="mt-5 text-lg md:text-xl font-medium text-slate-900">{p.title}</h3>
+              <h3 className="mt-5 text-lg md:text-xl font-medium text-forest">{p.title}</h3>
               <p className="mt-2 text-sm md:text-base text-slate-600 leading-relaxed">{p.text}</p>
             </li>
           )
@@ -321,7 +320,7 @@ function Regions() {
         </div>
 
         <div className="region-text">
-          <h3 className="nz-serif text-3xl md:text-4xl lg:text-5xl font-medium leading-[1.1] tracking-tight text-slate-900">{region.name}</h3>
+          <h3 className="font-serif text-3xl md:text-4xl lg:text-5xl font-medium leading-[1.1] tracking-tight text-forest">{region.name}</h3>
           <p className="mt-3 text-lg md:text-2xl text-slate-700">{region.tagline}</p>
           <p className="mt-5 text-sm md:text-base text-slate-600 leading-relaxed max-w-xl">{region.text}</p>
 
@@ -463,7 +462,7 @@ function Testimonials() {
           <h2 className={SECTION_TITLE}>{t('reviewsTitle')}</h2>
         </div>
         <div className="flex items-center gap-4">
-          <p className="nz-serif text-5xl md:text-6xl leading-none text-slate-800">4.9<span className="text-2xl text-slate-500">/5</span></p>
+          <p className="font-serif text-5xl md:text-6xl leading-none text-slate-800">4.9<span className="text-2xl text-slate-500">/5</span></p>
           <div>
             <Stars />
             <p className="mt-2 text-sm md:text-base text-slate-600">{t('reviewsAverage')}</p>
@@ -513,7 +512,7 @@ function FinalCta() {
       <img src={Ramena} alt="" className="cta-bg absolute inset-0 w-full h-full object-cover" />
       <div className="absolute inset-0 bg-slate-950/65" />
       <div className="cta-content relative p-8 md:p-16 max-w-3xl">
-        <h2 className="nz-serif text-3xl sm:text-4xl md:text-5xl font-medium leading-[1.1] tracking-tight">{t('ctaTitle')}</h2>
+        <h2 className="text-3xl sm:text-4xl md:text-5xl font-medium leading-[1.1] tracking-tight">{t('ctaTitle')}</h2>
         <p className="mt-4 text-sm md:text-lg text-white/85">{t('ctaText')}</p>
         <div className="mt-8 flex flex-wrap gap-3">
           <a href="/contact?type=quote" className={`${BTN} ${GOLD} text-white`}>{t('ctaQuote')}</a>
@@ -542,7 +541,7 @@ function Home() {
   }, [])
 
   return (
-    <div className="nz-home">
+    <>
       {!ready && <Preloader onDone={() => setReady(true)} />}
       <main className="w-full bg-[#D5E8E2] pb-16 md:pb-24 flex flex-col items-center">
         <Hero ready={ready} />
@@ -555,7 +554,7 @@ function Home() {
         <FinalCta />
       </main>
       <Footer />
-    </div>
+    </>
   )
 }
 

@@ -85,7 +85,7 @@ function ProfileCard({ user, onUpdated }) {
         <Avatar user={user} className="w-20 h-20 text-3xl" />
         <div className="min-w-0 flex-1">
           <p className={MUTED}>{t('hello')}</p>
-          <h1 className="text-3xl sm:text-4xl font-medium tracking-tight text-slate-900 break-words">{user.name}</h1>
+          <h1 className="text-3xl sm:text-4xl font-medium tracking-tight text-forest break-words">{user.name}</h1>
         </div>
         {!editing && (
           <button type="button" onClick={() => setEditing(true)} className={`self-start sm:self-center ${SECONDARY}`}>

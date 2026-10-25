@@ -14,7 +14,7 @@ import { localize } from '../i18n/localize';
 
 /* Constantes partagées : mêmes valeurs que dans les autres pages */
 const SECTION_WIDTH = "w-[90vw] lg:max-w-[90vw] xl:max-w-[95vw]"
-const SECTION_TITLE = "text-3xl sm:text-4xl md:text-5xl lg:text-[52px] font-medium text-slate-900 leading-[1.15] tracking-tight"
+const SECTION_TITLE = "text-3xl sm:text-4xl md:text-5xl lg:text-[52px] font-medium text-forest leading-[1.15] tracking-tight"
 const SECTION_SUBTITLE = "text-sm sm:text-base md:text-lg text-slate-600 leading-relaxed max-w-3xl"
 const META_TEXT = "text-xs sm:text-sm"
 const PAGE_TITLE = "text-5xl sm:text-6xl md:text-7xl lg:text-[80px] font-bold uppercase leading-none tracking-tight"
@@ -178,7 +178,7 @@ function StayCard({ stay }) {
       </div>
       <div className="flex flex-col flex-1 px-3 pt-5 pb-4">
         <p className={`flex items-center gap-1.5 ${META_TEXT} text-slate-600`}><PinIcon />{stay.place}</p>
-        <h3 className="mt-2 text-xl md:text-2xl leading-snug text-slate-900">{stay.name}</h3>
+        <h3 className="mt-2 text-xl md:text-2xl leading-snug text-forest">{stay.name}</h3>
         <ul className="mt-4 flex flex-wrap gap-2">
           {stay.amenities.map((a) => (
             <li key={a} className="rounded-full border border-slate-300 px-3 py-1 text-xs text-slate-700">{a}</li>
@@ -263,7 +263,7 @@ function Criteria() {
         {criteria.map((c) => (
           <li key={c.id} className="rounded-2xl bg-white p-6 md:p-8">
             <span className="w-12 h-12 rounded-full bg-[#C49849] flex items-center justify-center text-white text-lg font-medium">{c.id}</span>
-            <h3 className="mt-6 text-xl md:text-2xl font-medium text-slate-900 leading-snug">{c.title}</h3>
+            <h3 className="mt-6 text-xl md:text-2xl font-medium text-forest leading-snug">{c.title}</h3>
             <p className="mt-3 text-sm md:text-base leading-relaxed text-slate-600">{c.text}</p>
           </li>
         ))}

@@ -97,7 +97,7 @@ function AdminOffers({ kind }) {
 
       <div className="mt-6 flex flex-wrap items-center justify-between gap-4">
         <div>
-          <h2 id="offers-title" className="text-xl sm:text-2xl font-medium text-slate-900">{config.label}</h2>
+          <h2 id="offers-title" className="text-xl sm:text-2xl font-medium text-forest">{config.label}</h2>
           <p className="text-sm text-slate-600">
             The order below is the order on the{' '}
             <a href={config.page} target="_blank" rel="noreferrer" className="font-medium text-[#a9813a] hover:underline">{config.page}</a> page.

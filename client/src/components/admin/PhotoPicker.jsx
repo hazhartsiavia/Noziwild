@@ -46,7 +46,7 @@ function PhotoLibrary({ selected, max, onConfirm, onClose }) {
       <div className="flex max-h-[90vh] w-full max-w-4xl flex-col rounded-3xl bg-white" onClick={(e) => e.stopPropagation()}>
         <div className="flex items-center justify-between gap-4 border-b border-slate-200 px-5 py-4 sm:px-6">
           <div>
-            <h2 id="library-title" className="text-lg font-medium text-slate-900">Photo library</h2>
+            <h2 id="library-title" className="text-lg font-medium text-forest">Photo library</h2>
             <p className="text-sm text-slate-500">
               {room > 0 ? `Choose up to ${room} photo${room > 1 ? 's' : ''}.` : 'This list is full: remove a photo first.'}
             </p>

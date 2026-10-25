@@ -72,7 +72,7 @@ function ItemCard({ item }) {
         )}
         <div className="min-w-0 flex-1">
           <p className="text-xs md:text-sm uppercase tracking-wide text-[#9a742f]">{kinds[item.kind] || item.kind}</p>
-          <h3 className="mt-1 text-lg md:text-xl font-medium leading-snug text-slate-900">
+          <h3 className="mt-1 text-lg md:text-xl font-medium leading-snug text-forest">
             {item.link ? <Link to={item.link} className="hover:underline">{item.title}</Link> : item.title}
           </h3>
           {item.details && <p className="mt-1 text-sm text-slate-600 break-words">{item.details}</p>}
@@ -246,7 +246,7 @@ function MyTrip() {
 
           {sentId && (
             <div role="status" className={`${CARD} mt-8`}>
-              <h2 className="text-2xl md:text-3xl font-medium text-slate-900">{t('sentTitle')}</h2>
+              <h2 className="text-2xl md:text-3xl font-medium text-forest">{t('sentTitle')}</h2>
               <p className={`mt-3 ${MUTED}`}>{t('sentText', { id: sentId })}</p>
               {user && (
                 <p className={`mt-2 ${MUTED}`}>
@@ -259,7 +259,7 @@ function MyTrip() {
 
           {!sentId && items.length === 0 && (
             <div className={`${CARD} mt-8`}>
-              <h2 className="text-xl md:text-2xl font-medium text-slate-900">{t('emptyTitle')}</h2>
+              <h2 className="text-xl md:text-2xl font-medium text-forest">{t('emptyTitle')}</h2>
               <p className={`mt-2 ${MUTED}`}>{t('emptyText')}</p>
               <div className="mt-6 flex flex-wrap gap-3">
                 {BROWSE.map(({ to, key }) => (
@@ -276,7 +276,7 @@ function MyTrip() {
             <div className="mt-8 grid grid-cols-1 lg:grid-cols-[1fr_400px] gap-6 items-start">
               <div>
                 <div className="mb-3 flex items-center justify-between gap-3">
-                  <h2 className="text-lg md:text-xl font-medium text-slate-900">
+                  <h2 className="text-lg md:text-xl font-medium text-forest">
                     {t(items.length === 1 ? 'countOne' : 'countMany', { count: items.length })}
                   </h2>
                   <button type="button" onClick={clear} className="text-sm text-slate-600 hover:text-red-700 hover:underline">{t('clear')}</button>

@@ -159,7 +159,7 @@ function Manifesto() {
   return (
     <section ref={root} className={`${W} mt-20 md:mt-32 grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20 items-center`}>
       <div>
-        <h2 className={`man-title ${H2} text-slate-900`}>{t('manTitle')}</h2>
+        <h2 className={`man-title ${H2} text-forest`}>{t('manTitle')}</h2>
         <p className="man-text mt-6 text-base md:text-lg text-slate-700 leading-relaxed max-w-xl">
           {t('manText1')}
         </p>
@@ -278,7 +278,7 @@ function Weeks() {
   return (
     <section ref={root} className="w-full mt-20 md:mt-32 flex flex-col items-center">
       <div className={`wk-head ${W} flex flex-col md:flex-row md:items-end justify-between gap-4 mb-8`}>
-        <h2 className={`${H2} text-slate-900 max-w-2xl`}>{t('weeksTitle')}</h2>
+        <h2 className={`${H2} text-forest max-w-2xl`}>{t('weeksTitle')}</h2>
         <p className="text-sm md:text-base text-slate-600 max-w-sm">{t('weeksText')}</p>
       </div>
       <div className="w-full overflow-x-auto snap-x snap-mandatory [scrollbar-width:none] [&::-webkit-scrollbar]:hidden">
@@ -316,7 +316,7 @@ function Services() {
 
   return (
     <section ref={root} className={`${W} mt-20 md:mt-32`}>
-      <h2 className={`svc-title ${H2} text-slate-900 max-w-3xl`}>{t('servicesTitle')}</h2>
+      <h2 className={`svc-title ${H2} text-forest max-w-3xl`}>{t('servicesTitle')}</h2>
       <ul className="svc-grid mt-10 grid grid-cols-2 lg:grid-cols-4 auto-rows-[190px] md:auto-rows-[230px] gap-4 md:gap-5">
         {services.map((service, i) => ({ ...service, ...t('services')[i] })).map((s) => (
           <li key={s.title} className={`svc-tile ${s.span} relative overflow-hidden rounded-[1.5rem] md:rounded-[2rem] text-white`}>

@@ -14,7 +14,7 @@ const SECTION_WIDTH = "w-[90vw] lg:max-w-[90vw] xl:max-w-[95vw] mt-10"
 const SECTION_SUBTITLE = "text-sm sm:text-base md:text-lg text-slate-600 leading-relaxed max-w-3xl"
 const META_TEXT = "text-xs sm:text-sm"
 const BUTTON = "text-sm font-medium px-5 py-2.5 rounded-full"
-const STATEMENT_TITLE = "text-4xl sm:text-5xl md:text-6xl xl:text-7xl font-medium uppercase leading-[1.15] tracking-tight text-slate-900"
+const STATEMENT_TITLE = "text-4xl sm:text-5xl md:text-6xl xl:text-7xl font-medium uppercase leading-[1.15] tracking-tight text-forest"
 
 // Propres au formulaire
 const LABEL = "block mb-2 text-sm md:text-base text-slate-700"

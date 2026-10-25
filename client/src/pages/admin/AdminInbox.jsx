@@ -143,7 +143,7 @@ function AdminInbox() {
 
   return (
     <section aria-labelledby="inbox-title">
-      <h2 id="inbox-title" className="text-xl sm:text-2xl font-medium text-slate-900">Inbox</h2>
+      <h2 id="inbox-title" className="text-xl sm:text-2xl font-medium text-forest">Inbox</h2>
       <p className="text-sm text-slate-600">Everything sent from the forms of the site, newest first.</p>
 
       <div role="tablist" aria-label="Sources" className="mt-4 flex flex-wrap gap-2">

@@ -53,7 +53,7 @@ function PlacesCarousel({ d }) {
               <div className="aspect-[4/3] overflow-hidden rounded-[1.5rem]">
                 <img src={v.image} alt={v.name} className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" />
               </div>
-              <h3 className="mt-4 text-xl md:text-2xl font-medium text-slate-900 group-hover:underline">{v.name}</h3>
+              <h3 className="mt-4 text-xl md:text-2xl font-medium text-forest group-hover:underline">{v.name}</h3>
               <p className="mt-2 text-sm md:text-base text-slate-600 leading-relaxed">{v.text}</p>
               <span className="mt-3 inline-block text-sm font-medium text-[#a9813a]">{t('detail.readMore')}</span>
             </a>

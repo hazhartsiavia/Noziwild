@@ -165,7 +165,7 @@ function PlaceDetail() {
           <nav aria-label="Breadcrumb" className="text-sm md:text-base text-slate-700">
             <a href="/" className="hover:underline">{t('place.home')}</a> / <a href="/destinations" className="hover:underline">{t('place.destinations')}</a> / <a href={`/destinations/${d.slug}`} className="hover:underline">{d.name}</a> / {place.name}
           </nav>
-          <h1 className="mt-5 text-4xl sm:text-5xl md:text-6xl xl:text-7xl font-semibold leading-[1.05] tracking-tight text-slate-900 max-w-5xl">{place.name}</h1>
+          <h1 className="mt-5 text-4xl sm:text-5xl md:text-6xl xl:text-7xl font-semibold leading-[1.05] tracking-tight text-forest max-w-5xl">{place.name}</h1>
           <p className="mt-3 text-lg md:text-2xl text-slate-700 max-w-3xl">{place.text}</p>
 
           <div className="mt-5 flex flex-wrap items-center gap-x-8 gap-y-2 text-sm md:text-base text-slate-700">
@@ -216,7 +216,7 @@ function PlaceDetail() {
               <div className="mt-12 grid grid-cols-1 md:grid-cols-2 gap-5">
                 {[[t('place.included'), place.included, '✓'], [t('place.excluded'), place.excluded, '×']].map(([title, list, mark]) => list && (
                   <div key={title} className="rounded-3xl bg-white p-6 md:p-8">
-                    <h3 className="text-xl font-medium text-slate-900">{title}</h3>
+                    <h3 className="text-xl font-medium text-forest">{title}</h3>
                     <ul className="mt-4 flex flex-col gap-2">
                       {list.map((x) => <li key={x} className="flex gap-3 text-sm md:text-base text-slate-700"><span aria-hidden="true" className="text-[#a9813a] font-semibold">{mark}</span>{x}</li>)}
                     </ul>

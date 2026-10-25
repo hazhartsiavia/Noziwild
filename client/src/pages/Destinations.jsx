@@ -147,7 +147,7 @@ function Hero() {
       <section ref={root} className={`${W} mt-6 grid grid-cols-1 lg:grid-cols-[1fr_1.1fr] gap-10 lg:gap-14 items-center`}>
         <div>
           <p className="hero-eyebrow text-sm md:text-base text-slate-700 mb-4">{t('list.eyebrow')}</p>
-          <h1 className="text-6xl sm:text-7xl md:text-8xl xl:text-[120px] font-semibold leading-[0.9] tracking-tight text-slate-900">
+          <h1 className="text-6xl sm:text-7xl md:text-8xl xl:text-[120px] font-semibold leading-[0.9] tracking-tight text-forest">
             <span className="hero-line inline-block">{t('list.title1')}</span><br />
             <span className="hero-line inline-block">{t('list.title2')}</span>
           </h1>

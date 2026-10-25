@@ -22,10 +22,10 @@ gsap.registerPlugin(ScrollTrigger)
 
 /* Constantes partagées : mêmes valeurs que dans les autres pages */
 const SECTION_WIDTH = "w-[90vw] lg:max-w-[90vw] xl:max-w-[95vw]"
-const SECTION_TITLE = "text-3xl sm:text-4xl md:text-5xl lg:text-[52px] font-medium text-slate-900 leading-[1.15] tracking-tight"
+const SECTION_TITLE = "text-3xl sm:text-4xl md:text-5xl lg:text-[52px] font-medium text-forest leading-[1.15] tracking-tight"
 const SECTION_SUBTITLE = "text-sm sm:text-base md:text-lg text-slate-600 leading-relaxed max-w-3xl"
 const META_TEXT = "text-xs sm:text-sm"
-const STATEMENT_TITLE = "text-4xl sm:text-5xl md:text-6xl xl:text-7xl font-medium uppercase leading-[1.15] tracking-tight text-slate-900"
+const STATEMENT_TITLE = "text-4xl sm:text-5xl md:text-6xl xl:text-7xl font-medium uppercase leading-[1.15] tracking-tight text-forest"
 const BADGE = "inline-block bg-[#C49849] text-white text-xs sm:text-sm font-medium px-3 py-1.5 rounded-sm"
 const BUTTON = "text-sm font-medium px-5 py-2.5 rounded-full md:px-6 md:py-3 active:scale-95 transition"
 const SECTION_GAP = "mt-[60px] md:mt-[120px]"
@@ -302,7 +302,7 @@ function Samples() {
               <span className={`${BADGE} absolute left-4 top-4`}>{t('daysBadge', { count: s.days })}</span>
             </div>
             <div className="flex flex-col flex-1 p-5 md:p-6">
-              <h3 className="text-xl md:text-2xl font-medium text-slate-900">{s.name}</h3>
+              <h3 className="text-xl md:text-2xl font-medium text-forest">{s.name}</h3>
               <ol className="mt-4 flex items-center gap-2 text-sm text-slate-600 flex-wrap">
                 {s.stops.map((stop, i) => (
                   <li key={stop} className="flex items-center gap-2">
