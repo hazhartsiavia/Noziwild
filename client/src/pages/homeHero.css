@@ -160,6 +160,17 @@
 
 .nzh.is-loading .nzh__strip { transform: scaleY(0); }
 
+/* Téléphone : la navbar n'a pas de fond blanc (Navbar.jsx) et passe sur la photo du hero :
+   pas de bande blanche, logo et burger en clair. Le menu déroulant reste blanc. */
+@media (max-width: 767px) {
+  .nzh__strip { display: none; }
+
+  .nzh__nav nav > div > div > a:first-child img { filter: brightness(0) invert(1) drop-shadow(0 1px 8px rgba(7, 42, 31, .45)); }
+
+  .nzh__nav nav > div > div > button { filter: drop-shadow(0 1px 8px rgba(7, 42, 31, .45)); }
+  .nzh__nav nav > div > div > button span { background: #fff; }
+}
+
 .nzh__slide {
   position: absolute;
   inset: 0;

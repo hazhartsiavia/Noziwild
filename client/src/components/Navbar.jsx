@@ -15,7 +15,7 @@ import { useT } from '../i18n/LanguageContext'
 const Fillet = ({ side, fRef }) => (
   <svg
     ref={fRef}
-    className="h-6 w-6 shrink-0 fill-current text-white"
+    className="hidden md:block h-6 w-6 shrink-0 fill-current text-white"
     viewBox="0 0 24 24"
     aria-hidden="true"
   >
@@ -350,7 +350,7 @@ function Navbar() {
               justify-between
               gap-6
               rounded-b-[1.75rem]
-              bg-white
+              md:bg-white
               px-5
               py-3
               md:w-auto
