@@ -1,15 +1,15 @@
-@import url('https://fonts.googleapis.com/css2?family=Figtree:wght@300..900&family=Fraunces:opsz,wght@9..144,300..700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Figtree:wght@300..900&family=Kanit:wght@300;400;500;600;700&display=swap');
 @import "tailwindcss";
 
-/* Polices et couleur de la marque : Figtree pour le texte, Fraunces pour les titres, vert forêt */
+/* Polices et couleur de la marque : Figtree pour le texte, Kanit pour les titres, vert forêt */
 @theme {
   --font-sans: "Figtree", system-ui, -apple-system, "Segoe UI", sans-serif;
-  --font-serif: "Fraunces", Georgia, serif;
+  --font-display: "Kanit", "Figtree", system-ui, sans-serif;
   --color-forest: #0c3e2e;
 }
 
 @layer base {
-  h1, h2 { font-family: var(--font-serif); }
+  h1, h2 { font-family: var(--font-display); }
 }
 
 

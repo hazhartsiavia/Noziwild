@@ -320,7 +320,7 @@ function Regions() {
         </div>
 
         <div className="region-text">
-          <h3 className="font-serif text-3xl md:text-4xl lg:text-5xl font-medium leading-[1.1] tracking-tight text-forest">{region.name}</h3>
+          <h3 className="font-display text-3xl md:text-4xl lg:text-5xl font-medium leading-[1.1] tracking-tight text-forest">{region.name}</h3>
           <p className="mt-3 text-lg md:text-2xl text-slate-700">{region.tagline}</p>
           <p className="mt-5 text-sm md:text-base text-slate-600 leading-relaxed max-w-xl">{region.text}</p>
 
@@ -462,7 +462,7 @@ function Testimonials() {
           <h2 className={SECTION_TITLE}>{t('reviewsTitle')}</h2>
         </div>
         <div className="flex items-center gap-4">
-          <p className="font-serif text-5xl md:text-6xl leading-none text-slate-800">4.9<span className="text-2xl text-slate-500">/5</span></p>
+          <p className="font-display text-5xl md:text-6xl leading-none text-slate-800">4.9<span className="text-2xl text-slate-500">/5</span></p>
           <div>
             <Stars />
             <p className="mt-2 text-sm md:text-base text-slate-600">{t('reviewsAverage')}</p>

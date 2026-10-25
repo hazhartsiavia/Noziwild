@@ -20,7 +20,7 @@
   -webkit-font-smoothing: antialiased;
 }
 
-/* Le hero reste tout en Figtree, titre compris (ailleurs les h1 et h2 sont en Fraunces) */
+/* Le hero reste tout en Figtree, titre compris (ailleurs les h1 et h2 sont en Kanit) */
 .nzpl *,
 .nzh * { font-family: var(--nz-font); }
 
