@@ -3,6 +3,7 @@ import { useParams } from 'react-router-dom'
 import Navbar from '../components/Navbar'
 import Footer from '../components/Footer'
 import { useDestinations } from './destinationsData'
+import { DestinationsStatus } from './DestinationDetail'
 import { Trans, useLanguage, useT } from '../i18n/LanguageContext'
 import { formatPrice } from '../utils/format'
 import { sendRequest } from '../api'
@@ -127,12 +128,13 @@ function BookingCard({ place, dest }) {
 function PlaceDetail() {
   const { slug, placeSlug } = useParams()
   const t = useT('destinations')
-  const destinations = useDestinations()
+  const { destinations, status } = useDestinations()
   const d = destinations[slug]
   const place = d?.visit.find((v) => v.slug === placeSlug)
   const root = useRef(null)
-  useScrollReveal(root, [slug, placeSlug])
+  useScrollReveal(root, [slug, placeSlug, status])
 
+  if (status !== 'ready') return <DestinationsStatus status={status} />
   if (!place) {
     return (
       <>

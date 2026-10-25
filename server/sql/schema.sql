@@ -237,3 +237,23 @@ CREATE TABLE IF NOT EXISTS site_texts (
   updated_at TIMESTAMP   NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
   PRIMARY KEY (namespace, lang)
 ) ENGINE=InnoDB;
+
+-- Destinations (pages /destinations/:slug) et leurs lieux à visiter (/destinations/:slug/:lieu)
+--   details      : tout le reste, en anglais : tagline, intro[], best, stay, getting, tip,
+--                  todo[] { title, text, image } et visit[] (lieux : slug, name, text, image, price, rating, reviews,
+--                  duration, groupSize, tourType, language, overview[], details[], highlights[], does[], included[], excluded[])
+--   translations : autres langues, même forme, { "fr": { "name": ..., "todo": [{ "title": ... }], "visit": [...] } }
+CREATE TABLE IF NOT EXISTS destinations (
+  id           INT UNSIGNED AUTO_INCREMENT PRIMARY KEY,
+  slug         VARCHAR(120) NOT NULL UNIQUE,
+  name         VARCHAR(120) NOT NULL,
+  region       VARCHAR(60)  NOT NULL,
+  image        VARCHAR(500) NOT NULL,
+  details      JSON         NOT NULL,
+  translations JSON         NULL,
+  sort_order   INT          NOT NULL DEFAULT 0,
+  is_published TINYINT(1)   NOT NULL DEFAULT 1,
+  created_at   TIMESTAMP    NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  updated_at   TIMESTAMP    NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+  INDEX idx_destinations_order (is_published, sort_order)
+) ENGINE=InnoDB;

@@ -29,6 +29,15 @@ import {
 } from '../controllers/offersController.js'
 import { listUploads, uploadImage } from '../controllers/uploadsController.js'
 import { listTexts, adminListTexts, adminGetTexts, adminSaveTexts, adminResetTexts } from '../controllers/textsController.js'
+import {
+  listDestinations,
+  adminListDestinations,
+  adminGetDestination,
+  createDestination,
+  updateDestination,
+  patchDestination,
+  deleteDestination,
+} from '../controllers/destinationsController.js'
 import { requireAdmin } from '../middlewares/requireAdmin.js'
 import { rateLimit } from '../middlewares/rateLimit.js'
 import { loadUser } from '../middlewares/auth.js'
@@ -75,8 +84,11 @@ router.get('/offers', listOffers)
 // Textes du site modifiés depuis l'admin, posés par le site sur ses fichiers de textes
 router.get('/texts', listTexts)
 
-// Gestion des circuits, des offres, des photos, des textes et des devis (réservé à l'équipe Noziwild)
-// Déclarées avant /admin/:resource, sinon "circuits", "offers", "texts" ou "quotes" serait pris pour une ressource générique
+// Destinations et lieux à visiter (pages /destinations/...)
+router.get('/destinations', listDestinations)
+
+// Gestion des circuits, des offres, des destinations, des photos, des textes et des devis (réservé à l'équipe Noziwild)
+// Déclarées avant /admin/:resource, sinon "circuits", "offers", "destinations", "texts" ou "quotes" serait pris pour une ressource générique
 router.get('/admin/circuits', requireAdmin, adminListCircuits)
 router.get('/admin/circuits/:slug', requireAdmin, adminGetCircuit)
 router.post('/admin/circuits', requireAdmin, createCircuit)
@@ -93,6 +105,12 @@ router.get('/admin/uploads', requireAdmin, listUploads)
 router.get('/admin/quotes', requireAdmin, adminListQuotes)
 router.patch('/admin/quotes/:id', requireAdmin, adminPatchQuote)
 router.post('/admin/uploads', requireAdmin, uploadImage)
+router.get('/admin/destinations', requireAdmin, adminListDestinations)
+router.get('/admin/destinations/:slug', requireAdmin, adminGetDestination)
+router.post('/admin/destinations', requireAdmin, createDestination)
+router.put('/admin/destinations/:slug', requireAdmin, updateDestination)
+router.patch('/admin/destinations/:slug', requireAdmin, patchDestination)
+router.delete('/admin/destinations/:slug', requireAdmin, deleteDestination)
 router.get('/admin/texts', requireAdmin, adminListTexts)
 router.get('/admin/texts/:namespace', requireAdmin, adminGetTexts)
 router.put('/admin/texts/:namespace/:lang', requireAdmin, adminSaveTexts)

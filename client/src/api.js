@@ -59,6 +59,9 @@ export const fetchCircuit = (slug, lang = 'en') => getJSON(`/circuits/${encodeUR
 //          | 'food' | 'session' | 'photo' | 'gear' | 'ticket'
 export const fetchOffers = (kind, lang = 'en') => getJSON(`/offers?kind=${kind}&lang=${lang}`)
 
+// Destinations et leurs lieux à visiter, dans la langue du site
+export const fetchDestinations = (lang = 'en') => getJSON(`/destinations?lang=${lang}`)
+
 // Textes du site modifiés depuis l'admin, d'une langue : { texts: { home: {...}, ... } }
 export const fetchTexts = (lang = 'en') => getJSON(`/texts?lang=${lang}`)
 
@@ -104,6 +107,13 @@ export const adminUpdateOffer = (id, offer) => putJSON(offerPath(id), offer)
 export const adminPatchOffer = (id, changes) => patchJSON(offerPath(id), changes)
 export const adminDeleteOffer = (id) => deleteJSON(offerPath(id))
 export const adminFetchPhotos = () => getJSON('/admin/uploads')
+const destinationPath = (slug) => `/admin/destinations/${encodeURIComponent(slug)}`
+export const adminFetchDestinations = () => getJSON('/admin/destinations')
+export const adminFetchDestination = (slug) => getJSON(destinationPath(slug))
+export const adminCreateDestination = (destination) => postJSON('/admin/destinations', destination)
+export const adminUpdateDestination = (slug, destination) => putJSON(destinationPath(slug), destination)
+export const adminPatchDestination = (slug, changes) => patchJSON(destinationPath(slug), changes)
+export const adminDeleteDestination = (slug) => deleteJSON(destinationPath(slug))
 // Textes du site : fichiers modifiés, puis textes modifiés d'un fichier (toutes les langues)
 const textsPath = (namespace, lang) => `/admin/texts/${encodeURIComponent(namespace)}${lang ? `/${lang}` : ''}`
 export const adminFetchTextFiles = () => getJSON('/admin/texts')

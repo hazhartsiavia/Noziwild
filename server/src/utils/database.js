@@ -1,4 +1,4 @@
-// Prépare la base : tables de sql/schema.sql, colonnes ajoutées depuis, circuits et offres de départ.
+// Prépare la base : tables de sql/schema.sql, colonnes ajoutées depuis, circuits, offres et destinations de départ.
 // Sans risque à relancer. Utilisé par `npm run db:init` et au démarrage du serveur.
 import fs from 'node:fs/promises'
 import path from 'node:path'
@@ -6,6 +6,7 @@ import { fileURLToPath } from 'node:url'
 import mysql from 'mysql2/promise'
 import { seedCircuits } from './circuits.js'
 import { seedOffers } from './offers.js'
+import { seedDestinations } from './destinations.js'
 
 const here = path.dirname(fileURLToPath(import.meta.url))
 const schemaPath = path.join(here, '..', '..', 'sql', 'schema.sql')
@@ -128,6 +129,8 @@ export async function initDatabase({ log = console.log } = {}) {
     if (translated) log(`  + traductions ajoutées à ${translated} circuits de départ`)
     const offers = await seedOffers(connection)
     if (offers) log(`  + ${offers} offres ajoutées (sql/offers.seed.json)`)
+    const destinations = await seedDestinations(connection)
+    if (destinations) log(`  + ${destinations} destinations ajoutées (sql/destinations.seed.json)`)
     log(`Base "${dbName}" et tables prêtes.`)
   } finally {
     await connection.end()

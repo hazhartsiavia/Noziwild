@@ -2,6 +2,7 @@ import React, { useRef } from 'react'
 import { useParams } from 'react-router-dom'
 import Navbar from '../components/Navbar'
 import Footer from '../components/Footer'
+import OffersStatus from '../components/OffersStatus'
 import { useDestinations } from './destinationsData'
 import { useT } from '../i18n/LanguageContext'
 import { useScrollReveal } from '../utils/useScrollReveal'
@@ -25,6 +26,19 @@ function NotFound() {
             <a href="/contact" className={`${BTN} ${GOLD} text-white`}>{t('detail.contact')}</a>
           </div>
         </section>
+      </main>
+      <Footer />
+    </>
+  )
+}
+
+// Chargement ou erreur de l'API : la barre du haut et un message
+export function DestinationsStatus({ status }) {
+  return (
+    <>
+      <main className="w-full min-h-[70vh] bg-[#D5E8E2] pb-24 flex flex-col items-center">
+        <Navbar />
+        <OffersStatus status={status} className={`${W} mt-16`} />
       </main>
       <Footer />
     </>
@@ -68,10 +82,11 @@ function PlacesCarousel({ d }) {
 function DestinationDetail() {
   const { slug } = useParams()
   const t = useT('destinations')
-  const destinations = useDestinations()
+  const { destinations, status } = useDestinations()
   const d = destinations[slug]
   const root = useRef(null)
-  useScrollReveal(root, [slug])
+  useScrollReveal(root, [slug, status])
+  if (status !== 'ready') return <DestinationsStatus status={status} />
   if (!d) return <NotFound />
 
   const facts = [

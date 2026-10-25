@@ -64,6 +64,8 @@ Les formulaires sont limités à 20 envois par adresse IP toutes les 10 minutes.
 Le site a un espace d'administration sur `/admin`, réservé aux comptes `admin` :
 
 - **Circuits** : publier / masquer, changer l'ordre, créer, modifier (textes, photos, itinéraire jour par jour), supprimer.
+- **Destinations** : les pages `/destinations/:slug`, leurs choses à faire et leurs lieux à visiter (chacun a sa page),
+  dans les 5 langues (mêmes réglages).
 - **Offers** : activités, excursions, excursions croisière, formules long séjour et idées sur mesure (mêmes réglages),
   et les catalogues des pages de services : hébergements, transports, guides, expériences culinaires, séances photo,
   galerie photo, matériel à louer, billets.
@@ -170,6 +172,26 @@ Toutes ont aussi `title`, `text`, `image`, `sortOrder`, `isPublished` et `transl
 | PUT | `/api/admin/offers/:id` | Remplace une offre (son type ne change pas) |
 | PATCH | `/api/admin/offers/:id` | Réglages rapides : `isPublished`, `sortOrder` |
 | DELETE | `/api/admin/offers/:id` | Supprime une offre |
+
+## Destinations et lieux à visiter
+
+Les destinations (`/destinations/:slug`) et leurs lieux (`/destinations/:slug/:lieu`) sont dans la table `destinations` :
+nom, région et photo dans des colonnes, le reste dans `details` (JSON : accroche, paragraphes, meilleure période,
+choses à faire, lieux avec leur programme, prix, note...). Les autres langues sont dans `translations`, avec la même
+forme (listes alignées sur l'anglais). L'adresse d'un lieu vient de son nom anglais. Au premier démarrage, les
+6 destinations de `sql/destinations.seed.json` sont ajoutées si la table est vide.
+
+| Méthode | Route | Rôle |
+|---|---|---|
+| GET | `/api/destinations?lang=fr` | Destinations publiées, avec leurs lieux, dans la langue demandée |
+| GET | `/api/admin/destinations` | Toutes les destinations, publiées ou non |
+| GET | `/api/admin/destinations/:slug` | Une destination, avec ses traductions |
+| POST | `/api/admin/destinations` | Crée une destination |
+| PUT | `/api/admin/destinations/:slug` | Remplace une destination (l'adresse peut changer) |
+| PATCH | `/api/admin/destinations/:slug` | Réglages rapides : `isPublished`, `sortOrder` |
+| DELETE | `/api/admin/destinations/:slug` | Supprime une destination |
+
+Les cartes des régions (accueil et `/destinations`) restent des textes de page : admin, onglet **Texts**, page *Home*.
 
 ## Textes du site modifiés depuis l'admin
 

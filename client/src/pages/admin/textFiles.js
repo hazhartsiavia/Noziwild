@@ -5,7 +5,7 @@ export const TEXT_FILES = {
   home: { label: 'Home', page: '/', group: 'pages' },
   about: { label: 'About', page: '/about', group: 'pages' },
   contact: { label: 'Contact', page: '/contact', group: 'pages' },
-  destinations: { label: 'Destinations and places', page: '/destinations', group: 'pages' },
+  destinations: { label: 'Destinations (page labels)', page: '/destinations', group: 'pages' },
   circuits: { label: 'Circuits (list)', page: '/circuits', group: 'pages' },
   circuitDetail: { label: 'Circuit page', page: '/circuits', group: 'pages' },
   activities: { label: 'Activities', page: '/activities', group: 'pages' },
