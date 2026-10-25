@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useRef, useState } from 'react'
 import { useParams } from 'react-router-dom'
 import Navbar from '../components/Navbar'
 import Footer from '../components/Footer'
@@ -8,6 +8,7 @@ import { formatPrice } from '../utils/format'
 import { sendRequest } from '../api'
 import { useAuth } from '../context/AuthContext'
 import { BookingAdd, useTripItem } from '../components/AddToTrip'
+import { useScrollReveal } from '../utils/useScrollReveal'
 
 const W = 'w-[90vw] lg:max-w-[95vw]'
 const GOLD = 'bg-[#C49849] hover:bg-[#a9813a]'
@@ -129,6 +130,8 @@ function PlaceDetail() {
   const destinations = useDestinations()
   const d = destinations[slug]
   const place = d?.visit.find((v) => v.slug === placeSlug)
+  const root = useRef(null)
+  useScrollReveal(root, [slug, placeSlug])
 
   if (!place) {
     return (
@@ -157,7 +160,7 @@ function PlaceDetail() {
 
   return (
     <>
-      <main className="w-full bg-[#D5E8E2] pb-16 md:pb-24 flex flex-col items-center">
+      <main ref={root} className="w-full bg-[#D5E8E2] pb-16 md:pb-24 flex flex-col items-center">
         <Navbar />
 
         {/* En-tête */}

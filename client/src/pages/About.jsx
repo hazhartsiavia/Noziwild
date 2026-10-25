@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useRef, useState } from 'react'
 import Deux from "../assets/images/2.jpg";
 import Ambanja from "../assets/images/Ambanja.png";
 import NosyLonjo from "../assets/images/NosyLonjo.png";
@@ -9,6 +9,7 @@ import Icone from "../assets/icone.png";
 import Navbar from '../components/Navbar';
 import Footer from '../components/Footer';
 import { useT } from '../i18n/LanguageContext';
+import { useScrollReveal } from '../utils/useScrollReveal'
 
 /* Constantes partagées : mêmes valeurs que dans Explore, Choose, Trips et Blog */
 const SECTION_WIDTH = "w-[90vw] lg:max-w-[90vw] xl:max-w-[95vw]"
@@ -501,9 +502,11 @@ function ExpertsSection() {
 
 function About() {
   const t = useT('about')
+  const root = useRef(null)
+  useScrollReveal(root)
   return (
     <>
-    <section className="w-full pt-0 pb-12 bg-[#D5E8E2] flex flex-col items-center">
+    <section ref={root} className="w-full pt-0 pb-12 bg-[#D5E8E2] flex flex-col items-center">
         <Navbar />
       <div className={`${SECTION_WIDTH} mt-8 md:mt-12`}>
         {/* Titre + texte + aide */}

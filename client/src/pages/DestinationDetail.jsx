@@ -4,6 +4,7 @@ import Navbar from '../components/Navbar'
 import Footer from '../components/Footer'
 import { useDestinations } from './destinationsData'
 import { useT } from '../i18n/LanguageContext'
+import { useScrollReveal } from '../utils/useScrollReveal'
 
 const W = 'w-[90vw] lg:max-w-[95vw]'
 const GOLD = 'bg-[#C49849] hover:bg-[#a9813a]'
@@ -69,6 +70,8 @@ function DestinationDetail() {
   const t = useT('destinations')
   const destinations = useDestinations()
   const d = destinations[slug]
+  const root = useRef(null)
+  useScrollReveal(root, [slug])
   if (!d) return <NotFound />
 
   const facts = [
@@ -80,7 +83,7 @@ function DestinationDetail() {
 
   return (
     <>
-      <main className="w-full bg-[#D5E8E2] pb-16 md:pb-24 flex flex-col items-center">
+      <main ref={root} className="w-full bg-[#D5E8E2] pb-16 md:pb-24 flex flex-col items-center">
         <Navbar />
 
         {/* Hero */}

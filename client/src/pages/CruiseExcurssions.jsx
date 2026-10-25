@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useRef, useState } from 'react'
 import Ramena from '../assets/images/Ramena.png'
 import NosyIranja from '../assets/images/NosyIranja.png'
 import Navbar from '../components/Navbar'
@@ -8,6 +8,7 @@ import AddToTrip from '../components/AddToTrip'
 import { Trans, useLanguage, useT } from '../i18n/LanguageContext'
 import { formatPrice } from '../utils/format'
 import { useOffers } from '../utils/useOffers'
+import { useScrollReveal } from '../utils/useScrollReveal'
 
 const W = 'w-[90vw] lg:max-w-[95vw]'
 const GOLD = 'bg-[#C49849] hover:bg-[#a9813a]'
@@ -93,6 +94,8 @@ function ExcursionCard({ item, ashore }) {
 function CruiseExcursions() {
   const t = useT('cruise')
   const { offers, status } = useOffers('cruise')
+  const root = useRef(null)
+  useScrollReveal(root, [status])
   const [port, setPort] = useState('nosybe')
   const [ashore, setAshore] = useState(6)
 
@@ -103,7 +106,7 @@ function CruiseExcursions() {
 
   return (
     <>
-      <main className="w-full bg-[#D5E8E2] pb-16 md:pb-24 flex flex-col items-center">
+      <main ref={root} className="w-full bg-[#D5E8E2] pb-16 md:pb-24 flex flex-col items-center">
         <Hero />
 
         {/* Planificateur */}

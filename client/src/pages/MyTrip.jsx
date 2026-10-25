@@ -1,7 +1,7 @@
 // Page /my-trip : tout ce que le visiteur a mis de côté sur le site (circuits, activités, hébergements...),
 // ses dates et ses coordonnées, envoyés en une seule demande de devis. Aucun paiement en ligne.
 // Textes : locales/<langue>/trip.json
-import React, { useState } from 'react'
+import React, { useRef, useState } from 'react'
 import { Link } from 'react-router-dom'
 import { CalendarDays, Minus, Plus, Trash2 } from 'lucide-react'
 import Navbar from '../components/Navbar'
@@ -12,6 +12,7 @@ import { lineTotal, useTrip } from '../context/TripContext'
 import { Trans, useLanguage, useT } from '../i18n/LanguageContext'
 import { formatPrice } from '../utils/format'
 import { sendQuote } from '../api'
+import { useScrollReveal } from '../utils/useScrollReveal'
 
 const CARD = 'rounded-3xl bg-white p-5 md:p-7'
 const H1 = 'text-4xl sm:text-5xl md:text-6xl font-medium tracking-tight text-slate-900'
@@ -228,6 +229,8 @@ function MyTrip() {
   const { user } = useAuth()
   const { items, clear } = useTrip()
   const [sentId, setSentId] = useState(null)
+  const root = useRef(null)
+  useScrollReveal(root)
 
   const handleSent = (id) => {
     setSentId(id)
@@ -237,7 +240,7 @@ function MyTrip() {
 
   return (
     <>
-      <section className="w-full pt-0 pb-12 md:pb-20 bg-[#D5E8E2] flex flex-col items-center">
+      <section ref={root} className="w-full pt-0 pb-12 md:pb-20 bg-[#D5E8E2] flex flex-col items-center">
         <Navbar />
 
         <div className="w-[90vw] max-w-6xl mt-4 md:mt-8">

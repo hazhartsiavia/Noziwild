@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useRef, useState } from 'react'
 import NosyIranja from "../assets/images/NosyIranja.png";
 import Ambanja from "../assets/images/Ambanja.png";
 import NosyLonjo from "../assets/images/NosyLonjo.png";
@@ -7,6 +7,7 @@ import Footer from '../components/Footer';
 import { sendContact } from '../api';
 import { useAuth } from '../context/AuthContext';
 import { useT } from '../i18n/LanguageContext';
+import { useScrollReveal } from '../utils/useScrollReveal'
 
 
 /* Constantes partagées : mêmes valeurs que dans les autres sections */
@@ -208,6 +209,8 @@ function Contact() {
   const t = useT('contact')
   const [status, setStatus] = useState('idle') // 'idle' | 'sending' | 'sent' | 'error'
   const [error, setError] = useState('')
+  const root = useRef(null)
+  useScrollReveal(root)
 
   const handleSubmit = async (event) => {
     event.preventDefault()
@@ -228,7 +231,7 @@ function Contact() {
   return (
     <>
 
-    <section id="contact" className="w-full pt-0 pb-12 md:pb-20 bg-[#D5E8E2] flex flex-col items-center">
+    <section ref={root} id="contact" className="w-full pt-0 pb-12 md:pb-20 bg-[#D5E8E2] flex flex-col items-center">
         <Navbar />
       <div className={SECTION_WIDTH}>
 

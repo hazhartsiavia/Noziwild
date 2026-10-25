@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useRef, useState } from 'react'
 import Deux from "../assets/images/2.jpg";
 import Ambanja from "../assets/images/Ambanja.png";
 import NosyLonjo from "../assets/images/NosyLonjo.png";
@@ -11,6 +11,7 @@ import AddToTrip from '../components/AddToTrip'
 import { Trans, useLanguage, useT } from '../i18n/LanguageContext';
 import { formatPrice } from '../utils/format';
 import { localize } from '../i18n/localize';
+import { useScrollReveal } from '../utils/useScrollReveal'
 
 /* Constantes partagées : mêmes valeurs que dans les autres pages */
 const SECTION_WIDTH = "w-[90vw] lg:max-w-[90vw] xl:max-w-[95vw]"
@@ -353,9 +354,11 @@ function Cta() {
 }
 
 function Accommodation() {
+  const root = useRef(null)
+  useScrollReveal(root)
   return (
     <>
-    <section className="w-full pt-0 pb-12 md:pb-20 bg-[#D5E8E2] flex flex-col items-center">
+    <section ref={root} className="w-full pt-0 pb-12 md:pb-20 bg-[#D5E8E2] flex flex-col items-center">
       <Navbar />
       <Hero />
       <div className={`${SECTION_WIDTH} ${SECTION_GAP}`}>

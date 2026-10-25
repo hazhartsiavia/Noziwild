@@ -1,5 +1,5 @@
 // Page /account : profil, méthodes de connexion, demandes envoyées et suppression du compte
-import React, { useEffect, useState } from 'react'
+import React, { useEffect, useRef, useState } from 'react'
 import { Link, Navigate, useLocation, useNavigate } from 'react-router-dom'
 import Navbar from '../components/Navbar'
 import Footer from '../components/Footer'
@@ -10,6 +10,7 @@ import { LABEL, FIELD, BUTTON, PRIMARY, SECONDARY, FIELD_ERROR } from '../compon
 import { useAuth } from '../context/AuthContext'
 import { useLanguage, useT } from '../i18n/LanguageContext'
 import { LOCALES } from '../utils/format'
+import { useScrollReveal } from '../utils/useScrollReveal'
 import {
   updateProfile,
   changePassword,
@@ -371,6 +372,9 @@ function Account() {
     if (location.state?.notice) navigate(location.pathname, { replace: true, state: null })
   }, [location, navigate])
 
+  const root = useRef(null)
+  useScrollReveal(root, [loading, !!user])
+
   if (loading) {
     return (
       <section className="w-full min-h-screen bg-[#D5E8E2] flex flex-col items-center">
@@ -402,7 +406,7 @@ function Account() {
 
   return (
     <>
-      <section className="w-full pt-0 pb-12 md:pb-20 bg-[#D5E8E2] flex flex-col items-center gap-6">
+      <section ref={root} className="w-full pt-0 pb-12 md:pb-20 bg-[#D5E8E2] flex flex-col items-center gap-6">
         <Navbar />
 
         {notice && (
