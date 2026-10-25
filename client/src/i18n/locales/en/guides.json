@@ -37,48 +37,6 @@
       ]
     }
   ],
-  "guides": [
-    {
-      "role": "Wildlife Guide",
-      "langs": "English · French · Malagasy",
-      "bio": "Hery leads small-group wildlife walks and knows exactly when and where to find the island’s most unusual animals.",
-      "specialties": [
-        "Lemurs",
-        "Birdwatching",
-        "Night walks"
-      ]
-    },
-    {
-      "role": "Cultural Specialist",
-      "langs": "English · French · Italian",
-      "bio": "Lina shares the history, food and traditions of the island and connects travelers with the people who keep them alive.",
-      "specialties": [
-        "Cuisine",
-        "Crafts",
-        "Village life"
-      ]
-    },
-    {
-      "role": "Adventure Guide",
-      "langs": "English · French · German",
-      "bio": "Tojo designs treks that match your level, with the right pace, the right stops and safety always first.",
-      "specialties": [
-        "Trekking",
-        "Canyons",
-        "Coastal trails"
-      ]
-    },
-    {
-      "role": "Trip Companion",
-      "langs": "English · French · Spanish",
-      "bio": "Mika takes care of every detail so you can simply enjoy the trip, and is one call away whenever you need.",
-      "specialties": [
-        "Logistics",
-        "Families",
-        "Custom trips"
-      ]
-    }
-  ],
   "compare": {
     "columns": [
       "Essential",

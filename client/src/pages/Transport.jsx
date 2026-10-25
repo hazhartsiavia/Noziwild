@@ -2,16 +2,14 @@ import React, { useState, useRef, useLayoutEffect } from 'react'
 import gsap from 'gsap'
 import { ScrollTrigger } from 'gsap/ScrollTrigger'
 import Deux from "../assets/images/2.jpg";
-import Ambanja from "../assets/images/Ambanja.png";
-import NosyLonjo from "../assets/images/NosyLonjo.png";
-import NosyIranja from "../assets/images/NosyIranja.png";
-import Ramena from "../assets/images/Ramena.png";
 import Tana from "../assets/images/Tana.png";
 import Navbar from '../components/Navbar';
 import Footer from '../components/Footer';
 import AddToTrip from '../components/AddToTrip'
 import { useT } from '../i18n/LanguageContext';
 import { localize } from '../i18n/localize';
+import OffersStatus from '../components/OffersStatus'
+import { useOffers } from '../utils/useOffers'
 
 gsap.registerPlugin(ScrollTrigger)
 
@@ -54,44 +52,7 @@ const CATEGORIES = [
   { id: 'sea', label: 'Sea' },
 ]
 
-const TRANSPORTS = [
-  {
-    id: 1, category: 'land', name: 'Private 4x4',
-    image: Tana, capacity: '1–6 travelers', duration: 'Flexible',
-    text: 'Your own vehicle and driver-guide. Stop wherever you like, at your own pace.',
-    perks: ['Door-to-door pickup', 'Air conditioning', 'English-speaking driver'],
-  },
-  {
-    id: 2, category: 'land', name: 'Shared Minibus',
-    image: Ambanja, capacity: '8–15 travelers', duration: 'Fixed schedule',
-    text: 'A comfortable and affordable option on the main routes, ideal for solo travelers and groups.',
-    perks: ['Reserved seats', 'Luggage included', 'Best price'],
-  },
-  {
-    id: 3, category: 'air', name: 'Domestic Flight',
-    image: NosyLonjo, capacity: '1 seat or more', duration: '1–2 h',
-    text: 'Skip long road days. We book the seats and organize the airport transfers on both ends.',
-    perks: ['Ticket booking', 'Airport transfers', 'Flexible dates'],
-  },
-  {
-    id: 4, category: 'sea', name: 'Speedboat',
-    image: NosyIranja, capacity: '2–10 travelers', duration: '30 min – 2 h',
-    text: 'Fast and fun crossings to nearby islands, with life jackets and a skilled captain.',
-    perks: ['Safety equipment', 'Island hopping', 'Private or shared'],
-  },
-  {
-    id: 5, category: 'sea', name: 'Sailing Boat',
-    image: Ramena, capacity: '2–8 travelers', duration: 'Half or full day',
-    text: 'A slower, scenic way to reach hidden beaches, with snorkeling stops and a picnic on board.',
-    perks: ['Snorkeling gear', 'Lunch on board', 'Sunset option'],
-  },
-  {
-    id: 6, category: 'land', name: 'Scenic Train',
-    image: Deux, capacity: 'Per seat', duration: 'Half or full day',
-    text: 'Watch villages and landscapes roll by on a slow ride you will not forget.',
-    perks: ['Window seats', 'Station transfers', 'Local snacks'],
-  },
-]
+// Moyens de transport : dans la base, gérés depuis /admin/offers/transport
 
 const STEPS = [
   { id: 1, title: 'Tell Us Your Plan', text: 'Share your dates, destinations and group size. Not sure yet? We suggest a route.' },
@@ -328,10 +289,14 @@ function TransportCard({ item }) {
   )
 }
 
+// Offre de la base -> forme utilisée par les cartes
+const toTransport = (o) => ({ id: o.id, category: o.category, name: o.title, image: o.image, capacity: o.capacity, duration: o.duration, text: o.text, perks: o.perks })
+
 function TransportTypes() {
   const t = useT('transport')
   const categories = localize(CATEGORIES, t('categories'))
-  const transports = localize(TRANSPORTS, t('transports'))
+  const { offers, status } = useOffers('transport')
+  const transports = offers.map(toTransport)
   const [category, setCategory] = useState('all')
   const root = useRef(null)
   const prevCategory = useRef('all')
@@ -341,8 +306,13 @@ function TransportTypes() {
   useGsap(root, () => {
     reveal('.types-head > *', { y: 28, opacity: 0 }, { y: 0, opacity: 1, duration: 0.75, stagger: 0.1, ease: 'power3.out', scrollTrigger: { trigger: '.types-head', start: 'top 88%', once: true } })
     reveal('.tab-btn', { y: 16, opacity: 0 }, { y: 0, opacity: 1, duration: 0.5, stagger: 0.06, ease: 'power2.out', scrollTrigger: { trigger: '.tab-list', start: 'top 90%', once: true } })
-    reveal('.t-card', { y: 60, opacity: 0 }, { y: 0, opacity: 1, duration: 0.9, stagger: 0.12, ease: 'power3.out', scrollTrigger: { trigger: '.t-grid', start: 'top 85%', once: true } })
   })
+
+  // Les cartes arrivent de l'API : leur entrée attend la fin du chargement
+  useGsap(root, () => {
+    if (status !== 'ready') return
+    reveal('.t-card', { y: 60, opacity: 0 }, { y: 0, opacity: 1, duration: 0.9, stagger: 0.12, ease: 'power3.out', scrollTrigger: { trigger: '.t-grid', start: 'top 85%', once: true } })
+  }, [status])
 
   // Changement de catégorie : les cartes se redessinent en cascade
   useGsap(root, () => {
@@ -377,9 +347,12 @@ function TransportTypes() {
         ))}
       </div>
 
-      <div className="t-grid grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-4 md:gap-6">
-        {list.map((item) => <TransportCard key={item.id} item={item} />)}
-      </div>
+      <OffersStatus status={status} empty={list.length === 0} />
+      {status === 'ready' && (
+        <div className="t-grid grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-4 md:gap-6">
+          {list.map((item) => <TransportCard key={item.id} item={item} />)}
+        </div>
+      )}
     </div>
   )
 }

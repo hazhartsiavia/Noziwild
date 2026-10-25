@@ -16,65 +16,6 @@
       "label": "Events & Shows"
     }
   ],
-  "tickets": [
-    {
-      "name": "Nationalpark Andasibe-Mantadia",
-      "perks": [
-        "Eintritt + lokaler Guide",
-        "Halber Tag"
-      ]
-    },
-    {
-      "name": "Reservat Lokobe",
-      "perks": [
-        "Eintritt + Guide",
-        "Einbaum inklusive"
-      ]
-    },
-    {
-      "name": "Schnorcheln im Meeresnationalpark",
-      "perks": [
-        "Boot + Schnorchelausrüstung",
-        "Mittagessen optional"
-      ]
-    },
-    {
-      "name": "Katamaran-Törn bei Sonnenuntergang",
-      "perks": [
-        "Getränke an Bord",
-        "3 Stunden"
-      ]
-    },
-    {
-      "name": "Baobab-Allee",
-      "perks": [
-        "Eintritt",
-        "Zeitfenster zum Sonnenuntergang"
-      ]
-    },
-    {
-      "name": "Besuch des Königshügels",
-      "perks": [
-        "Eintritt + Guide",
-        "Ohne Anstehen"
-      ]
-    },
-    {
-      "name": "Abend mit traditioneller Musik",
-      "perks": [
-        "Reservierter Platz",
-        "Abends"
-      ]
-    },
-    {
-      "name": "Pass für lokale Feste",
-      "place": "Je nach Datum",
-      "perks": [
-        "Eintritt + Tipps zur Anreise",
-        "Daten auf Anfrage"
-      ]
-    }
-  ],
   "steps": [
     {
       "title": "Erlebnis wählen",

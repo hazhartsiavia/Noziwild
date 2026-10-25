@@ -32,56 +32,6 @@
       "label": "Casas de huéspedes"
     }
   ],
-  "stays": [
-    {
-      "place": "Ramena, Diego Suarez",
-      "amenities": [
-        "Vista al mar",
-        "Desayuno",
-        "Snorkel"
-      ]
-    },
-    {
-      "place": "Nosy Iranja",
-      "amenities": [
-        "Piscina infinita",
-        "Spa",
-        "Restaurante"
-      ]
-    },
-    {
-      "place": "Ambanja",
-      "amenities": [
-        "Jardín",
-        "Visitas a granjas",
-        "Energía solar"
-      ]
-    },
-    {
-      "place": "Antananarivo",
-      "amenities": [
-        "Gestión familiar",
-        "Desayuno",
-        "Wi-Fi gratis"
-      ]
-    },
-    {
-      "place": "Nosy Be",
-      "amenities": [
-        "Primera línea de playa",
-        "Kayaks",
-        "Cena bajo petición"
-      ]
-    },
-    {
-      "place": "Norte de Madagascar",
-      "amenities": [
-        "Paseos guiados",
-        "Pensión completa",
-        "Observación de estrellas"
-      ]
-    }
-  ],
   "featured": {
     "label": "El favorito de los huéspedes",
     "text": "Un refugio tranquilo en una isla, con su propia playa de arena blanca, una piscina infinita frente a la puesta de sol y una cocina que prepara la pesca de la mañana.",

@@ -2,7 +2,6 @@ import React, { useLayoutEffect, useRef, useState } from 'react'
 import Deux from "../assets/images/2.jpg";
 import Ambanja from "../assets/images/Ambanja.png";
 import NosyLonjo from "../assets/images/NosyLonjo.png";
-import NosyIranja from "../assets/images/NosyIranja.png";
 import Ramena from "../assets/images/Ramena.png";
 import Tana from "../assets/images/Tana.png";
 import Navbar from '../components/Navbar';
@@ -13,6 +12,8 @@ import { useAuth } from '../context/AuthContext';
 import { Trans, useLanguage, useT } from '../i18n/LanguageContext';
 import { formatPrice } from '../utils/format';
 import { localize } from '../i18n/localize';
+import OffersStatus from '../components/OffersStatus'
+import { useOffers } from '../utils/useOffers'
 import { gsap } from 'gsap'
 import { ScrollTrigger } from 'gsap/ScrollTrigger'
 
@@ -50,14 +51,7 @@ const MENU_TABS = [
   { id: 'meal', label: 'Meals' },
 ]
 
-const EXPERIENCES = [
-  { id: 1, category: 'tour', name: 'Street Food Walk', duration: '3 hours', price: 25, image: Deux, text: 'Taste six local snacks with a guide, from fried treats to sweet fruit.' },
-  { id: 2, category: 'tour', name: 'Spice & Vanilla Farm', duration: 'Half day', price: 40, image: Ambanja, text: 'Meet the growers and learn how vanilla and pepper are made.' },
-  { id: 3, category: 'class', name: 'Cooking Class', duration: '3 hours', price: 45, image: Tana, text: 'Shop at the market, then cook and eat three classic dishes.' },
-  { id: 4, category: 'meal', name: 'Local Family Lunch', duration: '2 hours', price: 30, image: NosyLonjo, text: 'Share a home-cooked meal and stories around the table.' },
-  { id: 5, category: 'meal', name: 'Seafood On The Beach', duration: '2 hours', price: 38, image: Ramena, text: 'Grilled catch of the day with your feet almost in the sand.' },
-  { id: 6, category: 'meal', name: 'Sunset Dinner', duration: '2 hours', price: 55, image: NosyIranja, text: 'A table set for two or for the group, with the best view we know.' },
-]
+// Expériences (balades, cours, repas) : dans la base, gérées depuis /admin/offers/food
 
 const CLASS_STEPS = [
   { id: 1, title: 'Visit the market', text: 'Choose fresh vegetables, herbs and spices with your host.' },
@@ -213,14 +207,16 @@ function Dishes() {
   )
 }
 
+// Offre de la base -> forme utilisée par la liste
+const toExperience = (o) => ({ id: o.id, category: o.category, name: o.title, duration: o.duration, price: o.price, image: o.image, text: o.text })
+
 // Expériences : filtres, liste de lignes à droite, grand aperçu à gauche qui change au survol
-function Menu() {
+function Menu({ experiences, status }) {
   const tr = useT('food')
   const { lang } = useLanguage()
   const menuTabs = localize(MENU_TABS, tr('menuTabs'))
-  const experiences = localize(EXPERIENCES, tr('experiences'))
   const [category, setCategory] = useState('all')
-  const [activeId, setActiveId] = useState(experiences[0].id)
+  const [activeId, setActiveId] = useState(null)
   const previewRef = useRef(null)
   const first = useRef(true)
 
@@ -232,7 +228,7 @@ function Menu() {
     if (first.current) { first.current = false; return }
     if (!previewRef.current || prefersReducedMotion()) return
     gsap.fromTo(previewRef.current, { opacity: 0, scale: 1.04 }, { opacity: 1, scale: 1, duration: 0.5, ease: 'power3.out', clearProps: 'transform,opacity' })
-  }, [current.id])
+  }, [current?.id])
 
   const tab = (active) =>
     `rounded-full px-5 py-2 text-sm md:text-base font-medium transition ${active ? 'bg-[#084838] text-white' : 'bg-white text-slate-700 hover:bg-white/70'}`
@@ -259,6 +255,8 @@ function Menu() {
         ))}
       </div>
 
+      <OffersStatus status={status} empty={!current} />
+      {current && (
       <div className="grid grid-cols-1 lg:grid-cols-[1fr_1.15fr] gap-6 lg:gap-10 items-start">
 
         {/* Aperçu (grand écran) */}
@@ -312,6 +310,7 @@ function Menu() {
           })}
         </ul>
       </div>
+      )}
 
       <p className={`mt-8 ${META_TEXT} text-slate-500`}>{tr('groups')}</p>
     </div>
@@ -334,13 +333,13 @@ function Diets() {
 }
 
 // Cours de cuisine : photo avec parallaxe + étapes
-function CookingClass() {
+function CookingClass({ experiences }) {
   const t = useT('food')
   const { lang } = useLanguage()
   const classSteps = localize(CLASS_STEPS, t('classSteps'))
   const facts = t('classFacts')
   // Le cours de cuisine de la liste des expériences : même élément dans « Mon voyage »
-  const lesson = localize(EXPERIENCES, t('experiences')).find((e) => e.category === 'class')
+  const lesson = experiences.find((e) => e.category === 'class')
   return (
     <div className={`${SECTION_GAP} grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-16 items-center`}>
       <div className="relative overflow-hidden rounded-3xl aspect-[4/5] md:aspect-[5/4] lg:aspect-[4/5] bg-[#084838]">
@@ -366,7 +365,7 @@ function CookingClass() {
         </ol>
 
         <ul className="mt-8 grid grid-cols-3 gap-3 md:gap-5 max-w-md">
-          {[['3 h', facts[0]], ['8', facts[1]], [formatPrice(45, lang), facts[2]]].map(([v, l]) => (
+          {[['3 h', facts[0]], ['8', facts[1]], [formatPrice(lesson?.price ?? 45, lang), facts[2]]].map(([v, l]) => (
             <li key={l} className="rounded-2xl bg-white p-4 text-center">
               <p className="text-2xl md:text-3xl leading-none text-slate-800">{v}</p>
               <p className={`mt-2 ${META_TEXT} text-slate-600`}>{l}</p>
@@ -374,7 +373,9 @@ function CookingClass() {
           ))}
         </ul>
 
-        <AddToTrip variant="green" className="mt-8" item={{ kind: 'food', ref: String(lesson.id), title: lesson.name, image: lesson.image, link: '/Food-dining', details: lesson.duration, price: lesson.price, unit: 'person' }} />
+        {lesson && (
+          <AddToTrip variant="green" className="mt-8" item={{ kind: 'food', ref: String(lesson.id), title: lesson.name, image: lesson.image, link: '/Food-dining', details: lesson.duration, price: lesson.price, unit: 'person' }} />
+        )}
       </div>
     </div>
   )
@@ -505,6 +506,8 @@ function Cta() {
 
 function FoodDining() {
   const contentRef = useRef(null)
+  const { offers, status } = useOffers('food')
+  const experiences = offers.map(toExperience)
 
   useLayoutEffect(() => {
     // Pas d'animation si l'utilisateur a demandé moins de mouvement
@@ -558,9 +561,9 @@ function FoodDining() {
       <div ref={contentRef} className={`${SECTION_WIDTH} mt-6 md:mt-10`}>
         <Hero />
         <Dishes />
-        <Menu />
+        <Menu experiences={experiences} status={status} />
         <Diets />
-        <CookingClass />
+        <CookingClass experiences={experiences} />
         <Faq />
         <Cta />
       </div>

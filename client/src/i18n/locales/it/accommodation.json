@@ -32,56 +32,6 @@
       "label": "Guesthouse"
     }
   ],
-  "stays": [
-    {
-      "place": "Ramena, Diego Suarez",
-      "amenities": [
-        "Vista mare",
-        "Colazione",
-        "Snorkeling"
-      ]
-    },
-    {
-      "place": "Nosy Iranja",
-      "amenities": [
-        "Piscina a sfioro",
-        "Spa",
-        "Ristorante"
-      ]
-    },
-    {
-      "place": "Ambanja",
-      "amenities": [
-        "Giardino",
-        "Visite in fattoria",
-        "Energia solare"
-      ]
-    },
-    {
-      "place": "Antananarivo",
-      "amenities": [
-        "Gestione familiare",
-        "Colazione",
-        "Wi-Fi gratuito"
-      ]
-    },
-    {
-      "place": "Nosy Be",
-      "amenities": [
-        "Fronte spiaggia",
-        "Kayak",
-        "Cena su richiesta"
-      ]
-    },
-    {
-      "place": "Nord del Madagascar",
-      "amenities": [
-        "Passeggiate guidate",
-        "Pensione completa",
-        "Osservazione delle stelle"
-      ]
-    }
-  ],
   "featured": {
     "label": "Il preferito degli ospiti",
     "text": "Un tranquillo rifugio sull'isola con una spiaggia privata di sabbia bianca, una piscina a sfioro rivolta al tramonto e una cucina che prepara il pescato del mattino.",

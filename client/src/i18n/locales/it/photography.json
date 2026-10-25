@@ -16,65 +16,6 @@
       "label": "Fauna"
     }
   ],
-  "photos": [
-    {
-      "caption": "Alba sull'isola"
-    },
-    {
-      "caption": "Una passeggiata lenta nel villaggio"
-    },
-    {
-      "caption": "Luce del mattino sugli Altopiani"
-    },
-    {
-      "caption": "Faccia a faccia con la natura selvaggia"
-    },
-    {
-      "caption": "In barca a vela lungo la costa"
-    },
-    {
-      "caption": "Amici sulla riva"
-    },
-    {
-      "caption": "La strada verso il nulla"
-    },
-    {
-      "caption": "Un momento di quiete nella foresta"
-    },
-    {
-      "caption": "Acqua turchese, spiaggia deserta"
-    }
-  ],
-  "sessions": [
-    {
-      "name": "Servizio all'alba",
-      "text": "Un breve servizio all'ora d'oro nel tuo posto preferito.",
-      "duration": "1 ora",
-      "photos": "25 foto ritoccate",
-      "delivery": "48 h"
-    },
-    {
-      "name": "Momento privato",
-      "text": "Coppie, proposte di matrimonio o ritratti di famiglia, rilassati e naturali.",
-      "duration": "2 ore",
-      "photos": "40 foto ritoccate",
-      "delivery": "3 giorni"
-    },
-    {
-      "name": "Racconto di mezza giornata",
-      "text": "Seguiamo la tua giornata e catturiamo le piccole cose che dimenticheresti.",
-      "duration": "4 ore",
-      "photos": "80 foto ritoccate",
-      "delivery": "3 giorni"
-    },
-    {
-      "name": "Racconto di una giornata",
-      "text": "Dalla colazione al tramonto, tutta l'avventura raccontata per immagini.",
-      "duration": "8 ore",
-      "photos": "200 foto ritoccate",
-      "delivery": "5 giorni"
-    }
-  ],
   "steps": [
     {
       "title": "Raccontaci il tuo programma",

@@ -16,65 +16,6 @@
       "label": "Tierwelt"
     }
   ],
-  "photos": [
-    {
-      "caption": "Sonnenaufgang über der Insel"
-    },
-    {
-      "caption": "Ein gemütlicher Spaziergang durchs Dorf"
-    },
-    {
-      "caption": "Morgenlicht im Hochland"
-    },
-    {
-      "caption": "Auge in Auge mit der Wildnis"
-    },
-    {
-      "caption": "Segeln an der Küste entlang"
-    },
-    {
-      "caption": "Freunde am Ufer"
-    },
-    {
-      "caption": "Die Straße ins Nirgendwo"
-    },
-    {
-      "caption": "Ein stiller Moment im Wald"
-    },
-    {
-      "caption": "Türkisfarbenes Wasser, menschenleerer Strand"
-    }
-  ],
-  "sessions": [
-    {
-      "name": "Sonnenaufgangs-Shooting",
-      "text": "Ein kurzes Shooting zur goldenen Stunde an Ihrem Lieblingsort.",
-      "duration": "1 Stunde",
-      "photos": "25 bearbeitete Fotos",
-      "delivery": "48 Std."
-    },
-    {
-      "name": "Privater Moment",
-      "text": "Paare, Heiratsanträge oder Familienporträts – entspannt und natürlich.",
-      "duration": "2 Stunden",
-      "photos": "40 bearbeitete Fotos",
-      "delivery": "3 Tagen"
-    },
-    {
-      "name": "Halbtags-Geschichte",
-      "text": "Wir begleiten Ihren Tag und halten die kleinen Dinge fest, die Sie sonst vergessen würden.",
-      "duration": "4 Stunden",
-      "photos": "80 bearbeitete Fotos",
-      "delivery": "3 Tagen"
-    },
-    {
-      "name": "Ganztags-Geschichte",
-      "text": "Vom Frühstück bis zum Sonnenuntergang: das ganze Abenteuer in Bildern erzählt.",
-      "duration": "8 Stunden",
-      "photos": "200 bearbeitete Fotos",
-      "delivery": "5 Tagen"
-    }
-  ],
   "steps": [
     {
       "title": "Erzählen Sie uns Ihren Plan",

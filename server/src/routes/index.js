@@ -28,6 +28,7 @@ import {
   deleteOffer,
 } from '../controllers/offersController.js'
 import { listUploads, uploadImage } from '../controllers/uploadsController.js'
+import { listTexts, adminListTexts, adminGetTexts, adminSaveTexts, adminResetTexts } from '../controllers/textsController.js'
 import { requireAdmin } from '../middlewares/requireAdmin.js'
 import { rateLimit } from '../middlewares/rateLimit.js'
 import { loadUser } from '../middlewares/auth.js'
@@ -68,11 +69,14 @@ router.post('/newsletter', formLimiter, subscribeNewsletter)
 router.get('/circuits', listCircuits)
 router.get('/circuits/:slug', getCircuit)
 
-// Offres des pages Activités, Excursions, Excursions croisière, Long séjour, Sur mesure
+// Offres et catalogues des pages (activités, excursions, hébergements, transports, guides...)
 router.get('/offers', listOffers)
 
-// Gestion des circuits, des offres, des photos et des devis (réservé à l'équipe Noziwild)
-// Déclarées avant /admin/:resource, sinon "circuits", "offers" ou "quotes" serait pris pour une ressource générique
+// Textes du site modifiés depuis l'admin, posés par le site sur ses fichiers de textes
+router.get('/texts', listTexts)
+
+// Gestion des circuits, des offres, des photos, des textes et des devis (réservé à l'équipe Noziwild)
+// Déclarées avant /admin/:resource, sinon "circuits", "offers", "texts" ou "quotes" serait pris pour une ressource générique
 router.get('/admin/circuits', requireAdmin, adminListCircuits)
 router.get('/admin/circuits/:slug', requireAdmin, adminGetCircuit)
 router.post('/admin/circuits', requireAdmin, createCircuit)
@@ -89,6 +93,10 @@ router.get('/admin/uploads', requireAdmin, listUploads)
 router.get('/admin/quotes', requireAdmin, adminListQuotes)
 router.patch('/admin/quotes/:id', requireAdmin, adminPatchQuote)
 router.post('/admin/uploads', requireAdmin, uploadImage)
+router.get('/admin/texts', requireAdmin, adminListTexts)
+router.get('/admin/texts/:namespace', requireAdmin, adminGetTexts)
+router.put('/admin/texts/:namespace/:lang', requireAdmin, adminSaveTexts)
+router.delete('/admin/texts/:namespace/:lang', requireAdmin, adminResetTexts)
 
 // Lecture des données (réservé à l'équipe Noziwild)
 router.get('/admin/:resource', requireAdmin, listResource)

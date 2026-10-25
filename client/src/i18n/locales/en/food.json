@@ -45,38 +45,6 @@
       "label": "Meals"
     }
   ],
-  "experiences": [
-    {
-      "name": "Street Food Walk",
-      "duration": "3 hours",
-      "text": "Taste six local snacks with a guide, from fried treats to sweet fruit."
-    },
-    {
-      "name": "Spice & Vanilla Farm",
-      "duration": "Half day",
-      "text": "Meet the growers and learn how vanilla and pepper are made."
-    },
-    {
-      "name": "Cooking Class",
-      "duration": "3 hours",
-      "text": "Shop at the market, then cook and eat three classic dishes."
-    },
-    {
-      "name": "Local Family Lunch",
-      "duration": "2 hours",
-      "text": "Share a home-cooked meal and stories around the table."
-    },
-    {
-      "name": "Seafood On The Beach",
-      "duration": "2 hours",
-      "text": "Grilled catch of the day with your feet almost in the sand."
-    },
-    {
-      "name": "Sunset Dinner",
-      "duration": "2 hours",
-      "text": "A table set for two or for the group, with the best view we know."
-    }
-  ],
   "diets": [
     "Vegetarian",
     "Vegan",

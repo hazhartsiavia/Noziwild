@@ -45,38 +45,6 @@
       "label": "Pasti"
     }
   ],
-  "experiences": [
-    {
-      "name": "Tour dello street food",
-      "duration": "3 ore",
-      "text": "Assaggia sei specialità locali con una guida, dalle frittelle alla frutta dolce."
-    },
-    {
-      "name": "Fattoria di spezie e vaniglia",
-      "duration": "Mezza giornata",
-      "text": "Incontra i coltivatori e scopri come nascono la vaniglia e il pepe."
-    },
-    {
-      "name": "Corso di cucina",
-      "duration": "3 ore",
-      "text": "Fai la spesa al mercato, poi cucina e mangia tre piatti classici."
-    },
-    {
-      "name": "Pranzo in famiglia",
-      "duration": "2 ore",
-      "text": "Condividi un pasto fatto in casa e qualche storia intorno alla tavola."
-    },
-    {
-      "name": "Pesce sulla spiaggia",
-      "duration": "2 ore",
-      "text": "Il pescato del giorno alla griglia, con i piedi quasi nella sabbia."
-    },
-    {
-      "name": "Cena al tramonto",
-      "duration": "2 ore",
-      "text": "Una tavola per due o per il gruppo, con la vista più bella che conosciamo."
-    }
-  ],
   "diets": [
     "Vegetariano",
     "Vegano",

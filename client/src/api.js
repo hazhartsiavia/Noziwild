@@ -54,9 +54,13 @@ export const assetUrl = (path) => (path && path.startsWith('/') ? `${API_URL}${p
 export const fetchCircuits = (lang = 'en') => getJSON(`/circuits?lang=${lang}`)
 export const fetchCircuit = (slug, lang = 'en') => getJSON(`/circuits/${encodeURIComponent(slug)}?lang=${lang}`)
 
-// Offres des pages Activités, Excursions, Excursions croisière, Long séjour, Sur mesure
-//   kind : 'activity' | 'excursion' | 'cruise' | 'longstay' | 'idea'
+// Offres et catalogues des pages (voir server/src/utils/offers.js, KINDS)
+//   kind : 'activity' | 'excursion' | 'cruise' | 'longstay' | 'idea' | 'stay' | 'transport' | 'guide'
+//          | 'food' | 'session' | 'photo' | 'gear' | 'ticket'
 export const fetchOffers = (kind, lang = 'en') => getJSON(`/offers?kind=${kind}&lang=${lang}`)
+
+// Textes du site modifiés depuis l'admin, d'une langue : { texts: { home: {...}, ... } }
+export const fetchTexts = (lang = 'en') => getJSON(`/texts?lang=${lang}`)
 
 // Formulaires du site
 export const sendContact = (data) => postJSON('/contact', data)
@@ -100,6 +104,12 @@ export const adminUpdateOffer = (id, offer) => putJSON(offerPath(id), offer)
 export const adminPatchOffer = (id, changes) => patchJSON(offerPath(id), changes)
 export const adminDeleteOffer = (id) => deleteJSON(offerPath(id))
 export const adminFetchPhotos = () => getJSON('/admin/uploads')
+// Textes du site : fichiers modifiés, puis textes modifiés d'un fichier (toutes les langues)
+const textsPath = (namespace, lang) => `/admin/texts/${encodeURIComponent(namespace)}${lang ? `/${lang}` : ''}`
+export const adminFetchTextFiles = () => getJSON('/admin/texts')
+export const adminFetchTexts = (namespace) => getJSON(textsPath(namespace))
+export const adminSaveTexts = (namespace, lang, content) => putJSON(textsPath(namespace, lang), { content })
+export const adminResetTexts = (namespace, lang) => deleteJSON(textsPath(namespace, lang))
 export const adminFetchResource = (resource, page = 1) => getJSON(`/admin/${resource}?page=${page}&limit=20`)
 export const adminSetQuoteStatus = (id, status) => patchJSON(`/admin/quotes/${id}`, { status })
 

@@ -45,38 +45,6 @@
       "label": "Comidas"
     }
   ],
-  "experiences": [
-    {
-      "name": "Ruta de comida callejera",
-      "duration": "3 horas",
-      "text": "Pruebe seis bocados locales con un guía, de los fritos a la fruta dulce."
-    },
-    {
-      "name": "Granja de especias y vainilla",
-      "duration": "Medio día",
-      "text": "Conozca a los agricultores y descubra cómo se producen la vainilla y la pimienta."
-    },
-    {
-      "name": "Clase de cocina",
-      "duration": "3 horas",
-      "text": "Compre en el mercado y después cocine y coma tres platos clásicos."
-    },
-    {
-      "name": "Comida con una familia",
-      "duration": "2 horas",
-      "text": "Comparta una comida casera e historias alrededor de la mesa."
-    },
-    {
-      "name": "Marisco en la playa",
-      "duration": "2 horas",
-      "text": "La pesca del día a la parrilla, con los pies casi en la arena."
-    },
-    {
-      "name": "Cena al atardecer",
-      "duration": "2 horas",
-      "text": "Una mesa para dos o para el grupo, con la mejor vista que conocemos."
-    }
-  ],
   "diets": [
     "Vegetariano",
     "Vegano",

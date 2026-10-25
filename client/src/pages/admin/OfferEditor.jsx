@@ -22,6 +22,9 @@ function toPayload(form) {
   const payload = { ...rest, sortOrder: Number(rest.sortOrder) || 0 }
   if (OFFER_KINDS[form.kind].price) payload.price = Number(rest.price)
   if ('hours' in rest) payload.hours = Number(rest.hours)
+  for (const field of OFFER_KINDS[form.kind].fields) {
+    if (field.type === 'number') payload[field.key] = rest[field.key] === '' ? '' : Number(rest[field.key])
+  }
   return payload
 }
 const snapshot = (form) => JSON.stringify(toPayload(form))
@@ -108,6 +111,8 @@ function KindField({ field, form, error, set }) {
           </select>
         ) : field.type === 'hours' ? (
           <input {...props} type="number" min={0.5} max={24} step={0.5} value={value} onChange={(e) => set(e.target.value)} className={INPUT} />
+        ) : field.type === 'number' ? (
+          <input {...props} type="number" min={field.min} max={field.max} step={field.step} value={value ?? ''} onChange={(e) => set(e.target.value)} className={INPUT} />
         ) : (
           <input {...props} value={value ?? ''} onChange={(e) => set(e.target.value)} placeholder={field.placeholder} className={INPUT} />
         )
@@ -237,14 +242,18 @@ function OfferEditor() {
           <section className={CARD} aria-labelledby="offer-general-title">
             <h3 id="offer-general-title" className={CARD_TITLE}>General</h3>
             <div className="mt-5 grid grid-cols-1 sm:grid-cols-2 gap-4">
-              <Field label="Title" error={err('title')} className="sm:col-span-2">
+              <Field label={config.titleLabel || 'Title'} error={err('title')} className="sm:col-span-2">
                 {(props) => <input {...props} value={form.title} onChange={setInput('title')} className={INPUT} />}
               </Field>
-              <Field label="Description" error={err('text')} className="sm:col-span-2">
+              <Field
+                label={`${config.textLabel || 'Description'}${config.textOptional ? ' (optional)' : ''}`}
+                error={err('text')}
+                className="sm:col-span-2"
+              >
                 {(props) => <textarea {...props} rows={3} value={form.text} onChange={setInput('text')} className={TEXTAREA} />}
               </Field>
               {config.price && (
-                <Field label="Price from (€ per person)" error={err('price')}>
+                <Field label={config.priceLabel || 'Price from (€ per person)'} error={err('price')}>
                   {(props) => <input {...props} type="number" min={0} step={5} value={form.price ?? ''} onChange={setInput('price')} className={INPUT} />}
                 </Field>
               )}
@@ -271,7 +280,8 @@ function OfferEditor() {
           </section>
 
           <section className={CARD} aria-labelledby="offer-photo-title">
-            <h3 id="offer-photo-title" className={CARD_TITLE}>Photo</h3>
+            <h3 id="offer-photo-title" className={CARD_TITLE}>Photo{config.imageOptional ? ' (optional)' : ''}</h3>
+            {config.imageOptional && <p className="mt-1 text-xs text-slate-500">Not shown on the page today: the photo is only used in “My trip”.</p>}
             <div className="mt-5">
               <PhotoPicker
                 label="Photo"

@@ -16,65 +16,6 @@
       "label": "Eventi e spettacoli"
     }
   ],
-  "tickets": [
-    {
-      "name": "Parco di Andasibe-Mantadia",
-      "perks": [
-        "Ingresso + guida locale",
-        "Mezza giornata"
-      ]
-    },
-    {
-      "name": "Riserva di Lokobe",
-      "perks": [
-        "Ingresso + guida",
-        "Piroga inclusa"
-      ]
-    },
-    {
-      "name": "Snorkeling nel parco marino",
-      "perks": [
-        "Barca + attrezzatura da snorkeling",
-        "Pranzo opzionale"
-      ]
-    },
-    {
-      "name": "Crociera in catamarano al tramonto",
-      "perks": [
-        "Bevande a bordo",
-        "3 ore"
-      ]
-    },
-    {
-      "name": "Viale dei Baobab",
-      "perks": [
-        "Ingresso al sito",
-        "Fascia oraria del tramonto"
-      ]
-    },
-    {
-      "name": "Visita alla collina reale",
-      "perks": [
-        "Ingresso + guida",
-        "Salta la fila"
-      ]
-    },
-    {
-      "name": "Serata di musica tradizionale",
-      "perks": [
-        "Posto riservato",
-        "Di sera"
-      ]
-    },
-    {
-      "name": "Pass per le feste locali",
-      "place": "In base alle date",
-      "perks": [
-        "Ingresso + consigli sui trasporti",
-        "Date su richiesta"
-      ]
-    }
-  ],
   "steps": [
     {
       "title": "Scegli l'esperienza",

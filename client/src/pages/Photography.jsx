@@ -12,6 +12,8 @@ import AddToTrip from '../components/AddToTrip'
 import { Trans, useLanguage, useT } from '../i18n/LanguageContext';
 import { formatPrice } from '../utils/format';
 import { localize } from '../i18n/localize';
+import OffersStatus from '../components/OffersStatus'
+import { useOffers } from '../utils/useOffers'
 import { gsap } from 'gsap'
 import { ScrollTrigger } from 'gsap/ScrollTrigger'
 
@@ -41,26 +43,9 @@ const CATEGORIES = [
   { id: 'wildlife', label: 'Wildlife' },
 ]
 
-// ratio : forme de la photo dans la grille (mosaïque)
-const PHOTOS = [
-  { id: 1, category: 'sea', image: NosyIranja, ratio: 'aspect-[4/3]', caption: 'Sunrise over the island' },
-  { id: 2, category: 'people', image: Ambanja, ratio: 'aspect-[3/4]', caption: 'A slow walk through the village' },
-  { id: 3, category: 'landscape', image: Tana, ratio: 'aspect-[4/5]', caption: 'Morning light in the highlands' },
-  { id: 4, category: 'wildlife', image: Deux, ratio: 'aspect-square', caption: 'Face to face with the wild' },
-  { id: 5, category: 'sea', image: Ramena, ratio: 'aspect-[3/4]', caption: 'Sailing along the coast' },
-  { id: 6, category: 'people', image: NosyLonjo, ratio: 'aspect-[4/3]', caption: 'Friends on the shore' },
-  { id: 7, category: 'landscape', image: Deux, ratio: 'aspect-[4/3]', caption: 'The road to nowhere' },
-  { id: 8, category: 'wildlife', image: Tana, ratio: 'aspect-[3/4]', caption: 'Quiet moment in the forest' },
-  { id: 9, category: 'sea', image: NosyLonjo, ratio: 'aspect-square', caption: 'Turquoise water, empty beach' },
-]
-
-// Prix et contenus donnés en exemple, à adapter
-const SESSIONS = [
-  { id: 1, name: 'Sunrise Session', text: 'A short, golden-hour shoot at your favorite spot.', duration: '1 hour', photos: '25 edited photos', delivery: '48 h', price: 90 },
-  { id: 2, name: 'Private Moment', text: 'Couples, proposals or family portraits, relaxed and natural.', duration: '2 hours', photos: '40 edited photos', delivery: '3 days', price: 150 },
-  { id: 3, name: 'Half-Day Story', text: 'We follow your day and capture the little things you would forget.', duration: '4 hours', photos: '80 edited photos', delivery: '3 days', price: 220 },
-  { id: 4, name: 'Full-Day Story', text: 'From breakfast to sunset, the whole adventure told in pictures.', duration: '8 hours', photos: '200 edited photos', delivery: '5 days', price: 380 },
-]
+// Photos de la galerie et séances : dans la base, gérées depuis /admin/offers/photo et /admin/offers/session
+// Forme d'une photo dans la mosaïque (réglage « Shape » de l'admin)
+const RATIOS = { landscape: 'aspect-[4/3]', portrait: 'aspect-[3/4]', tall: 'aspect-[4/5]', square: 'aspect-square' }
 
 const STEPS = [
   { id: 1, title: 'Tell us your plan', text: 'Dates, places and the kind of pictures you love.' },
@@ -223,7 +208,8 @@ function Lightbox({ items, index, onClose, onStep }) {
 function Gallery() {
   const t = useT('photography')
   const categories = localize(CATEGORIES, t('categories'))
-  const photos = localize(PHOTOS, t('photos'))
+  const { offers, status } = useOffers('photo')
+  const photos = offers.map((o) => ({ id: o.id, category: o.category, image: o.image, ratio: RATIOS[o.ratio] || RATIOS.landscape, caption: o.title }))
   const [category, setCategory] = useState('all')
   const [open, setOpen] = useState(null) // index dans la liste filtrée, ou null
   const gridRef = useRef(null)
@@ -258,6 +244,7 @@ function Gallery() {
         ))}
       </div>
 
+      <OffersStatus status={status} empty={list.length === 0} />
       <div ref={gridRef} className="columns-2 lg:columns-3 gap-3 md:gap-5">
         {list.map((p, i) => (
           <button
@@ -284,7 +271,8 @@ function Gallery() {
 function Sessions() {
   const t = useT('photography')
   const { lang } = useLanguage()
-  const sessions = localize(SESSIONS, t('sessions'))
+  const { offers, status } = useOffers('session')
+  const sessions = offers.map((o) => ({ id: o.id, name: o.title, text: o.text, duration: o.duration, photos: o.photos, delivery: o.delivery, price: o.price, image: o.image }))
   return (
     <div id="sessions" className={`${SECTION_GAP} scroll-mt-8`}>
       <div className="mb-8 md:mb-12 text-center">
@@ -292,11 +280,12 @@ function Sessions() {
         <p className={`mt-4 mx-auto ${SECTION_SUBTITLE}`}>{t('sessionsText')}</p>
       </div>
 
+      <OffersStatus status={status} empty={sessions.length === 0} />
       <ul className="border-t border-[#084838]/20">
-        {sessions.map((s) => (
+        {sessions.map((s, i) => (
           <li key={s.id} className="border-b border-[#084838]/20">
             <div className="group grid grid-cols-1 lg:grid-cols-[60px_1.4fr_1.6fr_auto_40px] items-center gap-3 lg:gap-8 py-6 md:py-8 px-2 md:px-4 transition hover:bg-white/60 rounded-2xl">
-              <span className="text-sm md:text-lg tabular-nums text-[#9a742f]">{String(s.id).padStart(2, '0')}</span>
+              <span className="text-sm md:text-lg tabular-nums text-[#9a742f]">{String(i + 1).padStart(2, '0')}</span>
 
               <div>
                 <h3 className="text-2xl md:text-3xl font-medium text-forest tracking-tight">{s.name}</h3>
@@ -311,7 +300,7 @@ function Sessions() {
 
               <p className="text-sm text-slate-600 lg:text-right"><Trans text={t('from')} values={{ price: <span className="text-2xl md:text-3xl font-medium text-slate-900">{formatPrice(s.price, lang)}</span> }} /></p>
 
-              <AddToTrip variant="icon" item={{ kind: 'photo', ref: String(s.id), title: s.name, link: '/photography', details: [s.duration, s.photos].join(' · '), price: s.price, unit: 'unit' }} />
+              <AddToTrip variant="icon" item={{ kind: 'photo', ref: String(s.id), title: s.name, image: s.image || undefined, link: '/photography', details: [s.duration, s.photos].join(' · '), price: s.price, unit: 'unit' }} />
             </div>
           </li>
         ))}

@@ -1,16 +1,12 @@
 import React, { useLayoutEffect, useRef, useState } from 'react'
-import Deux from "../assets/images/2.jpg";
-import Ambanja from "../assets/images/Ambanja.png";
-import NosyLonjo from "../assets/images/NosyLonjo.png";
-import NosyIranja from "../assets/images/NosyIranja.png";
-import Ramena from "../assets/images/Ramena.png";
-import Tana from "../assets/images/Tana.png";
 import Navbar from '../components/Navbar';
 import Footer from '../components/Footer';
 import AddToTrip from '../components/AddToTrip'
 import { useLanguage, useT } from '../i18n/LanguageContext';
 import { formatPrice } from '../utils/format';
 import { localize } from '../i18n/localize';
+import OffersStatus from '../components/OffersStatus'
+import { useOffers } from '../utils/useOffers'
 import { gsap } from 'gsap'
 import { ScrollTrigger } from 'gsap/ScrollTrigger'
 
@@ -39,17 +35,7 @@ const CATEGORIES = [
   { id: 'events', label: 'Events & Shows' },
 ]
 
-// Prix donnés en exemple, à adapter à tes vrais tarifs
-const TICKETS = [
-  { id: 1, category: 'parks', name: 'Andasibe-Mantadia Park', place: 'Andasibe', price: 35, image: Tana, perks: ['Entry + local guide', 'Half day'] },
-  { id: 2, category: 'parks', name: 'Lokobe Reserve', place: 'Nosy Be', price: 25, image: Ambanja, perks: ['Entry + guide', 'Pirogue included'] },
-  { id: 3, category: 'sea', name: 'Marine Park Snorkel Trip', place: 'Nosy Be', price: 30, image: Ramena, perks: ['Boat + snorkel gear', 'Lunch option'] },
-  { id: 4, category: 'sea', name: 'Catamaran Sunset Cruise', place: 'Nosy Be', price: 65, image: NosyIranja, perks: ['Drinks on board', '3 hours'] },
-  { id: 5, category: 'sites', name: 'Avenue Of The Baobabs', place: 'Morondava', price: 15, image: Deux, perks: ['Site entry', 'Sunset slot'] },
-  { id: 6, category: 'sites', name: 'Royal Hill Visit', place: 'Antananarivo', price: 12, image: Tana, perks: ['Entry + guide', 'Skip the queue'] },
-  { id: 7, category: 'events', name: 'Folk Music Night', place: 'Antananarivo', price: 20, image: NosyLonjo, perks: ['Reserved seat', 'Evening'] },
-  { id: 8, category: 'events', name: 'Local Festival Pass', place: 'Varies by date', price: 18, image: Ambanja, perks: ['Entry + transport tip', 'Dates on request'] },
-]
+// Billets : dans la base, gérés depuis /admin/offers/ticket
 
 const STEPS = [
   { id: 1, title: 'Pick your experience', text: 'Choose a park, boat trip, site or event and tell us the date.' },
@@ -146,10 +132,14 @@ function TicketCard({ t }) {
   )
 }
 
+// Offre de la base -> forme utilisée par les billets
+const toTicket = (o) => ({ id: o.id, category: o.category, name: o.title, place: o.place, price: o.price, image: o.image, perks: o.perks })
+
 function Browse() {
   const tr = useT('tickets')
   const categories = localize(CATEGORIES, tr('categories'))
-  const tickets = localize(TICKETS, tr('tickets'))
+  const { offers, status } = useOffers('ticket')
+  const tickets = offers.map(toTicket)
   const [category, setCategory] = useState('all')
   const gridRef = useRef(null)
   const first = useRef(true)
@@ -183,6 +173,7 @@ function Browse() {
         ))}
       </div>
 
+      <OffersStatus status={status} empty={list.length === 0} />
       <div ref={gridRef} className="grid grid-cols-1 xl:grid-cols-2 gap-4 md:gap-6">
         {list.map((t) => <TicketCard key={t.id} t={t} />)}
       </div>

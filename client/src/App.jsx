@@ -32,6 +32,8 @@ import CircuitEditor from "./pages/admin/CircuitEditor";
 import AdminInbox from "./pages/admin/AdminInbox";
 import AdminOffers from "./pages/admin/AdminOffers";
 import OfferEditor from "./pages/admin/OfferEditor";
+import AdminTexts from "./pages/admin/AdminTexts";
+import TextsEditor from "./pages/admin/TextsEditor";
 
 function App() {
   return (
@@ -73,6 +75,8 @@ function App() {
         <Route path="offers/:kind" element={<AdminOffers />} />
         <Route path="offers/:kind/new" element={<OfferEditor key="new" />} />
         <Route path="offers/:kind/:id" element={<OfferEditor />} />
+        <Route path="texts" element={<AdminTexts />} />
+        <Route path="texts/:namespace" element={<TextsEditor />} />
         <Route path="inbox" element={<AdminInbox />} />
       </Route>
     </Routes>

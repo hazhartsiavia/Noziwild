@@ -16,65 +16,6 @@
       "label": "Fauna"
     }
   ],
-  "photos": [
-    {
-      "caption": "Amanecer sobre la isla"
-    },
-    {
-      "caption": "Un paseo tranquilo por el pueblo"
-    },
-    {
-      "caption": "Luz de la mañana en las Tierras Altas"
-    },
-    {
-      "caption": "Cara a cara con la naturaleza salvaje"
-    },
-    {
-      "caption": "Navegando a lo largo de la costa"
-    },
-    {
-      "caption": "Amigos en la orilla"
-    },
-    {
-      "caption": "La carretera hacia ninguna parte"
-    },
-    {
-      "caption": "Un momento tranquilo en el bosque"
-    },
-    {
-      "caption": "Agua turquesa, playa desierta"
-    }
-  ],
-  "sessions": [
-    {
-      "name": "Sesión al amanecer",
-      "text": "Una sesión corta a la hora dorada en su lugar favorito.",
-      "duration": "1 hora",
-      "photos": "25 fotos editadas",
-      "delivery": "48 h"
-    },
-    {
-      "name": "Momento privado",
-      "text": "Parejas, pedidas de mano o retratos de familia, relajados y naturales.",
-      "duration": "2 horas",
-      "photos": "40 fotos editadas",
-      "delivery": "3 días"
-    },
-    {
-      "name": "Historia de medio día",
-      "text": "Seguimos su día y capturamos los pequeños detalles que olvidaría.",
-      "duration": "4 horas",
-      "photos": "80 fotos editadas",
-      "delivery": "3 días"
-    },
-    {
-      "name": "Historia de un día",
-      "text": "Del desayuno a la puesta de sol, toda la aventura contada en imágenes.",
-      "duration": "8 horas",
-      "photos": "200 fotos editadas",
-      "delivery": "5 días"
-    }
-  ],
   "steps": [
     {
       "title": "Cuéntenos su plan",

@@ -2,7 +2,6 @@ import React, { useEffect, useLayoutEffect, useRef, useState } from 'react'
 import { Link } from 'react-router-dom'
 import Deux from "../assets/images/2.jpg";
 import Ambanja from "../assets/images/Ambanja.png";
-import NosyLonjo from "../assets/images/NosyLonjo.png";
 import NosyIranja from "../assets/images/NosyIranja.png";
 import Ramena from "../assets/images/Ramena.png";
 import Tana from "../assets/images/Tana.png";
@@ -15,6 +14,8 @@ import { useAuth } from '../context/AuthContext';
 import { Trans, useLanguage, useT } from '../i18n/LanguageContext';
 import { formatPrice } from '../utils/format';
 import { localize } from '../i18n/localize';
+import OffersStatus from '../components/OffersStatus'
+import { useOffers } from '../utils/useOffers'
 import { gsap } from 'gsap'
 import { ScrollTrigger } from 'gsap/ScrollTrigger'
 
@@ -40,18 +41,7 @@ const CATEGORIES = [
   { id: 'optics', label: 'Photo & Optics' },
 ]
 
-// price = prix par jour (exemples, à adapter à tes vrais tarifs)
-const GEAR = [
-  { id: 1, category: 'water', name: 'Snorkel Set', image: Ramena, price: 6, specs: ['Mask + fins + snorkel', 'All sizes'], text: 'Clean, well-fitted gear for reefs and calm bays.' },
-  { id: 2, category: 'water', name: 'Double Kayak', image: NosyIranja, price: 25, specs: ['2 persons', 'Paddles + vests'], text: 'Stable and easy to handle, ideal for calm coastal water.' },
-  { id: 3, category: 'water', name: 'Stand-Up Paddle Board', image: NosyLonjo, price: 20, specs: ['Inflatable', 'Pump + paddle'], text: 'Explore quiet lagoons at your own pace.' },
-  { id: 4, category: 'trek', name: 'Trekking Backpack 50L', image: Deux, price: 6, specs: ['50 L', 'Rain cover'], text: 'Comfortable carry for multi-day walks and short treks.' },
-  { id: 5, category: 'trek', name: '2-Person Tent', image: Tana, price: 15, specs: ['2 persons', 'Waterproof'], text: 'Light, quick to pitch and ready for rainy nights.' },
-  { id: 6, category: 'ride', name: 'Mountain Bike', image: Ambanja, price: 12, specs: ['21 speeds', 'Helmet included'], text: 'Discover villages and coastal roads on two wheels.' },
-  { id: 7, category: 'ride', name: 'Scooter 125cc', image: Ramena, price: 20, specs: ['Licence required', 'Helmet included'], text: 'Freedom to explore, with insurance and a full tank at pickup.' },
-  { id: 8, category: 'optics', name: 'Binoculars 8x42', image: Tana, price: 5, specs: ['8x42', 'Neck strap + case'], text: 'Bright and sharp, perfect for birds and lemurs.' },
-  { id: 9, category: 'optics', name: 'Waterproof Camera', image: NosyIranja, price: 18, specs: ['4K video', '64 GB card'], text: 'Capture snorkeling and boat trips without worry.' },
-]
+// Matériel à louer (prix par jour) : dans la base, géré depuis /admin/offers/gear
 
 const ARCHES = [
   { id: 'water', label: 'Water', image: Ramena },
@@ -192,13 +182,15 @@ function GearCard({ item, qty, onChange }) {
   )
 }
 
+// Offre de la base -> forme utilisée par les cartes
+const toGear = (o) => ({ id: o.id, category: o.category, name: o.title, image: o.image, price: o.price, specs: o.specs, text: o.text })
+
 // Catalogue + liste de location (estimation du prix)
-function Catalog({ category, setCategory }) {
+function Catalog({ category, setCategory, gear, status }) {
   const t = useT('equipment')
   const tt = useT('trip')
   const { lang } = useLanguage()
   const categories = localize(CATEGORIES, t('categories'))
-  const gear = localize(GEAR, t('gear'))
   const [cart, setCart] = useState({})   // id -> quantité
   const [days, setDays] = useState(3)
   const gridRef = useRef(null)
@@ -263,8 +255,11 @@ function Catalog({ category, setCategory }) {
 
       <div className="grid grid-cols-1 lg:grid-cols-[1fr_340px] xl:grid-cols-[1fr_380px] gap-6 lg:gap-8 items-start">
 
-        <div ref={gridRef} className="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-3 gap-4">
-          {list.map((item) => <GearCard key={item.id} item={item} qty={cart[item.id] || 0} onChange={change} />)}
+        <div>
+          <OffersStatus status={status} empty={list.length === 0} />
+          <div ref={gridRef} className="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-3 gap-4">
+            {list.map((item) => <GearCard key={item.id} item={item} qty={cart[item.id] || 0} onChange={change} />)}
+          </div>
         </div>
 
         {/* Liste de location : reste visible au défilement sur grand écran */}
@@ -457,9 +452,11 @@ function Cta() {
 function EquipmentRentals() {
   const contentRef = useRef(null)
   const [category, setCategory] = useState('all')
+  const { offers, status } = useOffers('gear')
+  const gear = offers.map(toGear)
 
   const counts = CATEGORIES.reduce((acc, c) => {
-    acc[c.id] = c.id === 'all' ? GEAR.length : GEAR.filter((g) => g.category === c.id).length
+    acc[c.id] = c.id === 'all' ? gear.length : gear.filter((g) => g.category === c.id).length
     return acc
   }, {})
 
@@ -497,7 +494,7 @@ function EquipmentRentals() {
       <Navbar />
       <div ref={contentRef} className={`${SECTION_WIDTH} mt-8 md:mt-16`}>
         <Hero counts={counts} onPick={setCategory} />
-        <Catalog category={category} setCategory={setCategory} />
+        <Catalog category={category} setCategory={setCategory} gear={gear} status={status} />
         <Included />
         <Pickup />
         <Faq />

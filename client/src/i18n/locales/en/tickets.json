@@ -16,65 +16,6 @@
       "label": "Events & Shows"
     }
   ],
-  "tickets": [
-    {
-      "name": "Andasibe-Mantadia Park",
-      "perks": [
-        "Entry + local guide",
-        "Half day"
-      ]
-    },
-    {
-      "name": "Lokobe Reserve",
-      "perks": [
-        "Entry + guide",
-        "Pirogue included"
-      ]
-    },
-    {
-      "name": "Marine Park Snorkel Trip",
-      "perks": [
-        "Boat + snorkel gear",
-        "Lunch option"
-      ]
-    },
-    {
-      "name": "Catamaran Sunset Cruise",
-      "perks": [
-        "Drinks on board",
-        "3 hours"
-      ]
-    },
-    {
-      "name": "Avenue Of The Baobabs",
-      "perks": [
-        "Site entry",
-        "Sunset slot"
-      ]
-    },
-    {
-      "name": "Royal Hill Visit",
-      "perks": [
-        "Entry + guide",
-        "Skip the queue"
-      ]
-    },
-    {
-      "name": "Folk Music Night",
-      "perks": [
-        "Reserved seat",
-        "Evening"
-      ]
-    },
-    {
-      "name": "Local Festival Pass",
-      "place": "Varies by date",
-      "perks": [
-        "Entry + transport tip",
-        "Dates on request"
-      ]
-    }
-  ],
   "steps": [
     {
       "title": "Pick your experience",

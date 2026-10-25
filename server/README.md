@@ -64,7 +64,10 @@ Les formulaires sont limités à 20 envois par adresse IP toutes les 10 minutes.
 Le site a un espace d'administration sur `/admin`, réservé aux comptes `admin` :
 
 - **Circuits** : publier / masquer, changer l'ordre, créer, modifier (textes, photos, itinéraire jour par jour), supprimer.
-- **Offers** : activités, excursions, excursions croisière, formules long séjour et idées sur mesure (mêmes réglages).
+- **Offers** : activités, excursions, excursions croisière, formules long séjour et idées sur mesure (mêmes réglages),
+  et les catalogues des pages de services : hébergements, transports, guides, expériences culinaires, séances photo,
+  galerie photo, matériel à louer, billets.
+- **Texts** : tous les textes des pages (titres, paragraphes, boutons, FAQ, pied de page...), dans les 5 langues.
 - **Inbox** : demandes de devis « Mon voyage » (avec leur statut), questions reçues (formulaires, sur-mesure, contact), newsletter, comptes.
 
 Pour donner l'accès à un compte (il doit d'abord exister : inscription sur `/register` ou connexion Google) :
@@ -131,10 +134,11 @@ Chaque élément de `items[]` : `kind`, `ref`, `title`, `details?`, `price?`, `u
 (`estimate`) est indicatif. Pour recevoir un email à chaque demande, remplir `QUOTES_EMAIL` dans `.env`
 (avec le SMTP configuré, voir plus bas).
 
-## Offres (activités, excursions, croisière, long séjour, sur mesure)
+## Offres et catalogues
 
-Les offres des pages `/activities`, `/excurssions`, `/cruise-excurssion`, `/longstay` et `/tailor-made`
-sont dans la table `offers`. Elles se gèrent dans l'admin, onglet **Offers** : créer, modifier,
+Les offres des pages `/activities`, `/excurssions`, `/cruise-excurssion`, `/longstay` et `/tailor-made`,
+et les catalogues des pages `/hosting`, `/transport`, `/guide`, `/Food-dining`, `/photography`,
+`/equipment-rentals` et `/ticket-reservation`, sont dans la table `offers`. Elles se gèrent dans l'admin, onglet **Offers** : créer, modifier,
 masquer, changer l'ordre, changer la photo, traduire. Au premier démarrage, les offres de
 `sql/offers.seed.json` (avec leurs traductions) sont ajoutées pour chaque type encore vide.
 
@@ -145,6 +149,14 @@ masquer, changer l'ordre, changer la photo, traduire. Au premier démarrage, les
 | `cruise` | Excursions croisière | `price`, `port` (nosybe, diego), `tag` (Sea, Nature, Culture), `hours` |
 | `longstay` | Long séjour | `tab`, `priceLabel`, `points[]` |
 | `idea` | Sur mesure (idées de départ) | `interests[]`, `travellers` (Solo, Couple, Family, Friends) |
+| `stay` | Hébergement | `price` (par nuit), `place`, `rating` (0 à 5), `category` (hotel, lodge, bungalow, guesthouse), `amenities[]` ; `text` facultatif |
+| `transport` | Transport | `category` (land, air, sea), `capacity`, `duration`, `perks[]` |
+| `guide` | Guides (l'équipe) | `title` = nom, `text` = présentation, `role`, `langs`, `years`, `specialties[]` |
+| `food` | Cuisine (expériences) | `price`, `category` (tour, class, meal), `duration` |
+| `session` | Photographie (séances) | `price` (par séance), `duration`, `photos`, `delivery` ; `image` facultative |
+| `photo` | Photographie (galerie) | `title` = légende, `category` (landscape, people, sea, wildlife), `ratio` (landscape, portrait, tall, square) ; `text` facultatif |
+| `gear` | Location de matériel | `price` (par jour), `category` (water, trek, ride, optics), `specs[]` |
+| `ticket` | Billets | `price`, `place`, `category` (parks, sea, sites, events), `perks[]` ; `text` facultatif |
 
 Toutes ont aussi `title`, `text`, `image`, `sortOrder`, `isPublished` et `translations`
 (`{ "fr": { "title": ..., "text": ..., "duration": ... } }`, un champ vide s'affiche en anglais).
@@ -158,6 +170,22 @@ Toutes ont aussi `title`, `text`, `image`, `sortOrder`, `isPublished` et `transl
 | PUT | `/api/admin/offers/:id` | Remplace une offre (son type ne change pas) |
 | PATCH | `/api/admin/offers/:id` | Réglages rapides : `isPublished`, `sortOrder` |
 | DELETE | `/api/admin/offers/:id` | Supprime une offre |
+
+## Textes du site modifiés depuis l'admin
+
+Les textes des pages restent dans `client/src/i18n/locales/<langue>/<fichier>.json`. Dans l'admin, onglet
+**Texts**, on choisit une page et une langue : chaque texte a son champ. Seuls les textes modifiés sont
+enregistrés, dans la table `site_texts` (un JSON par fichier et par langue, même forme que le fichier ;
+`null` dans une liste garde l'élément d'origine). Le site les pose par-dessus ses fichiers : un texte ajouté
+plus tard dans un fichier apparaît donc tout de suite, et « Back to the original » revient au texte du fichier.
+
+| Méthode | Route | Rôle |
+|---|---|---|
+| GET | `/api/texts?lang=fr` | Textes modifiés d'une langue, pour tous les fichiers (`{ texts: { home: {...} } }`) |
+| GET | `/api/admin/texts` | Fichiers modifiés, et pour chacun les langues et leur date |
+| GET | `/api/admin/texts/:fichier` | Textes modifiés d'un fichier, par langue |
+| PUT | `/api/admin/texts/:fichier/:langue` | `{ content }` : remplace les textes modifiés (`{}` revient à l'origine) |
+| DELETE | `/api/admin/texts/:fichier/:langue` | Revient aux textes d'origine |
 
 ## Langues du site
 

@@ -1010,5 +1010,2189 @@
         "text": "Mercados, colinas reales y vida de pueblo."
       }
     }
+  },
+  {
+    "kind": "stay",
+    "text": "",
+    "image": "/uploads/circuits/ramena.png",
+    "category": "bungalow",
+    "title": "Ramena Sea Bungalows",
+    "place": "Ramena, Diego Suarez",
+    "price": 65,
+    "rating": 4.8,
+    "amenities": [
+      "Sea view",
+      "Breakfast",
+      "Snorkeling"
+    ],
+    "translations": {
+      "fr": {
+        "place": "Ramena, Diego Suarez",
+        "amenities": [
+          "Vue mer",
+          "Petit-déjeuner",
+          "Snorkeling"
+        ]
+      },
+      "de": {
+        "place": "Ramena, Diego Suarez",
+        "amenities": [
+          "Meerblick",
+          "Frühstück",
+          "Schnorcheln"
+        ]
+      },
+      "it": {
+        "place": "Ramena, Diego Suarez",
+        "amenities": [
+          "Vista mare",
+          "Colazione",
+          "Snorkeling"
+        ]
+      },
+      "es": {
+        "place": "Ramena, Diego Suarez",
+        "amenities": [
+          "Vista al mar",
+          "Desayuno",
+          "Snorkel"
+        ]
+      }
+    }
+  },
+  {
+    "kind": "stay",
+    "text": "",
+    "image": "/uploads/circuits/nosy-iranja.png",
+    "category": "hotel",
+    "title": "Nosy Iranja Retreat",
+    "place": "Nosy Iranja",
+    "price": 140,
+    "rating": 4.9,
+    "amenities": [
+      "Infinity pool",
+      "Spa",
+      "Restaurant"
+    ],
+    "translations": {
+      "fr": {
+        "place": "Nosy Iranja",
+        "amenities": [
+          "Piscine à débordement",
+          "Spa",
+          "Restaurant"
+        ]
+      },
+      "de": {
+        "place": "Nosy Iranja",
+        "amenities": [
+          "Infinity-Pool",
+          "Spa",
+          "Restaurant"
+        ]
+      },
+      "it": {
+        "place": "Nosy Iranja",
+        "amenities": [
+          "Piscina a sfioro",
+          "Spa",
+          "Ristorante"
+        ]
+      },
+      "es": {
+        "place": "Nosy Iranja",
+        "amenities": [
+          "Piscina infinita",
+          "Spa",
+          "Restaurante"
+        ]
+      }
+    }
+  },
+  {
+    "kind": "stay",
+    "text": "",
+    "image": "/uploads/circuits/sambirano-river.png",
+    "category": "lodge",
+    "title": "Ambanja Cocoa Lodge",
+    "place": "Ambanja",
+    "price": 75,
+    "rating": 4.7,
+    "amenities": [
+      "Garden",
+      "Farm visits",
+      "Solar power"
+    ],
+    "translations": {
+      "fr": {
+        "place": "Ambanja",
+        "amenities": [
+          "Jardin",
+          "Visites de ferme",
+          "Énergie solaire"
+        ]
+      },
+      "de": {
+        "place": "Ambanja",
+        "amenities": [
+          "Garten",
+          "Hofbesuche",
+          "Solarstrom"
+        ]
+      },
+      "it": {
+        "place": "Ambanja",
+        "amenities": [
+          "Giardino",
+          "Visite in fattoria",
+          "Energia solare"
+        ]
+      },
+      "es": {
+        "place": "Ambanja",
+        "amenities": [
+          "Jardín",
+          "Visitas a granjas",
+          "Energía solar"
+        ]
+      }
+    }
+  },
+  {
+    "kind": "stay",
+    "text": "",
+    "image": "/uploads/circuits/antananarivo-rice-fields.png",
+    "category": "guesthouse",
+    "title": "Maison Tana",
+    "place": "Antananarivo",
+    "price": 40,
+    "rating": 4.6,
+    "amenities": [
+      "Family-run",
+      "Breakfast",
+      "Free Wi-Fi"
+    ],
+    "translations": {
+      "fr": {
+        "place": "Antananarivo",
+        "amenities": [
+          "Tenue en famille",
+          "Petit-déjeuner",
+          "Wi-Fi gratuit"
+        ]
+      },
+      "de": {
+        "place": "Antananarivo",
+        "amenities": [
+          "Familiengeführt",
+          "Frühstück",
+          "Kostenloses WLAN"
+        ]
+      },
+      "it": {
+        "place": "Antananarivo",
+        "amenities": [
+          "Gestione familiare",
+          "Colazione",
+          "Wi-Fi gratuito"
+        ]
+      },
+      "es": {
+        "place": "Antananarivo",
+        "amenities": [
+          "Gestión familiar",
+          "Desayuno",
+          "Wi-Fi gratis"
+        ]
+      }
+    }
+  },
+  {
+    "kind": "stay",
+    "text": "",
+    "image": "/uploads/circuits/nosy-lonjo.png",
+    "category": "bungalow",
+    "title": "Lonjo Beach Huts",
+    "place": "Nosy Be",
+    "price": 90,
+    "rating": 4.8,
+    "amenities": [
+      "Beachfront",
+      "Kayaks",
+      "Dinner on request"
+    ],
+    "translations": {
+      "fr": {
+        "place": "Nosy Be",
+        "amenities": [
+          "Bord de plage",
+          "Kayaks",
+          "Dîner sur demande"
+        ]
+      },
+      "de": {
+        "place": "Nosy Be",
+        "amenities": [
+          "Direkt am Strand",
+          "Kajaks",
+          "Abendessen auf Wunsch"
+        ]
+      },
+      "it": {
+        "place": "Nosy Be",
+        "amenities": [
+          "Fronte spiaggia",
+          "Kayak",
+          "Cena su richiesta"
+        ]
+      },
+      "es": {
+        "place": "Nosy Be",
+        "amenities": [
+          "Primera línea de playa",
+          "Kayaks",
+          "Cena bajo petición"
+        ]
+      }
+    }
+  },
+  {
+    "kind": "stay",
+    "text": "",
+    "image": "/uploads/circuits/coastal-tsingy.jpg",
+    "category": "lodge",
+    "title": "Baobab Safari Camp",
+    "place": "Northern Madagascar",
+    "price": 110,
+    "rating": 4.7,
+    "amenities": [
+      "Guided walks",
+      "Full board",
+      "Stargazing"
+    ],
+    "translations": {
+      "fr": {
+        "place": "Nord de Madagascar",
+        "amenities": [
+          "Balades guidées",
+          "Pension complète",
+          "Observation des étoiles"
+        ]
+      },
+      "de": {
+        "place": "Nord-Madagaskar",
+        "amenities": [
+          "Geführte Wanderungen",
+          "Vollpension",
+          "Sternbeobachtung"
+        ]
+      },
+      "it": {
+        "place": "Nord del Madagascar",
+        "amenities": [
+          "Passeggiate guidate",
+          "Pensione completa",
+          "Osservazione delle stelle"
+        ]
+      },
+      "es": {
+        "place": "Norte de Madagascar",
+        "amenities": [
+          "Paseos guiados",
+          "Pensión completa",
+          "Observación de estrellas"
+        ]
+      }
+    }
+  },
+  {
+    "kind": "transport",
+    "text": "Your own vehicle and driver-guide. Stop wherever you like, at your own pace.",
+    "image": "/uploads/circuits/antananarivo-rice-fields.png",
+    "category": "land",
+    "title": "Private 4x4",
+    "capacity": "1–6 travelers",
+    "duration": "Flexible",
+    "perks": [
+      "Door-to-door pickup",
+      "Air conditioning",
+      "English-speaking driver"
+    ],
+    "translations": {
+      "fr": {
+        "title": "4x4 privé",
+        "capacity": "1–6 voyageurs",
+        "duration": "Flexible",
+        "text": "Votre propre véhicule avec chauffeur-guide. Arrêtez-vous où vous voulez, à votre rythme.",
+        "perks": [
+          "Prise en charge porte à porte",
+          "Climatisation",
+          "Chauffeur anglophone"
+        ]
+      },
+      "de": {
+        "title": "Privater Geländewagen",
+        "capacity": "1–6 Reisende",
+        "duration": "Flexibel",
+        "text": "Ihr eigenes Fahrzeug mit Fahrer-Guide. Halten Sie, wo Sie möchten, in Ihrem Tempo.",
+        "perks": [
+          "Abholung von Tür zu Tür",
+          "Klimaanlage",
+          "Englischsprachiger Fahrer"
+        ]
+      },
+      "it": {
+        "title": "4x4 privato",
+        "capacity": "1–6 viaggiatori",
+        "duration": "Flessibile",
+        "text": "Il tuo veicolo con autista-guida. Fermati dove vuoi, al tuo ritmo.",
+        "perks": [
+          "Servizio porta a porta",
+          "Aria condizionata",
+          "Autista che parla inglese"
+        ]
+      },
+      "es": {
+        "title": "4x4 privado",
+        "capacity": "1–6 viajeros",
+        "duration": "Flexible",
+        "text": "Su propio vehículo con conductor-guía. Pare donde quiera, a su ritmo.",
+        "perks": [
+          "Recogida puerta a puerta",
+          "Aire acondicionado",
+          "Conductor que habla inglés"
+        ]
+      }
+    }
+  },
+  {
+    "kind": "transport",
+    "text": "A comfortable and affordable option on the main routes, ideal for solo travelers and groups.",
+    "image": "/uploads/circuits/sambirano-river.png",
+    "category": "land",
+    "title": "Shared Minibus",
+    "capacity": "8–15 travelers",
+    "duration": "Fixed schedule",
+    "perks": [
+      "Reserved seats",
+      "Luggage included",
+      "Best price"
+    ],
+    "translations": {
+      "fr": {
+        "title": "Minibus partagé",
+        "capacity": "8–15 voyageurs",
+        "duration": "Horaires fixes",
+        "text": "Une option confortable et économique sur les grands axes, idéale pour les voyageurs solo et les groupes.",
+        "perks": [
+          "Places réservées",
+          "Bagages inclus",
+          "Meilleur prix"
+        ]
+      },
+      "de": {
+        "title": "Sammel-Minibus",
+        "capacity": "8–15 Reisende",
+        "duration": "Fester Fahrplan",
+        "text": "Eine bequeme und günstige Option auf den Hauptstrecken, ideal für Alleinreisende und Gruppen.",
+        "perks": [
+          "Reservierte Plätze",
+          "Gepäck inklusive",
+          "Bester Preis"
+        ]
+      },
+      "it": {
+        "title": "Minibus condiviso",
+        "capacity": "8–15 viaggiatori",
+        "duration": "Orari fissi",
+        "text": "Un'opzione comoda ed economica sulle tratte principali, ideale per chi viaggia da solo e per i gruppi.",
+        "perks": [
+          "Posti riservati",
+          "Bagagli inclusi",
+          "Miglior prezzo"
+        ]
+      },
+      "es": {
+        "title": "Minibús compartido",
+        "capacity": "8–15 viajeros",
+        "duration": "Horario fijo",
+        "text": "Una opción cómoda y económica en las rutas principales, ideal para viajeros solos y grupos.",
+        "perks": [
+          "Asientos reservados",
+          "Equipaje incluido",
+          "Mejor precio"
+        ]
+      }
+    }
+  },
+  {
+    "kind": "transport",
+    "text": "Skip long road days. We book the seats and organize the airport transfers on both ends.",
+    "image": "/uploads/circuits/nosy-lonjo.png",
+    "category": "air",
+    "title": "Domestic Flight",
+    "capacity": "1 seat or more",
+    "duration": "1–2 h",
+    "perks": [
+      "Ticket booking",
+      "Airport transfers",
+      "Flexible dates"
+    ],
+    "translations": {
+      "fr": {
+        "title": "Vol intérieur",
+        "capacity": "1 siège ou plus",
+        "duration": "1–2 h",
+        "text": "Évitez les longues journées de route. Nous réservons les sièges et organisons les transferts aéroport à l'arrivée comme au départ.",
+        "perks": [
+          "Réservation des billets",
+          "Transferts aéroport",
+          "Dates flexibles"
+        ]
+      },
+      "de": {
+        "title": "Inlandsflug",
+        "capacity": "1 Platz oder mehr",
+        "duration": "1–2 Std.",
+        "text": "Sparen Sie sich lange Fahrtage. Wir buchen die Plätze und organisieren die Flughafentransfers an beiden Enden.",
+        "perks": [
+          "Ticketbuchung",
+          "Flughafentransfers",
+          "Flexible Daten"
+        ]
+      },
+      "it": {
+        "title": "Volo interno",
+        "capacity": "1 posto o più",
+        "duration": "1–2 h",
+        "text": "Evita lunghe giornate in auto. Prenotiamo i posti e organizziamo i trasferimenti da e per l'aeroporto.",
+        "perks": [
+          "Prenotazione biglietti",
+          "Trasferimenti aeroportuali",
+          "Date flessibili"
+        ]
+      },
+      "es": {
+        "title": "Vuelo nacional",
+        "capacity": "1 asiento o más",
+        "duration": "1–2 h",
+        "text": "Evite largas jornadas por carretera. Reservamos los asientos y organizamos los traslados al aeropuerto en ambos extremos.",
+        "perks": [
+          "Reserva de billetes",
+          "Traslados al aeropuerto",
+          "Fechas flexibles"
+        ]
+      }
+    }
+  },
+  {
+    "kind": "transport",
+    "text": "Fast and fun crossings to nearby islands, with life jackets and a skilled captain.",
+    "image": "/uploads/circuits/nosy-iranja.png",
+    "category": "sea",
+    "title": "Speedboat",
+    "capacity": "2–10 travelers",
+    "duration": "30 min – 2 h",
+    "perks": [
+      "Safety equipment",
+      "Island hopping",
+      "Private or shared"
+    ],
+    "translations": {
+      "fr": {
+        "title": "Vedette",
+        "capacity": "2–10 voyageurs",
+        "duration": "30 min – 2 h",
+        "text": "Des traversées rapides et amusantes vers les îles voisines, avec gilets de sauvetage et un capitaine expérimenté.",
+        "perks": [
+          "Équipement de sécurité",
+          "D'île en île",
+          "Privé ou partagé"
+        ]
+      },
+      "de": {
+        "title": "Schnellboot",
+        "capacity": "2–10 Reisende",
+        "duration": "30 Min. – 2 Std.",
+        "text": "Schnelle und spaßige Überfahrten zu nahen Inseln, mit Schwimmwesten und einem erfahrenen Kapitän.",
+        "perks": [
+          "Sicherheitsausrüstung",
+          "Inselhüpfen",
+          "Privat oder gemeinsam"
+        ]
+      },
+      "it": {
+        "title": "Motoscafo",
+        "capacity": "2–10 viaggiatori",
+        "duration": "30 min – 2 h",
+        "text": "Traversate veloci e divertenti verso le isole vicine, con giubbotti di salvataggio e un capitano esperto.",
+        "perks": [
+          "Dotazioni di sicurezza",
+          "Di isola in isola",
+          "Privato o condiviso"
+        ]
+      },
+      "es": {
+        "title": "Lancha rápida",
+        "capacity": "2–10 viajeros",
+        "duration": "30 min – 2 h",
+        "text": "Travesías rápidas y divertidas a las islas cercanas, con chalecos salvavidas y un capitán experto.",
+        "perks": [
+          "Equipo de seguridad",
+          "De isla en isla",
+          "Privada o compartida"
+        ]
+      }
+    }
+  },
+  {
+    "kind": "transport",
+    "text": "A slower, scenic way to reach hidden beaches, with snorkeling stops and a picnic on board.",
+    "image": "/uploads/circuits/ramena.png",
+    "category": "sea",
+    "title": "Sailing Boat",
+    "capacity": "2–8 travelers",
+    "duration": "Half or full day",
+    "perks": [
+      "Snorkeling gear",
+      "Lunch on board",
+      "Sunset option"
+    ],
+    "translations": {
+      "fr": {
+        "title": "Voilier",
+        "capacity": "2–8 voyageurs",
+        "duration": "Demi-journée ou journée",
+        "text": "Une façon plus lente et pittoresque de rejoindre des plages cachées, avec arrêts snorkeling et pique-nique à bord.",
+        "perks": [
+          "Matériel de snorkeling",
+          "Déjeuner à bord",
+          "Option coucher de soleil"
+        ]
+      },
+      "de": {
+        "title": "Segelboot",
+        "capacity": "2–8 Reisende",
+        "duration": "Halber oder ganzer Tag",
+        "text": "Ein langsamerer, malerischer Weg zu versteckten Stränden, mit Schnorchelstopps und Picknick an Bord.",
+        "perks": [
+          "Schnorchelausrüstung",
+          "Mittagessen an Bord",
+          "Option Sonnenuntergang"
+        ]
+      },
+      "it": {
+        "title": "Barca a vela",
+        "capacity": "2–8 viaggiatori",
+        "duration": "Mezza giornata o intera",
+        "text": "Un modo più lento e panoramico per raggiungere spiagge nascoste, con soste per lo snorkeling e picnic a bordo.",
+        "perks": [
+          "Attrezzatura da snorkeling",
+          "Pranzo a bordo",
+          "Opzione tramonto"
+        ]
+      },
+      "es": {
+        "title": "Velero",
+        "capacity": "2–8 viajeros",
+        "duration": "Medio día o día completo",
+        "text": "Una forma más lenta y pintoresca de llegar a playas escondidas, con paradas para hacer snorkel y pícnic a bordo.",
+        "perks": [
+          "Equipo de snorkel",
+          "Comida a bordo",
+          "Opción puesta de sol"
+        ]
+      }
+    }
+  },
+  {
+    "kind": "transport",
+    "text": "Watch villages and landscapes roll by on a slow ride you will not forget.",
+    "image": "/uploads/circuits/coastal-tsingy.jpg",
+    "category": "land",
+    "title": "Scenic Train",
+    "capacity": "Per seat",
+    "duration": "Half or full day",
+    "perks": [
+      "Window seats",
+      "Station transfers",
+      "Local snacks"
+    ],
+    "translations": {
+      "fr": {
+        "title": "Train panoramique",
+        "capacity": "À la place",
+        "duration": "Demi-journée ou journée",
+        "text": "Regardez défiler villages et paysages lors d'un trajet lent que vous n'oublierez pas.",
+        "perks": [
+          "Places côté fenêtre",
+          "Transferts à la gare",
+          "En-cas locaux"
+        ]
+      },
+      "de": {
+        "title": "Panoramazug",
+        "capacity": "Pro Platz",
+        "duration": "Halber oder ganzer Tag",
+        "text": "Sehen Sie Dörfer und Landschaften auf einer langsamen Fahrt vorbeiziehen, die Sie nicht vergessen werden.",
+        "perks": [
+          "Fensterplätze",
+          "Bahnhofstransfers",
+          "Lokale Snacks"
+        ]
+      },
+      "it": {
+        "title": "Treno panoramico",
+        "capacity": "A posto",
+        "duration": "Mezza giornata o intera",
+        "text": "Guarda scorrere villaggi e paesaggi in un viaggio lento che non dimenticherai.",
+        "perks": [
+          "Posti finestrino",
+          "Trasferimenti in stazione",
+          "Spuntini locali"
+        ]
+      },
+      "es": {
+        "title": "Tren panorámico",
+        "capacity": "Por asiento",
+        "duration": "Medio día o día completo",
+        "text": "Vea pasar pueblos y paisajes en un trayecto lento que no olvidará.",
+        "perks": [
+          "Asientos de ventanilla",
+          "Traslados a la estación",
+          "Aperitivos locales"
+        ]
+      }
+    }
+  },
+  {
+    "kind": "guide",
+    "text": "Hery leads small-group wildlife walks and knows exactly when and where to find the island’s most unusual animals.",
+    "image": "/uploads/circuits/antananarivo-rice-fields.png",
+    "title": "Hery Andria",
+    "role": "Wildlife Guide",
+    "langs": "English · French · Malagasy",
+    "years": 12,
+    "specialties": [
+      "Lemurs",
+      "Birdwatching",
+      "Night walks"
+    ],
+    "translations": {
+      "fr": {
+        "role": "Guide naturaliste",
+        "langs": "Anglais · Français · Malgache",
+        "text": "Hery mène des balades naturalistes en petits groupes et sait exactement quand et où trouver les animaux les plus étonnants de l'île.",
+        "specialties": [
+          "Lémuriens",
+          "Ornithologie",
+          "Balades nocturnes"
+        ]
+      },
+      "de": {
+        "role": "Naturführer",
+        "langs": "Englisch · Französisch · Madagassisch",
+        "text": "Hery führt Tierbeobachtungen in kleinen Gruppen und weiß genau, wann und wo man die ungewöhnlichsten Tiere der Insel findet.",
+        "specialties": [
+          "Lemuren",
+          "Vogelbeobachtung",
+          "Nachtwanderungen"
+        ]
+      },
+      "it": {
+        "role": "Guida naturalistica",
+        "langs": "Inglese · Francese · Malgascio",
+        "text": "Hery guida escursioni naturalistiche in piccoli gruppi e sa esattamente quando e dove trovare gli animali più insoliti dell'isola.",
+        "specialties": [
+          "Lemuri",
+          "Birdwatching",
+          "Uscite notturne"
+        ]
+      },
+      "es": {
+        "role": "Guía de fauna",
+        "langs": "Inglés · Francés · Malgache",
+        "text": "Hery dirige paseos de observación de fauna en grupos pequeños y sabe exactamente cuándo y dónde encontrar los animales más insólitos de la isla.",
+        "specialties": [
+          "Lémures",
+          "Observación de aves",
+          "Paseos nocturnos"
+        ]
+      }
+    }
+  },
+  {
+    "kind": "guide",
+    "text": "Lina shares the history, food and traditions of the island and connects travelers with the people who keep them alive.",
+    "image": "/uploads/circuits/ramena.png",
+    "title": "Lina Rakoto",
+    "role": "Cultural Specialist",
+    "langs": "English · French · Italian",
+    "years": 9,
+    "specialties": [
+      "Cuisine",
+      "Crafts",
+      "Village life"
+    ],
+    "translations": {
+      "fr": {
+        "role": "Spécialiste culturelle",
+        "langs": "Anglais · Français · Italien",
+        "text": "Lina partage l'histoire, la cuisine et les traditions de l'île, et met les voyageurs en relation avec ceux qui les font vivre.",
+        "specialties": [
+          "Cuisine",
+          "Artisanat",
+          "Vie de village"
+        ]
+      },
+      "de": {
+        "role": "Kulturspezialistin",
+        "langs": "Englisch · Französisch · Italienisch",
+        "text": "Lina teilt die Geschichte, die Küche und die Traditionen der Insel und bringt Reisende mit den Menschen zusammen, die sie lebendig halten.",
+        "specialties": [
+          "Küche",
+          "Kunsthandwerk",
+          "Dorfleben"
+        ]
+      },
+      "it": {
+        "role": "Specialista culturale",
+        "langs": "Inglese · Francese · Italiano",
+        "text": "Lina racconta la storia, la cucina e le tradizioni dell'isola e mette in contatto i viaggiatori con chi le tiene vive.",
+        "specialties": [
+          "Cucina",
+          "Artigianato",
+          "Vita di villaggio"
+        ]
+      },
+      "es": {
+        "role": "Especialista cultural",
+        "langs": "Inglés · Francés · Italiano",
+        "text": "Lina comparte la historia, la gastronomía y las tradiciones de la isla, y pone a los viajeros en contacto con quienes las mantienen vivas.",
+        "specialties": [
+          "Cocina",
+          "Artesanía",
+          "Vida de pueblo"
+        ]
+      }
+    }
+  },
+  {
+    "kind": "guide",
+    "text": "Tojo designs treks that match your level, with the right pace, the right stops and safety always first.",
+    "image": "/uploads/circuits/nosy-iranja.png",
+    "title": "Tojo Rabe",
+    "role": "Adventure Guide",
+    "langs": "English · French · German",
+    "years": 8,
+    "specialties": [
+      "Trekking",
+      "Canyons",
+      "Coastal trails"
+    ],
+    "translations": {
+      "fr": {
+        "role": "Guide d'aventure",
+        "langs": "Anglais · Français · Allemand",
+        "text": "Tojo conçoit des treks adaptés à votre niveau, avec le bon rythme, les bonnes pauses et la sécurité avant tout.",
+        "specialties": [
+          "Trekking",
+          "Canyons",
+          "Sentiers côtiers"
+        ]
+      },
+      "de": {
+        "role": "Abenteuer-Guide",
+        "langs": "Englisch · Französisch · Deutsch",
+        "text": "Tojo plant Treks passend zu Ihrem Niveau – mit dem richtigen Tempo, den richtigen Pausen und immer mit Sicherheit an erster Stelle.",
+        "specialties": [
+          "Trekking",
+          "Schluchten",
+          "Küstenpfade"
+        ]
+      },
+      "it": {
+        "role": "Guida d'avventura",
+        "langs": "Inglese · Francese · Tedesco",
+        "text": "Tojo progetta trekking adatti al tuo livello, con il ritmo giusto, le soste giuste e la sicurezza sempre al primo posto.",
+        "specialties": [
+          "Trekking",
+          "Canyon",
+          "Sentieri costieri"
+        ]
+      },
+      "es": {
+        "role": "Guía de aventura",
+        "langs": "Inglés · Francés · Alemán",
+        "text": "Tojo diseña trekkings adaptados a su nivel, con el ritmo adecuado, las paradas adecuadas y la seguridad siempre por delante.",
+        "specialties": [
+          "Trekking",
+          "Cañones",
+          "Senderos costeros"
+        ]
+      }
+    }
+  },
+  {
+    "kind": "guide",
+    "text": "Mika takes care of every detail so you can simply enjoy the trip, and is one call away whenever you need.",
+    "image": "/uploads/circuits/sambirano-river.png",
+    "title": "Mika Ravao",
+    "role": "Trip Companion",
+    "langs": "English · French · Spanish",
+    "years": 6,
+    "specialties": [
+      "Logistics",
+      "Families",
+      "Custom trips"
+    ],
+    "translations": {
+      "fr": {
+        "role": "Accompagnatrice de voyage",
+        "langs": "Anglais · Français · Espagnol",
+        "text": "Mika s'occupe de chaque détail pour que vous n'ayez plus qu'à profiter du voyage, et reste joignable à tout moment.",
+        "specialties": [
+          "Logistique",
+          "Familles",
+          "Voyages sur mesure"
+        ]
+      },
+      "de": {
+        "role": "Reisebegleiterin",
+        "langs": "Englisch · Französisch · Spanisch",
+        "text": "Mika kümmert sich um jedes Detail, damit Sie die Reise einfach genießen können, und ist jederzeit nur einen Anruf entfernt.",
+        "specialties": [
+          "Organisation",
+          "Familien",
+          "Individuelle Reisen"
+        ]
+      },
+      "it": {
+        "role": "Accompagnatrice di viaggio",
+        "langs": "Inglese · Francese · Spagnolo",
+        "text": "Mika si occupa di ogni dettaglio perché tu possa goderti il viaggio, ed è sempre a una telefonata di distanza.",
+        "specialties": [
+          "Logistica",
+          "Famiglie",
+          "Viaggi su misura"
+        ]
+      },
+      "es": {
+        "role": "Acompañante de viaje",
+        "langs": "Inglés · Francés · Español",
+        "text": "Mika se ocupa de cada detalle para que usted solo tenga que disfrutar del viaje, y está siempre a una llamada.",
+        "specialties": [
+          "Logística",
+          "Familias",
+          "Viajes a medida"
+        ]
+      }
+    }
+  },
+  {
+    "kind": "food",
+    "text": "Taste six local snacks with a guide, from fried treats to sweet fruit.",
+    "image": "/uploads/circuits/coastal-tsingy.jpg",
+    "category": "tour",
+    "title": "Street Food Walk",
+    "duration": "3 hours",
+    "price": 25,
+    "translations": {
+      "fr": {
+        "title": "Balade street food",
+        "duration": "3 heures",
+        "text": "Goûtez six spécialités locales avec un guide, des beignets aux fruits sucrés."
+      },
+      "de": {
+        "title": "Streetfood-Tour",
+        "duration": "3 Stunden",
+        "text": "Probieren Sie mit einem Guide sechs lokale Snacks, von Frittiertem bis zu süßem Obst."
+      },
+      "it": {
+        "title": "Tour dello street food",
+        "duration": "3 ore",
+        "text": "Assaggia sei specialità locali con una guida, dalle frittelle alla frutta dolce."
+      },
+      "es": {
+        "title": "Ruta de comida callejera",
+        "duration": "3 horas",
+        "text": "Pruebe seis bocados locales con un guía, de los fritos a la fruta dulce."
+      }
+    }
+  },
+  {
+    "kind": "food",
+    "text": "Meet the growers and learn how vanilla and pepper are made.",
+    "image": "/uploads/circuits/sambirano-river.png",
+    "category": "tour",
+    "title": "Spice & Vanilla Farm",
+    "duration": "Half day",
+    "price": 40,
+    "translations": {
+      "fr": {
+        "title": "Ferme d'épices et de vanille",
+        "duration": "Demi-journée",
+        "text": "Rencontrez les producteurs et découvrez comment sont produits la vanille et le poivre."
+      },
+      "de": {
+        "title": "Gewürz- & Vanillefarm",
+        "duration": "Halber Tag",
+        "text": "Treffen Sie die Bauern und erfahren Sie, wie Vanille und Pfeffer entstehen."
+      },
+      "it": {
+        "title": "Fattoria di spezie e vaniglia",
+        "duration": "Mezza giornata",
+        "text": "Incontra i coltivatori e scopri come nascono la vaniglia e il pepe."
+      },
+      "es": {
+        "title": "Granja de especias y vainilla",
+        "duration": "Medio día",
+        "text": "Conozca a los agricultores y descubra cómo se producen la vainilla y la pimienta."
+      }
+    }
+  },
+  {
+    "kind": "food",
+    "text": "Shop at the market, then cook and eat three classic dishes.",
+    "image": "/uploads/circuits/antananarivo-rice-fields.png",
+    "category": "class",
+    "title": "Cooking Class",
+    "duration": "3 hours",
+    "price": 45,
+    "translations": {
+      "fr": {
+        "title": "Cours de cuisine",
+        "duration": "3 heures",
+        "text": "Faites le marché, puis cuisinez et dégustez trois plats classiques."
+      },
+      "de": {
+        "title": "Kochkurs",
+        "duration": "3 Stunden",
+        "text": "Einkaufen auf dem Markt, dann drei klassische Gerichte kochen und essen."
+      },
+      "it": {
+        "title": "Corso di cucina",
+        "duration": "3 ore",
+        "text": "Fai la spesa al mercato, poi cucina e mangia tre piatti classici."
+      },
+      "es": {
+        "title": "Clase de cocina",
+        "duration": "3 horas",
+        "text": "Compre en el mercado y después cocine y coma tres platos clásicos."
+      }
+    }
+  },
+  {
+    "kind": "food",
+    "text": "Share a home-cooked meal and stories around the table.",
+    "image": "/uploads/circuits/nosy-lonjo.png",
+    "category": "meal",
+    "title": "Local Family Lunch",
+    "duration": "2 hours",
+    "price": 30,
+    "translations": {
+      "fr": {
+        "title": "Déjeuner en famille",
+        "duration": "2 heures",
+        "text": "Partagez un repas fait maison et des histoires autour de la table."
+      },
+      "de": {
+        "title": "Mittagessen bei einer Familie",
+        "duration": "2 Stunden",
+        "text": "Teilen Sie eine hausgemachte Mahlzeit und Geschichten am Tisch."
+      },
+      "it": {
+        "title": "Pranzo in famiglia",
+        "duration": "2 ore",
+        "text": "Condividi un pasto fatto in casa e qualche storia intorno alla tavola."
+      },
+      "es": {
+        "title": "Comida con una familia",
+        "duration": "2 horas",
+        "text": "Comparta una comida casera e historias alrededor de la mesa."
+      }
+    }
+  },
+  {
+    "kind": "food",
+    "text": "Grilled catch of the day with your feet almost in the sand.",
+    "image": "/uploads/circuits/ramena.png",
+    "category": "meal",
+    "title": "Seafood On The Beach",
+    "duration": "2 hours",
+    "price": 38,
+    "translations": {
+      "fr": {
+        "title": "Fruits de mer sur la plage",
+        "duration": "2 heures",
+        "text": "La pêche du jour grillée, les pieds presque dans le sable."
+      },
+      "de": {
+        "title": "Meeresfrüchte am Strand",
+        "duration": "2 Stunden",
+        "text": "Gegrillter Tagesfang, die Füße fast im Sand."
+      },
+      "it": {
+        "title": "Pesce sulla spiaggia",
+        "duration": "2 ore",
+        "text": "Il pescato del giorno alla griglia, con i piedi quasi nella sabbia."
+      },
+      "es": {
+        "title": "Marisco en la playa",
+        "duration": "2 horas",
+        "text": "La pesca del día a la parrilla, con los pies casi en la arena."
+      }
+    }
+  },
+  {
+    "kind": "food",
+    "text": "A table set for two or for the group, with the best view we know.",
+    "image": "/uploads/circuits/nosy-iranja.png",
+    "category": "meal",
+    "title": "Sunset Dinner",
+    "duration": "2 hours",
+    "price": 55,
+    "translations": {
+      "fr": {
+        "title": "Dîner au coucher du soleil",
+        "duration": "2 heures",
+        "text": "Une table dressée pour deux ou pour le groupe, avec la plus belle vue que nous connaissions."
+      },
+      "de": {
+        "title": "Abendessen bei Sonnenuntergang",
+        "duration": "2 Stunden",
+        "text": "Ein Tisch für zwei oder für die Gruppe, mit der schönsten Aussicht, die wir kennen."
+      },
+      "it": {
+        "title": "Cena al tramonto",
+        "duration": "2 ore",
+        "text": "Una tavola per due o per il gruppo, con la vista più bella che conosciamo."
+      },
+      "es": {
+        "title": "Cena al atardecer",
+        "duration": "2 horas",
+        "text": "Una mesa para dos o para el grupo, con la mejor vista que conocemos."
+      }
+    }
+  },
+  {
+    "kind": "session",
+    "text": "A short, golden-hour shoot at your favorite spot.",
+    "image": "",
+    "title": "Sunrise Session",
+    "duration": "1 hour",
+    "photos": "25 edited photos",
+    "delivery": "48 h",
+    "price": 90,
+    "translations": {
+      "fr": {
+        "title": "Séance au lever du soleil",
+        "text": "Une courte séance à l'heure dorée, à l'endroit que vous préférez.",
+        "duration": "1 heure",
+        "photos": "25 photos retouchées",
+        "delivery": "48 h"
+      },
+      "de": {
+        "title": "Sonnenaufgangs-Shooting",
+        "text": "Ein kurzes Shooting zur goldenen Stunde an Ihrem Lieblingsort.",
+        "duration": "1 Stunde",
+        "photos": "25 bearbeitete Fotos",
+        "delivery": "48 Std."
+      },
+      "it": {
+        "title": "Servizio all'alba",
+        "text": "Un breve servizio all'ora d'oro nel tuo posto preferito.",
+        "duration": "1 ora",
+        "photos": "25 foto ritoccate",
+        "delivery": "48 h"
+      },
+      "es": {
+        "title": "Sesión al amanecer",
+        "text": "Una sesión corta a la hora dorada en su lugar favorito.",
+        "duration": "1 hora",
+        "photos": "25 fotos editadas",
+        "delivery": "48 h"
+      }
+    }
+  },
+  {
+    "kind": "session",
+    "text": "Couples, proposals or family portraits, relaxed and natural.",
+    "image": "",
+    "title": "Private Moment",
+    "duration": "2 hours",
+    "photos": "40 edited photos",
+    "delivery": "3 days",
+    "price": 150,
+    "translations": {
+      "fr": {
+        "title": "Moment privé",
+        "text": "Couples, demandes en mariage ou portraits de famille, détendus et naturels.",
+        "duration": "2 heures",
+        "photos": "40 photos retouchées",
+        "delivery": "3 jours"
+      },
+      "de": {
+        "title": "Privater Moment",
+        "text": "Paare, Heiratsanträge oder Familienporträts – entspannt und natürlich.",
+        "duration": "2 Stunden",
+        "photos": "40 bearbeitete Fotos",
+        "delivery": "3 Tagen"
+      },
+      "it": {
+        "title": "Momento privato",
+        "text": "Coppie, proposte di matrimonio o ritratti di famiglia, rilassati e naturali.",
+        "duration": "2 ore",
+        "photos": "40 foto ritoccate",
+        "delivery": "3 giorni"
+      },
+      "es": {
+        "title": "Momento privado",
+        "text": "Parejas, pedidas de mano o retratos de familia, relajados y naturales.",
+        "duration": "2 horas",
+        "photos": "40 fotos editadas",
+        "delivery": "3 días"
+      }
+    }
+  },
+  {
+    "kind": "session",
+    "text": "We follow your day and capture the little things you would forget.",
+    "image": "",
+    "title": "Half-Day Story",
+    "duration": "4 hours",
+    "photos": "80 edited photos",
+    "delivery": "3 days",
+    "price": 220,
+    "translations": {
+      "fr": {
+        "title": "Récit d'une demi-journée",
+        "text": "Nous suivons votre journée et saisissons les petits riens que vous oublieriez.",
+        "duration": "4 heures",
+        "photos": "80 photos retouchées",
+        "delivery": "3 jours"
+      },
+      "de": {
+        "title": "Halbtags-Geschichte",
+        "text": "Wir begleiten Ihren Tag und halten die kleinen Dinge fest, die Sie sonst vergessen würden.",
+        "duration": "4 Stunden",
+        "photos": "80 bearbeitete Fotos",
+        "delivery": "3 Tagen"
+      },
+      "it": {
+        "title": "Racconto di mezza giornata",
+        "text": "Seguiamo la tua giornata e catturiamo le piccole cose che dimenticheresti.",
+        "duration": "4 ore",
+        "photos": "80 foto ritoccate",
+        "delivery": "3 giorni"
+      },
+      "es": {
+        "title": "Historia de medio día",
+        "text": "Seguimos su día y capturamos los pequeños detalles que olvidaría.",
+        "duration": "4 horas",
+        "photos": "80 fotos editadas",
+        "delivery": "3 días"
+      }
+    }
+  },
+  {
+    "kind": "session",
+    "text": "From breakfast to sunset, the whole adventure told in pictures.",
+    "image": "",
+    "title": "Full-Day Story",
+    "duration": "8 hours",
+    "photos": "200 edited photos",
+    "delivery": "5 days",
+    "price": 380,
+    "translations": {
+      "fr": {
+        "title": "Récit d'une journée",
+        "text": "Du petit-déjeuner au coucher du soleil, toute l'aventure racontée en images.",
+        "duration": "8 heures",
+        "photos": "200 photos retouchées",
+        "delivery": "5 jours"
+      },
+      "de": {
+        "title": "Ganztags-Geschichte",
+        "text": "Vom Frühstück bis zum Sonnenuntergang: das ganze Abenteuer in Bildern erzählt.",
+        "duration": "8 Stunden",
+        "photos": "200 bearbeitete Fotos",
+        "delivery": "5 Tagen"
+      },
+      "it": {
+        "title": "Racconto di una giornata",
+        "text": "Dalla colazione al tramonto, tutta l'avventura raccontata per immagini.",
+        "duration": "8 ore",
+        "photos": "200 foto ritoccate",
+        "delivery": "5 giorni"
+      },
+      "es": {
+        "title": "Historia de un día",
+        "text": "Del desayuno a la puesta de sol, toda la aventura contada en imágenes.",
+        "duration": "8 horas",
+        "photos": "200 fotos editadas",
+        "delivery": "5 días"
+      }
+    }
+  },
+  {
+    "kind": "photo",
+    "text": "",
+    "image": "/uploads/circuits/nosy-iranja.png",
+    "category": "sea",
+    "ratio": "landscape",
+    "title": "Sunrise over the island",
+    "translations": {
+      "fr": {
+        "title": "Lever de soleil sur l'île"
+      },
+      "de": {
+        "title": "Sonnenaufgang über der Insel"
+      },
+      "it": {
+        "title": "Alba sull'isola"
+      },
+      "es": {
+        "title": "Amanecer sobre la isla"
+      }
+    }
+  },
+  {
+    "kind": "photo",
+    "text": "",
+    "image": "/uploads/circuits/sambirano-river.png",
+    "category": "people",
+    "ratio": "portrait",
+    "title": "A slow walk through the village",
+    "translations": {
+      "fr": {
+        "title": "Une promenade tranquille dans le village"
+      },
+      "de": {
+        "title": "Ein gemütlicher Spaziergang durchs Dorf"
+      },
+      "it": {
+        "title": "Una passeggiata lenta nel villaggio"
+      },
+      "es": {
+        "title": "Un paseo tranquilo por el pueblo"
+      }
+    }
+  },
+  {
+    "kind": "photo",
+    "text": "",
+    "image": "/uploads/circuits/antananarivo-rice-fields.png",
+    "category": "landscape",
+    "ratio": "tall",
+    "title": "Morning light in the highlands",
+    "translations": {
+      "fr": {
+        "title": "Lumière du matin sur les Hautes Terres"
+      },
+      "de": {
+        "title": "Morgenlicht im Hochland"
+      },
+      "it": {
+        "title": "Luce del mattino sugli Altopiani"
+      },
+      "es": {
+        "title": "Luz de la mañana en las Tierras Altas"
+      }
+    }
+  },
+  {
+    "kind": "photo",
+    "text": "",
+    "image": "/uploads/circuits/coastal-tsingy.jpg",
+    "category": "wildlife",
+    "ratio": "square",
+    "title": "Face to face with the wild",
+    "translations": {
+      "fr": {
+        "title": "Face à face avec la nature sauvage"
+      },
+      "de": {
+        "title": "Auge in Auge mit der Wildnis"
+      },
+      "it": {
+        "title": "Faccia a faccia con la natura selvaggia"
+      },
+      "es": {
+        "title": "Cara a cara con la naturaleza salvaje"
+      }
+    }
+  },
+  {
+    "kind": "photo",
+    "text": "",
+    "image": "/uploads/circuits/ramena.png",
+    "category": "sea",
+    "ratio": "portrait",
+    "title": "Sailing along the coast",
+    "translations": {
+      "fr": {
+        "title": "À la voile le long de la côte"
+      },
+      "de": {
+        "title": "Segeln an der Küste entlang"
+      },
+      "it": {
+        "title": "In barca a vela lungo la costa"
+      },
+      "es": {
+        "title": "Navegando a lo largo de la costa"
+      }
+    }
+  },
+  {
+    "kind": "photo",
+    "text": "",
+    "image": "/uploads/circuits/nosy-lonjo.png",
+    "category": "people",
+    "ratio": "landscape",
+    "title": "Friends on the shore",
+    "translations": {
+      "fr": {
+        "title": "Entre amis sur le rivage"
+      },
+      "de": {
+        "title": "Freunde am Ufer"
+      },
+      "it": {
+        "title": "Amici sulla riva"
+      },
+      "es": {
+        "title": "Amigos en la orilla"
+      }
+    }
+  },
+  {
+    "kind": "photo",
+    "text": "",
+    "image": "/uploads/circuits/coastal-tsingy.jpg",
+    "category": "landscape",
+    "ratio": "landscape",
+    "title": "The road to nowhere",
+    "translations": {
+      "fr": {
+        "title": "La route vers nulle part"
+      },
+      "de": {
+        "title": "Die Straße ins Nirgendwo"
+      },
+      "it": {
+        "title": "La strada verso il nulla"
+      },
+      "es": {
+        "title": "La carretera hacia ninguna parte"
+      }
+    }
+  },
+  {
+    "kind": "photo",
+    "text": "",
+    "image": "/uploads/circuits/antananarivo-rice-fields.png",
+    "category": "wildlife",
+    "ratio": "portrait",
+    "title": "Quiet moment in the forest",
+    "translations": {
+      "fr": {
+        "title": "Un instant calme en forêt"
+      },
+      "de": {
+        "title": "Ein stiller Moment im Wald"
+      },
+      "it": {
+        "title": "Un momento di quiete nella foresta"
+      },
+      "es": {
+        "title": "Un momento tranquilo en el bosque"
+      }
+    }
+  },
+  {
+    "kind": "photo",
+    "text": "",
+    "image": "/uploads/circuits/nosy-lonjo.png",
+    "category": "sea",
+    "ratio": "square",
+    "title": "Turquoise water, empty beach",
+    "translations": {
+      "fr": {
+        "title": "Eau turquoise, plage déserte"
+      },
+      "de": {
+        "title": "Türkisfarbenes Wasser, menschenleerer Strand"
+      },
+      "it": {
+        "title": "Acqua turchese, spiaggia deserta"
+      },
+      "es": {
+        "title": "Agua turquesa, playa desierta"
+      }
+    }
+  },
+  {
+    "kind": "gear",
+    "text": "Clean, well-fitted gear for reefs and calm bays.",
+    "image": "/uploads/circuits/ramena.png",
+    "category": "water",
+    "title": "Snorkel Set",
+    "price": 6,
+    "specs": [
+      "Mask + fins + snorkel",
+      "All sizes"
+    ],
+    "translations": {
+      "fr": {
+        "title": "Kit de snorkeling",
+        "specs": [
+          "Masque + palmes + tuba",
+          "Toutes les tailles"
+        ],
+        "text": "Un équipement propre et bien ajusté pour les récifs et les baies calmes."
+      },
+      "de": {
+        "title": "Schnorchelset",
+        "specs": [
+          "Maske + Flossen + Schnorchel",
+          "Alle Größen"
+        ],
+        "text": "Saubere, gut sitzende Ausrüstung für Riffe und ruhige Buchten."
+      },
+      "it": {
+        "title": "Kit da snorkeling",
+        "specs": [
+          "Maschera + pinne + boccaglio",
+          "Tutte le taglie"
+        ],
+        "text": "Attrezzatura pulita e della misura giusta per barriere coralline e baie tranquille."
+      },
+      "es": {
+        "title": "Equipo de snorkel",
+        "specs": [
+          "Gafas + aletas + tubo",
+          "Todas las tallas"
+        ],
+        "text": "Equipo limpio y bien ajustado para arrecifes y bahías tranquilas."
+      }
+    }
+  },
+  {
+    "kind": "gear",
+    "text": "Stable and easy to handle, ideal for calm coastal water.",
+    "image": "/uploads/circuits/nosy-iranja.png",
+    "category": "water",
+    "title": "Double Kayak",
+    "price": 25,
+    "specs": [
+      "2 persons",
+      "Paddles + vests"
+    ],
+    "translations": {
+      "fr": {
+        "title": "Kayak biplace",
+        "specs": [
+          "2 personnes",
+          "Pagaies + gilets"
+        ],
+        "text": "Stable et facile à manier, idéal pour les eaux côtières calmes."
+      },
+      "de": {
+        "title": "Zweierkajak",
+        "specs": [
+          "2 Personen",
+          "Paddel + Westen"
+        ],
+        "text": "Stabil und leicht zu steuern, ideal für ruhige Küstengewässer."
+      },
+      "it": {
+        "title": "Kayak doppio",
+        "specs": [
+          "2 persone",
+          "Pagaie + giubbotti"
+        ],
+        "text": "Stabile e facile da manovrare, ideale per acque costiere calme."
+      },
+      "es": {
+        "title": "Kayak doble",
+        "specs": [
+          "2 personas",
+          "Remos + chalecos"
+        ],
+        "text": "Estable y fácil de manejar, ideal para aguas costeras tranquilas."
+      }
+    }
+  },
+  {
+    "kind": "gear",
+    "text": "Explore quiet lagoons at your own pace.",
+    "image": "/uploads/circuits/nosy-lonjo.png",
+    "category": "water",
+    "title": "Stand-Up Paddle Board",
+    "price": 20,
+    "specs": [
+      "Inflatable",
+      "Pump + paddle"
+    ],
+    "translations": {
+      "fr": {
+        "title": "Stand-up paddle",
+        "specs": [
+          "Gonflable",
+          "Pompe + pagaie"
+        ],
+        "text": "Explorez des lagons tranquilles à votre rythme."
+      },
+      "de": {
+        "title": "Stand-up-Paddle-Board",
+        "specs": [
+          "Aufblasbar",
+          "Pumpe + Paddel"
+        ],
+        "text": "Erkunden Sie ruhige Lagunen in Ihrem eigenen Tempo."
+      },
+      "it": {
+        "title": "Tavola da SUP",
+        "specs": [
+          "Gonfiabile",
+          "Pompa + pagaia"
+        ],
+        "text": "Esplora lagune tranquille al tuo ritmo."
+      },
+      "es": {
+        "title": "Tabla de paddle surf",
+        "specs": [
+          "Hinchable",
+          "Bomba + remo"
+        ],
+        "text": "Explore lagunas tranquilas a su ritmo."
+      }
+    }
+  },
+  {
+    "kind": "gear",
+    "text": "Comfortable carry for multi-day walks and short treks.",
+    "image": "/uploads/circuits/coastal-tsingy.jpg",
+    "category": "trek",
+    "title": "Trekking Backpack 50L",
+    "price": 6,
+    "specs": [
+      "50 L",
+      "Rain cover"
+    ],
+    "translations": {
+      "fr": {
+        "title": "Sac de randonnée 50 L",
+        "specs": [
+          "50 L",
+          "Housse de pluie"
+        ],
+        "text": "Un portage confortable pour les randonnées de plusieurs jours et les petits treks."
+      },
+      "de": {
+        "title": "Trekkingrucksack 50 L",
+        "specs": [
+          "50 L",
+          "Regenhülle"
+        ],
+        "text": "Bequem zu tragen für mehrtägige Wanderungen und kurze Treks."
+      },
+      "it": {
+        "title": "Zaino da trekking 50 L",
+        "specs": [
+          "50 L",
+          "Coprizaino antipioggia"
+        ],
+        "text": "Comodo da portare per escursioni di più giorni e brevi trekking."
+      },
+      "es": {
+        "title": "Mochila de trekking 50 L",
+        "specs": [
+          "50 L",
+          "Funda para la lluvia"
+        ],
+        "text": "Cómoda para caminatas de varios días y trekkings cortos."
+      }
+    }
+  },
+  {
+    "kind": "gear",
+    "text": "Light, quick to pitch and ready for rainy nights.",
+    "image": "/uploads/circuits/antananarivo-rice-fields.png",
+    "category": "trek",
+    "title": "2-Person Tent",
+    "price": 15,
+    "specs": [
+      "2 persons",
+      "Waterproof"
+    ],
+    "translations": {
+      "fr": {
+        "title": "Tente 2 personnes",
+        "specs": [
+          "2 personnes",
+          "Imperméable"
+        ],
+        "text": "Légère, rapide à monter et prête pour les nuits pluvieuses."
+      },
+      "de": {
+        "title": "Zweipersonenzelt",
+        "specs": [
+          "2 Personen",
+          "Wasserdicht"
+        ],
+        "text": "Leicht, schnell aufgebaut und bereit für regnerische Nächte."
+      },
+      "it": {
+        "title": "Tenda per 2 persone",
+        "specs": [
+          "2 persone",
+          "Impermeabile"
+        ],
+        "text": "Leggera, veloce da montare e pronta per le notti di pioggia."
+      },
+      "es": {
+        "title": "Tienda para 2 personas",
+        "specs": [
+          "2 personas",
+          "Impermeable"
+        ],
+        "text": "Ligera, rápida de montar y lista para las noches de lluvia."
+      }
+    }
+  },
+  {
+    "kind": "gear",
+    "text": "Discover villages and coastal roads on two wheels.",
+    "image": "/uploads/circuits/sambirano-river.png",
+    "category": "ride",
+    "title": "Mountain Bike",
+    "price": 12,
+    "specs": [
+      "21 speeds",
+      "Helmet included"
+    ],
+    "translations": {
+      "fr": {
+        "title": "VTT",
+        "specs": [
+          "21 vitesses",
+          "Casque inclus"
+        ],
+        "text": "Découvrez villages et routes côtières sur deux roues."
+      },
+      "de": {
+        "title": "Mountainbike",
+        "specs": [
+          "21 Gänge",
+          "Helm inklusive"
+        ],
+        "text": "Entdecken Sie Dörfer und Küstenstraßen auf zwei Rädern."
+      },
+      "it": {
+        "title": "Mountain bike",
+        "specs": [
+          "21 velocità",
+          "Casco incluso"
+        ],
+        "text": "Scopri villaggi e strade costiere su due ruote."
+      },
+      "es": {
+        "title": "Bicicleta de montaña",
+        "specs": [
+          "21 velocidades",
+          "Casco incluido"
+        ],
+        "text": "Descubra pueblos y carreteras costeras sobre dos ruedas."
+      }
+    }
+  },
+  {
+    "kind": "gear",
+    "text": "Freedom to explore, with insurance and a full tank at pickup.",
+    "image": "/uploads/circuits/ramena.png",
+    "category": "ride",
+    "title": "Scooter 125cc",
+    "price": 20,
+    "specs": [
+      "Licence required",
+      "Helmet included"
+    ],
+    "translations": {
+      "fr": {
+        "title": "Scooter 125 cm³",
+        "specs": [
+          "Permis obligatoire",
+          "Casque inclus"
+        ],
+        "text": "La liberté d'explorer, avec assurance et plein d'essence au départ."
+      },
+      "de": {
+        "title": "Roller 125 cm³",
+        "specs": [
+          "Führerschein erforderlich",
+          "Helm inklusive"
+        ],
+        "text": "Freiheit beim Entdecken, mit Versicherung und vollem Tank bei Übergabe."
+      },
+      "it": {
+        "title": "Scooter 125 cc",
+        "specs": [
+          "Patente obbligatoria",
+          "Casco incluso"
+        ],
+        "text": "La libertà di esplorare, con assicurazione e pieno al ritiro."
+      },
+      "es": {
+        "title": "Scooter 125 cc",
+        "specs": [
+          "Carné obligatorio",
+          "Casco incluido"
+        ],
+        "text": "Libertad para explorar, con seguro y el depósito lleno al recogerlo."
+      }
+    }
+  },
+  {
+    "kind": "gear",
+    "text": "Bright and sharp, perfect for birds and lemurs.",
+    "image": "/uploads/circuits/antananarivo-rice-fields.png",
+    "category": "optics",
+    "title": "Binoculars 8x42",
+    "price": 5,
+    "specs": [
+      "8x42",
+      "Neck strap + case"
+    ],
+    "translations": {
+      "fr": {
+        "title": "Jumelles 8x42",
+        "specs": [
+          "8x42",
+          "Sangle + étui"
+        ],
+        "text": "Lumineuses et nettes, parfaites pour les oiseaux et les lémuriens."
+      },
+      "de": {
+        "title": "Fernglas 8x42",
+        "specs": [
+          "8x42",
+          "Trageriemen + Tasche"
+        ],
+        "text": "Hell und scharf, perfekt für Vögel und Lemuren."
+      },
+      "it": {
+        "title": "Binocolo 8x42",
+        "specs": [
+          "8x42",
+          "Tracolla + custodia"
+        ],
+        "text": "Luminoso e nitido, perfetto per uccelli e lemuri."
+      },
+      "es": {
+        "title": "Prismáticos 8x42",
+        "specs": [
+          "8x42",
+          "Correa + funda"
+        ],
+        "text": "Luminosos y nítidos, perfectos para aves y lémures."
+      }
+    }
+  },
+  {
+    "kind": "gear",
+    "text": "Capture snorkeling and boat trips without worry.",
+    "image": "/uploads/circuits/nosy-iranja.png",
+    "category": "optics",
+    "title": "Waterproof Camera",
+    "price": 18,
+    "specs": [
+      "4K video",
+      "64 GB card"
+    ],
+    "translations": {
+      "fr": {
+        "title": "Appareil photo étanche",
+        "specs": [
+          "Vidéo 4K",
+          "Carte 64 Go"
+        ],
+        "text": "Immortalisez snorkeling et sorties en bateau sans vous inquiéter."
+      },
+      "de": {
+        "title": "Wasserdichte Kamera",
+        "specs": [
+          "4K-Video",
+          "64-GB-Karte"
+        ],
+        "text": "Halten Sie Schnorchel- und Bootsausflüge sorgenfrei fest."
+      },
+      "it": {
+        "title": "Fotocamera impermeabile",
+        "specs": [
+          "Video 4K",
+          "Scheda da 64 GB"
+        ],
+        "text": "Immortala snorkeling e gite in barca senza preoccupazioni."
+      },
+      "es": {
+        "title": "Cámara sumergible",
+        "specs": [
+          "Vídeo 4K",
+          "Tarjeta de 64 GB"
+        ],
+        "text": "Capture el snorkel y las salidas en barco sin preocupaciones."
+      }
+    }
+  },
+  {
+    "kind": "ticket",
+    "text": "",
+    "image": "/uploads/circuits/antananarivo-rice-fields.png",
+    "category": "parks",
+    "title": "Andasibe-Mantadia Park",
+    "place": "Andasibe",
+    "price": 35,
+    "perks": [
+      "Entry + local guide",
+      "Half day"
+    ],
+    "translations": {
+      "fr": {
+        "title": "Parc d'Andasibe-Mantadia",
+        "perks": [
+          "Entrée + guide local",
+          "Demi-journée"
+        ]
+      },
+      "de": {
+        "title": "Nationalpark Andasibe-Mantadia",
+        "perks": [
+          "Eintritt + lokaler Guide",
+          "Halber Tag"
+        ]
+      },
+      "it": {
+        "title": "Parco di Andasibe-Mantadia",
+        "perks": [
+          "Ingresso + guida locale",
+          "Mezza giornata"
+        ]
+      },
+      "es": {
+        "title": "Parque de Andasibe-Mantadia",
+        "perks": [
+          "Entrada + guía local",
+          "Medio día"
+        ]
+      }
+    }
+  },
+  {
+    "kind": "ticket",
+    "text": "",
+    "image": "/uploads/circuits/sambirano-river.png",
+    "category": "parks",
+    "title": "Lokobe Reserve",
+    "place": "Nosy Be",
+    "price": 25,
+    "perks": [
+      "Entry + guide",
+      "Pirogue included"
+    ],
+    "translations": {
+      "fr": {
+        "title": "Réserve de Lokobe",
+        "perks": [
+          "Entrée + guide",
+          "Pirogue incluse"
+        ]
+      },
+      "de": {
+        "title": "Reservat Lokobe",
+        "perks": [
+          "Eintritt + Guide",
+          "Einbaum inklusive"
+        ]
+      },
+      "it": {
+        "title": "Riserva di Lokobe",
+        "perks": [
+          "Ingresso + guida",
+          "Piroga inclusa"
+        ]
+      },
+      "es": {
+        "title": "Reserva de Lokobe",
+        "perks": [
+          "Entrada + guía",
+          "Piragua incluida"
+        ]
+      }
+    }
+  },
+  {
+    "kind": "ticket",
+    "text": "",
+    "image": "/uploads/circuits/ramena.png",
+    "category": "sea",
+    "title": "Marine Park Snorkel Trip",
+    "place": "Nosy Be",
+    "price": 30,
+    "perks": [
+      "Boat + snorkel gear",
+      "Lunch option"
+    ],
+    "translations": {
+      "fr": {
+        "title": "Snorkeling dans le parc marin",
+        "perks": [
+          "Bateau + matériel de snorkeling",
+          "Déjeuner en option"
+        ]
+      },
+      "de": {
+        "title": "Schnorcheln im Meeresnationalpark",
+        "perks": [
+          "Boot + Schnorchelausrüstung",
+          "Mittagessen optional"
+        ]
+      },
+      "it": {
+        "title": "Snorkeling nel parco marino",
+        "perks": [
+          "Barca + attrezzatura da snorkeling",
+          "Pranzo opzionale"
+        ]
+      },
+      "es": {
+        "title": "Snorkel en el parque marino",
+        "perks": [
+          "Barco + equipo de snorkel",
+          "Comida opcional"
+        ]
+      }
+    }
+  },
+  {
+    "kind": "ticket",
+    "text": "",
+    "image": "/uploads/circuits/nosy-iranja.png",
+    "category": "sea",
+    "title": "Catamaran Sunset Cruise",
+    "place": "Nosy Be",
+    "price": 65,
+    "perks": [
+      "Drinks on board",
+      "3 hours"
+    ],
+    "translations": {
+      "fr": {
+        "title": "Croisière en catamaran au coucher du soleil",
+        "perks": [
+          "Boissons à bord",
+          "3 heures"
+        ]
+      },
+      "de": {
+        "title": "Katamaran-Törn bei Sonnenuntergang",
+        "perks": [
+          "Getränke an Bord",
+          "3 Stunden"
+        ]
+      },
+      "it": {
+        "title": "Crociera in catamarano al tramonto",
+        "perks": [
+          "Bevande a bordo",
+          "3 ore"
+        ]
+      },
+      "es": {
+        "title": "Crucero en catamarán al atardecer",
+        "perks": [
+          "Bebidas a bordo",
+          "3 horas"
+        ]
+      }
+    }
+  },
+  {
+    "kind": "ticket",
+    "text": "",
+    "image": "/uploads/circuits/coastal-tsingy.jpg",
+    "category": "sites",
+    "title": "Avenue Of The Baobabs",
+    "place": "Morondava",
+    "price": 15,
+    "perks": [
+      "Site entry",
+      "Sunset slot"
+    ],
+    "translations": {
+      "fr": {
+        "title": "Allée des Baobabs",
+        "perks": [
+          "Entrée du site",
+          "Créneau coucher de soleil"
+        ]
+      },
+      "de": {
+        "title": "Baobab-Allee",
+        "perks": [
+          "Eintritt",
+          "Zeitfenster zum Sonnenuntergang"
+        ]
+      },
+      "it": {
+        "title": "Viale dei Baobab",
+        "perks": [
+          "Ingresso al sito",
+          "Fascia oraria del tramonto"
+        ]
+      },
+      "es": {
+        "title": "Avenida de los Baobabs",
+        "perks": [
+          "Entrada al lugar",
+          "Franja del atardecer"
+        ]
+      }
+    }
+  },
+  {
+    "kind": "ticket",
+    "text": "",
+    "image": "/uploads/circuits/antananarivo-rice-fields.png",
+    "category": "sites",
+    "title": "Royal Hill Visit",
+    "place": "Antananarivo",
+    "price": 12,
+    "perks": [
+      "Entry + guide",
+      "Skip the queue"
+    ],
+    "translations": {
+      "fr": {
+        "title": "Visite de la colline royale",
+        "perks": [
+          "Entrée + guide",
+          "Sans file d'attente"
+        ]
+      },
+      "de": {
+        "title": "Besuch des Königshügels",
+        "perks": [
+          "Eintritt + Guide",
+          "Ohne Anstehen"
+        ]
+      },
+      "it": {
+        "title": "Visita alla collina reale",
+        "perks": [
+          "Ingresso + guida",
+          "Salta la fila"
+        ]
+      },
+      "es": {
+        "title": "Visita a la colina real",
+        "perks": [
+          "Entrada + guía",
+          "Sin colas"
+        ]
+      }
+    }
+  },
+  {
+    "kind": "ticket",
+    "text": "",
+    "image": "/uploads/circuits/nosy-lonjo.png",
+    "category": "events",
+    "title": "Folk Music Night",
+    "place": "Antananarivo",
+    "price": 20,
+    "perks": [
+      "Reserved seat",
+      "Evening"
+    ],
+    "translations": {
+      "fr": {
+        "title": "Soirée musique traditionnelle",
+        "perks": [
+          "Place réservée",
+          "En soirée"
+        ]
+      },
+      "de": {
+        "title": "Abend mit traditioneller Musik",
+        "perks": [
+          "Reservierter Platz",
+          "Abends"
+        ]
+      },
+      "it": {
+        "title": "Serata di musica tradizionale",
+        "perks": [
+          "Posto riservato",
+          "Di sera"
+        ]
+      },
+      "es": {
+        "title": "Noche de música tradicional",
+        "perks": [
+          "Asiento reservado",
+          "Por la noche"
+        ]
+      }
+    }
+  },
+  {
+    "kind": "ticket",
+    "text": "",
+    "image": "/uploads/circuits/sambirano-river.png",
+    "category": "events",
+    "title": "Local Festival Pass",
+    "place": "Varies by date",
+    "price": 18,
+    "perks": [
+      "Entry + transport tip",
+      "Dates on request"
+    ],
+    "translations": {
+      "fr": {
+        "title": "Pass festival local",
+        "place": "Selon les dates",
+        "perks": [
+          "Entrée + conseils de transport",
+          "Dates sur demande"
+        ]
+      },
+      "de": {
+        "title": "Pass für lokale Feste",
+        "place": "Je nach Datum",
+        "perks": [
+          "Eintritt + Tipps zur Anreise",
+          "Daten auf Anfrage"
+        ]
+      },
+      "it": {
+        "title": "Pass per le feste locali",
+        "place": "In base alle date",
+        "perks": [
+          "Ingresso + consigli sui trasporti",
+          "Date su richiesta"
+        ]
+      },
+      "es": {
+        "title": "Pase para fiestas locales",
+        "place": "Según las fechas",
+        "perks": [
+          "Entrada + consejos de transporte",
+          "Fechas bajo petición"
+        ]
+      }
+    }
   }
 ]

@@ -37,48 +37,6 @@
       ]
     }
   ],
-  "guides": [
-    {
-      "role": "Guida naturalistica",
-      "langs": "Inglese · Francese · Malgascio",
-      "bio": "Hery guida escursioni naturalistiche in piccoli gruppi e sa esattamente quando e dove trovare gli animali più insoliti dell'isola.",
-      "specialties": [
-        "Lemuri",
-        "Birdwatching",
-        "Uscite notturne"
-      ]
-    },
-    {
-      "role": "Specialista culturale",
-      "langs": "Inglese · Francese · Italiano",
-      "bio": "Lina racconta la storia, la cucina e le tradizioni dell'isola e mette in contatto i viaggiatori con chi le tiene vive.",
-      "specialties": [
-        "Cucina",
-        "Artigianato",
-        "Vita di villaggio"
-      ]
-    },
-    {
-      "role": "Guida d'avventura",
-      "langs": "Inglese · Francese · Tedesco",
-      "bio": "Tojo progetta trekking adatti al tuo livello, con il ritmo giusto, le soste giuste e la sicurezza sempre al primo posto.",
-      "specialties": [
-        "Trekking",
-        "Canyon",
-        "Sentieri costieri"
-      ]
-    },
-    {
-      "role": "Accompagnatrice di viaggio",
-      "langs": "Inglese · Francese · Spagnolo",
-      "bio": "Mika si occupa di ogni dettaglio perché tu possa goderti il viaggio, ed è sempre a una telefonata di distanza.",
-      "specialties": [
-        "Logistica",
-        "Famiglie",
-        "Viaggi su misura"
-      ]
-    }
-  ],
   "compare": {
     "columns": [
       "Essenziale",

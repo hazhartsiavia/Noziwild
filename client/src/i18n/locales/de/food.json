@@ -45,38 +45,6 @@
       "label": "Mahlzeiten"
     }
   ],
-  "experiences": [
-    {
-      "name": "Streetfood-Tour",
-      "duration": "3 Stunden",
-      "text": "Probieren Sie mit einem Guide sechs lokale Snacks, von Frittiertem bis zu süßem Obst."
-    },
-    {
-      "name": "Gewürz- & Vanillefarm",
-      "duration": "Halber Tag",
-      "text": "Treffen Sie die Bauern und erfahren Sie, wie Vanille und Pfeffer entstehen."
-    },
-    {
-      "name": "Kochkurs",
-      "duration": "3 Stunden",
-      "text": "Einkaufen auf dem Markt, dann drei klassische Gerichte kochen und essen."
-    },
-    {
-      "name": "Mittagessen bei einer Familie",
-      "duration": "2 Stunden",
-      "text": "Teilen Sie eine hausgemachte Mahlzeit und Geschichten am Tisch."
-    },
-    {
-      "name": "Meeresfrüchte am Strand",
-      "duration": "2 Stunden",
-      "text": "Gegrillter Tagesfang, die Füße fast im Sand."
-    },
-    {
-      "name": "Abendessen bei Sonnenuntergang",
-      "duration": "2 Stunden",
-      "text": "Ein Tisch für zwei oder für die Gruppe, mit der schönsten Aussicht, die wir kennen."
-    }
-  ],
   "diets": [
     "Vegetarisch",
     "Vegan",

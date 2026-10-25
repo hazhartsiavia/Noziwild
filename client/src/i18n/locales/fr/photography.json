@@ -16,65 +16,6 @@
       "label": "Faune"
     }
   ],
-  "photos": [
-    {
-      "caption": "Lever de soleil sur l'île"
-    },
-    {
-      "caption": "Une promenade tranquille dans le village"
-    },
-    {
-      "caption": "Lumière du matin sur les Hautes Terres"
-    },
-    {
-      "caption": "Face à face avec la nature sauvage"
-    },
-    {
-      "caption": "À la voile le long de la côte"
-    },
-    {
-      "caption": "Entre amis sur le rivage"
-    },
-    {
-      "caption": "La route vers nulle part"
-    },
-    {
-      "caption": "Un instant calme en forêt"
-    },
-    {
-      "caption": "Eau turquoise, plage déserte"
-    }
-  ],
-  "sessions": [
-    {
-      "name": "Séance au lever du soleil",
-      "text": "Une courte séance à l'heure dorée, à l'endroit que vous préférez.",
-      "duration": "1 heure",
-      "photos": "25 photos retouchées",
-      "delivery": "48 h"
-    },
-    {
-      "name": "Moment privé",
-      "text": "Couples, demandes en mariage ou portraits de famille, détendus et naturels.",
-      "duration": "2 heures",
-      "photos": "40 photos retouchées",
-      "delivery": "3 jours"
-    },
-    {
-      "name": "Récit d'une demi-journée",
-      "text": "Nous suivons votre journée et saisissons les petits riens que vous oublieriez.",
-      "duration": "4 heures",
-      "photos": "80 photos retouchées",
-      "delivery": "3 jours"
-    },
-    {
-      "name": "Récit d'une journée",
-      "text": "Du petit-déjeuner au coucher du soleil, toute l'aventure racontée en images.",
-      "duration": "8 heures",
-      "photos": "200 photos retouchées",
-      "delivery": "5 jours"
-    }
-  ],
   "steps": [
     {
       "title": "Parlez-nous de votre projet",

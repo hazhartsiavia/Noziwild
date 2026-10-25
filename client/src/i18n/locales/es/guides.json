@@ -37,48 +37,6 @@
       ]
     }
   ],
-  "guides": [
-    {
-      "role": "Guía de fauna",
-      "langs": "Inglés · Francés · Malgache",
-      "bio": "Hery dirige paseos de observación de fauna en grupos pequeños y sabe exactamente cuándo y dónde encontrar los animales más insólitos de la isla.",
-      "specialties": [
-        "Lémures",
-        "Observación de aves",
-        "Paseos nocturnos"
-      ]
-    },
-    {
-      "role": "Especialista cultural",
-      "langs": "Inglés · Francés · Italiano",
-      "bio": "Lina comparte la historia, la gastronomía y las tradiciones de la isla, y pone a los viajeros en contacto con quienes las mantienen vivas.",
-      "specialties": [
-        "Cocina",
-        "Artesanía",
-        "Vida de pueblo"
-      ]
-    },
-    {
-      "role": "Guía de aventura",
-      "langs": "Inglés · Francés · Alemán",
-      "bio": "Tojo diseña trekkings adaptados a su nivel, con el ritmo adecuado, las paradas adecuadas y la seguridad siempre por delante.",
-      "specialties": [
-        "Trekking",
-        "Cañones",
-        "Senderos costeros"
-      ]
-    },
-    {
-      "role": "Acompañante de viaje",
-      "langs": "Inglés · Francés · Español",
-      "bio": "Mika se ocupa de cada detalle para que usted solo tenga que disfrutar del viaje, y está siempre a una llamada.",
-      "specialties": [
-        "Logística",
-        "Familias",
-        "Viajes a medida"
-      ]
-    }
-  ],
   "compare": {
     "columns": [
       "Esencial",

@@ -16,65 +16,6 @@
       "label": "Wildlife"
     }
   ],
-  "photos": [
-    {
-      "caption": "Sunrise over the island"
-    },
-    {
-      "caption": "A slow walk through the village"
-    },
-    {
-      "caption": "Morning light in the highlands"
-    },
-    {
-      "caption": "Face to face with the wild"
-    },
-    {
-      "caption": "Sailing along the coast"
-    },
-    {
-      "caption": "Friends on the shore"
-    },
-    {
-      "caption": "The road to nowhere"
-    },
-    {
-      "caption": "Quiet moment in the forest"
-    },
-    {
-      "caption": "Turquoise water, empty beach"
-    }
-  ],
-  "sessions": [
-    {
-      "name": "Sunrise Session",
-      "text": "A short, golden-hour shoot at your favorite spot.",
-      "duration": "1 hour",
-      "photos": "25 edited photos",
-      "delivery": "48 h"
-    },
-    {
-      "name": "Private Moment",
-      "text": "Couples, proposals or family portraits, relaxed and natural.",
-      "duration": "2 hours",
-      "photos": "40 edited photos",
-      "delivery": "3 days"
-    },
-    {
-      "name": "Half-Day Story",
-      "text": "We follow your day and capture the little things you would forget.",
-      "duration": "4 hours",
-      "photos": "80 edited photos",
-      "delivery": "3 days"
-    },
-    {
-      "name": "Full-Day Story",
-      "text": "From breakfast to sunset, the whole adventure told in pictures.",
-      "duration": "8 hours",
-      "photos": "200 edited photos",
-      "delivery": "5 days"
-    }
-  ],
   "steps": [
     {
       "title": "Tell us your plan",

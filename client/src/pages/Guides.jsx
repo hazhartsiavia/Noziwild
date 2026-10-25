@@ -11,6 +11,8 @@ import AddToTrip from '../components/AddToTrip'
 import { subscribeNewsletter } from '../api';
 import { useT } from '../i18n/LanguageContext';
 import { localize } from '../i18n/localize';
+import OffersStatus from '../components/OffersStatus'
+import { useOffers } from '../utils/useOffers'
 import { gsap } from 'gsap'
 import { ScrollTrigger } from 'gsap/ScrollTrigger'
 
@@ -36,12 +38,7 @@ const SERVICES = [
   { id: 4, name: 'Trip Companion', image: NosyLonjo, text: 'A Noziwild host who welcomes you, handles logistics and stays reachable from arrival to departure.', tags: ['Airport welcome', 'Daily check-in', '24/7 help'] },
 ]
 
-const GUIDES = [
-  { id: 1, name: 'Hery Andria', role: 'Wildlife Guide', image: Tana, langs: 'English · French · Malagasy', years: 12, bio: 'Hery leads small-group wildlife walks and knows exactly when and where to find the island’s most unusual animals.', specialties: ['Lemurs', 'Birdwatching', 'Night walks'] },
-  { id: 2, name: 'Lina Rakoto', role: 'Cultural Specialist', image: Ramena, langs: 'English · French · Italian', years: 9, bio: 'Lina shares the history, food and traditions of the island and connects travelers with the people who keep them alive.', specialties: ['Cuisine', 'Crafts', 'Village life'] },
-  { id: 3, name: 'Tojo Rabe', role: 'Adventure Guide', image: NosyIranja, langs: 'English · French · German', years: 8, bio: 'Tojo designs treks that match your level, with the right pace, the right stops and safety always first.', specialties: ['Trekking', 'Canyons', 'Coastal trails'] },
-  { id: 4, name: 'Mika Ravao', role: 'Trip Companion', image: Ambanja, langs: 'English · French · Spanish', years: 6, bio: 'Mika takes care of every detail so you can simply enjoy the trip, and is one call away whenever you need.', specialties: ['Logistics', 'Families', 'Custom trips'] },
-]
+// Guides de l'équipe : dans la base, gérés depuis /admin/offers/guide
 
 // true = inclus, false = non inclus
 const COMPARE = {
@@ -209,10 +206,14 @@ function Services() {
   )
 }
 
+// Offre de la base -> forme utilisée par la fiche
+const toGuide = (o) => ({ id: o.id, name: o.title, role: o.role, image: o.image, langs: o.langs, years: o.years, bio: o.text, specialties: o.specialties })
+
 // Choix d'un guide : liste défilante (scroll + boutons prev/next) à gauche, fiche à droite
 function GuideShowcase() {
   const tr = useT('guides')
-  const guides = localize(GUIDES, tr('guides'))
+  const { offers, status } = useOffers('guide')
+  const guides = offers.map(toGuide)
   const total = guides.length
   const [active, setActive] = useState(0)
   const listRef = useRef(null)
@@ -235,6 +236,16 @@ function GuideShowcase() {
       behavior: 'smooth',
     })
   }, [active])
+
+  // Chargement, erreur ou équipe vide : le titre et un message à la place de la liste
+  if (!g) {
+    return (
+      <div id="guides" className={`${SECTION_GAP} scroll-mt-8`}>
+        <h2 className={`${SECTION_TITLE} mb-8 md:mb-12`}>{tr('meetTitle')}</h2>
+        <OffersStatus status={status} empty />
+      </div>
+    )
+  }
 
   const arrowClass =
     "w-11 h-11 md:w-12 md:h-12 flex items-center justify-center rounded-full border border-[#084838] text-[#084838] " +

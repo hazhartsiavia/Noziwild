@@ -1,16 +1,21 @@
 // Types d'offres gérés dans /admin/offers : mêmes champs que server/src/utils/offers.js (KINDS).
 // Chaque type a, en plus du titre, du texte et de la photo communs à tous :
-//   price   : prix en euros par personne
+//   group   : rangée d'onglets dans l'admin (offres de voyage ou catalogues de services)
+//   price   : prix en euros (priceLabel : libellé du champ, par personne par défaut)
+//   titleLabel / textLabel : libellés du titre et du texte quand ce n'est pas « Title » / « Description »
+//   textOptional / imageOptional : la description ou la photo peut rester vide
 //   fields  : champs propres au type, dans l'ordre du formulaire
 //     text   : texte court, traduisible          select : une valeur parmi `options` (non traduite)
 //     list   : lignes de texte, traduisibles     multi  : plusieurs valeurs parmi `options`
 //     months : meilleure période (12 mois)       hours  : durée en heures       link : page ouverte par la carte
+//     number : nombre entre min et max, par pas de step
 //   empty   : valeurs d'une nouvelle offre de ce type
 
 const option = (value, label = value) => ({ value, label })
 
 export const OFFER_KINDS = {
   activity: {
+    group: 'trips',
     label: 'Activities',
     singular: 'activity',
     page: '/activities',
@@ -25,6 +30,7 @@ export const OFFER_KINDS = {
     empty: { type: 'Land', duration: '', level: 'Easy', group: '', months: [0, 0, 0, 1, 2, 2, 2, 2, 2, 2, 1, 0] },
   },
   excursion: {
+    group: 'trips',
     label: 'Excursions',
     singular: 'excursion',
     page: '/excurssions',
@@ -41,6 +47,7 @@ export const OFFER_KINDS = {
     empty: { place: '', region: 'North', length: 'day', duration: '', group: '', level: 'Easy', link: '' },
   },
   cruise: {
+    group: 'trips',
     label: 'Cruise excursions',
     singular: 'cruise excursion',
     page: '/cruise-excurssion',
@@ -53,6 +60,7 @@ export const OFFER_KINDS = {
     empty: { port: 'nosybe', tag: 'Sea', hours: 4 },
   },
   longstay: {
+    group: 'trips',
     label: 'Long stays',
     singular: 'long stay',
     page: '/longstay',
@@ -65,6 +73,7 @@ export const OFFER_KINDS = {
     empty: { tab: '', priceLabel: '', points: [''] },
   },
   idea: {
+    group: 'trips',
     label: 'Tailor-made ideas',
     singular: 'idea',
     page: '/tailor-made',
@@ -80,15 +89,141 @@ export const OFFER_KINDS = {
     ],
     empty: { interests: [], travellers: 'Couple' },
   },
+  stay: {
+    group: 'services',
+    label: 'Accommodation',
+    singular: 'stay',
+    page: '/hosting',
+    price: true,
+    priceLabel: 'Price from (€ per room, per night)',
+    titleLabel: 'Name',
+    textOptional: true,
+    fields: [
+      { key: 'place', type: 'text', label: 'Place', placeholder: 'Ramena, Diego Suarez' },
+      { key: 'category', type: 'select', label: 'Type (filter)', options: [option('hotel', 'Hotel'), option('lodge', 'Eco lodge'), option('bungalow', 'Beach bungalow'), option('guesthouse', 'Guesthouse')] },
+      { key: 'rating', type: 'number', label: 'Guest rating (out of 5)', min: 0, max: 5, step: 0.1 },
+      { key: 'amenities', type: 'list', label: 'Amenities', max: 8 },
+    ],
+    empty: { place: '', category: 'hotel', rating: 4.5, amenities: [''] },
+  },
+  transport: {
+    group: 'services',
+    label: 'Transport',
+    singular: 'transport',
+    page: '/transport',
+    price: false,
+    titleLabel: 'Name',
+    fields: [
+      { key: 'category', type: 'select', label: 'Type (filter)', options: [option('land', 'Land'), option('air', 'Air'), option('sea', 'Sea')] },
+      { key: 'capacity', type: 'text', label: 'Capacity', placeholder: '1–6 travelers' },
+      { key: 'duration', type: 'text', label: 'Duration', placeholder: 'Flexible' },
+      { key: 'perks', type: 'list', label: 'Included', max: 6 },
+    ],
+    empty: { category: 'land', capacity: '', duration: '', perks: [''] },
+  },
+  guide: {
+    group: 'services',
+    label: 'Guides',
+    singular: 'guide',
+    page: '/guide',
+    price: false,
+    titleLabel: 'Name',
+    textLabel: 'Short bio',
+    fields: [
+      { key: 'role', type: 'text', label: 'Role', placeholder: 'Wildlife Guide' },
+      { key: 'langs', type: 'text', label: 'Languages', placeholder: 'English · French · Malagasy' },
+      { key: 'years', type: 'number', label: 'Years of experience', min: 0, max: 80, step: 1 },
+      { key: 'specialties', type: 'list', label: 'Specialties', max: 6 },
+    ],
+    empty: { role: '', langs: '', years: 5, specialties: [''] },
+  },
+  food: {
+    group: 'services',
+    label: 'Food experiences',
+    singular: 'food experience',
+    page: '/Food-dining',
+    price: true,
+    titleLabel: 'Name',
+    fields: [
+      { key: 'category', type: 'select', label: 'Type (filter)', options: [option('tour', 'Tour'), option('class', 'Class'), option('meal', 'Meal')] },
+      { key: 'duration', type: 'text', label: 'Duration', placeholder: '3 hours' },
+    ],
+    empty: { category: 'tour', duration: '' },
+  },
+  session: {
+    group: 'services',
+    label: 'Photo sessions',
+    singular: 'photo session',
+    page: '/photography',
+    price: true,
+    priceLabel: 'Price (€ per session)',
+    titleLabel: 'Name',
+    imageOptional: true,
+    fields: [
+      { key: 'duration', type: 'text', label: 'Duration', placeholder: '2 hours' },
+      { key: 'photos', type: 'text', label: 'Photos delivered', placeholder: '40 edited photos' },
+      { key: 'delivery', type: 'text', label: 'Delivery time', placeholder: '3 days' },
+    ],
+    empty: { duration: '', photos: '', delivery: '' },
+  },
+  photo: {
+    group: 'services',
+    label: 'Photo gallery',
+    singular: 'gallery photo',
+    page: '/photography',
+    price: false,
+    titleLabel: 'Caption',
+    textOptional: true,
+    fields: [
+      { key: 'category', type: 'select', label: 'Theme (filter)', options: [option('landscape', 'Landscapes'), option('people', 'People'), option('sea', 'Sea'), option('wildlife', 'Wildlife')] },
+      { key: 'ratio', type: 'select', label: 'Shape in the gallery', options: [option('landscape', 'Landscape (4:3)'), option('portrait', 'Portrait (3:4)'), option('tall', 'Tall (4:5)'), option('square', 'Square')] },
+    ],
+    empty: { category: 'landscape', ratio: 'landscape' },
+  },
+  gear: {
+    group: 'services',
+    label: 'Equipment',
+    singular: 'item',
+    page: '/equipment-rentals',
+    price: true,
+    priceLabel: 'Price (€ per day)',
+    titleLabel: 'Name',
+    fields: [
+      { key: 'category', type: 'select', label: 'Type (filter)', options: [option('water', 'Water'), option('trek', 'Trek & camp'), option('ride', 'Ride'), option('optics', 'Photo & optics')] },
+      { key: 'specs', type: 'list', label: 'Specs', max: 6 },
+    ],
+    empty: { category: 'water', specs: [''] },
+  },
+  ticket: {
+    group: 'services',
+    label: 'Tickets',
+    singular: 'ticket',
+    page: '/ticket-reservation',
+    price: true,
+    titleLabel: 'Name',
+    textOptional: true,
+    fields: [
+      { key: 'place', type: 'text', label: 'Place', placeholder: 'Nosy Be' },
+      { key: 'category', type: 'select', label: 'Type (filter)', options: [option('parks', 'Parks & reserves'), option('sea', 'Sea & boats'), option('sites', 'Sites & museums'), option('events', 'Events & shows')] },
+      { key: 'perks', type: 'list', label: 'Included', max: 6 },
+    ],
+    empty: { place: '', category: 'parks', perks: [''] },
+  },
 }
+
+// Rangées d'onglets de l'admin
+export const KIND_GROUPS = [
+  { id: 'trips', label: 'Trips' },
+  { id: 'services', label: 'Services' },
+]
 
 export const KIND_NAMES = Object.keys(OFFER_KINDS)
 
 // Champs à traduire dans l'onglet Traductions
 export const translationFields = (kind) => ({
   textFields: [
-    { key: 'title', label: 'Title', wide: true },
-    { key: 'text', label: 'Description', wide: true, rows: 3 },
+    { key: 'title', label: OFFER_KINDS[kind].titleLabel || 'Title', wide: true },
+    { key: 'text', label: OFFER_KINDS[kind].textLabel || 'Description', wide: true, rows: 3 },
     ...OFFER_KINDS[kind].fields.filter((f) => f.type === 'text').map(({ key, label }) => ({ key, label })),
   ],
   listFields: OFFER_KINDS[kind].fields.filter((f) => f.type === 'list').map(({ key, label }) => ({ key, label })),

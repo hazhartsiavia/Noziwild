@@ -204,14 +204,16 @@ CREATE TABLE IF NOT EXISTS circuit_days (
   CONSTRAINT fk_day_circuit FOREIGN KEY (circuit_id) REFERENCES circuits (id) ON DELETE CASCADE
 ) ENGINE=InnoDB;
 
--- Offres des pages Activités, Excursions, Excursions croisière, Long séjour et Sur mesure
+-- Offres et catalogues des pages du site
 --   kind : activity | excursion | cruise | longstay | idea (idées de voyage de la page Sur mesure)
+--          stay (Hébergement) | transport | guide (équipe de guides) | food (expériences culinaires)
+--          session (séances photo) | photo (galerie photo) | gear (location de matériel) | ticket (billets)
 --   details : champs propres à chaque type (durée, niveau, région, port, points...), en anglais
 --   translations : autres langues, { "fr": { "title": ..., "text": ..., "duration": ... } }
 --   Les photos sont des chemins servis par l'API, ex. /uploads/circuits/ramena.png
 CREATE TABLE IF NOT EXISTS offers (
   id           INT UNSIGNED AUTO_INCREMENT PRIMARY KEY,
-  kind         ENUM('activity', 'excursion', 'cruise', 'longstay', 'idea') NOT NULL,
+  kind         ENUM('activity', 'excursion', 'cruise', 'longstay', 'idea', 'stay', 'transport', 'guide', 'food', 'session', 'photo', 'gear', 'ticket') NOT NULL,
   title        VARCHAR(190)  NOT NULL,
   text         VARCHAR(1000) NOT NULL,
   image        VARCHAR(500)  NOT NULL,
@@ -223,4 +225,15 @@ CREATE TABLE IF NOT EXISTS offers (
   created_at   TIMESTAMP     NOT NULL DEFAULT CURRENT_TIMESTAMP,
   updated_at   TIMESTAMP     NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
   INDEX idx_offers_kind (kind, is_published, sort_order)
+) ENGINE=InnoDB;
+
+-- Textes du site modifiés depuis l'admin (page « Textes »)
+--   namespace : fichier de textes du site (home, about, footer...), comme client/src/i18n/locales/<langue>/<namespace>.json
+--   content   : seulement les textes modifiés, même forme que le fichier ; le reste vient du fichier
+CREATE TABLE IF NOT EXISTS site_texts (
+  namespace  VARCHAR(40) NOT NULL,
+  lang       CHAR(2)     NOT NULL,
+  content    JSON        NOT NULL,
+  updated_at TIMESTAMP   NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+  PRIMARY KEY (namespace, lang)
 ) ENGINE=InnoDB;

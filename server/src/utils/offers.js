@@ -1,4 +1,4 @@
-// Offres des pages Activités, Excursions, Excursions croisière, Long séjour et Sur mesure :
+// Offres et catalogues des pages du site (activités, excursions, hébergements, transports, guides...) :
 // lecture des lignes MySQL, validation des données envoyées par l'admin, enregistrement
 import fs from 'node:fs/promises'
 import path from 'node:path'
@@ -18,6 +18,8 @@ const SEED_FILE = path.join(here, '..', '..', 'sql', 'offers.seed.json')
 //   months  : 12 valeurs 0 (possible), 1 (bon), 2 (idéal) : tableau « meilleure période »
 //   hours   : durée totale en heures (par demi-heure)
 //   link    : page ouverte par la carte (facultatif)
+//   numbers : nombres { champ: [min, max, pas] } (note sur 5, années d'expérience)
+//   textOptional / imageOptional : la description ou la photo peut rester vide
 export const KINDS = {
   activity: {
     price: true,
@@ -44,6 +46,56 @@ export const KINDS = {
     multi: {
       interests: ['Islands & beaches', 'Wildlife', 'Culture & villages', 'Hiking & adventure', 'Sailing & sea', 'Slow & relaxing'],
     },
+  },
+  // Hébergement : prix par nuit
+  stay: {
+    price: true,
+    textOptional: true,
+    texts: { place: 120 },
+    numbers: { rating: [0, 5, 0.1] },
+    choices: { category: ['hotel', 'lodge', 'bungalow', 'guesthouse'] },
+    lists: { amenities: [8, 60] },
+  },
+  transport: {
+    texts: { capacity: 60, duration: 60 },
+    choices: { category: ['land', 'air', 'sea'] },
+    lists: { perks: [6, 80] },
+  },
+  // Équipe de guides : le titre est le nom, le texte la présentation
+  guide: {
+    texts: { role: 60, langs: 120 },
+    numbers: { years: [0, 80, 1] },
+    lists: { specialties: [6, 40] },
+  },
+  // Expériences culinaires : prix par personne
+  food: {
+    price: true,
+    texts: { duration: 60 },
+    choices: { category: ['tour', 'class', 'meal'] },
+  },
+  // Séances photo : pas de photo, prix par séance
+  session: {
+    price: true,
+    imageOptional: true,
+    texts: { duration: 60, photos: 60, delivery: 40 },
+  },
+  // Galerie de la page Photographie : le titre est la légende
+  photo: {
+    textOptional: true,
+    choices: { category: ['landscape', 'people', 'sea', 'wildlife'], ratio: ['landscape', 'portrait', 'tall', 'square'] },
+  },
+  // Location de matériel : prix par jour
+  gear: {
+    price: true,
+    choices: { category: ['water', 'trek', 'ride', 'optics'] },
+    lists: { specs: [6, 60] },
+  },
+  ticket: {
+    price: true,
+    textOptional: true,
+    texts: { place: 120 },
+    choices: { category: ['parks', 'sea', 'sites', 'events'] },
+    lists: { perks: [6, 80] },
   },
 }
 export const isKind = (value) => Object.hasOwn(KINDS, value)
@@ -84,6 +136,7 @@ export function toOffer(row, lang = 'en') {
   for (const key of Object.keys(kind.lists || {})) offer[key] = pickList(tr[key], details[key] || [])
   for (const key of Object.keys(kind.choices || {})) offer[key] = details[key]
   for (const key of Object.keys(kind.multi || {})) offer[key] = details[key] || []
+  for (const key of Object.keys(kind.numbers || {})) offer[key] = details[key] ?? null
   if (kind.months) offer.months = details.months || Array(12).fill(0)
   if (kind.hours) offer.hours = details.hours
   if (kind.link) offer.link = details.link || ''
@@ -128,14 +181,14 @@ export function validateOffer(body, kindName) {
   const data = {
     kind: kindName,
     title: required('title', TITLE_MAX),
-    text: required('text', TEXT_MAX),
-    image: clean(body.image, 500),
+    text: kind.textOptional ? clean(body.text, TEXT_MAX) || '' : required('text', TEXT_MAX),
+    image: clean(body.image, 500) || '',
     price: kind.price ? integer(body.price, 'price', 0, 1_000_000, errors) : null,
     sortOrder: body.sortOrder === undefined ? 0 : integer(body.sortOrder, 'sortOrder', -1000, 1000, errors),
     isPublished: body.isPublished === undefined ? true : Boolean(body.isPublished),
     details: {},
   }
-  if (!data.image || !IMAGE_RE.test(data.image) || data.image.includes('..')) {
+  if (data.image ? !IMAGE_RE.test(data.image) || data.image.includes('..') : !kind.imageOptional) {
     errors.image = 'A photo is required (/uploads/... path or http(s) address).'
   }
 
@@ -152,6 +205,16 @@ export function validateOffer(body, kindName) {
   for (const [key, options] of Object.entries(kind.choices || {})) {
     if (!options.includes(body[key])) errors[key] = `One of: ${options.join(', ')}.`
     details[key] = body[key]
+  }
+
+  for (const [key, [min, max, step]] of Object.entries(kind.numbers || {})) {
+    const n = Number(body[key])
+    // Arrondi au pas (0.1 pour une note) pour éviter les 4.800000001
+    const rounded = Math.round(n / step) * step
+    if (body[key] === '' || body[key] === null || !Number.isFinite(n) || n < min || n > max || Math.abs(n - rounded) > 1e-9) {
+      errors[key] = `Number between ${min} and ${max}${step < 1 ? `, by ${step}` : ', whole'}.`
+    }
+    details[key] = Number(rounded.toFixed(2))
   }
 
   for (const [key, options] of Object.entries(kind.multi || {})) {

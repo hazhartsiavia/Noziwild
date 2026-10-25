@@ -21,6 +21,9 @@ const COLUMNS = [
   { table: 'circuits', column: 'translations', definition: 'JSON NULL AFTER excluded' },
 ]
 
+// Types d'offres : les catalogues (hébergements, transports...) ont été ajoutés après les premiers types
+const OFFER_KINDS = ['activity', 'excursion', 'cruise', 'longstay', 'idea', 'stay', 'transport', 'guide', 'food', 'session', 'photo', 'gear', 'ticket']
+
 // Listes de valeurs (ENUM) agrandies depuis : on remplace la définition si une valeur manque
 const ENUMS = [
   {
@@ -29,6 +32,12 @@ const ENUMS = [
     value: 'circuit',
     definition: "ENUM('place', 'gear', 'food', 'trip', 'circuit') NOT NULL",
   },
+  ...OFFER_KINDS.map((value) => ({
+    table: 'offers',
+    column: 'kind',
+    value,
+    definition: `ENUM(${OFFER_KINDS.map((k) => `'${k}'`).join(', ')}) NOT NULL`,
+  })),
 ]
 
 // Liens entre les formulaires et le compte qui les a envoyés

@@ -45,38 +45,6 @@
       "label": "Repas"
     }
   ],
-  "experiences": [
-    {
-      "name": "Balade street food",
-      "duration": "3 heures",
-      "text": "Goûtez six spécialités locales avec un guide, des beignets aux fruits sucrés."
-    },
-    {
-      "name": "Ferme d'épices et de vanille",
-      "duration": "Demi-journée",
-      "text": "Rencontrez les producteurs et découvrez comment sont produits la vanille et le poivre."
-    },
-    {
-      "name": "Cours de cuisine",
-      "duration": "3 heures",
-      "text": "Faites le marché, puis cuisinez et dégustez trois plats classiques."
-    },
-    {
-      "name": "Déjeuner en famille",
-      "duration": "2 heures",
-      "text": "Partagez un repas fait maison et des histoires autour de la table."
-    },
-    {
-      "name": "Fruits de mer sur la plage",
-      "duration": "2 heures",
-      "text": "La pêche du jour grillée, les pieds presque dans le sable."
-    },
-    {
-      "name": "Dîner au coucher du soleil",
-      "duration": "2 heures",
-      "text": "Une table dressée pour deux ou pour le groupe, avec la plus belle vue que nous connaissions."
-    }
-  ],
   "diets": [
     "Végétarien",
     "Végan",

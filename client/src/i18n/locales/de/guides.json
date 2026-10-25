@@ -37,48 +37,6 @@
       ]
     }
   ],
-  "guides": [
-    {
-      "role": "Naturführer",
-      "langs": "Englisch · Französisch · Madagassisch",
-      "bio": "Hery führt Tierbeobachtungen in kleinen Gruppen und weiß genau, wann und wo man die ungewöhnlichsten Tiere der Insel findet.",
-      "specialties": [
-        "Lemuren",
-        "Vogelbeobachtung",
-        "Nachtwanderungen"
-      ]
-    },
-    {
-      "role": "Kulturspezialistin",
-      "langs": "Englisch · Französisch · Italienisch",
-      "bio": "Lina teilt die Geschichte, die Küche und die Traditionen der Insel und bringt Reisende mit den Menschen zusammen, die sie lebendig halten.",
-      "specialties": [
-        "Küche",
-        "Kunsthandwerk",
-        "Dorfleben"
-      ]
-    },
-    {
-      "role": "Abenteuer-Guide",
-      "langs": "Englisch · Französisch · Deutsch",
-      "bio": "Tojo plant Treks passend zu Ihrem Niveau – mit dem richtigen Tempo, den richtigen Pausen und immer mit Sicherheit an erster Stelle.",
-      "specialties": [
-        "Trekking",
-        "Schluchten",
-        "Küstenpfade"
-      ]
-    },
-    {
-      "role": "Reisebegleiterin",
-      "langs": "Englisch · Französisch · Spanisch",
-      "bio": "Mika kümmert sich um jedes Detail, damit Sie die Reise einfach genießen können, und ist jederzeit nur einen Anruf entfernt.",
-      "specialties": [
-        "Organisation",
-        "Familien",
-        "Individuelle Reisen"
-      ]
-    }
-  ],
   "compare": {
     "columns": [
       "Basis",

@@ -5,7 +5,7 @@ import { ArrowDown, ArrowUp, ExternalLink, Eye, EyeOff, Pencil, Plus, Trash } fr
 import { adminDeleteOffer, adminFetchOffers, adminPatchOffer, assetUrl } from '../../api'
 import { formatPrice } from '../../utils/format'
 import { BTN_DANGER, BTN_GHOST, BTN_GOLD, CARD, ICON_BTN } from '../../components/admin/ui'
-import { KIND_NAMES, OFFER_KINDS } from './offerKinds'
+import { KIND_GROUPS, KIND_NAMES, OFFER_KINDS } from './offerKinds'
 
 // Ligne de détails sous le titre : les réglages utiles pour reconnaître l'offre
 function summary(kind, offer) {
@@ -15,26 +15,32 @@ function summary(kind, offer) {
     if (field.type === 'text' && value) parts.push(value)
     if (field.type === 'select') parts.push(field.options.find((o) => o.value === value)?.label || value)
     if (field.type === 'hours') parts.push(`${value} h`)
+    if (field.type === 'number' && value !== null && value !== undefined) parts.push(`${field.label}: ${value}`)
   }
   if (OFFER_KINDS[kind].price) parts.push(`From ${formatPrice(offer.price)}`)
   return parts.slice(0, 5).join(' · ')
 }
 
-// Onglets des types d'offres
+// Onglets des types d'offres, en deux rangées : offres de voyage, puis catalogues de services
 export function KindTabs({ current }) {
   return (
-    <nav aria-label="Offer types" className="flex flex-wrap gap-2">
-      {KIND_NAMES.map((name) => (
-        <Link
-          key={name}
-          to={`/admin/offers/${name}`}
-          aria-current={name === current ? 'page' : undefined}
-          className={`rounded-full px-4 py-2 text-sm font-medium transition ${
-            name === current ? 'bg-[#084838] text-white' : 'border border-slate-300 bg-white text-slate-700 hover:border-slate-700'
-          }`}
-        >
-          {OFFER_KINDS[name].label}
-        </Link>
+    <nav aria-label="Offer types" className="flex flex-col gap-3">
+      {KIND_GROUPS.map((group) => (
+        <div key={group.id} className="flex flex-wrap items-center gap-2">
+          <span className="w-20 shrink-0 text-xs font-medium uppercase tracking-wide text-slate-500">{group.label}</span>
+          {KIND_NAMES.filter((name) => OFFER_KINDS[name].group === group.id).map((name) => (
+            <Link
+              key={name}
+              to={`/admin/offers/${name}`}
+              aria-current={name === current ? 'page' : undefined}
+              className={`rounded-full px-4 py-2 text-sm font-medium transition ${
+                name === current ? 'bg-[#084838] text-white' : 'border border-slate-300 bg-white text-slate-700 hover:border-slate-700'
+              }`}
+            >
+              {OFFER_KINDS[name].label}
+            </Link>
+          ))}
+        </div>
       ))}
     </nav>
   )
@@ -130,7 +136,11 @@ function AdminOffers({ kind }) {
           {offers.map((o, i) => (
             <li key={o.id} className={`rounded-3xl bg-white p-3 sm:p-4 flex flex-col md:flex-row md:items-center gap-4 ${busy === o.id ? 'opacity-60' : ''}`}>
               <div className="flex items-center gap-4 min-w-0 flex-1">
-                <img src={assetUrl(o.image)} alt="" className="h-16 w-24 sm:h-20 sm:w-28 shrink-0 rounded-xl object-cover" />
+                {o.image ? (
+                  <img src={assetUrl(o.image)} alt="" className="h-16 w-24 sm:h-20 sm:w-28 shrink-0 rounded-xl object-cover" />
+                ) : (
+                  <span aria-hidden="true" className="h-16 w-24 sm:h-20 sm:w-28 shrink-0 rounded-xl bg-[#084838]/10" />
+                )}
                 <div className="min-w-0">
                   <p className="flex flex-wrap items-center gap-2">
                     <span className="truncate text-base sm:text-lg font-medium text-slate-900">{o.title}</span>

@@ -12,6 +12,9 @@ const SKIP = 'nav, footer, [data-no-reveal]'
 // Styles posés pendant l'animation, retirés à la fin pour rendre la main au CSS (survols, transitions)
 const PROPS = ['transform', 'translate', 'rotate', 'scale', 'opacity', 'clip-path', 'transition']
 const clean = (targets) => targets.forEach((el) => PROPS.forEach((p) => el.style.removeProperty(p)))
+// Élément déjà animé (ou en cours) : quand le hook se relance (liste chargée depuis l'API), il ne rejoue pas
+const seen = (el) => el.dataset.revealed === '1'
+const mark = (targets) => targets.forEach((el) => (el.dataset.revealed = '1'))
 
 export function useScrollReveal(scope, deps = []) {
   useLayoutEffect(() => {
@@ -30,11 +33,12 @@ export function useScrollReveal(scope, deps = []) {
 
       // 1. Grands blocs arrondis (bannières, cartes sur photo) : ouverture en fenêtre, photo qui se dézoome
       const blocks = pick('[class*="rounded-3xl"], [class*="rounded-[2rem]"]').filter((el) => el.offsetHeight > 280)
-      blocks.forEach((el) => {
+      blocks.filter((el) => !seen(el)).forEach((el) => {
         const r = getComputedStyle(el).borderTopLeftRadius
         const img = [...el.children].find((c) => c.tagName === 'IMG')
         const tl = gsap.timeline({
           scrollTrigger: { trigger: el, start: 'top 88%', once: true },
+          onStart: () => mark([el]),
           onComplete: () => clean(img ? [el, img] : [el]),
         })
         tl.fromTo(el,
@@ -49,9 +53,11 @@ export function useScrollReveal(scope, deps = []) {
         const items = [...grid.children].filter((c) => c.offsetParent !== null)
         if (!items.length) return
         items.forEach((c) => faded.add(c))
-        gsap.fromTo(items,
+        const fresh = items.filter((c) => !seen(c))
+        if (!fresh.length) return
+        gsap.fromTo(fresh,
           { y: 40, opacity: 0, transition: 'none' },
-          { y: 0, opacity: 1, duration: 0.8, stagger: 0.1, ease: 'power3.out', onComplete: () => clean(items),
+          { y: 0, opacity: 1, duration: 0.8, stagger: 0.1, ease: 'power3.out', onStart: () => mark(fresh), onComplete: () => clean(fresh),
             scrollTrigger: { trigger: grid, start: 'top 88%', once: true } })
       })
 
@@ -61,9 +67,10 @@ export function useScrollReveal(scope, deps = []) {
         .filter((el) => !faded.has(el) && !blocks.includes(el) && !inFaded(el) && !holdsFaded(el) && el.offsetHeight < maxH)
         .forEach((el) => {
           faded.add(el)
+          if (seen(el)) return
           gsap.fromTo(el,
             { y: 28, opacity: 0, transition: 'none' },
-            { y: 0, opacity: 1, duration: 0.9, ease: 'power3.out', onComplete: () => clean([el]),
+            { y: 0, opacity: 1, duration: 0.9, ease: 'power3.out', onStart: () => mark([el]), onComplete: () => clean([el]),
               scrollTrigger: { trigger: el, start: 'top 90%', once: true } })
         })
     })

@@ -1,16 +1,15 @@
 import React, { useRef, useState } from 'react'
-import Deux from "../assets/images/2.jpg";
-import Ambanja from "../assets/images/Ambanja.png";
 import NosyLonjo from "../assets/images/NosyLonjo.png";
 import NosyIranja from "../assets/images/NosyIranja.png";
 import Ramena from "../assets/images/Ramena.png";
-import Tana from "../assets/images/Tana.png";
 import Navbar from '../components/Navbar';
 import Footer from '../components/Footer';
 import AddToTrip from '../components/AddToTrip'
 import { Trans, useLanguage, useT } from '../i18n/LanguageContext';
 import { formatPrice } from '../utils/format';
 import { localize } from '../i18n/localize';
+import OffersStatus from '../components/OffersStatus'
+import { useOffers } from '../utils/useOffers'
 import { useScrollReveal } from '../utils/useScrollReveal'
 
 /* Constantes partagées : mêmes valeurs que dans les autres pages */
@@ -46,18 +45,10 @@ const CATEGORIES = [
   { id: 'guesthouse', label: 'Guesthouses' },
 ]
 
-const STAYS = [
-  { id: 1, category: 'bungalow', name: 'Ramena Sea Bungalows', place: 'Ramena, Diego Suarez', image: Ramena, price: 65, rating: 4.8, amenities: ['Sea view', 'Breakfast', 'Snorkeling'] },
-  { id: 2, category: 'hotel', name: 'Nosy Iranja Retreat', place: 'Nosy Iranja', image: NosyIranja, price: 140, rating: 4.9, amenities: ['Infinity pool', 'Spa', 'Restaurant'] },
-  { id: 3, category: 'lodge', name: 'Ambanja Cocoa Lodge', place: 'Ambanja', image: Ambanja, price: 75, rating: 4.7, amenities: ['Garden', 'Farm visits', 'Solar power'] },
-  { id: 4, category: 'guesthouse', name: 'Maison Tana', place: 'Antananarivo', image: Tana, price: 40, rating: 4.6, amenities: ['Family-run', 'Breakfast', 'Free Wi-Fi'] },
-  { id: 5, category: 'bungalow', name: 'Lonjo Beach Huts', place: 'Nosy Be', image: NosyLonjo, price: 90, rating: 4.8, amenities: ['Beachfront', 'Kayaks', 'Dinner on request'] },
-  { id: 6, category: 'lodge', name: 'Baobab Safari Camp', place: 'Northern Madagascar', image: Deux, price: 110, rating: 4.7, amenities: ['Guided walks', 'Full board', 'Stargazing'] },
-]
+// Hébergements de la grille : dans la base, gérés depuis /admin/offers/stay
 
-// stayId : l'hébergement de STAYS mis en avant (même élément dans « Mon voyage »)
+// L'hébergement mis en avant : celui de la grille qui porte le même nom (son prix et « Mon voyage » en viennent)
 const FEATURED = {
-  stayId: 2,
   label: 'Guest Favorite',
   name: 'Nosy Iranja Retreat',
   place: 'Nosy Iranja',
@@ -194,10 +185,12 @@ function StayCard({ stay }) {
   )
 }
 
-function Stays() {
+// Offre de la base -> forme utilisée par les cartes
+const toStay = (o) => ({ id: o.id, category: o.category, name: o.title, place: o.place, image: o.image, price: o.price, rating: o.rating, amenities: o.amenities })
+
+function Stays({ stays, status }) {
   const t = useT('accommodation')
   const categories = localize(CATEGORIES, t('categories'))
-  const stays = localize(STAYS, t('stays'))
   const [category, setCategory] = useState('all')
   const list = category === 'all' ? stays : stays.filter((s) => s.category === category)
 
@@ -222,16 +215,20 @@ function Stays() {
         ))}
       </div>
 
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-9">
-        {list.map((stay) => <StayCard key={stay.id} stay={stay} />)}
-      </div>
+      <OffersStatus status={status} empty={list.length === 0} />
+      {status === 'ready' && (
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-9">
+          {list.map((stay) => <StayCard key={stay.id} stay={stay} />)}
+        </div>
+      )}
     </div>
   )
 }
 
-function Featured() {
+function Featured({ stays }) {
   const t = useT('accommodation')
   const featured = localize(FEATURED, t('featured'))
+  const stay = stays.find((s) => s.name === featured.name)
   return (
     <div className={`${SECTION_GAP} relative overflow-hidden rounded-3xl bg-[#084838] text-white min-h-[480px] md:min-h-[560px]`}>
       <img src={featured.image} alt={featured.name} className="absolute inset-0 w-full h-full object-cover" />
@@ -247,7 +244,7 @@ function Featured() {
         <AddToTrip
           variant="gold"
           className="mt-6 self-start"
-          item={{ kind: 'stay', ref: String(featured.stayId), title: featured.name, image: featured.image, link: '/hosting', details: featured.place, price: STAYS.find((s) => s.id === featured.stayId)?.price ?? null, unit: 'night', qty: 3 }}
+          item={{ kind: 'stay', ref: String(stay?.id ?? 'featured'), title: featured.name, image: featured.image, link: '/hosting', details: featured.place, price: stay?.price ?? null, unit: 'night', qty: 3 }}
         />
       </div>
     </div>
@@ -354,8 +351,10 @@ function Cta() {
 }
 
 function Accommodation() {
+  const { offers, status } = useOffers('stay')
+  const stays = offers.map(toStay)
   const root = useRef(null)
-  useScrollReveal(root)
+  useScrollReveal(root, [status])
   return (
     <>
     <section ref={root} className="w-full pt-0 pb-12 md:pb-20 bg-[#D5E8E2] flex flex-col items-center">
@@ -363,8 +362,8 @@ function Accommodation() {
       <Hero />
       <div className={`${SECTION_WIDTH} ${SECTION_GAP}`}>
         <Intro />
-        <Stays />
-        <Featured />
+        <Stays stays={stays} status={status} />
+        <Featured stays={stays} />
         <Criteria />
         <Included />
         <Faq />

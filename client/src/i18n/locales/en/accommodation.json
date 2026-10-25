@@ -32,56 +32,6 @@
       "label": "Guesthouses"
     }
   ],
-  "stays": [
-    {
-      "place": "Ramena, Diego Suarez",
-      "amenities": [
-        "Sea view",
-        "Breakfast",
-        "Snorkeling"
-      ]
-    },
-    {
-      "place": "Nosy Iranja",
-      "amenities": [
-        "Infinity pool",
-        "Spa",
-        "Restaurant"
-      ]
-    },
-    {
-      "place": "Ambanja",
-      "amenities": [
-        "Garden",
-        "Farm visits",
-        "Solar power"
-      ]
-    },
-    {
-      "place": "Antananarivo",
-      "amenities": [
-        "Family-run",
-        "Breakfast",
-        "Free Wi-Fi"
-      ]
-    },
-    {
-      "place": "Nosy Be",
-      "amenities": [
-        "Beachfront",
-        "Kayaks",
-        "Dinner on request"
-      ]
-    },
-    {
-      "place": "Northern Madagascar",
-      "amenities": [
-        "Guided walks",
-        "Full board",
-        "Stargazing"
-      ]
-    }
-  ],
   "featured": {
     "label": "Guest Favorite",
     "text": "A quiet island hideaway with a private stretch of white sand, an infinity pool facing the sunset and a kitchen that cooks the morning’s catch.",
