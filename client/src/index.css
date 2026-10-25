@@ -12,6 +12,15 @@
   h1, h2 { font-family: var(--font-display); }
 }
 
+/* Téléphone : petits textes un cran plus grands (text-sm 14 -> 15 px, text-xs 12 -> 13 px).
+   Les hauteurs de ligne de Tailwind sont des rapports : elles suivent. Ordinateur et tablette inchangés. */
+@media (max-width: 767px) {
+  :root {
+    --text-xs: 0.8125rem;
+    --text-sm: 0.9375rem;
+  }
+}
+
 
 /* Textes de la navbar en vert forêt (couleur de la marque) */
 nav[aria-label="Main"] {
