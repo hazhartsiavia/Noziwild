@@ -1,12 +1,77 @@
 // Choix de la langue du site : menu compact (barre du haut) ou rangée de boutons (menu mobile)
-import React, { useEffect, useRef, useState } from 'react'
+import React, { useEffect, useId, useRef, useState } from 'react'
 import { LANGUAGES, useLanguage, useT } from '../i18n/LanguageContext'
 
-function Globe() {
+// Drapeaux en SVG : les emojis drapeaux ne s'affichent pas sous Windows
+function UnionJack() {
+  const id = useId()
   return (
-    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.6" aria-hidden="true">
-      <circle cx="12" cy="12" r="10" />
-      <path d="M2 12h20M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z" />
+    <>
+      <clipPath id={id}>
+        <path d="M30,15 h30 v15 z v15 h-30 z h-30 v-15 z v-15 h30 z" />
+      </clipPath>
+      <rect width="60" height="30" fill="#012169" />
+      <path d="M0,0 L60,30 M60,0 L0,30" stroke="#fff" strokeWidth="6" />
+      <path d="M0,0 L60,30 M60,0 L0,30" clipPath={`url(#${id})`} stroke="#C8102E" strokeWidth="4" />
+      <path d="M30,0 v30 M0,15 h60" stroke="#fff" strokeWidth="10" />
+      <path d="M30,0 v30 M0,15 h60" stroke="#C8102E" strokeWidth="6" />
+    </>
+  )
+}
+
+const FLAGS = {
+  en: { viewBox: '0 0 60 30', body: <UnionJack /> },
+  fr: {
+    viewBox: '0 0 3 2',
+    body: (
+      <>
+        <rect width="1" height="2" fill="#0055A4" />
+        <rect x="1" width="1" height="2" fill="#fff" />
+        <rect x="2" width="1" height="2" fill="#EF4135" />
+      </>
+    ),
+  },
+  de: {
+    viewBox: '0 0 5 3',
+    body: (
+      <>
+        <rect width="5" height="1" fill="#000" />
+        <rect y="1" width="5" height="1" fill="#DD0000" />
+        <rect y="2" width="5" height="1" fill="#FFCE00" />
+      </>
+    ),
+  },
+  it: {
+    viewBox: '0 0 3 2',
+    body: (
+      <>
+        <rect width="1" height="2" fill="#009246" />
+        <rect x="1" width="1" height="2" fill="#fff" />
+        <rect x="2" width="1" height="2" fill="#CE2B37" />
+      </>
+    ),
+  },
+  es: {
+    viewBox: '0 0 6 4',
+    body: (
+      <>
+        <rect width="6" height="4" fill="#AA151B" />
+        <rect y="1" width="6" height="2" fill="#F1BF00" />
+      </>
+    ),
+  },
+}
+
+function Flag({ code }) {
+  const flag = FLAGS[code]
+  return (
+    <svg
+      className="block h-[15px] w-[22px] shrink-0 rounded-[3px] ring-1 ring-black/10"
+      viewBox={flag.viewBox}
+      preserveAspectRatio="xMidYMid slice"
+      aria-hidden="true"
+    >
+      {flag.body}
     </svg>
   )
 }
@@ -22,16 +87,17 @@ export function LanguageRow({ onChange }) {
           type="button"
           lang={l.code}
           title={l.label}
+          aria-label={l.label}
           aria-pressed={lang === l.code}
           onClick={() => {
             setLang(l.code)
             onChange?.()
           }}
-          className={`rounded-full px-3 py-1 text-[13px] font-medium transition ${
-            lang === l.code ? 'bg-zinc-900 text-white' : 'text-zinc-600 hover:bg-zinc-100'
+          className={`rounded-md p-1.5 transition ${
+            lang === l.code ? 'bg-zinc-100 ring-1 ring-[#0c3e2e]' : 'hover:bg-zinc-100'
           }`}
         >
-          {l.short}
+          <Flag code={l.code} />
         </button>
       ))}
     </div>
@@ -68,8 +134,7 @@ export default function LanguageSwitcher({ className = '' }) {
         aria-label={`${t('language')} (${current.label})`}
         className="flex items-center gap-1.5 rounded-full px-2 py-1.5 text-[14px] font-medium text-zinc-700 transition hover:text-zinc-900"
       >
-        <Globe />
-        {current.short}
+        <Flag code={current.code} />
       </button>
       {open && (
         <ul
@@ -86,12 +151,12 @@ export default function LanguageSwitcher({ className = '' }) {
                   setLang(l.code)
                   setOpen(false)
                 }}
-                className={`flex w-full items-center justify-between px-4 py-2 text-left text-[14px] transition hover:bg-zinc-50 ${
+                className={`flex w-full items-center gap-3 px-4 py-2 text-left text-[14px] transition hover:bg-zinc-50 ${
                   lang === l.code ? 'font-medium text-zinc-900' : 'text-zinc-600'
                 }`}
               >
+                <Flag code={l.code} />
                 {l.label}
-                <span className="text-xs text-zinc-400">{l.short}</span>
               </button>
             </li>
           ))}

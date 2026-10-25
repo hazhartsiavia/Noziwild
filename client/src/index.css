@@ -1,3 +1,16 @@
 @import url('https://fonts.googleapis.com/css2?family=Figtree:wght@300;400;500;600&display=swap');
 @import "tailwindcss";
 
+
+/* Textes de la navbar en vert forêt (couleur de la marque) */
+nav[aria-label="Main"] {
+  --nav-forest: #0c3e2e;
+  --nav-forest-dark: #072a1f;
+}
+
+nav[aria-label="Main"] :is(a, button):not([aria-pressed="true"]) { color: var(--nav-forest); }
+nav[aria-label="Main"] :is(a, button):not([aria-pressed="true"]):hover { color: var(--nav-forest-dark); }
+
+/* Chevrons des menus (gris en dur dans Navbar.jsx) et contour du bouton devis */
+nav[aria-label="Main"] svg path[stroke="#71717b"] { stroke: currentColor; }
+nav[aria-label="Main"] a.border { border-color: var(--nav-forest); }
