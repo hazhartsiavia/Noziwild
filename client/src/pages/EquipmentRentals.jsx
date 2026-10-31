@@ -1,10 +1,10 @@
 import React, { useEffect, useLayoutEffect, useRef, useState } from 'react'
 import { Link, A } from '../i18n/router'
 import Deux from "../assets/images/2.jpg";
-import Ambanja from "../assets/images/Ambanja.png";
-import NosyIranja from "../assets/images/NosyIranja.png";
-import Ramena from "../assets/images/Ramena.png";
-import Tana from "../assets/images/Tana.png";
+import Ambanja from "../assets/images/Ambanja.jpg";
+import NosyIranja from "../assets/images/NosyIranja.jpg";
+import Ramena from "../assets/images/Ramena.jpg";
+import Tana from "../assets/images/Tana.jpg";
 import Navbar from '../components/Navbar';
 import Footer from '../components/Footer';
 import { useTrip } from '../context/TripContext';

@@ -85,7 +85,7 @@ export const PAGES = {
         'Nosy Iranja, Ramena, Ambanja, Antananarivo, la Avenida de los Baobabs y más: adónde ir en Madagascar, qué hacer y qué lugares visitar.',
     },
   },
-  '/excurssions': {
+  '/excursions': {
     en: {
       title: 'Excursions & Day Trips in Madagascar | Noziwild',
       description:
@@ -112,7 +112,7 @@ export const PAGES = {
         'De una mañana en el agua a una escapada de tres días por Nosy Be. Dinos cuánto tiempo tienes y nos ocupamos de barcos, traslados y guías.',
     },
   },
-  '/cruise-excurssion': {
+  '/cruise-excursions': {
     en: {
       title: 'Madagascar Shore Excursions for Cruise Passengers | Noziwild',
       description:
@@ -139,7 +139,7 @@ export const PAGES = {
         'Lo mejor de Madagascar en un día de escala: excursiones adaptadas a tu barco, con traslados desde el muelle y margen garantizado antes del embarque.',
     },
   },
-  '/longstay': {
+  '/long-stay': {
     en: {
       title: 'Long Stays in Madagascar | Noziwild',
       description:
@@ -274,7 +274,7 @@ export const PAGES = {
         'Moverse por Madagascar por carretera y por mar, con comodidad y seguridad incluidas en cada vehículo, barco y plaza que reservamos.',
     },
   },
-  '/hosting': {
+  '/accommodation': {
     en: {
       title: 'Accommodation in Madagascar: Handpicked Stays | Noziwild',
       description:
@@ -301,7 +301,7 @@ export const PAGES = {
         'Hoteles, lodges y bungalós junto a la playa elegidos por nuestro equipo en Madagascar. Danos tus fechas y presupuesto y te proponemos los que encajan.',
     },
   },
-  '/guide': {
+  '/guides': {
     en: {
       title: 'Local Guides in Madagascar | Noziwild',
       description:

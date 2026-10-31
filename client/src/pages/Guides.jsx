@@ -1,10 +1,10 @@
 import React, { useEffect, useLayoutEffect, useRef, useState } from 'react'
 import Deux from "../assets/images/2.jpg";
-import Ambanja from "../assets/images/Ambanja.png";
-import NosyLonjo from "../assets/images/NosyLonjo.png";
-import NosyIranja from "../assets/images/NosyIranja.png";
-import Ramena from "../assets/images/Ramena.png";
-import Tana from "../assets/images/Tana.png";
+import Ambanja from "../assets/images/Ambanja.jpg";
+import NosyLonjo from "../assets/images/NosyLonjo.jpg";
+import NosyIranja from "../assets/images/NosyIranja.jpg";
+import Ramena from "../assets/images/Ramena.jpg";
+import Tana from "../assets/images/Tana.jpg";
 import Navbar from '../components/Navbar';
 import Footer from '../components/Footer';
 import AddToTrip from '../components/AddToTrip'
@@ -200,7 +200,7 @@ function Services() {
                     <li key={t} className="rounded-full border border-white/40 bg-white/10 backdrop-blur-sm px-3 py-1 text-xs md:text-sm">{t}</li>
                   ))}
                 </ul>
-                <AddToTrip variant="light" className="mt-5" item={{ kind: 'guide', ref: String(s.id), title: s.name, image: s.image, link: '/guide', price: null, unit: null }} />
+                <AddToTrip variant="light" className="mt-5" item={{ kind: 'guide', ref: String(s.id), title: s.name, image: s.image, link: '/guides', price: null, unit: null }} />
               </div>
             </div>
           </article>

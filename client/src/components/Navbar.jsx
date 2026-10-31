@@ -81,9 +81,9 @@ function Navbar() {
   const travelLinks = [
     [t('links.activities'), '/activities'],
     [t('links.circuits'), '/circuits'],
-    [t('links.excursions'), '/excurssions'],
-    [t('links.cruise'), '/cruise-excurssion'],
-    [t('links.longStay'), '/longstay'],
+    [t('links.excursions'), '/excursions'],
+    [t('links.cruise'), '/cruise-excursions'],
+    [t('links.longStay'), '/long-stay'],
     [t('links.tailorMade'), '/tailor-made'],
   ]
 
@@ -91,9 +91,9 @@ function Navbar() {
      SERVICES
   ============================================================ */
   const serviceLinks = [
-    [t('links.accommodation'), '/hosting'],
+    [t('links.accommodation'), '/accommodation'],
     [t('links.transport'), '/transport'],
-    [t('links.guides'), '/guide'],
+    [t('links.guides'), '/guides'],
     [t('links.food'), '/food-dining'],
     [t('links.equipment'), '/equipment-rentals'],
     [t('links.photography'), '/photography'],

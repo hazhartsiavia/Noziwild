@@ -2,7 +2,7 @@ import React, { useState, useRef, useLayoutEffect } from 'react'
 import gsap from 'gsap'
 import { ScrollTrigger } from 'gsap/ScrollTrigger'
 import Deux from "../assets/images/2.jpg";
-import Tana from "../assets/images/Tana.png";
+import Tana from "../assets/images/Tana.jpg";
 import Navbar from '../components/Navbar';
 import Footer from '../components/Footer';
 import AddToTrip from '../components/AddToTrip'

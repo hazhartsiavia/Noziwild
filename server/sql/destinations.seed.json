@@ -12,12 +12,12 @@
       "Ambanja sits in the green Sambirano valley, one of the island’s best-known cocoa-growing areas. Plantations, spice fields and river villages surround the town.",
       "Most travellers pass through on the way to Nosy Be, but a day or two here shows you the working countryside behind the beaches."
     ],
-    "image": "/uploads/circuits/sambirano-river.png",
+    "image": "/uploads/circuits/sambirano-river.jpg",
     "todo": [
       {
         "title": "Visit a cocoa plantation",
         "text": "Follow the beans from tree to drying rack and taste fresh chocolate.",
-        "image": "/uploads/circuits/sambirano-river.png"
+        "image": "/uploads/circuits/sambirano-river.jpg"
       },
       {
         "title": "Walk through spice fields",
@@ -27,7 +27,7 @@
       {
         "title": "Browse the town market",
         "text": "Fruit, spices and crafts, best early in the morning.",
-        "image": "/uploads/circuits/antananarivo-rice-fields.png"
+        "image": "/uploads/circuits/antananarivo-rice-fields.jpg"
       }
     ],
     "visit": [
@@ -70,7 +70,7 @@
           "Personal purchases",
           "Tips"
         ],
-        "image": "/uploads/circuits/sambirano-river.png",
+        "image": "/uploads/circuits/sambirano-river.jpg",
         "price": 85,
         "rating": 4.9,
         "reviews": 48
@@ -113,7 +113,7 @@
           "Meals on overnight trips",
           "Tips"
         ],
-        "image": "/uploads/circuits/nosy-lonjo.png",
+        "image": "/uploads/circuits/nosy-lonjo.jpg",
         "price": 140,
         "rating": 4.8,
         "reviews": 21
@@ -155,7 +155,7 @@
           "Tips",
           "Hotel on arrival"
         ],
-        "image": "/uploads/circuits/nosy-iranja.png",
+        "image": "/uploads/circuits/nosy-iranja.jpg",
         "price": 45,
         "rating": 4.7,
         "reviews": 64
@@ -761,29 +761,29 @@
       "Ramena is a small fishing village on the bay of Diego Suarez, known for calm turquoise water and steady winds.",
       "It is an easy day trip from town, or a relaxed base for a few days of sailing and watersports."
     ],
-    "image": "/uploads/circuits/ramena.png",
+    "image": "/uploads/circuits/ramena.jpg",
     "todo": [
       {
         "title": "Sail across the bay",
         "text": "Half-day and full-day boat trips with swimming stops.",
-        "image": "/uploads/circuits/ramena.png"
+        "image": "/uploads/circuits/ramena.jpg"
       },
       {
         "title": "Try kitesurfing",
         "text": "Lessons and rentals for all levels on the nearby beaches.",
-        "image": "/uploads/circuits/nosy-iranja.png"
+        "image": "/uploads/circuits/nosy-iranja.jpg"
       },
       {
         "title": "Eat fresh seafood",
         "text": "Simple beach restaurants serve the morning catch.",
-        "image": "/uploads/circuits/nosy-lonjo.png"
+        "image": "/uploads/circuits/nosy-lonjo.jpg"
       }
     ],
     "visit": [
       {
         "name": "Emerald Sea",
         "text": "Shallow, bright water, best reached by boat.",
-        "image": "/uploads/circuits/ramena.png",
+        "image": "/uploads/circuits/ramena.jpg",
         "price": null,
         "rating": null,
         "reviews": null
@@ -791,7 +791,7 @@
       {
         "name": "Sugar Loaf",
         "text": "The iconic rock rising from Diego Bay.",
-        "image": "/uploads/circuits/nosy-lonjo.png",
+        "image": "/uploads/circuits/nosy-lonjo.jpg",
         "price": null,
         "rating": null,
         "reviews": null
@@ -985,29 +985,29 @@
       "Nosy Iranja is a pair of small islands joined by a long sandbar that appears at low tide. Sea turtles nest on its beaches.",
       "It is reached by boat from Nosy Be, usually as a full-day trip or an overnight stay."
     ],
-    "image": "/uploads/circuits/nosy-iranja.png",
+    "image": "/uploads/circuits/nosy-iranja.jpg",
     "todo": [
       {
         "title": "Walk the sandbar",
         "text": "Cross between the two islands at low tide.",
-        "image": "/uploads/circuits/nosy-iranja.png"
+        "image": "/uploads/circuits/nosy-iranja.jpg"
       },
       {
         "title": "Snorkel with turtles",
         "text": "Calm, clear water close to the beach.",
-        "image": "/uploads/circuits/ramena.png"
+        "image": "/uploads/circuits/ramena.jpg"
       },
       {
         "title": "Climb to the lighthouse",
         "text": "A short walk for views over the whole area.",
-        "image": "/uploads/circuits/nosy-lonjo.png"
+        "image": "/uploads/circuits/nosy-lonjo.jpg"
       }
     ],
     "visit": [
       {
         "name": "The sandbar",
         "text": "The signature view of the island.",
-        "image": "/uploads/circuits/nosy-iranja.png",
+        "image": "/uploads/circuits/nosy-iranja.jpg",
         "price": null,
         "rating": null,
         "reviews": null
@@ -1015,7 +1015,7 @@
       {
         "name": "Turtle beach",
         "text": "A protected nesting area, visit with respect.",
-        "image": "/uploads/circuits/ramena.png",
+        "image": "/uploads/circuits/ramena.jpg",
         "price": null,
         "rating": null,
         "reviews": null
@@ -1023,7 +1023,7 @@
       {
         "name": "Nosy Lonjo",
         "text": "A quiet neighbouring island, often combined in one trip.",
-        "image": "/uploads/circuits/nosy-lonjo.png",
+        "image": "/uploads/circuits/nosy-lonjo.jpg",
         "price": null,
         "rating": null,
         "reviews": null
@@ -1209,17 +1209,17 @@
       "Antananarivo climbs a series of hills, with narrow streets, old palaces and busy markets.",
       "Most journeys start here, so plan a day or two to acclimatise and explore."
     ],
-    "image": "/uploads/circuits/antananarivo-rice-fields.png",
+    "image": "/uploads/circuits/antananarivo-rice-fields.jpg",
     "todo": [
       {
         "title": "Explore the old town",
         "text": "Walk the steep lanes of the upper city.",
-        "image": "/uploads/circuits/antananarivo-rice-fields.png"
+        "image": "/uploads/circuits/antananarivo-rice-fields.jpg"
       },
       {
         "title": "Shop at Analakely market",
         "text": "Crafts, fabrics and street food.",
-        "image": "/uploads/circuits/sambirano-river.png"
+        "image": "/uploads/circuits/sambirano-river.jpg"
       },
       {
         "title": "Visit the Rova",
@@ -1239,7 +1239,7 @@
       {
         "name": "Lake Anosy",
         "text": "A calm spot in the city centre.",
-        "image": "/uploads/circuits/antananarivo-rice-fields.png",
+        "image": "/uploads/circuits/antananarivo-rice-fields.jpg",
         "price": null,
         "rating": null,
         "reviews": null
@@ -1247,7 +1247,7 @@
       {
         "name": "Ambohimanga",
         "text": "A sacred royal hill a short drive north.",
-        "image": "/uploads/circuits/sambirano-river.png",
+        "image": "/uploads/circuits/sambirano-river.jpg",
         "price": null,
         "rating": null,
         "reviews": null
@@ -1443,12 +1443,12 @@
       {
         "title": "Meet local villagers",
         "text": "Visit nearby hamlets with a guide.",
-        "image": "/uploads/circuits/sambirano-river.png"
+        "image": "/uploads/circuits/sambirano-river.jpg"
       },
       {
         "title": "Photograph at dawn",
         "text": "Fewer visitors and softer light.",
-        "image": "/uploads/circuits/antananarivo-rice-fields.png"
+        "image": "/uploads/circuits/antananarivo-rice-fields.jpg"
       }
     ],
     "visit": [
@@ -1463,7 +1463,7 @@
       {
         "name": "Twin baobabs",
         "text": "Two trunks twisted around each other.",
-        "image": "/uploads/circuits/nosy-lonjo.png",
+        "image": "/uploads/circuits/nosy-lonjo.jpg",
         "price": null,
         "rating": null,
         "reviews": null
@@ -1471,7 +1471,7 @@
       {
         "name": "Morondava coast",
         "text": "A relaxed beach town nearby.",
-        "image": "/uploads/circuits/ramena.png",
+        "image": "/uploads/circuits/ramena.jpg",
         "price": null,
         "rating": null,
         "reviews": null
@@ -1657,17 +1657,17 @@
       "Andasibe is a rainforest reserve known for the indri, the largest living lemur, whose calls carry across the forest.",
       "It is close enough to the capital for a weekend, and better with a night walk."
     ],
-    "image": "/uploads/circuits/sambirano-river.png",
+    "image": "/uploads/circuits/sambirano-river.jpg",
     "todo": [
       {
         "title": "Track the indri",
         "text": "A guided morning walk to find a family group.",
-        "image": "/uploads/circuits/sambirano-river.png"
+        "image": "/uploads/circuits/sambirano-river.jpg"
       },
       {
         "title": "Take a night walk",
         "text": "Spot small nocturnal lemurs and chameleons.",
-        "image": "/uploads/circuits/antananarivo-rice-fields.png"
+        "image": "/uploads/circuits/antananarivo-rice-fields.jpg"
       },
       {
         "title": "Visit a lemur island",
@@ -1679,7 +1679,7 @@
       {
         "name": "Andasibe-Mantadia",
         "text": "The main national park and its forest trails.",
-        "image": "/uploads/circuits/sambirano-river.png",
+        "image": "/uploads/circuits/sambirano-river.jpg",
         "price": null,
         "rating": null,
         "reviews": null
@@ -1687,7 +1687,7 @@
       {
         "name": "Lemur island",
         "text": "A short boat ride to close encounters.",
-        "image": "/uploads/circuits/nosy-lonjo.png",
+        "image": "/uploads/circuits/nosy-lonjo.jpg",
         "price": null,
         "rating": null,
         "reviews": null
@@ -1695,7 +1695,7 @@
       {
         "name": "Forest viewpoints",
         "text": "Short hikes with open views.",
-        "image": "/uploads/circuits/antananarivo-rice-fields.png",
+        "image": "/uploads/circuits/antananarivo-rice-fields.jpg",
         "price": null,
         "rating": null,
         "reviews": null

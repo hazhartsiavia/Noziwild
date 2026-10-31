@@ -14,11 +14,11 @@
     "end": "Diego Suarez (Arrachart airport)",
     "bestTime": "April to December",
     "tip": "From June to September the varatraza trade wind blows hard on the bay: perfect for kitesurfers, a little choppy for boat trips.",
-    "image": "/uploads/circuits/ramena.png",
+    "image": "/uploads/circuits/ramena.jpg",
     "gallery": [
-      "/uploads/circuits/ramena.png",
-      "/uploads/circuits/noziwild-boat.png",
-      "/uploads/circuits/sakalava-bay.png"
+      "/uploads/circuits/ramena.jpg",
+      "/uploads/circuits/noziwild-boat.jpg",
+      "/uploads/circuits/sakalava-bay.jpg"
     ],
     "overview": [
       "Diego Suarez sits on one of the largest natural bays in the world. In six relaxed days you sail to the Emerald Sea, walk among the Red Tsingy and drive along the Three Bays, with time left for long lunches of grilled fish on the beach.",
@@ -55,9 +55,9 @@
         "stay": "Diego Suarez",
         "meals": "Dinner on your own",
         "images": [
-          "/uploads/circuits/nosy-lonjo.png",
-          "/uploads/circuits/coast-road-van.png",
-          "/uploads/circuits/ramena.png"
+          "/uploads/circuits/nosy-lonjo.jpg",
+          "/uploads/circuits/coast-road-van.jpg",
+          "/uploads/circuits/ramena.jpg"
         ]
       },
       {
@@ -68,8 +68,8 @@
         "meals": "Breakfast, lunch",
         "images": [
           "/uploads/circuits/coastal-tsingy.jpg",
-          "/uploads/circuits/dirt-track-motorbike.png",
-          "/uploads/circuits/noziwild-van-road.png"
+          "/uploads/circuits/dirt-track-motorbike.jpg",
+          "/uploads/circuits/noziwild-van-road.jpg"
         ]
       },
       {
@@ -79,9 +79,9 @@
         "stay": "Ramena",
         "meals": "Breakfast, lunch",
         "images": [
-          "/uploads/circuits/ramena.png",
-          "/uploads/circuits/noziwild-boat.png",
-          "/uploads/circuits/jet-ski.png"
+          "/uploads/circuits/ramena.jpg",
+          "/uploads/circuits/noziwild-boat.jpg",
+          "/uploads/circuits/jet-ski.jpg"
         ]
       },
       {
@@ -91,8 +91,8 @@
         "stay": "Ramena",
         "meals": "Breakfast, lunch",
         "images": [
-          "/uploads/circuits/sakalava-bay.png",
-          "/uploads/circuits/dunes-bay.png",
+          "/uploads/circuits/sakalava-bay.jpg",
+          "/uploads/circuits/dunes-bay.jpg",
           "/uploads/circuits/beach-sunset.jpg"
         ]
       },
@@ -103,9 +103,9 @@
         "stay": "Diego Suarez",
         "meals": "Breakfast, lunch",
         "images": [
-          "/uploads/circuits/forest-trail-bike.png",
-          "/uploads/circuits/lemur.png",
-          "/uploads/circuits/guide-with-lemur.png"
+          "/uploads/circuits/forest-trail-bike.jpg",
+          "/uploads/circuits/lemur.jpg",
+          "/uploads/circuits/guide-with-lemur.jpg"
         ]
       },
       {
@@ -115,9 +115,9 @@
         "stay": null,
         "meals": "Breakfast",
         "images": [
-          "/uploads/circuits/coast-road-van.png",
-          "/uploads/circuits/nosy-lonjo.png",
-          "/uploads/circuits/sea-sunset.png"
+          "/uploads/circuits/coast-road-van.jpg",
+          "/uploads/circuits/nosy-lonjo.jpg",
+          "/uploads/circuits/sea-sunset.jpg"
         ]
       }
     ]
@@ -137,11 +137,11 @@
     "end": "Nosy Be (Fascene airport)",
     "bestTime": "April to December",
     "tip": "Whale sharks visit the waters around Nosy Be from October to December, humpback whales from July to September.",
-    "image": "/uploads/circuits/nosy-iranja.png",
+    "image": "/uploads/circuits/nosy-iranja.jpg",
     "gallery": [
-      "/uploads/circuits/nosy-iranja.png",
+      "/uploads/circuits/nosy-iranja.jpg",
       "/uploads/circuits/island-beach-aerial.jpg",
-      "/uploads/circuits/noziwild-boat.png"
+      "/uploads/circuits/noziwild-boat.jpg"
     ],
     "overview": [
       "Nosy Be smells of ylang-ylang and vanilla. From there, small boats take you to the islands around it: Nosy Komba and its friendly black lemurs, the marine reserve of Nosy Tanikely, and Nosy Iranja, two islands joined by a long sandbar at low tide.",
@@ -180,8 +180,8 @@
         "meals": "Dinner on your own",
         "images": [
           "/uploads/circuits/island-beach-aerial.jpg",
-          "/uploads/circuits/coast-road-van.png",
-          "/uploads/circuits/boat-ride-beach.png"
+          "/uploads/circuits/coast-road-van.jpg",
+          "/uploads/circuits/boat-ride-beach.jpg"
         ]
       },
       {
@@ -191,9 +191,9 @@
         "stay": "Nosy Be",
         "meals": "Breakfast, lunch",
         "images": [
-          "/uploads/circuits/forest-trail-bike.png",
-          "/uploads/circuits/lemur.png",
-          "/uploads/circuits/boat-ride-beach.png"
+          "/uploads/circuits/forest-trail-bike.jpg",
+          "/uploads/circuits/lemur.jpg",
+          "/uploads/circuits/boat-ride-beach.jpg"
         ]
       },
       {
@@ -203,9 +203,9 @@
         "stay": "Nosy Be",
         "meals": "Breakfast, lunch",
         "images": [
-          "/uploads/circuits/guide-with-lemur.png",
+          "/uploads/circuits/guide-with-lemur.jpg",
           "/uploads/circuits/island-beach-aerial.jpg",
-          "/uploads/circuits/jet-ski.png"
+          "/uploads/circuits/jet-ski.jpg"
         ]
       },
       {
@@ -215,9 +215,9 @@
         "stay": "Nosy Iranja",
         "meals": "Breakfast, lunch",
         "images": [
-          "/uploads/circuits/nosy-iranja.png",
-          "/uploads/circuits/noziwild-boat.png",
-          "/uploads/circuits/dunes-bay.png"
+          "/uploads/circuits/nosy-iranja.jpg",
+          "/uploads/circuits/noziwild-boat.jpg",
+          "/uploads/circuits/dunes-bay.jpg"
         ]
       },
       {
@@ -227,9 +227,9 @@
         "stay": "Nosy Be",
         "meals": "Breakfast",
         "images": [
-          "/uploads/circuits/sambirano-river.png",
-          "/uploads/circuits/sea-sunset.png",
-          "/uploads/circuits/coast-road-van.png"
+          "/uploads/circuits/sambirano-river.jpg",
+          "/uploads/circuits/sea-sunset.jpg",
+          "/uploads/circuits/coast-road-van.jpg"
         ]
       },
       {
@@ -239,8 +239,8 @@
         "stay": "Nosy Be",
         "meals": "Breakfast",
         "images": [
-          "/uploads/circuits/jet-ski.png",
-          "/uploads/circuits/sakalava-bay.png",
+          "/uploads/circuits/jet-ski.jpg",
+          "/uploads/circuits/sakalava-bay.jpg",
           "/uploads/circuits/beach-sunset.jpg"
         ]
       },
@@ -252,8 +252,8 @@
         "meals": "Breakfast",
         "images": [
           "/uploads/circuits/island-beach-aerial.jpg",
-          "/uploads/circuits/boat-ride-beach.png",
-          "/uploads/circuits/sea-sunset.png"
+          "/uploads/circuits/boat-ride-beach.jpg",
+          "/uploads/circuits/sea-sunset.jpg"
         ]
       }
     ]
@@ -273,10 +273,10 @@
     "end": "Diego Suarez (Arrachart airport)",
     "bestTime": "May to November",
     "tip": "Some trails in Ankarana close during the rainy season, from January to March.",
-    "image": "/uploads/circuits/sambirano-river.png",
+    "image": "/uploads/circuits/sambirano-river.jpg",
     "gallery": [
-      "/uploads/circuits/sambirano-river.png",
-      "/uploads/circuits/lemur.png",
+      "/uploads/circuits/sambirano-river.jpg",
+      "/uploads/circuits/lemur.jpg",
       "/uploads/circuits/coastal-tsingy.jpg"
     ],
     "overview": [
@@ -314,9 +314,9 @@
         "stay": "Ambanja",
         "meals": "Dinner",
         "images": [
-          "/uploads/circuits/noziwild-boat.png",
-          "/uploads/circuits/boat-ride-beach.png",
-          "/uploads/circuits/noziwild-van-road.png"
+          "/uploads/circuits/noziwild-boat.jpg",
+          "/uploads/circuits/boat-ride-beach.jpg",
+          "/uploads/circuits/noziwild-van-road.jpg"
         ]
       },
       {
@@ -326,9 +326,9 @@
         "stay": "Ambanja",
         "meals": "Breakfast, dinner",
         "images": [
-          "/uploads/circuits/sambirano-river.png",
-          "/uploads/circuits/forest-trail-bike.png",
-          "/uploads/circuits/guide-with-lemur.png"
+          "/uploads/circuits/sambirano-river.jpg",
+          "/uploads/circuits/forest-trail-bike.jpg",
+          "/uploads/circuits/guide-with-lemur.jpg"
         ]
       },
       {
@@ -338,9 +338,9 @@
         "stay": "Ankarana",
         "meals": "Breakfast, dinner",
         "images": [
-          "/uploads/circuits/noziwild-van-road.png",
-          "/uploads/circuits/dirt-track-motorbike.png",
-          "/uploads/circuits/forest-track-quad.png"
+          "/uploads/circuits/noziwild-van-road.jpg",
+          "/uploads/circuits/dirt-track-motorbike.jpg",
+          "/uploads/circuits/forest-track-quad.jpg"
         ]
       },
       {
@@ -351,8 +351,8 @@
         "meals": "Breakfast, dinner",
         "images": [
           "/uploads/circuits/coastal-tsingy.jpg",
-          "/uploads/circuits/lemur.png",
-          "/uploads/circuits/forest-trail-bike.png"
+          "/uploads/circuits/lemur.jpg",
+          "/uploads/circuits/forest-trail-bike.jpg"
         ]
       },
       {
@@ -362,9 +362,9 @@
         "stay": "Diego Suarez",
         "meals": "Breakfast, dinner",
         "images": [
-          "/uploads/circuits/dirt-track-motorbike.png",
-          "/uploads/circuits/nosy-lonjo.png",
-          "/uploads/circuits/coast-road-van.png"
+          "/uploads/circuits/dirt-track-motorbike.jpg",
+          "/uploads/circuits/nosy-lonjo.jpg",
+          "/uploads/circuits/coast-road-van.jpg"
         ]
       },
       {
@@ -374,9 +374,9 @@
         "stay": "Diego Suarez",
         "meals": "Breakfast, dinner",
         "images": [
-          "/uploads/circuits/guide-with-lemur.png",
-          "/uploads/circuits/forest-track-quad.png",
-          "/uploads/circuits/lemur.png"
+          "/uploads/circuits/guide-with-lemur.jpg",
+          "/uploads/circuits/forest-track-quad.jpg",
+          "/uploads/circuits/lemur.jpg"
         ]
       },
       {
@@ -386,9 +386,9 @@
         "stay": "Diego Suarez",
         "meals": "Breakfast, dinner",
         "images": [
-          "/uploads/circuits/ramena.png",
-          "/uploads/circuits/noziwild-boat.png",
-          "/uploads/circuits/jet-ski.png"
+          "/uploads/circuits/ramena.jpg",
+          "/uploads/circuits/noziwild-boat.jpg",
+          "/uploads/circuits/jet-ski.jpg"
         ]
       },
       {
@@ -398,9 +398,9 @@
         "stay": null,
         "meals": "Breakfast",
         "images": [
-          "/uploads/circuits/nosy-lonjo.png",
-          "/uploads/circuits/sea-sunset.png",
-          "/uploads/circuits/noziwild-car-antananarivo.jpeg"
+          "/uploads/circuits/nosy-lonjo.jpg",
+          "/uploads/circuits/sea-sunset.jpg",
+          "/uploads/circuits/noziwild-car-antananarivo.jpg"
         ]
       }
     ]
@@ -420,11 +420,11 @@
     "end": "Antananarivo (Ivato airport)",
     "bestTime": "All year, best from April to November",
     "tip": "The highlands are cool: nights can drop below 10 °C from June to August. Bring a warm layer.",
-    "image": "/uploads/circuits/antananarivo-rice-fields.png",
+    "image": "/uploads/circuits/antananarivo-rice-fields.jpg",
     "gallery": [
-      "/uploads/circuits/antananarivo-rice-fields.png",
-      "/uploads/circuits/noziwild-car-antananarivo.jpeg",
-      "/uploads/circuits/noziwild-van-road.png"
+      "/uploads/circuits/antananarivo-rice-fields.jpg",
+      "/uploads/circuits/noziwild-car-antananarivo.jpg",
+      "/uploads/circuits/noziwild-van-road.jpg"
     ],
     "overview": [
       "The highlands are where the Merina kingdom was born. You climb to the royal palaces of Antananarivo and the sacred hill of Ambohimanga, then drive south along the RN7 through rice terraces to Antsirabe, the town of pousse-pousse and craftsmen.",
@@ -460,9 +460,9 @@
         "stay": "Antananarivo",
         "meals": "Dinner on your own",
         "images": [
-          "/uploads/circuits/noziwild-car-antananarivo.jpeg",
-          "/uploads/circuits/antananarivo-rice-fields.png",
-          "/uploads/circuits/noziwild-van-road.png"
+          "/uploads/circuits/noziwild-car-antananarivo.jpg",
+          "/uploads/circuits/antananarivo-rice-fields.jpg",
+          "/uploads/circuits/noziwild-van-road.jpg"
         ]
       },
       {
@@ -472,9 +472,9 @@
         "stay": "Antananarivo",
         "meals": "Breakfast, lunch",
         "images": [
-          "/uploads/circuits/antananarivo-rice-fields.png",
-          "/uploads/circuits/noziwild-car-antananarivo.jpeg",
-          "/uploads/circuits/sea-sunset.png"
+          "/uploads/circuits/antananarivo-rice-fields.jpg",
+          "/uploads/circuits/noziwild-car-antananarivo.jpg",
+          "/uploads/circuits/sea-sunset.jpg"
         ]
       },
       {
@@ -484,9 +484,9 @@
         "stay": "Antsirabe",
         "meals": "Breakfast, lunch",
         "images": [
-          "/uploads/circuits/noziwild-van-road.png",
-          "/uploads/circuits/antananarivo-rice-fields.png",
-          "/uploads/circuits/dirt-track-motorbike.png"
+          "/uploads/circuits/noziwild-van-road.jpg",
+          "/uploads/circuits/antananarivo-rice-fields.jpg",
+          "/uploads/circuits/dirt-track-motorbike.jpg"
         ]
       },
       {
@@ -496,9 +496,9 @@
         "stay": "Antsirabe",
         "meals": "Breakfast",
         "images": [
-          "/uploads/circuits/forest-trail-bike.png",
-          "/uploads/circuits/dirt-track-motorbike.png",
-          "/uploads/circuits/sambirano-river.png"
+          "/uploads/circuits/forest-trail-bike.jpg",
+          "/uploads/circuits/dirt-track-motorbike.jpg",
+          "/uploads/circuits/sambirano-river.jpg"
         ]
       },
       {
@@ -508,9 +508,9 @@
         "stay": null,
         "meals": "Breakfast",
         "images": [
-          "/uploads/circuits/noziwild-car-antananarivo.jpeg",
-          "/uploads/circuits/noziwild-van-road.png",
-          "/uploads/circuits/sea-sunset.png"
+          "/uploads/circuits/noziwild-car-antananarivo.jpg",
+          "/uploads/circuits/noziwild-van-road.jpg",
+          "/uploads/circuits/sea-sunset.jpg"
         ]
       }
     ]
@@ -533,8 +533,8 @@
     "image": "/uploads/circuits/coastal-tsingy.jpg",
     "gallery": [
       "/uploads/circuits/coastal-tsingy.jpg",
-      "/uploads/circuits/dunes-bay.png",
-      "/uploads/circuits/noziwild-van-road.png"
+      "/uploads/circuits/dunes-bay.jpg",
+      "/uploads/circuits/noziwild-van-road.jpg"
     ],
     "overview": [
       "The west of Madagascar is a land of giants. Sunset on the Avenue of the Baobabs, then a 4x4 expedition north, across rivers on small ferries, to the Tsingy de Bemaraha, a forest of limestone needles listed by UNESCO.",
@@ -572,9 +572,9 @@
         "stay": "Antananarivo",
         "meals": "Dinner",
         "images": [
-          "/uploads/circuits/noziwild-car-antananarivo.jpeg",
-          "/uploads/circuits/antananarivo-rice-fields.png",
-          "/uploads/circuits/noziwild-van-road.png"
+          "/uploads/circuits/noziwild-car-antananarivo.jpg",
+          "/uploads/circuits/antananarivo-rice-fields.jpg",
+          "/uploads/circuits/noziwild-van-road.jpg"
         ]
       },
       {
@@ -584,8 +584,8 @@
         "stay": "Morondava",
         "meals": "Breakfast, dinner",
         "images": [
-          "/uploads/circuits/sea-sunset.png",
-          "/uploads/circuits/dunes-bay.png",
+          "/uploads/circuits/sea-sunset.jpg",
+          "/uploads/circuits/dunes-bay.jpg",
           "/uploads/circuits/beach-sunset.jpg"
         ]
       },
@@ -596,9 +596,9 @@
         "stay": "Kirindy",
         "meals": "Breakfast, dinner",
         "images": [
-          "/uploads/circuits/forest-trail-bike.png",
-          "/uploads/circuits/lemur.png",
-          "/uploads/circuits/guide-with-lemur.png"
+          "/uploads/circuits/forest-trail-bike.jpg",
+          "/uploads/circuits/lemur.jpg",
+          "/uploads/circuits/guide-with-lemur.jpg"
         ]
       },
       {
@@ -608,9 +608,9 @@
         "stay": "Bekopaka",
         "meals": "Breakfast, dinner",
         "images": [
-          "/uploads/circuits/dirt-track-motorbike.png",
-          "/uploads/circuits/forest-track-quad.png",
-          "/uploads/circuits/noziwild-van-road.png"
+          "/uploads/circuits/dirt-track-motorbike.jpg",
+          "/uploads/circuits/forest-track-quad.jpg",
+          "/uploads/circuits/noziwild-van-road.jpg"
         ]
       },
       {
@@ -621,8 +621,8 @@
         "meals": "Breakfast, dinner",
         "images": [
           "/uploads/circuits/coastal-tsingy.jpg",
-          "/uploads/circuits/forest-trail-bike.png",
-          "/uploads/circuits/guide-with-lemur.png"
+          "/uploads/circuits/forest-trail-bike.jpg",
+          "/uploads/circuits/guide-with-lemur.jpg"
         ]
       },
       {
@@ -632,9 +632,9 @@
         "stay": "Bekopaka",
         "meals": "Breakfast, dinner",
         "images": [
-          "/uploads/circuits/sambirano-river.png",
+          "/uploads/circuits/sambirano-river.jpg",
           "/uploads/circuits/coastal-tsingy.jpg",
-          "/uploads/circuits/boat-ride-beach.png"
+          "/uploads/circuits/boat-ride-beach.jpg"
         ]
       },
       {
@@ -644,9 +644,9 @@
         "stay": "Morondava",
         "meals": "Breakfast, dinner",
         "images": [
-          "/uploads/circuits/noziwild-van-road.png",
-          "/uploads/circuits/forest-track-quad.png",
-          "/uploads/circuits/sea-sunset.png"
+          "/uploads/circuits/noziwild-van-road.jpg",
+          "/uploads/circuits/forest-track-quad.jpg",
+          "/uploads/circuits/sea-sunset.jpg"
         ]
       },
       {
@@ -656,9 +656,9 @@
         "stay": "Morondava",
         "meals": "Breakfast, dinner",
         "images": [
-          "/uploads/circuits/dunes-bay.png",
+          "/uploads/circuits/dunes-bay.jpg",
           "/uploads/circuits/beach-sunset.jpg",
-          "/uploads/circuits/boat-ride-beach.png"
+          "/uploads/circuits/boat-ride-beach.jpg"
         ]
       },
       {
@@ -668,9 +668,9 @@
         "stay": "Antananarivo",
         "meals": "Breakfast, dinner",
         "images": [
-          "/uploads/circuits/antananarivo-rice-fields.png",
-          "/uploads/circuits/noziwild-car-antananarivo.jpeg",
-          "/uploads/circuits/noziwild-van-road.png"
+          "/uploads/circuits/antananarivo-rice-fields.jpg",
+          "/uploads/circuits/noziwild-car-antananarivo.jpg",
+          "/uploads/circuits/noziwild-van-road.jpg"
         ]
       },
       {
@@ -680,9 +680,9 @@
         "stay": "Antananarivo",
         "meals": "Breakfast, dinner",
         "images": [
-          "/uploads/circuits/antananarivo-rice-fields.png",
-          "/uploads/circuits/guide-with-lemur.png",
-          "/uploads/circuits/noziwild-car-antananarivo.jpeg"
+          "/uploads/circuits/antananarivo-rice-fields.jpg",
+          "/uploads/circuits/guide-with-lemur.jpg",
+          "/uploads/circuits/noziwild-car-antananarivo.jpg"
         ]
       },
       {
@@ -692,9 +692,9 @@
         "stay": null,
         "meals": "Breakfast",
         "images": [
-          "/uploads/circuits/sea-sunset.png",
-          "/uploads/circuits/noziwild-car-antananarivo.jpeg",
-          "/uploads/circuits/antananarivo-rice-fields.png"
+          "/uploads/circuits/sea-sunset.jpg",
+          "/uploads/circuits/noziwild-car-antananarivo.jpg",
+          "/uploads/circuits/antananarivo-rice-fields.jpg"
         ]
       }
     ]
@@ -714,11 +714,11 @@
     "end": "Antananarivo (Ivato airport)",
     "bestTime": "September to December",
     "tip": "The east coast is the wettest part of Madagascar. Bring a light rain jacket whatever the season, and quick-dry clothes for Masoala.",
-    "image": "/uploads/circuits/lemur.png",
+    "image": "/uploads/circuits/lemur.jpg",
     "gallery": [
-      "/uploads/circuits/lemur.png",
+      "/uploads/circuits/lemur.jpg",
       "/uploads/circuits/island-beach-aerial.jpg",
-      "/uploads/circuits/noziwild-van-road.png"
+      "/uploads/circuits/noziwild-van-road.jpg"
     ],
     "overview": [
       "The east is Madagascar at its greenest. In Andasibe you wake up to the call of the indri, the largest living lemur. On Ile Sainte-Marie you rest on quiet beaches and, in season, watch humpback whales from the shore.",
@@ -755,9 +755,9 @@
         "stay": "Antananarivo",
         "meals": "Dinner on your own",
         "images": [
-          "/uploads/circuits/noziwild-car-antananarivo.jpeg",
-          "/uploads/circuits/antananarivo-rice-fields.png",
-          "/uploads/circuits/noziwild-van-road.png"
+          "/uploads/circuits/noziwild-car-antananarivo.jpg",
+          "/uploads/circuits/antananarivo-rice-fields.jpg",
+          "/uploads/circuits/noziwild-van-road.jpg"
         ]
       },
       {
@@ -767,9 +767,9 @@
         "stay": "Andasibe",
         "meals": "Breakfast",
         "images": [
-          "/uploads/circuits/noziwild-van-road.png",
-          "/uploads/circuits/sambirano-river.png",
-          "/uploads/circuits/forest-trail-bike.png"
+          "/uploads/circuits/noziwild-van-road.jpg",
+          "/uploads/circuits/sambirano-river.jpg",
+          "/uploads/circuits/forest-trail-bike.jpg"
         ]
       },
       {
@@ -779,9 +779,9 @@
         "stay": "Andasibe",
         "meals": "Breakfast",
         "images": [
-          "/uploads/circuits/lemur.png",
-          "/uploads/circuits/guide-with-lemur.png",
-          "/uploads/circuits/forest-trail-bike.png"
+          "/uploads/circuits/lemur.jpg",
+          "/uploads/circuits/guide-with-lemur.jpg",
+          "/uploads/circuits/forest-trail-bike.jpg"
         ]
       },
       {
@@ -791,9 +791,9 @@
         "stay": "Andasibe",
         "meals": "Breakfast",
         "images": [
-          "/uploads/circuits/forest-track-quad.png",
-          "/uploads/circuits/sambirano-river.png",
-          "/uploads/circuits/lemur.png"
+          "/uploads/circuits/forest-track-quad.jpg",
+          "/uploads/circuits/sambirano-river.jpg",
+          "/uploads/circuits/lemur.jpg"
         ]
       },
       {
@@ -803,9 +803,9 @@
         "stay": "Antananarivo",
         "meals": "Breakfast",
         "images": [
-          "/uploads/circuits/antananarivo-rice-fields.png",
-          "/uploads/circuits/noziwild-van-road.png",
-          "/uploads/circuits/noziwild-car-antananarivo.jpeg"
+          "/uploads/circuits/antananarivo-rice-fields.jpg",
+          "/uploads/circuits/noziwild-van-road.jpg",
+          "/uploads/circuits/noziwild-car-antananarivo.jpg"
         ]
       },
       {
@@ -816,8 +816,8 @@
         "meals": "Breakfast",
         "images": [
           "/uploads/circuits/island-beach-aerial.jpg",
-          "/uploads/circuits/coast-road-van.png",
-          "/uploads/circuits/boat-ride-beach.png"
+          "/uploads/circuits/coast-road-van.jpg",
+          "/uploads/circuits/boat-ride-beach.jpg"
         ]
       },
       {
@@ -828,8 +828,8 @@
         "meals": "Breakfast",
         "images": [
           "/uploads/circuits/island-beach-aerial.jpg",
-          "/uploads/circuits/noziwild-boat.png",
-          "/uploads/circuits/jet-ski.png"
+          "/uploads/circuits/noziwild-boat.jpg",
+          "/uploads/circuits/jet-ski.jpg"
         ]
       },
       {
@@ -839,9 +839,9 @@
         "stay": "Masoala",
         "meals": "Breakfast, lunch, dinner",
         "images": [
-          "/uploads/circuits/noziwild-boat.png",
-          "/uploads/circuits/boat-ride-beach.png",
-          "/uploads/circuits/sambirano-river.png"
+          "/uploads/circuits/noziwild-boat.jpg",
+          "/uploads/circuits/boat-ride-beach.jpg",
+          "/uploads/circuits/sambirano-river.jpg"
         ]
       },
       {
@@ -851,8 +851,8 @@
         "stay": "Masoala",
         "meals": "Breakfast, lunch, dinner",
         "images": [
-          "/uploads/circuits/lemur.png",
-          "/uploads/circuits/forest-trail-bike.png",
+          "/uploads/circuits/lemur.jpg",
+          "/uploads/circuits/forest-trail-bike.jpg",
           "/uploads/circuits/island-beach-aerial.jpg"
         ]
       },
@@ -863,9 +863,9 @@
         "stay": "Antananarivo",
         "meals": "Breakfast",
         "images": [
-          "/uploads/circuits/noziwild-boat.png",
-          "/uploads/circuits/antananarivo-rice-fields.png",
-          "/uploads/circuits/noziwild-car-antananarivo.jpeg"
+          "/uploads/circuits/noziwild-boat.jpg",
+          "/uploads/circuits/antananarivo-rice-fields.jpg",
+          "/uploads/circuits/noziwild-car-antananarivo.jpg"
         ]
       },
       {
@@ -875,9 +875,9 @@
         "stay": null,
         "meals": "Breakfast",
         "images": [
-          "/uploads/circuits/sea-sunset.png",
-          "/uploads/circuits/noziwild-car-antananarivo.jpeg",
-          "/uploads/circuits/antananarivo-rice-fields.png"
+          "/uploads/circuits/sea-sunset.jpg",
+          "/uploads/circuits/noziwild-car-antananarivo.jpg",
+          "/uploads/circuits/antananarivo-rice-fields.jpg"
         ]
       }
     ]

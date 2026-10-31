@@ -24,8 +24,8 @@ const SMALL_FIELD = 'h-10 rounded-full border border-slate-300 bg-white px-4 tex
 const BROWSE = [
   { to: '/circuits', key: 'circuits' },
   { to: '/activities', key: 'activities' },
-  { to: '/excurssions', key: 'excursions' },
-  { to: '/hosting', key: 'stays' },
+  { to: '/excursions', key: 'excursions' },
+  { to: '/accommodation', key: 'stays' },
 ]
 
 const today = () => new Date().toISOString().slice(0, 10)

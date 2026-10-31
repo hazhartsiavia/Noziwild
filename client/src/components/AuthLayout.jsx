@@ -3,7 +3,7 @@
 import React from 'react'
 import Navbar from './Navbar'
 import Footer from './Footer'
-import NosyIranja from '../assets/images/NosyIranja.png'
+import NosyIranja from '../assets/images/NosyIranja.jpg'
 import { useT } from '../i18n/LanguageContext'
 import { usePhoto } from '../sitePhotos'
 

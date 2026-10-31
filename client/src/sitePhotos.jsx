@@ -5,12 +5,12 @@
 // Les photos remplacées sont aussi gardées dans le navigateur, pour s'afficher sans attendre l'API.
 import React, { createContext, useCallback, useContext, useEffect, useMemo, useState } from 'react'
 import { assetUrl, fetchSitePhotos } from './api'
-import Ramena from './assets/images/Ramena.png'
-import NosyIranja from './assets/images/NosyIranja.png'
-import NosyLonjo from './assets/images/NosyLonjo.png'
-import Ambanja from './assets/images/Ambanja.png'
+import Ramena from './assets/images/Ramena.jpg'
+import NosyIranja from './assets/images/NosyIranja.jpg'
+import NosyLonjo from './assets/images/NosyLonjo.jpg'
+import Ambanja from './assets/images/Ambanja.jpg'
 import Deux from './assets/images/2.jpg'
-import Tana from './assets/images/Tana.png'
+import Tana from './assets/images/Tana.jpg'
 import bg1 from './assets/images/hero/bg1-2400.jpg'
 import bg2 from './assets/images/hero/bg2-2400.jpg'
 import bg3 from './assets/images/hero/bg3-2400.jpg'
@@ -77,7 +77,7 @@ export const PHOTO_PAGES = [
     slots: { 'contact.banner': { label: '“Book a call” banner', src: NosyIranja }, ...list('contact.photo', 'Small photo', [Ambanja, NosyLonjo]) },
   },
   {
-    id: 'cruise', label: 'Cruise excursions', page: '/cruise-excurssion',
+    id: 'cruise', label: 'Cruise excursions', page: '/cruise-excursions',
     slots: {
       'cruise.hero': { label: 'Banner', src: Ramena },
       'cruise.port.nosybe': { label: 'Port of Nosy Be', src: NosyIranja },
@@ -96,7 +96,7 @@ export const PHOTO_PAGES = [
     },
   },
   {
-    id: 'excursions', label: 'Excursions', page: '/excurssions',
+    id: 'excursions', label: 'Excursions', page: '/excursions',
     slots: {
       'exc.hero': { label: 'Banner', src: Ramena },
       'exc.multi': { label: '“3 days on the islands” block', src: NosyIranja },
@@ -112,7 +112,7 @@ export const PHOTO_PAGES = [
     },
   },
   {
-    id: 'guides', label: 'Guides', page: '/guide',
+    id: 'guides', label: 'Guides', page: '/guides',
     slots: {
       ...list('guides.hero', 'Hero photo', [Tana, Ramena]),
       ...list('guides.service', 'Guide service', [Tana, Deux, NosyIranja, NosyLonjo]),
@@ -120,7 +120,7 @@ export const PHOTO_PAGES = [
     },
   },
   {
-    id: 'hosting', label: 'Accommodation', page: '/hosting',
+    id: 'hosting', label: 'Accommodation', page: '/accommodation',
     slots: {
       'hosting.hero': { label: 'Banner', src: NosyLonjo },
       'hosting.featured': { label: '“Guest favorite” block', src: NosyIranja },
@@ -128,7 +128,7 @@ export const PHOTO_PAGES = [
     },
   },
   {
-    id: 'longstay', label: 'Long stays', page: '/longstay',
+    id: 'longstay', label: 'Long stays', page: '/long-stay',
     slots: {
       'long.hero': { label: 'Banner', src: NosyIranja },
       ...list('long.week', 'Week', [Tana, Ramena, Ambanja, NosyIranja]),

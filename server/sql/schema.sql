@@ -157,7 +157,7 @@ CREATE TABLE IF NOT EXISTS newsletter_subscribers (
 -- Circuits (pages /circuits et /circuits/:slug)
 --   Les listes (paragraphes, points forts, inclus, photos...) sont rangées en JSON :
 --   elles s'affichent toujours en entier, jamais filtrées en SQL.
---   Les photos sont des chemins servis par l'API, ex. /uploads/circuits/ramena.png
+--   Les photos sont des chemins servis par l'API, ex. /uploads/circuits/ramena.jpg
 --   Les textes sont en anglais ; translations contient les autres langues (fr, de, it, es),
 --   jours de l'itinéraire compris : { "fr": { "title": ..., "itinerary": [{ "title": ... }] } }
 CREATE TABLE IF NOT EXISTS circuits (
@@ -212,7 +212,7 @@ CREATE TABLE IF NOT EXISTS circuit_days (
 --          session (séances photo) | photo (galerie photo) | gear (location de matériel) | ticket (billets)
 --   details : champs propres à chaque type (durée, niveau, région, port, points...), en anglais
 --   translations : autres langues, { "fr": { "title": ..., "text": ..., "duration": ... } }
---   Les photos sont des chemins servis par l'API, ex. /uploads/circuits/ramena.png
+--   Les photos sont des chemins servis par l'API, ex. /uploads/circuits/ramena.jpg
 CREATE TABLE IF NOT EXISTS offers (
   id           INT UNSIGNED AUTO_INCREMENT PRIMARY KEY,
   kind         ENUM('activity', 'excursion', 'cruise', 'longstay', 'idea', 'stay', 'transport', 'guide', 'food', 'session', 'photo', 'gear', 'ticket') NOT NULL,

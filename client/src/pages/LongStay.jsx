@@ -1,12 +1,12 @@
 import React, { useState, useRef, useLayoutEffect } from 'react'
 import gsap from 'gsap'
 import { ScrollTrigger } from 'gsap/ScrollTrigger'
-import Ramena from '../assets/images/Ramena.png'
-import NosyIranja from '../assets/images/NosyIranja.png'
-import NosyLonjo from '../assets/images/NosyLonjo.png'
-import Ambanja from '../assets/images/Ambanja.png'
+import Ramena from '../assets/images/Ramena.jpg'
+import NosyIranja from '../assets/images/NosyIranja.jpg'
+import NosyLonjo from '../assets/images/NosyLonjo.jpg'
+import Ambanja from '../assets/images/Ambanja.jpg'
 import Deux from '../assets/images/2.jpg'
-import Tana from '../assets/images/Tana.png'
+import Tana from '../assets/images/Tana.jpg'
 import Navbar from '../components/Navbar'
 import Footer from '../components/Footer'
 import OffersStatus from '../components/OffersStatus'
@@ -253,7 +253,7 @@ function Formats() {
               </ul>
               <div className="mt-8 flex flex-wrap items-center gap-5">
                 <p className="text-2xl font-semibold">{f.priceLabel}</p>
-                <AddToTrip variant="gold" item={{ kind: 'longstay', ref: String(f.id), title: f.title, image: f.image, link: '/longstay', details: [f.tab, f.priceLabel].filter(Boolean).join(' · '), price: null, unit: null }} />
+                <AddToTrip variant="gold" item={{ kind: 'longstay', ref: String(f.id), title: f.title, image: f.image, link: '/long-stay', details: [f.tab, f.priceLabel].filter(Boolean).join(' · '), price: null, unit: null }} />
               </div>
             </div>
           </div>
