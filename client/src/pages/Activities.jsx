@@ -15,6 +15,7 @@ import { Trans, useLanguage, useT } from '../i18n/LanguageContext'
 import { formatPrice, monthName } from '../utils/format'
 import { useOffers } from '../utils/useOffers'
 import { usePhoto } from '../sitePhotos'
+import { A } from '../i18n/router'
 
 gsap.registerPlugin(ScrollTrigger)
 
@@ -69,10 +70,10 @@ function Hero({ list }) {
             {t('intro')}
           </p>
           <div data-hero className="mt-8 flex flex-wrap items-center gap-4">
-            <a href="#activities" className={`bg-[#C49849] hover:bg-[#b08339] text-white ${BUTTON}`}>{t('seeAll')}</a>
-            <a href="/contact" className="inline-flex items-center gap-2 text-sm md:text-base font-medium hover:gap-3 transition-all">
+            <A href="#activities" className={`bg-[#C49849] hover:bg-[#b08339] text-white ${BUTTON}`}>{t('seeAll')}</A>
+            <A href="/contact" className="inline-flex items-center gap-2 text-sm md:text-base font-medium hover:gap-3 transition-all">
               {t('planStay')} <ArrowIcon />
-            </a>
+            </A>
           </div>
         </div>
 
@@ -80,7 +81,7 @@ function Hero({ list }) {
           <ol className="flex flex-col gap-2 md:gap-3">
             {list.map((a, i) => (
               <li key={a.id}>
-                <a
+                <A
                   href="#activities"
                   className="flex items-center justify-between gap-4 rounded-2xl border border-white/20 bg-white/10 backdrop-blur-md px-5 py-3 md:py-4 hover:bg-white/20 transition"
                 >
@@ -89,7 +90,7 @@ function Hero({ list }) {
                     <span className="text-base md:text-lg font-medium">{a.title}</span>
                   </span>
                   <ArrowIcon />
-                </a>
+                </A>
               </li>
             ))}
           </ol>
@@ -327,8 +328,8 @@ function Cta() {
           {t('ctaText')}
         </p>
         <div className="mt-8 flex flex-wrap gap-3">
-          <a href="/contact" className={`bg-[#C49849] hover:bg-[#b08339] text-white ${BUTTON}`}>{t('ctaButton')}</a>
-          <a href="tel:+261340000000" className={`border border-white/40 hover:bg-white/10 text-white ${BUTTON}`}>+261 34 00 000 00</a>
+          <A href="/contact" className={`bg-[#C49849] hover:bg-[#b08339] text-white ${BUTTON}`}>{t('ctaButton')}</A>
+          <A href="tel:+261340000000" className={`border border-white/40 hover:bg-white/10 text-white ${BUTTON}`}>+261 34 00 000 00</A>
         </div>
       </div>
 

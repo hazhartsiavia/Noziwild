@@ -1,6 +1,6 @@
 // Page /forgot-password : demande un lien de réinitialisation par email
 import React, { useState } from 'react'
-import { Link } from 'react-router-dom'
+import { Link } from '../i18n/router'
 import AuthLayout from '../components/AuthLayout'
 import { LABEL, FIELD, PRIMARY } from '../components/authStyles'
 import { requestPasswordReset } from '../api'

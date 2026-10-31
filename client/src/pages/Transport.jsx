@@ -11,6 +11,7 @@ import { localize } from '../i18n/localize';
 import OffersStatus from '../components/OffersStatus'
 import { useOffers } from '../utils/useOffers'
 import { usePhoto } from '../sitePhotos'
+import { A } from '../i18n/router'
 
 gsap.registerPlugin(ScrollTrigger)
 
@@ -226,14 +227,14 @@ function Hero() {
       </h1>
       <div className="mt-8 md:mt-10 flex flex-col lg:flex-row lg:items-center lg:justify-between gap-6 lg:gap-12">
         <p className="hero-copy text-sm sm:text-base md:text-lg text-slate-600 leading-relaxed max-w-2xl">{hero.text}</p>
-        <a
+        <A
           ref={btnRef}
           href={hero.ctaHref}
           className={`hero-cta inline-flex items-center gap-5 self-start rounded-full ${GREEN} hover:bg-[#0a5f48] transition-colors text-white pl-6 pr-2.5 py-2.5 md:pl-7 md:py-3`}
         >
           <span className="text-lg md:text-xl font-medium">{hero.ctaLabel}</span>
           <span className={`w-11 h-11 md:w-14 md:h-14 rounded-full ${GOLD} flex items-center justify-center text-white`}><ArrowIcon /></span>
-        </a>
+        </A>
       </div>
 
       {/* Grande carte avec chiffres */}
@@ -511,14 +512,14 @@ function Cta() {
       <div className="cta-copy relative flex flex-col justify-end p-6 md:p-12 max-w-2xl">
         <h2 className={ON_IMAGE_TITLE}>{cta.title}</h2>
         <p className="mt-4 text-sm md:text-lg text-white/85 leading-relaxed">{cta.text}</p>
-        <a
+        <A
           ref={btnRef}
           href={cta.href}
           className="cta-link mt-6 md:mt-8 self-start inline-flex items-center gap-3 rounded-full bg-white hover:bg-white/90 transition-colors text-slate-900 pl-6 pr-2.5 py-2.5 font-medium"
         >
           {cta.label}
           <span className={`w-10 h-10 rounded-full ${GOLD} flex items-center justify-center text-white`}><ArrowIcon /></span>
-        </a>
+        </A>
       </div>
     </div>
   )

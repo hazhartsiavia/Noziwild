@@ -9,6 +9,7 @@ import OffersStatus from '../components/OffersStatus'
 import { useOffers } from '../utils/useOffers'
 import { gsap } from 'gsap'
 import { ScrollTrigger } from 'gsap/ScrollTrigger'
+import { A } from '../i18n/router'
 
 gsap.registerPlugin(ScrollTrigger)
 
@@ -88,8 +89,8 @@ function Hero() {
             {t('intro')}
           </p>
           <div data-hero className="mt-8 flex flex-wrap items-center gap-4">
-            <a href="#tickets" className={`bg-[#C49849] hover:bg-[#b08339] text-white ${BUTTON}`}>{t('browse')}</a>
-            <a href="/contact" className="inline-flex items-center gap-2 text-sm md:text-base font-medium hover:gap-3 transition-all">{t('ask')} <ArrowIcon /></a>
+            <A href="#tickets" className={`bg-[#C49849] hover:bg-[#b08339] text-white ${BUTTON}`}>{t('browse')}</A>
+            <A href="/contact" className="inline-flex items-center gap-2 text-sm md:text-base font-medium hover:gap-3 transition-all">{t('ask')} <ArrowIcon /></A>
           </div>
         </div>
 
@@ -271,7 +272,7 @@ function Cta() {
       <div className="relative flex items-center justify-center p-6 md:p-12 border-t-2 md:border-t-0 md:border-l-2 border-dashed border-white/50">
         <span className={`${notch} -top-4 -left-4 md:left-[-16px]`} />
         <span className={`${notch} -top-4 -right-4 md:top-auto md:right-auto md:-bottom-4 md:-left-4`} />
-        <a href="/contact" className={`inline-flex items-center gap-3 bg-[#084838] hover:bg-[#0a5c47] text-white ${BUTTON}`}>{t('ctaButton')} <ArrowIcon /></a>
+        <A href="/contact" className={`inline-flex items-center gap-3 bg-[#084838] hover:bg-[#0a5c47] text-white ${BUTTON}`}>{t('ctaButton')} <ArrowIcon /></A>
       </div>
     </div>
   )

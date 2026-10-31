@@ -1,6 +1,6 @@
 // Page /reset-password?token=... : ouverte depuis le lien reçu par email
 import React, { useState } from 'react'
-import { Link, useNavigate, useSearchParams } from 'react-router-dom'
+import { Link, useNavigate, useSearchParams } from '../i18n/router'
 import AuthLayout from '../components/AuthLayout'
 import PasswordInput from '../components/PasswordInput'
 import { LABEL, PRIMARY, FIELD_ERROR } from '../components/authStyles'

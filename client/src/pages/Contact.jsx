@@ -9,6 +9,7 @@ import { useAuth } from '../context/AuthContext';
 import { useT } from '../i18n/LanguageContext';
 import { useScrollReveal } from '../utils/useScrollReveal'
 import { usePhoto } from '../sitePhotos'
+import { A } from '../i18n/router'
 
 
 /* Constantes partagées : mêmes valeurs que dans les autres sections */
@@ -138,7 +139,7 @@ function ContactItem({ icon, text, href }) {
   const base = "flex items-center gap-4 md:gap-5"
 
   return href
-    ? <a href={href} className={`${base} hover:opacity-80 transition`}>{inner}</a>
+    ? <A href={href} className={`${base} hover:opacity-80 transition`}>{inner}</A>
     : <div className={base}>{inner}</div>
 }
 
@@ -153,9 +154,9 @@ function SocialCard() {
           const SocialIcon = social.icon
           return (
             <li key={social.id}>
-              <a href={social.href} aria-label={social.label} className="block hover:opacity-70 transition">
+              <A href={social.href} aria-label={social.label} className="block hover:opacity-70 transition">
                 <SocialIcon />
-              </a>
+              </A>
             </li>
           )
         })}
@@ -194,12 +195,12 @@ function CallBanner() {
           <p className="mt-3 text-sm md:text-base">{t('callText')}</p>
         </div>
 
-        <a
+        <A
           href={call.href}
           className={`self-start sm:self-center shrink-0 bg-[#C49849] hover:bg-[#b53d2a] active:scale-95 transition text-white ${BUTTON} md:px-6 md:py-3`}
         >
           {t('callCta')}
-        </a>
+        </A>
       </div>
     </div>
   )
@@ -243,12 +244,12 @@ function Contact() {
 
           <div className="flex flex-col items-start gap-8 lg:gap-10 lg:border-l lg:border-slate-900/15 lg:pl-10">
             <p className={SECTION_SUBTITLE}>{t('text')}</p>
-            <a
+            <A
               href="#contact-form"
               className={`bg-[#084838] hover:bg-[#0a5c47] active:scale-95 transition text-white ${BUTTON} md:px-6 md:py-3`}
             >
               {t('cta')}
-            </a>
+            </A>
           </div>
         </div>
 

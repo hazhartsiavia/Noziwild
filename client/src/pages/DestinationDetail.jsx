@@ -1,5 +1,5 @@
 import React, { useRef } from 'react'
-import { useParams } from 'react-router-dom'
+import { useParams, A } from '../i18n/router'
 import Navbar from '../components/Navbar'
 import Footer from '../components/Footer'
 import OffersStatus from '../components/OffersStatus'
@@ -22,8 +22,8 @@ function NotFound() {
           <h1 className={H2}>{t('detail.soonTitle')}</h1>
           <p className="mt-4 text-slate-600">{t('detail.soonText')}</p>
           <div className="mt-6 flex justify-center gap-3">
-            <a href="/destinations" className={`${BTN} bg-[#084838] hover:bg-[#0a5c47] text-white`}>{t('detail.all')}</a>
-            <a href="/contact" className={`${BTN} ${GOLD} text-white`}>{t('detail.contact')}</a>
+            <A href="/destinations" className={`${BTN} bg-[#084838] hover:bg-[#0a5c47] text-white`}>{t('detail.all')}</A>
+            <A href="/contact" className={`${BTN} ${GOLD} text-white`}>{t('detail.contact')}</A>
           </div>
         </section>
       </main>
@@ -64,14 +64,14 @@ function PlacesCarousel({ d }) {
       <ul ref={ref} className="mt-10 flex gap-6 overflow-x-auto snap-x snap-mandatory pb-2 [scrollbar-width:none] [&::-webkit-scrollbar]:hidden">
         {d.visit.map((v) => (
           <li key={v.slug} className="snap-start shrink-0 w-[82%] sm:w-[46%] lg:w-[31%]">
-            <a href={`/destinations/${d.slug}/${v.slug}`} className="group block">
+            <A href={`/destinations/${d.slug}/${v.slug}`} className="group block">
               <div className="aspect-[4/3] overflow-hidden rounded-[1.5rem]">
                 <img src={v.image} alt={v.name} className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" />
               </div>
               <h3 className="mt-4 text-xl md:text-2xl font-medium text-forest group-hover:underline">{v.name}</h3>
               <p className="mt-2 text-sm md:text-base text-slate-600 leading-relaxed">{v.text}</p>
               <span className="mt-3 inline-block text-sm font-medium text-[#a9813a]">{t('detail.readMore')}</span>
-            </a>
+            </A>
           </li>
         ))}
       </ul>
@@ -107,7 +107,7 @@ function DestinationDetail() {
           <div className="absolute inset-0 bg-gradient-to-t from-slate-950/85 via-slate-950/25 to-slate-950/10" />
           <div className="relative p-6 sm:p-10 md:p-16">
             <nav aria-label="Breadcrumb" className="text-sm md:text-base text-white/80">
-              <a href="/" className="hover:underline">{t('detail.home')}</a> / <a href="/destinations" className="hover:underline">{t('detail.destinations')}</a> / {d.name}
+              <A href="/" className="hover:underline">{t('detail.home')}</A> / <A href="/destinations" className="hover:underline">{t('detail.destinations')}</A> / {d.name}
             </nav>
             <h1 className="mt-4 text-6xl sm:text-7xl md:text-8xl xl:text-[112px] font-semibold leading-[0.95] tracking-tight">{d.name}</h1>
             <p className="mt-4 text-lg md:text-2xl text-white/90 max-w-2xl">{d.tagline}</p>
@@ -170,11 +170,11 @@ function DestinationDetail() {
             <ul className="mt-8 grid grid-cols-2 md:grid-cols-4 gap-4">
               {nearby.map((n) => (
                 <li key={n.slug}>
-                  <a href={`/destinations/${n.slug}`} className="group relative block aspect-[3/4] overflow-hidden rounded-[1.5rem] text-white">
+                  <A href={`/destinations/${n.slug}`} className="group relative block aspect-[3/4] overflow-hidden rounded-[1.5rem] text-white">
                     <img src={n.image} alt="" className="absolute inset-0 w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" />
                     <div className="absolute inset-0 bg-gradient-to-t from-slate-950/85 to-transparent" />
                     <p className="absolute inset-x-0 bottom-0 p-4 text-lg font-medium">{n.name}</p>
-                  </a>
+                  </A>
                 </li>
               ))}
             </ul>
@@ -184,7 +184,7 @@ function DestinationDetail() {
         {/* CTA */}
         <section className={`${W} mt-16 md:mt-24 rounded-[2rem] md:rounded-[3rem] bg-white p-8 md:p-14 flex flex-col md:flex-row md:items-center justify-between gap-6`}>
           <h2 className={`${H2} max-w-2xl`}>{t('detail.ctaTitle', { name: d.name })}</h2>
-          <a href="/contact" className={`${BTN} ${GOLD} text-white self-start md:self-center`}>{t('detail.ctaButton')}</a>
+          <A href="/contact" className={`${BTN} ${GOLD} text-white self-start md:self-center`}>{t('detail.ctaButton')}</A>
         </section>
       </main>
       <Footer />

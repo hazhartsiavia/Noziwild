@@ -2,7 +2,7 @@
 import React, { useRef, useLayoutEffect, useState } from 'react'
 import gsap from 'gsap'
 import icone from '../assets/icone.png'
-import { Link } from 'react-router-dom'
+import { Link } from '../i18n/router'
 import { useAuth } from '../context/AuthContext'
 import { useTrip } from '../context/TripContext'
 import Avatar from './Avatar'
@@ -94,7 +94,7 @@ function Navbar() {
     [t('links.accommodation'), '/hosting'],
     [t('links.transport'), '/transport'],
     [t('links.guides'), '/guide'],
-    [t('links.food'), '/Food-dining'],
+    [t('links.food'), '/food-dining'],
     [t('links.equipment'), '/equipment-rentals'],
     [t('links.photography'), '/photography'],
     [t('links.planning'), '/travel-planning'],

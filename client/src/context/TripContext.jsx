@@ -7,7 +7,7 @@
 //            | 'fixed' (prix total) | null (sur devis)
 //   Les titres sont copiés dans la langue du moment : c'est ce que l'équipe lira dans la demande.
 import React, { createContext, useCallback, useContext, useEffect, useMemo, useRef, useState } from 'react'
-import { Link } from 'react-router-dom'
+import { Link } from '../i18n/router'
 import { Check, X } from 'lucide-react'
 import { useT } from '../i18n/LanguageContext'
 

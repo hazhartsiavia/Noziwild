@@ -12,7 +12,7 @@ import { useAuth } from '../context/AuthContext';
 import { Trans, useLanguage, useT } from '../i18n/LanguageContext';
 import { localize } from '../i18n/localize';
 import { formatPrice } from '../utils/format';
-import { Link } from 'react-router-dom';
+import { Link, A } from '../i18n/router';
 import AddToTrip, { useTripItem } from '../components/AddToTrip';
 import { useTrip } from '../context/TripContext';
 import { gsap } from 'gsap'
@@ -113,8 +113,8 @@ function Hero() {
           {t('intro')}
         </p>
         <div data-hero className="mt-7 flex flex-wrap items-center gap-4">
-          <a href="#builder" className={`bg-[#084838] hover:bg-[#0a5c47] text-white ${BUTTON}`}>{t('sketch')}</a>
-          <a href="/contact" className="inline-flex items-center gap-2 text-sm md:text-base font-medium text-slate-800 hover:gap-3 transition-all">{t('talk')} <ArrowIcon /></a>
+          <A href="#builder" className={`bg-[#084838] hover:bg-[#0a5c47] text-white ${BUTTON}`}>{t('sketch')}</A>
+          <A href="/contact" className="inline-flex items-center gap-2 text-sm md:text-base font-medium text-slate-800 hover:gap-3 transition-all">{t('talk')} <ArrowIcon /></A>
         </div>
       </div>
 

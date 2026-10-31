@@ -1,4 +1,5 @@
-import { Routes, Route, Navigate } from "react-router-dom";
+import { Routes, Route, Navigate, Outlet, useParams } from "react-router-dom";
+import { PREFIXED } from "./i18n/paths";
 import Home from "./pages/Home";
 import Blog from "./pages/Blog";
 import BlogPost from "./pages/BlogPost";
@@ -43,38 +44,52 @@ import AdminUsers from "./pages/admin/AdminUsers";
 import AdminUser from "./pages/admin/AdminUser";
 import TextsEditor from "./pages/admin/TextsEditor";
 
+// Pages du site public, en anglais à la racine (/circuits) et dans les autres langues sous /fr, /de... (/fr/circuits)
+const publicRoutes = (
+  <>
+    <Route index element={<Home />} />
+    <Route path="blog" element={<Blog />} />
+    <Route path="blog/:slug" element={<BlogPost />} />
+    <Route path="about" element={<About />} />
+    <Route path="contact" element={<Contact />} />
+    <Route path="transport" element={<Transport />} />
+    <Route path="hosting" element={<Hebergement />} />
+    <Route path="guide" element={<Guides />} />
+    <Route path="activities" element={<Activities/>}/>
+    <Route path="equipment-rentals" element={<EquipmentRentals />} />
+    <Route path="photography" element={<Photography />} />
+    <Route path="food-dining" element={<FoodDining/>} />
+    <Route path="ticket-reservation" element={<Ticketreservations/>} />
+    <Route path="travel-planning" element={<Travelplanning/>}/>
+    <Route path="circuits" element={< Circuits/>}/>
+    <Route path="circuits/:slug" element={<CircuitDetail />} />
+    <Route path="longstay" element={< LongStay/>}/>
+    <Route path="destinations" element={< Destinations/>}/>
+    <Route path="destinations/:slug/:placeSlug" element={<PlaceDetail />} />
+    <Route path="destinations/:slug" element={<DestinationDetail />} />
+    <Route path="excurssions" element={<Excurssions/>}/>
+    <Route path="cruise-excurssion" element={<CruiseExcursions />} />
+    <Route path="tailor-made" element={<TailorMade />} />
+    <Route path="my-trip" element={<MyTrip />} />
+    <Route path="login" element={<Auth key="login" mode="login" />} />
+    <Route path="register" element={<Auth key="register" mode="register" />} />
+    <Route path="forgot-password" element={<ForgotPassword />} />
+    <Route path="reset-password" element={<ResetPassword />} />
+    <Route path="account" element={<Account />} />
+  </>
+);
+
+// /fr/... : pages en français ; un premier segment qui n'est pas une langue (/xyz) n'affiche rien
+function LanguageRoute() {
+  const { lang } = useParams();
+  return PREFIXED.includes(lang) ? <Outlet /> : null;
+}
+
 function App() {
   return (
     <Routes>
-      <Route path="/" element={<Home />} />
-      <Route path="/blog" element={<Blog />} />
-      <Route path="/blog/:slug" element={<BlogPost />} />
-      <Route path="/about" element={<About />} />
-      <Route path="/contact" element={<Contact />} />
-      <Route path="/transport" element={<Transport />} />
-      <Route path="/hosting" element={<Hebergement />} />
-      <Route path="/guide" element={<Guides />} />
-      <Route path="/activities" element={<Activities/>}/>
-      <Route path="/equipment-rentals" element={<EquipmentRentals />} />
-      <Route path="/photography" element={<Photography />} />
-      <Route path="/Food-dining" element={<FoodDining/>} />
-      <Route path="/ticket-reservation" element={<Ticketreservations/>} />
-      <Route path="/travel-planning" element={<Travelplanning/>}/>
-      <Route path="/circuits" element={< Circuits/>}/>
-      <Route path="/circuits/:slug" element={<CircuitDetail />} />
-      <Route path="/longstay" element={< LongStay/>}/>
-      <Route path="/destinations" element={< Destinations/>}/>
-      <Route path="/destinations/:slug/:placeSlug" element={<PlaceDetail />} />
-      <Route path="/destinations/:slug" element={<DestinationDetail />} />
-      <Route path="/excurssions" element={<Excurssions/>}/>
-      <Route path="/cruise-excurssion" element={<CruiseExcursions />} />
-      <Route path="/tailor-made" element={<TailorMade />} />
-      <Route path="/my-trip" element={<MyTrip />} />
-      <Route path="/login" element={<Auth key="login" mode="login" />} />
-      <Route path="/register" element={<Auth key="register" mode="register" />} />
-      <Route path="/forgot-password" element={<ForgotPassword />} />
-      <Route path="/reset-password" element={<ResetPassword />} />
-      <Route path="/account" element={<Account />} />
+      <Route path="/">{publicRoutes}</Route>
+      <Route path=":lang" element={<LanguageRoute />}>{publicRoutes}</Route>
       <Route path="/admin" element={<AdminLayout />}>
         <Route index element={<Navigate to="circuits" replace />} />
         <Route path="circuits" element={<AdminCircuits />} />

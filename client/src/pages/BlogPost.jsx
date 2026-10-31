@@ -1,7 +1,7 @@
 // /blog/:slug : un article du journal, géré depuis /admin/blog.
 // Corps en blocs : intertitre, paragraphe, liste (mot-clé en gras + texte), photo, bandeau d'offre.
 import React, { useEffect, useRef, useState } from 'react'
-import { useParams } from 'react-router-dom'
+import { useParams, A } from '../i18n/router'
 import Navbar from '../components/Navbar'
 import Footer from '../components/Footer'
 import OffersStatus from '../components/OffersStatus'
@@ -54,13 +54,13 @@ function Cta({ block }) {
             {block.priceLabel && <p className="mt-4 text-xl md:text-2xl font-medium text-[#E6C58A]">{block.priceLabel}</p>}
           </div>
           {block.button && (
-            <a
+            <A
               href={block.link}
               {...(external ? { target: '_blank', rel: 'noreferrer' } : {})}
               className={`${BTN} self-start md:self-end bg-[#C49849] hover:bg-[#a9813a] text-white`}
             >
               {block.button}
-            </a>
+            </A>
           )}
         </div>
       </div>
@@ -132,7 +132,7 @@ function BlogPost() {
         <section className={`${W} mt-16 rounded-3xl bg-white p-10 text-center`}>
           <h1 className="text-3xl md:text-5xl font-medium tracking-tight text-forest">{t('notFoundTitle')}</h1>
           <p className="mt-4 text-slate-600">{t('notFoundText')}</p>
-          <a href="/blog" className={`${BTN} mt-6 bg-[#084838] hover:bg-[#0a5c47] text-white`}>{t('allArticles')}</a>
+          <A href="/blog" className={`${BTN} mt-6 bg-[#084838] hover:bg-[#0a5c47] text-white`}>{t('allArticles')}</A>
         </section>
       </Shell>
     )
@@ -145,7 +145,7 @@ function BlogPost() {
 
         <article className={`${W} mt-6`}>
           <nav aria-label="Breadcrumb" className="text-sm md:text-base text-slate-700">
-            <a href="/" className="hover:underline">{t('home')}</a> / <a href="/blog" className="hover:underline">{t('crumb')}</a> /{' '}
+            <A href="/" className="hover:underline">{t('home')}</A> / <A href="/blog" className="hover:underline">{t('crumb')}</A> /{' '}
             <span className="text-slate-500">{post.title}</span>
           </nav>
           <h1 className="mt-5 max-w-5xl text-4xl sm:text-5xl md:text-6xl xl:text-7xl font-semibold leading-[1.05] tracking-tight text-forest">{post.title}</h1>
@@ -167,7 +167,7 @@ function BlogPost() {
           <section className={`${W} mt-20 md:mt-28`}>
             <div className="flex flex-wrap items-end justify-between gap-4">
               <h2 className="text-3xl sm:text-4xl md:text-5xl font-medium leading-[1.1] tracking-tight text-forest">{t('related')}</h2>
-              <a href="/blog" className="text-sm md:text-base font-medium text-[#a9813a] hover:underline">{t('allArticles')}</a>
+              <A href="/blog" className="text-sm md:text-base font-medium text-[#a9813a] hover:underline">{t('allArticles')}</A>
             </div>
             <div className="mt-8 md:mt-10 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-9">
               {related.map((p) => <PostCard key={p.slug} post={p} />)}

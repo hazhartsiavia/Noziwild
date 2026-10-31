@@ -1,5 +1,5 @@
 import React, { useEffect, useLayoutEffect, useRef, useState } from 'react'
-import { Link } from 'react-router-dom'
+import { Link, A } from '../i18n/router'
 import Deux from "../assets/images/2.jpg";
 import Ambanja from "../assets/images/Ambanja.png";
 import NosyIranja from "../assets/images/NosyIranja.png";
@@ -117,14 +117,14 @@ function Hero({ counts, onPick }) {
           <p className={SECTION_SUBTITLE}>
             {t('intro')}
           </p>
-          <a href="#catalog" className={`mt-6 inline-block bg-[#084838] hover:bg-[#0a5c47] text-white ${BUTTON}`}>{t('browse')}</a>
+          <A href="#catalog" className={`mt-6 inline-block bg-[#084838] hover:bg-[#0a5c47] text-white ${BUTTON}`}>{t('browse')}</A>
         </div>
       </div>
 
       <ul className="mt-10 md:mt-16 grid grid-cols-2 lg:grid-cols-4 gap-4 md:gap-6">
         {arches.map((a, i) => (
           <li key={a.id} data-arch>
-            <a href="#catalog" onClick={() => onPick(a.id)} className="group block">
+            <A href="#catalog" onClick={() => onPick(a.id)} className="group block">
               <div className="aspect-[3/4] overflow-hidden rounded-t-[999px] rounded-b-3xl">
                 <img src={photo(`gear.arch.${a.id}`)} alt="" className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" />
               </div>
@@ -137,7 +137,7 @@ function Hero({ counts, onPick }) {
                   <ArrowIcon />
                 </span>
               </div>
-            </a>
+            </A>
           </li>
         ))}
       </ul>

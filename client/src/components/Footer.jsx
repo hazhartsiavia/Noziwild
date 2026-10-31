@@ -1,5 +1,5 @@
 import React from 'react'
-import { Link } from 'react-router-dom'
+import { Link } from '../i18n/router'
 import Icone from "../assets/icone.png";
 import { useT } from "../i18n/LanguageContext";
 

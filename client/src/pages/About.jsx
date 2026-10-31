@@ -11,6 +11,7 @@ import Footer from '../components/Footer';
 import { useT } from '../i18n/LanguageContext';
 import { useScrollReveal } from '../utils/useScrollReveal'
 import { usePhoto } from '../sitePhotos'
+import { A } from '../i18n/router'
 
 /* Constantes partagées : mêmes valeurs que dans Explore, Choose, Trips et Blog */
 const SECTION_WIDTH = "w-[90vw] lg:max-w-[90vw] xl:max-w-[95vw]"
@@ -263,7 +264,7 @@ function TalkBadge() {
 function HelpPill() {
   const t = useT('about')
   return (
-    <a
+    <A
       href={content.helpHref}
       className="inline-flex items-center gap-5 md:gap-8 self-start rounded-full bg-[#084838] hover:bg-[#0a5c47] transition text-white pl-6 pr-2.5 py-2.5 md:pl-7 md:py-3"
     >
@@ -280,7 +281,7 @@ function HelpPill() {
           </span>
         ))}
       </span>
-    </a>
+    </A>
   )
 }
 
@@ -468,12 +469,12 @@ function ExpertsSection() {
           </p>
 
           <div className="mt-5 md:mt-6 flex flex-col gap-2 text-sm sm:text-base font-medium text-slate-800">
-            <a href={`tel:${current.phone.replace(/\s/g, '')}`} className="w-fit hover:underline underline-offset-4">
+            <A href={`tel:${current.phone.replace(/\s/g, '')}`} className="w-fit hover:underline underline-offset-4">
               {current.phone}
-            </a>
-            <a href={`mailto:${current.email}`} className="w-fit hover:underline underline-offset-4">
+            </A>
+            <A href={`mailto:${current.email}`} className="w-fit hover:underline underline-offset-4">
               {current.email}
-            </a>
+            </A>
           </div>
         </article>
 

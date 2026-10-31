@@ -11,6 +11,7 @@ import { useLanguage, useT } from '../i18n/LanguageContext'
 import { formatPrice } from '../utils/format'
 import { useOffers } from '../utils/useOffers'
 import { usePhoto } from '../sitePhotos'
+import { A } from '../i18n/router'
 
 gsap.registerPlugin(ScrollTrigger)
 
@@ -160,7 +161,7 @@ function Row({ item }) {
           <span>{item.place}</span><span className="w-px h-4 bg-slate-500" /><span>{item.level}</span><span className="w-px h-4 bg-slate-500" /><span>{item.group}</span>
         </p>
         <h3 className="mt-3 text-xl md:text-3xl font-medium leading-snug text-forest">
-          {href ? <a href={href} className="hover:underline">{item.title}</a> : item.title}
+          {href ? <A href={href} className="hover:underline">{item.title}</A> : item.title}
         </h3>
         <p className="mt-3 text-sm md:text-base text-slate-600 leading-relaxed max-w-xl">{item.text}</p>
       </div>
@@ -169,7 +170,7 @@ function Row({ item }) {
         <p className="text-slate-600 text-sm md:text-right">{t('from')}<br className="hidden md:block" /> <span className="text-2xl md:text-3xl font-semibold text-slate-900">{formatPrice(item.price, lang)}</span><span className="block text-xs">{t('perPerson')}</span></p>
         <div className="flex flex-col items-end gap-2">
           <AddToTrip item={tripItem} />
-          {href && <a href={href} className="text-sm text-slate-600 hover:underline">{t('details')}</a>}
+          {href && <A href={href} className="text-sm text-slate-600 hover:underline">{t('details')}</A>}
         </div>
       </div>
     </li>
@@ -334,7 +335,7 @@ function Excursions() {
           <div className="cta-text relative p-8 md:p-16 max-w-3xl">
             <h2 className="text-3xl sm:text-4xl md:text-5xl font-medium leading-[1.1] tracking-tight">{t('ctaTitle')}</h2>
             <p className="mt-4 text-sm md:text-lg text-white/85">{t('ctaText')}</p>
-            <a href="/contact" className={`cta-btn ${BTN} ${GOLD} text-white mt-8`}>{t('ctaButton')}</a>
+            <A href="/contact" className={`cta-btn ${BTN} ${GOLD} text-white mt-8`}>{t('ctaButton')}</A>
           </div>
         </section>
       </main>

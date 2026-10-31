@@ -1,6 +1,6 @@
 // Page /account : profil, méthodes de connexion, demandes envoyées et suppression du compte
 import React, { useEffect, useRef, useState } from 'react'
-import { Link, Navigate, useLocation, useNavigate } from 'react-router-dom'
+import { Link, Navigate, useLocation, useNavigate } from '../i18n/router'
 import Navbar from '../components/Navbar'
 import Footer from '../components/Footer'
 import Avatar from '../components/Avatar'

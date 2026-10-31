@@ -16,6 +16,7 @@ import { useOffers } from '../utils/useOffers'
 import { gsap } from 'gsap'
 import { ScrollTrigger } from 'gsap/ScrollTrigger'
 import { usePhoto } from '../sitePhotos'
+import { A } from '../i18n/router'
 
 gsap.registerPlugin(ScrollTrigger)
 
@@ -118,10 +119,10 @@ function Hero() {
           {t('intro')}
         </p>
         <div data-hero className="mt-8 flex flex-wrap items-center justify-center gap-4">
-          <a href="#sessions" className={`bg-[#084838] hover:bg-[#0a5c47] text-white ${BUTTON}`}>{t('book')}</a>
-          <a href="#gallery" className="inline-flex items-center gap-2 text-sm md:text-base font-medium text-slate-800 hover:gap-3 transition-all">
+          <A href="#sessions" className={`bg-[#084838] hover:bg-[#0a5c47] text-white ${BUTTON}`}>{t('book')}</A>
+          <A href="#gallery" className="inline-flex items-center gap-2 text-sm md:text-base font-medium text-slate-800 hover:gap-3 transition-all">
             {t('seeGallery')} <ArrowIcon />
-          </a>
+          </A>
         </div>
 
         <ul data-hero className="mt-10 md:mt-12 flex flex-wrap items-center justify-center gap-x-8 md:gap-x-12 gap-y-4">
@@ -442,8 +443,8 @@ function Cta() {
           {t('ctaText')}
         </p>
         <div className="mt-8 flex flex-wrap items-center justify-center gap-3">
-          <a href="/contact" className={`bg-[#C49849] hover:bg-[#b08339] text-white ${BUTTON}`}>{t('ctaBook')}</a>
-          <a href="#gallery" className={`border border-white/50 hover:bg-white/10 text-white ${BUTTON}`}>{t('ctaBack')}</a>
+          <A href="/contact" className={`bg-[#C49849] hover:bg-[#b08339] text-white ${BUTTON}`}>{t('ctaBook')}</A>
+          <A href="#gallery" className={`border border-white/50 hover:bg-white/10 text-white ${BUTTON}`}>{t('ctaBack')}</A>
         </div>
       </div>
     </div>

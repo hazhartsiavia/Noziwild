@@ -1,5 +1,5 @@
 import React, { useRef, useState } from 'react'
-import { useParams } from 'react-router-dom'
+import { useParams, A } from '../i18n/router'
 import Navbar from '../components/Navbar'
 import Footer from '../components/Footer'
 import { useDestinations } from './destinationsData'
@@ -142,7 +142,7 @@ function PlaceDetail() {
           <Navbar />
           <section className={`${W} mt-16 rounded-3xl bg-white p-10 text-center`}>
             <h1 className={H2}>{t('place.notFound')}</h1>
-            <a href="/destinations" className={`${BTN} bg-[#084838] hover:bg-[#0a5c47] text-white mt-6`}>{t('place.all')}</a>
+            <A href="/destinations" className={`${BTN} bg-[#084838] hover:bg-[#0a5c47] text-white mt-6`}>{t('place.all')}</A>
           </section>
         </main>
         <Footer />
@@ -168,7 +168,7 @@ function PlaceDetail() {
         {/* En-tête */}
         <section className={`${W} mt-6`}>
           <nav aria-label="Breadcrumb" className="text-sm md:text-base text-slate-700">
-            <a href="/" className="hover:underline">{t('place.home')}</a> / <a href="/destinations" className="hover:underline">{t('place.destinations')}</a> / <a href={`/destinations/${d.slug}`} className="hover:underline">{d.name}</a> / {place.name}
+            <A href="/" className="hover:underline">{t('place.home')}</A> / <A href="/destinations" className="hover:underline">{t('place.destinations')}</A> / <A href={`/destinations/${d.slug}`} className="hover:underline">{d.name}</A> / {place.name}
           </nav>
           <h1 className="mt-5 text-4xl sm:text-5xl md:text-6xl xl:text-7xl font-semibold leading-[1.05] tracking-tight text-forest max-w-5xl">{place.name}</h1>
           <p className="mt-3 text-lg md:text-2xl text-slate-700 max-w-3xl">{place.text}</p>
@@ -246,11 +246,11 @@ function PlaceDetail() {
             <ul className="mt-8 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
               {others.map((o) => (
                 <li key={o.slug}>
-                  <a href={`/destinations/${d.slug}/${o.slug}`} className="group relative block aspect-[4/3] overflow-hidden rounded-[1.5rem] text-white">
+                  <A href={`/destinations/${d.slug}/${o.slug}`} className="group relative block aspect-[4/3] overflow-hidden rounded-[1.5rem] text-white">
                     <img src={o.image} alt="" className="absolute inset-0 w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" />
                     <div className="absolute inset-0 bg-gradient-to-t from-slate-950/85 to-transparent" />
                     <p className="absolute inset-x-0 bottom-0 p-5 text-xl font-medium">{o.name}</p>
-                  </a>
+                  </A>
                 </li>
               ))}
             </ul>

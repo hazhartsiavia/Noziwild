@@ -1,6 +1,6 @@
 // Pages /login et /register : même composant, deux modes
 import React, { useState } from 'react'
-import { Link, Navigate, useNavigate, useSearchParams } from 'react-router-dom'
+import { Link, Navigate, useNavigate, useSearchParams } from '../i18n/router'
 import AuthLayout from '../components/AuthLayout'
 import GoogleButton from '../components/GoogleButton'
 import PasswordInput from '../components/PasswordInput'
