@@ -9,6 +9,7 @@ import { notFound, errorHandler } from './middlewares/errorHandler.js'
 import { checkOrigin, isAllowedOrigin } from './middlewares/checkOrigin.js'
 import { UPLOADS_DIR, UPLOADS_FILES_DIR, CLIENT_DIST, prepareUploadsDir } from './config/paths.js'
 import { initDatabase } from './utils/database.js'
+import { pageMeta, renderHead, robotsTxt, sitemapXml } from './utils/seo.js'
 
 // Les sessions ne peuvent pas fonctionner sans secret : on arrête tout de suite
 if (!process.env.JWT_SECRET || process.env.JWT_SECRET === 'change-moi') {
@@ -49,9 +50,16 @@ app.use(cookieParser())
 // Toutes les routes commencent par /api
 app.use('/api', routes)
 
+// Pour les moteurs de recherche : pages à explorer, et liste de toutes les pages du site
+app.get('/robots.txt', (req, res) => res.type('text/plain').set('Cache-Control', 'public, max-age=3600').send(robotsTxt(req)))
+app.get('/sitemap.xml', async (req, res) => {
+  res.type('application/xml').set('Cache-Control', 'public, max-age=3600').send(await sitemapXml(req))
+})
+
 // Site React construit (client/dist) : servi par le même serveur s'il est présent
 const INDEX_HTML = path.join(CLIENT_DIST, 'index.html')
 if (fs.existsSync(INDEX_HTML)) {
+  const indexHtml = fs.readFileSync(INDEX_HTML, 'utf8')
   app.use(express.static(CLIENT_DIST, {
     index: false,
     // Les fichiers de /assets ont un nom qui change à chaque build : cache long. Le reste : revalidé.
@@ -59,12 +67,13 @@ if (fs.existsSync(INDEX_HTML)) {
       res.set('Cache-Control', file.includes(`${path.sep}assets${path.sep}`) ? 'public, max-age=31536000, immutable' : 'no-cache')
     },
   }))
-  // Les adresses du site (/circuits/..., /account...) sont gérées par React : on renvoie index.html
-  app.use((req, res, next) => {
+  // Les adresses du site (/circuits/..., /account...) sont gérées par React : on renvoie index.html,
+  // avec le titre, la description et l'aperçu de partage de la page (adresse inconnue : statut 404)
+  app.use(async (req, res, next) => {
     const isPage = (req.method === 'GET' || req.method === 'HEAD') && !req.path.startsWith('/api/') && !req.path.startsWith('/uploads/')
     if (!isPage || !req.accepts('html')) return next()
-    res.set('Cache-Control', 'no-cache')
-    res.sendFile(INDEX_HTML)
+    const meta = await pageMeta(req)
+    res.status(meta.status).set('Cache-Control', 'no-cache').type('html').send(renderHead(indexHtml, meta, req))
   })
 }
 
