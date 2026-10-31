@@ -1,7 +1,7 @@
 import React, { useRef, useState } from 'react'
-import NosyIranja from "../assets/images/NosyIranja.png";
-import Ambanja from "../assets/images/Ambanja.png";
-import NosyLonjo from "../assets/images/NosyLonjo.png";
+import NosyIranja from "../assets/images/NosyIranja.jpg";
+import Ambanja from "../assets/images/Ambanja.jpg";
+import NosyLonjo from "../assets/images/NosyLonjo.jpg";
 import Navbar from '../components/Navbar';
 import Footer from '../components/Footer';
 import { sendContact } from '../api';

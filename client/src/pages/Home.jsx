@@ -5,12 +5,12 @@ import {
   ArrowRight, Backpack, BedDouble, Camera, Car, Compass, Map, Route, Ship,
   Sparkles, Star, Sun, Ticket, Users, UtensilsCrossed,
 } from 'lucide-react'
-import Ramena from '../assets/images/Ramena.png'
-import NosyIranja from '../assets/images/NosyIranja.png'
-import NosyLonjo from '../assets/images/NosyLonjo.png'
-import Ambanja from '../assets/images/Ambanja.png'
+import Ramena from '../assets/images/Ramena.jpg'
+import NosyIranja from '../assets/images/NosyIranja.jpg'
+import NosyLonjo from '../assets/images/NosyLonjo.jpg'
+import Ambanja from '../assets/images/Ambanja.jpg'
 import Deux from '../assets/images/2.jpg'
-import Tana from '../assets/images/Tana.png'
+import Tana from '../assets/images/Tana.jpg'
 import Icone from '../assets/icone.png'
 import Footer from '../components/Footer'
 import { slugify } from './destinationsData'
@@ -41,8 +41,8 @@ const quoteHref = (k, v) => `/contact?type=quote&${k}=${encodeURIComponent(v)}`
 // Les 4 façons de voyager
 const ways = [
   { title: 'Circuits', text: 'Ready-made routes across the island', href: '/circuits', icon: Route, slot: 'home.ways.1', image: Tana },
-  { title: 'Excursions', text: 'Day trips and short escapes', href: '/excurssions', icon: Sun, slot: 'home.ways.2', image: Ramena },
-  { title: 'Long Stay', text: 'Live the island for weeks', href: '/longstay', icon: Compass, slot: 'home.ways.3', image: NosyIranja },
+  { title: 'Excursions', text: 'Day trips and short escapes', href: '/excursions', icon: Sun, slot: 'home.ways.2', image: Ramena },
+  { title: 'Long Stay', text: 'Live the island for weeks', href: '/long-stay', icon: Compass, slot: 'home.ways.3', image: NosyIranja },
   { title: 'Tailor-Made', text: 'A trip designed around you', href: '/tailor-made', icon: Sparkles, slot: 'home.ways.4', image: Ambanja },
 ]
 
@@ -89,14 +89,14 @@ const trips = [
 ]
 
 const services = [
-  { title: 'Accommodation', href: '/hosting', icon: BedDouble },
+  { title: 'Accommodation', href: '/accommodation', icon: BedDouble },
   { title: 'Transport', href: '/transport', icon: Car },
-  { title: 'Guides', href: '/guide', icon: Users },
+  { title: 'Guides', href: '/guides', icon: Users },
   { title: 'Food & Dining', href: '/food-dining', icon: UtensilsCrossed },
   { title: 'Equipment Rentals', href: '/equipment-rentals', icon: Backpack },
   { title: 'Photography', href: '/photography', icon: Camera },
   { title: 'Travel Planning', href: '/travel-planning', icon: Map },
-  { title: 'Cruise Excursions', href: '/cruise-excurssion', icon: Ship },
+  { title: 'Cruise Excursions', href: '/cruise-excursions', icon: Ship },
 ]
 
 const quotes = [

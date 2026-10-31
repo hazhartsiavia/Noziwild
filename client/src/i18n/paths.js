@@ -4,6 +4,15 @@
 export const PREFIXED = ['fr', 'de', 'it', 'es']
 const NO_PREFIX = /^\/(admin|api|uploads)(\/|$)/
 
+// Pages renommées : ancienne adresse -> nouvelle (le serveur redirige aussi, en 301, voir server/src/utils/seo.js)
+export const RENAMED_PAGES = {
+  '/excurssions': '/excursions',
+  '/cruise-excurssion': '/cruise-excursions',
+  '/hosting': '/accommodation',
+  '/longstay': '/long-stay',
+  '/guide': '/guides',
+}
+
 // /fr/circuits -> 'fr' ; /circuits -> 'en'
 export function langFromPath(pathname) {
   const first = pathname.split('/')[1]

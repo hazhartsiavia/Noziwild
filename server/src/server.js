@@ -37,6 +37,10 @@ const photoOptions = {
 app.locals.uploads = prepareUploadsDir()
 app.use('/uploads/files', express.static(UPLOADS_FILES_DIR, photoOptions))
 app.use('/uploads', express.static(UPLOADS_DIR, photoOptions))
+// Photos de départ allégées en .jpg : la base garde parfois l'ancien nom (lemur.png) -> on sert le .jpg
+app.get(/^\/uploads\/circuits\/([a-z0-9-]+)\.(png|jpeg)$/, (req, res, next) => {
+  res.sendFile(path.join(UPLOADS_DIR, 'circuits', `${req.params[0]}.jpg`), { maxAge: photoOptions.maxAge, headers: { 'X-Content-Type-Options': 'nosniff' } }, (error) => error && next())
+})
 
 // Lit le JSON envoyé par les formulaires (un circuit complet peut peser quelques dizaines de Ko), et les cookies
 app.use(express.json({ limit: '200kb' }))

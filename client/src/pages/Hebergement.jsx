@@ -1,7 +1,7 @@
 import React, { useRef, useState } from 'react'
-import NosyLonjo from "../assets/images/NosyLonjo.png";
-import NosyIranja from "../assets/images/NosyIranja.png";
-import Ramena from "../assets/images/Ramena.png";
+import NosyLonjo from "../assets/images/NosyLonjo.jpg";
+import NosyIranja from "../assets/images/NosyIranja.jpg";
+import Ramena from "../assets/images/Ramena.jpg";
 import Navbar from '../components/Navbar';
 import Footer from '../components/Footer';
 import AddToTrip from '../components/AddToTrip'
@@ -181,7 +181,7 @@ function StayCard({ stay }) {
         </ul>
         <div className="mt-auto pt-6 flex items-center justify-between gap-3">
           <p className="text-slate-600 text-sm"><Trans text={t('fromPerNight')} values={{ price: <span className="text-xl md:text-2xl font-medium text-slate-900">{formatPrice(stay.price, lang)}</span> }} /></p>
-          <AddToTrip item={{ kind: 'stay', ref: String(stay.id), title: stay.name, image: stay.image, link: '/hosting', details: stay.place, price: stay.price, unit: 'night', qty: 3 }} />
+          <AddToTrip item={{ kind: 'stay', ref: String(stay.id), title: stay.name, image: stay.image, link: '/accommodation', details: stay.place, price: stay.price, unit: 'night', qty: 3 }} />
         </div>
       </div>
     </article>
@@ -248,7 +248,7 @@ function Featured({ stays }) {
         <AddToTrip
           variant="gold"
           className="mt-6 self-start"
-          item={{ kind: 'stay', ref: String(stay?.id ?? 'featured'), title: featured.name, image: photo('hosting.featured'), link: '/hosting', details: featured.place, price: stay?.price ?? null, unit: 'night', qty: 3 }}
+          item={{ kind: 'stay', ref: String(stay?.id ?? 'featured'), title: featured.name, image: photo('hosting.featured'), link: '/accommodation', details: featured.place, price: stay?.price ?? null, unit: 'night', qty: 3 }}
         />
       </div>
     </div>

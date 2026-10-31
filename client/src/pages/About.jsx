@@ -1,10 +1,10 @@
 import React, { useRef, useState } from 'react'
 import Deux from "../assets/images/2.jpg";
-import Ambanja from "../assets/images/Ambanja.png";
-import NosyLonjo from "../assets/images/NosyLonjo.png";
-import NosyIranja from "../assets/images/NosyIranja.png";
-import Ramena from "../assets/images/Ramena.png";
-import Tana from "../assets/images/Tana.png";
+import Ambanja from "../assets/images/Ambanja.jpg";
+import NosyLonjo from "../assets/images/NosyLonjo.jpg";
+import NosyIranja from "../assets/images/NosyIranja.jpg";
+import Ramena from "../assets/images/Ramena.jpg";
+import Tana from "../assets/images/Tana.jpg";
 import Icone from "../assets/icone.png";
 import Navbar from '../components/Navbar';
 import Footer from '../components/Footer';

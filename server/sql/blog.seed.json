@@ -231,7 +231,7 @@
     "slug": "indulge-in-luxury-with-our-handpicked-stays-around-the-island",
     "title": "Indulge In Luxury With Our Handpicked Stays Around The Island",
     "excerpt": "Island lodges, private boat transfers and dinners on the sand: how we choose the stays for a slower, more comfortable trip.",
-    "image": "/uploads/circuits/nosy-lonjo.png",
+    "image": "/uploads/circuits/nosy-lonjo.jpg",
     "date": "2025-10-14",
     "isFeatured": true,
     "body": [
@@ -262,11 +262,11 @@
       },
       {
         "type": "cta",
-        "image": "/uploads/circuits/nosy-lonjo.png",
+        "image": "/uploads/circuits/nosy-lonjo.jpg",
         "title": "Our stays",
         "subtitle": "Hotels, lodges and beach bungalows we have visited",
         "button": "See the stays",
-        "link": "/hosting"
+        "link": "/accommodation"
       },
       {
         "type": "heading",
@@ -332,7 +332,7 @@
     "slug": "a-wildlife-adventure-in-northern-madagascar",
     "title": "A Wildlife Adventure In Northern Madagascar",
     "excerpt": "Lemurs, chameleons and limestone forests: a week in the reserves of the north with a naturalist guide.",
-    "image": "/uploads/circuits/guide-with-lemur.png",
+    "image": "/uploads/circuits/guide-with-lemur.jpg",
     "date": "2023-11-17",
     "isFeatured": false,
     "body": [
@@ -371,7 +371,7 @@
       },
       {
         "type": "cta",
-        "image": "/uploads/circuits/guide-with-lemur.png",
+        "image": "/uploads/circuits/guide-with-lemur.jpg",
         "title": "Our circuits",
         "subtitle": "Routes through the north, ready to adapt",
         "button": "See the circuits",
@@ -433,7 +433,7 @@
     "slug": "exploring-the-highlands-around-antananarivo-in-winter",
     "title": "Exploring The Highlands Around Antananarivo In Winter",
     "excerpt": "Cool mornings, clear skies and royal hills: why June to August is a lovely time for the highlands.",
-    "image": "/uploads/circuits/antananarivo-rice-fields.png",
+    "image": "/uploads/circuits/antananarivo-rice-fields.jpg",
     "date": "2023-10-18",
     "isFeatured": false,
     "body": [
@@ -472,7 +472,7 @@
       },
       {
         "type": "cta",
-        "image": "/uploads/circuits/antananarivo-rice-fields.png",
+        "image": "/uploads/circuits/antananarivo-rice-fields.jpg",
         "title": "Antananarivo",
         "subtitle": "The capital and its royal hills",
         "button": "Discover the destination",
@@ -534,7 +534,7 @@
     "slug": "from-beaches-to-baobabs-heres-everything",
     "title": "From Beaches To Baobabs, Here’s Everything",
     "excerpt": "Combining the islands of the north with the baobabs of the west: distances, flights and the right number of days.",
-    "image": "/uploads/circuits/nosy-iranja.png",
+    "image": "/uploads/circuits/nosy-iranja.jpg",
     "date": "2023-10-05",
     "isFeatured": false,
     "body": [
@@ -565,7 +565,7 @@
       },
       {
         "type": "cta",
-        "image": "/uploads/circuits/nosy-iranja.png",
+        "image": "/uploads/circuits/nosy-iranja.jpg",
         "title": "Baobab Avenue",
         "subtitle": "The giants of the west at sunset",
         "button": "Discover the destination",
@@ -635,7 +635,7 @@
     "slug": "sailing-the-coast-of-ramena",
     "title": "Sailing The Coast Of Ramena",
     "excerpt": "The Emerald Sea, the three bays and the fishing village of Ramena, seen from the deck of a boat.",
-    "image": "/uploads/circuits/ramena.png",
+    "image": "/uploads/circuits/ramena.jpg",
     "date": "2023-09-22",
     "isFeatured": false,
     "body": [
@@ -674,7 +674,7 @@
       },
       {
         "type": "cta",
-        "image": "/uploads/circuits/ramena.png",
+        "image": "/uploads/circuits/ramena.jpg",
         "title": "Ramena Beach",
         "subtitle": "The village, the bays and the Emerald Sea",
         "button": "Discover the destination",
@@ -736,7 +736,7 @@
     "slug": "a-slow-weekend-in-ambanja-and-nosy-be",
     "title": "A Slow Weekend In Ambanja And Nosy Be",
     "excerpt": "Cocoa farms on Saturday, the island on Sunday: a gentle weekend between Ambanja and Nosy Be.",
-    "image": "/uploads/circuits/sambirano-river.png",
+    "image": "/uploads/circuits/sambirano-river.jpg",
     "date": "2023-09-09",
     "isFeatured": false,
     "body": [
@@ -775,7 +775,7 @@
       },
       {
         "type": "cta",
-        "image": "/uploads/circuits/sambirano-river.png",
+        "image": "/uploads/circuits/sambirano-river.jpg",
         "title": "Ambanja",
         "subtitle": "Cocoa valleys and the gateway to Nosy Be",
         "button": "Discover the destination",
@@ -837,7 +837,7 @@
     "slug": "the-complete-guide-to-diego-suarez-bay",
     "title": "The Complete Guide To Diego Suarez Bay",
     "excerpt": "Everything you need for the bay of Diego Suarez: where to stay, what to see, how to get around and when to go.",
-    "image": "/uploads/circuits/dunes-bay.png",
+    "image": "/uploads/circuits/dunes-bay.jpg",
     "date": "2023-08-27",
     "isFeatured": false,
     "body": [
@@ -876,7 +876,7 @@
       },
       {
         "type": "cta",
-        "image": "/uploads/circuits/dunes-bay.png",
+        "image": "/uploads/circuits/dunes-bay.jpg",
         "title": "Ramena Beach",
         "subtitle": "The village, the bays and the Emerald Sea",
         "button": "Discover the destination",

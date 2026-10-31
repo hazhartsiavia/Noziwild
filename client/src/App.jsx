@@ -1,5 +1,5 @@
 import { Routes, Route, Navigate, Outlet, useParams } from "react-router-dom";
-import { PREFIXED } from "./i18n/paths";
+import { PREFIXED, RENAMED_PAGES } from "./i18n/paths";
 import Home from "./pages/Home";
 import Blog from "./pages/Blog";
 import BlogPost from "./pages/BlogPost";
@@ -53,8 +53,8 @@ const publicRoutes = (
     <Route path="about" element={<About />} />
     <Route path="contact" element={<Contact />} />
     <Route path="transport" element={<Transport />} />
-    <Route path="hosting" element={<Hebergement />} />
-    <Route path="guide" element={<Guides />} />
+    <Route path="accommodation" element={<Hebergement />} />
+    <Route path="guides" element={<Guides />} />
     <Route path="activities" element={<Activities/>}/>
     <Route path="equipment-rentals" element={<EquipmentRentals />} />
     <Route path="photography" element={<Photography />} />
@@ -63,12 +63,12 @@ const publicRoutes = (
     <Route path="travel-planning" element={<Travelplanning/>}/>
     <Route path="circuits" element={< Circuits/>}/>
     <Route path="circuits/:slug" element={<CircuitDetail />} />
-    <Route path="longstay" element={< LongStay/>}/>
+    <Route path="long-stay" element={< LongStay/>}/>
     <Route path="destinations" element={< Destinations/>}/>
     <Route path="destinations/:slug/:placeSlug" element={<PlaceDetail />} />
     <Route path="destinations/:slug" element={<DestinationDetail />} />
-    <Route path="excurssions" element={<Excurssions/>}/>
-    <Route path="cruise-excurssion" element={<CruiseExcursions />} />
+    <Route path="excursions" element={<Excurssions/>}/>
+    <Route path="cruise-excursions" element={<CruiseExcursions />} />
     <Route path="tailor-made" element={<TailorMade />} />
     <Route path="my-trip" element={<MyTrip />} />
     <Route path="login" element={<Auth key="login" mode="login" />} />
@@ -76,6 +76,10 @@ const publicRoutes = (
     <Route path="forgot-password" element={<ForgotPassword />} />
     <Route path="reset-password" element={<ResetPassword />} />
     <Route path="account" element={<Account />} />
+    {/* Anciennes adresses (liens gardés dans « Mon voyage », articles...) : vers la nouvelle, même langue */}
+    {Object.entries(RENAMED_PAGES).map(([from, to]) => (
+      <Route key={from} path={from.slice(1)} element={<Navigate to={`..${to}`} replace />} />
+    ))}
   </>
 );
 

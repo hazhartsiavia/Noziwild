@@ -1,6 +1,6 @@
 import React, { useRef, useState } from 'react'
-import Ramena from '../assets/images/Ramena.png'
-import NosyIranja from '../assets/images/NosyIranja.png'
+import Ramena from '../assets/images/Ramena.jpg'
+import NosyIranja from '../assets/images/NosyIranja.jpg'
 import Navbar from '../components/Navbar'
 import Footer from '../components/Footer'
 import OffersStatus from '../components/OffersStatus'
@@ -87,7 +87,7 @@ function ExcursionCard({ item, ashore }) {
 
         <div className="mt-auto pt-5 flex items-center justify-between gap-3">
           <p className="text-slate-600 text-sm"><Trans text={t('from')} values={{ price: <span className="text-2xl font-semibold text-slate-900">{formatPrice(item.price, lang)}</span> }} /></p>
-          <AddToTrip item={{ kind: 'cruise', ref: String(item.id), title: item.title, image: item.image, link: '/cruise-excurssion', details: fmt(item.hours), price: item.price, unit: 'person' }} />
+          <AddToTrip item={{ kind: 'cruise', ref: String(item.id), title: item.title, image: item.image, link: '/cruise-excursions', details: fmt(item.hours), price: item.price, unit: 'person' }} />
         </div>
       </div>
     </li>

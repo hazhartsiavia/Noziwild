@@ -1,8 +1,8 @@
 import React, { useState, useRef, useLayoutEffect } from 'react'
 import gsap from 'gsap'
 import { ScrollTrigger } from 'gsap/ScrollTrigger'
-import Ramena from '../assets/images/Ramena.png'
-import NosyIranja from '../assets/images/NosyIranja.png'
+import Ramena from '../assets/images/Ramena.jpg'
+import NosyIranja from '../assets/images/NosyIranja.jpg'
 import Navbar from '../components/Navbar'
 import Footer from '../components/Footer'
 import OffersStatus from '../components/OffersStatus'
@@ -148,7 +148,7 @@ function Row({ item }) {
   // Page de détail si l'admin en a indiqué une
   const href = item.link
   const Photo = href ? 'a' : 'div'
-  const tripItem = { kind: 'excursion', ref: String(item.id), title: item.title, image: item.image, link: item.link || '/excurssions', details: [item.duration, item.place].filter(Boolean).join(' · '), price: item.price, unit: 'person' }
+  const tripItem = { kind: 'excursion', ref: String(item.id), title: item.title, image: item.image, link: item.link || '/excursions', details: [item.duration, item.place].filter(Boolean).join(' · '), price: item.price, unit: 'person' }
   return (
     <li className="excursion-row grid grid-cols-1 md:grid-cols-[300px_1fr_auto] lg:grid-cols-[360px_1fr_auto] gap-4 md:gap-8 rounded-[2rem] bg-white p-3 md:p-4 md:items-stretch">
       <Photo href={href || undefined} className="group relative block aspect-[4/3] md:aspect-auto md:min-h-[220px] overflow-hidden rounded-[1.5rem]">
@@ -323,7 +323,7 @@ function Excursions() {
             <AddToTrip
               variant="gold"
               className="multi-btn mt-8"
-              item={{ kind: 'excursion', ref: 'three-days-islands', title: t('multiTitle'), image: photo('exc.multi'), link: '/excurssions', price: null, unit: null }}
+              item={{ kind: 'excursion', ref: 'three-days-islands', title: t('multiTitle'), image: photo('exc.multi'), link: '/excursions', price: null, unit: null }}
             />
           </div>
         </section>

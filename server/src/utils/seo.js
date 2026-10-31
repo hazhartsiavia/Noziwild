@@ -16,6 +16,16 @@ const DEFAULT_IMAGE = '/og-image.jpg'
 const ALL_LANGUAGES = ['en', ...LANGUAGES]
 const LOCALES = { en: 'en_US', fr: 'fr_FR', de: 'de_DE', it: 'it_IT', es: 'es_ES' }
 
+// Pages renommées : ancienne adresse -> nouvelle, redirigée en 301 dans chaque langue
+// (même liste côté site React : client/src/i18n/paths.js)
+const RENAMED_PAGES = {
+  '/excurssions': '/excursions',
+  '/cruise-excurssion': '/cruise-excursions',
+  '/hosting': '/accommodation',
+  '/longstay': '/long-stay',
+  '/guide': '/guides',
+}
+
 // Pages personnelles ou techniques : jamais dans Google (le site les affiche quand même)
 const PRIVATE_PAGES = ['/my-trip', '/login', '/register', '/forgot-password', '/reset-password', '/account']
 const isPrivate = (path) => PRIVATE_PAGES.includes(path) || path === '/admin' || path.startsWith('/admin/')
@@ -222,14 +232,13 @@ async function postMeta(base, lang, slug) {
 }
 
 // Balises d'une adresse : { lang, title, description, image, canonical, alternates, noindex, status, jsonLd }
-// ou { redirect } pour /en/... (l'anglais n'a pas de préfixe)
+// ou { redirect } pour /en/... (l'anglais n'a pas de préfixe) et les pages renommées
 export async function pageMeta(req) {
   const base = siteUrl(req)
-  if (/^\/en(\/|$)/i.test(req.path)) {
-    const query = req.originalUrl.slice(req.path.length)
-    return { redirect: (req.path.slice(3) || '/') + query }
-  }
+  const query = req.originalUrl.slice(req.path.length)
+  if (/^\/en(\/|$)/i.test(req.path)) return { redirect: (req.path.slice(3) || '/') + query }
   const { lang, path } = splitPath(req.path)
+  if (RENAMED_PAGES[path]) return { redirect: localPath(RENAMED_PAGES[path], lang) + query }
   const w = WORDS[lang]
   const meta = { lang, title: `${SITE_NAME} Madagascar`, description: w.description, image: DEFAULT_IMAGE, status: 200 }
   // Même page dans chaque langue : Google montre à chacun la sienne
