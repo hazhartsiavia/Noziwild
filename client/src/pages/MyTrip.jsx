@@ -2,7 +2,7 @@
 // ses dates et ses coordonnées, envoyés en une seule demande de devis. Aucun paiement en ligne.
 // Textes : locales/<langue>/trip.json
 import React, { useRef, useState } from 'react'
-import { Link } from 'react-router-dom'
+import { Link } from '../i18n/router'
 import { CalendarDays, Minus, Plus, Trash2 } from 'lucide-react'
 import Navbar from '../components/Navbar'
 import Footer from '../components/Footer'

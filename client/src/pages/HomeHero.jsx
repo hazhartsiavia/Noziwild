@@ -3,7 +3,7 @@
 //      et grandit jusqu'à remplir l'écran, où elle se confond avec le hero.
 //   2. Hero : apparition du texte, diaporama plein écran et carte « diapositive suivante ».
 import React, { useEffect, useLayoutEffect, useRef, useState } from 'react'
-import { Link } from 'react-router-dom'
+import { Link } from '../i18n/router'
 import gsap from 'gsap'
 import { ScrollTrigger } from 'gsap/ScrollTrigger'
 import Navbar from '../components/Navbar'

@@ -141,7 +141,7 @@ export const OFFER_KINDS = {
     group: 'services',
     label: 'Food experiences',
     singular: 'food experience',
-    page: '/Food-dining',
+    page: '/food-dining',
     price: true,
     titleLabel: 'Name',
     fields: [

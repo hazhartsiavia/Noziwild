@@ -1,6 +1,6 @@
 // Page /circuits/:slug : détail d'un circuit (aperçu, itinéraire jour par jour, réservation)
 import React, { useCallback, useEffect, useLayoutEffect, useRef, useState } from 'react'
-import { Link, useParams } from 'react-router-dom'
+import { Link, useParams } from '../i18n/router'
 import gsap from 'gsap'
 import { ScrollTrigger } from 'gsap/ScrollTrigger'
 import Navbar from '../components/Navbar'

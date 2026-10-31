@@ -10,6 +10,7 @@ import { formatPrice } from '../utils/format'
 import { useOffers } from '../utils/useOffers'
 import { useScrollReveal } from '../utils/useScrollReveal'
 import { usePhoto } from '../sitePhotos'
+import { A } from '../i18n/router'
 
 const W = 'w-[90vw] lg:max-w-[95vw]'
 const GOLD = 'bg-[#C49849] hover:bg-[#a9813a]'
@@ -53,7 +54,7 @@ function Hero() {
           <p className="text-sm md:text-base text-white/80">{t('eyebrow')}</p>
           <h1 className="mt-3 text-5xl sm:text-6xl md:text-7xl xl:text-[96px] font-semibold leading-[0.95] tracking-tight">{t('title')}</h1>
           <p className="mt-6 text-base md:text-xl text-white/90 max-w-2xl">{t('intro')}</p>
-          <a href="#plan" className={`${BTN} ${GOLD} text-white mt-8`}>{t('planButton')}</a>
+          <A href="#plan" className={`${BTN} ${GOLD} text-white mt-8`}>{t('planButton')}</A>
         </div>
       </section>
     </>
@@ -216,7 +217,7 @@ function CruiseExcursions() {
           <div className="relative p-8 md:p-16 max-w-3xl">
             <h2 className="text-3xl sm:text-4xl md:text-5xl font-medium leading-[1.1] tracking-tight">{t('groupTitle')}</h2>
             <p className="mt-4 text-sm md:text-lg text-white/85">{t('groupText')}</p>
-            <a href="/contact?type=cruise-group" className={`${BTN} ${GOLD} text-white mt-8`}>{t('groupButton')}</a>
+            <A href="/contact?type=cruise-group" className={`${BTN} ${GOLD} text-white mt-8`}>{t('groupButton')}</A>
           </div>
         </section>
       </main>

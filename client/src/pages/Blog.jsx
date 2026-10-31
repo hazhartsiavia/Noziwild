@@ -8,6 +8,7 @@ import { assetUrl, fetchPosts } from '../api'
 import { useLanguage, useT } from '../i18n/LanguageContext'
 import { usePhoto } from '../sitePhotos'
 import { formatDate } from '../utils/format'
+import { A } from '../i18n/router'
 
 gsap.registerPlugin(ScrollTrigger)
 
@@ -46,7 +47,7 @@ function BlogHero() {
           <h1 className={PAGE_TITLE}>{t('title')}</h1>
           <hr className="my-6 md:my-8 border-white/30" />
           <nav aria-label="Breadcrumb" className="text-sm md:text-base font-medium">
-            <a href="/" className="hover:underline underline-offset-4">{t('home')}</a> <span aria-hidden="true">/</span> {t('crumb')}
+            <A href="/" className="hover:underline underline-offset-4">{t('home')}</A> <span aria-hidden="true">/</span> {t('crumb')}
           </nav>
         </div>
       </section>
@@ -59,19 +60,19 @@ function FeaturedJournal({ posts }) {
   const { lang } = useLanguage()
   return (
     <div className="grid grid-cols-1 lg:grid-cols-[5fr_7fr] overflow-hidden rounded-3xl bg-white">
-      <a href={`/blog/${posts[0].slug}`} className="relative block min-h-[260px] sm:min-h-[340px] lg:min-h-full">
+      <A href={`/blog/${posts[0].slug}`} className="relative block min-h-[260px] sm:min-h-[340px] lg:min-h-full">
         <img src={posts[0].image} alt={t('imageAlt')} className="absolute inset-0 w-full h-full object-cover" />
-      </a>
+      </A>
       <ul className="flex flex-col divide-y divide-slate-200 px-5 py-2 md:px-12 md:py-6">
         {posts.map((post) => (
           <li key={post.slug}>
-            <a href={`/blog/${post.slug}`} className="group flex items-center justify-between gap-4 py-6 text-slate-800">
+            <A href={`/blog/${post.slug}`} className="group flex items-center justify-between gap-4 py-6 text-slate-800">
               <div>
                 <span className={BADGE}>{formatDate(post.date, lang)}</span>
                 <h3 className="mt-4 text-lg md:text-2xl leading-snug group-hover:underline">{post.title}</h3>
               </div>
               <img src={post.image} alt="" className="shrink-0 w-24 h-24 sm:w-40 sm:h-32 rounded-xl object-cover" />
-            </a>
+            </A>
           </li>
         ))}
       </ul>
@@ -83,7 +84,7 @@ export function PostCard({ post }) {
   const t = useT('blog')
   const { lang } = useLanguage()
   return (
-    <a href={`/blog/${post.slug}`} className="group flex flex-col rounded-xl bg-white p-3 text-slate-800">
+    <A href={`/blog/${post.slug}`} className="group flex flex-col rounded-xl bg-white p-3 text-slate-800">
       <div className="aspect-[4/3] overflow-hidden rounded-md">
         <img src={post.image} alt={post.title} className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" />
       </div>
@@ -95,7 +96,7 @@ export function PostCard({ post }) {
         </p>
         <h3 className="mt-4 text-xl md:text-2xl leading-snug group-hover:underline">{post.title}</h3>
       </div>
-    </a>
+    </A>
   )
 }
 

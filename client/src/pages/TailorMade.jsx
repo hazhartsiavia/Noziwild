@@ -15,6 +15,7 @@ import { useLanguage, useT } from '../i18n/LanguageContext'
 import { monthName } from '../utils/format'
 import { useOffers } from '../utils/useOffers'
 import { usePhoto } from '../sitePhotos'
+import { A } from '../i18n/router'
 
 gsap.registerPlugin(ScrollTrigger)
 
@@ -169,8 +170,8 @@ function Hero() {
           </h1>
           <p className="hero-copy mt-6 text-base md:text-lg text-slate-700 leading-relaxed max-w-xl">{t('intro')}</p>
           <div className="mt-8 flex flex-wrap gap-3">
-            <a ref={btn1Ref} href="#builder" className={`hero-btn ${BTN} bg-[#074636] hover:bg-[#0a5f48] text-white`}>{t('design')}</a>
-            <a ref={btn2Ref} href="#how" className={`hero-btn ${BTN} border border-slate-400 hover:border-slate-800 text-slate-800`}>{t('how')}</a>
+            <A ref={btn1Ref} href="#builder" className={`hero-btn ${BTN} bg-[#074636] hover:bg-[#0a5f48] text-white`}>{t('design')}</A>
+            <A ref={btn2Ref} href="#how" className={`hero-btn ${BTN} border border-slate-400 hover:border-slate-800 text-slate-800`}>{t('how')}</A>
           </div>
         </div>
         <div className="grid grid-cols-3 gap-3 md:gap-5 items-end">
@@ -545,7 +546,7 @@ function TailorMade() {
           <div className="cta-text relative p-8 md:p-16 max-w-3xl">
             <h2 className="text-3xl sm:text-4xl md:text-5xl font-medium leading-[1.1] tracking-tight">{t('ctaTitle')}</h2>
             <p className="mt-4 text-sm md:text-lg text-white/85">{t('ctaText')}</p>
-            <a ref={ctaBtnRef} href="/contact" className={`cta-btn ${BTN} ${GOLD} text-white mt-8`}>{t('ctaButton')}</a>
+            <A ref={ctaBtnRef} href="/contact" className={`cta-btn ${BTN} ${GOLD} text-white mt-8`}>{t('ctaButton')}</A>
           </div>
         </section>
       </main>

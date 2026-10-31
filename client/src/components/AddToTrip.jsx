@@ -4,7 +4,7 @@
 //   Déjà dans la sélection : le bouton l'indique, et un nouveau clic l'en retire.
 // BookingAdd : variante des cartes de réservation (date + nombre de voyageurs choisis sur la page).
 import React from 'react'
-import { Link } from 'react-router-dom'
+import { Link } from '../i18n/router'
 import { Check, Plus } from 'lucide-react'
 import { useTrip } from '../context/TripContext'
 import { useT } from '../i18n/LanguageContext'

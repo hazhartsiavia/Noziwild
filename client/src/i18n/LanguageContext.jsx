@@ -2,11 +2,14 @@
 //   Textes : un fichier par page et par langue, dans locales/<langue>/<page>.json
 //   L'anglais est chargé tout de suite et sert de secours : un texte absent d'une traduction
 //   s'affiche en anglais. Les autres langues ne sont téléchargées que si on les choisit.
+//   La langue est dans l'adresse (/fr/circuits ; l'anglais sans préfixe), voir paths.js.
 //   Choix mémorisé dans le navigateur ; à la première visite, langue du navigateur si on la propose.
 //   Textes modifiés depuis l'admin (page « Textes ») : lus sur l'API et posés par-dessus les fichiers.
 //   Gardés aussi dans le navigateur, pour s'afficher dès la visite suivante sans attendre l'API.
 import React, { createContext, useCallback, useContext, useEffect, useMemo, useState } from 'react'
+import { useLocation, useNavigate } from 'react-router-dom'
 import { fetchTexts } from '../api'
+import { langFromPath, localizePath } from './paths'
 
 export const LANGUAGES = [
   { code: 'en', label: 'English', short: 'EN' },
@@ -40,6 +43,15 @@ async function loadLanguage(lang) {
   const modules = await Promise.all(files.map((file) => LOADERS[file]()))
   loaded[lang] = byNamespace(Object.fromEntries(files.map((file, i) => [file, modules[i]])))
   return loaded[lang]
+}
+
+// Avant le premier affichage : une adresse sans langue (/circuits) ouvre la page dans la langue préférée
+// du visiteur (/fr/circuits). Les robots (langue anglaise) restent sur l'anglais.
+export function redirectToPreferredLanguage() {
+  const { pathname, search, hash } = window.location
+  if (pathname === '/admin' || pathname.startsWith('/admin/') || langFromPath(pathname) !== 'en') return
+  const preferred = initialLanguage()
+  if (preferred !== 'en') window.history.replaceState(null, '', localizePath(pathname, preferred) + search + hash)
 }
 
 function initialLanguage() {
@@ -120,7 +132,10 @@ function lookup(dictionary, path) {
 const LanguageContext = createContext(null)
 
 export function LanguageProvider({ children }) {
-  const [lang, setLangState] = useState(initialLanguage)
+  // La langue est celle de l'adresse (/fr/...), l'anglais sans préfixe
+  const location = useLocation()
+  const navigate = useNavigate()
+  const lang = langFromPath(location.pathname)
   const [base, setBase] = useState(() => loaded[lang] || ENGLISH)
   const changes = useTextChanges(lang)
   // L'anglais sert de secours : ses textes modifiés comptent aussi
@@ -139,15 +154,19 @@ export function LanguageProvider({ children }) {
     }
   }, [lang])
 
-  const setLang = useCallback((code) => {
-    if (!CODES.includes(code)) return
-    try {
-      localStorage.setItem(STORAGE_KEY, code)
-    } catch {
-      // le choix ne sera pas mémorisé, mais s'applique quand même
-    }
-    setLangState(code)
-  }, [])
+  // Changer de langue : la même page, à l'adresse de l'autre langue
+  const setLang = useCallback(
+    (code) => {
+      if (!CODES.includes(code)) return
+      try {
+        localStorage.setItem(STORAGE_KEY, code)
+      } catch {
+        // le choix ne sera pas mémorisé, mais s'applique quand même
+      }
+      navigate({ ...location, pathname: localizePath(location.pathname, code) })
+    },
+    [navigate, location],
+  )
 
   const value = useMemo(() => ({ lang, setLang, dictionary, english }), [lang, setLang, dictionary, english])
   return <LanguageContext.Provider value={value}>{children}</LanguageContext.Provider>

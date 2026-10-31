@@ -1,7 +1,7 @@
 import React, { useEffect, useState, useRef, useLayoutEffect } from 'react'
 import gsap from 'gsap'
 import { ScrollTrigger } from 'gsap/ScrollTrigger'
-import { Link } from 'react-router-dom'
+import { Link, A } from '../i18n/router'
 import NosyIranja from '../assets/images/NosyIranja.png'
 import Ambanja from '../assets/images/Ambanja.png'
 import Navbar from '../components/Navbar'
@@ -89,7 +89,7 @@ function CircuitsHero() {
           <h1 className={`hero-title ${PAGE_TITLE}`}>{t('title')}</h1>
           <hr className="hero-rule my-6 md:my-8 border-white/30" />
           <nav aria-label="Breadcrumb" className="hero-crumb text-sm md:text-base font-medium">
-            <a href="/" className="hover:underline underline-offset-4">{t('home')}</a> <span aria-hidden="true">/</span> {t('crumb')}
+            <A href="/" className="hover:underline underline-offset-4">{t('home')}</A> <span aria-hidden="true">/</span> {t('crumb')}
           </nav>
         </div>
       </section>
@@ -356,12 +356,12 @@ function Circuits() {
                 <h2 className="text-2xl md:text-4xl font-medium leading-snug">{t('ctaTitle')}</h2>
                 <p className="mt-3 text-sm md:text-base">{t('ctaText')}</p>
               </div>
-              <a
+              <A
                 href="/contact"
                 className={`cta-btn shrink-0 self-start md:self-center bg-[#C49849] hover:bg-[#a9813a] active:scale-95 transition text-white ${BUTTON} md:px-6 md:py-3`}
               >
                 {t('ctaButton')}
-              </a>
+              </A>
             </div>
           </div>
         </section>

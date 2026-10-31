@@ -104,7 +104,7 @@ export const PHOTO_PAGES = [
     },
   },
   {
-    id: 'food', label: 'Food & dining', page: '/Food-dining',
+    id: 'food', label: 'Food & dining', page: '/food-dining',
     slots: {
       ...list('food.plate', 'Hero plate', [Ambanja, Ramena, NosyLonjo]),
       ...list('food.dish', 'Dish', [Ambanja, Tana, Deux, Ramena, NosyLonjo]),

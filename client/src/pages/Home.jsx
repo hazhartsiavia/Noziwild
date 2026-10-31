@@ -18,6 +18,7 @@ import { Hero, Preloader, shouldPlayPreloader } from './HomeHero'
 import { useLanguage, useT } from '../i18n/LanguageContext'
 import { monthName } from '../utils/format'
 import { usePhoto } from '../sitePhotos'
+import { A } from '../i18n/router'
 
 gsap.registerPlugin(ScrollTrigger)
 
@@ -91,7 +92,7 @@ const services = [
   { title: 'Accommodation', href: '/hosting', icon: BedDouble },
   { title: 'Transport', href: '/transport', icon: Car },
   { title: 'Guides', href: '/guide', icon: Users },
-  { title: 'Food & Dining', href: '/Food-dining', icon: UtensilsCrossed },
+  { title: 'Food & Dining', href: '/food-dining', icon: UtensilsCrossed },
   { title: 'Equipment Rentals', href: '/equipment-rentals', icon: Backpack },
   { title: 'Photography', href: '/photography', icon: Camera },
   { title: 'Travel Planning', href: '/travel-planning', icon: Map },
@@ -189,7 +190,7 @@ function Ways() {
           const WayIcon = w.icon
           return (
             <li key={way.href} className="way-card">
-              <a href={w.href} className="group relative block aspect-[3/4] overflow-hidden rounded-[1.5rem] md:rounded-[2rem] text-white focus:outline-none focus-visible:ring-4 focus-visible:ring-[#084838]">
+              <A href={w.href} className="group relative block aspect-[3/4] overflow-hidden rounded-[1.5rem] md:rounded-[2rem] text-white focus:outline-none focus-visible:ring-4 focus-visible:ring-[#084838]">
                 <img src={photo(w.slot)} alt="" className="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" />
                 <div className="absolute inset-0 bg-gradient-to-t from-slate-950/85 via-slate-950/10 to-transparent" />
                 <span className="absolute left-4 top-4 md:left-5 md:top-5 w-10 h-10 md:w-12 md:h-12 rounded-full bg-white/15 backdrop-blur-md border border-white/30 flex items-center justify-center">
@@ -204,7 +205,7 @@ function Ways() {
                     <ArrowRight className="w-4 h-4" />
                   </span>
                 </span>
-              </a>
+              </A>
             </li>
           )
         })}
@@ -236,7 +237,7 @@ function Intro() {
           <div>
             <p className="text-lg md:text-2xl font-medium leading-snug text-slate-900">{t('notSure')}</p>
             <p className="mt-2 text-sm md:text-base text-slate-600">{t('notSureText')}</p>
-            <a href="/contact" className={`${BTN} ${GREEN} hover:bg-[#0a5f48] text-white mt-4`}>{t('talkExpert')}</a>
+            <A href="/contact" className={`${BTN} ${GREEN} hover:bg-[#0a5f48] text-white mt-4`}>{t('talkExpert')}</A>
           </div>
         </div>
       </div>
@@ -331,19 +332,19 @@ function Regions() {
           <ul className="grid grid-cols-3 gap-3 md:gap-4">
             {region.places.map((p) => (
               <li key={p.name}>
-                <a href={`/destinations/${slugify(p.name)}`} className="group block">
+                <A href={`/destinations/${slugify(p.name)}`} className="group block">
                   <div className="aspect-square overflow-hidden rounded-2xl md:rounded-3xl">
                     <img src={photo(p.slot)} alt={p.label} className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" />
                   </div>
                   <p className="mt-2 text-xs sm:text-sm md:text-base text-slate-800 leading-snug group-hover:underline">{p.label}</p>
-                </a>
+                </A>
               </li>
             ))}
           </ul>
 
           <div className="mt-8 flex flex-wrap gap-3">
-            <a href="/destinations" className={`${BTN} ${GOLD} text-white`}>{t('exploreRegion')}</a>
-            <a href="/circuits" className={`${BTN} border border-slate-400 hover:border-slate-800 text-slate-800`}>{t('seeCircuits')}</a>
+            <A href="/destinations" className={`${BTN} ${GOLD} text-white`}>{t('exploreRegion')}</A>
+            <A href="/circuits" className={`${BTN} border border-slate-400 hover:border-slate-800 text-slate-800`}>{t('seeCircuits')}</A>
           </div>
         </div>
       </div>
@@ -375,7 +376,7 @@ function Trips() {
       </div>
 
       <div className="mt-10 grid grid-cols-1 lg:grid-cols-[1.35fr_1fr] gap-4 md:gap-6">
-        <a href={quoteHref('trip', big.name)} className={`${card} min-h-[480px] lg:min-h-[640px] lg:row-span-2`}>
+        <A href={quoteHref('trip', big.name)} className={`${card} min-h-[480px] lg:min-h-[640px] lg:row-span-2`}>
           <img src={photo(big.slot)} alt={big.name} className={img} /><span className={shade} />
           <span className="relative flex w-full flex-col justify-end p-6 md:p-10">
             <span className="self-start bg-[#C49849] text-xs sm:text-sm font-medium px-3 py-1.5 rounded-sm">{t('days', { count: big.days })}</span>
@@ -392,16 +393,16 @@ function Trips() {
               <span className="w-11 h-11 rounded-full bg-[#C49849] flex items-center justify-center transition group-hover:translate-x-1"><ArrowRight className="w-5 h-5" aria-hidden="true" /></span>
             </span>
           </span>
-        </a>
+        </A>
         {rest.map((trip) => (
-          <a key={trip.name} href={quoteHref('trip', trip.name)} className={`${card} min-h-[310px]`}>
+          <A key={trip.name} href={quoteHref('trip', trip.name)} className={`${card} min-h-[310px]`}>
             <img src={photo(trip.slot)} alt={trip.name} className={img} /><span className={shade} />
             <span className="relative flex w-full flex-col justify-end p-5 md:p-8">
               <span className="self-start bg-[#C49849] text-xs font-medium px-3 py-1.5 rounded-sm">{t('days', { count: trip.days })}</span>
               <span className="mt-3 block text-2xl md:text-3xl font-medium tracking-tight">{trip.name}</span>
               <span className="mt-2 block text-sm text-white/80">{trip.text}</span>
             </span>
-          </a>
+          </A>
         ))}
       </div>
     </section>
@@ -432,7 +433,7 @@ function Services() {
           const ServiceIcon = s.icon
           return (
             <li key={s.title} className="service-item">
-              <a
+              <A
                 href={s.href}
                 className="group flex items-center gap-3 lg:gap-4 rounded-full bg-white p-2.5 lg:p-3 pr-5 text-slate-800 transition hover:bg-[#F7EEDC] focus:outline-none focus-visible:ring-2 focus-visible:ring-[#C49849]"
               >
@@ -441,7 +442,7 @@ function Services() {
                 </span>
                 <span className="flex-1 text-sm lg:text-base font-medium leading-snug">{t('services')[i]}</span>
                 <ArrowRight className="w-4 h-4 text-slate-500 transition-transform group-hover:translate-x-1" aria-hidden="true" />
-              </a>
+              </A>
             </li>
           )
         })}
@@ -520,8 +521,8 @@ function FinalCta() {
         <h2 className="text-3xl sm:text-4xl md:text-5xl font-medium leading-[1.1] tracking-tight">{t('ctaTitle')}</h2>
         <p className="mt-4 text-sm md:text-lg text-white/85">{t('ctaText')}</p>
         <div className="mt-8 flex flex-wrap gap-3">
-          <a href="/contact?type=quote" className={`${BTN} ${GOLD} text-white`}>{t('ctaQuote')}</a>
-          <a href="/tailor-made" className={`${BTN} border border-white/50 hover:bg-white/10`}>{t('ctaDesign')}</a>
+          <A href="/contact?type=quote" className={`${BTN} ${GOLD} text-white`}>{t('ctaQuote')}</A>
+          <A href="/tailor-made" className={`${BTN} border border-white/50 hover:bg-white/10`}>{t('ctaDesign')}</A>
         </div>
       </div>
     </section>

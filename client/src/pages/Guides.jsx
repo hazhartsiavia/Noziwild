@@ -16,6 +16,7 @@ import { useOffers } from '../utils/useOffers'
 import { gsap } from 'gsap'
 import { ScrollTrigger } from 'gsap/ScrollTrigger'
 import { usePhoto } from '../sitePhotos'
+import { A } from '../i18n/router'
 
 gsap.registerPlugin(ScrollTrigger)
 
@@ -119,10 +120,10 @@ function Hero() {
           {t('intro')}
         </p>
         <div data-hero className="mt-8 flex flex-wrap items-center gap-4">
-          <a href="/contact" className={`bg-[#084838] hover:bg-[#0a5c47] text-white ${BUTTON}`}>{t('findGuide')}</a>
-          <a href="#guides" className="inline-flex items-center gap-2 text-sm md:text-base font-medium text-slate-800 hover:gap-3 transition-all">
+          <A href="/contact" className={`bg-[#084838] hover:bg-[#0a5c47] text-white ${BUTTON}`}>{t('findGuide')}</A>
+          <A href="#guides" className="inline-flex items-center gap-2 text-sm md:text-base font-medium text-slate-800 hover:gap-3 transition-all">
             {t('meetTeam')} <ArrowIcon />
-          </a>
+          </A>
         </div>
       </div>
 
@@ -322,9 +323,9 @@ function GuideShowcase() {
             <ul className="mt-5 flex flex-wrap gap-2">
               {g.specialties.map((t) => <li key={t} className="rounded-full bg-[#D5E8E2] px-4 py-1.5 text-sm text-slate-700">{t}</li>)}
             </ul>
-            <a href="/contact" className={`mt-8 self-start bg-[#C49849] hover:bg-[#b08339] text-white ${BUTTON}`}>
+            <A href="/contact" className={`mt-8 self-start bg-[#C49849] hover:bg-[#b08339] text-white ${BUTTON}`}>
               {tr('request', { name: g.name.split(' ')[0] })}
-            </a>
+            </A>
           </div>
         </article>
       </div>
@@ -684,9 +685,9 @@ function Cta() {
               {tr('experienceText')}
             </p>
           </div>
-          <a href="/contact" className={`mt-6 self-start bg-[#084838] hover:bg-[#0a5c47] text-white ${BUTTON}`}>
+          <A href="/contact" className={`mt-6 self-start bg-[#084838] hover:bg-[#0a5c47] text-white ${BUTTON}`}>
             {tr('findGuide')}
-          </a>
+          </A>
         </div>
       </div>
 

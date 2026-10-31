@@ -68,11 +68,13 @@ if (fs.existsSync(INDEX_HTML)) {
     },
   }))
   // Les adresses du site (/circuits/..., /account...) sont gérées par React : on renvoie index.html,
-  // avec le titre, la description et l'aperçu de partage de la page (adresse inconnue : statut 404)
+  // avec le titre, la description et l'aperçu de partage de la page, dans sa langue (/fr/...).
+  // Adresse inconnue : statut 404. /en/... renvoie vers l'adresse sans préfixe.
   app.use(async (req, res, next) => {
     const isPage = (req.method === 'GET' || req.method === 'HEAD') && !req.path.startsWith('/api/') && !req.path.startsWith('/uploads/')
     if (!isPage || !req.accepts('html')) return next()
     const meta = await pageMeta(req)
+    if (meta.redirect) return res.redirect(301, meta.redirect)
     res.status(meta.status).set('Cache-Control', 'no-cache').type('html').send(renderHead(indexHtml, meta, req))
   })
 }

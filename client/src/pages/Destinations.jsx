@@ -13,6 +13,7 @@ import { slugify } from './destinationsData'
 import { useLanguage, useT } from '../i18n/LanguageContext'
 import { monthName } from '../utils/format'
 import { usePhoto } from '../sitePhotos'
+import { A } from '../i18n/router'
 
 gsap.registerPlugin(ScrollTrigger)
 
@@ -157,8 +158,8 @@ function Hero() {
             {t('list.intro')}
           </p>
           <div className="mt-8 flex flex-wrap gap-3">
-            <a href="#regions" className={`hero-cta ${BTN} bg-[#084838] hover:bg-[#0a5c47] text-white`}>{t('list.explore')}</a>
-            <a href="#planner" className={`hero-cta ${BTN} border border-slate-400 hover:border-slate-800 text-slate-800`}>{t('list.when')}</a>
+            <A href="#regions" className={`hero-cta ${BTN} bg-[#084838] hover:bg-[#0a5c47] text-white`}>{t('list.explore')}</A>
+            <A href="#planner" className={`hero-cta ${BTN} border border-slate-400 hover:border-slate-800 text-slate-800`}>{t('list.when')}</A>
           </div>
         </div>
 
@@ -212,9 +213,9 @@ function RegionNav() {
       <ul className="flex gap-2 rounded-full bg-white/85 backdrop-blur-md p-2 shadow-sm overflow-x-auto max-w-[90vw] [scrollbar-width:none] [&::-webkit-scrollbar]:hidden">
         {regions.map((r, i) => (
           <li key={r.id} className="shrink-0">
-            <a href={`#${r.id}`} className="region-link block rounded-full px-5 py-2.5 text-sm md:text-base text-slate-800 hover:bg-[#084838] hover:text-white transition">
+            <A href={`#${r.id}`} className="region-link block rounded-full px-5 py-2.5 text-sm md:text-base text-slate-800 hover:bg-[#084838] hover:text-white transition">
               {names[i]}
-            </a>
+            </A>
           </li>
         ))}
       </ul>
@@ -277,17 +278,17 @@ function Region({ region, flip }) {
         <ul className="grid grid-cols-3 gap-3 md:gap-4">
           {region.places.map((p) => (
             <li key={p.name} className="region-place">
-              <a href={`/destinations/${slugify(p.name)}`} className="group block">
+              <A href={`/destinations/${slugify(p.name)}`} className="group block">
                 <div className="aspect-square overflow-hidden rounded-2xl md:rounded-3xl">
                   <img src={photo(p.slot)} alt={p.label} className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" />
                 </div>
                 <p className="mt-2 text-xs sm:text-sm md:text-base text-slate-800 leading-snug group-hover:underline">{p.label}</p>
-              </a>
+              </A>
             </li>
           ))}
         </ul>
 
-        <a href="/circuits" className={`${BTN} ${GOLD} text-white mt-8`}>{t('list.seeCircuits')}</a>
+        <A href="/circuits" className={`${BTN} ${GOLD} text-white mt-8`}>{t('list.seeCircuits')}</A>
       </div>
     </section>
   )
@@ -358,11 +359,11 @@ function Planner() {
           <ul className="mt-10 grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-4">
             {good.map((r) => (
               <li key={r.id} className="planner-card">
-                <a href={`#${r.id}`} className="group relative block aspect-[3/4] overflow-hidden rounded-[1.5rem]">
+                <A href={`#${r.id}`} className="group relative block aspect-[3/4] overflow-hidden rounded-[1.5rem]">
                   <img src={photo(r.slot)} alt="" className="absolute inset-0 w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" />
                   <div className="absolute inset-0 bg-gradient-to-t from-slate-950/85 to-transparent" />
                   <p className="absolute inset-x-0 bottom-0 p-4 text-lg md:text-xl font-medium">{names[regions.indexOf(r)]}</p>
-                </a>
+                </A>
               </li>
             ))}
           </ul>
@@ -410,8 +411,8 @@ function FinalCta() {
         <h2 className="text-3xl sm:text-4xl md:text-5xl font-medium leading-[1.1] tracking-tight">{t('list.ctaTitle')}</h2>
         <p className="mt-4 text-sm md:text-lg text-white/85">{t('list.ctaText')}</p>
         <div className="mt-8 flex flex-wrap gap-3">
-          <a href="/contact" className={`${BTN} ${GOLD} text-white`}>{t('list.ctaExpert')}</a>
-          <a href="/circuits" className={`${BTN} border border-white/50 hover:bg-white/10`}>{t('list.ctaCircuits')}</a>
+          <A href="/contact" className={`${BTN} ${GOLD} text-white`}>{t('list.ctaExpert')}</A>
+          <A href="/circuits" className={`${BTN} border border-white/50 hover:bg-white/10`}>{t('list.ctaCircuits')}</A>
         </div>
       </div>
     </section>

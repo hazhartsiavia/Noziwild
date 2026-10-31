@@ -12,6 +12,7 @@ import OffersStatus from '../components/OffersStatus'
 import { useOffers } from '../utils/useOffers'
 import { useScrollReveal } from '../utils/useScrollReveal'
 import { usePhoto } from '../sitePhotos'
+import { A } from '../i18n/router'
 
 /* Constantes partagées : mêmes valeurs que dans les autres pages */
 const SECTION_WIDTH = "w-[90vw] lg:max-w-[90vw] xl:max-w-[95vw]"
@@ -131,7 +132,7 @@ function Hero() {
         <h1 className={PAGE_TITLE}>{t('title')}</h1>
         <hr className="my-6 md:my-8 border-white/30" />
         <nav aria-label="Breadcrumb" className="text-sm md:text-base font-medium">
-          <a href="/" className="hover:underline underline-offset-4">{t('home')}</a> <span aria-hidden="true">/</span> {t('title')}
+          <A href="/" className="hover:underline underline-offset-4">{t('home')}</A> <span aria-hidden="true">/</span> {t('title')}
         </nav>
       </div>
     </section>
@@ -342,13 +343,13 @@ function Cta() {
         <p className="mt-4 text-sm md:text-lg text-white/85 leading-relaxed">
           {t('ctaText')}
         </p>
-        <a
+        <A
           href="/contact"
           className="mt-6 md:mt-8 self-start inline-flex items-center gap-3 rounded-full bg-white hover:bg-white/90 transition text-slate-900 pl-6 pr-2.5 py-2.5 font-medium"
         >
           {t('ctaButton')}
           <span className="w-10 h-10 rounded-full bg-[#C49849] flex items-center justify-center text-white"><ArrowIcon /></span>
-        </a>
+        </A>
       </div>
     </div>
   )

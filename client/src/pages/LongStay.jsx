@@ -14,6 +14,7 @@ import AddToTrip from '../components/AddToTrip'
 import { useT } from '../i18n/LanguageContext'
 import { useOffers } from '../utils/useOffers'
 import { usePhoto } from '../sitePhotos'
+import { A } from '../i18n/router'
 
 gsap.registerPlugin(ScrollTrigger)
 
@@ -116,8 +117,8 @@ function Hero() {
               <Chars lines={t('titleLines')} />
             </h1>
             <div className="mt-8 flex flex-wrap gap-3">
-              <a href="/contact" className={`hero-btn ${BTN} ${GOLD} text-white`}>{t('planButton')}</a>
-              <a href="#formats" className={`hero-btn ${BTN} border border-white/50 hover:bg-white/10 text-white`}>{t('formatsButton')}</a>
+              <A href="/contact" className={`hero-btn ${BTN} ${GOLD} text-white`}>{t('planButton')}</A>
+              <A href="#formats" className={`hero-btn ${BTN} border border-white/50 hover:bg-white/10 text-white`}>{t('formatsButton')}</A>
             </div>
           </div>
 
@@ -395,8 +396,8 @@ function FinalCta() {
         <h2 className={H2}>{t('finalTitle')}</h2>
         <p className="mt-4 text-sm md:text-lg text-white/85">{t('finalText')}</p>
         <div className="mt-8 flex flex-wrap gap-3">
-          <a href="/contact" className={`fin-btn ${BTN} ${GOLD} text-white`}>{t('planButton')}</a>
-          <a href="/circuits" className={`fin-btn ${BTN} border border-white/50 hover:bg-white/10`}>{t('browse')}</a>
+          <A href="/contact" className={`fin-btn ${BTN} ${GOLD} text-white`}>{t('planButton')}</A>
+          <A href="/circuits" className={`fin-btn ${BTN} border border-white/50 hover:bg-white/10`}>{t('browse')}</A>
         </div>
       </div>
     </section>

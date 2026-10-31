@@ -17,6 +17,7 @@ import { useOffers } from '../utils/useOffers'
 import { gsap } from 'gsap'
 import { ScrollTrigger } from 'gsap/ScrollTrigger'
 import { usePhoto } from '../sitePhotos'
+import { A } from '../i18n/router'
 
 gsap.registerPlugin(ScrollTrigger)
 
@@ -119,10 +120,10 @@ function Hero() {
           {t('intro')}
         </p>
         <div data-hero className="mt-7 flex flex-wrap items-center gap-4">
-          <a href="#experiences" className={`bg-[#084838] hover:bg-[#0a5c47] text-white ${BUTTON}`}>{t('seeExperiences')}</a>
-          <a href="#dishes" className="inline-flex items-center gap-2 text-sm md:text-base font-medium text-slate-800 hover:gap-3 transition-all">
+          <A href="#experiences" className={`bg-[#084838] hover:bg-[#0a5c47] text-white ${BUTTON}`}>{t('seeExperiences')}</A>
+          <A href="#dishes" className="inline-flex items-center gap-2 text-sm md:text-base font-medium text-slate-800 hover:gap-3 transition-all">
             {t('discover')} <ArrowIcon />
-          </a>
+          </A>
         </div>
 
         <ul data-hero className="mt-8 md:mt-10 flex flex-wrap gap-x-8 md:gap-x-12 gap-y-4 border-t border-[#084838]/20 pt-6">
@@ -273,7 +274,7 @@ function Menu({ experiences, status }) {
               <p className="mt-3 max-w-md text-base text-white/85 leading-relaxed">{current.text}</p>
               <div className="mt-6 flex items-center justify-between gap-4">
                 <p className="text-white/80"><Trans text={tr('fromPerPerson')} values={{ price: <span className="text-3xl font-medium text-white">{formatPrice(current.price, lang)}</span> }} /></p>
-                <AddToTrip variant="gold" item={{ kind: 'food', ref: String(current.id), title: current.name, image: current.image, link: '/Food-dining', details: current.duration, price: current.price, unit: 'person' }} />
+                <AddToTrip variant="gold" item={{ kind: 'food', ref: String(current.id), title: current.name, image: current.image, link: '/food-dining', details: current.duration, price: current.price, unit: 'person' }} />
               </div>
             </div>
           </div>
@@ -306,7 +307,7 @@ function Menu({ experiences, status }) {
                     <p className={`${META_TEXT} text-slate-500`}>{tr('perPerson')}</p>
                   </div>
 
-                  <AddToTrip variant="icon" item={{ kind: 'food', ref: String(e.id), title: e.name, image: e.image, link: '/Food-dining', details: e.duration, price: e.price, unit: 'person' }} />
+                  <AddToTrip variant="icon" item={{ kind: 'food', ref: String(e.id), title: e.name, image: e.image, link: '/food-dining', details: e.duration, price: e.price, unit: 'person' }} />
                 </div>
               </li>
             )
@@ -378,7 +379,7 @@ function CookingClass({ experiences }) {
         </ul>
 
         {lesson && (
-          <AddToTrip variant="green" className="mt-8" item={{ kind: 'food', ref: String(lesson.id), title: lesson.name, image: lesson.image, link: '/Food-dining', details: lesson.duration, price: lesson.price, unit: 'person' }} />
+          <AddToTrip variant="green" className="mt-8" item={{ kind: 'food', ref: String(lesson.id), title: lesson.name, image: lesson.image, link: '/food-dining', details: lesson.duration, price: lesson.price, unit: 'person' }} />
         )}
       </div>
     </div>
