@@ -429,6 +429,7 @@ function Cta() {
 
 function FoodDining() {
   const t = useT('food')
+  const photo = usePhoto()
   const contentRef = useRef(null)
   const { offers, status } = useOffers('food')
   const experiences = offers.map(toExperience)
@@ -468,8 +469,14 @@ function FoodDining() {
     <>
     <section className="w-full pt-0 pb-12 md:pb-20 bg-[#D5E8E2] flex flex-col items-center">
       <Navbar />
-      <PageHero slot="food.class" title={t('title')} crumb={t('badge')} text={t('intro')} moreHref="#experiences" moreLabel={t('seeExperiences')} />
+      <PageHero slot="food.plate.1" alt={t('alts')[0]} title={t('title')} crumb={t('badge')} text={t('intro')} moreHref="#experiences" moreLabel={t('seeExperiences')} />
       <div ref={contentRef} className={SECTION_WIDTH}>
+        {/* Les deux autres plats choisis dans l'admin, sous la bannière */}
+        <div className="mt-4 md:mt-5 grid grid-cols-2 gap-3 md:gap-5">
+          {[2, 3].map((n) => (
+            <img key={n} src={photo(`food.plate.${n}`)} alt={t('alts')[n - 1]} className="w-full aspect-[16/9] object-cover rounded-2xl" />
+          ))}
+        </div>
         <Dishes />
         <Menu experiences={experiences} status={status} />
         <Diets />
