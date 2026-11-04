@@ -7,8 +7,6 @@ import Ramena from "../assets/images/Ramena.jpg";
 import Tana from "../assets/images/Tana.jpg";
 import Navbar from '../components/Navbar';
 import Footer from '../components/Footer';
-import PageHero from '../components/PageHero'
-import PageCta, { PAGE_CTA_GOLD, PAGE_CTA_GHOST } from '../components/PageCta'
 import AddToTrip from '../components/AddToTrip'
 import { useT } from '../i18n/LanguageContext';
 import { localize } from '../i18n/localize';
@@ -18,12 +16,13 @@ import { gsap } from 'gsap'
 import { ScrollTrigger } from 'gsap/ScrollTrigger'
 import { usePhoto } from '../sitePhotos'
 import { A } from '../i18n/router'
+import SiteMedia from '../components/SiteMedia'
 
 gsap.registerPlugin(ScrollTrigger)
 
 /* Constantes partagées : mêmes valeurs que dans les autres pages */
 const SECTION_WIDTH = "w-[90vw] lg:max-w-[90vw] xl:max-w-[95vw]"
-const SECTION_TITLE = "text-[clamp(2rem,4.4vw,4rem)] font-bold text-forest leading-[1.08] tracking-tight"
+const SECTION_TITLE = "text-3xl sm:text-4xl md:text-5xl lg:text-[52px] font-medium text-forest leading-[1.15] tracking-tight"
 const SECTION_SUBTITLE = "text-sm sm:text-base md:text-lg text-slate-600 leading-relaxed max-w-3xl"
 const META_TEXT = "text-xs sm:text-sm"
 const STATEMENT_TITLE = "text-4xl sm:text-5xl md:text-6xl xl:text-7xl font-medium uppercase leading-[1.15] tracking-tight text-forest"
@@ -76,6 +75,83 @@ const CloseIcon = () => <Svg className="w-6 h-6"><path d="M18 6 6 18M6 6l12 12" 
 
 /* -------------------------- Composants --------------------------- */
 
+// Polaroid : 3 couches. Extérieur = entrée + parallaxe (GSAP), milieu = flottement, intérieur = inclinaison (Tailwind)
+function Polaroid({ src, speed, tilt, className = '' }) {
+  return (
+    <div data-float data-speed={speed} className={`w-[62%] ${className}`}>
+      <div data-bob>
+        <div className={`${tilt} rounded-xl bg-white p-2 lg:p-3 shadow-md`}>
+          <img src={src} alt="" className="w-full aspect-[4/5] object-cover rounded-md" />
+        </div>
+      </div>
+    </div>
+  )
+}
+
+const heroStats = [
+  { id: 1, value: '500+' },
+  { id: 2, value: '4.9/5' },
+  { id: 3, value: '48 h' },
+]
+
+// Hero : texte au centre, deux piles de polaroids sur les côtés (plus de superpositions avec le titre)
+function Hero() {
+  const photo = usePhoto()
+  const t = useT('photography')
+  return (
+    <section data-hero-section className="grid grid-cols-1 lg:grid-cols-[1fr_1.7fr_1fr] gap-8 lg:gap-6 items-center min-h-[480px] lg:min-h-[700px] py-6 lg:py-10">
+
+      {/* Pile de gauche */}
+      <div className="hidden lg:flex flex-col">
+        <Polaroid src={photo('photo.hero.1')} speed={-10} tilt="-rotate-6" className="self-start" />
+        <Polaroid src={photo('photo.hero.2')} speed={6} tilt="rotate-3" className="self-end -mt-10 relative z-10" />
+        <Polaroid src={photo('photo.hero.3')} speed={-6} tilt="-rotate-3" className="self-start -mt-10 relative z-20" />
+      </div>
+
+      {/* Texte */}
+      <div className="flex flex-col items-center text-center">
+        <span data-hero className={`${BADGE} inline-flex items-center gap-2`}>
+          <Svg className="w-4 h-4"><path d="M14.5 4h-5L8 6H5a2 2 0 0 0-2 2v10a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V8a2 2 0 0 0-2-2h-3z" /><circle cx="12" cy="13" r="3.5" /></Svg>
+          {t('badge')}
+        </span>
+        <h1 data-hero className={`${STATEMENT_TITLE} mt-6`}>{t('title')}</h1>
+        <p data-hero className={`${SECTION_SUBTITLE} mt-6 md:mt-8 max-w-xl`}>
+          {t('intro')}
+        </p>
+        <div data-hero className="mt-8 flex flex-wrap items-center justify-center gap-4">
+          <A href="#sessions" className={`bg-[#084838] hover:bg-[#0a5c47] text-white ${BUTTON}`}>{t('book')}</A>
+          <A href="#gallery" className="inline-flex items-center gap-2 text-sm md:text-base font-medium text-slate-800 hover:gap-3 transition-all">
+            {t('seeGallery')} <ArrowIcon />
+          </A>
+        </div>
+
+        <ul data-hero className="mt-10 md:mt-12 flex flex-wrap items-center justify-center gap-x-8 md:gap-x-12 gap-y-4">
+          {heroStats.map((st, i) => (
+            <li key={st.id} className={`text-center ${i > 0 ? 'sm:pl-8 md:pl-12 sm:border-l sm:border-[#084838]/20' : ''}`}>
+              <p className="text-2xl md:text-4xl leading-none text-slate-800">{st.value}</p>
+              <p className={`mt-1 ${META_TEXT} text-slate-600`}>{t('heroStats')[i]}</p>
+            </li>
+          ))}
+        </ul>
+      </div>
+
+      {/* Pile de droite */}
+      <div className="hidden lg:flex flex-col">
+        <Polaroid src={photo('photo.hero.4')} speed={10} tilt="rotate-6" className="self-end" />
+        <Polaroid src={photo('photo.hero.5')} speed={-6} tilt="-rotate-3" className="self-start -mt-10 relative z-10" />
+        <Polaroid src={photo('photo.hero.6')} speed={6} tilt="rotate-3" className="self-end -mt-10 relative z-20" />
+      </div>
+
+      {/* Tablette / mobile : rangée de photos sous le texte */}
+      <div data-hero className="lg:hidden grid grid-cols-3 md:grid-cols-6 gap-3">
+        {[1, 2, 6, 4, 5, 3].map((n) => photo(`photo.hero.${n}`)).map((src, i) => (
+          <img key={i} src={src} alt="" className="w-full aspect-square object-cover rounded-xl" />
+        ))}
+      </div>
+    </section>
+  )
+}
+
 // Lightbox : photo en grand, flèches, Échap pour fermer (rendue dans <body>)
 function Lightbox({ items, index, onClose, onStep }) {
   const t = useT('photography')
@@ -107,7 +183,7 @@ function Lightbox({ items, index, onClose, onStep }) {
   const nav = "absolute top-1/2 -translate-y-1/2 w-11 h-11 md:w-14 md:h-14 flex items-center justify-center rounded-full bg-white/10 hover:bg-white/25 text-white transition"
 
   return createPortal(
-    <div role="dialog" aria-modal="true" aria-label={t('viewer')} className="fixed inset-0 z-50 bg-[#072a1f]/90 flex items-center justify-center p-4 md:p-10" onClick={onClose}>
+    <div role="dialog" aria-modal="true" aria-label={t('viewer')} className="fixed inset-0 z-50 bg-black/90 flex items-center justify-center p-4 md:p-10" onClick={onClose}>
       <button ref={closeRef} type="button" onClick={onClose} aria-label={t('close')} className="absolute right-4 top-4 md:right-8 md:top-8 w-11 h-11 flex items-center justify-center rounded-full bg-white/10 hover:bg-white/25 text-white transition">
         <CloseIcon />
       </button>
@@ -153,7 +229,7 @@ function Gallery() {
   const step = (delta) => setOpen((i) => (i === null ? i : (i + delta + list.length) % list.length))
 
   const tab = (active) =>
-    `rounded-full px-5 py-2 text-sm md:text-base font-medium transition ${active ? 'bg-[#074636] text-white' : 'bg-white text-slate-700 hover:bg-white/70'}`
+    `rounded-full px-5 py-2 text-sm md:text-base font-medium transition ${active ? 'bg-[#084838] text-white' : 'bg-white text-slate-700 hover:bg-white/70'}`
 
   return (
     <div id="gallery" className={`${SECTION_GAP} scroll-mt-8`}>
@@ -181,7 +257,7 @@ function Gallery() {
             className="group relative mb-3 md:mb-5 block w-full break-inside-avoid overflow-hidden rounded-2xl"
           >
             <img src={p.image} alt={p.caption} className={`w-full ${p.ratio} object-cover transition-transform duration-700 group-hover:scale-105`} />
-            <span className="absolute inset-x-0 bottom-0 bg-gradient-to-t from-[#072a1f]/70 to-transparent p-4 text-left text-sm text-white opacity-0 transition-opacity duration-300 group-hover:opacity-100 group-focus-visible:opacity-100">
+            <span className="absolute inset-x-0 bottom-0 bg-gradient-to-t from-black/70 to-transparent p-4 text-left text-sm text-white opacity-0 transition-opacity duration-300 group-hover:opacity-100 group-focus-visible:opacity-100">
               {p.caption}
             </span>
           </button>
@@ -206,14 +282,14 @@ function Sessions() {
       </div>
 
       <OffersStatus status={status} empty={sessions.length === 0} />
-      <ul className="border-t border-[#074636]/20">
+      <ul className="border-t border-[#084838]/20">
         {sessions.map((s, i) => (
-          <li key={s.id} className="border-b border-[#074636]/20">
+          <li key={s.id} className="border-b border-[#084838]/20">
             <div className="group grid grid-cols-1 lg:grid-cols-[60px_1.4fr_1.6fr_40px] items-center gap-3 lg:gap-8 py-6 md:py-8 px-2 md:px-4 transition hover:bg-white/60 rounded-2xl">
               <span className="text-sm md:text-lg tabular-nums text-[#9a742f]">{String(i + 1).padStart(2, '0')}</span>
 
               <div>
-                <h3 className="text-2xl md:text-3xl font-bold text-forest tracking-tight">{s.name}</h3>
+                <h3 className="text-2xl md:text-3xl font-medium text-forest tracking-tight">{s.name}</h3>
                 <p className="mt-1 text-sm md:text-base text-slate-600">{s.text}</p>
               </div>
 
@@ -262,7 +338,7 @@ function BeforeAfter() {
             <li key={s.id} className="flex items-start gap-4">
               <span className="shrink-0 w-9 h-9 rounded-full bg-[#C49849] text-white flex items-center justify-center text-sm font-medium">{s.id}</span>
               <div>
-                <h3 className="text-lg md:text-xl font-bold text-forest">{s.title}</h3>
+                <h3 className="text-lg md:text-xl font-medium text-forest">{s.title}</h3>
                 <p className="mt-1 text-sm md:text-base text-slate-600 leading-relaxed">{s.text}</p>
               </div>
             </li>
@@ -276,11 +352,11 @@ function BeforeAfter() {
         {/* Après : photo retouchée, révélée par le curseur */}
         <img src={photo('photo.edit')} alt={t('afterAlt')} className="absolute inset-0 w-full h-full object-cover" style={{ clipPath: `inset(0 ${100 - pos}% 0 0)` }} />
 
-        <span className="absolute left-4 top-4 rounded-full bg-[#074636] px-3 py-1 text-xs md:text-sm text-white">{t('after')}</span>
+        <span className="absolute left-4 top-4 rounded-full bg-[#084838] px-3 py-1 text-xs md:text-sm text-white">{t('after')}</span>
         <span className="absolute right-4 top-4 rounded-full bg-white/90 px-3 py-1 text-xs md:text-sm text-slate-800">{t('before')}</span>
 
         <div className="absolute inset-y-0 w-0.5 bg-white pointer-events-none" style={{ left: `${pos}%` }}>
-          <span className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-11 h-11 rounded-full bg-white shadow-md flex items-center justify-center text-[#074636]">
+          <span className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-11 h-11 rounded-full bg-white shadow-md flex items-center justify-center text-[#084838]">
             <Svg className="w-5 h-5"><path d="m9 6-6 6 6 6M15 6l6 6-6 6" /></Svg>
           </span>
         </div>
@@ -301,16 +377,16 @@ function Keepsakes() {
   const t = useT('photography')
   const keepsakes = localize(KEEPSAKES, t('keepsakes'))
   return (
-    <div className={`${SECTION_GAP} rounded-3xl bg-[#074636] text-white p-6 md:p-12`}>
+    <div className={`${SECTION_GAP} rounded-3xl bg-[#084838] text-white p-6 md:p-12`}>
       <div className="flex flex-col lg:flex-row lg:items-end lg:justify-between gap-5 lg:gap-12">
-        <h2 className="text-[clamp(2rem,4.4vw,4rem)] font-bold leading-[1.08] tracking-tight lg:max-w-[45%]">{t('keepTitle')}</h2>
+        <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-[52px] font-medium leading-[1.15] tracking-tight lg:max-w-[45%]">{t('keepTitle')}</h2>
         <p className="text-sm md:text-lg text-white/75 leading-relaxed lg:max-w-md">{t('keepText')}</p>
       </div>
 
       <ul className="mt-8 md:mt-12 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4">
         {keepsakes.map((k, i) => (
           <li key={k.id} className={`py-6 lg:py-2 lg:px-8 border-t border-white/20 lg:border-t-0 ${i > 0 ? 'lg:border-l lg:border-white/20' : 'lg:pl-0'}`}>
-            <h3 className="text-xl md:text-2xl font-bold">{k.title}</h3>
+            <h3 className="text-xl md:text-2xl font-medium">{k.title}</h3>
             <p className="mt-3 text-sm md:text-base text-white/70 leading-relaxed">{k.text}</p>
           </li>
         ))}
@@ -350,8 +426,28 @@ function Faq() {
   )
 }
 
-function Photography() {
+// CTA : grande image centrée
+function Cta() {
   const t = useT('photography')
+  return (
+    <div className={`${SECTION_GAP} relative overflow-hidden rounded-3xl min-h-[420px] md:min-h-[520px] flex items-center justify-center text-center text-white`}>
+      <SiteMedia slot="photo.cta" alt="" className="absolute inset-0 w-full h-full object-cover" />
+      <div className="absolute inset-0 bg-black/55" />
+      <div className="relative px-6 py-12 max-w-3xl">
+        <h2 className="text-3xl sm:text-4xl md:text-6xl font-medium leading-[1.15] tracking-tight">{t('ctaTitle')}</h2>
+        <p className="mt-4 text-sm md:text-lg text-white/85 leading-relaxed">
+          {t('ctaText')}
+        </p>
+        <div className="mt-8 flex flex-wrap items-center justify-center gap-3">
+          <A href="/contact" className={`bg-[#C49849] hover:bg-[#b08339] text-white ${BUTTON}`}>{t('ctaBook')}</A>
+          <A href="#gallery" className={`border border-white/50 hover:bg-white/10 text-white ${BUTTON}`}>{t('ctaBack')}</A>
+        </div>
+      </div>
+    </div>
+  )
+}
+
+function Photography() {
   const contentRef = useRef(null)
 
   useLayoutEffect(() => {
@@ -359,8 +455,26 @@ function Photography() {
     if (prefersReducedMotion()) return
 
     const ctx = gsap.context(() => {
+      // Entrée du hero : textes puis polaroids qui arrivent
+      gsap.timeline({ defaults: { ease: 'power3.out' } })
+        .from('[data-hero]', { y: 40, opacity: 0, duration: 0.9, stagger: 0.12 })
+        .from('[data-float]', { y: 90, opacity: 0, duration: 1.1, stagger: 0.15 }, '-=0.6')
+
+      // Léger flottement permanent des polaroids
+      gsap.to('[data-bob]', {
+        y: (i) => (i % 2 ? 8 : -8), duration: (i) => 2.8 + (i % 3) * 0.6,
+        ease: 'sine.inOut', yoyo: true, repeat: -1, delay: 1.2,
+      })
+
+      // Parallaxe : chaque polaroid bouge à sa vitesse pendant le défilement
+      gsap.to('[data-float]', {
+        yPercent: (i, el) => Number(el.dataset.speed),
+        ease: 'none',
+        scrollTrigger: { trigger: '[data-hero-section]', start: 'top top', end: 'bottom top', scrub: true },
+      })
+
       // Chaque section apparaît en remontant quand elle entre dans l'écran
-      Array.from(contentRef.current.children).forEach((el) => {
+      Array.from(contentRef.current.children).slice(1).forEach((el) => {
         gsap.from(el, {
           y: 50, opacity: 0, duration: 0.9, ease: 'power3.out',
           scrollTrigger: { trigger: el, start: 'top 88%', once: true },
@@ -379,20 +493,17 @@ function Photography() {
 
   return (
     <>
-    <section className="w-full overflow-x-clip bg-[#D5E8E2] flex flex-col items-center">
+    <section className="w-full pt-0 pb-12 md:pb-20 bg-[#D5E8E2] flex flex-col items-center">
       <Navbar />
-      <PageHero slot="photo.hero.1" title={t('title')} crumb={t('badge')} text={t('intro')} moreHref="#gallery" moreLabel={t('seeGallery')} />
-      <div ref={contentRef} className={SECTION_WIDTH}>
+      <div ref={contentRef} className={`${SECTION_WIDTH} mt-6 md:mt-10`}>
+        <Hero />
         <Gallery />
         <Sessions />
         <BeforeAfter />
         <Keepsakes />
         <Faq />
+        <Cta />
       </div>
-      <PageCta slot="photo.cta" title={t('ctaTitle')} text={t('ctaText')} floats={['photo.hero.2', 'photo.hero.3', 'photo.hero.4']}>
-        <A href="/contact" className={PAGE_CTA_GOLD}>{t('ctaBook')}</A>
-        <A href="#gallery" className={PAGE_CTA_GHOST}>{t('ctaBack')}</A>
-      </PageCta>
     </section>
     <Footer />
     </>

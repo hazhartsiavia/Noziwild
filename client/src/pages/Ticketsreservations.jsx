@@ -1,8 +1,6 @@
 import React, { useLayoutEffect, useRef, useState } from 'react'
 import Navbar from '../components/Navbar';
 import Footer from '../components/Footer';
-import { CARD, CARD_BODY, CARD_CHIP, CARD_CHIPS, CARD_FOOT, CARD_IMG, CARD_MEDIA, CARD_TITLE, CardMeta } from '../components/Card'
-import PageHero from '../components/PageHero'
 import AddToTrip from '../components/AddToTrip'
 import { useT } from '../i18n/LanguageContext';
 import { localize } from '../i18n/localize';
@@ -16,7 +14,7 @@ gsap.registerPlugin(ScrollTrigger)
 
 /* Constantes partagées : mêmes valeurs que dans les autres pages */
 const SECTION_WIDTH = "w-[90vw] lg:max-w-[90vw] xl:max-w-[95vw]"
-const SECTION_TITLE = "text-[clamp(2rem,4.4vw,4rem)] font-bold text-forest leading-[1.08] tracking-tight"
+const SECTION_TITLE = "text-3xl sm:text-4xl md:text-5xl lg:text-[52px] font-medium text-forest leading-[1.15] tracking-tight"
 const SECTION_SUBTITLE = "text-sm sm:text-base md:text-lg text-slate-600 leading-relaxed max-w-3xl"
 const META_TEXT = "text-xs sm:text-sm"
 const BADGE = "inline-block bg-[#C49849] text-white text-xs sm:text-sm font-medium px-3 py-1.5 rounded-sm"
@@ -69,27 +67,62 @@ function Qr({ className = '' }) {
   })
   return (
     <div className={`grid grid-cols-9 gap-[3px] rounded-xl bg-white p-3 ${className}`} aria-hidden="true">
-      {cells.map((on, i) => <span key={i} className={`aspect-square rounded-[2px] ${on ? 'bg-[#074636]' : 'bg-transparent'}`} />)}
+      {cells.map((on, i) => <span key={i} className={`aspect-square rounded-[2px] ${on ? 'bg-[#084838]' : 'bg-transparent'}`} />)}
     </div>
+  )
+}
+
+// Hero : un grand billet avec souche détachable
+function Hero() {
+  const t = useT('tickets')
+  const notch = "absolute w-8 h-8 rounded-full bg-[#D5E8E2]"
+  return (
+    <section data-ticket>
+      <div className="relative grid grid-cols-1 lg:grid-cols-[1fr_290px] overflow-hidden rounded-3xl bg-[#084838] text-white">
+        <div className="p-6 md:p-14">
+          <span data-hero className={BADGE}>{t('badge')}</span>
+          <h1 data-hero className="mt-6 text-4xl sm:text-5xl md:text-6xl xl:text-7xl font-medium uppercase leading-[1.1] tracking-tight">
+            {t('title')}
+          </h1>
+          <p data-hero className="mt-6 max-w-xl text-sm md:text-lg text-white/80 leading-relaxed">
+            {t('intro')}
+          </p>
+          <div data-hero className="mt-8 flex flex-wrap items-center gap-4">
+            <A href="#tickets" className={`bg-[#C49849] hover:bg-[#b08339] text-white ${BUTTON}`}>{t('browse')}</A>
+            <A href="/contact" className="inline-flex items-center gap-2 text-sm md:text-base font-medium hover:gap-3 transition-all">{t('ask')} <ArrowIcon /></A>
+          </div>
+        </div>
+
+        {/* Souche */}
+        <div className="relative flex flex-col items-center justify-center gap-4 p-6 md:p-8 border-t-2 lg:border-t-0 lg:border-l-2 border-dashed border-white/35">
+          <span className={`${notch} -top-4 -left-4`} />
+          <span className={`${notch} -top-4 -right-4 lg:top-auto lg:right-auto lg:-bottom-4 lg:-left-4`} />
+          <p className="text-xs tracking-[0.3em] text-[#E6C58A]">{t('admit')}</p>
+          <Qr className="w-36 md:w-44" />
+          <p className="text-xs text-white/70 tabular-nums">{t('ticketNo')}</p>
+        </div>
+      </div>
+    </section>
   )
 }
 
 // Carte en forme de billet : photo, infos, souche
 function TicketCard({ t }) {
+  const notch = "absolute -left-[9px] w-4 h-4 rounded-full bg-[#D5E8E2]"
   return (
-    <article className={CARD}>
-      <div className={CARD_MEDIA}>
-        <img src={t.image} alt={t.name} className={CARD_IMG} />
-      </div>
-      <div className={CARD_BODY}>
-        <CardMeta items={[t.place]} />
-        <h3 className={CARD_TITLE}>{t.name}</h3>
-        <ul className={CARD_CHIPS}>
-          {t.perks.map((p) => <li key={p} className={CARD_CHIP}>{p}</li>)}
+    <article className="flex overflow-hidden rounded-2xl bg-white">
+      <img src={t.image} alt={t.name} className="w-[30%] sm:w-[34%] object-cover" />
+      <div className="flex-1 min-w-0 p-4 md:p-5">
+        <p className={`flex items-center gap-1.5 ${META_TEXT} text-slate-600`}><PinIcon />{t.place}</p>
+        <h3 className="mt-1 text-lg md:text-2xl font-medium leading-snug text-forest">{t.name}</h3>
+        <ul className="mt-3 flex flex-wrap gap-2">
+          {t.perks.map((p) => <li key={p} className="rounded-full bg-[#D5E8E2] px-3 py-1 text-xs text-slate-700">{p}</li>)}
         </ul>
-        <div className={`${CARD_FOOT} justify-end`}>
-          <AddToTrip variant="icon" item={{ kind: 'ticket', ref: String(t.id), title: t.name, image: t.image, link: '/ticket-reservation', details: t.place, price: t.price, unit: 'person' }} />
-        </div>
+      </div>
+      <div className="relative shrink-0 w-[100px] md:w-[130px] flex flex-col items-center justify-center gap-1.5 border-l-2 border-dashed border-slate-300 p-3 text-center">
+        <span className={`${notch} -top-2`} />
+        <span className={`${notch} -bottom-2`} />
+        <AddToTrip variant="icon" item={{ kind: 'ticket', ref: String(t.id), title: t.name, image: t.image, link: '/ticket-reservation', details: t.place, price: t.price, unit: 'person' }} />
       </div>
     </article>
   )
@@ -129,7 +162,7 @@ function Browse() {
             role="tab"
             aria-selected={category === c.id}
             onClick={() => setCategory(c.id)}
-            className={`rounded-full px-5 py-2 text-sm md:text-base font-medium transition ${category === c.id ? 'bg-[#074636] text-white' : 'bg-white text-slate-700 hover:bg-white/70'}`}
+            className={`rounded-full px-5 py-2 text-sm md:text-base font-medium transition ${category === c.id ? 'bg-[#084838] text-white' : 'bg-white text-slate-700 hover:bg-white/70'}`}
           >
             {c.label}
           </button>
@@ -137,7 +170,7 @@ function Browse() {
       </div>
 
       <OffersStatus status={status} empty={list.length === 0} />
-      <div ref={gridRef} className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-9">
+      <div ref={gridRef} className="grid grid-cols-1 xl:grid-cols-2 gap-4 md:gap-6">
         {list.map((t) => <TicketCard key={t.id} t={t} />)}
       </div>
     </div>
@@ -152,11 +185,11 @@ function HowItWorks() {
     <div className={SECTION_GAP}>
       <h2 className={`${SECTION_TITLE} text-center mb-10 md:mb-16`}>{t('stepsTitle')}</h2>
       <ol data-stagger className="relative grid grid-cols-1 md:grid-cols-3 gap-10 md:gap-6">
-        <span className="hidden md:block absolute left-[17%] right-[17%] top-8 border-t-2 border-dashed border-[#074636]/30" aria-hidden="true" />
+        <span className="hidden md:block absolute left-[17%] right-[17%] top-8 border-t-2 border-dashed border-[#084838]/30" aria-hidden="true" />
         {steps.map((s) => (
           <li key={s.id} className="relative flex flex-col items-center text-center">
             <span className="w-16 h-16 rounded-full bg-[#C49849] text-white text-2xl font-medium flex items-center justify-center ring-8 ring-[#D5E8E2]">{s.id}</span>
-            <h3 className="mt-6 text-xl md:text-2xl font-bold text-forest">{s.title}</h3>
+            <h3 className="mt-6 text-xl md:text-2xl font-medium text-forest">{s.title}</h3>
             <p className="mt-2 max-w-xs text-sm md:text-base text-slate-600 leading-relaxed">{s.text}</p>
           </li>
         ))}
@@ -171,10 +204,10 @@ function AppSection() {
   return (
     <div className={`${SECTION_GAP} grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-center`}>
       <div className="mx-auto w-[280px] md:w-[300px]">
-        <div data-bob className="rounded-[2.5rem] border-[10px] border-[#074636] bg-white p-4 shadow-xl">
+        <div data-bob className="rounded-[2.5rem] border-[10px] border-[#084838] bg-white p-4 shadow-xl">
           <div className="mx-auto mb-4 h-1.5 w-16 rounded-full bg-slate-200" />
           <div className="rounded-2xl bg-[#D5E8E2] p-4 text-center">
-            <span className="inline-flex items-center gap-1.5 rounded-full bg-[#074636] px-3 py-1 text-xs text-white"><CheckIcon /> {t('confirmed')}</span>
+            <span className="inline-flex items-center gap-1.5 rounded-full bg-[#084838] px-3 py-1 text-xs text-white"><CheckIcon /> {t('confirmed')}</span>
             <p className="mt-3 text-lg font-medium text-slate-900">{t('phoneTitle')}</p>
             <p className={`${META_TEXT} text-slate-600`}>{t('phoneMeta')}</p>
             <Qr className="mx-auto mt-4 w-40" />
@@ -189,7 +222,7 @@ function AppSection() {
         <ul className="mt-8 flex flex-col gap-4">
           {t('benefits').map((b) => (
             <li key={b} className="flex items-center gap-4 text-base md:text-xl text-slate-800">
-              <span className="shrink-0 w-8 h-8 rounded-full bg-[#074636] text-white flex items-center justify-center"><CheckIcon /></span>
+              <span className="shrink-0 w-8 h-8 rounded-full bg-[#084838] text-white flex items-center justify-center"><CheckIcon /></span>
               {b}
             </li>
           ))}
@@ -212,7 +245,7 @@ function Faq() {
         {t('faqs').map((f, i) => (
           <article key={f.q} className="rounded-2xl bg-white p-6 md:p-7">
             <span className="w-9 h-9 rounded-full bg-[#C49849] text-white text-sm font-medium flex items-center justify-center">{i + 1}</span>
-            <h3 className="mt-4 text-lg md:text-xl font-bold text-forest leading-snug">{f.q}</h3>
+            <h3 className="mt-4 text-lg md:text-xl font-medium text-forest leading-snug">{f.q}</h3>
             <p className="mt-2 text-sm md:text-base text-slate-600 leading-relaxed">{f.a}</p>
           </article>
         ))}
@@ -228,20 +261,19 @@ function Cta() {
   return (
     <div className={`${SECTION_GAP} relative overflow-hidden rounded-3xl bg-[#C49849] text-white grid grid-cols-1 md:grid-cols-[1fr_auto]`}>
       <div className="p-6 md:p-12">
-        <h2 className="text-[clamp(2rem,4.4vw,4rem)] font-bold leading-[1.08] tracking-tight">{t('ctaTitle')}</h2>
+        <h2 className="text-3xl sm:text-4xl md:text-5xl font-medium leading-[1.15] tracking-tight">{t('ctaTitle')}</h2>
         <p className="mt-3 max-w-xl text-sm md:text-lg text-white/90 leading-relaxed">{t('ctaText')}</p>
       </div>
       <div className="relative flex items-center justify-center p-6 md:p-12 border-t-2 md:border-t-0 md:border-l-2 border-dashed border-white/50">
         <span className={`${notch} -top-4 -left-4 md:left-[-16px]`} />
         <span className={`${notch} -top-4 -right-4 md:top-auto md:right-auto md:-bottom-4 md:-left-4`} />
-        <A href="/contact" className={`inline-flex items-center gap-3 bg-[#074636] hover:bg-[#0a5c47] text-white ${BUTTON}`}>{t('ctaButton')} <ArrowIcon /></A>
+        <A href="/contact" className={`inline-flex items-center gap-3 bg-[#084838] hover:bg-[#0a5c47] text-white ${BUTTON}`}>{t('ctaButton')} <ArrowIcon /></A>
       </div>
     </div>
   )
 }
 
 function TicketsReservations() {
-  const t = useT('tickets')
   const contentRef = useRef(null)
 
   useLayoutEffect(() => {
@@ -249,11 +281,16 @@ function TicketsReservations() {
     if (prefersReducedMotion()) return
 
     const ctx = gsap.context(() => {
+      // Le billet du hero tombe et se stabilise, puis les textes arrivent
+      gsap.timeline({ defaults: { ease: 'power3.out' } })
+        .from('[data-ticket]', { y: -70, rotation: -2, opacity: 0, duration: 1.1, transformOrigin: '50% 0%' })
+        .from('[data-hero]', { y: 30, opacity: 0, duration: 0.8, stagger: 0.1 }, '-=0.6')
+
       // Le téléphone flotte doucement
       gsap.to('[data-bob]', { y: -10, duration: 2.6, ease: 'sine.inOut', yoyo: true, repeat: -1 })
 
       // Chaque section apparaît en remontant
-      Array.from(contentRef.current.children).forEach((el) => {
+      Array.from(contentRef.current.children).slice(1).forEach((el) => {
         gsap.from(el, { y: 50, opacity: 0, duration: 0.9, ease: 'power3.out', scrollTrigger: { trigger: el, start: 'top 88%', once: true } })
       })
 
@@ -272,8 +309,8 @@ function TicketsReservations() {
     <>
     <section className="w-full pt-0 pb-12 md:pb-20 bg-[#D5E8E2] flex flex-col items-center">
       <Navbar />
-      <PageHero slot="tickets.hero" title={t('title')} crumb={t('badge')} text={t('intro')} moreHref="#tickets" moreLabel={t('browse')} />
-      <div ref={contentRef} className={SECTION_WIDTH}>
+      <div ref={contentRef} className={`${SECTION_WIDTH} mt-6 md:mt-10`}>
+        <Hero />
         <Browse />
         <HowItWorks />
         <AppSection />
