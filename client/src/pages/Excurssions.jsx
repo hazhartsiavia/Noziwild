@@ -13,9 +13,7 @@ import AddToTrip from '../components/AddToTrip'
 import { useLanguage, useT } from '../i18n/LanguageContext'
 import { formatPrice } from '../utils/format'
 import { useOffers } from '../utils/useOffers'
-import { usePhoto } from '../sitePhotos'
 import { A } from '../i18n/router'
-import SiteMedia from '../components/SiteMedia'
 
 gsap.registerPlugin(ScrollTrigger)
 
@@ -26,29 +24,17 @@ const H2 = 'text-[clamp(2rem,4.4vw,4rem)] font-bold text-forest leading-[1.08] t
 const SELECT = 'w-full h-12 rounded-full border border-slate-300 bg-white px-5 text-base text-slate-800 focus:outline-none focus:border-slate-700 focus:ring-1 focus:ring-slate-700'
 
 /* ---------------------------- Données ---------------------------- */
-/* Les excursions (textes, prix, photos, région, durée) sont en base : admin > Offers > Excursions.
-   region et length (half | day | multi) servent aux filtres ci-dessous.
-   Autres textes de la page : locales/<langue>/excursions.json (steps, stops : même ordre qu'ici) */
+/* Les excursions (textes, prix, photos, lieu, durée) sont en base : admin > Offers > Excursions.
+   region sert au filtre ci-dessous.
+   Autres textes de la page : locales/<langue>/excursions.json (steps : même ordre qu'ici) */
 
-const regions = ['All regions', 'North', 'Highlands', 'West', 'East']
-const lengths = [
-  { label: 'Any length', value: 'any' },
-  { label: 'Half day', value: 'half' },
-  { label: 'Full day', value: 'day' },
-  { label: '2 days or more', value: 'multi' },
-]
+const regions = ['All regions', 'Nosy Be', 'Diego Suarez']
 
 const steps = [
   { title: 'Hotel pick-up', text: 'Your driver and guide collect you in the morning.' },
   { title: 'Guided visit', text: 'Unhurried stops, with time for photos and questions.' },
   { title: 'Lunch with locals', text: 'A simple meal in a village or by the water.' },
   { title: 'Back by late afternoon', text: 'Dropped at your hotel in time to rest.' },
-]
-
-const stops = [
-  { day: 'Day 1', text: 'Ambanja, then the boat from Ankify to Nosy Be' },
-  { day: 'Day 2', text: 'Full day on Nosy Iranja, sandbar and turtles' },
-  { day: 'Day 3', text: 'Nosy Lonjo in the morning, return in the afternoon' },
 ]
 
 /* ----------------------- Utilitaires GSAP ------------------------ */
@@ -75,7 +61,7 @@ const reveal = (targets, from, to, extra = {}) =>
 
 /* -------------------------- Composants --------------------------- */
 
-function Hero({ region, setRegion, length, setLength }) {
+function Hero({ region, setRegion }) {
   const formRef = useRef(null)
   const t = useT('excursions')
 
@@ -97,18 +83,12 @@ function Hero({ region, setRegion, length, setLength }) {
       <form
         ref={formRef}
         onSubmit={(e) => { e.preventDefault(); document.getElementById('results')?.scrollIntoView({ behavior: 'smooth' }) }}
-        className={`${W} relative z-10 mt-4 md:mt-5 grid grid-cols-1 md:grid-cols-[1fr_1fr_auto] gap-4 items-end rounded-[2rem] bg-white p-5 md:p-7 shadow-lg`}
+        className={`${W} relative z-10 mt-4 md:mt-5 grid grid-cols-1 md:grid-cols-[1fr_auto] gap-4 items-end rounded-[2rem] bg-white p-5 md:p-7 shadow-lg`}
       >
         <div className="hero-field">
           <label htmlFor="region" className="block mb-2 text-sm md:text-base text-slate-700">{t('region')}</label>
           <select id="region" value={region} onChange={(e) => setRegion(e.target.value)} className={SELECT}>
             {regions.map((r) => <option key={r} value={r}>{t('regions')[r]}</option>)}
-          </select>
-        </div>
-        <div className="hero-field">
-          <label htmlFor="length" className="block mb-2 text-sm md:text-base text-slate-700">{t('length')}</label>
-          <select id="length" value={length} onChange={(e) => setLength(e.target.value)} className={SELECT}>
-            {lengths.map((l, i) => <option key={l.value} value={l.value}>{t('lengths')[i]}</option>)}
           </select>
         </div>
         <button type="submit" className={`hero-find ${BTN} ${GOLD} text-white h-12 md:px-8`}>{t('find')}</button>
@@ -128,7 +108,7 @@ function Row({ item }) {
     <li className={`excursion-row ${CARD}`}>
       <Photo href={href || undefined} className={`block ${CARD_MEDIA}`}>
         <img src={item.image} alt={item.title} className={`row-img ${CARD_IMG}`} />
-        <span className={`row-badge ${CARD_BADGE}`}>{item.duration}</span>
+        <span className={`row-badge ${CARD_BADGE}`}>{item.duration || item.place}</span>
       </Photo>
       <div className={CARD_BODY}>
         <CardMeta items={[item.place, item.level, item.group]} />
@@ -137,7 +117,7 @@ function Row({ item }) {
         </h3>
         <p className={CARD_TEXT}>{item.text}</p>
         <div className={`row-side ${CARD_FOOT}`}>
-          <p className="text-slate-600 text-sm">{t('from')} <span className="text-2xl font-semibold text-slate-900">{formatPrice(item.price, lang)}</span><span className="block text-xs">{t('perPerson')}</span></p>
+          <p className="text-slate-600 text-sm"><span className="text-2xl font-semibold text-slate-900">{formatPrice(item.price, lang)}</span><span className="block text-xs">{t('perPerson')}</span>{item.priceNote && <span className="block text-xs">{item.priceNote}</span>}</p>
           <AddToTrip item={tripItem} />
         </div>
       </div>
@@ -146,19 +126,14 @@ function Row({ item }) {
 }
 
 function Excursions() {
-  const photo = usePhoto()
   const t = useT('excursions')
   const { offers, status } = useOffers('excursion')
   const [region, setRegion] = useState('All regions')
-  const [length, setLength] = useState('any')
 
   const resultsRef = useRef(null)
   const dayRef = useRef(null)
-  const multiRef = useRef(null)
 
-  const visible = offers.filter(
-    (e) => (region === 'All regions' || e.region === region) && (length === 'any' || e.length === length)
-  )
+  const visible = offers.filter((e) => region === 'All regions' || e.region === region)
 
   /* Titre des résultats : glisse depuis la gauche, le compteur arrive de la droite */
   useGsap(resultsRef, () => {
@@ -184,7 +159,7 @@ function Excursions() {
         reveal(batch.map((r) => r.querySelector('.row-side')), { x: 30, opacity: 0 }, { x: 0, opacity: 1, duration: 0.7, delay: 0.5, stagger: 0.15, ease: 'power2.out' })
       },
     })
-  }, [region, length, offers])
+  }, [region, offers])
 
   /* Journée type : chaque étape se « dessine » de gauche à droite (la ligne du haut en premier) */
   useGsap(dayRef, () => {
@@ -192,17 +167,6 @@ function Excursions() {
     reveal('.day-title', { y: 30, opacity: 0 }, { y: 0, opacity: 1, duration: 0.9, ease: 'power3.out', scrollTrigger: trigger })
     reveal('.day-step', { clipPath: 'inset(0% 100% 0% 0%)', opacity: 0 }, { clipPath: 'inset(0% 0% 0% 0%)', opacity: 1, duration: 1.1, stagger: 0.22, delay: 0.2, ease: 'power3.inOut', scrollTrigger: trigger })
     reveal('.day-num', { scale: 0, rotate: -90 }, { scale: 1, rotate: 0, duration: 0.6, stagger: 0.22, delay: 0.6, ease: 'back.out(3)', scrollTrigger: trigger })
-  })
-
-  /* Escapade : l'image se révèle de bas en haut, les étapes glissent une à une */
-  useGsap(multiRef, () => {
-    const trigger = { trigger: multiRef.current, start: 'top 75%', once: true }
-    reveal('.multi-frame', { clipPath: 'inset(100% 0% 0% 0%)' }, { clipPath: 'inset(0% 0% 0% 0%)', duration: 1.3, ease: 'expo.out', scrollTrigger: trigger })
-    reveal('.multi-img', { scale: 1.3 }, { scale: 1, duration: 1.8, ease: 'power2.out', scrollTrigger: trigger })
-    reveal('.multi-badge', { scale: 0, opacity: 0 }, { scale: 1, opacity: 1, duration: 0.6, delay: 0.8, ease: 'back.out(3)', scrollTrigger: trigger })
-    reveal('.multi-text > h2, .multi-text > p', { y: 30, opacity: 0 }, { y: 0, opacity: 1, duration: 0.8, stagger: 0.12, delay: 0.2, ease: 'power3.out', scrollTrigger: trigger })
-    reveal('.multi-stop', { x: 40, opacity: 0 }, { x: 0, opacity: 1, duration: 0.7, stagger: 0.15, delay: 0.5, ease: 'power2.out', scrollTrigger: trigger })
-    reveal('.multi-btn', { y: 20, opacity: 0 }, { y: 0, opacity: 1, duration: 0.6, delay: 1.0, ease: 'power2.out', scrollTrigger: trigger })
   })
 
   /* CTA : la section s'ouvre depuis le centre, le fond se dézoome au scroll */
@@ -220,7 +184,7 @@ function Excursions() {
   return (
     <>
       <main className="w-full overflow-x-clip bg-[#D5E8E2] flex flex-col items-center">
-        <Hero region={region} setRegion={setRegion} length={length} setLength={setLength} />
+        <Hero region={region} setRegion={setRegion} />
 
         {/* Résultats */}
         <section ref={resultsRef} id="results" className={`${W} mt-16 md:mt-24 scroll-mt-6`}>
@@ -238,7 +202,7 @@ function Excursions() {
           ) : (
             <div className="rounded-[2rem] bg-white p-10 text-center">
               <p className="text-lg text-slate-700">{t('empty')}</p>
-              <button type="button" onClick={() => { setRegion('All regions'); setLength('any') }} className={`${BTN} bg-[#074636] hover:bg-[#0a5c47] text-white mt-5`}>{t('showAll')}</button>
+              <button type="button" onClick={() => setRegion('All regions')} className={`${BTN} bg-[#074636] hover:bg-[#0a5c47] text-white mt-5`}>{t('showAll')}</button>
             </div>
           )}
         </section>
@@ -255,31 +219,6 @@ function Excursions() {
               </li>
             ))}
           </ol>
-        </section>
-
-        {/* Escapade de plusieurs jours */}
-        <section ref={multiRef} className={`${W} mt-16 md:mt-28 grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-16 items-center`}>
-          <div className="multi-frame relative aspect-[4/3] lg:aspect-[4/5] overflow-hidden rounded-[1.5rem] md:rounded-[2rem]">
-            <SiteMedia slot="exc.multi" alt={t('multiAlt')} className="multi-img absolute inset-0 w-full h-full object-cover" />
-            <span className="multi-badge absolute left-5 top-5 bg-[#C49849] text-white text-sm font-medium px-3 py-1.5 rounded-sm">{t('multiBadge')}</span>
-          </div>
-          <div className="multi-text">
-            <h2 className={H2}>{t('multiTitle')}</h2>
-            <p className="mt-4 text-base md:text-lg text-slate-700 leading-relaxed max-w-xl">{t('multiText')}</p>
-            <ul className="mt-8 flex flex-col divide-y divide-slate-900/15 border-y border-slate-900/15">
-              {t('stops').map((s, i) => (
-                <li key={stops[i].day} className="multi-stop flex gap-6 py-4 text-base md:text-lg text-slate-800">
-                  <span className="w-16 shrink-0 font-medium">{s.day}</span>
-                  <span>{s.text}</span>
-                </li>
-              ))}
-            </ul>
-            <AddToTrip
-              variant="gold"
-              className="multi-btn mt-8"
-              item={{ kind: 'excursion', ref: 'three-days-islands', title: t('multiTitle'), image: photo('exc.multi'), link: '/excursions', price: null, unit: null }}
-            />
-          </div>
         </section>
 
         {/* Appel à l'action */}

@@ -5,7 +5,7 @@ import path from 'node:path'
 import { fileURLToPath } from 'node:url'
 import mysql from 'mysql2/promise'
 import { seedCircuits } from './circuits.js'
-import { seedOffers } from './offers.js'
+import { replaceOldExcursions, seedOffers } from './offers.js'
 import { seedDestinations } from './destinations.js'
 import { seedPosts } from './posts.js'
 
@@ -129,6 +129,8 @@ export async function initDatabase({ log = console.log } = {}) {
     const { added, translated } = await seedCircuits(connection)
     if (added) log(`  + ${added} circuits ajoutés (sql/circuits.seed.json)`)
     if (translated) log(`  + traductions ajoutées à ${translated} circuits de départ`)
+    const replaced = await replaceOldExcursions(connection)
+    if (replaced) log(`  - ${replaced} anciennes excursions retirées`)
     const offers = await seedOffers(connection)
     if (offers) log(`  + ${offers} offres ajoutées (sql/offers.seed.json)`)
     const destinations = await seedDestinations(connection)

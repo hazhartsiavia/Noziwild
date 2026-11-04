@@ -1,17 +1,9 @@
 {
   "regions": {
-    "All regions": "All regions",
-    "North": "North",
-    "Highlands": "Highlands",
-    "West": "West",
-    "East": "East"
+    "All regions": "All areas",
+    "Nosy Be": "Nosy Be",
+    "Diego Suarez": "Diego Suarez"
   },
-  "lengths": [
-    "Any length",
-    "Half day",
-    "Full day",
-    "2 days or more"
-  ],
   "steps": [
     {
       "title": "Hotel pick-up",
@@ -30,39 +22,18 @@
       "text": "Dropped at your hotel in time to rest."
     }
   ],
-  "stops": [
-    {
-      "day": "Day 1",
-      "text": "Ambanja, then the boat from Ankify to Nosy Be"
-    },
-    {
-      "day": "Day 2",
-      "text": "Full day on Nosy Iranja, sandbar and turtles"
-    },
-    {
-      "day": "Day 3",
-      "text": "Nosy Lonjo in the morning, return in the afternoon"
-    }
-  ],
   "heroAlt": "Boats on the bay near Ramena",
   "title": "Excursions",
-  "intro": "From a morning on the water to a three-day escape. Choose how long you have, we handle the rest.",
-  "region": "Region",
-  "length": "Length",
+  "intro": "In Nosy Be or Diego Suarez, choose your excursion. We handle the rest.",
+  "region": "Area",
   "find": "Find excursions",
-  "from": "From",
   "perPerson": "per person",
-  "details": "View details",
   "resultsTitle": "Choose Your Excursion",
   "found": "{count} excursions found",
   "foundOne": "1 excursion found",
   "empty": "No excursion matches this search yet.",
   "showAll": "Show all excursions",
   "dayTitle": "A Day Trip, Start To Finish",
-  "multiAlt": "Nosy Iranja sandbar",
-  "multiBadge": "3 days",
-  "multiTitle": "Three Days On The Islands",
-  "multiText": "Our most requested multi-day escape links the mainland to the islands around Nosy Be, with every transfer arranged.",
   "ctaTitle": "Want an excursion made for you?",
   "ctaText": "Tell us your dates and interests. A travel expert replies within one working day.",
   "ctaButton": "Plan my excursion"

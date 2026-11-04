@@ -20,6 +20,7 @@ const SEED_FILE = path.join(here, '..', '..', 'sql', 'offers.seed.json')
 //   link    : page ouverte par la carte (facultatif)
 //   numbers : nombres { champ: [min, max, pas] } (note sur 5, années d'expérience)
 //   textOptional / imageOptional : la description ou la photo peut rester vide
+//   optionalTexts : champs de `texts` qui peuvent rester vides
 //   video   : fichier vidéo envoyé depuis l'admin (obligatoire)
 //   noTranslations : le contenu est écrit dans une seule langue, pas de traductions
 export const KINDS = {
@@ -30,8 +31,9 @@ export const KINDS = {
   },
   excursion: {
     price: true,
-    texts: { place: 80, duration: 60, group: 60, level: 40 },
-    choices: { region: ['North', 'Highlands', 'West', 'East'], length: ['half', 'day', 'multi'] },
+    texts: { place: 80, duration: 60, group: 60, level: 40, priceNote: 120 },
+    optionalTexts: ['duration', 'group', 'level', 'priceNote'],
+    choices: { region: ['Nosy Be', 'Diego Suarez'] },
     link: true,
   },
   cruise: {
@@ -213,7 +215,9 @@ export function validateOffer(body, kindName) {
   }
 
   const details = data.details
-  for (const [key, max] of Object.entries(kind.texts || {})) details[key] = required(key, max)
+  for (const [key, max] of Object.entries(kind.texts || {})) {
+    details[key] = kind.optionalTexts?.includes(key) ? clean(body[key], max) || '' : required(key, max)
+  }
 
   for (const [key, [max, maxLength]] of Object.entries(kind.lists || {})) {
     const list = Array.isArray(body[key]) ? body[key].map((item) => clean(item, maxLength)).filter(Boolean) : []
@@ -335,6 +339,15 @@ export async function saveOffer(db, data, existingId = null) {
 
 // Ajoute les offres de sql/offers.seed.json pour chaque type qui n'en a encore aucune
 // (première installation, ou type ajouté depuis). Un type déjà rempli depuis l'admin n'est pas touché.
+// Les 8 excursions de départ ont laissé la place à la liste de Noziwild (sql/offers.seed.json).
+// Une fois retirées, seedOffers ajoute la nouvelle liste puisque le type est vide.
+const OLD_EXCURSIONS = ["Cocoa And Spice Valley Day","Sail The Bay Of Ramena","Ankify To Nosy Be Crossing","Nosy Iranja Sandbar Day","Antananarivo And Ambohimanga","Baobab Avenue At Sunset","Manongarivo Forest Trek","Andasibe Indri And Night Walk"]
+
+export async function replaceOldExcursions(db) {
+  const [result] = await db.query("DELETE FROM offers WHERE kind = 'excursion' AND title IN (?)", [OLD_EXCURSIONS])
+  return result.affectedRows
+}
+
 export async function seedOffers(db) {
   const seed = JSON.parse(await fs.readFile(SEED_FILE, 'utf8'))
   const [counts] = await db.query('SELECT kind, COUNT(*) AS total FROM offers GROUP BY kind')

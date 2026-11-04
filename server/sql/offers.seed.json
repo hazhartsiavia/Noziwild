@@ -201,353 +201,417 @@
   },
   {
     "kind": "excursion",
-    "title": "Cocoa And Spice Valley Day",
-    "text": "Follow cocoa from tree to drying rack and meet growers along the Sambirano river.",
-    "image": "/uploads/circuits/sambirano-river.jpg",
-    "price": 85,
-    "place": "Ambanja",
-    "region": "North",
-    "length": "day",
-    "link": "/destinations/ambanja/sambirano-valley",
-    "duration": "1 day",
-    "group": "Up to 8 guests",
-    "level": "Easy",
-    "translations": {
-      "fr": {
-        "title": "Journée dans la vallée du cacao et des épices",
-        "duration": "1 jour",
-        "group": "Jusqu'à 8 personnes",
-        "level": "Facile",
-        "text": "Suivez le cacao de l'arbre au séchoir et rencontrez les producteurs le long du Sambirano."
-      },
-      "de": {
-        "title": "Ein Tag im Tal von Kakao und Gewürzen",
-        "duration": "1 Tag",
-        "group": "Bis zu 8 Gäste",
-        "level": "Leicht",
-        "text": "Verfolgen Sie den Kakao vom Baum bis zum Trockengestell und treffen Sie Bauern am Sambirano-Fluss."
-      },
-      "it": {
-        "title": "Una giornata nella valle del cacao e delle spezie",
-        "duration": "1 giorno",
-        "group": "Fino a 8 persone",
-        "level": "Facile",
-        "text": "Segui il cacao dall'albero all'essiccatoio e incontra i coltivatori lungo il fiume Sambirano."
-      },
-      "es": {
-        "title": "Un día en el valle del cacao y las especias",
-        "duration": "1 día",
-        "group": "Hasta 8 personas",
-        "level": "Fácil",
-        "text": "Siga el cacao del árbol al secadero y conozca a los agricultores a orillas del Sambirano."
-      }
-    }
-  },
-  {
-    "kind": "excursion",
-    "title": "Sail The Bay Of Ramena",
-    "text": "A morning on the water with swimming stops in the Emerald Sea.",
-    "image": "/uploads/circuits/ramena.jpg",
-    "price": 60,
-    "place": "Diego Suarez",
-    "region": "North",
-    "length": "half",
-    "link": "",
-    "duration": "Half day",
-    "group": "Up to 10 guests",
-    "level": "Easy",
-    "translations": {
-      "fr": {
-        "title": "La baie de Ramena à la voile",
-        "duration": "Demi-journée",
-        "group": "Jusqu'à 10 personnes",
-        "level": "Facile",
-        "text": "Une matinée sur l'eau avec des arrêts baignade dans la mer d'Émeraude."
-      },
-      "de": {
-        "title": "Segeln in der Bucht von Ramena",
-        "duration": "Halbtags",
-        "group": "Bis zu 10 Gäste",
-        "level": "Leicht",
-        "text": "Ein Vormittag auf dem Wasser mit Badestopps im Smaragdmeer."
-      },
-      "it": {
-        "title": "In barca a vela nella baia di Ramena",
-        "duration": "Mezza giornata",
-        "group": "Fino a 10 persone",
-        "level": "Facile",
-        "text": "Una mattina sull'acqua con soste per il bagno nel Mare di Smeraldo."
-      },
-      "es": {
-        "title": "En velero por la bahía de Ramena",
-        "duration": "Medio día",
-        "group": "Hasta 10 personas",
-        "level": "Fácil",
-        "text": "Una mañana en el agua con paradas para bañarse en el Mar Esmeralda."
-      }
-    }
-  },
-  {
-    "kind": "excursion",
-    "title": "Ankify To Nosy Be Crossing",
-    "text": "A scenic drive and a speedboat crossing, with lunch by the water.",
-    "image": "/uploads/circuits/nosy-iranja.jpg",
-    "price": 45,
-    "place": "Ambanja",
-    "region": "North",
-    "length": "half",
-    "link": "/destinations/ambanja/ankify-jetty",
-    "duration": "3 hours",
-    "group": "Up to 12 guests",
-    "level": "Easy",
-    "translations": {
-      "fr": {
-        "title": "Traversée d'Ankify à Nosy Be",
-        "duration": "3 heures",
-        "group": "Jusqu'à 12 personnes",
-        "level": "Facile",
-        "text": "Une belle route et une traversée en vedette, avec déjeuner au bord de l'eau."
-      },
-      "de": {
-        "title": "Überfahrt von Ankify nach Nosy Be",
-        "duration": "3 Stunden",
-        "group": "Bis zu 12 Gäste",
-        "level": "Leicht",
-        "text": "Eine schöne Fahrt und eine Überfahrt im Schnellboot, mit Mittagessen am Wasser."
-      },
-      "it": {
-        "title": "Traversata da Ankify a Nosy Be",
-        "duration": "3 ore",
-        "group": "Fino a 12 persone",
-        "level": "Facile",
-        "text": "Una strada panoramica e una traversata in motoscafo, con pranzo in riva al mare."
-      },
-      "es": {
-        "title": "Travesía de Ankify a Nosy Be",
-        "duration": "3 horas",
-        "group": "Hasta 12 personas",
-        "level": "Fácil",
-        "text": "Un bonito trayecto por carretera y una travesía en lancha rápida, con comida junto al agua."
-      }
-    }
-  },
-  {
-    "kind": "excursion",
-    "title": "Nosy Iranja Sandbar Day",
-    "text": "Walk the white sandbar, snorkel with turtles and climb to the lighthouse.",
-    "image": "/uploads/circuits/nosy-lonjo.jpg",
-    "price": 95,
+    "title": "Nosy Sakatia",
+    "text": "The orchid island, a short boat ride west of Nosy Be.",
+    "image": "/uploads/circuits/boat-ride-beach.jpg",
+    "price": 75,
     "place": "Nosy Be",
-    "region": "North",
-    "length": "day",
+    "region": "Nosy Be",
     "link": "",
     "duration": "1 day",
-    "group": "Up to 12 guests",
-    "level": "Easy",
+    "group": "",
+    "level": "",
+    "priceNote": "",
     "translations": {
       "fr": {
-        "title": "Journée au banc de sable de Nosy Iranja",
-        "duration": "1 jour",
-        "group": "Jusqu'à 12 personnes",
-        "level": "Facile",
-        "text": "Marchez sur le banc de sable blanc, nagez avec les tortues et montez au phare."
+        "title": "Nosy Sakatia",
+        "text": "L'île aux orchidées, à quelques minutes de bateau à l'ouest de Nosy Be.",
+        "duration": "1 jour"
       },
       "de": {
-        "title": "Ein Tag an der Sandbank von Nosy Iranja",
-        "duration": "1 Tag",
-        "group": "Bis zu 12 Gäste",
-        "level": "Leicht",
-        "text": "Laufen Sie über die weiße Sandbank, schnorcheln Sie mit Schildkröten und steigen Sie zum Leuchtturm hinauf."
+        "title": "Nosy Sakatia",
+        "text": "Die Orchideeninsel, eine kurze Bootsfahrt westlich von Nosy Be.",
+        "duration": "1 Tag"
       },
       "it": {
-        "title": "Giornata sulla lingua di sabbia di Nosy Iranja",
-        "duration": "1 giorno",
-        "group": "Fino a 12 persone",
-        "level": "Facile",
-        "text": "Cammina sulla lingua di sabbia bianca, fai snorkeling con le tartarughe e sali al faro."
+        "title": "Nosy Sakatia",
+        "text": "L'isola delle orchidee, a breve distanza in barca a ovest di Nosy Be.",
+        "duration": "1 giorno"
       },
       "es": {
-        "title": "Un día en el banco de arena de Nosy Iranja",
-        "duration": "1 día",
-        "group": "Hasta 12 personas",
-        "level": "Fácil",
-        "text": "Camine por el banco de arena blanca, haga snorkel con tortugas y suba al faro."
+        "title": "Nosy Sakatia",
+        "text": "La isla de las orquídeas, a poca distancia en barco al oeste de Nosy Be.",
+        "duration": "1 día"
       }
     }
   },
   {
     "kind": "excursion",
-    "title": "Antananarivo And Ambohimanga",
-    "text": "The old town, the Rova and the sacred royal hill north of the capital.",
-    "image": "/uploads/circuits/antananarivo-rice-fields.jpg",
+    "title": "Nosy Komba + Nosy Tanikely",
+    "text": "The lemurs of Nosy Komba, then the clear water of the Nosy Tanikely marine reserve.",
+    "image": "/uploads/circuits/lemur.jpg",
     "price": 70,
-    "place": "Antananarivo",
-    "region": "Highlands",
-    "length": "day",
+    "place": "Nosy Be",
+    "region": "Nosy Be",
     "link": "",
     "duration": "1 day",
-    "group": "Up to 8 guests",
-    "level": "Easy",
+    "group": "",
+    "level": "",
+    "priceNote": "",
     "translations": {
       "fr": {
-        "title": "Antananarivo et Ambohimanga",
-        "duration": "1 jour",
-        "group": "Jusqu'à 8 personnes",
-        "level": "Facile",
-        "text": "La vieille ville, le Rova et la colline royale sacrée au nord de la capitale."
+        "title": "Nosy Komba + Nosy Tanikely",
+        "text": "Les lémuriens de Nosy Komba, puis les eaux claires de la réserve marine de Nosy Tanikely.",
+        "duration": "1 jour"
       },
       "de": {
-        "title": "Antananarivo und Ambohimanga",
-        "duration": "1 Tag",
-        "group": "Bis zu 8 Gäste",
-        "level": "Leicht",
-        "text": "Die Altstadt, der Rova und der heilige Königshügel nördlich der Hauptstadt."
+        "title": "Nosy Komba + Nosy Tanikely",
+        "text": "Die Lemuren von Nosy Komba, dann das klare Wasser des Meeresreservats Nosy Tanikely.",
+        "duration": "1 Tag"
       },
       "it": {
-        "title": "Antananarivo e Ambohimanga",
-        "duration": "1 giorno",
-        "group": "Fino a 8 persone",
-        "level": "Facile",
-        "text": "La città vecchia, il Rova e la collina reale sacra a nord della capitale."
+        "title": "Nosy Komba + Nosy Tanikely",
+        "text": "I lemuri di Nosy Komba, poi le acque limpide della riserva marina di Nosy Tanikely.",
+        "duration": "1 giorno"
       },
       "es": {
-        "title": "Antananarivo y Ambohimanga",
-        "duration": "1 día",
-        "group": "Hasta 8 personas",
-        "level": "Fácil",
-        "text": "El casco antiguo, el Rova y la colina real sagrada al norte de la capital."
+        "title": "Nosy Komba + Nosy Tanikely",
+        "text": "Los lémures de Nosy Komba y después las aguas claras de la reserva marina de Nosy Tanikely.",
+        "duration": "1 día"
       }
     }
   },
   {
     "kind": "excursion",
-    "title": "Baobab Avenue At Sunset",
-    "text": "Arrive before the crowds and watch the light turn the trunks orange.",
+    "title": "Nosy Iranja",
+    "text": "Two islets joined by a long white sandbar, surrounded by turquoise water.",
+    "image": "/uploads/circuits/nosy-iranja.jpg",
+    "price": 80,
+    "place": "Nosy Be",
+    "region": "Nosy Be",
+    "link": "",
+    "duration": "1 day",
+    "group": "",
+    "level": "",
+    "priceNote": "",
+    "translations": {
+      "fr": {
+        "title": "Nosy Iranja",
+        "text": "Deux îlots reliés par un long banc de sable blanc, au milieu d'une eau turquoise.",
+        "duration": "1 jour"
+      },
+      "de": {
+        "title": "Nosy Iranja",
+        "text": "Zwei Inselchen, verbunden durch eine lange weiße Sandbank, mitten im türkisfarbenen Wasser.",
+        "duration": "1 Tag"
+      },
+      "it": {
+        "title": "Nosy Iranja",
+        "text": "Due isolotti uniti da una lunga lingua di sabbia bianca, in mezzo all'acqua turchese.",
+        "duration": "1 giorno"
+      },
+      "es": {
+        "title": "Nosy Iranja",
+        "text": "Dos islotes unidos por un largo banco de arena blanca, en medio de un agua turquesa.",
+        "duration": "1 día"
+      }
+    }
+  },
+  {
+    "kind": "excursion",
+    "title": "Nosy Be Island Tour",
+    "text": "The beaches, villages and viewpoints of Nosy Be in a single day.",
+    "image": "/uploads/circuits/coast-road-van.jpg",
+    "price": 60,
+    "place": "Nosy Be",
+    "region": "Nosy Be",
+    "link": "",
+    "duration": "1 day",
+    "group": "",
+    "level": "",
+    "priceNote": "",
+    "translations": {
+      "fr": {
+        "title": "Tour de l'île",
+        "text": "Les plages, les villages et les points de vue de Nosy Be en une seule journée.",
+        "duration": "1 jour"
+      },
+      "de": {
+        "title": "Inselrundfahrt",
+        "text": "Die Strände, Dörfer und Aussichtspunkte von Nosy Be an einem einzigen Tag.",
+        "duration": "1 Tag"
+      },
+      "it": {
+        "title": "Giro dell'isola",
+        "text": "Le spiagge, i villaggi e i punti panoramici di Nosy Be in una sola giornata.",
+        "duration": "1 giorno"
+      },
+      "es": {
+        "title": "Vuelta a la isla",
+        "text": "Las playas, los pueblos y los miradores de Nosy Be en un solo día.",
+        "duration": "1 día"
+      }
+    }
+  },
+  {
+    "kind": "excursion",
+    "title": "Lemuria Land + Andilana",
+    "text": "The animals of Lemuria Land park, then the beach at Andilana.",
+    "image": "/uploads/circuits/guide-with-lemur.jpg",
+    "price": 70,
+    "place": "Nosy Be",
+    "region": "Nosy Be",
+    "link": "",
+    "duration": "1 day",
+    "group": "",
+    "level": "",
+    "priceNote": "",
+    "translations": {
+      "fr": {
+        "title": "Lemuria Land + Andilana",
+        "text": "Les animaux du parc Lemuria Land, puis la plage d'Andilana.",
+        "duration": "1 jour"
+      },
+      "de": {
+        "title": "Lemuria Land + Andilana",
+        "text": "Die Tiere im Park Lemuria Land, danach der Strand von Andilana.",
+        "duration": "1 Tag"
+      },
+      "it": {
+        "title": "Lemuria Land + Andilana",
+        "text": "Gli animali del parco Lemuria Land, poi la spiaggia di Andilana.",
+        "duration": "1 giorno"
+      },
+      "es": {
+        "title": "Lemuria Land + Andilana",
+        "text": "Los animales del parque Lemuria Land y después la playa de Andilana.",
+        "duration": "1 día"
+      }
+    }
+  },
+  {
+    "kind": "excursion",
+    "title": "Red Tsingy + Ramena",
+    "text": "The red earth needles of the Tsingy Rouge, then the beach at Ramena.",
     "image": "/uploads/circuits/coastal-tsingy.jpg",
-    "price": 50,
-    "place": "Morondava",
-    "region": "West",
-    "length": "half",
+    "price": 75,
+    "place": "Diego Suarez",
+    "region": "Diego Suarez",
     "link": "",
-    "duration": "Half day",
-    "group": "Up to 10 guests",
-    "level": "Easy",
+    "duration": "1 day",
+    "group": "",
+    "level": "",
+    "priceNote": "for 2 people or more",
     "translations": {
       "fr": {
-        "title": "L'Allée des Baobabs au coucher du soleil",
-        "duration": "Demi-journée",
-        "group": "Jusqu'à 10 personnes",
-        "level": "Facile",
-        "text": "Arrivez avant la foule et regardez la lumière teinter les troncs d'orange."
+        "title": "Tsingy Rouge + Ramena",
+        "text": "Les aiguilles de terre rouge du Tsingy Rouge, puis la plage de Ramena.",
+        "duration": "1 jour",
+        "priceNote": "pour 2 personnes ou plus"
       },
       "de": {
-        "title": "Baobab-Allee im Sonnenuntergang",
-        "duration": "Halbtags",
-        "group": "Bis zu 10 Gäste",
-        "level": "Leicht",
-        "text": "Kommen Sie vor dem Ansturm und sehen Sie zu, wie das Licht die Stämme orange färbt."
+        "title": "Tsingy Rouge + Ramena",
+        "text": "Die roten Erdnadeln des Tsingy Rouge, danach der Strand von Ramena.",
+        "duration": "1 Tag",
+        "priceNote": "ab 2 Personen"
       },
       "it": {
-        "title": "Il Viale dei Baobab al tramonto",
-        "duration": "Mezza giornata",
-        "group": "Fino a 10 persone",
-        "level": "Facile",
-        "text": "Arriva prima della folla e guarda la luce colorare i tronchi di arancione."
+        "title": "Tsingy Rouge + Ramena",
+        "text": "Le guglie di terra rossa dello Tsingy Rouge, poi la spiaggia di Ramena.",
+        "duration": "1 giorno",
+        "priceNote": "da 2 persone in su"
       },
       "es": {
-        "title": "La Avenida de los Baobabs al atardecer",
-        "duration": "Medio día",
-        "group": "Hasta 10 personas",
-        "level": "Fácil",
-        "text": "Llegue antes que la multitud y vea cómo la luz tiñe de naranja los troncos."
+        "title": "Tsingy Rouge + Ramena",
+        "text": "Las agujas de tierra roja del Tsingy Rouge y después la playa de Ramena.",
+        "duration": "1 día",
+        "priceNote": "a partir de 2 personas"
       }
     }
   },
   {
     "kind": "excursion",
-    "title": "Manongarivo Forest Trek",
-    "text": "Guided trails through a protected reserve, with optional camping.",
-    "image": "/uploads/circuits/nosy-lonjo.jpg",
-    "price": 140,
-    "place": "Ambanja",
-    "region": "North",
-    "length": "multi",
-    "link": "/destinations/ambanja/manongarivo-reserve",
-    "duration": "2 days",
-    "group": "Up to 6 guests",
-    "level": "Active",
+    "title": "Emerald Sea",
+    "text": "A day on the bright green lagoon of the Emerald Sea, reached by boat.",
+    "image": "/uploads/circuits/ramena.jpg",
+    "price": 70,
+    "place": "Diego Suarez",
+    "region": "Diego Suarez",
+    "link": "",
+    "duration": "1 day",
+    "group": "",
+    "level": "",
+    "priceNote": "for 2 people or more",
     "translations": {
       "fr": {
-        "title": "Randonnée dans la forêt de Manongarivo",
-        "duration": "2 jours",
-        "group": "Jusqu'à 6 personnes",
-        "level": "Sportif",
-        "text": "Des sentiers guidés dans une réserve protégée, avec camping en option."
+        "title": "Mer d'Émeraude",
+        "text": "Une journée sur le lagon vert éclatant de la mer d'Émeraude, accessible en bateau.",
+        "duration": "1 jour",
+        "priceNote": "pour 2 personnes ou plus"
       },
       "de": {
-        "title": "Trekking im Wald von Manongarivo",
-        "duration": "2 Tage",
-        "group": "Bis zu 6 Gäste",
-        "level": "Sportlich",
-        "text": "Geführte Wege durch ein Schutzgebiet, auf Wunsch mit Zelten."
+        "title": "Smaragdmeer",
+        "text": "Ein Tag in der leuchtend grünen Lagune des Smaragdmeers, per Boot erreichbar.",
+        "duration": "1 Tag",
+        "priceNote": "ab 2 Personen"
       },
       "it": {
-        "title": "Trekking nella foresta di Manongarivo",
-        "duration": "2 giorni",
-        "group": "Fino a 6 persone",
-        "level": "Impegnativo",
-        "text": "Sentieri guidati in una riserva protetta, con campeggio facoltativo."
+        "title": "Mare di Smeraldo",
+        "text": "Una giornata nella laguna verde brillante del Mare di Smeraldo, raggiungibile in barca.",
+        "duration": "1 giorno",
+        "priceNote": "da 2 persone in su"
       },
       "es": {
-        "title": "Trekking en el bosque de Manongarivo",
-        "duration": "2 días",
-        "group": "Hasta 6 personas",
-        "level": "Exigente",
-        "text": "Senderos guiados por una reserva protegida, con acampada opcional."
+        "title": "Mar Esmeralda",
+        "text": "Un día en la laguna verde intensa del Mar Esmeralda, a la que se llega en barco.",
+        "duration": "1 día",
+        "priceNote": "a partir de 2 personas"
       }
     }
   },
   {
     "kind": "excursion",
-    "title": "Andasibe Indri And Night Walk",
-    "text": "Track the indri at dawn and spot nocturnal lemurs after dark.",
-    "image": "/uploads/circuits/sambirano-river.jpg",
-    "price": 180,
-    "place": "Andasibe",
-    "region": "East",
-    "length": "multi",
+    "title": "Amber Mountain + Ramena",
+    "text": "The rainforest and waterfalls of the Montagne d'Ambre, then the beach at Ramena.",
+    "image": "/uploads/circuits/forest-trail-bike.jpg",
+    "price": 90,
+    "place": "Diego Suarez",
+    "region": "Diego Suarez",
     "link": "",
-    "duration": "2 days",
-    "group": "Up to 8 guests",
-    "level": "Moderate",
+    "duration": "1 day",
+    "group": "",
+    "level": "",
+    "priceNote": "for 2 people or more",
     "translations": {
       "fr": {
-        "title": "Andasibe : l'indri et balade nocturne",
-        "duration": "2 jours",
-        "group": "Jusqu'à 8 personnes",
-        "level": "Modéré",
-        "text": "Pistez l'indri à l'aube et observez les lémuriens nocturnes à la nuit tombée."
+        "title": "Montagne d'Ambre + Ramena",
+        "text": "La forêt tropicale et les cascades de la Montagne d'Ambre, puis la plage de Ramena.",
+        "duration": "1 jour",
+        "priceNote": "pour 2 personnes ou plus"
       },
       "de": {
-        "title": "Andasibe: Indri und Nachtwanderung",
-        "duration": "2 Tage",
-        "group": "Bis zu 8 Gäste",
-        "level": "Mittel",
-        "text": "Spüren Sie im Morgengrauen den Indri auf und entdecken Sie nach Einbruch der Dunkelheit nachtaktive Lemuren."
+        "title": "Montagne d'Ambre + Ramena",
+        "text": "Regenwald und Wasserfälle der Montagne d'Ambre, danach der Strand von Ramena.",
+        "duration": "1 Tag",
+        "priceNote": "ab 2 Personen"
       },
       "it": {
-        "title": "Andasibe: l'indri e uscita notturna",
-        "duration": "2 giorni",
-        "group": "Fino a 8 persone",
-        "level": "Moderato",
-        "text": "Segui l'indri all'alba e avvista i lemuri notturni dopo il tramonto."
+        "title": "Montagne d'Ambre + Ramena",
+        "text": "La foresta pluviale e le cascate della Montagne d'Ambre, poi la spiaggia di Ramena.",
+        "duration": "1 giorno",
+        "priceNote": "da 2 persone in su"
       },
       "es": {
-        "title": "Andasibe: el indri y paseo nocturno",
-        "duration": "2 días",
-        "group": "Hasta 8 personas",
-        "level": "Moderado",
-        "text": "Busque al indri al amanecer y descubra los lémures nocturnos al anochecer."
+        "title": "Montagne d'Ambre + Ramena",
+        "text": "La selva y las cascadas de la Montagne d'Ambre y después la playa de Ramena.",
+        "duration": "1 día",
+        "priceNote": "a partir de 2 personas"
+      }
+    }
+  },
+  {
+    "kind": "excursion",
+    "title": "Montagne des Français + Ramena",
+    "text": "The limestone massif and its views over the bay, then the beach at Ramena.",
+    "image": "/uploads/circuits/dunes-bay.jpg",
+    "price": 80,
+    "place": "Diego Suarez",
+    "region": "Diego Suarez",
+    "link": "",
+    "duration": "1 day",
+    "group": "",
+    "level": "",
+    "priceNote": "for 2 people or more",
+    "translations": {
+      "fr": {
+        "title": "Montagne des Français + Ramena",
+        "text": "Le massif calcaire et ses vues sur la baie, puis la plage de Ramena.",
+        "duration": "1 jour",
+        "priceNote": "pour 2 personnes ou plus"
+      },
+      "de": {
+        "title": "Montagne des Français + Ramena",
+        "text": "Das Kalksteinmassiv mit Blick über die Bucht, danach der Strand von Ramena.",
+        "duration": "1 Tag",
+        "priceNote": "ab 2 Personen"
+      },
+      "it": {
+        "title": "Montagne des Français + Ramena",
+        "text": "Il massiccio calcareo e le sue viste sulla baia, poi la spiaggia di Ramena.",
+        "duration": "1 giorno",
+        "priceNote": "da 2 persone in su"
+      },
+      "es": {
+        "title": "Montagne des Français + Ramena",
+        "text": "El macizo calcáreo y sus vistas sobre la bahía y después la playa de Ramena.",
+        "duration": "1 día",
+        "priceNote": "a partir de 2 personas"
+      }
+    }
+  },
+  {
+    "kind": "excursion",
+    "title": "Antalaha Bay",
+    "text": "A day around the bay of Antalaha.",
+    "image": "/uploads/circuits/sakalava-bay.jpg",
+    "price": 70,
+    "place": "Diego Suarez",
+    "region": "Diego Suarez",
+    "link": "",
+    "duration": "1 day",
+    "group": "",
+    "level": "",
+    "priceNote": "for 2 people or more",
+    "translations": {
+      "fr": {
+        "title": "Baie d'Antalaha",
+        "text": "Une journée autour de la baie d'Antalaha.",
+        "duration": "1 jour",
+        "priceNote": "pour 2 personnes ou plus"
+      },
+      "de": {
+        "title": "Bucht von Antalaha",
+        "text": "Ein Tag rund um die Bucht von Antalaha.",
+        "duration": "1 Tag",
+        "priceNote": "ab 2 Personen"
+      },
+      "it": {
+        "title": "Baia di Antalaha",
+        "text": "Una giornata intorno alla baia di Antalaha.",
+        "duration": "1 giorno",
+        "priceNote": "da 2 persone in su"
+      },
+      "es": {
+        "title": "Bahía de Antalaha",
+        "text": "Un día alrededor de la bahía de Antalaha.",
+        "duration": "1 día",
+        "priceNote": "a partir de 2 personas"
+      }
+    }
+  },
+  {
+    "kind": "excursion",
+    "title": "Nosy Hara",
+    "text": "The islands and limestone rocks of the Nosy Hara marine park.",
+    "image": "/uploads/circuits/island-beach-aerial.jpg",
+    "price": 350,
+    "place": "Diego Suarez",
+    "region": "Diego Suarez",
+    "link": "",
+    "duration": "",
+    "group": "",
+    "level": "",
+    "priceNote": "for 2 people or more",
+    "translations": {
+      "fr": {
+        "title": "Nosy Hara",
+        "text": "Les îles et les rochers calcaires du parc marin de Nosy Hara.",
+        "priceNote": "pour 2 personnes ou plus"
+      },
+      "de": {
+        "title": "Nosy Hara",
+        "text": "Die Inseln und Kalkfelsen des Meeresparks Nosy Hara.",
+        "priceNote": "ab 2 Personen"
+      },
+      "it": {
+        "title": "Nosy Hara",
+        "text": "Le isole e le rocce calcaree del parco marino di Nosy Hara.",
+        "priceNote": "da 2 persone in su"
+      },
+      "es": {
+        "title": "Nosy Hara",
+        "text": "Las islas y las rocas calcáreas del parque marino de Nosy Hara.",
+        "priceNote": "a partir de 2 personas"
       }
     }
   },

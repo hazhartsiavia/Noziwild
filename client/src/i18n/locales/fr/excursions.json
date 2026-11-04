@@ -1,17 +1,9 @@
 {
   "regions": {
-    "All regions": "Toutes les régions",
-    "North": "Nord",
-    "Highlands": "Hautes Terres",
-    "West": "Ouest",
-    "East": "Est"
+    "All regions": "Tous les lieux",
+    "Nosy Be": "Nosy Be",
+    "Diego Suarez": "Diego Suarez"
   },
-  "lengths": [
-    "Toutes durées",
-    "Demi-journée",
-    "Journée entière",
-    "2 jours ou plus"
-  ],
   "steps": [
     {
       "title": "Prise en charge à l'hôtel",
@@ -30,39 +22,18 @@
       "text": "Déposé à votre hôtel à temps pour vous reposer."
     }
   ],
-  "stops": [
-    {
-      "day": "Jour 1",
-      "text": "Ambanja, puis le bateau d'Ankify à Nosy Be"
-    },
-    {
-      "day": "Jour 2",
-      "text": "Journée entière à Nosy Iranja, banc de sable et tortues"
-    },
-    {
-      "day": "Jour 3",
-      "text": "Nosy Lonjo le matin, retour l'après-midi"
-    }
-  ],
   "heroAlt": "Bateaux dans la baie près de Ramena",
   "title": "Excursions",
-  "intro": "D'une matinée sur l'eau à une escapade de trois jours. Dites-nous combien de temps vous avez, nous nous occupons du reste.",
-  "region": "Région",
-  "length": "Durée",
+  "intro": "À Nosy Be ou à Diego Suarez, choisissez votre excursion. Nous nous occupons du reste.",
+  "region": "Lieu",
   "find": "Trouver une excursion",
-  "from": "À partir de",
   "perPerson": "par personne",
-  "details": "Voir le détail",
   "resultsTitle": "Choisissez votre excursion",
   "found": "{count} excursions trouvées",
   "foundOne": "1 excursion trouvée",
   "empty": "Aucune excursion ne correspond encore à cette recherche.",
   "showAll": "Voir toutes les excursions",
   "dayTitle": "Une excursion à la journée, du début à la fin",
-  "multiAlt": "Le banc de sable de Nosy Iranja",
-  "multiBadge": "3 jours",
-  "multiTitle": "Trois jours sur les îles",
-  "multiText": "Notre escapade de plusieurs jours la plus demandée relie la Grande Terre aux îles autour de Nosy Be, tous les transferts compris.",
   "ctaTitle": "Envie d'une excursion faite pour vous ?",
   "ctaText": "Indiquez-nous vos dates et vos envies. Un expert du voyage vous répond sous un jour ouvré.",
   "ctaButton": "Organiser mon excursion"

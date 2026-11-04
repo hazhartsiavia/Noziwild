@@ -1,17 +1,9 @@
 {
   "regions": {
-    "All regions": "Todas las regiones",
-    "North": "Norte",
-    "Highlands": "Tierras Altas",
-    "West": "Oeste",
-    "East": "Este"
+    "All regions": "Todos los lugares",
+    "Nosy Be": "Nosy Be",
+    "Diego Suarez": "Diego Suarez"
   },
-  "lengths": [
-    "Cualquier duración",
-    "Medio día",
-    "Día completo",
-    "2 días o más"
-  ],
   "steps": [
     {
       "title": "Recogida en el hotel",
@@ -30,39 +22,18 @@
       "text": "De vuelta en su hotel a tiempo para descansar."
     }
   ],
-  "stops": [
-    {
-      "day": "Día 1",
-      "text": "Ambanja y después el barco de Ankify a Nosy Be"
-    },
-    {
-      "day": "Día 2",
-      "text": "Día completo en Nosy Iranja, banco de arena y tortugas"
-    },
-    {
-      "day": "Día 3",
-      "text": "Nosy Lonjo por la mañana, regreso por la tarde"
-    }
-  ],
   "heroAlt": "Barcos en la bahía cerca de Ramena",
   "title": "Excursiones",
-  "intro": "De una mañana en el agua a una escapada de tres días. Díganos de cuánto tiempo dispone y nosotros nos ocupamos del resto.",
-  "region": "Región",
-  "length": "Duración",
+  "intro": "En Nosy Be o en Diego Suarez, elija su excursión. Nosotros nos ocupamos del resto.",
+  "region": "Lugar",
   "find": "Buscar excursiones",
-  "from": "Desde",
   "perPerson": "por persona",
-  "details": "Ver detalles",
   "resultsTitle": "Elija su excursión",
   "found": "{count} excursiones encontradas",
   "foundOne": "1 excursión encontrada",
   "empty": "Todavía ninguna excursión coincide con esta búsqueda.",
   "showAll": "Ver todas las excursiones",
   "dayTitle": "Una excursión de un día, de principio a fin",
-  "multiAlt": "El banco de arena de Nosy Iranja",
-  "multiBadge": "3 días",
-  "multiTitle": "Tres días en las islas",
-  "multiText": "Nuestra escapada de varios días más solicitada une tierra firme con las islas que rodean Nosy Be, con todos los traslados organizados.",
   "ctaTitle": "¿Quiere una excursión hecha para usted?",
   "ctaText": "Cuéntenos sus fechas e intereses. Un experto en viajes le responde en un día laborable.",
   "ctaButton": "Planificar mi excursión"

@@ -1,17 +1,9 @@
 {
   "regions": {
-    "All regions": "Alle Regionen",
-    "North": "Norden",
-    "Highlands": "Hochland",
-    "West": "Westen",
-    "East": "Osten"
+    "All regions": "Alle Orte",
+    "Nosy Be": "Nosy Be",
+    "Diego Suarez": "Diego Suarez"
   },
-  "lengths": [
-    "Beliebige Dauer",
-    "Halbtags",
-    "Ganztags",
-    "2 Tage oder mehr"
-  ],
   "steps": [
     {
       "title": "Abholung am Hotel",
@@ -30,39 +22,18 @@
       "text": "Rechtzeitig zum Ausruhen zurück im Hotel."
     }
   ],
-  "stops": [
-    {
-      "day": "Tag 1",
-      "text": "Ambanja, dann das Boot von Ankify nach Nosy Be"
-    },
-    {
-      "day": "Tag 2",
-      "text": "Ganzer Tag auf Nosy Iranja, Sandbank und Schildkröten"
-    },
-    {
-      "day": "Tag 3",
-      "text": "Vormittags Nosy Lonjo, nachmittags Rückfahrt"
-    }
-  ],
   "heroAlt": "Boote in der Bucht bei Ramena",
   "title": "Ausflüge",
-  "intro": "Vom Vormittag auf dem Wasser bis zur dreitägigen Auszeit. Sagen Sie uns, wie viel Zeit Sie haben, um den Rest kümmern wir uns.",
-  "region": "Region",
-  "length": "Dauer",
+  "intro": "In Nosy Be oder Diego Suarez: Wählen Sie Ihren Ausflug, um den Rest kümmern wir uns.",
+  "region": "Ort",
   "find": "Ausflüge finden",
-  "from": "Ab",
   "perPerson": "pro Person",
-  "details": "Details ansehen",
   "resultsTitle": "Wählen Sie Ihren Ausflug",
   "found": "{count} Ausflüge gefunden",
   "foundOne": "1 Ausflug gefunden",
   "empty": "Noch kein Ausflug entspricht dieser Suche.",
   "showAll": "Alle Ausflüge anzeigen",
   "dayTitle": "Ein Tagesausflug von Anfang bis Ende",
-  "multiAlt": "Die Sandbank von Nosy Iranja",
-  "multiBadge": "3 Tage",
-  "multiTitle": "Drei Tage auf den Inseln",
-  "multiText": "Unsere meistgefragte mehrtägige Auszeit verbindet das Festland mit den Inseln rund um Nosy Be – alle Transfers inklusive.",
   "ctaTitle": "Möchten Sie einen Ausflug nur für Sie?",
   "ctaText": "Nennen Sie uns Ihre Daten und Interessen. Ein Reiseexperte antwortet innerhalb eines Werktags.",
   "ctaButton": "Meinen Ausflug planen"

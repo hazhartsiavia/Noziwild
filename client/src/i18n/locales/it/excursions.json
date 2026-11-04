@@ -1,17 +1,9 @@
 {
   "regions": {
-    "All regions": "Tutte le regioni",
-    "North": "Nord",
-    "Highlands": "Altopiani",
-    "West": "Ovest",
-    "East": "Est"
+    "All regions": "Tutti i luoghi",
+    "Nosy Be": "Nosy Be",
+    "Diego Suarez": "Diego Suarez"
   },
-  "lengths": [
-    "Qualsiasi durata",
-    "Mezza giornata",
-    "Giornata intera",
-    "2 giorni o più"
-  ],
   "steps": [
     {
       "title": "Partenza dall'hotel",
@@ -30,39 +22,18 @@
       "text": "Riaccompagnato in hotel in tempo per riposare."
     }
   ],
-  "stops": [
-    {
-      "day": "Giorno 1",
-      "text": "Ambanja, poi la barca da Ankify a Nosy Be"
-    },
-    {
-      "day": "Giorno 2",
-      "text": "Giornata intera a Nosy Iranja, lingua di sabbia e tartarughe"
-    },
-    {
-      "day": "Giorno 3",
-      "text": "Nosy Lonjo al mattino, rientro nel pomeriggio"
-    }
-  ],
   "heroAlt": "Barche nella baia vicino a Ramena",
   "title": "Escursioni",
-  "intro": "Da una mattina sull'acqua a una fuga di tre giorni. Dicci quanto tempo hai, al resto pensiamo noi.",
-  "region": "Regione",
-  "length": "Durata",
+  "intro": "A Nosy Be o a Diego Suarez, scegli la tua escursione. Al resto pensiamo noi.",
+  "region": "Luogo",
   "find": "Trova escursioni",
-  "from": "Da",
   "perPerson": "a persona",
-  "details": "Vedi i dettagli",
   "resultsTitle": "Scegli la tua escursione",
   "found": "{count} escursioni trovate",
   "foundOne": "1 escursione trovata",
   "empty": "Nessuna escursione corrisponde ancora a questa ricerca.",
   "showAll": "Mostra tutte le escursioni",
   "dayTitle": "Una gita di un giorno, dall'inizio alla fine",
-  "multiAlt": "La lingua di sabbia di Nosy Iranja",
-  "multiBadge": "3 giorni",
-  "multiTitle": "Tre giorni sulle isole",
-  "multiText": "La nostra fuga di più giorni più richiesta collega la terraferma alle isole intorno a Nosy Be, con tutti i trasferimenti organizzati.",
   "ctaTitle": "Vuoi un'escursione su misura per te?",
   "ctaText": "Indicaci date e interessi. Un esperto di viaggi ti risponde entro un giorno lavorativo.",
   "ctaButton": "Organizza la mia escursione"
