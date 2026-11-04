@@ -1,4 +1,5 @@
 import React, { useState, useRef, useLayoutEffect } from 'react'
+import { ArrowDown, BadgeCheck, Car, Headset, Plane, ReceiptText, ShieldCheck, Ship } from 'lucide-react'
 import gsap from 'gsap'
 import { ScrollTrigger } from 'gsap/ScrollTrigger'
 import Deux from "../assets/images/2.jpg";
@@ -6,12 +7,14 @@ import Tana from "../assets/images/Tana.jpg";
 import Navbar from '../components/Navbar';
 import Footer from '../components/Footer';
 import AddToTrip from '../components/AddToTrip'
+import Testimonials from '../components/Testimonials'
 import { useT } from '../i18n/LanguageContext';
 import { localize } from '../i18n/localize';
 import OffersStatus from '../components/OffersStatus'
 import { useOffers } from '../utils/useOffers'
-import { usePhoto } from '../sitePhotos'
 import { A } from '../i18n/router'
+import './transport.css'
+import SiteMedia from '../components/SiteMedia'
 
 gsap.registerPlugin(ScrollTrigger)
 
@@ -20,7 +23,9 @@ const SECTION_WIDTH = "w-[90vw] lg:max-w-[90vw] xl:max-w-[95vw]"
 const SECTION_TITLE = "text-3xl sm:text-4xl md:text-5xl lg:text-[52px] font-medium text-forest leading-[1.15] tracking-tight"
 const SECTION_SUBTITLE = "text-sm sm:text-base md:text-lg text-slate-600 leading-relaxed max-w-3xl"
 const META_TEXT = "text-xs sm:text-sm"
-const STATEMENT_TITLE = "text-4xl sm:text-5xl md:text-6xl xl:text-7xl font-medium uppercase leading-[1.15] tracking-tight text-forest"
+// Une seule ligne à partir de la tablette : la taille se calcule sur la longueur du titre (--chars), qui change selon la langue.
+// Sur téléphone, une ligne serait illisible : le titre passe sur deux lignes.
+const HERO_TITLE = "text-[clamp(1.5rem,7vw,2.25rem)] md:whitespace-nowrap md:text-[min(calc((90vw-4rem)/(var(--chars)*0.72)),3rem)] lg:text-[min(calc((90vw-23rem)/(var(--chars)*0.72)),3.5rem)] font-semibold uppercase leading-[1.1] tracking-tight text-white [text-wrap:balance]"
 const ON_IMAGE_TITLE = "text-3xl sm:text-4xl md:text-5xl lg:text-[52px] font-medium text-white leading-[1.15] tracking-tight"
 const SECTION_GAP = "mt-[50px] md:mt-[100px]"
 const GOLD = "bg-[#C49849]"
@@ -32,18 +37,11 @@ const GREEN = "bg-[#074636]"
 
 const HERO = {
   title: 'Getting There Is Part of the Journey',
-  text: 'Private 4x4s, shared shuttles, domestic flights, boats and trains: we choose the right way to move between every stop, and we book it all for you.',
   ctaLabel: 'Plan My Transfers',
   ctaHref: '/contact',
-  label: 'Our Fleet',
-  cardTitle: 'Every Transfer, Handled',
+  more: 'See more',
   image: Deux, // à remplacer par ta photo
   imageAlt: 'A 4x4 driving along a scenic road',
-  stats: [
-    { id: 1, value: '6', num: 6, suffix: '', label: 'Ways to Travel' },
-    { id: 2, value: '24/7', label: 'Assistance on Trip' },
-    { id: 3, value: '100%', num: 100, suffix: '%', label: 'Licensed Drivers' },
-  ],
 }
 
 // category : 'land' | 'air' | 'sea'
@@ -69,6 +67,9 @@ const INCLUDED = [
   { id: 3, title: 'Fair, Fixed Prices', text: 'No surprises: fuel, tolls and fees are in the quote.' },
   { id: 4, title: '24/7 Support', text: 'A real person to help if your plans change.' },
 ]
+
+const INCLUDED_ICONS = [BadgeCheck, ShieldCheck, ReceiptText, Headset]
+const MODE_ICONS = { land: Car, air: Plane, sea: Ship }
 
 const FAQS = [
   { id: 1, q: 'Can I choose my own transport?', a: 'Yes. Tell us what you prefer and we adapt the plan. If you have no preference, we recommend the best option for each leg.' },
@@ -151,21 +152,6 @@ const Svg = ({ children, className = "w-5 h-5 md:w-6 md:h-6" }) => (
   </svg>
 )
 
-const UsersIcon = () => (
-  <Svg className="w-4 h-4">
-    <path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2" />
-    <circle cx="9" cy="7" r="4" />
-    <path d="M22 21v-2a4 4 0 0 0-3-3.87M16 3.13a4 4 0 0 1 0 7.75" />
-  </Svg>
-)
-
-const ClockIcon = () => (
-  <Svg className="w-4 h-4">
-    <circle cx="12" cy="12" r="10" />
-    <path d="M12 6v6l4 2" />
-  </Svg>
-)
-
 const CheckIcon = () => (
   <Svg className="w-4 h-4 shrink-0 text-[#C49849]">
     <path d="M20 6 9 17l-5-5" />
@@ -187,105 +173,114 @@ const PlusIcon = ({ open }) => (
 /* -------------------------- Composants --------------------------- */
 
 function Hero() {
-  const photo = usePhoto()
   const hero = localize(HERO, useT('transport')('hero'))
   const root = useRef(null)
   const btnRef = useRef(null)
   useMagnetic(btnRef, 0.25)
 
   useGsap(root, () => {
-    // 1. Titre, texte et bouton à l'arrivée sur la page
+    // 1. Arrivée : la photo grandit depuis le centre de l'écran, puis la barre de navigation, le titre et le bouton apparaissent
+    const nav = document.querySelector('nav[aria-label="Main"]')
     const tl = gsap.timeline({ defaults: { ease: 'power4.out' } })
-    tl.fromTo('.hero-word', { yPercent: 110 }, { yPercent: 0, duration: 1.1, stagger: 0.08, clearProps: 'all' })
-      .fromTo('.hero-copy', { y: 22, opacity: 0 }, { y: 0, opacity: 1, duration: 0.8, clearProps: 'all' }, 0.55)
-      .fromTo('.hero-cta', { y: 20, opacity: 0, transition: 'none' }, { y: 0, opacity: 1, duration: 0.7, ease: 'back.out(1.7)', clearProps: 'all' }, 0.7)
+    tl.fromTo(root.current, { clipPath: 'inset(32% 30% 32% 30% round 1rem)' }, { clipPath: 'inset(0% 0% 0% 0% round 1.5rem)', duration: 1.5, ease: 'expo.inOut', clearProps: 'clipPath' })
+      .fromTo('.hero-media', { scale: 1.35 }, { scale: 1, duration: 1.5, ease: 'expo.inOut', clearProps: 'transform' }, 0)
+    if (nav) tl.fromTo(nav, { opacity: 0 }, { opacity: 1, duration: 0.7, ease: 'power2.out', clearProps: 'opacity' }, 1.1)
+    tl.fromTo('.hero-word', { yPercent: 110 }, { yPercent: 0, duration: 1.1, stagger: 0.08, clearProps: 'all' }, 1)
+      .fromTo('.hero-more', { y: -16, opacity: 0, transition: 'none' }, { y: 0, opacity: 1, duration: 0.7, ease: 'power3.out', clearProps: 'all' }, 1.45)
+      .fromTo('.hero-cta', { y: 20, opacity: 0, transition: 'none' }, { y: 0, opacity: 1, duration: 0.7, ease: 'back.out(1.7)', clearProps: 'all' }, 1.45)
 
-    // 2. Grande carte : dévoilement en fenêtre, chiffres qui comptent, parallaxe de l'image
-    const card = gsap.timeline({ scrollTrigger: { trigger: '.hero-card', start: 'top 85%', once: true } })
-    card.fromTo('.hero-card', { clipPath: 'inset(14% 4% 0% 4% round 1.5rem)', transition: 'none' }, { clipPath: 'inset(0% 0% 0% 0% round 1.5rem)', duration: 1.3, ease: 'expo.out', clearProps: 'clipPath,transition' })
-      .fromTo('.hero-label, .hero-card-title', { y: 24, opacity: 0 }, { y: 0, opacity: 1, duration: 0.7, stagger: 0.12, ease: 'power3.out', clearProps: 'all' }, 0.5)
-      .fromTo('.stat-card', { y: 30, opacity: 0, transition: 'none' }, { y: 0, opacity: 1, duration: 0.7, stagger: 0.12, ease: 'power3.out', clearProps: 'all' }, 0.7)
-
-    gsap.utils.toArray('.stat-val[data-num]').forEach((el) => {
-      const end = Number(el.dataset.num)
-      const suffix = el.dataset.suffix || ''
-      const o = { v: 0 }
-      el.textContent = '0' + suffix
-      card.to(o, { v: end, duration: 1.6, ease: 'power2.out', onUpdate: () => { el.textContent = Math.round(o.v) + suffix } }, 0.85)
-    })
-
+    // 2. L'image glisse doucement au défilement
     gsap.fromTo('.hero-img', { yPercent: -6, scale: 1.15 }, {
       yPercent: 6, scale: 1.15, ease: 'none',
-      scrollTrigger: { trigger: '.hero-card', start: 'top bottom', end: 'bottom top', scrub: 0.6 },
+      scrollTrigger: { trigger: root.current, start: 'top top', end: 'bottom top', scrub: 0.6 },
     })
   })
 
   return (
-    <div ref={root}>
-      <h1 aria-label={hero.title} className={`${STATEMENT_TITLE} max-w-5xl`}>
-        <MaskedWords text={hero.title} />
-      </h1>
-      <div className="mt-8 md:mt-10 flex flex-col lg:flex-row lg:items-center lg:justify-between gap-6 lg:gap-12">
-        <p className="hero-copy text-sm sm:text-base md:text-lg text-slate-600 leading-relaxed max-w-2xl">{hero.text}</p>
+    <div ref={root} className={`relative flex flex-col overflow-hidden rounded-3xl ${GREEN} text-white min-h-[calc(100svh-7rem)] md:min-h-[max(620px,calc(100svh-7rem))]`}>
+      <div className="hero-media absolute inset-0">
+        <SiteMedia slot="transport.hero" alt={hero.imageAlt} className="hero-img absolute inset-0 w-full h-full object-cover" />
+      </div>
+      {/* Seul le bas s'assombrit, sous le titre : le reste de la photo ou de la vidéo reste intact */}
+      <div className="absolute inset-0 bg-gradient-to-t from-[#072a1f]/90 via-[#072a1f]/40 via-15% to-transparent to-35%" />
+
+      {/* Coin en haut : descend vers la liste des transports */}
+      <a href="#transports" className="hero-more absolute right-4 top-4 md:right-6 md:top-6 z-10 inline-flex items-center gap-2 rounded-full border border-white/30 bg-[#072a1f]/55 hover:bg-[#072a1f]/75 backdrop-blur-md transition-colors pl-4 pr-1.5 py-1.5 text-sm font-medium text-white">
+        {hero.more}
+        <span className={`w-7 h-7 rounded-full ${GOLD} flex items-center justify-center`}><ArrowDown size={15} aria-hidden="true" /></span>
+      </a>
+
+      <div className="relative mt-auto flex flex-col lg:flex-row lg:items-end lg:justify-between gap-5 lg:gap-10 p-5 pt-48 md:p-8 md:pt-48 lg:p-10">
+        <h1 aria-label={hero.title} style={{ "--chars": hero.title.length }} className={`${HERO_TITLE} min-w-0`}>
+          <MaskedWords text={hero.title} />
+        </h1>
         <A
           ref={btnRef}
           href={hero.ctaHref}
-          className={`hero-cta inline-flex items-center gap-5 self-start rounded-full ${GREEN} hover:bg-[#0a5f48] transition-colors text-white pl-6 pr-2.5 py-2.5 md:pl-7 md:py-3`}
+          className="hero-cta self-start lg:self-end shrink-0 inline-flex items-center gap-3 rounded-full bg-white hover:bg-white/90 transition-colors text-slate-900 pl-5 pr-1.5 py-1.5 text-sm md:text-base font-medium"
         >
-          <span className="text-lg md:text-xl font-medium">{hero.ctaLabel}</span>
-          <span className={`w-11 h-11 md:w-14 md:h-14 rounded-full ${GOLD} flex items-center justify-center text-white`}><ArrowIcon /></span>
+          {hero.ctaLabel}
+          <span className={`w-9 h-9 md:w-10 md:h-10 rounded-full ${GOLD} flex items-center justify-center text-white`}><ArrowIcon /></span>
         </A>
-      </div>
-
-      {/* Grande carte avec chiffres */}
-      <div className={`hero-card relative mt-10 md:mt-16 overflow-hidden rounded-3xl ${GREEN} text-white min-h-[480px] md:min-h-[560px]`}>
-        <img src={photo('transport.hero')} alt={hero.imageAlt} className="hero-img absolute inset-0 w-full h-full object-cover" />
-        <div className="absolute inset-0 bg-gradient-to-r from-black/30 via-black/10 to-black/80" />
-        <div className="relative min-h-[inherit] flex flex-col p-5 md:p-8">
-          <p className="hero-label flex items-center gap-2 text-lg md:text-xl font-medium">
-            <span className="w-1.5 h-1.5 rounded-full bg-white" aria-hidden="true" />
-            {hero.label}
-          </p>
-          <div className="mt-auto pt-24">
-            <h2 className={`hero-card-title ${ON_IMAGE_TITLE} text-left md:text-center`}>{hero.cardTitle}</h2>
-            <div className="mt-6 md:mt-10 grid grid-cols-3 gap-3 md:gap-5">
-              {hero.stats.map((s) => (
-                <div key={s.id} className="stat-card rounded-xl border border-white/20 bg-white/10 backdrop-blur-md p-4 md:p-5">
-                  <p className="stat-val text-2xl md:text-5xl leading-none" data-num={s.num} data-suffix={s.suffix}>{s.value}</p>
-                  <p className="mt-2 md:mt-3 text-xs md:text-base text-white/80 leading-snug">{s.label}</p>
-                </div>
-              ))}
-            </div>
-          </div>
-        </div>
       </div>
     </div>
   )
 }
 
-function TransportCard({ item }) {
-  const t = useT('transport')
+/* Bandeau qui défile : les moyens de transport de la base. Décoratif, la même liste suit plus bas. */
+function ModesMarquee() {
+  const { offers } = useOffers('transport')
+  const root = useRef(null)
+
+  useGsap(root, () => {
+    if (!offers.length) return
+    gsap.to('.marquee-track', { xPercent: -50, duration: 45, ease: 'none', repeat: -1 })
+  }, [offers.length])
+
   return (
-    <article className="t-card flex flex-col overflow-hidden rounded-2xl bg-white">
-      <div className="aspect-[16/10] overflow-hidden">
-        <img src={item.image} alt={item.name} className="w-full h-full object-cover transition-transform duration-500 hover:scale-105" />
-      </div>
-      <div className="flex flex-col flex-1 p-5 md:p-6">
-        <h3 className="text-xl md:text-2xl font-medium text-forest">{item.name}</h3>
-        <div className={`mt-3 flex flex-wrap gap-x-5 gap-y-1 ${META_TEXT} text-slate-600`}>
-          <span className="flex items-center gap-1.5"><UsersIcon />{item.capacity}</span>
-          <span className="flex items-center gap-1.5"><ClockIcon />{item.duration}</span>
+    <div ref={root} aria-hidden="true" className="marquee mt-8 md:mt-12 w-full overflow-hidden">
+      <ul className="marquee-track flex w-max items-center">
+        {[0, 1, 2, 3].flatMap((set) => offers.map((o) => {
+          const Icon = MODE_ICONS[o.category] || Car
+          return (
+            <li key={`${set}-${o.id}`} className="flex items-center gap-3 px-6 md:px-10 text-lg md:text-2xl font-medium whitespace-nowrap text-forest/60">
+              <Icon size={24} strokeWidth={1.6} />{o.title}
+            </li>
+          )
+        }))}
+      </ul>
+    </div>
+  )
+}
+
+// Carte de la liste : même présentation que les cartes de la page Circuits
+function TransportCard({ item, categoryLabel }) {
+  const t = useT('trip')
+  return (
+    <article className="transport-card group flex flex-col rounded-xl bg-white p-3 text-slate-800">
+      <div className="card-frame relative aspect-[4/3] overflow-hidden rounded-md">
+        {/* Plus haute que le cadre : c'est la marge dans laquelle la photo glisse au défilement */}
+        <div className="card-media absolute inset-x-0 -inset-y-[10%]">
+          <img src={item.image} alt={item.name} className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" />
         </div>
-        <p className="mt-4 text-sm md:text-base leading-relaxed text-slate-600">{item.text}</p>
-        <ul className="mt-5 flex flex-col gap-2 text-sm text-slate-700">
+        <span className={`transport-badge absolute left-3 top-3 inline-block ${GOLD} text-white text-xs sm:text-sm font-medium px-3 py-1.5 rounded-sm`}>{item.duration}</span>
+      </div>
+      <div className="flex flex-1 flex-col px-3 pt-6 pb-4">
+        <p className={`card-line flex flex-wrap items-center gap-3 ${META_TEXT} text-slate-600`}>
+          <span>{categoryLabel}</span>
+          <span className="w-px h-4 bg-slate-700" />
+          <span>{item.capacity}</span>
+        </p>
+        <h3 className="card-line mt-4 text-xl md:text-2xl leading-snug">{item.name}</h3>
+        <p className="card-line mt-3 text-sm text-slate-600 leading-relaxed">{item.text}</p>
+        <ul className="mt-4 flex flex-col gap-2 text-sm text-slate-700">
           {item.perks.map((perk) => (
-            <li key={perk} className="flex items-center gap-2"><CheckIcon />{perk}</li>
+            <li key={perk} className="card-line flex items-center gap-2"><CheckIcon />{perk}</li>
           ))}
         </ul>
-        <div className="mt-auto pt-6">
-          <div className="pt-5 border-t border-slate-900/10">
-            <AddToTrip item={{ kind: 'transport', ref: String(item.id), title: item.name, image: item.image, link: '/transport', details: item.capacity, price: null, unit: null }} />
-          </div>
+        <div className="card-foot mt-auto pt-6 flex items-center justify-between gap-3">
+          <p className="text-base md:text-lg font-medium text-slate-900">{t('onRequest')}</p>
+          <AddToTrip variant="icon" item={{ kind: 'transport', ref: String(item.id), title: item.name, image: item.image, link: '/transport', details: item.capacity, price: null, unit: null }} />
         </div>
       </div>
     </article>
@@ -302,7 +297,6 @@ function TransportTypes() {
   const transports = offers.map(toTransport)
   const [category, setCategory] = useState('all')
   const root = useRef(null)
-  const prevCategory = useRef('all')
   const list = category === 'all' ? transports : transports.filter((item) => item.category === category)
 
   // Entrée au scroll
@@ -311,21 +305,35 @@ function TransportTypes() {
     reveal('.tab-btn', { y: 16, opacity: 0 }, { y: 0, opacity: 1, duration: 0.5, stagger: 0.06, ease: 'power2.out', scrollTrigger: { trigger: '.tab-list', start: 'top 90%', once: true } })
   })
 
-  // Les cartes arrivent de l'API : leur entrée attend la fin du chargement
+  /* Cartes, chacune avec son propre ScrollTrigger (rejoué à chaque changement de catégorie) :
+     - à son arrivée dans l'écran, la carte monte, la photo se dévoile de bas en haut,
+       puis le badge rebondit et les textes et le bouton suivent, un peu décalés d'une colonne à l'autre ;
+     - tant qu'elle reste à l'écran, la photo glisse doucement avec le défilement. */
   useGsap(root, () => {
-    if (status !== 'ready') return
-    reveal('.t-card', { y: 60, opacity: 0 }, { y: 0, opacity: 1, duration: 0.9, stagger: 0.12, ease: 'power3.out', scrollTrigger: { trigger: '.t-grid', start: 'top 85%', once: true } })
-  }, [status])
+    const cards = gsap.utils.toArray('.transport-card')
+    if (!cards.length) return
+    const columns = getComputedStyle(cards[0].parentElement).gridTemplateColumns.split(' ').length
 
-  // Changement de catégorie : les cartes se redessinent en cascade
-  useGsap(root, () => {
-    if (prevCategory.current === category) return
-    prevCategory.current = category
-    reveal('.t-card', { y: 30, opacity: 0, scale: 0.97 }, { y: 0, opacity: 1, scale: 1, duration: 0.6, stagger: 0.08, ease: 'power3.out' })
-  }, [category])
+    cards.forEach((card, i) => {
+      const q = gsap.utils.selector(card)
+      const wait = (i % columns) * 0.14
+      gsap.timeline({ scrollTrigger: { trigger: card, start: 'top 88%', once: true } })
+        .fromTo(card, { y: 100, opacity: 0, scale: 0.94, transition: 'none' }, { y: 0, opacity: 1, scale: 1, duration: 1, ease: 'power3.out', clearProps: 'all' }, wait)
+        .fromTo(q('.card-frame'), { clipPath: 'inset(100% 0% 0% 0%)' }, { clipPath: 'inset(0% 0% 0% 0%)', duration: 1.2, ease: 'expo.out', clearProps: 'clipPath' }, wait + 0.1)
+        .fromTo(q('.card-line'), { y: 24, opacity: 0 }, { y: 0, opacity: 1, duration: 0.6, stagger: 0.06, ease: 'power3.out', clearProps: 'all' }, wait + 0.35)
+        .fromTo(q('.transport-badge'), { scale: 0, rotate: -12 }, { scale: 1, rotate: 0, duration: 0.6, ease: 'back.out(3)', clearProps: 'all' }, wait + 0.6)
+        .fromTo(q('.card-foot p'), { x: -20, opacity: 0 }, { x: 0, opacity: 1, duration: 0.5, ease: 'power3.out', clearProps: 'all' }, wait + 0.75)
+        .fromTo(q('.card-foot button'), { scale: 0, transition: 'none' }, { scale: 1, duration: 0.6, ease: 'back.out(2.5)', clearProps: 'all' }, wait + 0.85)
+
+      gsap.fromTo(q('.card-media'), { yPercent: -8 }, {
+        yPercent: 8, ease: 'none',
+        scrollTrigger: { trigger: card, start: 'top bottom', end: 'bottom top', scrub: 0.6 },
+      })
+    })
+  }, [category, offers])
 
   return (
-    <div ref={root} className={SECTION_GAP}>
+    <div ref={root} id="transports" className={`${SECTION_GAP} scroll-mt-6`}>
       <div className="types-head mb-8 md:mb-12 flex flex-col lg:flex-row lg:items-center lg:justify-between gap-5 lg:gap-12">
         <h2 className={`${SECTION_TITLE} lg:max-w-[52%]`}>{t('typesTitle')}</h2>
         <p className={`hidden md:block ${SECTION_SUBTITLE} lg:max-w-lg`}>
@@ -352,8 +360,10 @@ function TransportTypes() {
 
       <OffersStatus status={status} empty={list.length === 0} />
       {status === 'ready' && (
-        <div className="t-grid grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-4 md:gap-6">
-          {list.map((item) => <TransportCard key={item.id} item={item} />)}
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-9">
+          {list.map((item) => (
+            <TransportCard key={item.id} item={item} categoryLabel={categories.find((c) => c.id === item.category)?.label} />
+          ))}
         </div>
       )}
     </div>
@@ -392,31 +402,47 @@ function HowItWorks() {
 
 function Included() {
   const t = useT('transport')
+  const hero = t('hero')
   const included = localize(INCLUDED, t('included'))
   const root = useRef(null)
 
   useGsap(root, () => {
-    const trigger = { trigger: root.current, start: 'top 82%', once: true }
-    reveal(root.current, { y: 70, opacity: 0, scale: 0.97 }, { y: 0, opacity: 1, scale: 1, duration: 1, ease: 'power3.out', scrollTrigger: trigger })
-    reveal('.inc-head > *', { y: 24, opacity: 0 }, { y: 0, opacity: 1, duration: 0.7, stagger: 0.1, delay: 0.35, ease: 'power3.out', scrollTrigger: trigger })
-    reveal('.inc-item', { y: 30, opacity: 0 }, { y: 0, opacity: 1, duration: 0.7, stagger: 0.1, delay: 0.55, ease: 'power3.out', scrollTrigger: trigger })
+    reveal('.inc-head > *', { y: 24, opacity: 0 }, { y: 0, opacity: 1, duration: 0.7, stagger: 0.1, ease: 'power3.out', scrollTrigger: { trigger: '.inc-head', start: 'top 85%', once: true } })
+    // Les cartes arrivent décalées en escalier et s'alignent au défilement
+    gsap.fromTo('.inc-card', { y: (i) => 40 + i * 50, opacity: 0.2 }, {
+      y: 0, opacity: 1, ease: 'none', stagger: 0.05,
+      scrollTrigger: { trigger: root.current, start: 'top 85%', end: 'top 25%', scrub: 0.6 },
+    })
   })
 
   return (
-    <div ref={root} className={`${SECTION_GAP} rounded-3xl ${GREEN} text-white p-6 md:p-12`}>
-      <div className="inc-head flex flex-col lg:flex-row lg:items-center lg:justify-between gap-5 lg:gap-12">
-        <h2 className={`${ON_IMAGE_TITLE} lg:max-w-[45%]`}>{t('incTitle')}</h2>
-        <p className="text-sm md:text-lg text-white/70 leading-relaxed lg:max-w-lg">
-          {t('incText')}
+    <div ref={root} className={SECTION_GAP}>
+      <div className="inc-head max-w-3xl">
+        <p className={`mb-3 flex items-center gap-2 ${META_TEXT} font-medium uppercase tracking-wide text-[#9a742f]`}>
+          <span className={`w-1.5 h-1.5 rounded-full ${GOLD}`} aria-hidden="true" />
+          {t('incEyebrow')}
         </p>
+        <h2 className={SECTION_TITLE}>{t('incTitle')}</h2>
+        <p className={`mt-4 ${SECTION_SUBTITLE}`}>{t('incText')}</p>
       </div>
-      <div className="mt-8 md:mt-12 grid grid-cols-2 lg:grid-cols-4 gap-3 md:gap-5">
-        {included.map((item) => (
-          <div key={item.id} className="inc-item rounded-xl border border-white/20 bg-white/10 p-4 md:p-5 md:min-h-[160px]">
-            <h3 className="text-sm md:text-lg font-medium leading-snug">{item.title}</h3>
-            <p className="mt-2 md:mt-3 text-xs md:text-sm text-white/70 leading-relaxed">{item.text}</p>
-          </div>
-        ))}
+
+      <div className="mt-14 md:mt-16 flex flex-col lg:flex-row lg:items-end gap-10 lg:gap-8">
+        <A href={HERO.ctaHref} className={`order-last lg:order-first self-start shrink-0 inline-flex items-center gap-3 rounded-full ${GREEN} hover:bg-[#0a5f48] transition-colors text-white pl-5 pr-1.5 py-1.5 font-medium`}>
+          {hero.ctaLabel}
+          <span className={`w-9 h-9 rounded-full ${GOLD} flex items-center justify-center`}><ArrowIcon /></span>
+        </A>
+        <div className="flex-1 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-x-4 gap-y-10">
+          {included.map((item, i) => {
+            const Icon = INCLUDED_ICONS[i]
+            return (
+              <div key={item.id} className="inc-card relative rounded-2xl bg-white p-5 pt-12 md:pt-14">
+                <span className={`absolute right-4 -top-5 w-12 h-12 md:w-14 md:h-14 rounded-xl ${GOLD} text-white flex items-center justify-center`}><Icon size={24} aria-hidden="true" /></span>
+                <h3 className="text-lg md:text-xl font-medium leading-snug text-forest">{item.title}</h3>
+                <p className="mt-3 text-sm leading-relaxed text-slate-600">{item.text}</p>
+              </div>
+            )
+          })}
+        </div>
       </div>
     </div>
   )
@@ -487,7 +513,6 @@ function Faq() {
 }
 
 function Cta() {
-  const photo = usePhoto()
   const cta = localize(CTA, useT('transport')('cta'))
   const root = useRef(null)
   const btnRef = useRef(null)
@@ -507,7 +532,7 @@ function Cta() {
 
   return (
     <div ref={root} className={`${SECTION_GAP} relative overflow-hidden rounded-3xl min-h-[380px] md:min-h-[460px] flex`}>
-      <img src={photo('transport.cta')} alt="" className="cta-bg absolute inset-0 w-full h-full object-cover" />
+      <SiteMedia slot="transport.cta" alt="" className="cta-bg absolute inset-0 w-full h-full object-cover" />
       <div className="absolute inset-0 bg-gradient-to-r from-black/70 via-black/40 to-black/10" />
       <div className="cta-copy relative flex flex-col justify-end p-6 md:p-12 max-w-2xl">
         <h2 className={ON_IMAGE_TITLE}>{cta.title}</h2>
@@ -553,13 +578,17 @@ function Transport() {
 
   return (
     <>
-    <section className="w-full pt-0 pb-12 bg-[#D5E8E2] flex flex-col items-center">
+    <section className="w-full overflow-x-clip pt-0 pb-12 bg-[#D5E8E2] flex flex-col items-center">
       <Navbar />
-      <div className={`${SECTION_WIDTH} mt-8 md:mt-12`}>
+      <div className={`${SECTION_WIDTH} mt-2 md:mt-4`}>
         <Hero />
+      </div>
+      <ModesMarquee />
+      <div className={SECTION_WIDTH}>
         <TransportTypes />
-        <HowItWorks />
         <Included />
+        <HowItWorks />
+        <Testimonials className={SECTION_GAP} />
         <Faq />
         <Cta />
       </div>

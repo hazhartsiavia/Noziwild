@@ -25,7 +25,7 @@ const COLUMNS = [
 ]
 
 // Types d'offres : les catalogues (hébergements, transports...) ont été ajoutés après les premiers types
-const OFFER_KINDS = ['activity', 'excursion', 'cruise', 'longstay', 'idea', 'stay', 'transport', 'guide', 'food', 'session', 'photo', 'gear', 'ticket']
+const OFFER_KINDS = ['activity', 'excursion', 'cruise', 'longstay', 'idea', 'stay', 'transport', 'guide', 'food', 'session', 'photo', 'gear', 'ticket', 'testimonial']
 
 // Listes de valeurs (ENUM) agrandies depuis : on remplace la définition si une valeur manque
 const ENUMS = [

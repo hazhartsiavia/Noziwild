@@ -1,22 +1,9 @@
 {
   "hero": {
     "title": "Getting There Is Part of the Journey",
-    "text": "Private 4x4s, shared shuttles, domestic flights, boats and trains: we choose the right way to move between every stop, and we book it all for you.",
     "ctaLabel": "Plan My Transfers",
-    "label": "Our Fleet",
-    "cardTitle": "Every Transfer, Handled",
     "imageAlt": "A 4x4 driving along a scenic road",
-    "stats": [
-      {
-        "label": "Ways to Travel"
-      },
-      {
-        "label": "Assistance on Trip"
-      },
-      {
-        "label": "Licensed Drivers"
-      }
-    ]
+    "more": "See more"
   },
   "categories": [
     {
@@ -103,6 +90,7 @@
   "typesText": "Each option has its own pace and charm. Mix them freely across your trip.",
   "tabsLabel": "Transport categories",
   "howTitle": "How It Works",
+  "incEyebrow": "The Noziwild difference",
   "incTitle": "Included in Every Transfer",
   "incText": "Comfort and safety are not options. They come with every vehicle, boat and seat we book.",
   "faqTitle": "Frequently Asked Questions",

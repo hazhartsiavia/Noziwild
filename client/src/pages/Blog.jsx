@@ -6,9 +6,9 @@ import { gsap } from 'gsap'
 import { ScrollTrigger } from 'gsap/ScrollTrigger'
 import { assetUrl, fetchPosts } from '../api'
 import { useLanguage, useT } from '../i18n/LanguageContext'
-import { usePhoto } from '../sitePhotos'
 import { formatDate } from '../utils/format'
 import { A } from '../i18n/router'
+import SiteMedia from '../components/SiteMedia'
 
 gsap.registerPlugin(ScrollTrigger)
 
@@ -36,12 +36,11 @@ export function usePosts() {
 
 function BlogHero() {
   const t = useT('blog')
-  const photo = usePhoto()
   return (
     <>
       <Navbar />
       <section className={`${SECTION_WIDTH} relative flex items-center overflow-hidden rounded-3xl bg-[#084838] text-white min-h-[100px] md:min-h-[360px]`}>
-        <img src={photo('blog.hero')} alt="" className="absolute inset-0 w-full h-full object-cover" />
+        <SiteMedia slot="blog.hero" alt="" className="absolute inset-0 w-full h-full object-cover" />
         <div className="absolute inset-0 bg-slate-950/60" />
         <div className="relative w-full max-w-5xl mx-auto px-6 md:px-10 py-16">
           <h1 className={PAGE_TITLE}>{t('title')}</h1>

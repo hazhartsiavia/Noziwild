@@ -11,6 +11,7 @@ import { useOffers } from '../utils/useOffers'
 import { useScrollReveal } from '../utils/useScrollReveal'
 import { usePhoto } from '../sitePhotos'
 import { A } from '../i18n/router'
+import SiteMedia from '../components/SiteMedia'
 
 const W = 'w-[90vw] lg:max-w-[95vw]'
 const GOLD = 'bg-[#C49849] hover:bg-[#a9813a]'
@@ -42,13 +43,12 @@ const fmt = (h) => (Number.isInteger(h) ? `${h} h` : `${Math.floor(h)} h 30`)
 /* -------------------------- Composants --------------------------- */
 
 function Hero() {
-  const photo = usePhoto()
   const t = useT('cruise')
   return (
     <>
       <Navbar />
       <section className={`${W} relative overflow-hidden rounded-[2rem] md:rounded-[3rem] bg-[#084838] text-white min-h-[520px] md:min-h-[78vh] flex items-end`}>
-        <img src={photo('cruise.hero')} alt={t('heroAlt')} className="absolute inset-0 w-full h-full object-cover" />
+        <SiteMedia slot="cruise.hero" alt={t('heroAlt')} className="absolute inset-0 w-full h-full object-cover" />
         <div className="absolute inset-0 bg-gradient-to-t from-slate-950/85 via-slate-950/30 to-slate-950/10" />
         <div className="relative p-6 sm:p-10 md:p-16 max-w-4xl">
           <p className="text-sm md:text-base text-white/80">{t('eyebrow')}</p>
@@ -212,7 +212,7 @@ function CruiseExcursions() {
 
         {/* Groupe */}
         <section className={`${W} mt-16 md:mt-28 relative overflow-hidden rounded-[2rem] md:rounded-[3rem] text-white min-h-[380px] flex items-center`}>
-          <img src={photo('cruise.cta')} alt="" className="absolute inset-0 w-full h-full object-cover" />
+          <SiteMedia slot="cruise.cta" alt="" className="absolute inset-0 w-full h-full object-cover" />
           <div className="absolute inset-0 bg-slate-950/65" />
           <div className="relative p-8 md:p-16 max-w-3xl">
             <h2 className="text-3xl sm:text-4xl md:text-5xl font-medium leading-[1.1] tracking-tight">{t('groupTitle')}</h2>

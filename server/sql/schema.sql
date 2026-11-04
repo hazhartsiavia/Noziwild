@@ -210,12 +210,13 @@ CREATE TABLE IF NOT EXISTS circuit_days (
 --   kind : activity | excursion | cruise | longstay | idea (idées de voyage de la page Sur mesure)
 --          stay (Hébergement) | transport | guide (équipe de guides) | food (expériences culinaires)
 --          session (séances photo) | photo (galerie photo) | gear (location de matériel) | ticket (billets)
+--          testimonial (avis des voyageurs : le titre est le nom, le texte l'avis)
 --   details : champs propres à chaque type (durée, niveau, région, port, points...), en anglais
 --   translations : autres langues, { "fr": { "title": ..., "text": ..., "duration": ... } }
 --   Les photos sont des chemins servis par l'API, ex. /uploads/circuits/ramena.jpg
 CREATE TABLE IF NOT EXISTS offers (
   id           INT UNSIGNED AUTO_INCREMENT PRIMARY KEY,
-  kind         ENUM('activity', 'excursion', 'cruise', 'longstay', 'idea', 'stay', 'transport', 'guide', 'food', 'session', 'photo', 'gear', 'ticket') NOT NULL,
+  kind         ENUM('activity', 'excursion', 'cruise', 'longstay', 'idea', 'stay', 'transport', 'guide', 'food', 'session', 'photo', 'gear', 'ticket', 'testimonial') NOT NULL,
   title        VARCHAR(190)  NOT NULL,
   text         VARCHAR(1000) NOT NULL,
   image        VARCHAR(500)  NOT NULL,
@@ -284,6 +285,19 @@ CREATE TABLE IF NOT EXISTS blog_posts (
 
 -- Photos des pages remplacées depuis l'admin (page « Photos ») : emplacement -> photo.
 -- Un emplacement absent garde la photo d'origine du site.
+-- Vidéos de fond choisies dans l'admin : jouées par-dessus la photo de l'emplacement (site_images ou photo d'origine)
+CREATE TABLE IF NOT EXISTS site_videos (
+  slot       VARCHAR(80)  NOT NULL PRIMARY KEY,
+  path       VARCHAR(500) NOT NULL,
+  updated_at TIMESTAMP    NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
+) ENGINE=InnoDB;
+
+-- Pages masquées depuis l'admin (adresse sans langue, ex. /transport)
+CREATE TABLE IF NOT EXISTS site_hidden_pages (
+  path       VARCHAR(120) NOT NULL PRIMARY KEY,
+  hidden_at  TIMESTAMP    NOT NULL DEFAULT CURRENT_TIMESTAMP
+) ENGINE=InnoDB;
+
 CREATE TABLE IF NOT EXISTS site_images (
   slot       VARCHAR(80)  NOT NULL PRIMARY KEY,
   path       VARCHAR(500) NOT NULL,

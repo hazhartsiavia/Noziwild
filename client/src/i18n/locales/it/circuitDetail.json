@@ -11,8 +11,7 @@
   "nightIn": "Notte a {place}",
   "enlarge": "Ingrandisci la foto {n} di {total}: {title}",
   "price": "Prezzo",
-  "from": "Da",
-  "perPerson": "A persona, sulla base di due viaggiatori in camera doppia",
+  "onRequest": "Su richiesta",
   "bookingOptions": "Opzioni di prenotazione",
   "booking": "Prenotazione",
   "inquiry": "Richiesta informazioni",
@@ -20,7 +19,6 @@
   "travellers": "Numero di viaggiatori",
   "fewer": "Meno viaggiatori",
   "more": "Più viaggiatori",
-  "total": "Totale stimato",
   "name": "Il tuo nome",
   "email": "Indirizzo email",
   "question": "Le tue domande su questo tour",
@@ -29,7 +27,6 @@
   "thanks": "Grazie! Un esperto di viaggi ti risponderà entro un giorno lavorativo.",
   "followLink": "tuo account",
   "noPayment": "Nessun pagamento ora. Prima confermiamo la disponibilità e il prezzo finale.",
-  "fromPerPerson": "Da {price} / persona",
   "bookNow": "Prenota",
   "loading": "Caricamento del tour",
   "notFound": "Questo tour non è stato trovato",
@@ -56,6 +53,5 @@
   "moreCircuits": "Altri tour",
   "seeAll": "Vedi tutti i tour",
   "days": "{count} giorni",
-  "fromPrice": "Da {price}",
   "follow": "Puoi seguirla nel {link}."
 }

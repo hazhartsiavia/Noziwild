@@ -7,6 +7,7 @@ import { Link } from '../i18n/router'
 import gsap from 'gsap'
 import { ScrollTrigger } from 'gsap/ScrollTrigger'
 import Navbar from '../components/Navbar'
+import SiteMedia from '../components/SiteMedia'
 import { useT } from '../i18n/LanguageContext'
 import bg1 from '../assets/images/hero/bg1-2400.jpg'
 import bg1Small from '../assets/images/hero/bg1-1200.jpg'
@@ -261,7 +262,7 @@ export function Hero({ ready }) {
       <div className="nzh__media" aria-hidden="true">
         {slides.map((s, i) => (
           <div key={s.image} className={`nzh__slide${i === index ? ' is-active' : ''}${i === leaving ? ' is-leaving' : ''}`}>
-            <img {...imgProps(s)} alt="" loading={i === 0 ? undefined : 'lazy'} fetchPriority={i === 0 ? 'high' : undefined} />
+            <SiteMedia slot={`home.hero.${i + 1}`} active={i === index} {...imgProps(s)} alt="" loading={i === 0 ? undefined : 'lazy'} fetchPriority={i === 0 ? 'high' : undefined} />
           </div>
         ))}
       </div>

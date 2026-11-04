@@ -173,29 +173,7 @@
     "Gastronomía",
     "Alquiler de equipo",
     "Fotografía",
-    "Planificación del viaje",
     "Excursiones en crucero"
-  ],
-  "reviewsLabel": "Lo que dicen",
-  "reviewsTitle": "Los viajeros nos adoran",
-  "reviewsAverage": "Valoración media de más de 300 viajeros",
-  "quotes": [
-    {
-      "text": "Lo planearon todo al detalle y, sin embargo, el viaje nunca pareció planeado. Era como visitar a unos amigos.",
-      "origin": "Lyon"
-    },
-    {
-      "text": "Nuestro guía nos mostró una cara de la isla que no esperábamos. La comida, la gente, los pequeños talleres.",
-      "origin": "Milán"
-    },
-    {
-      "text": "Cuando cancelaron nuestro vuelo, tenían un plan nuevo antes de que termináramos el café. Impresionante.",
-      "origin": "Múnich"
-    },
-    {
-      "text": "Tener una sola persona a quien llamar para todo hizo que nuestro viaje en familia fuera tranquilo. Los niños todavía hablan de él.",
-      "origin": "Montreal"
-    }
   ],
   "ctaTitle": "¿Listo para planificar su viaje?",
   "ctaText": "Cuéntenos qué le gusta y de cuánto tiempo dispone. Un asesor de verdad le responde en un día laborable con una primera idea y un presupuesto gratuito.",

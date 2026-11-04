@@ -1,22 +1,9 @@
 {
   "hero": {
     "title": "Il tragitto fa parte del viaggio",
-    "text": "4x4 privati, navette condivise, voli interni, barche e treni: scegliamo il modo giusto per spostarti tra una tappa e l'altra e prenotiamo tutto per te.",
     "ctaLabel": "Organizza i miei trasferimenti",
-    "label": "La nostra flotta",
-    "cardTitle": "Ogni trasferimento, gestito",
     "imageAlt": "Un 4x4 su una strada panoramica",
-    "stats": [
-      {
-        "label": "Modi di viaggiare"
-      },
-      {
-        "label": "Assistenza in viaggio"
-      },
-      {
-        "label": "Autisti autorizzati"
-      }
-    ]
+    "more": "Scopri di più"
   },
   "categories": [
     {
@@ -103,6 +90,7 @@
   "typesText": "Ogni opzione ha il suo ritmo e il suo fascino. Combinale liberamente durante il viaggio.",
   "tabsLabel": "Categorie di trasporto",
   "howTitle": "Come funziona",
+  "incEyebrow": "La differenza Noziwild",
   "incTitle": "Incluso in ogni trasferimento",
   "incText": "Comfort e sicurezza non sono optional. Accompagnano ogni veicolo, barca e posto che prenotiamo.",
   "faqTitle": "Domande frequenti",

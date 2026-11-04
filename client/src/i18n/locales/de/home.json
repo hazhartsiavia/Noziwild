@@ -173,29 +173,7 @@
     "Essen & Trinken",
     "Ausrüstungsverleih",
     "Fotografie",
-    "Reiseplanung",
     "Landausflüge für Kreuzfahrten"
-  ],
-  "reviewsLabel": "Was Reisende sagen",
-  "reviewsTitle": "Von Reisenden geliebt",
-  "reviewsAverage": "Durchschnittliche Bewertung von über 300 Reisenden",
-  "quotes": [
-    {
-      "text": "Sie haben jedes Detail geplant, und doch fühlte sich die Reise nie geplant an. Es war, als würden wir Freunde besuchen.",
-      "origin": "Lyon"
-    },
-    {
-      "text": "Unser Guide hat uns eine Seite der Insel gezeigt, die wir nie erwartet hätten. Das Essen, die Menschen, die kleinen Werkstätten.",
-      "origin": "Mailand"
-    },
-    {
-      "text": "Als unser Flug gestrichen wurde, hatten sie einen neuen Plan, bevor wir unseren Kaffee ausgetrunken hatten. Beeindruckend.",
-      "origin": "München"
-    },
-    {
-      "text": "Eine einzige Ansprechperson für alles – das hat unsere Familienreise völlig stressfrei gemacht. Die Kinder reden immer noch davon.",
-      "origin": "Montreal"
-    }
   ],
   "ctaTitle": "Bereit, Ihre Reise zu planen?",
   "ctaText": "Erzählen Sie uns, was Sie lieben und wie viel Zeit Sie haben. Ein echter Reiseplaner antwortet innerhalb eines Werktags mit einer ersten Idee und einem kostenlosen Angebot.",

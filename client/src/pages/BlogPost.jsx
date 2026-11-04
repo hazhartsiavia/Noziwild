@@ -39,7 +39,7 @@ function usePost(slug) {
   return state
 }
 
-// Bandeau d'offre : photo, grand titre, sous-titre, prix et bouton (comme « Explore your journey »)
+// Bandeau d'offre : photo, grand titre, sous-titre et bouton (comme « Explore your journey »)
 function Cta({ block }) {
   const external = /^https?:/.test(block.link)
   return (
@@ -51,7 +51,6 @@ function Cta({ block }) {
         <div className="flex flex-col md:flex-row md:items-end justify-between gap-6">
           <div>
             <h2 className="text-5xl sm:text-6xl md:text-8xl font-bold uppercase leading-[0.95] tracking-tight">{block.title}</h2>
-            {block.priceLabel && <p className="mt-4 text-xl md:text-2xl font-medium text-[#E6C58A]">{block.priceLabel}</p>}
           </div>
           {block.button && (
             <A

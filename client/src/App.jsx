@@ -1,4 +1,4 @@
-import { Routes, Route, Navigate, Outlet, useParams } from "react-router-dom";
+import { Routes, Route, Navigate, useParams } from "react-router-dom";
 import { PREFIXED, RENAMED_PAGES } from "./i18n/paths";
 import Home from "./pages/Home";
 import Blog from "./pages/Blog";
@@ -12,7 +12,6 @@ import Activities from "./pages/Activities";
 import EquipmentRentals from "./pages/EquipmentRentals";
 import Photography from "./pages/Photography";
 import FoodDining from "./pages/FoodDining";
-import Travelplanning from "./pages/Travelplanning";
 import Ticketreservations from "./pages/Ticketsreservations";
 import Circuits from "./pages/Circuits";
 import CircuitDetail from "./pages/CircuitDetail";
@@ -43,6 +42,7 @@ import AdminPhotos from "./pages/admin/AdminPhotos";
 import AdminUsers from "./pages/admin/AdminUsers";
 import AdminUser from "./pages/admin/AdminUser";
 import TextsEditor from "./pages/admin/TextsEditor";
+import PageGate from "./pages/PageGate";
 
 // Pages du site public, en anglais à la racine (/circuits) et dans les autres langues sous /fr, /de... (/fr/circuits)
 const publicRoutes = (
@@ -60,7 +60,6 @@ const publicRoutes = (
     <Route path="photography" element={<Photography />} />
     <Route path="food-dining" element={<FoodDining/>} />
     <Route path="ticket-reservation" element={<Ticketreservations/>} />
-    <Route path="travel-planning" element={<Travelplanning/>}/>
     <Route path="circuits" element={< Circuits/>}/>
     <Route path="circuits/:slug" element={<CircuitDetail />} />
     <Route path="long-stay" element={< LongStay/>}/>
@@ -86,13 +85,13 @@ const publicRoutes = (
 // /fr/... : pages en français ; un premier segment qui n'est pas une langue (/xyz) n'affiche rien
 function LanguageRoute() {
   const { lang } = useParams();
-  return PREFIXED.includes(lang) ? <Outlet /> : null;
+  return PREFIXED.includes(lang) ? <PageGate /> : null;
 }
 
 function App() {
   return (
     <Routes>
-      <Route path="/">{publicRoutes}</Route>
+      <Route path="/" element={<PageGate />}>{publicRoutes}</Route>
       <Route path=":lang" element={<LanguageRoute />}>{publicRoutes}</Route>
       <Route path="/admin" element={<AdminLayout />}>
         <Route index element={<Navigate to="circuits" replace />} />

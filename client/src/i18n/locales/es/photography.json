@@ -37,23 +37,19 @@
   "keepsakes": [
     {
       "title": "Copias artísticas",
-      "text": "Papel de calidad museo, tamaños de A5 a A2.",
-      "price": "Desde 12 €"
+      "text": "Papel de calidad museo, tamaños de A5 a A2."
     },
     {
       "title": "Álbum de fotos",
-      "text": "Su historia en 30 páginas, revisada y encuadernada a mano.",
-      "price": "Desde 55 €"
+      "text": "Su historia en 30 páginas, revisada y encuadernada a mano."
     },
     {
       "title": "Lienzo enmarcado",
-      "text": "Su mejor foto, lista para colgar en la pared.",
-      "price": "Desde 70 €"
+      "text": "Su mejor foto, lista para colgar en la pared."
     },
     {
       "title": "Galería digital",
-      "text": "Enlace privado y memoria USB con todas sus fotos.",
-      "price": "Incluida"
+      "text": "Enlace privado y memoria USB con todas sus fotos."
     }
   ],
   "faqs": [
@@ -99,7 +95,6 @@
   "sessionsTitle": "Elija su sesión",
   "sessionsText": "De una hora dorada a un día entero. Todas las sesiones incluyen la edición y una galería en línea privada.",
   "delivered": "Entrega en {delay}",
-  "from": "Desde {price}",
   "editEyebrow": "De la sesión a la galería",
   "editTitle": "Cada foto se edita a mano",
   "beforeAlt": "Foto antes de la edición",

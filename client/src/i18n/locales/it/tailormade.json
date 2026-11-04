@@ -24,20 +24,24 @@
   },
   "steps": [
     {
-      "title": "Raccontaci i tuoi desideri",
-      "text": "Rispondi a qualche domanda o scrivici liberamente."
+      "title": "Ascoltiamo",
+      "text": "Una breve chiamata o un messaggio per capire date, budget, ritmo e cosa non vuoi assolutamente perdere.",
+      "deliverable": "La tua scheda di viaggio"
     },
     {
-      "title": "Ricevi una prima proposta",
-      "text": "Un esperto di viaggi ti invia un itinerario giorno per giorno entro pochi giorni."
+      "title": "Progettiamo",
+      "text": "Costruiamo un itinerario giorno per giorno con tempi di viaggio realistici, gli alloggi giusti ed esperienze locali.",
+      "deliverable": "Prima bozza in 48 h"
     },
     {
-      "title": "Perfezionalo con noi",
-      "text": "Cambia tutto ciò che vuoi finché il viaggio non è perfetto."
+      "title": "Perfezioniamo",
+      "text": "Ci dici cosa cambiare. Modifichiamo finché ogni giornata non è perfetta.",
+      "deliverable": "Modifiche illimitate"
     },
     {
-      "title": "Viaggia con assistenza",
-      "text": "Guide locali, trasferimenti e un referente sul posto."
+      "title": "Prenotiamo e ti accompagniamo",
+      "text": "Prenotiamo tutto e restiamo disponibili prima e durante il viaggio.",
+      "deliverable": "Guida di viaggio digitale"
     }
   ],
   "eyebrow": "Soggiorni su misura",

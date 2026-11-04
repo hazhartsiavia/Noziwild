@@ -37,23 +37,19 @@
   "keepsakes": [
     {
       "title": "Fine-Art Prints",
-      "text": "Museum-quality paper, sizes from A5 to A2.",
-      "price": "From €12"
+      "text": "Museum-quality paper, sizes from A5 to A2."
     },
     {
       "title": "Photo Book",
-      "text": "Your story in 30 pages, hand-checked and bound.",
-      "price": "From €55"
+      "text": "Your story in 30 pages, hand-checked and bound."
     },
     {
       "title": "Framed Canvas",
-      "text": "Your best shot, ready to hang on the wall.",
-      "price": "From €70"
+      "text": "Your best shot, ready to hang on the wall."
     },
     {
       "title": "Digital Gallery",
-      "text": "Private link and USB key with all your photos.",
-      "price": "Included"
+      "text": "Private link and USB key with all your photos."
     }
   ],
   "faqs": [
@@ -99,7 +95,6 @@
   "sessionsTitle": "Choose Your Session",
   "sessionsText": "From one golden hour to a whole day. All sessions include editing and a private online gallery.",
   "delivered": "Delivered in {delay}",
-  "from": "From {price}",
   "editEyebrow": "From shoot to gallery",
   "editTitle": "Every Photo Is Edited By Hand",
   "beforeAlt": "Photo before editing",

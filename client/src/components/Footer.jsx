@@ -2,6 +2,7 @@ import React from 'react'
 import { Link } from '../i18n/router'
 import Icone from "../assets/icone.png";
 import { useT } from "../i18n/LanguageContext";
+import { useSitePages } from "../context/SitePagesContext";
 
 // Liens du pied de page : routes de App.jsx, libellés dans locales/<langue>/footer.json
 const LINKS = [
@@ -14,6 +15,7 @@ const LINKS = [
 
 const Footer = () => {
     const t = useT('footer')
+    const { isHidden } = useSitePages()
     return (
         <>
             <footer className='flex flex-col justify-end bg-white pt-20 px-4 sm:px-6 lg:px-8 overflow-hidden w-full'>
@@ -33,7 +35,7 @@ const Footer = () => {
                         <div className="w-[45%] md:w-[45%] lg:w-[15%] flex flex-col items-start text-left">
                             <h3 className='text-sm text-forest font-medium'>{t('importantLinks')}</h3>
                             <div className="flex flex-col gap-2 mt-6">
-                                {LINKS.map(({ to, key }) => (
+                                {LINKS.filter(({ to }) => !isHidden(to)).map(({ to, key }) => (
                                     <Link key={key} to={to} className='text-sm text-black/60 hover:text-black transition-colors'>{t(`links.${key}`)}</Link>
                                 ))}
                             </div>

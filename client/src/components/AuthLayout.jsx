@@ -5,10 +5,9 @@ import Navbar from './Navbar'
 import Footer from './Footer'
 import NosyIranja from '../assets/images/NosyIranja.jpg'
 import { useT } from '../i18n/LanguageContext'
-import { usePhoto } from '../sitePhotos'
+import SiteMedia from './SiteMedia'
 
 function AuthLayout({ title, text, children }) {
-  const photo = usePhoto()
   const t = useT('auth')
   return (
     <>
@@ -18,7 +17,7 @@ function AuthLayout({ title, text, children }) {
         <div className="w-[90vw] max-w-6xl mt-10 grid grid-cols-1 lg:grid-cols-2 overflow-hidden rounded-3xl bg-white">
           {/* Image */}
           <div className="relative hidden lg:block">
-            <img src={photo('auth.background')} alt="" className="absolute inset-0 w-full h-full object-cover" />
+            <SiteMedia slot="auth.background" alt="" className="absolute inset-0 w-full h-full object-cover" />
             <div className="absolute inset-0 bg-gradient-to-t from-slate-950/70 via-slate-950/10 to-transparent" />
             <p className="absolute bottom-10 left-10 right-10 text-3xl xl:text-4xl font-medium leading-tight text-white">
               {t('layoutQuote')}

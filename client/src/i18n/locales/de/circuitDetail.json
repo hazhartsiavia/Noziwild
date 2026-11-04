@@ -11,8 +11,7 @@
   "nightIn": "Übernachtung in {place}",
   "enlarge": "Foto {n} von {total} vergrößern: {title}",
   "price": "Preis",
-  "from": "Ab",
-  "perPerson": "Pro Person, bei zwei Reisenden im Doppelzimmer",
+  "onRequest": "Auf Anfrage",
   "bookingOptions": "Buchungsoptionen",
   "booking": "Buchung",
   "inquiry": "Anfrage",
@@ -20,7 +19,6 @@
   "travellers": "Anzahl der Reisenden",
   "fewer": "Weniger Reisende",
   "more": "Mehr Reisende",
-  "total": "Geschätzter Gesamtpreis",
   "name": "Ihr Name",
   "email": "E-Mail-Adresse",
   "question": "Ihre Fragen zu dieser Rundreise",
@@ -29,7 +27,6 @@
   "thanks": "Vielen Dank! Ein Reiseexperte antwortet Ihnen innerhalb eines Werktags.",
   "followLink": "Ihrem Konto",
   "noPayment": "Jetzt keine Zahlung. Wir bestätigen zuerst die Verfügbarkeit und den endgültigen Preis.",
-  "fromPerPerson": "Ab {price} / Person",
   "bookNow": "Jetzt buchen",
   "loading": "Rundreise wird geladen",
   "notFound": "Diese Rundreise wurde nicht gefunden",
@@ -56,6 +53,5 @@
   "moreCircuits": "Weitere Rundreisen",
   "seeAll": "Alle Rundreisen ansehen",
   "days": "{count} Tage",
-  "fromPrice": "Ab {price}",
   "follow": "Sie können sie in {link} verfolgen."
 }

@@ -1,0 +1,60 @@
+/* Section Témoignages. Par défaut (écran tactile, animations réduites) : liste à faire glisser au doigt. */
+.tm-viewport {
+  overflow-x: auto;
+  scroll-snap-type: x proximity;
+  scrollbar-width: none;
+}
+
+.tm-column {
+  scroll-snap-align: start;
+}
+
+.tm-copy {
+  display: none;
+}
+
+/* Avec une souris : défilement continu, en pause au survol, et l'avis survolé passe en vert */
+@media (hover: hover) and (prefers-reduced-motion: no-preference) {
+  .tm-viewport {
+    overflow: hidden;
+    mask-image: linear-gradient(to right, transparent, #000 7%, #000 93%, transparent);
+  }
+
+  .tm-copy {
+    display: flex;
+  }
+
+  .tm-track {
+    animation: tm-scroll var(--tm-duration) linear infinite;
+  }
+
+  .tm-viewport:hover .tm-track {
+    animation-play-state: paused;
+  }
+
+  .tm-part,
+  .tm-part blockquote,
+  .tm-name,
+  .tm-origin {
+    transition: background-color 0.35s ease, color 0.35s ease;
+  }
+
+  .tm-column:hover .tm-part {
+    background-color: #074636;
+  }
+
+  .tm-column:hover blockquote,
+  .tm-column:hover .tm-name {
+    color: #fff;
+  }
+
+  .tm-column:hover .tm-origin {
+    color: rgb(255 255 255 / 0.7);
+  }
+}
+
+@keyframes tm-scroll {
+  to {
+    transform: translateX(-50%);
+  }
+}

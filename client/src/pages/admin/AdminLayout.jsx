@@ -10,7 +10,7 @@ const TABS = [
   { to: '/admin/destinations', label: 'Destinations', icon: MapPin },
   { to: '/admin/offers', label: 'Offers', icon: LayoutGrid },
   { to: '/admin/blog', label: 'Blog', icon: Newspaper },
-  { to: '/admin/photos', label: 'Photos', icon: Images },
+  { to: '/admin/photos', label: 'Pages & photos', icon: Images },
   { to: '/admin/texts', label: 'Texts', icon: Type },
   { to: '/admin/users', label: 'Users', icon: Users },
   { to: '/admin/inbox', label: 'Inbox', icon: Inbox },

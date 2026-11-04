@@ -75,8 +75,8 @@
   ],
   "faqs": [
     {
-      "q": "¿Los precios son por persona o por habitación?",
-      "a": "Los precios indicados son por habitación y noche, desde la temporada baja. Su presupuesto muestra el total exacto para sus fechas y su grupo."
+      "q": "¿Cómo puedo saber el precio de un alojamiento?",
+      "a": "Indíquenos sus fechas y su grupo: le enviamos gratis un presupuesto con el total exacto."
     },
     {
       "q": "¿El desayuno está incluido?",
@@ -97,7 +97,6 @@
   ],
   "title": "Alojamiento",
   "home": "Inicio",
-  "fromPerNight": "Desde {price} / noche",
   "staysTitle": "Encuentre su alojamiento ideal",
   "tabsLabel": "Categorías de alojamiento",
   "criteriaTitle": "Cómo elegimos nuestros alojamientos",

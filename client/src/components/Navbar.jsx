@@ -8,6 +8,7 @@ import { useTrip } from '../context/TripContext'
 import Avatar from './Avatar'
 import LanguageSwitcher, { LanguageRow } from './LanguageSwitcher'
 import { useT } from '../i18n/LanguageContext'
+import { useSitePages } from '../context/SitePagesContext'
 
 /* ============================================================
    ÉPAULE COURBE
@@ -78,6 +79,7 @@ function Navbar() {
   /* ============================================================
      TRAVEL
   ============================================================ */
+  const { isHidden } = useSitePages()
   const travelLinks = [
     [t('links.activities'), '/activities'],
     [t('links.circuits'), '/circuits'],
@@ -85,7 +87,7 @@ function Navbar() {
     [t('links.cruise'), '/cruise-excursions'],
     [t('links.longStay'), '/long-stay'],
     [t('links.tailorMade'), '/tailor-made'],
-  ]
+  ].filter(([, path]) => !isHidden(path))
 
   /* ============================================================
      SERVICES
@@ -97,9 +99,8 @@ function Navbar() {
     [t('links.food'), '/food-dining'],
     [t('links.equipment'), '/equipment-rentals'],
     [t('links.photography'), '/photography'],
-    [t('links.planning'), '/travel-planning'],
     [t('links.tickets'), '/ticket-reservation'],
-  ]
+  ].filter(([, path]) => !isHidden(path))
 
   /* ============================================================
      FERMER MENU
@@ -395,12 +396,14 @@ function Navbar() {
               {/* =================================================
                   DESTINATIONS
               ================================================= */}
+              {!isHidden('/destinations') && (
               <Link
                 to="/destinations"
                 className={`nav-link-item ${link}`}
               >
                 {t('destinations')}
               </Link>
+              )}
 
               {/* =================================================
                   TRAVEL
@@ -415,7 +418,7 @@ function Navbar() {
                 }
               >
                 <Link
-                  to="/activities"
+                  to={travelLinks[0]?.[1] || '/'}
                   className="
                     flex
                     items-center
@@ -569,22 +572,26 @@ function Navbar() {
               {/* =================================================
                   ABOUT
               ================================================= */}
+              {!isHidden('/about') && (
               <Link
                 to="/about"
                 className={`nav-link-item ${link}`}
               >
                 {t('about')}
               </Link>
+              )}
 
               {/* =================================================
                   BLOG
               ================================================= */}
+              {!isHidden('/blog') && (
               <Link
                 to="/blog"
                 className={`nav-link-item ${link}`}
               >
                 {t('blog')}
               </Link>
+              )}
 
             </div>
 
@@ -766,6 +773,7 @@ function Navbar() {
               <div className="flex flex-col gap-1">
 
                 {/* DESTINATIONS */}
+                {!isHidden('/destinations') && (
                 <Link
                   to="/destinations"
                   onClick={closeMenu}
@@ -780,6 +788,7 @@ function Navbar() {
                 >
                   {t('destinations')}
                 </Link>
+                )}
 
                 {/* =================================================
                     TRAVEL MOBILE
@@ -898,6 +907,7 @@ function Navbar() {
                 )}
 
                 {/* ABOUT */}
+                {!isHidden('/about') && (
                 <Link
                   to="/about"
                   onClick={closeMenu}
@@ -912,8 +922,10 @@ function Navbar() {
                 >
                   {t('about')}
                 </Link>
+                )}
 
                 {/* BLOG */}
+                {!isHidden('/blog') && (
                 <Link
                   to="/blog"
                   onClick={closeMenu}
@@ -928,6 +940,7 @@ function Navbar() {
                 >
                   {t('blog')}
                 </Link>
+                )}
 
                 {/* COMPTE MOBILE */}
                 {!loading && (

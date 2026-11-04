@@ -97,6 +97,12 @@ export const KINDS = {
     choices: { category: ['parks', 'sea', 'sites', 'events'] },
     lists: { perks: [6, 80] },
   },
+  // Avis des voyageurs : le titre est le nom, le texte l'avis, la photo est facultative
+  testimonial: {
+    imageOptional: true,
+    texts: { origin: 120 },
+    numbers: { rating: [1, 5, 0.5] },
+  },
 }
 export const isKind = (value) => Object.hasOwn(KINDS, value)
 

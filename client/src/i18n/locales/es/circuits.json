@@ -21,7 +21,6 @@
     "13 días o más"
   ],
   "days": "{count} días",
-  "from": "Desde {price}",
   "loading": "Cargando los circuitos",
   "loadError": "No se han podido cargar los circuitos. Inténtelo de nuevo en un momento.",
   "reload": "Recargar",

@@ -37,23 +37,19 @@
   "keepsakes": [
     {
       "title": "Kunstdrucke",
-      "text": "Papier in Museumsqualität, Formate von A5 bis A2.",
-      "price": "Ab 12 €"
+      "text": "Papier in Museumsqualität, Formate von A5 bis A2."
     },
     {
       "title": "Fotobuch",
-      "text": "Ihre Geschichte auf 30 Seiten, von Hand geprüft und gebunden.",
-      "price": "Ab 55 €"
+      "text": "Ihre Geschichte auf 30 Seiten, von Hand geprüft und gebunden."
     },
     {
       "title": "Gerahmte Leinwand",
-      "text": "Ihr bestes Bild, fertig zum Aufhängen.",
-      "price": "Ab 70 €"
+      "text": "Ihr bestes Bild, fertig zum Aufhängen."
     },
     {
       "title": "Digitale Galerie",
-      "text": "Privater Link und USB-Stick mit all Ihren Fotos.",
-      "price": "Inklusive"
+      "text": "Privater Link und USB-Stick mit all Ihren Fotos."
     }
   ],
   "faqs": [
@@ -99,7 +95,6 @@
   "sessionsTitle": "Wählen Sie Ihr Shooting",
   "sessionsText": "Von einer goldenen Stunde bis zu einem ganzen Tag. Alle Shootings beinhalten Bearbeitung und eine private Online-Galerie.",
   "delivered": "Lieferung in {delay}",
-  "from": "Ab {price}",
   "editEyebrow": "Vom Shooting zur Galerie",
   "editTitle": "Jedes Foto wird von Hand bearbeitet",
   "beforeAlt": "Foto vor der Bearbeitung",

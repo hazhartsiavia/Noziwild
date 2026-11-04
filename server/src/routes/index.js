@@ -27,7 +27,7 @@ import {
   patchOffer,
   deleteOffer,
 } from '../controllers/offersController.js'
-import { listUploads, uploadImage } from '../controllers/uploadsController.js'
+import { listUploads, uploadImage, uploadVideo } from '../controllers/uploadsController.js'
 import { listTexts, adminListTexts, adminGetTexts, adminSaveTexts, adminResetTexts } from '../controllers/textsController.js'
 import {
   listDestinations,
@@ -39,7 +39,7 @@ import {
   deleteDestination,
 } from '../controllers/destinationsController.js'
 import { listPosts, getPost, adminListPosts, adminGetPost, createPost, updatePost, patchPost, deletePost } from '../controllers/postsController.js'
-import { listImages, adminSaveImage, adminResetImage } from '../controllers/imagesController.js'
+import { listImages, adminSaveImage, adminResetImage, adminSaveVideo, adminResetVideo, listPages, adminSetPage } from '../controllers/imagesController.js'
 import {
   listAccounts,
   getAccount,
@@ -102,6 +102,7 @@ router.get('/destinations', listDestinations)
 router.get('/posts', listPosts)
 router.get('/posts/:slug', getPost)
 router.get('/images', listImages)
+router.get('/pages', listPages)
 
 // Gestion des circuits, des offres, des destinations, des photos, des textes, des comptes et des devis (réservé à l'équipe Noziwild)
 // Déclarées avant /admin/:resource, sinon "circuits", "offers", "destinations", "posts", "texts" ou "quotes" serait pris pour une ressource générique
@@ -121,6 +122,7 @@ router.get('/admin/uploads', requireAdmin, listUploads)
 router.get('/admin/quotes', requireAdmin, adminListQuotes)
 router.patch('/admin/quotes/:id', requireAdmin, adminPatchQuote)
 router.post('/admin/uploads', requireAdmin, uploadImage)
+router.post('/admin/uploads/video', requireAdmin, uploadVideo)
 router.get('/admin/destinations', requireAdmin, adminListDestinations)
 router.get('/admin/destinations/:slug', requireAdmin, adminGetDestination)
 router.post('/admin/destinations', requireAdmin, createDestination)
@@ -135,6 +137,9 @@ router.patch('/admin/posts/:slug', requireAdmin, patchPost)
 router.delete('/admin/posts/:slug', requireAdmin, deletePost)
 router.put('/admin/images/:key', requireAdmin, adminSaveImage)
 router.delete('/admin/images/:key', requireAdmin, adminResetImage)
+router.put('/admin/videos/:key', requireAdmin, adminSaveVideo)
+router.delete('/admin/videos/:key', requireAdmin, adminResetVideo)
+router.put('/admin/pages', requireAdmin, adminSetPage)
 router.get('/admin/accounts', requireAdmin, listAccounts)
 router.get('/admin/accounts/:id', requireAdmin, getAccount)
 router.post('/admin/accounts', requireAdmin, createAccount)

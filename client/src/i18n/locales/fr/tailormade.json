@@ -24,20 +24,24 @@
   },
   "steps": [
     {
-      "title": "Partagez vos envies",
-      "text": "Répondez à quelques questions ou écrivez-nous librement."
+      "title": "Nous écoutons",
+      "text": "Un court appel ou un message pour comprendre vos dates, votre budget, votre rythme et ce que vous ne voulez pas manquer.",
+      "deliverable": "Votre fiche de voyage"
     },
     {
-      "title": "Recevez une première proposition",
-      "text": "Un expert du voyage vous envoie un itinéraire jour par jour en quelques jours."
+      "title": "Nous concevons",
+      "text": "Nous construisons un itinéraire jour par jour avec des temps de trajet réalistes, les bons hébergements et des expériences locales.",
+      "deliverable": "Premier itinéraire en 48 h"
     },
     {
-      "title": "Ajustez ensemble",
-      "text": "Modifiez tout ce que vous voulez jusqu'à ce que le voyage vous ressemble."
+      "title": "Nous ajustons",
+      "text": "Vous nous dites ce qu'il faut changer. Nous ajustons jusqu'à ce que chaque journée vous ressemble.",
+      "deliverable": "Modifications illimitées"
     },
     {
-      "title": "Voyagez accompagné",
-      "text": "Guides locaux, transferts et un contact sur place."
+      "title": "Nous réservons et accompagnons",
+      "text": "Nous réservons tout et restons disponibles avant et pendant votre voyage.",
+      "deliverable": "Guide de voyage numérique"
     }
   ],
   "eyebrow": "Séjours sur mesure",

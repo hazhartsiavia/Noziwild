@@ -2,8 +2,7 @@ import React, { useLayoutEffect, useRef, useState } from 'react'
 import Navbar from '../components/Navbar';
 import Footer from '../components/Footer';
 import AddToTrip from '../components/AddToTrip'
-import { useLanguage, useT } from '../i18n/LanguageContext';
-import { formatPrice } from '../utils/format';
+import { useT } from '../i18n/LanguageContext';
 import { localize } from '../i18n/localize';
 import OffersStatus from '../components/OffersStatus'
 import { useOffers } from '../utils/useOffers'
@@ -107,10 +106,8 @@ function Hero() {
   )
 }
 
-// Carte en forme de billet : photo, infos, souche avec prix
+// Carte en forme de billet : photo, infos, souche
 function TicketCard({ t }) {
-  const tr = useT('tickets')
-  const { lang } = useLanguage()
   const notch = "absolute -left-[9px] w-4 h-4 rounded-full bg-[#D5E8E2]"
   return (
     <article className="flex overflow-hidden rounded-2xl bg-white">
@@ -125,9 +122,7 @@ function TicketCard({ t }) {
       <div className="relative shrink-0 w-[100px] md:w-[130px] flex flex-col items-center justify-center gap-1.5 border-l-2 border-dashed border-slate-300 p-3 text-center">
         <span className={`${notch} -top-2`} />
         <span className={`${notch} -bottom-2`} />
-        <p className={`${META_TEXT} text-slate-500`}>{tr('from')}</p>
-        <p className="text-2xl md:text-3xl font-medium text-slate-900 tabular-nums">{formatPrice(t.price, lang)}</p>
-        <AddToTrip variant="icon" className="mt-1" item={{ kind: 'ticket', ref: String(t.id), title: t.name, image: t.image, link: '/ticket-reservation', details: t.place, price: t.price, unit: 'person' }} />
+        <AddToTrip variant="icon" item={{ kind: 'ticket', ref: String(t.id), title: t.name, image: t.image, link: '/ticket-reservation', details: t.place, price: t.price, unit: 'person' }} />
       </div>
     </article>
   )

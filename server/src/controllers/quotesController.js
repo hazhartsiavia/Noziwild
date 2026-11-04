@@ -151,7 +151,7 @@ export async function createQuote(req, res) {
     }).catch((error) => console.error('Email de devis non envoyé :', error.message))
   }
 
-  res.status(201).json({ ok: true, id: quote.id, estimate: quote.estimate })
+  res.status(201).json({ ok: true, id: quote.id })
 }
 
 /* ------------------------------ Admin ------------------------------ */

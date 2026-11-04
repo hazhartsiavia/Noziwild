@@ -9,6 +9,7 @@ import { notFound, errorHandler } from './middlewares/errorHandler.js'
 import { checkOrigin, isAllowedOrigin } from './middlewares/checkOrigin.js'
 import { UPLOADS_DIR, UPLOADS_FILES_DIR, CLIENT_DIST, prepareUploadsDir } from './config/paths.js'
 import { initDatabase } from './utils/database.js'
+import { readSiteState } from './utils/sitePages.js'
 import { pageMeta, renderHead, robotsTxt, sitemapXml } from './utils/seo.js'
 
 // Les sessions ne peuvent pas fonctionner sans secret : on arrête tout de suite
@@ -77,9 +78,10 @@ if (fs.existsSync(INDEX_HTML)) {
   app.use(async (req, res, next) => {
     const isPage = (req.method === 'GET' || req.method === 'HEAD') && !req.path.startsWith('/api/') && !req.path.startsWith('/uploads/')
     if (!isPage || !req.accepts('html')) return next()
-    const meta = await pageMeta(req)
+    const site = await readSiteState()
+    const meta = await pageMeta(req, site?.hidden)
     if (meta.redirect) return res.redirect(301, meta.redirect)
-    res.status(meta.status).set('Cache-Control', 'no-cache').type('html').send(renderHead(indexHtml, meta, req))
+    res.status(meta.status).set('Cache-Control', 'no-cache').type('html').send(renderHead(indexHtml, meta, req, site))
   })
 }
 

@@ -114,10 +114,8 @@
   "dishesText": "Cinco sabores que no debe perderse antes de irse.",
   "spice": "Picante: {level}",
   "menuTitle": "Experiencias gastronómicas",
-  "menuText": "De un bocado callejero a una cena a la luz de las velas. Precios por persona.",
+  "menuText": "De un bocado callejero a una cena a la luz de las velas.",
   "menuTabsLabel": "Tipos de experiencia",
-  "fromPerPerson": "Desde {price} / persona",
-  "perPerson": "por persona",
   "groups": "Los grupos de 6 o más personas tienen mesa privada.",
   "dietsTitle": "Todas las dietas son bienvenidas",
   "classAlt": "Cocinando juntos",
@@ -127,8 +125,7 @@
   "classText": "Llévese las recetas a casa. No hace falta experiencia, solo apetito.",
   "classFacts": [
     "duración",
-    "personas máx.",
-    "por persona"
+    "personas máx."
   ],
   "faqTitle": "Conviene saber antes de comer",
   "faqText": "Elija una pregunta. ¿No encuentra la suya? Nuestro equipo responde en pocas horas.",

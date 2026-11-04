@@ -114,10 +114,8 @@
   "dishesText": "Five flavors you should not leave without trying.",
   "spice": "Spice: {level}",
   "menuTitle": "Dining Experiences",
-  "menuText": "From a quick street snack to a candlelit dinner. Prices are per person.",
+  "menuText": "From a quick street snack to a candlelit dinner.",
   "menuTabsLabel": "Experience types",
-  "fromPerPerson": "From {price} / person",
-  "perPerson": "per person",
   "groups": "Groups of 6 or more get a private table.",
   "dietsTitle": "Every Diet Is Welcome",
   "classAlt": "Cooking together",
@@ -127,8 +125,7 @@
   "classText": "Take the recipes home with you. No experience needed, just an appetite.",
   "classFacts": [
     "duration",
-    "guests max",
-    "per person"
+    "guests max"
   ],
   "faqTitle": "Good To Know Before You Eat",
   "faqText": "Pick a question. Can't find yours? Our team replies within a few hours.",

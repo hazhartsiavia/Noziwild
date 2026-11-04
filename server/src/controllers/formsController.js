@@ -50,7 +50,7 @@ export async function createTailorMade(req, res) {
   res.status(201).json({ ok: true, id: result.insertId })
 }
 
-// POST /api/requests  (PlaceDetail, EquipmentRentals, FoodDining, Travelplanning, CircuitDetail)
+// POST /api/requests  (PlaceDetail, EquipmentRentals, FoodDining, CircuitDetail)
 // Corps attendu : { type: 'place' | 'gear' | 'food' | 'trip' | 'circuit', email, name?, subject?, message? }
 const REQUEST_TYPES = ['place', 'gear', 'food', 'trip', 'circuit']
 

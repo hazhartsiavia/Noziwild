@@ -114,10 +114,8 @@
   "dishesText": "Cinq saveurs à ne pas manquer avant de repartir.",
   "spice": "Piment : {level}",
   "menuTitle": "Expériences culinaires",
-  "menuText": "D'un en-cas dans la rue à un dîner aux chandelles. Prix par personne.",
+  "menuText": "D'un en-cas dans la rue à un dîner aux chandelles.",
   "menuTabsLabel": "Types d'expérience",
-  "fromPerPerson": "À partir de {price} / personne",
-  "perPerson": "par personne",
   "groups": "Les groupes de 6 personnes ou plus ont une table privée.",
   "dietsTitle": "Tous les régimes sont les bienvenus",
   "classAlt": "Cuisiner ensemble",
@@ -127,8 +125,7 @@
   "classText": "Repartez avec les recettes. Aucune expérience nécessaire, juste de l'appétit.",
   "classFacts": [
     "durée",
-    "participants max",
-    "par personne"
+    "participants max"
   ],
   "faqTitle": "Bon à savoir avant de passer à table",
   "faqText": "Choisissez une question. Vous ne trouvez pas la vôtre ? Notre équipe répond en quelques heures.",

@@ -66,8 +66,10 @@ export const fetchDestinations = (lang = 'en') => getJSON(`/destinations?lang=${
 export const fetchPosts = (lang = 'en') => getJSON(`/posts?lang=${lang}`)
 export const fetchPost = (slug, lang = 'en') => getJSON(`/posts/${encodeURIComponent(slug)}?lang=${lang}`)
 
-// Photos des pages remplacées depuis l'admin : { images: { 'blog.hero': '/uploads/...' } }
+// Photos et vidéos des pages choisies dans l'admin : { images: { 'blog.hero': '/uploads/...' }, videos: {...} }
 export const fetchSitePhotos = () => getJSON('/images')
+// Pages masquées depuis l'admin : { hidden: ['/transport'] }
+export const fetchSitePages = () => getJSON('/pages')
 
 // Textes du site modifiés depuis l'admin, d'une langue : { texts: { home: {...}, ... } }
 export const fetchTexts = (lang = 'en') => getJSON(`/texts?lang=${lang}`)
@@ -141,6 +143,9 @@ export const adminDeleteAccount = (id) => deleteJSON(accountPath(id))
 // Photos des pages : remplacer celle d'un emplacement, ou revenir à celle d'origine
 export const adminSaveSitePhoto = (key, path) => putJSON(`/admin/images/${encodeURIComponent(key)}`, { path })
 export const adminResetSitePhoto = (key) => deleteJSON(`/admin/images/${encodeURIComponent(key)}`)
+export const adminSaveSiteVideo = (key, path) => putJSON(`/admin/videos/${encodeURIComponent(key)}`, { path })
+export const adminResetSiteVideo = (key) => deleteJSON(`/admin/videos/${encodeURIComponent(key)}`)
+export const adminSetPageVisible = (path, visible) => putJSON('/admin/pages', { path, visible })
 // Textes du site : fichiers modifiés, puis textes modifiés d'un fichier (toutes les langues)
 const textsPath = (namespace, lang) => `/admin/texts/${encodeURIComponent(namespace)}${lang ? `/${lang}` : ''}`
 export const adminFetchTextFiles = () => getJSON('/admin/texts')
@@ -149,6 +154,30 @@ export const adminSaveTexts = (namespace, lang, content) => putJSON(textsPath(na
 export const adminResetTexts = (namespace, lang) => deleteJSON(textsPath(namespace, lang))
 export const adminFetchResource = (resource, page = 1) => getJSON(`/admin/${resource}?page=${page}&limit=20`)
 export const adminSetQuoteStatus = (id, status) => patchJSON(`/admin/quotes/${id}`, { status })
+
+// Envoi d'une vidéo : peut durer, d'où XMLHttpRequest qui donne l'avancement. onProgress(0 à 100)
+export function adminUploadVideo(file, onProgress) {
+  return new Promise((resolve, reject) => {
+    const form = new FormData()
+    form.append('video', file)
+    const request = new XMLHttpRequest()
+    request.open('POST', `${API_URL}/api/admin/uploads/video`)
+    request.withCredentials = true
+    request.upload.onprogress = (event) => event.lengthComputable && onProgress(Math.round((event.loaded / event.total) * 100))
+    request.onerror = () => reject(new Error('The upload failed. Check your connection, or try a smaller video.'))
+    request.onload = () => {
+      let body = {}
+      try {
+        body = JSON.parse(request.responseText)
+      } catch {
+        // réponse sans JSON (limite de l'hébergeur, par exemple)
+      }
+      if (request.status >= 200 && request.status < 300) resolve(body.path)
+      else reject(new Error(body.error || (request.status === 413 ? 'This video is too large for the server.' : 'The upload failed.')))
+    }
+    request.send(form)
+  })
+}
 
 // Envoi d'une photo : formulaire multipart (le navigateur fixe lui-même le Content-Type)
 export async function adminUploadPhoto(file) {

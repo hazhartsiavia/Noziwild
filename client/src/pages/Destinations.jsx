@@ -14,6 +14,7 @@ import { useLanguage, useT } from '../i18n/LanguageContext'
 import { monthName } from '../utils/format'
 import { usePhoto } from '../sitePhotos'
 import { A } from '../i18n/router'
+import SiteMedia from '../components/SiteMedia'
 
 gsap.registerPlugin(ScrollTrigger)
 
@@ -376,7 +377,6 @@ function Planner() {
 }
 
 function FinalCta() {
-  const photo = usePhoto()
   const root = useRef(null)
   const t = useT('destinations')
 
@@ -405,7 +405,7 @@ function FinalCta() {
 
   return (
     <section ref={root} className={`${W} mt-20 md:mt-32 relative overflow-hidden rounded-[2rem] md:rounded-[3rem] text-white min-h-[420px] flex items-center`}>
-      <img src={photo('dest.cta')} alt="" className="cta-bg absolute inset-0 w-full h-full object-cover" />
+      <SiteMedia slot="dest.cta" alt="" className="cta-bg absolute inset-0 w-full h-full object-cover" />
       <div className="absolute inset-0 bg-slate-950/65" />
       <div className="cta-content relative p-8 md:p-16 max-w-3xl">
         <h2 className="text-3xl sm:text-4xl md:text-5xl font-medium leading-[1.1] tracking-tight">{t('list.ctaTitle')}</h2>

@@ -24,20 +24,24 @@
   },
   "steps": [
     {
-      "title": "Cuéntenos sus deseos",
-      "text": "Responda a unas preguntas o escríbanos libremente."
+      "title": "Escuchamos",
+      "text": "Una llamada o un mensaje breve para entender sus fechas, su presupuesto, su ritmo y lo que no quiere perderse.",
+      "deliverable": "Su ficha de viaje"
     },
     {
-      "title": "Reciba una primera propuesta",
-      "text": "Un experto en viajes le envía una ruta día a día en unos días."
+      "title": "Diseñamos",
+      "text": "Preparamos un itinerario día a día con tiempos de trayecto realistas, los alojamientos adecuados y experiencias locales.",
+      "deliverable": "Primer borrador en 48 h"
     },
     {
-      "title": "Ajústenla juntos",
-      "text": "Cambie todo lo que quiera hasta que el viaje sea justo como lo imagina."
+      "title": "Ajustamos",
+      "text": "Usted nos dice qué cambiar. Ajustamos hasta que cada día sea como lo imagina.",
+      "deliverable": "Cambios ilimitados"
     },
     {
-      "title": "Viaje acompañado",
-      "text": "Guías locales, traslados y un contacto sobre el terreno."
+      "title": "Reservamos y acompañamos",
+      "text": "Lo reservamos todo y seguimos disponibles antes y durante su viaje.",
+      "deliverable": "Guía de viaje digital"
     }
   ],
   "eyebrow": "Viajes a medida",

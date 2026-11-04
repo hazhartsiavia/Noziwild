@@ -11,8 +11,7 @@
   "nightIn": "Noche en {place}",
   "enlarge": "Ampliar la foto {n} de {total}: {title}",
   "price": "Precio",
-  "from": "Desde",
-  "perPerson": "Por persona, en base a dos viajeros en habitación doble",
+  "onRequest": "A consultar",
   "bookingOptions": "Opciones de reserva",
   "booking": "Reserva",
   "inquiry": "Hacer una consulta",
@@ -20,7 +19,6 @@
   "travellers": "Número de viajeros",
   "fewer": "Menos viajeros",
   "more": "Más viajeros",
-  "total": "Total estimado",
   "name": "Su nombre",
   "email": "Correo electrónico",
   "question": "Sus preguntas sobre este circuito",
@@ -29,7 +27,6 @@
   "thanks": "¡Gracias! Un experto en viajes le responderá en un día laborable.",
   "followLink": "su cuenta",
   "noPayment": "Ningún pago ahora. Primero confirmamos la disponibilidad y el precio final.",
-  "fromPerPerson": "Desde {price} / persona",
   "bookNow": "Reservar",
   "loading": "Cargando el circuito",
   "notFound": "No se ha encontrado este circuito",
@@ -56,6 +53,5 @@
   "moreCircuits": "Más circuitos",
   "seeAll": "Ver todos los circuitos",
   "days": "{count} días",
-  "fromPrice": "Desde {price}",
   "follow": "Puede seguirla en {link}."
 }

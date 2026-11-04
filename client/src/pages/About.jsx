@@ -12,6 +12,7 @@ import { useT } from '../i18n/LanguageContext';
 import { useScrollReveal } from '../utils/useScrollReveal'
 import { usePhoto } from '../sitePhotos'
 import { A } from '../i18n/router'
+import SiteMedia from '../components/SiteMedia'
 
 /* Constantes partagées : mêmes valeurs que dans Explore, Choose, Trips et Blog */
 const SECTION_WIDTH = "w-[90vw] lg:max-w-[90vw] xl:max-w-[95vw]"
@@ -316,7 +317,6 @@ function Polaroids() {
 }
 
 function MissionSection() {
-  const photo = usePhoto()
   const t = useT('about')
   return (
     <div className="mt-[50px] md:mt-[100px]">
@@ -346,8 +346,8 @@ function MissionSection() {
 
         {/* Grande image */}
         <div className="relative min-h-[280px] md:min-h-[375px] lg:min-h-[394px] overflow-hidden rounded-2xl md:rounded-3xl">
-          <img
-            src={photo('about.mission')}
+          <SiteMedia
+            slot="about.mission"
             alt={t('missionImageAlt')}
             className="absolute inset-0 w-full h-full object-cover"
           />
@@ -506,7 +506,6 @@ function ExpertsSection() {
 }
 
 function About() {
-  const photo = usePhoto()
   const t = useT('about')
   const root = useRef(null)
   useScrollReveal(root)
@@ -531,8 +530,8 @@ function About() {
 
         {/* Carte "Our Promise" */}
         <div className="relative mt-10 md:mt-16 overflow-hidden rounded-3xl bg-[#084838] text-white min-h-[520px] md:min-h-[625px]">
-          <img
-            src={photo('about.promise')}
+          <SiteMedia
+            slot="about.promise"
             alt={t('imageAlt')}
             className="absolute inset-0 w-full h-full object-cover"
           />

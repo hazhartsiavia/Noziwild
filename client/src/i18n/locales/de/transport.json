@@ -1,22 +1,9 @@
 {
   "hero": {
     "title": "Der Weg ist Teil der Reise",
-    "text": "Private Geländewagen, Sammeltransfers, Inlandsflüge, Boote und Züge: Wir wählen für jede Etappe das passende Verkehrsmittel und buchen alles für Sie.",
     "ctaLabel": "Meine Transfers planen",
-    "label": "Unsere Flotte",
-    "cardTitle": "Jeder Transfer, organisiert",
     "imageAlt": "Ein Geländewagen auf einer Panoramastraße",
-    "stats": [
-      {
-        "label": "Arten zu reisen"
-      },
-      {
-        "label": "Unterstützung unterwegs"
-      },
-      {
-        "label": "Lizenzierte Fahrer"
-      }
-    ]
+    "more": "Mehr sehen"
   },
   "categories": [
     {
@@ -103,6 +90,7 @@
   "typesText": "Jede Option hat ihr eigenes Tempo und ihren eigenen Reiz. Kombinieren Sie sie frei während Ihrer Reise.",
   "tabsLabel": "Transportkategorien",
   "howTitle": "So funktioniert's",
+  "incEyebrow": "Der Noziwild-Unterschied",
   "incTitle": "Bei jedem Transfer inklusive",
   "incText": "Komfort und Sicherheit sind keine Extras. Sie gehören zu jedem Fahrzeug, jedem Boot und jedem Platz, den wir buchen.",
   "faqTitle": "Häufige Fragen",

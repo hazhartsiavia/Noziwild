@@ -193,33 +193,6 @@ export const PAGES = {
         'Sin itinerario fijo: cuéntanos qué te gusta, cuánto tiempo tienes y quién viaja, y diseñamos tu viaje a Madagascar a tu medida.',
     },
   },
-  '/travel-planning': {
-    en: {
-      title: 'Madagascar Travel Planning | Noziwild',
-      description:
-        'Tell us what you love. A dedicated planner builds your Madagascar route, stays and every little detail, day by day.',
-    },
-    fr: {
-      title: 'Préparer son voyage à Madagascar | Noziwild',
-      description:
-        'Dites-nous ce que vous aimez. Un conseiller dédié construit votre itinéraire à Madagascar, vos hébergements et chaque détail, jour après jour.',
-    },
-    de: {
-      title: 'Madagaskar Reiseplanung | Noziwild',
-      description:
-        'Sagen Sie uns, was Sie lieben. Ein persönlicher Planer erstellt Ihre Route durch Madagaskar, Ihre Unterkünfte und jedes Detail, Tag für Tag.',
-    },
-    it: {
-      title: 'Organizzare un viaggio in Madagascar | Noziwild',
-      description:
-        'Dicci cosa ami. Un consulente dedicato costruisce il tuo itinerario in Madagascar, gli alloggi e ogni dettaglio, giorno per giorno.',
-    },
-    es: {
-      title: 'Planificar tu viaje a Madagascar | Noziwild',
-      description:
-        'Cuéntanos qué te gusta. Un planificador dedicado prepara tu ruta por Madagascar, los alojamientos y cada detalle, día a día.',
-    },
-  },
   '/activities': {
     en: {
       title: 'Things To Do in Madagascar: Activities | Noziwild',

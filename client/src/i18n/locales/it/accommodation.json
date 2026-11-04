@@ -75,8 +75,8 @@
   ],
   "faqs": [
     {
-      "q": "I prezzi sono a persona o a camera?",
-      "a": "I prezzi indicati sono per camera e per notte, a partire dalla bassa stagione. Il preventivo riporta il totale esatto per le tue date e il tuo gruppo."
+      "q": "Come posso conoscere il prezzo di un alloggio?",
+      "a": "Indicaci le date e il tuo gruppo: ti inviamo gratuitamente un preventivo con il totale esatto."
     },
     {
       "q": "La colazione è inclusa?",
@@ -97,7 +97,6 @@
   ],
   "title": "Alloggi",
   "home": "Home",
-  "fromPerNight": "Da {price} / notte",
   "staysTitle": "Trova l'alloggio perfetto",
   "tabsLabel": "Categorie di alloggio",
   "criteriaTitle": "Come scegliamo i nostri alloggi",

@@ -10,6 +10,7 @@ import { useT } from '../i18n/LanguageContext';
 import { useScrollReveal } from '../utils/useScrollReveal'
 import { usePhoto } from '../sitePhotos'
 import { A } from '../i18n/router'
+import SiteMedia from '../components/SiteMedia'
 
 
 /* Constantes partagées : mêmes valeurs que dans les autres sections */
@@ -175,7 +176,7 @@ function CallBanner() {
 
   return (
     <div className="relative overflow-hidden rounded-xl text-white md:w-[66%]">
-      <img src={photo('contact.banner')} alt="" className="absolute inset-0 w-full h-full object-cover" />
+      <SiteMedia slot="contact.banner" alt="" className="absolute inset-0 w-full h-full object-cover" />
       <div className="absolute inset-0 bg-slate-950/70" />
 
       <div className="relative flex flex-col sm:flex-row sm:items-center gap-6 sm:gap-8 p-5 md:p-6">

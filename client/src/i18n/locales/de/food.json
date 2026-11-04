@@ -114,10 +114,8 @@
   "dishesText": "Fünf Geschmäcker, die Sie unbedingt probieren sollten.",
   "spice": "Schärfe: {level}",
   "menuTitle": "Kulinarische Erlebnisse",
-  "menuText": "Vom schnellen Snack auf der Straße bis zum Abendessen bei Kerzenschein. Preise pro Person.",
+  "menuText": "Vom schnellen Snack auf der Straße bis zum Abendessen bei Kerzenschein.",
   "menuTabsLabel": "Arten von Erlebnissen",
-  "fromPerPerson": "Ab {price} / Person",
-  "perPerson": "pro Person",
   "groups": "Gruppen ab 6 Personen erhalten einen eigenen Tisch.",
   "dietsTitle": "Jede Ernährungsweise ist willkommen",
   "classAlt": "Gemeinsam kochen",
@@ -127,8 +125,7 @@
   "classText": "Nehmen Sie die Rezepte mit nach Hause. Keine Erfahrung nötig, nur Appetit.",
   "classFacts": [
     "Dauer",
-    "Gäste max.",
-    "pro Person"
+    "Gäste max."
   ],
   "faqTitle": "Gut zu wissen, bevor Sie essen",
   "faqText": "Wählen Sie eine Frage. Ihre ist nicht dabei? Unser Team antwortet innerhalb weniger Stunden.",

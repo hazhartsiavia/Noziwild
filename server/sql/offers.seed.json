@@ -3194,5 +3194,109 @@
         ]
       }
     }
+  },
+  {
+    "kind": "testimonial",
+    "title": "Emma & Tom",
+    "text": "They planned every detail, yet the trip never felt planned. It felt like we were visiting friends.",
+    "image": "",
+    "origin": "Lyon",
+    "rating": 5,
+    "translations": {
+      "fr": {
+        "text": "Ils ont tout organisé dans les moindres détails, et pourtant le voyage n'a jamais semblé organisé. On avait l'impression de rendre visite à des amis.",
+        "origin": "Lyon"
+      },
+      "de": {
+        "text": "Sie haben jedes Detail geplant, und doch fühlte sich die Reise nie geplant an. Es war, als würden wir Freunde besuchen.",
+        "origin": "Lyon"
+      },
+      "it": {
+        "text": "Hanno organizzato ogni dettaglio, eppure il viaggio non è mai sembrato organizzato. Sembrava di andare a trovare degli amici.",
+        "origin": "Lione"
+      },
+      "es": {
+        "text": "Lo planearon todo al detalle y, sin embargo, el viaje nunca pareció planeado. Era como visitar a unos amigos.",
+        "origin": "Lyon"
+      }
+    }
+  },
+  {
+    "kind": "testimonial",
+    "title": "Giulia R.",
+    "text": "Our guide showed us a side of the island we never expected. The food, the people, the little workshops.",
+    "image": "",
+    "origin": "Milan",
+    "rating": 5,
+    "translations": {
+      "fr": {
+        "text": "Notre guide nous a montré une facette de l'île que nous n'imaginions pas. La cuisine, les gens, les petits ateliers.",
+        "origin": "Milan"
+      },
+      "de": {
+        "text": "Unser Guide hat uns eine Seite der Insel gezeigt, die wir nie erwartet hätten. Das Essen, die Menschen, die kleinen Werkstätten.",
+        "origin": "Mailand"
+      },
+      "it": {
+        "text": "La nostra guida ci ha mostrato un lato dell'isola che non ci aspettavamo. Il cibo, le persone, le piccole botteghe.",
+        "origin": "Milano"
+      },
+      "es": {
+        "text": "Nuestro guía nos mostró una cara de la isla que no esperábamos. La comida, la gente, los pequeños talleres.",
+        "origin": "Milán"
+      }
+    }
+  },
+  {
+    "kind": "testimonial",
+    "title": "Markus B.",
+    "text": "When our flight was cancelled, they had a new plan before we finished our coffee. Impressive.",
+    "image": "",
+    "origin": "Munich",
+    "rating": 5,
+    "translations": {
+      "fr": {
+        "text": "Quand notre vol a été annulé, ils avaient un nouveau plan avant la fin de notre café. Impressionnant.",
+        "origin": "Munich"
+      },
+      "de": {
+        "text": "Als unser Flug gestrichen wurde, hatten sie einen neuen Plan, bevor wir unseren Kaffee ausgetrunken hatten. Beeindruckend.",
+        "origin": "München"
+      },
+      "it": {
+        "text": "Quando il nostro volo è stato cancellato, avevano un nuovo piano prima che finissimo il caffè. Impressionante.",
+        "origin": "Monaco di Baviera"
+      },
+      "es": {
+        "text": "Cuando cancelaron nuestro vuelo, tenían un plan nuevo antes de que termináramos el café. Impresionante.",
+        "origin": "Múnich"
+      }
+    }
+  },
+  {
+    "kind": "testimonial",
+    "title": "Sophie L.",
+    "text": "Having one person to call for everything made our family trip stress-free. The kids still talk about it.",
+    "image": "",
+    "origin": "Montréal",
+    "rating": 5,
+    "translations": {
+      "fr": {
+        "text": "Avoir une seule personne à appeler pour tout a rendu notre voyage en famille serein. Les enfants en parlent encore.",
+        "origin": "Montréal"
+      },
+      "de": {
+        "text": "Eine einzige Ansprechperson für alles – das hat unsere Familienreise völlig stressfrei gemacht. Die Kinder reden immer noch davon.",
+        "origin": "Montreal"
+      },
+      "it": {
+        "text": "Avere una sola persona da chiamare per tutto ha reso il nostro viaggio in famiglia senza stress. I bambini ne parlano ancora.",
+        "origin": "Montréal"
+      },
+      "es": {
+        "text": "Tener una sola persona a quien llamar para todo hizo que nuestro viaje en familia fuera tranquilo. Los niños todavía hablan de él.",
+        "origin": "Montreal"
+      }
+    }
   }
 ]

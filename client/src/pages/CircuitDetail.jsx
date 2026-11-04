@@ -6,7 +6,6 @@ import { ScrollTrigger } from 'gsap/ScrollTrigger'
 import Navbar from '../components/Navbar'
 import Footer from '../components/Footer'
 import { sendRequest, fetchCircuit, assetUrl } from '../api'
-import { formatPrice } from '../utils/format'
 import { useAuth } from '../context/AuthContext'
 import { BookingAdd, useTripItem } from '../components/AddToTrip'
 import { Trans, useLanguage, useT } from '../i18n/LanguageContext'
@@ -314,13 +313,12 @@ function Itinerary({ circuit }) {
 }
 
 /* ============================================================
-   CARTE DE PRIX : ajout à « Mon voyage » (date + voyageurs) ou question
+   CARTE DE RÉSERVATION : ajout à « Mon voyage » (date + voyageurs) ou question
 ============================================================ */
 function BookingCard({ circuit }) {
   // Connecté : nom et email pré-remplis (la clé recrée le champ quand la session est connue)
   const { user } = useAuth()
   const t = useT('circuitDetail')
-  const { lang } = useLanguage()
   const [tab, setTab] = useState('booking')
   const tripItem = {
     kind: 'circuit',
@@ -340,7 +338,6 @@ function BookingCard({ circuit }) {
   const setDate = (value) => { setDateState(value); sync({ date: value }) }
   const [status, setStatus] = useState('idle') // 'idle' | 'sending' | 'sent' | 'error'
   const [error, setError] = useState('')
-  const total = circuit.price * travellers
   const today = new Date().toISOString().slice(0, 10)
 
   const switchTab = (next) => {
@@ -369,10 +366,7 @@ function BookingCard({ circuit }) {
   return (
     <aside id="booking" className="booking-card scroll-mt-6 rounded-3xl bg-white p-6 md:p-8 lg:sticky lg:top-6 self-start shadow-sm">
       <p className="text-lg text-slate-800">{t('price')}</p>
-      <p className="mt-2 text-slate-600">
-        {t('from')} <span className="gs-price text-3xl md:text-4xl font-semibold text-slate-900 tabular-nums">{formatPrice(circuit.price, lang)}</span>
-      </p>
-      <p className="mt-1 text-sm text-slate-500">{t('perPerson')}</p>
+      <p className="mt-2 text-2xl font-semibold text-slate-900">{t('onRequest')}</p>
 
       <div className="mt-6 flex gap-1 rounded-full border border-slate-200 p-1" role="tablist" aria-label={t('bookingOptions')}>
         <button type="button" role="tab" aria-selected={tab === 'booking'} onClick={() => switchTab('booking')} className={tabCls('booking')}>{t('booking')}</button>
@@ -393,9 +387,6 @@ function BookingCard({ circuit }) {
               <button type="button" aria-label={t('more')} onClick={() => setTravellers(Math.min(12, travellers + 1))} disabled={travellers >= 12} className="w-10 h-10 rounded-full bg-white text-xl text-slate-800 hover:bg-slate-100 disabled:opacity-40">+</button>
             </div>
           </div>
-          <p className="flex justify-between border-t border-slate-200 pt-4 text-base text-slate-700">
-            <span>{t('total')}</span><span className="font-semibold text-slate-900">{formatPrice(total, lang)}</span>
-          </p>
           <BookingAdd item={{ ...tripItem, qty: travellers, date }} />
           <p className="text-xs text-slate-500 text-center">{t('noPayment')}</p>
         </div>
@@ -425,11 +416,10 @@ function BookingCard({ circuit }) {
 }
 
 /* ============================================================
-   BARRE MOBILE : prix toujours visible, cachée quand la carte de réservation est à l'écran
+   BARRE MOBILE : circuit toujours visible, cachée quand la carte de réservation est à l'écran
 ============================================================ */
 function MobileBookingBar({ circuit }) {
   const t = useT('circuitDetail')
-  const { lang } = useLanguage()
   const [cardVisible, setCardVisible] = useState(false)
 
   useEffect(() => {
@@ -446,9 +436,7 @@ function MobileBookingBar({ circuit }) {
       aria-hidden={cardVisible}
     >
       <div className="mx-auto flex max-w-xl items-center justify-between gap-4">
-        <p className="text-sm text-slate-600">
-          <Trans text={t('fromPerPerson')} values={{ price: <span className="text-xl font-semibold text-slate-900">{formatPrice(circuit.price, lang)}</span> }} />
-        </p>
+        <p className="min-w-0 truncate text-sm font-medium text-slate-900">{circuit.title}</p>
         <button
           type="button"
           tabIndex={cardVisible ? -1 : 0}
@@ -554,17 +542,8 @@ function CircuitDetail() {
     reveal('.gs-know', { scale: 0.92, opacity: 0, y: 40 }, { scale: 1, opacity: 1, y: 0, duration: 0.9, ease: 'power3.out', scrollTrigger: know })
     reveal('.gs-know > *', { y: 20, opacity: 0 }, { y: 0, opacity: 1, duration: 0.6, ease: 'power2.out', stagger: 0.12, delay: 0.3, scrollTrigger: know })
 
-    // Carte de prix : arrive par la droite, le prix compte jusqu'à sa valeur
+    // Carte de réservation : arrive par la droite
     reveal('.booking-card', { x: 60, opacity: 0 }, { x: 0, opacity: 1, duration: 0.9, ease: 'power3.out', scrollTrigger: once('.booking-card', 'top 90%') })
-    const priceEl = content.current.querySelector('.gs-price')
-    const counter = { value: 0 }
-    gsap.to(counter, {
-      value: circuit.price, duration: 1.4, ease: 'power2.out',
-      scrollTrigger: once('.booking-card', 'top 90%'),
-      onUpdate: () => { priceEl.textContent = formatPrice(Math.round(counter.value), lang) },
-    })
-    // À l'annulation (changement de circuit), le prix réel est remis
-    return () => { priceEl.textContent = formatPrice(circuit.price, lang) }
   }, [loadedSlug, lang])
 
   // Autres circuits : arrivée par lots, photo qui se dézoome
@@ -735,7 +714,6 @@ function CircuitDetail() {
                   <span className="absolute left-4 top-4 rounded-sm bg-[#C49849] px-3 py-1.5 text-xs sm:text-sm font-medium">{t('days', { count: c.days })}</span>
                   <div className="absolute inset-x-0 bottom-0 p-5">
                     <p className="text-xl font-medium leading-snug">{c.title}</p>
-                    <p className="mt-1 text-sm text-white/80">{t('fromPrice', { price: formatPrice(c.price, lang) })}</p>
                   </div>
                 </Link>
               </li>

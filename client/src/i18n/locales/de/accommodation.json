@@ -75,8 +75,8 @@
   ],
   "faqs": [
     {
-      "q": "Gelten die Preise pro Person oder pro Zimmer?",
-      "a": "Die angezeigten Preise gelten pro Zimmer und Nacht, ab der Nebensaison. Ihr Angebot nennt den genauen Gesamtpreis für Ihre Daten und Ihre Gruppe."
+      "q": "Wie erfahre ich den Preis einer Unterkunft?",
+      "a": "Nennen Sie uns Ihre Daten und Ihre Gruppe: Wir senden Ihnen kostenlos ein Angebot mit dem genauen Gesamtpreis."
     },
     {
       "q": "Ist das Frühstück inklusive?",
@@ -97,7 +97,6 @@
   ],
   "title": "Unterkünfte",
   "home": "Startseite",
-  "fromPerNight": "Ab {price} / Nacht",
   "staysTitle": "Finden Sie Ihre perfekte Unterkunft",
   "tabsLabel": "Kategorien von Unterkünften",
   "criteriaTitle": "Wie wir unsere Unterkünfte auswählen",

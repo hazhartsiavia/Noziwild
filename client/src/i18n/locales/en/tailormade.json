@@ -24,20 +24,24 @@
   },
   "steps": [
     {
-      "title": "Tell us your wishes",
-      "text": "Answer a few questions or write to us freely."
+      "title": "We listen",
+      "text": "A short call or message to understand your dates, budget, pace and the things you cannot miss.",
+      "deliverable": "Your travel brief"
     },
     {
-      "title": "Get a first proposal",
-      "text": "A travel expert sends a day-by-day route within a few days."
+      "title": "We design",
+      "text": "We build a day-by-day itinerary with realistic travel times, the right stays and local experiences.",
+      "deliverable": "Draft itinerary in 48 h"
     },
     {
-      "title": "Refine together",
-      "text": "Change anything until the trip feels exactly right."
+      "title": "We refine",
+      "text": "You tell us what to change. We adjust until every day feels exactly right.",
+      "deliverable": "Unlimited edits"
     },
     {
-      "title": "Travel with support",
-      "text": "Local guides, transfers and a contact on the ground."
+      "title": "We book & guide",
+      "text": "We reserve everything and stay available before and during your trip.",
+      "deliverable": "Digital travel guide"
     }
   ],
   "eyebrow": "Tailor-made stays",

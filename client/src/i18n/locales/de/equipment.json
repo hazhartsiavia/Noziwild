@@ -39,18 +39,15 @@
   "pickups": [
     {
       "title": "Abholung in unserem Büro",
-      "text": "Holen Sie Ihre Ausrüstung in unserem Büro in Antananarivo ab und geben Sie sie dort zurück – täglich geöffnet.",
-      "price": "Kostenlos"
+      "text": "Holen Sie Ihre Ausrüstung in unserem Büro in Antananarivo ab und geben Sie sie dort zurück – täglich geöffnet."
     },
     {
       "title": "Lieferung ins Hotel",
-      "text": "Wir bringen die Ausrüstung in Ihr Hotel und holen sie am Ende Ihres Aufenthalts wieder ab.",
-      "price": "Ab 5 €"
+      "text": "Wir bringen die Ausrüstung in Ihr Hotel und holen sie am Ende Ihres Aufenthalts wieder ab."
     },
     {
       "title": "Übergabe am Flughafen",
-      "text": "Treffen Sie uns in der Ankunftshalle, Ihre Ausrüstung ist bereit. Rückgabe vor Ihrem Abflug.",
-      "price": "Ab 10 €"
+      "text": "Treffen Sie uns in der Ankunftshalle, Ihre Ausrüstung ist bereit. Rückgabe vor Ihrem Abflug."
     }
   ],
   "faqs": [
@@ -81,12 +78,11 @@
   "browse": "Katalog durchsuchen",
   "items": "{count} Artikel",
   "itemOne": "1 Artikel",
-  "perDay": "{price} / Tag",
   "add": "Hinzufügen",
   "removeOne": "Ein {name} entfernen",
   "addOne": "Ein {name} hinzufügen",
   "catalogTitle": "Stellen Sie Ihre Mietliste zusammen",
-  "catalogText": "Fügen Sie hinzu, was Sie brauchen, wählen Sie die Anzahl der Tage und erhalten Sie sofort eine Schätzung.",
+  "catalogText": "Fügen Sie hinzu, was Sie brauchen, und wählen Sie die Anzahl der Tage. Den Preis nennen wir Ihnen in einem Angebot.",
   "tabsLabel": "Kategorien der Ausrüstung",
   "listTitle": "Ihre Mietliste",
   "length": "Mietdauer",
@@ -94,10 +90,8 @@
   "more": "Mehr Tage",
   "days": "{count} Tage",
   "dayOne": "1 Tag",
-  "empty": "Ihre Liste ist leer. Fügen Sie Ausrüstung aus dem Katalog hinzu, dann erscheint hier Ihre Schätzung.",
-  "discount": "Rabatt ab 7 Tagen (−10 %)",
-  "total": "Geschätzter Gesamtpreis",
-  "note": "Nur eine Schätzung. Für einige Artikel kann eine erstattbare Kaution anfallen. Der Endpreis wird von unserem Team bestätigt.",
+  "empty": "Ihre Liste ist leer. Fügen Sie Ausrüstung aus dem Katalog hinzu, sie erscheint dann hier.",
+  "note": "Für einige Artikel kann eine erstattbare Kaution anfallen. Den Preis bestätigt unser Team in Ihrem Angebot.",
   "pickupTitle": "Abholung & Rückgabe",
   "pickupText": "Wählen Sie, was zu Ihrem Zeitplan passt. Die Rückgabe erfolgt immer am Ort der Abholung.",
   "faqTitle": "Häufige Fragen",

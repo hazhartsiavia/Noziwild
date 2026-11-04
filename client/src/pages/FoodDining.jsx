@@ -9,8 +9,7 @@ import Footer from '../components/Footer';
 import AddToTrip from '../components/AddToTrip'
 import { sendRequest } from '../api';
 import { useAuth } from '../context/AuthContext';
-import { Trans, useLanguage, useT } from '../i18n/LanguageContext';
-import { formatPrice } from '../utils/format';
+import { useT } from '../i18n/LanguageContext';
 import { localize } from '../i18n/localize';
 import OffersStatus from '../components/OffersStatus'
 import { useOffers } from '../utils/useOffers'
@@ -18,6 +17,7 @@ import { gsap } from 'gsap'
 import { ScrollTrigger } from 'gsap/ScrollTrigger'
 import { usePhoto } from '../sitePhotos'
 import { A } from '../i18n/router'
+import SiteMedia from '../components/SiteMedia'
 
 gsap.registerPlugin(ScrollTrigger)
 
@@ -45,7 +45,6 @@ const DISHES = [
   { id: 5, name: 'Vanilla Flan', image: NosyLonjo, spice: 'Sweet', where: 'Guesthouses and cafés', text: 'Silky custard made with real Malagasy vanilla, a gentle end to any meal.' },
 ]
 
-// Prix donnés en exemple, à adapter
 const MENU_TABS = [
   { id: 'all', label: 'All' },
   { id: 'tour', label: 'Tours' },
@@ -217,7 +216,6 @@ const toExperience = (o) => ({ id: o.id, category: o.category, name: o.title, du
 // Expériences : filtres, liste de lignes à droite, grand aperçu à gauche qui change au survol
 function Menu({ experiences, status }) {
   const tr = useT('food')
-  const { lang } = useLanguage()
   const menuTabs = localize(MENU_TABS, tr('menuTabs'))
   const [category, setCategory] = useState('all')
   const [activeId, setActiveId] = useState(null)
@@ -272,8 +270,7 @@ function Menu({ experiences, status }) {
               <span className="rounded-full bg-white/90 px-3 py-1 text-sm font-medium text-slate-900">{current.duration}</span>
               <h3 className="mt-4 text-4xl font-medium tracking-tight">{current.name}</h3>
               <p className="mt-3 max-w-md text-base text-white/85 leading-relaxed">{current.text}</p>
-              <div className="mt-6 flex items-center justify-between gap-4">
-                <p className="text-white/80"><Trans text={tr('fromPerPerson')} values={{ price: <span className="text-3xl font-medium text-white">{formatPrice(current.price, lang)}</span> }} /></p>
+              <div className="mt-6 flex items-center justify-end gap-4">
                 <AddToTrip variant="gold" item={{ kind: 'food', ref: String(current.id), title: current.name, image: current.image, link: '/food-dining', details: current.duration, price: current.price, unit: 'person' }} />
               </div>
             </div>
@@ -300,11 +297,6 @@ function Menu({ experiences, status }) {
                       <span className="rounded-full border border-slate-400 px-2.5 py-0.5 text-xs md:text-sm text-slate-700">{e.duration}</span>
                       <span className="lg:hidden">{e.text}</span>
                     </p>
-                  </div>
-
-                  <div className="shrink-0 text-right">
-                    <p className="text-xl md:text-3xl font-medium text-slate-900 tabular-nums">{formatPrice(e.price, lang)}</p>
-                    <p className={`${META_TEXT} text-slate-500`}>{tr('perPerson')}</p>
                   </div>
 
                   <AddToTrip variant="icon" item={{ kind: 'food', ref: String(e.id), title: e.name, image: e.image, link: '/food-dining', details: e.duration, price: e.price, unit: 'person' }} />
@@ -338,9 +330,7 @@ function Diets() {
 
 // Cours de cuisine : photo avec parallaxe + étapes
 function CookingClass({ experiences }) {
-  const photo = usePhoto()
   const t = useT('food')
-  const { lang } = useLanguage()
   const classSteps = localize(CLASS_STEPS, t('classSteps'))
   const facts = t('classFacts')
   // Le cours de cuisine de la liste des expériences : même élément dans « Mon voyage »
@@ -348,7 +338,7 @@ function CookingClass({ experiences }) {
   return (
     <div className={`${SECTION_GAP} grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-16 items-center`}>
       <div className="relative overflow-hidden rounded-3xl aspect-[4/5] md:aspect-[5/4] lg:aspect-[4/5] bg-[#084838]">
-        <img data-parallax src={photo('food.class')} alt={t('classAlt')} className="absolute left-0 -top-[10%] w-full h-[120%] object-cover" />
+        <SiteMedia data-parallax slot="food.class" alt={t('classAlt')} className="absolute left-0 -top-[10%] w-full h-[120%] object-cover" />
         <span className={`${BADGE} absolute left-5 top-5`}>{t('mostLoved')}</span>
       </div>
 
@@ -369,8 +359,8 @@ function CookingClass({ experiences }) {
           ))}
         </ol>
 
-        <ul className="mt-8 grid grid-cols-3 gap-3 md:gap-5 max-w-md">
-          {[['3 h', facts[0]], ['8', facts[1]], [formatPrice(lesson?.price ?? 45, lang), facts[2]]].map(([v, l]) => (
+        <ul className="mt-8 grid grid-cols-2 gap-3 md:gap-5 max-w-xs">
+          {[['3 h', facts[0]], ['8', facts[1]]].map(([v, l]) => (
             <li key={l} className="rounded-2xl bg-white p-4 text-center">
               <p className="text-2xl md:text-3xl leading-none text-slate-800">{v}</p>
               <p className={`mt-2 ${META_TEXT} text-slate-600`}>{l}</p>

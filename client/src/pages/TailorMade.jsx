@@ -16,6 +16,7 @@ import { monthName } from '../utils/format'
 import { useOffers } from '../utils/useOffers'
 import { usePhoto } from '../sitePhotos'
 import { A } from '../i18n/router'
+import SiteMedia from '../components/SiteMedia'
 
 gsap.registerPlugin(ScrollTrigger)
 
@@ -47,12 +48,8 @@ const paces = ['Slow', 'Balanced', 'Active']
 const comforts = ['Comfortable', 'Premium', 'Luxury']
 const groups = ['Solo', 'Couple', 'Family', 'Friends']
 
-const steps = [
-  { title: 'Tell us your wishes', text: 'Answer a few questions or write to us freely.' },
-  { title: 'Get a first proposal', text: 'A travel expert sends a day-by-day route within a few days.' },
-  { title: 'Refine together', text: 'Change anything until the trip feels exactly right.' },
-  { title: 'Travel with support', text: 'Local guides, transfers and a contact on the ground.' },
-]
+// Couleur de chaque carte de « De l'idée à l'itinéraire » (textes : locales/<langue>/tailormade.json, clé steps)
+const STEP_TONES = ['bg-white text-slate-900', 'bg-[#084838] text-white', 'bg-[#C49849] text-white', 'bg-white text-slate-900']
 
 /* ----------------------- Utilitaires GSAP ------------------------ */
 
@@ -416,7 +413,6 @@ function IdeaCard({ it, onSelect }) {
 }
 
 function TailorMade() {
-  const photo = usePhoto()
   const t = useT('tailormade')
   const { offers: ideas, status: ideasStatus } = useOffers('idea')
   const [form, setForm] = useState({ interests: [], length: '2 weeks', month: 'Not sure yet', pace: 'Balanced', comfort: 'Comfortable', group: 'Couple' })
@@ -433,20 +429,11 @@ function TailorMade() {
   }
 
   useGsap(howRef, () => {
-    reveal('.how-title > *', { x: -36, opacity: 0 }, { x: 0, opacity: 1, duration: 0.85, stagger: 0.11, ease: 'power3.out', scrollTrigger: { trigger: '.how-title', start: 'top 85%', once: true } })
+    reveal('.how-title > *', { y: 28, opacity: 0 }, { y: 0, opacity: 1, duration: 0.85, stagger: 0.11, ease: 'power3.out', scrollTrigger: { trigger: '.how-title', start: 'top 85%', once: true } })
 
-    gsap.utils.toArray('.step-item').forEach((li) => {
-      const num = li.querySelector('.step-num')
-      gsap.set(li, { opacity: 0.3 })
-      ScrollTrigger.create({
-        trigger: li,
-        start: 'top 70%',
-        onEnter: () => {
-          gsap.to(li, { opacity: 1, duration: 0.5, ease: 'power2.out' })
-          gsap.fromTo(num, { scale: 0.6, transformOrigin: 'left center' }, { scale: 1, duration: 0.65, ease: 'back.out(3.2)' })
-        },
-        onLeaveBack: () => gsap.to(li, { opacity: 0.3, duration: 0.4 }),
-      })
+    // Chaque carte monte puis reste accrochée : la suivante vient se poser par-dessus
+    gsap.utils.toArray('.step-item').forEach((card) => {
+      reveal(card, { y: 70, opacity: 0 }, { y: 0, opacity: 1, duration: 0.9, ease: 'power3.out', scrollTrigger: { trigger: card, start: 'top 92%', once: true } })
     })
   })
 
@@ -498,25 +485,28 @@ function TailorMade() {
 
   return (
     <>
-      <main className="w-full bg-[#D5E8E2] pb-16 md:pb-24 flex flex-col items-center">
+      <main className="w-full overflow-x-clip bg-[#D5E8E2] pb-16 md:pb-24 flex flex-col items-center">
         <Hero />
 
         {/* Comment ça marche */}
-        <section ref={howRef} id="how" className={`${W} mt-20 md:mt-32 scroll-mt-6 grid grid-cols-1 lg:grid-cols-[1fr_1.5fr] gap-10 lg:gap-20`}>
-          <div className="lg:sticky lg:top-6 self-start">
-            <div className="how-title">
-              <h2 className={H2}>{t('howTitle')}</h2>
-              <p className="mt-4 text-base md:text-lg text-slate-700 max-w-md">{t('howText')}</p>
-            </div>
+        <section ref={howRef} id="how" className={`${W} mt-20 md:mt-32 scroll-mt-6`}>
+          <div className="how-title mb-8 md:mb-12 text-center">
+            <h2 className={H2}>{t('howTitle')}</h2>
+            <p className="mt-4 mx-auto text-base md:text-lg text-slate-700 max-w-3xl">{t('howText')}</p>
           </div>
-          <ol className="flex flex-col">
+          <ol>
             {t('steps').map((s, i) => (
-              <li key={steps[i].title} className="step-item flex gap-6 md:gap-10 border-t border-slate-900/15 py-8 transition-colors duration-300 hover:bg-slate-900/[0.02] rounded-xl">
-                <span className="step-num text-5xl md:text-7xl font-semibold text-[#C49849] leading-none w-14 md:w-24 shrink-0">{i + 1}</span>
+              <li
+                key={s.title}
+                style={{ top: `${88 + i * 22}px` }}
+                className={`step-item sticky mb-6 rounded-3xl p-6 md:p-12 shadow-sm min-h-[240px] md:min-h-[280px] grid grid-cols-1 md:grid-cols-[120px_1fr_auto] gap-4 md:gap-10 items-center ${STEP_TONES[i]}`}
+              >
+                <span className="text-6xl md:text-8xl font-medium leading-none opacity-60 tabular-nums">{String(i + 1).padStart(2, '0')}</span>
                 <div>
-                  <h3 className="text-xl md:text-3xl font-medium text-forest">{s.title}</h3>
-                  <p className="mt-2 text-sm md:text-base text-slate-600 leading-relaxed">{s.text}</p>
+                  <h3 className="text-2xl md:text-4xl font-medium tracking-tight">{s.title}</h3>
+                  <p className="mt-3 max-w-xl text-sm md:text-lg leading-relaxed opacity-85">{s.text}</p>
                 </div>
+                <span className="self-start md:self-center rounded-full border border-current px-4 py-2 text-sm">{s.deliverable}</span>
               </li>
             ))}
           </ol>
@@ -541,7 +531,7 @@ function TailorMade() {
 
         {/* Contact direct */}
         <section ref={ctaRef} className={`${W} mt-16 md:mt-28 relative overflow-hidden rounded-[2rem] md:rounded-[3rem] text-white min-h-[340px] flex items-center`}>
-          <img src={photo('tm.cta')} alt="" className="cta-bg absolute inset-0 w-full h-full object-cover" />
+          <SiteMedia slot="tm.cta" alt="" className="cta-bg absolute inset-0 w-full h-full object-cover" />
           <div className="absolute inset-0 bg-slate-950/65" />
           <div className="cta-text relative p-8 md:p-16 max-w-3xl">
             <h2 className="text-3xl sm:text-4xl md:text-5xl font-medium leading-[1.1] tracking-tight">{t('ctaTitle')}</h2>

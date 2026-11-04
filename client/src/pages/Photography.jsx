@@ -8,8 +8,7 @@ import Tana from "../assets/images/Tana.jpg";
 import Navbar from '../components/Navbar';
 import Footer from '../components/Footer';
 import AddToTrip from '../components/AddToTrip'
-import { Trans, useLanguage, useT } from '../i18n/LanguageContext';
-import { formatPrice } from '../utils/format';
+import { useT } from '../i18n/LanguageContext';
 import { localize } from '../i18n/localize';
 import OffersStatus from '../components/OffersStatus'
 import { useOffers } from '../utils/useOffers'
@@ -17,6 +16,7 @@ import { gsap } from 'gsap'
 import { ScrollTrigger } from 'gsap/ScrollTrigger'
 import { usePhoto } from '../sitePhotos'
 import { A } from '../i18n/router'
+import SiteMedia from '../components/SiteMedia'
 
 gsap.registerPlugin(ScrollTrigger)
 
@@ -56,10 +56,10 @@ const STEPS = [
 ]
 
 const KEEPSAKES = [
-  { id: 1, title: 'Fine-Art Prints', text: 'Museum-quality paper, sizes from A5 to A2.', price: 'From €12' },
-  { id: 2, title: 'Photo Book', text: 'Your story in 30 pages, hand-checked and bound.', price: 'From €55' },
-  { id: 3, title: 'Framed Canvas', text: 'Your best shot, ready to hang on the wall.', price: 'From €70' },
-  { id: 4, title: 'Digital Gallery', text: 'Private link and USB key with all your photos.', price: 'Included' },
+  { id: 1, title: 'Fine-Art Prints', text: 'Museum-quality paper, sizes from A5 to A2.' },
+  { id: 2, title: 'Photo Book', text: 'Your story in 30 pages, hand-checked and bound.' },
+  { id: 3, title: 'Framed Canvas', text: 'Your best shot, ready to hang on the wall.' },
+  { id: 4, title: 'Digital Gallery', text: 'Private link and USB key with all your photos.' },
 ]
 
 
@@ -269,10 +269,9 @@ function Gallery() {
   )
 }
 
-// Séances : liste en lignes (durée, photos, délai, prix)
+// Séances : liste en lignes (durée, photos, délai)
 function Sessions() {
   const t = useT('photography')
-  const { lang } = useLanguage()
   const { offers, status } = useOffers('session')
   const sessions = offers.map((o) => ({ id: o.id, name: o.title, text: o.text, duration: o.duration, photos: o.photos, delivery: o.delivery, price: o.price, image: o.image }))
   return (
@@ -286,7 +285,7 @@ function Sessions() {
       <ul className="border-t border-[#084838]/20">
         {sessions.map((s, i) => (
           <li key={s.id} className="border-b border-[#084838]/20">
-            <div className="group grid grid-cols-1 lg:grid-cols-[60px_1.4fr_1.6fr_auto_40px] items-center gap-3 lg:gap-8 py-6 md:py-8 px-2 md:px-4 transition hover:bg-white/60 rounded-2xl">
+            <div className="group grid grid-cols-1 lg:grid-cols-[60px_1.4fr_1.6fr_40px] items-center gap-3 lg:gap-8 py-6 md:py-8 px-2 md:px-4 transition hover:bg-white/60 rounded-2xl">
               <span className="text-sm md:text-lg tabular-nums text-[#9a742f]">{String(i + 1).padStart(2, '0')}</span>
 
               <div>
@@ -300,7 +299,6 @@ function Sessions() {
                 ))}
               </ul>
 
-              <p className="text-sm text-slate-600 lg:text-right"><Trans text={t('from')} values={{ price: <span className="text-2xl md:text-3xl font-medium text-slate-900">{formatPrice(s.price, lang)}</span> }} /></p>
 
               <AddToTrip variant="icon" item={{ kind: 'photo', ref: String(s.id), title: s.name, image: s.image || undefined, link: '/photography', details: [s.duration, s.photos].join(' · '), price: s.price, unit: 'unit' }} />
             </div>
@@ -388,8 +386,7 @@ function Keepsakes() {
       <ul className="mt-8 md:mt-12 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4">
         {keepsakes.map((k, i) => (
           <li key={k.id} className={`py-6 lg:py-2 lg:px-8 border-t border-white/20 lg:border-t-0 ${i > 0 ? 'lg:border-l lg:border-white/20' : 'lg:pl-0'}`}>
-            <p className="text-sm text-[#E6C58A]">{k.price}</p>
-            <h3 className="mt-2 text-xl md:text-2xl font-medium">{k.title}</h3>
+            <h3 className="text-xl md:text-2xl font-medium">{k.title}</h3>
             <p className="mt-3 text-sm md:text-base text-white/70 leading-relaxed">{k.text}</p>
           </li>
         ))}
@@ -431,11 +428,10 @@ function Faq() {
 
 // CTA : grande image centrée
 function Cta() {
-  const photo = usePhoto()
   const t = useT('photography')
   return (
     <div className={`${SECTION_GAP} relative overflow-hidden rounded-3xl min-h-[420px] md:min-h-[520px] flex items-center justify-center text-center text-white`}>
-      <img src={photo('photo.cta')} alt="" className="absolute inset-0 w-full h-full object-cover" />
+      <SiteMedia slot="photo.cta" alt="" className="absolute inset-0 w-full h-full object-cover" />
       <div className="absolute inset-0 bg-black/55" />
       <div className="relative px-6 py-12 max-w-3xl">
         <h2 className="text-3xl sm:text-4xl md:text-6xl font-medium leading-[1.15] tracking-tight">{t('ctaTitle')}</h2>

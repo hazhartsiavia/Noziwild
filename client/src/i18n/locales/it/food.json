@@ -114,10 +114,8 @@
   "dishesText": "Cinque sapori da non perdere prima di ripartire.",
   "spice": "Piccante: {level}",
   "menuTitle": "Esperienze gastronomiche",
-  "menuText": "Da uno spuntino di strada a una cena a lume di candela. Prezzi a persona.",
+  "menuText": "Da uno spuntino di strada a una cena a lume di candela.",
   "menuTabsLabel": "Tipi di esperienza",
-  "fromPerPerson": "Da {price} / persona",
-  "perPerson": "a persona",
   "groups": "I gruppi di 6 o più persone hanno un tavolo privato.",
   "dietsTitle": "Ogni dieta è benvenuta",
   "classAlt": "Cucinare insieme",
@@ -127,8 +125,7 @@
   "classText": "Porta a casa le ricette. Non serve esperienza, solo appetito.",
   "classFacts": [
     "durata",
-    "ospiti max",
-    "a persona"
+    "ospiti max"
   ],
   "faqTitle": "Buono a sapersi prima di mangiare",
   "faqText": "Scegli una domanda. Non trovi la tua? Il nostro team risponde in poche ore.",

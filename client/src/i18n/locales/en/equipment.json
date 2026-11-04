@@ -39,18 +39,15 @@
   "pickups": [
     {
       "title": "Pick Up At Our Office",
-      "text": "Collect and return your gear at our Antananarivo office, open every day.",
-      "price": "Free"
+      "text": "Collect and return your gear at our Antananarivo office, open every day."
     },
     {
       "title": "Hotel Delivery",
-      "text": "We bring the gear to your hotel and collect it at the end of your stay.",
-      "price": "From €5"
+      "text": "We bring the gear to your hotel and collect it at the end of your stay."
     },
     {
       "title": "Airport Handover",
-      "text": "Meet us at arrivals with your gear ready. Return it before you fly.",
-      "price": "From €10"
+      "text": "Meet us at arrivals with your gear ready. Return it before you fly."
     }
   ],
   "faqs": [
@@ -81,12 +78,11 @@
   "browse": "Browse The Catalog",
   "items": "{count} items",
   "itemOne": "1 item",
-  "perDay": "{price} / day",
   "add": "Add",
   "removeOne": "Remove one {name}",
   "addOne": "Add one {name}",
   "catalogTitle": "Build Your Rental List",
-  "catalogText": "Add what you need, choose the number of days and get an instant estimate.",
+  "catalogText": "Add what you need and choose the number of days. We send you the price in a quote.",
   "tabsLabel": "Gear categories",
   "listTitle": "Your Rental List",
   "length": "Rental length",
@@ -94,10 +90,8 @@
   "more": "More days",
   "days": "{count} days",
   "dayOne": "1 day",
-  "empty": "Your list is empty. Add gear from the catalog and your estimate appears here.",
-  "discount": "7+ days discount (−10%)",
-  "total": "Estimated total",
-  "note": "Estimate only. A refundable deposit may apply to some items. Final price confirmed by our team.",
+  "empty": "Your list is empty. Add gear from the catalog and it appears here.",
+  "note": "A refundable deposit may apply to some items. Price confirmed by our team in your quote.",
   "pickupTitle": "Pickup & Return",
   "pickupText": "Choose the way that suits your schedule. Return is always at the same place as pickup.",
   "faqTitle": "Frequently Asked Questions",

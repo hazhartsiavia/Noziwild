@@ -11,8 +11,7 @@
   "nightIn": "Night in {place}",
   "enlarge": "Enlarge photo {n} of {total}: {title}",
   "price": "Price",
-  "from": "From",
-  "perPerson": "Per person, based on two travellers sharing",
+  "onRequest": "On request",
   "bookingOptions": "Booking options",
   "booking": "Booking",
   "inquiry": "Inquiry Form",
@@ -20,7 +19,6 @@
   "travellers": "Number of travellers",
   "fewer": "Fewer travellers",
   "more": "More travellers",
-  "total": "Estimated total",
   "name": "Your name",
   "email": "Email address",
   "question": "Your questions about this circuit",
@@ -29,7 +27,6 @@
   "thanks": "Thank you! A travel expert will reply within one working day.",
   "followLink": "your account",
   "noPayment": "No payment now. We confirm availability and the final price first.",
-  "fromPerPerson": "From {price} / person",
   "bookNow": "Book now",
   "loading": "Loading the circuit",
   "notFound": "This circuit was not found",
@@ -56,6 +53,5 @@
   "moreCircuits": "More Circuits",
   "seeAll": "See all circuits",
   "days": "{count} days",
-  "fromPrice": "From {price}",
   "follow": "You can follow it in {link}."
 }

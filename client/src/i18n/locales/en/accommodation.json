@@ -75,8 +75,8 @@
   ],
   "faqs": [
     {
-      "q": "Are the prices per person or per room?",
-      "a": "Prices shown are per room, per night, starting from the lowest season. Your quote shows the exact total for your dates and group."
+      "q": "How do I get a price for a stay?",
+      "a": "Tell us your dates and group size and we send you a free quote with the exact total."
     },
     {
       "q": "Is breakfast included?",
@@ -97,7 +97,6 @@
   ],
   "title": "Accommodation",
   "home": "Home",
-  "fromPerNight": "From {price} / night",
   "staysTitle": "Find Your Perfect Stay",
   "tabsLabel": "Accommodation categories",
   "criteriaTitle": "How We Choose Our Stays",

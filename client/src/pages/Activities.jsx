@@ -11,11 +11,12 @@ import { gsap } from 'gsap'
 import { ScrollTrigger } from 'gsap/ScrollTrigger'
 import OffersStatus from '../components/OffersStatus'
 import AddToTrip from '../components/AddToTrip'
-import { Trans, useLanguage, useT } from '../i18n/LanguageContext'
-import { formatPrice, monthName } from '../utils/format'
+import { useLanguage, useT } from '../i18n/LanguageContext'
+import { monthName } from '../utils/format'
 import { useOffers } from '../utils/useOffers'
 import { usePhoto } from '../sitePhotos'
 import { A } from '../i18n/router'
+import SiteMedia from '../components/SiteMedia'
 
 gsap.registerPlugin(ScrollTrigger)
 
@@ -53,11 +54,10 @@ const number = (i) => String(i + 1).padStart(2, '0')
 
 // Hero : grande image avec l'index des activités (comme un menu)
 function Hero({ list }) {
-  const photo = usePhoto()
   const t = useT('activities')
   return (
     <section className="relative overflow-hidden rounded-3xl bg-[#084838] text-white min-h-[540px] md:min-h-[620px] flex">
-      <img src={photo('act.banner')} alt="" className="absolute inset-0 w-full h-full object-cover" />
+      <SiteMedia slot="act.banner" alt="" className="absolute inset-0 w-full h-full object-cover" />
       <div className="absolute inset-0 bg-gradient-to-r from-black/80 via-black/45 to-black/20" />
 
       <div className="relative w-full grid grid-cols-1 lg:grid-cols-[1.3fr_1fr] gap-8 lg:gap-12 items-end p-6 md:p-12">
@@ -103,7 +103,6 @@ function Hero({ list }) {
 // Carrousel horizontal : cartes hautes avec défilement, boutons prev/next et barre de progression
 function ActivityCarousel({ list, status }) {
   const t = useT('activities')
-  const { lang } = useLanguage()
   const trackRef = useRef(null)
   const [pos, setPos] = useState({ progress: 0, start: true, end: false })
 
@@ -178,8 +177,7 @@ function ActivityCarousel({ list, status }) {
                   <li className="flex items-center gap-1.5"><LevelIcon />{a.level}</li>
                   <li className="flex items-center gap-1.5"><UsersIcon />{a.group}</li>
                 </ul>
-                <div className="mt-5 pt-4 border-t border-white/25 flex items-center justify-between">
-                  <p className="text-sm text-white/80"><Trans text={t('fromPerPerson')} values={{ price: <span className="text-xl md:text-2xl font-medium text-white">{formatPrice(a.price, lang)}</span> }} /></p>
+                <div className="mt-5 pt-4 border-t border-white/25 flex items-center justify-end">
                   <AddToTrip
                     variant="icon"
                     item={{ kind: 'activity', ref: String(a.id), title: a.title, image: a.image, link: '/activities', details: [a.duration, a.level].filter(Boolean).join(' · '), price: a.price, unit: 'person' }}

@@ -1,0 +1,4 @@
+/* Page Transport : bandeau des moyens de transport */
+.marquee {
+  mask-image: linear-gradient(to right, transparent, #000 8%, #000 92%, transparent);
+}

@@ -37,23 +37,19 @@
   "keepsakes": [
     {
       "title": "Tirages d'art",
-      "text": "Papier qualité musée, formats du A5 au A2.",
-      "price": "À partir de 12 €"
+      "text": "Papier qualité musée, formats du A5 au A2."
     },
     {
       "title": "Livre photo",
-      "text": "Votre histoire en 30 pages, vérifiée et reliée à la main.",
-      "price": "À partir de 55 €"
+      "text": "Votre histoire en 30 pages, vérifiée et reliée à la main."
     },
     {
       "title": "Toile encadrée",
-      "text": "Votre plus belle photo, prête à accrocher au mur.",
-      "price": "À partir de 70 €"
+      "text": "Votre plus belle photo, prête à accrocher au mur."
     },
     {
       "title": "Galerie numérique",
-      "text": "Lien privé et clé USB avec toutes vos photos.",
-      "price": "Inclus"
+      "text": "Lien privé et clé USB avec toutes vos photos."
     }
   ],
   "faqs": [
@@ -99,7 +95,6 @@
   "sessionsTitle": "Choisissez votre séance",
   "sessionsText": "D'une heure dorée à une journée entière. Toutes les séances comprennent la retouche et une galerie en ligne privée.",
   "delivered": "Livrées en {delay}",
-  "from": "À partir de {price}",
   "editEyebrow": "De la prise de vue à la galerie",
   "editTitle": "Chaque photo est retouchée à la main",
   "beforeAlt": "Photo avant retouche",

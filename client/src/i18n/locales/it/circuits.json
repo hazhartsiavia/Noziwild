@@ -21,7 +21,6 @@
     "13 giorni o più"
   ],
   "days": "{count} giorni",
-  "from": "Da {price}",
   "loading": "Caricamento dei tour",
   "loadError": "Non è stato possibile caricare i tour. Riprova tra un momento.",
   "reload": "Ricarica",

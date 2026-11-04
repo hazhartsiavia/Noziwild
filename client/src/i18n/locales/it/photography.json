@@ -37,23 +37,19 @@
   "keepsakes": [
     {
       "title": "Stampe fine art",
-      "text": "Carta di qualità museale, formati dall'A5 all'A2.",
-      "price": "Da 12 €"
+      "text": "Carta di qualità museale, formati dall'A5 all'A2."
     },
     {
       "title": "Fotolibro",
-      "text": "La tua storia in 30 pagine, controllata e rilegata a mano.",
-      "price": "Da 55 €"
+      "text": "La tua storia in 30 pagine, controllata e rilegata a mano."
     },
     {
       "title": "Tela incorniciata",
-      "text": "Il tuo scatto migliore, pronto da appendere.",
-      "price": "Da 70 €"
+      "text": "Il tuo scatto migliore, pronto da appendere."
     },
     {
       "title": "Galleria digitale",
-      "text": "Link privato e chiavetta USB con tutte le tue foto.",
-      "price": "Inclusa"
+      "text": "Link privato e chiavetta USB con tutte le tue foto."
     }
   ],
   "faqs": [
@@ -99,7 +95,6 @@
   "sessionsTitle": "Scegli il tuo servizio",
   "sessionsText": "Da un'ora d'oro a una giornata intera. Tutti i servizi includono il ritocco e una galleria online privata.",
   "delivered": "Consegna in {delay}",
-  "from": "Da {price}",
   "editEyebrow": "Dallo scatto alla galleria",
   "editTitle": "Ogni foto è ritoccata a mano",
   "beforeAlt": "Foto prima del ritocco",

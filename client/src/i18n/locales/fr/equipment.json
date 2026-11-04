@@ -39,18 +39,15 @@
   "pickups": [
     {
       "title": "Retrait à notre agence",
-      "text": "Récupérez et rendez votre matériel à notre agence d'Antananarivo, ouverte tous les jours.",
-      "price": "Gratuit"
+      "text": "Récupérez et rendez votre matériel à notre agence d'Antananarivo, ouverte tous les jours."
     },
     {
       "title": "Livraison à l'hôtel",
-      "text": "Nous apportons le matériel à votre hôtel et le récupérons à la fin de votre séjour.",
-      "price": "À partir de 5 €"
+      "text": "Nous apportons le matériel à votre hôtel et le récupérons à la fin de votre séjour."
     },
     {
       "title": "Remise à l'aéroport",
-      "text": "Retrouvez-nous aux arrivées avec votre matériel prêt. Rendez-le avant votre vol.",
-      "price": "À partir de 10 €"
+      "text": "Retrouvez-nous aux arrivées avec votre matériel prêt. Rendez-le avant votre vol."
     }
   ],
   "faqs": [
@@ -81,12 +78,11 @@
   "browse": "Parcourir le catalogue",
   "items": "{count} articles",
   "itemOne": "1 article",
-  "perDay": "{price} / jour",
   "add": "Ajouter",
   "removeOne": "Retirer un {name}",
   "addOne": "Ajouter un {name}",
   "catalogTitle": "Composez votre liste de location",
-  "catalogText": "Ajoutez ce dont vous avez besoin, choisissez le nombre de jours et obtenez une estimation immédiate.",
+  "catalogText": "Ajoutez ce dont vous avez besoin et choisissez le nombre de jours. Nous vous envoyons le prix dans un devis.",
   "tabsLabel": "Catégories de matériel",
   "listTitle": "Votre liste de location",
   "length": "Durée de location",
@@ -94,10 +90,8 @@
   "more": "Plus de jours",
   "days": "{count} jours",
   "dayOne": "1 jour",
-  "empty": "Votre liste est vide. Ajoutez du matériel depuis le catalogue et votre estimation apparaîtra ici.",
-  "discount": "Remise 7 jours et plus (−10 %)",
-  "total": "Total estimé",
-  "note": "Simple estimation. Une caution remboursable peut s'appliquer à certains articles. Prix final confirmé par notre équipe.",
+  "empty": "Votre liste est vide. Ajoutez du matériel depuis le catalogue : il apparaîtra ici.",
+  "note": "Une caution remboursable peut s'appliquer à certains articles. Prix confirmé par notre équipe dans votre devis.",
   "pickupTitle": "Retrait et retour",
   "pickupText": "Choisissez la formule qui convient à votre emploi du temps. Le retour se fait toujours au même endroit que le retrait.",
   "faqTitle": "Questions fréquentes",

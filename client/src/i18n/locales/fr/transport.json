@@ -1,22 +1,9 @@
 {
   "hero": {
     "title": "Le trajet fait partie du voyage",
-    "text": "4x4 privés, navettes partagées, vols intérieurs, bateaux et trains : nous choisissons la bonne façon de relier chaque étape, et nous réservons tout pour vous.",
     "ctaLabel": "Organiser mes transferts",
-    "label": "Notre flotte",
-    "cardTitle": "Chaque transfert, pris en charge",
     "imageAlt": "Un 4x4 sur une route panoramique",
-    "stats": [
-      {
-        "label": "Façons de voyager"
-      },
-      {
-        "label": "Assistance pendant le voyage"
-      },
-      {
-        "label": "Chauffeurs agréés"
-      }
-    ]
+    "more": "Voir plus"
   },
   "categories": [
     {
@@ -103,6 +90,7 @@
   "typesText": "Chaque option a son rythme et son charme. Combinez-les librement tout au long de votre voyage.",
   "tabsLabel": "Catégories de transport",
   "howTitle": "Comment ça marche",
+  "incEyebrow": "La différence Noziwild",
   "incTitle": "Inclus dans chaque transfert",
   "incText": "Le confort et la sécurité ne sont pas des options. Ils accompagnent chaque véhicule, bateau et siège que nous réservons.",
   "faqTitle": "Questions fréquentes",

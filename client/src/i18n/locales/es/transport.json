@@ -1,22 +1,9 @@
 {
   "hero": {
     "title": "El trayecto también es parte del viaje",
-    "text": "4x4 privados, lanzaderas compartidas, vuelos nacionales, barcos y trenes: elegimos la mejor forma de moverse entre cada etapa y lo reservamos todo por usted.",
     "ctaLabel": "Organizar mis traslados",
-    "label": "Nuestra flota",
-    "cardTitle": "Cada traslado, resuelto",
     "imageAlt": "Un 4x4 recorriendo una carretera panorámica",
-    "stats": [
-      {
-        "label": "Formas de viajar"
-      },
-      {
-        "label": "Asistencia durante el viaje"
-      },
-      {
-        "label": "Conductores con licencia"
-      }
-    ]
+    "more": "Ver más"
   },
   "categories": [
     {
@@ -103,6 +90,7 @@
   "typesText": "Cada opción tiene su ritmo y su encanto. Combínelas libremente a lo largo del viaje.",
   "tabsLabel": "Categorías de transporte",
   "howTitle": "Cómo funciona",
+  "incEyebrow": "La diferencia Noziwild",
   "incTitle": "Incluido en cada traslado",
   "incText": "La comodidad y la seguridad no son opcionales. Van con cada vehículo, barco y asiento que reservamos.",
   "faqTitle": "Preguntas frecuentes",

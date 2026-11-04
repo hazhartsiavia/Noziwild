@@ -12,6 +12,7 @@ import { lineTotal, useTrip } from '../context/TripContext'
 import { Trans, useLanguage, useT } from '../i18n/LanguageContext'
 import { formatPrice } from '../utils/format'
 import { sendQuote } from '../api'
+import { useSitePages } from '../context/SitePagesContext'
 import { useScrollReveal } from '../utils/useScrollReveal'
 
 const CARD = 'rounded-3xl bg-white p-5 md:p-7'
@@ -226,6 +227,7 @@ function QuoteForm({ items, onSent }) {
 
 function MyTrip() {
   const t = useT('trip')
+  const { isHidden } = useSitePages()
   const { user } = useAuth()
   const { items, clear } = useTrip()
   const [sentId, setSentId] = useState(null)
@@ -265,7 +267,7 @@ function MyTrip() {
               <h2 className="text-xl md:text-2xl font-medium text-forest">{t('emptyTitle')}</h2>
               <p className={`mt-2 ${MUTED}`}>{t('emptyText')}</p>
               <div className="mt-6 flex flex-wrap gap-3">
-                {BROWSE.map(({ to, key }) => (
+                {BROWSE.filter(({ to }) => !isHidden(to)).map(({ to, key }) => (
                   <Link key={key} to={to} className={SECONDARY}>{t('browse')[key]}</Link>
                 ))}
               </div>
@@ -288,7 +290,7 @@ function MyTrip() {
                   {items.map((item) => <ItemCard key={item.id} item={item} />)}
                 </ul>
                 <div className="mt-4 flex flex-wrap gap-3">
-                  {BROWSE.map(({ to, key }) => (
+                  {BROWSE.filter(({ to }) => !isHidden(to)).map(({ to, key }) => (
                     <Link key={key} to={to} className={`bg-white/60 hover:bg-white ${BUTTON} text-slate-800 transition`}>+ {t('browse')[key]}</Link>
                   ))}
                 </div>

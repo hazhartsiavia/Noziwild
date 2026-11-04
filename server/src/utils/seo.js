@@ -10,6 +10,7 @@ import { LANGUAGES, toCircuitCard } from './circuits.js'
 import { toDestination } from './destinations.js'
 import { toPostCard } from './posts.js'
 import { PAGES, WORDS } from './seoPages.js'
+import { isHiddenPath, readHiddenPages } from './sitePages.js'
 
 const SITE_NAME = 'Noziwild'
 const DEFAULT_IMAGE = '/og-image.jpg'
@@ -24,6 +25,7 @@ const RENAMED_PAGES = {
   '/hosting': '/accommodation',
   '/longstay': '/long-stay',
   '/guide': '/guides',
+  '/travel-planning': '/tailor-made',
 }
 
 // Pages personnelles ou techniques : jamais dans Google (le site les affiche quand même)
@@ -120,13 +122,6 @@ async function circuitMeta(base, lang, slug) {
         image: absolute(base, circuit.image),
         inLanguage: lang,
         touristType: row.tour_type || undefined,
-        offers: {
-          '@type': 'Offer',
-          price: row.price,
-          priceCurrency: 'EUR',
-          availability: 'https://schema.org/InStock',
-          url,
-        },
         provider: { '@id': `${base}/#organization` },
       },
       breadcrumbs(base, lang, [[w.home, '/'], [w.circuits, '/circuits'], [circuit.title, `/circuits/${row.slug}`]]),
@@ -233,7 +228,8 @@ async function postMeta(base, lang, slug) {
 
 // Balises d'une adresse : { lang, title, description, image, canonical, alternates, noindex, status, jsonLd }
 // ou { redirect } pour /en/... (l'anglais n'a pas de préfixe) et les pages renommées
-export async function pageMeta(req) {
+// hidden : pages masquées depuis l'admin. React affiche leur message, Google doit les retirer.
+export async function pageMeta(req, hidden = []) {
   const base = siteUrl(req)
   const query = req.originalUrl.slice(req.path.length)
   if (/^\/en(\/|$)/i.test(req.path)) return { redirect: (req.path.slice(3) || '/') + query }
@@ -246,6 +242,7 @@ export async function pageMeta(req) {
   const canonical = `${base}${localPath(path, lang)}`
 
   if (isPrivate(path)) return { ...meta, noindex: true }
+  if (isHiddenPath(hidden, path)) return { ...meta, title: `${w.notFound} | ${SITE_NAME}`, noindex: true, status: 404 }
 
   const page = PAGES[path]?.[lang]
   if (page) {
@@ -276,7 +273,8 @@ export async function pageMeta(req) {
 const escapeHtml = (value) =>
   String(value).replace(/[&<>"']/g, (c) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' })[c])
 
-export function renderHead(html, meta, req) {
+// site : photos, vidéos et pages masquées (voir sitePages.js), lus par le site dès son démarrage
+export function renderHead(html, meta, req, site) {
   const base = siteUrl(req)
   const image = absolute(base, meta.image || DEFAULT_IMAGE)
   const alternates = meta.alternates || []
@@ -298,6 +296,7 @@ export function renderHead(html, meta, req) {
       ? // "<" échappé : un texte saisi dans l'admin ne peut pas fermer la balise <script>
         `<script type="application/ld+json">${JSON.stringify({ '@context': 'https://schema.org', '@graph': meta.jsonLd }).replace(/</g, '\\u003c')}</script>`
       : '',
+    site ? `<script>window.__NOZIWILD_SITE__=${JSON.stringify(site).replace(/</g, '\\u003c')}</script>` : '',
   ].filter(Boolean)
   return html
     .replace(/<html lang="[^"]*"/, `<html lang="${meta.lang}"`)
@@ -334,8 +333,9 @@ export async function sitemapXml(req) {
   const [posts] = await pool.execute('SELECT slug, updated_at FROM blog_posts WHERE is_published = 1 ORDER BY published_on DESC, id DESC')
   for (const p of posts) pages.push({ path: `/blog/${p.slug}`, lastmod: day(p.updated_at) })
 
+  const hidden = await readHiddenPages()
   const entries = []
-  for (const { path, lastmod } of pages) {
+  for (const { path, lastmod } of pages.filter((page) => !isHiddenPath(hidden, page.path))) {
     const links = ALL_LANGUAGES.map((l) => `<xhtml:link rel="alternate" hreflang="${l}" href="${escapeHtml(`${base}${localPath(path, l)}`)}"/>`)
     links.push(`<xhtml:link rel="alternate" hreflang="x-default" href="${escapeHtml(`${base}${path}`)}"/>`)
     for (const lang of ALL_LANGUAGES) {

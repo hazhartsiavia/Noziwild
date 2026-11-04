@@ -15,6 +15,7 @@ import { useT } from '../i18n/LanguageContext'
 import { useOffers } from '../utils/useOffers'
 import { usePhoto } from '../sitePhotos'
 import { A } from '../i18n/router'
+import SiteMedia from '../components/SiteMedia'
 
 gsap.registerPlugin(ScrollTrigger)
 
@@ -86,7 +87,6 @@ function Chars({ lines }) {
 /* -------------------------- Composants --------------------------- */
 
 function Hero() {
-  const photo = usePhoto()
   const root = useRef(null)
   const t = useT('longstay')
 
@@ -107,7 +107,7 @@ function Hero() {
     <>
       <Navbar />
       <section ref={root} className={`${W} relative overflow-hidden rounded-[2rem] md:rounded-[3rem] ${DARK} text-white min-h-[560px] md:min-h-[86vh] flex items-end`}>
-        <img src={photo('long.hero')} alt={t('heroAlt')} className="hero-bg absolute inset-0 w-full h-full object-cover" />
+        <SiteMedia slot="long.hero" alt={t('heroAlt')} className="hero-bg absolute inset-0 w-full h-full object-cover" />
         <div className="absolute inset-0 bg-gradient-to-t from-slate-950/85 via-slate-950/30 to-slate-950/10" />
 
         <div className="relative w-full grid grid-cols-1 lg:grid-cols-[1.5fr_1fr] gap-10 items-end p-6 sm:p-10 md:p-16">
@@ -252,8 +252,7 @@ function Formats() {
                 ))}
               </ul>
               <div className="mt-8 flex flex-wrap items-center gap-5">
-                <p className="text-2xl font-semibold">{f.priceLabel}</p>
-                <AddToTrip variant="gold" item={{ kind: 'longstay', ref: String(f.id), title: f.title, image: f.image, link: '/long-stay', details: [f.tab, f.priceLabel].filter(Boolean).join(' · '), price: null, unit: null }} />
+                <AddToTrip variant="gold" item={{ kind: 'longstay', ref: String(f.id), title: f.title, image: f.image, link: '/long-stay', details: f.tab, price: null, unit: null }} />
               </div>
             </div>
           </div>
@@ -340,7 +339,6 @@ function Services() {
 }
 
 function Quote() {
-  const photo = usePhoto()
   const root = useRef(null)
   const t = useT('longstay')
   const quote = t('quote')
@@ -361,7 +359,7 @@ function Quote() {
 
   return (
     <section ref={root} className={`${W} mt-20 md:mt-32 grid grid-cols-1 md:grid-cols-[1fr_1.4fr] overflow-hidden rounded-[2rem] md:rounded-[3rem] bg-white`}>
-      <img src={photo('long.quote')} alt="" className="q-img w-full h-64 md:h-full object-cover" />
+      <SiteMedia slot="long.quote" alt="" className="q-img w-full h-64 md:h-full object-cover" />
       <figure className="p-8 md:p-16 flex flex-col justify-center">
         <blockquote aria-label={quote} className="q-text text-2xl md:text-4xl font-medium leading-snug text-slate-900">
           {words.map((w, i) => (
@@ -375,7 +373,6 @@ function Quote() {
 }
 
 function FinalCta() {
-  const photo = usePhoto()
   const root = useRef(null)
   const t = useT('longstay')
 
@@ -390,7 +387,7 @@ function FinalCta() {
 
   return (
     <section ref={root} className={`${W} mt-20 md:mt-32 relative overflow-hidden rounded-[2rem] md:rounded-[3rem] text-white min-h-[420px] flex items-center`}>
-      <img src={photo('long.cta')} alt="" className="fin-bg absolute inset-0 w-full h-full object-cover" />
+      <SiteMedia slot="long.cta" alt="" className="fin-bg absolute inset-0 w-full h-full object-cover" />
       <div className="absolute inset-0 bg-slate-950/65" />
       <div className="fin-text relative p-8 md:p-16 max-w-3xl">
         <h2 className={H2}>{t('finalTitle')}</h2>

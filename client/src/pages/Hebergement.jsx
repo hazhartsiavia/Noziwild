@@ -5,14 +5,14 @@ import Ramena from "../assets/images/Ramena.jpg";
 import Navbar from '../components/Navbar';
 import Footer from '../components/Footer';
 import AddToTrip from '../components/AddToTrip'
-import { Trans, useLanguage, useT } from '../i18n/LanguageContext';
-import { formatPrice } from '../utils/format';
+import { useT } from '../i18n/LanguageContext';
 import { localize } from '../i18n/localize';
 import OffersStatus from '../components/OffersStatus'
 import { useOffers } from '../utils/useOffers'
 import { useScrollReveal } from '../utils/useScrollReveal'
 import { usePhoto } from '../sitePhotos'
 import { A } from '../i18n/router'
+import SiteMedia from '../components/SiteMedia'
 
 /* Constantes partagées : mêmes valeurs que dans les autres pages */
 const SECTION_WIDTH = "w-[90vw] lg:max-w-[90vw] xl:max-w-[95vw]"
@@ -73,7 +73,7 @@ const INCLUDED = [
 ]
 
 const FAQS = [
-  { id: 1, q: 'Are the prices per person or per room?', a: 'Prices shown are per room, per night, starting from the lowest season. Your quote shows the exact total for your dates and group.' },
+  { id: 1, q: 'How do I get a price for a stay?', a: 'Tell us your dates and group size and we send you a free quote with the exact total.' },
   { id: 2, q: 'Is breakfast included?', a: 'On most of our stays, yes. Each stay lists what is included, and we tell you clearly when meals cost extra.' },
   { id: 3, q: 'Can you find something for a family or large group?', a: 'Yes. Tell us how many people are traveling and we suggest family rooms, connected rooms or a private villa.' },
   { id: 4, q: 'Can I change my dates after booking?', a: 'In most cases you can, up to 7 days before arrival and subject to availability. The exact terms are in your quote.' },
@@ -122,11 +122,10 @@ const PlusIcon = ({ open }) => (
 /* -------------------------- Composants --------------------------- */
 
 function Hero() {
-  const photo = usePhoto()
   const t = useT('accommodation')
   return (
     <section className={`${SECTION_WIDTH} relative flex items-center overflow-hidden rounded-3xl bg-[#084838] text-white min-h-[240px] md:min-h-[360px]`}>
-      <img src={photo('hosting.hero')} alt="" className="absolute inset-0 w-full h-full object-cover" />
+      <SiteMedia slot="hosting.hero" alt="" className="absolute inset-0 w-full h-full object-cover" />
       <div className="absolute inset-0 bg-slate-950/60" />
       <div className="relative w-full max-w-5xl mx-auto px-6 md:px-10 py-16">
         <h1 className={PAGE_TITLE}>{t('title')}</h1>
@@ -161,8 +160,6 @@ function Intro() {
 }
 
 function StayCard({ stay }) {
-  const t = useT('accommodation')
-  const { lang } = useLanguage()
   return (
     <article className="group flex flex-col rounded-xl bg-white p-3">
       <div className="relative aspect-[4/3] overflow-hidden rounded-md">
@@ -179,8 +176,7 @@ function StayCard({ stay }) {
             <li key={a} className="rounded-full border border-slate-300 px-3 py-1 text-xs text-slate-700">{a}</li>
           ))}
         </ul>
-        <div className="mt-auto pt-6 flex items-center justify-between gap-3">
-          <p className="text-slate-600 text-sm"><Trans text={t('fromPerNight')} values={{ price: <span className="text-xl md:text-2xl font-medium text-slate-900">{formatPrice(stay.price, lang)}</span> }} /></p>
+        <div className="mt-auto pt-6 flex items-center justify-end gap-3">
           <AddToTrip item={{ kind: 'stay', ref: String(stay.id), title: stay.name, image: stay.image, link: '/accommodation', details: stay.place, price: stay.price, unit: 'night', qty: 3 }} />
         </div>
       </div>
@@ -235,7 +231,7 @@ function Featured({ stays }) {
   const stay = stays.find((s) => s.name === featured.name)
   return (
     <div className={`${SECTION_GAP} relative overflow-hidden rounded-3xl bg-[#084838] text-white min-h-[480px] md:min-h-[560px]`}>
-      <img src={photo('hosting.featured')} alt={featured.name} className="absolute inset-0 w-full h-full object-cover" />
+      <SiteMedia slot="hosting.featured" alt={featured.name} className="absolute inset-0 w-full h-full object-cover" />
       <div className="absolute inset-0 bg-gradient-to-r from-black/80 via-black/30 to-black/10" />
       <div className="relative min-h-[inherit] flex flex-col justify-end p-5 md:p-10 max-w-2xl">
         <span className={`${BADGE} self-start`}>{featured.label}</span>
@@ -332,11 +328,10 @@ function Faq() {
 }
 
 function Cta() {
-  const photo = usePhoto()
   const t = useT('accommodation')
   return (
     <div className={`${SECTION_GAP} relative overflow-hidden rounded-3xl min-h-[380px] md:min-h-[460px] flex`}>
-      <img src={photo('hosting.cta')} alt="" className="absolute inset-0 w-full h-full object-cover" />
+      <SiteMedia slot="hosting.cta" alt="" className="absolute inset-0 w-full h-full object-cover" />
       <div className="absolute inset-0 bg-gradient-to-r from-black/70 via-black/40 to-black/10" />
       <div className="relative flex flex-col justify-end p-6 md:p-12 max-w-2xl">
         <h2 className={ON_IMAGE_TITLE}>{t('ctaTitle')}</h2>

@@ -21,7 +21,6 @@
     "13 days or more"
   ],
   "days": "{count} days",
-  "from": "From {price}",
   "loading": "Loading circuits",
   "loadError": "The circuits could not be loaded. Please try again in a moment.",
   "reload": "Reload",

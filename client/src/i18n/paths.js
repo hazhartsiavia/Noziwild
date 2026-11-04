@@ -11,6 +11,7 @@ export const RENAMED_PAGES = {
   '/hosting': '/accommodation',
   '/longstay': '/long-stay',
   '/guide': '/guides',
+  '/travel-planning': '/tailor-made',
 }
 
 // /fr/circuits -> 'fr' ; /circuits -> 'en'

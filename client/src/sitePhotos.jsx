@@ -1,8 +1,9 @@
 // Photos des pages (bannières, grands blocs, cartes qui ne viennent pas de la base) remplaçables
-// depuis l'admin (page « Photos »). Chaque emplacement a sa photo d'origine ici ; l'API ne garde
+// depuis l'admin (page « Pages & photos »). Chaque emplacement a sa photo d'origine ici ; l'API ne garde
 // que les photos remplacées, et le site les pose par-dessus.
 //   const photo = usePhoto() ; <img src={photo('blog.hero')} />
-// Les photos remplacées sont aussi gardées dans le navigateur, pour s'afficher sans attendre l'API.
+// Les fonds listés dans VIDEO_SLOTS peuvent aussi recevoir une vidéo : voir components/SiteMedia.jsx.
+// Le serveur pose photos et vidéos dans le HTML ; elles sont aussi gardées dans le navigateur.
 import React, { createContext, useCallback, useContext, useEffect, useMemo, useState } from 'react'
 import { assetUrl, fetchSitePhotos } from './api'
 import Ramena from './assets/images/Ramena.jpg'
@@ -159,8 +160,8 @@ export const PHOTO_PAGES = [
     slots: { 'transport.hero': { label: 'Large card', src: Deux }, 'transport.cta': { label: 'Final banner', src: Tana } },
   },
   {
-    id: 'planning', label: 'Travel planning', page: '/travel-planning',
-    slots: list('plan.sample', 'Sample trip', [Tana, NosyIranja, Deux]),
+    id: 'tickets', label: 'Ticket reservations', page: '/ticket-reservation',
+    slots: {},
   },
   {
     id: 'account', label: 'Sign in and sign up', page: '/login',
@@ -170,30 +171,43 @@ export const PHOTO_PAGES = [
 
 export const PHOTO_SLOTS = Object.fromEntries(PHOTO_PAGES.flatMap((p) => Object.entries(p.slots)))
 
+// Emplacements affichés avec <SiteMedia> : grands fonds où une vidéo a du sens
+export const VIDEO_SLOTS = new Set([
+  'home.hero.1', 'home.hero.2', 'home.hero.3', 'home.hero.4', 'home.hero.5', 'home.cta',
+  'dest.cta', 'blog.hero', 'about.promise', 'about.mission', 'act.banner', 'circ.hero', 'circ.cta', 'contact.banner',
+  'cruise.hero', 'cruise.cta', 'gear.cta', 'exc.hero', 'exc.multi', 'exc.cta', 'food.class',
+  'hosting.hero', 'hosting.featured', 'hosting.cta', 'long.hero', 'long.quote', 'long.cta', 'photo.cta', 'tm.cta',
+  'transport.hero', 'transport.cta', 'auth.background',
+])
+
 const STORAGE_KEY = 'noziwild-photos'
-function stored() {
+const VIDEOS_KEY = 'noziwild-videos'
+function stored(key) {
   try {
-    return JSON.parse(localStorage.getItem(STORAGE_KEY)) || {}
+    return JSON.parse(localStorage.getItem(key)) || {}
   } catch {
     return {}
   }
 }
 
-const SitePhotosContext = createContext({ custom: {}, setCustom: () => {} })
+const SitePhotosContext = createContext({ custom: {}, setCustom: () => {}, videos: {}, setVideos: () => {} })
 
 export function SitePhotosProvider({ children }) {
-  const [custom, setCustom] = useState(stored)
+  const [custom, setCustom] = useState(() => window.__NOZIWILD_SITE__?.images ?? stored(STORAGE_KEY))
+  const [videos, setVideos] = useState(() => window.__NOZIWILD_SITE__?.videos ?? stored(VIDEOS_KEY))
   useEffect(() => {
     let cancelled = false
     fetchSitePhotos()
-      .then(({ images }) => {
+      .then(({ images, videos: videoSlots }) => {
         if (cancelled) return
         try {
           localStorage.setItem(STORAGE_KEY, JSON.stringify(images))
+          localStorage.setItem(VIDEOS_KEY, JSON.stringify(videoSlots))
         } catch {
           // stockage indisponible : les photos arriveront de l'API à chaque visite
         }
         setCustom(images)
+        setVideos(videoSlots)
       })
       .catch(() => {
         // API injoignable : on garde les photos connues
@@ -202,7 +216,7 @@ export function SitePhotosProvider({ children }) {
       cancelled = true
     }
   }, [])
-  const value = useMemo(() => ({ custom, setCustom }), [custom])
+  const value = useMemo(() => ({ custom, setCustom, videos, setVideos }), [custom, videos])
   return <SitePhotosContext.Provider value={value}>{children}</SitePhotosContext.Provider>
 }
 
@@ -212,7 +226,10 @@ export function usePhoto() {
   return useCallback((key) => (custom[key] ? assetUrl(custom[key]) : PHOTO_SLOTS[key]?.src), [custom])
 }
 
-// Pour l'admin : photos remplacées, et mise à jour immédiate après un changement
+// Vidéos de fond choisies dans l'admin : { 'blog.hero': '/uploads/files/....mp4' }
+export const useSiteVideos = () => useContext(SitePhotosContext).videos
+
+// Pour l'admin : photos et vidéos choisies, et mise à jour immédiate après un changement
 export function useSitePhotos() {
   return useContext(SitePhotosContext)
 }

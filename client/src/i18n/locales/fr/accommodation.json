@@ -75,8 +75,8 @@
   ],
   "faqs": [
     {
-      "q": "Les prix sont-ils par personne ou par chambre ?",
-      "a": "Les prix affichés sont par chambre et par nuit, à partir de la basse saison. Votre devis indique le total exact pour vos dates et votre groupe."
+      "q": "Comment connaître le prix d'un hébergement ?",
+      "a": "Indiquez-nous vos dates et votre groupe : nous vous envoyons gratuitement un devis avec le total exact."
     },
     {
       "q": "Le petit-déjeuner est-il inclus ?",
@@ -97,7 +97,6 @@
   ],
   "title": "Hébergement",
   "home": "Accueil",
-  "fromPerNight": "À partir de {price} / nuit",
   "staysTitle": "Trouvez l'hébergement idéal",
   "tabsLabel": "Catégories d'hébergement",
   "criteriaTitle": "Comment nous choisissons nos hébergements",

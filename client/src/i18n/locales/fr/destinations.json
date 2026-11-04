@@ -42,7 +42,6 @@
   },
   "place": {
     "price": "Prix",
-    "fromPerPerson": "À partir de {price} par personne",
     "onRequest": "Sur demande",
     "booking": "Réservation",
     "inquiry": "Poser une question",
@@ -50,7 +49,6 @@
     "guests": "Nombre de participants",
     "fewer": "Moins de participants",
     "more": "Autres lieux à {name}",
-    "total": "Total estimé",
     "noPayment": "Aucun paiement maintenant. Un expert du voyage confirme la disponibilité sous un jour ouvré.",
     "name": "Votre nom",
     "email": "Adresse e-mail",

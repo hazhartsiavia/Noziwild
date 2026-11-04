@@ -2,8 +2,8 @@ import React, { useLayoutEffect, useRef, useState } from 'react'
 import gsap from 'gsap'
 import { ScrollTrigger } from 'gsap/ScrollTrigger'
 import {
-  ArrowRight, Backpack, BedDouble, Camera, Car, Compass, Map, Route, Ship,
-  Sparkles, Star, Sun, Ticket, Users, UtensilsCrossed,
+  ArrowRight, Backpack, BedDouble, Camera, Car, Compass, Route, Ship,
+  Sparkles, Sun, Ticket, Users, UtensilsCrossed,
 } from 'lucide-react'
 import Ramena from '../assets/images/Ramena.jpg'
 import NosyIranja from '../assets/images/NosyIranja.jpg'
@@ -13,12 +13,15 @@ import Deux from '../assets/images/2.jpg'
 import Tana from '../assets/images/Tana.jpg'
 import Icone from '../assets/icone.png'
 import Footer from '../components/Footer'
+import Testimonials from '../components/Testimonials'
+import { useSitePages } from '../context/SitePagesContext'
 import { slugify } from './destinationsData'
 import { Hero, Preloader, shouldPlayPreloader } from './HomeHero'
 import { useLanguage, useT } from '../i18n/LanguageContext'
 import { monthName } from '../utils/format'
 import { usePhoto } from '../sitePhotos'
 import { A } from '../i18n/router'
+import SiteMedia from '../components/SiteMedia'
 
 gsap.registerPlugin(ScrollTrigger)
 
@@ -95,15 +98,7 @@ const services = [
   { title: 'Food & Dining', href: '/food-dining', icon: UtensilsCrossed },
   { title: 'Equipment Rentals', href: '/equipment-rentals', icon: Backpack },
   { title: 'Photography', href: '/photography', icon: Camera },
-  { title: 'Travel Planning', href: '/travel-planning', icon: Map },
   { title: 'Cruise Excursions', href: '/cruise-excursions', icon: Ship },
-]
-
-const quotes = [
-  { text: 'They planned every detail, yet the trip never felt planned. It felt like we were visiting friends.', name: 'Emma & Tom', origin: 'Lyon' },
-  { text: 'Our guide showed us a side of the island we never expected. The food, the people, the little workshops.', name: 'Giulia R.', origin: 'Milan' },
-  { text: 'When our flight was cancelled, they had a new plan before we finished our coffee. Impressive.', name: 'Markus B.', origin: 'Munich' },
-  { text: 'Having one person to call for everything made our family trip stress-free. The kids still talk about it.', name: 'Sophie L.', origin: 'Montréal' },
 ]
 
 /* ----------------------- Hook utilitaire GSAP ---------------------- */
@@ -136,12 +131,6 @@ function useReveal(scope, selector) {
 
 /* -------------------------- Petits composants --------------------------- */
 
-const Stars = ({ className = 'w-4 h-4' }) => (
-  <span className="flex gap-0.5" aria-hidden="true">
-    {[0, 1, 2, 3, 4].map((n) => <Star key={n} className={`${className} text-[#F5B800] fill-current`} />)}
-  </span>
-)
-
 // Badge circulaire "Talk to a Travel Expert" (identique à la page About)
 function TalkBadge() {
   const t = useT('home')
@@ -171,6 +160,7 @@ function Ways() {
   const photo = usePhoto()
   const root = useRef(null)
   const t = useT('home')
+  const { isHidden } = useSitePages()
 
   useReveal(root, '.ways-head > *, .way-card')
 
@@ -186,6 +176,7 @@ function Ways() {
 
       <ul className="mt-10 grid grid-cols-2 lg:grid-cols-4 gap-3 md:gap-5">
         {ways.map((way, i) => {
+          if (isHidden(way.href)) return null
           const w = { ...way, ...t('ways')[i] }
           const WayIcon = w.icon
           return (
@@ -413,6 +404,7 @@ function Trips() {
 function Services() {
   const root = useRef(null)
   const t = useT('home')
+  const { isHidden } = useSitePages()
 
   useReveal(root, '.services-head > *, .service-item')
 
@@ -430,6 +422,7 @@ function Services() {
 
       <ul className="mt-10 md:mt-12 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3 md:gap-4">
         {services.map((s, i) => {
+          if (isHidden(s.href)) return null
           const ServiceIcon = s.icon
           return (
             <li key={s.title} className="service-item">
@@ -451,54 +444,8 @@ function Services() {
   )
 }
 
-/* Avis : carte note + citations sur fond blanc */
-function Testimonials() {
-  const root = useRef(null)
-  const t = useT('home')
-  const initials = (name) => name.split(/[\s&.]+/).filter(Boolean).map((w) => w[0]).slice(0, 2).join('')
-
-  useReveal(root, '.testimonial-card')
-
-  return (
-    <section ref={root} className={`${SECTION_WIDTH} ${SECTION_GAP}`}>
-      <div className="mb-10 md:mb-14 flex flex-col lg:flex-row lg:items-end lg:justify-between gap-5 lg:gap-12">
-        <div>
-          <p className={SECTION_LABEL}>{t('reviewsLabel')}</p>
-          <h2 className={SECTION_TITLE}>{t('reviewsTitle')}</h2>
-        </div>
-        <div className="flex items-center gap-4">
-          <p className="font-display text-5xl md:text-6xl leading-none text-slate-800">4.9<span className="text-2xl text-slate-500">/5</span></p>
-          <div>
-            <Stars />
-            <p className="mt-2 text-sm md:text-base text-slate-600">{t('reviewsAverage')}</p>
-          </div>
-        </div>
-      </div>
-
-      <ul className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 md:gap-5">
-        {quotes.map((quote, i) => ({ ...quote, ...t('quotes')[i] })).map((q) => (
-          <li key={q.name} className="testimonial-card">
-            <figure className="flex h-full flex-col rounded-2xl bg-white p-6 md:p-7">
-              <Stars />
-              <blockquote className="mt-4 text-base text-slate-700 leading-relaxed">“{q.text}”</blockquote>
-              <figcaption className="mt-auto pt-8 flex items-center gap-3">
-                <span aria-hidden="true" className="w-11 h-11 rounded-full bg-[#C49849] text-white text-sm font-medium flex items-center justify-center">{initials(q.name)}</span>
-                <span>
-                  <span className="block text-sm md:text-base font-medium text-slate-900">{q.name}</span>
-                  <span className="block text-xs md:text-sm text-slate-500">{q.origin}</span>
-                </span>
-              </figcaption>
-            </figure>
-          </li>
-        ))}
-      </ul>
-    </section>
-  )
-}
-
 /* Appel final (même carte que la page Destinations) */
 function FinalCta() {
-  const photo = usePhoto()
   const root = useRef(null)
   const t = useT('home')
 
@@ -515,7 +462,7 @@ function FinalCta() {
 
   return (
     <section ref={root} className={`${SECTION_WIDTH} ${SECTION_GAP} relative overflow-hidden rounded-[2rem] md:rounded-[3rem] text-white min-h-[420px] flex items-center`}>
-      <img src={photo('home.cta')} alt="" className="cta-bg absolute inset-0 w-full h-full object-cover" />
+      <SiteMedia slot="home.cta" alt="" className="cta-bg absolute inset-0 w-full h-full object-cover" />
       <div className="absolute inset-0 bg-slate-950/65" />
       <div className="cta-content relative p-8 md:p-16 max-w-3xl">
         <h2 className="text-3xl sm:text-4xl md:text-5xl font-medium leading-[1.1] tracking-tight">{t('ctaTitle')}</h2>
@@ -556,7 +503,7 @@ function Home() {
         <Regions />
         <Trips />
         <Services />
-        <Testimonials />
+        <Testimonials className={`${SECTION_WIDTH} ${SECTION_GAP}`} />
         <FinalCta />
       </main>
       <Footer />

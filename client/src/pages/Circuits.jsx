@@ -7,9 +7,8 @@ import Ambanja from '../assets/images/Ambanja.jpg'
 import Navbar from '../components/Navbar'
 import Footer from '../components/Footer'
 import { fetchCircuits, assetUrl } from '../api'
-import { formatPrice } from '../utils/format'
 import { useLanguage, useT } from '../i18n/LanguageContext'
-import { usePhoto } from '../sitePhotos'
+import SiteMedia from '../components/SiteMedia'
 
 gsap.registerPlugin(ScrollTrigger)
 
@@ -60,7 +59,6 @@ const reveal = (targets, from, to, extra = {}) =>
 /* -------------------------- Composants --------------------------- */
 
 function CircuitsHero() {
-  const photo = usePhoto()
   const root = useRef(null)
   const t = useT('circuits')
 
@@ -83,7 +81,7 @@ function CircuitsHero() {
     <>
       <Navbar />
       <section ref={root} className={`${SECTION_WIDTH} relative flex items-center overflow-hidden rounded-3xl bg-[#084838] text-white min-h-[100px] md:min-h-[360px]`}>
-        <img src={photo('circ.hero')} alt="" className="hero-bg absolute inset-0 w-full h-full object-cover" />
+        <SiteMedia slot="circ.hero" alt="" className="hero-bg absolute inset-0 w-full h-full object-cover" />
         <div className="hero-shade absolute inset-0 bg-slate-950/60" />
         <div className="relative w-full max-w-5xl mx-auto px-6 md:px-10 py-16">
           <h1 className={`hero-title ${PAGE_TITLE}`}>{t('title')}</h1>
@@ -116,7 +114,6 @@ function Chip({ active, onClick, children }) {
 
 function CircuitCard({ circuit }) {
   const t = useT('circuits')
-  const { lang } = useLanguage()
   return (
     <Link to={`/circuits/${circuit.slug}`} className="circuit-card group flex flex-col rounded-xl bg-white p-3 text-slate-800">
       <div className="relative aspect-[4/3] overflow-hidden rounded-md">
@@ -135,14 +132,12 @@ function CircuitCard({ circuit }) {
         </p>
         <h3 className="mt-4 text-xl md:text-2xl leading-snug group-hover:underline">{circuit.title}</h3>
         <p className={`mt-3 ${META_TEXT} text-slate-600`}>{circuit.stops}</p>
-        <p className="mt-auto pt-6 text-base md:text-lg font-medium text-slate-900">{t('from', { price: formatPrice(circuit.price, lang) })}</p>
       </div>
     </Link>
   )
 }
 
 function Circuits() {
-  const photo = usePhoto()
   const t = useT('circuits')
   const { lang } = useLanguage()
   const [region, setRegion] = useState('All')
@@ -349,7 +344,7 @@ function Circuits() {
         {/* Appel à l'action */}
         <section ref={ctaRef} className={`${SECTION_WIDTH} mt-16 md:mt-24`}>
           <div className="cta-card relative overflow-hidden rounded-3xl text-white">
-            <img src={photo('circ.cta')} alt="" className="cta-bg absolute inset-0 w-full h-full object-cover" />
+            <SiteMedia slot="circ.cta" alt="" className="cta-bg absolute inset-0 w-full h-full object-cover" />
             <div className="absolute inset-0 bg-slate-950/70" />
             <div className="relative flex flex-col md:flex-row md:items-center justify-between gap-6 p-8 md:p-12">
               <div className="cta-text max-w-2xl">

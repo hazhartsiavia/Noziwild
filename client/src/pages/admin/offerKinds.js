@@ -209,12 +209,29 @@ export const OFFER_KINDS = {
     ],
     empty: { place: '', category: 'parks', perks: [''] },
   },
+  testimonial: {
+    group: 'reviews',
+    label: 'Testimonials',
+    singular: 'testimonial',
+    page: '/transport',
+    price: false,
+    titleLabel: 'Name',
+    textLabel: 'Testimonial',
+    imageOptional: true,
+    imageHint: 'Round portrait next to the name. Without a photo, the initials are shown.',
+    fields: [
+      { key: 'origin', type: 'text', label: 'City or country', placeholder: 'Lyon' },
+      { key: 'rating', type: 'number', label: 'Rating (1 to 5)', min: 1, max: 5, step: 0.5 },
+    ],
+    empty: { origin: '', rating: 5 },
+  },
 }
 
 // Rangées d'onglets de l'admin
 export const KIND_GROUPS = [
   { id: 'trips', label: 'Trips' },
   { id: 'services', label: 'Services' },
+  { id: 'reviews', label: 'Reviews' },
 ]
 
 export const KIND_NAMES = Object.keys(OFFER_KINDS)

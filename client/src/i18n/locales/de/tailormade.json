@@ -24,20 +24,24 @@
   },
   "steps": [
     {
-      "title": "Erzählen Sie uns Ihre Wünsche",
-      "text": "Beantworten Sie ein paar Fragen oder schreiben Sie uns frei heraus."
+      "title": "Wir hören zu",
+      "text": "Ein kurzer Anruf oder eine Nachricht, um Ihre Daten, Ihr Budget, Ihr Tempo und Ihre Must-sees zu verstehen.",
+      "deliverable": "Ihr Reiseprofil"
     },
     {
-      "title": "Erhalten Sie einen ersten Vorschlag",
-      "text": "Ein Reiseexperte schickt Ihnen innerhalb weniger Tage eine Route Tag für Tag."
+      "title": "Wir entwerfen",
+      "text": "Wir erstellen eine Route Tag für Tag mit realistischen Fahrzeiten, den passenden Unterkünften und lokalen Erlebnissen.",
+      "deliverable": "Erster Entwurf in 48 Std."
     },
     {
-      "title": "Gemeinsam verfeinern",
-      "text": "Ändern Sie alles, bis die Reise genau passt."
+      "title": "Wir verfeinern",
+      "text": "Sie sagen uns, was geändert werden soll. Wir passen an, bis jeder Tag genau stimmt.",
+      "deliverable": "Unbegrenzte Änderungen"
     },
     {
-      "title": "Reisen mit Unterstützung",
-      "text": "Lokale Guides, Transfers und ein Ansprechpartner vor Ort."
+      "title": "Wir buchen & begleiten",
+      "text": "Wir reservieren alles und bleiben vor und während Ihrer Reise erreichbar.",
+      "deliverable": "Digitaler Reiseführer"
     }
   ],
   "eyebrow": "Individuelle Reisen",

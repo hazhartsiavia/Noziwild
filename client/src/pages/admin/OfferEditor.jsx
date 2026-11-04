@@ -281,7 +281,7 @@ function OfferEditor() {
 
           <section className={CARD} aria-labelledby="offer-photo-title">
             <h3 id="offer-photo-title" className={CARD_TITLE}>Photo{config.imageOptional ? ' (optional)' : ''}</h3>
-            {config.imageOptional && <p className="mt-1 text-xs text-slate-500">Not shown on the page today: the photo is only used in “My trip”.</p>}
+            {config.imageOptional && <p className="mt-1 text-xs text-slate-500">{config.imageHint || 'Not shown on the page today: the photo is only used in “My trip”.'}</p>}
             <div className="mt-5">
               <PhotoPicker
                 label="Photo"

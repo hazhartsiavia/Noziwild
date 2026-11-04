@@ -1,4 +1,4 @@
-import React, { useEffect, useLayoutEffect, useRef, useState } from 'react'
+import React, { useLayoutEffect, useRef, useState } from 'react'
 import { Link, A } from '../i18n/router'
 import Deux from "../assets/images/2.jpg";
 import Ambanja from "../assets/images/Ambanja.jpg";
@@ -11,14 +11,14 @@ import { useTrip } from '../context/TripContext';
 import { useTripItem } from '../components/AddToTrip';
 import { sendRequest } from '../api';
 import { useAuth } from '../context/AuthContext';
-import { Trans, useLanguage, useT } from '../i18n/LanguageContext';
-import { formatPrice } from '../utils/format';
+import { useT } from '../i18n/LanguageContext';
 import { localize } from '../i18n/localize';
 import OffersStatus from '../components/OffersStatus'
 import { useOffers } from '../utils/useOffers'
 import { gsap } from 'gsap'
 import { ScrollTrigger } from 'gsap/ScrollTrigger'
 import { usePhoto } from '../sitePhotos'
+import SiteMedia from '../components/SiteMedia'
 
 gsap.registerPlugin(ScrollTrigger)
 
@@ -42,7 +42,7 @@ const CATEGORIES = [
   { id: 'optics', label: 'Photo & Optics' },
 ]
 
-// Matériel à louer (prix par jour) : dans la base, géré depuis /admin/offers/gear
+// Matériel à louer : dans la base, géré depuis /admin/offers/gear
 
 const ARCHES = [
   { id: 'water', label: 'Water', image: Ramena },
@@ -52,9 +52,9 @@ const ARCHES = [
 ]
 
 const PICKUPS = [
-  { id: 1, title: 'Pick Up At Our Office', text: 'Collect and return your gear at our Antananarivo office, open every day.', price: 'Free', icon: 'pin' },
-  { id: 2, title: 'Hotel Delivery', text: 'We bring the gear to your hotel and collect it at the end of your stay.', price: 'From €5', icon: 'truck' },
-  { id: 3, title: 'Airport Handover', text: 'Meet us at arrivals with your gear ready. Return it before you fly.', price: 'From €10', icon: 'plane' },
+  { id: 1, title: 'Pick Up At Our Office', text: 'Collect and return your gear at our Antananarivo office, open every day.', icon: 'pin' },
+  { id: 2, title: 'Hotel Delivery', text: 'We bring the gear to your hotel and collect it at the end of your stay.', icon: 'truck' },
+  { id: 3, title: 'Airport Handover', text: 'Meet us at arrivals with your gear ready. Return it before you fly.', icon: 'plane' },
 ]
 
 
@@ -76,30 +76,6 @@ const pickupIcons = {
 }
 
 /* -------------------------- Composants --------------------------- */
-
-// Prix qui s'anime doucement quand sa valeur change (GSAP), en euros dans la langue du site
-function AnimatedPrice({ value, lang }) {
-  const ref = useRef(null)
-  const shown = useRef(value)
-
-  useEffect(() => {
-    const el = ref.current
-    if (!el) return
-    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
-      el.textContent = formatPrice(value, lang)
-      shown.current = value
-      return
-    }
-    const counter = { v: shown.current }
-    const tween = gsap.to(counter, {
-      v: value, duration: 0.5, ease: 'power2.out',
-      onUpdate: () => { shown.current = counter.v; el.textContent = formatPrice(Math.round(counter.v), lang) },
-    })
-    return () => tween.kill()
-  }, [value, lang])
-
-  return <span ref={ref}>{formatPrice(value, lang)}</span>
-}
 
 // Hero : titre + arches cliquables (filtrent le catalogue)
 function Hero({ counts, onPick }) {
@@ -147,7 +123,6 @@ function Hero({ counts, onPick }) {
 
 function GearCard({ item, qty, onChange }) {
   const t = useT('equipment')
-  const { lang } = useLanguage()
   const label = localize(CATEGORIES, t('categories')).find((c) => c.id === item.category)?.label
   const round = "w-9 h-9 flex items-center justify-center rounded-full transition active:scale-95"
 
@@ -164,9 +139,7 @@ function GearCard({ item, qty, onChange }) {
           {item.specs.map((s) => <li key={s} className="rounded-full bg-[#D5E8E2] px-3 py-1 text-xs text-slate-700">{s}</li>)}
         </ul>
 
-        <div className="mt-auto pt-5 flex items-center justify-between gap-3">
-          <p className="text-sm text-slate-600"><Trans text={t('perDay')} values={{ price: <span className="text-xl md:text-2xl font-medium text-slate-900">{formatPrice(item.price, lang)}</span> }} /></p>
-
+        <div className="mt-auto pt-5 flex items-center justify-end gap-3">
           {qty === 0 ? (
             <button type="button" onClick={() => onChange(item.id, 1)} className={`inline-flex items-center gap-1.5 bg-[#084838] hover:bg-[#0a5c47] text-white text-sm font-medium px-4 py-2 rounded-full active:scale-95 transition`}>
               <PlusIcon /> {t('add')}
@@ -185,13 +158,12 @@ function GearCard({ item, qty, onChange }) {
 }
 
 // Offre de la base -> forme utilisée par les cartes
-const toGear = (o) => ({ id: o.id, category: o.category, name: o.title, image: o.image, price: o.price, specs: o.specs, text: o.text })
+const toGear = (o) => ({ id: o.id, category: o.category, name: o.title, image: o.image, specs: o.specs, text: o.text })
 
-// Catalogue + liste de location (estimation du prix)
+// Catalogue + liste de location
 function Catalog({ category, setCategory, gear, status }) {
   const t = useT('equipment')
   const tt = useT('trip')
-  const { lang } = useLanguage()
   const categories = localize(CATEGORIES, t('categories'))
   const [cart, setCart] = useState({})   // id -> quantité
   const [days, setDays] = useState(3)
@@ -217,13 +189,9 @@ function Catalog({ category, setCategory, gear, status }) {
     })
 
   const lines = gear.filter((g) => cart[g.id])
-  const perDay = lines.reduce((sum, g) => sum + g.price * cart[g.id], 0)
-  const subtotal = perDay * days
-  const discount = days >= 7 ? Math.round(subtotal * 0.1) : 0
-  const total = subtotal - discount
   const itemCount = lines.reduce((sum, g) => sum + cart[g.id], 0)
 
-  // La liste entière devient un élément de « Mon voyage » (prix total, remise comprise)
+  // La liste entière devient un élément de « Mon voyage », sur devis
   const { add } = useTrip()
   const rental = {
     kind: 'gear',
@@ -231,11 +199,11 @@ function Catalog({ category, setCategory, gear, status }) {
     title: t('tripTitle'),
     link: '/equipment-rentals',
     details: t('tripDetails', { items: lines.map((g) => `${cart[g.id]} × ${g.name}`).join(', '), days: days === 1 ? t('dayOne') : t('days', { count: days }) }),
-    price: total,
+    price: null,
     unit: 'fixed',
   }
   const { saved } = useTripItem(rental)
-  const upToDate = saved && saved.details === rental.details && saved.price === rental.price
+  const upToDate = saved && saved.details === rental.details
 
   const tab = (active) =>
     `rounded-full px-5 py-2 text-sm md:text-base font-medium transition ${active ? 'bg-[#084838] text-white' : 'bg-white text-slate-700 hover:bg-white/70'}`
@@ -285,27 +253,10 @@ function Catalog({ category, setCategory, gear, status }) {
           ) : (
             <ul className="mt-5 flex flex-col divide-y divide-white/15">
               {lines.map((g) => (
-                <li key={g.id} className="flex items-center justify-between gap-3 py-3 text-sm md:text-base">
-                  <span>{cart[g.id]} × {g.name}</span>
-                  <span className="tabular-nums text-white/85">{formatPrice(g.price * cart[g.id] * days, lang)}</span>
-                </li>
+                <li key={g.id} className="py-3 text-sm md:text-base">{cart[g.id]} × {g.name}</li>
               ))}
             </ul>
           )}
-
-          {discount > 0 && (
-            <p className="mt-2 flex items-center justify-between text-sm text-[#E6C58A]">
-              <span>{t('discount')}</span><span className="tabular-nums">−{formatPrice(discount, lang)}</span>
-            </p>
-          )}
-
-          <div className="mt-5 pt-5 border-t border-white/25 flex items-end justify-between gap-3">
-            <div>
-              <p className="text-sm text-white/70">{t('total')}</p>
-              <p className="text-4xl md:text-5xl font-medium leading-none"><AnimatedPrice value={total} lang={lang} /></p>
-            </div>
-            <p className="text-xs text-white/60 text-right">{t('perDay', { price: formatPrice(perDay, lang) })}</p>
-          </div>
 
           {upToDate ? (
             <Link to="/my-trip" className={`mt-6 block text-center bg-white text-[#084838] hover:bg-white/90 ${BUTTON}`}>
@@ -343,7 +294,7 @@ function Included() {
   )
 }
 
-// Retrait et retour : liste en lignes avec prix
+// Retrait et retour : liste en lignes
 function Pickup() {
   const t = useT('equipment')
   const pickups = localize(PICKUPS, t('pickups'))
@@ -362,7 +313,6 @@ function Pickup() {
               <h3 className="text-base md:text-2xl font-medium text-forest">{p.title}</h3>
               <p className="mt-1 text-sm md:text-base text-slate-600 leading-relaxed">{p.text}</p>
             </div>
-            <span className="shrink-0 rounded-full border border-[#084838] px-3 py-1.5 text-sm font-medium text-[#084838]">{p.price}</span>
           </li>
         ))}
       </ul>
@@ -403,7 +353,6 @@ function Faq() {
 
 // CTA : bannière image avec petit formulaire "il vous manque quelque chose ?"
 function Cta() {
-  const photo = usePhoto()
   // Connecté : nom et email pré-remplis (la clé recrée le champ quand la session est connue)
   const { user } = useAuth()
   const t = useT('equipment')
@@ -428,7 +377,7 @@ function Cta() {
 
   return (
     <div className={`${SECTION_GAP} relative overflow-hidden rounded-3xl bg-[#084838] text-white`}>
-      <img src={photo('gear.cta')} alt="" className="absolute inset-0 w-full h-full object-cover" />
+      <SiteMedia slot="gear.cta" alt="" className="absolute inset-0 w-full h-full object-cover" />
       <div className="absolute inset-0 bg-[#084838]/80" />
 
       <div className="relative px-6 py-14 md:px-12 md:py-24 text-center">
