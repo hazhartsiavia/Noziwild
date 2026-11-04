@@ -86,33 +86,6 @@
       "text": "Ein Tipp fürs Abendessen, ein Foto am schönsten Ort und ein Plan für morgen."
     }
   ],
-  "testimonials": [
-    {
-      "text": "Unser Guide hat die ganze Reise geprägt. Er kannte jeden Pfad, jede Familie und jede Geschichte. Allein hätten wir nicht die Hälfte gefunden.",
-      "origin": "Reisende aus Lyon",
-      "trip": "Fahrer-Guide · 8 Tage"
-    },
-    {
-      "text": "Lina hat uns eine Seite der Insel gezeigt, die wir nie erwartet hätten. Das Essen, die Menschen, die kleinen Werkstätten. Wirklich unvergesslich.",
-      "origin": "Reisende aus Mailand",
-      "trip": "Kulturführer · 5 Tage"
-    },
-    {
-      "text": "Der Trek war anspruchsvoll, aber perfekt dosiert. Wir haben uns immer sicher gefühlt, und die Aussicht war jeden Schritt wert.",
-      "origin": "Reisender aus München",
-      "trip": "Trekkingführer · 3 Tage"
-    },
-    {
-      "text": "Eine einzige Ansprechperson für alles – das hat unsere Familienreise völlig stressfrei gemacht. Die Kinder reden immer noch von ihrem Guide.",
-      "origin": "Reisende aus Montreal",
-      "trip": "Reisebegleiter · 10 Tage"
-    },
-    {
-      "text": "Dank Hery haben wir schon am ersten Morgen Lemuren gesehen. Er wusste genau, wohin und wann. Großartig.",
-      "origin": "Reisende aus Madrid",
-      "trip": "Naturführer · 4 Tage"
-    }
-  ],
   "faqs": [
     {
       "q": "Brauche ich für die ganze Reise einen Guide?",
@@ -181,13 +154,6 @@
   "stepOf": "Schritt {n} von {total} · {time}",
   "again": "Von vorn beginnen",
   "nextStep": "Nächster Schritt",
-  "testimonialsLabel": "Erfahrungsberichte",
-  "testimonialsTitle": "Was Reisende über uns sagen",
-  "average": "Durchschnittliche Bewertung von über 300 Reisenden",
-  "outOf5": "{rating} von 5",
-  "show": "Erfahrungsbericht {n} anzeigen",
-  "previousTestimonial": "Vorheriger Erfahrungsbericht",
-  "nextTestimonial": "Nächster Erfahrungsbericht",
   "faqTitle": "Häufige Fragen",
   "faqText": "Keine Antwort gefunden? Unser Team antwortet innerhalb weniger Stunden.",
   "connected": "Bleiben Sie in Kontakt",

@@ -1,19 +1,16 @@
-import React, { useEffect, useLayoutEffect, useRef, useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import Navbar from '../components/Navbar'
 import Footer from '../components/Footer'
+import { CARD, CARD_BODY, CARD_IMG, CARD_MEDIA, CARD_TITLE, CardMeta } from '../components/Card'
+import PageHero from '../components/PageHero'
 import OffersStatus from '../components/OffersStatus'
-import { gsap } from 'gsap'
-import { ScrollTrigger } from 'gsap/ScrollTrigger'
 import { assetUrl, fetchPosts } from '../api'
 import { useLanguage, useT } from '../i18n/LanguageContext'
 import { formatDate } from '../utils/format'
 import { A } from '../i18n/router'
-import SiteMedia from '../components/SiteMedia'
-
-gsap.registerPlugin(ScrollTrigger)
 
 const SECTION_WIDTH = 'w-[90vw] lg:max-w-[95vw]'
-const SECTION_TITLE = 'text-3xl sm:text-4xl md:text-5xl lg:text-[52px] font-medium text-forest leading-[1.15] tracking-tight'
+const SECTION_TITLE = 'text-[clamp(2rem,4.4vw,4rem)] font-bold text-forest leading-[1.08] tracking-tight'
 const META_TEXT = 'text-xs sm:text-sm'
 const PAGE_TITLE = 'text-5xl sm:text-6xl md:text-7xl lg:text-[80px] font-bold uppercase leading-none tracking-tight'
 const BADGE = 'inline-block bg-[#C49849] text-white text-xs sm:text-sm font-medium px-3 py-1.5 rounded-sm'
@@ -39,17 +36,7 @@ function BlogHero() {
   return (
     <>
       <Navbar />
-      <section className={`${SECTION_WIDTH} relative flex items-center overflow-hidden rounded-3xl bg-[#084838] text-white min-h-[100px] md:min-h-[360px]`}>
-        <SiteMedia slot="blog.hero" alt="" className="absolute inset-0 w-full h-full object-cover" />
-        <div className="absolute inset-0 bg-slate-950/60" />
-        <div className="relative w-full max-w-5xl mx-auto px-6 md:px-10 py-16">
-          <h1 className={PAGE_TITLE}>{t('title')}</h1>
-          <hr className="my-6 md:my-8 border-white/30" />
-          <nav aria-label="Breadcrumb" className="text-sm md:text-base font-medium">
-            <A href="/" className="hover:underline underline-offset-4">{t('home')}</A> <span aria-hidden="true">/</span> {t('crumb')}
-          </nav>
-        </div>
-      </section>
+      <PageHero slot="blog.hero" title={t('title')} crumb={t('crumb')} />
     </>
   )
 }
@@ -83,17 +70,13 @@ export function PostCard({ post }) {
   const t = useT('blog')
   const { lang } = useLanguage()
   return (
-    <A href={`/blog/${post.slug}`} className="group flex flex-col rounded-xl bg-white p-3 text-slate-800">
-      <div className="aspect-[4/3] overflow-hidden rounded-md">
-        <img src={post.image} alt={post.title} className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" />
+    <A href={`/blog/${post.slug}`} className={CARD}>
+      <div className={CARD_MEDIA}>
+        <img src={post.image} alt={post.title} className={CARD_IMG} />
       </div>
-      <div className="px-3 pt-6 pb-6">
-        <p className={`flex items-center gap-3 ${META_TEXT} text-slate-600`}>
-          <span>{formatDate(post.date, lang)}</span>
-          <span className="w-px h-4 bg-slate-700" />
-          <span>{t('readTime', { count: post.minutes })}</span>
-        </p>
-        <h3 className="mt-4 text-xl md:text-2xl leading-snug group-hover:underline">{post.title}</h3>
+      <div className={CARD_BODY}>
+        <CardMeta items={[formatDate(post.date, lang), t('readTime', { count: post.minutes })]} />
+        <h3 className={`${CARD_TITLE} group-hover:underline`}>{post.title}</h3>
       </div>
     </A>
   )
@@ -101,52 +84,15 @@ export function PostCard({ post }) {
 
 function Blog() {
   const t = useT('blog')
-  const mainRef = useRef(null)
-  const bgRef = useRef(null)
   const { posts, status } = usePosts()
   const featured = posts.filter((p) => p.isFeatured).slice(0, 3)
   // Sans article à la une, tout va dans la grille
   const grid = featured.length ? posts.filter((p) => !featured.includes(p)) : posts
 
-  useLayoutEffect(() => {
-    const ctx = gsap.context(() => {
-      // Fond initial : caché au-dessus de la section
-      gsap.set(bgRef.current, {
-        yPercent: -100,
-      })
-
-      // Animation du fond au scroll
-      gsap.to(bgRef.current, {
-        yPercent: 0,
-        duration: 8.2,
-        ease: 'power3.inOut',
-        scrollTrigger: {
-          trigger: mainRef.current,
-          start: 'top 75%',
-          toggleActions: 'play none none none',
-          once: true,
-        },
-      })
-    }, mainRef)
-
-    return () => ctx.revert()
-  }, [])
-
   return (
     <>
-      <main
-        ref={mainRef}
-        className="relative overflow-hidden w-full bg-white pt-0 pb-16 md:pb-24 flex flex-col items-center"
-      >
-        {/* Fond animé au scroll */}
-        <div
-          ref={bgRef}
-          aria-hidden="true"
-          className="absolute inset-0 bg-[#D5E8E2] pointer-events-none"
-        />
-
-        {/* Contenu au-dessus du fond */}
-        <div className="relative z-10 w-full flex flex-col items-center">
+      <main className="w-full bg-[#D5E8E2] pt-0 pb-16 md:pb-24 flex flex-col items-center">
+        <div className="w-full flex flex-col items-center">
           <BlogHero />
 
           {/* Journal */}

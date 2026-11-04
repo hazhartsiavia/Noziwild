@@ -9,21 +9,22 @@ import Deux from '../assets/images/2.jpg'
 import Tana from '../assets/images/Tana.jpg'
 import Navbar from '../components/Navbar'
 import Footer from '../components/Footer'
+import PageHero from '../components/PageHero'
+import PageCta, { PAGE_CTA_GOLD, PAGE_CTA_GHOST } from '../components/PageCta'
 import OffersStatus from '../components/OffersStatus'
 import AddToTrip from '../components/AddToTrip'
 import { useT } from '../i18n/LanguageContext'
 import { useOffers } from '../utils/useOffers'
 import { usePhoto } from '../sitePhotos'
 import { A } from '../i18n/router'
-import SiteMedia from '../components/SiteMedia'
 
 gsap.registerPlugin(ScrollTrigger)
 
 const W = 'w-[90vw] lg:max-w-[95vw]'
 const GOLD = 'bg-[#C49849] hover:bg-[#a9813a]'
-const DARK = 'bg-[#0F172B]'
+const DARK = 'bg-[#074636]'
 const BTN = 'inline-flex items-center justify-center text-sm font-medium px-6 py-3 rounded-full active:scale-95 transition'
-const H2 = 'text-3xl sm:text-4xl md:text-5xl lg:text-[56px] font-medium leading-[1.1] tracking-tight'
+const H2 = 'text-[clamp(2rem,4.4vw,4rem)] font-bold leading-[1.08] tracking-tight'
 
 /* ---------------------------- Données ---------------------------- */
 // Les formules (onglet, textes, points, prix, photo) sont en base : admin > Offers > Long stays.
@@ -87,54 +88,19 @@ function Chars({ lines }) {
 /* -------------------------- Composants --------------------------- */
 
 function Hero() {
-  const root = useRef(null)
   const t = useT('longstay')
-
-  // Hero : la section s'ouvre en iris depuis le bas, le titre jaillit lettre par lettre,
-  // la carte vitrée glisse de la droite
-  useGsap(root, () => {
-    const tl = gsap.timeline({ defaults: { ease: 'power3.out' } })
-    tl.fromTo(root.current, { clipPath: 'circle(0% at 50% 100%)', transition: 'none' }, { clipPath: 'circle(150% at 50% 100%)', duration: 1.6, ease: 'expo.inOut', clearProps: 'clipPath,transition' })
-      .fromTo('.hero-bg', { scale: 1.25, transition: 'none' }, { scale: 1, duration: 2.4, ease: 'power2.out', clearProps: 'all' }, 0)
-      .fromTo('.hero-eyebrow', { y: 16, opacity: 0 }, { y: 0, opacity: 1, duration: 0.7, clearProps: 'all' }, 0.9)
-      .fromTo('.hero-char', { y: 50, opacity: 0, rotate: 6 }, { y: 0, opacity: 1, rotate: 0, duration: 0.9, ease: 'back.out(1.7)', stagger: 0.03, clearProps: 'all' }, 1)
-      .fromTo('.hero-btn', { scale: 0.6, opacity: 0, transition: 'none' }, { scale: 1, opacity: 1, duration: 0.7, stagger: 0.12, ease: 'back.out(2.2)', clearProps: 'all' }, 1.8)
-      .fromTo('.hero-glass', { x: 80, opacity: 0, filter: 'blur(10px)' }, { x: 0, opacity: 1, filter: 'blur(0px)', duration: 1.1, clearProps: 'all' }, 1.4)
-      .fromTo('.hero-fact', { y: 20, opacity: 0 }, { y: 0, opacity: 1, duration: 0.6, stagger: 0.12, clearProps: 'all' }, 1.9)
-  })
-
   return (
     <>
       <Navbar />
-      <section ref={root} className={`${W} relative overflow-hidden rounded-[2rem] md:rounded-[3rem] ${DARK} text-white min-h-[560px] md:min-h-[86vh] flex items-end`}>
-        <SiteMedia slot="long.hero" alt={t('heroAlt')} className="hero-bg absolute inset-0 w-full h-full object-cover" />
-        <div className="absolute inset-0 bg-gradient-to-t from-slate-950/85 via-slate-950/30 to-slate-950/10" />
-
-        <div className="relative w-full grid grid-cols-1 lg:grid-cols-[1.5fr_1fr] gap-10 items-end p-6 sm:p-10 md:p-16">
-          <div>
-            <p className="hero-eyebrow text-sm md:text-base text-white/80 mb-4">{t('eyebrow')}</p>
-            <h1 aria-label={t('titleLabel')} className="text-5xl sm:text-6xl md:text-7xl xl:text-[96px] font-semibold leading-[0.95] tracking-tight">
-              <Chars lines={t('titleLines')} />
-            </h1>
-            <div className="mt-8 flex flex-wrap gap-3">
-              <A href="/contact" className={`hero-btn ${BTN} ${GOLD} text-white`}>{t('planButton')}</A>
-              <A href="#formats" className={`hero-btn ${BTN} border border-white/50 hover:bg-white/10 text-white`}>{t('formatsButton')}</A>
-            </div>
-          </div>
-
-          {/* Carte vitrée */}
-          <div className="hero-glass rounded-3xl border border-white/25 bg-white/10 backdrop-blur-md p-6 md:p-8">
-            <ul className="grid grid-cols-3 gap-4">
-              {t('facts').map((f) => (
-                <li key={f.label} className="hero-fact">
-                  <p className="text-2xl md:text-4xl font-semibold">{f.value}</p>
-                  <p className="mt-1 text-xs md:text-sm text-white/80 leading-snug">{f.label}</p>
-                </li>
-              ))}
-            </ul>
-          </div>
-        </div>
-      </section>
+      <PageHero slot="long.hero" alt={t('heroAlt')} title={t('titleLabel')} crumb={t('eyebrow')} moreHref="#formats" moreLabel={t('formatsButton')} />
+      <ul className={`${W} mt-4 md:mt-5 grid grid-cols-3 gap-3 md:gap-5`}>
+        {t('facts').map((f) => (
+          <li key={f.label} className="rounded-2xl bg-white p-4 md:p-6">
+            <p className="font-display text-2xl md:text-4xl font-bold text-forest">{f.value}</p>
+            <p className="mt-1 text-xs md:text-sm text-slate-600 leading-snug">{f.label}</p>
+          </li>
+        ))}
+      </ul>
     </>
   )
 }
@@ -213,7 +179,7 @@ function Formats() {
   }, [active])
 
   return (
-    <section ref={root} id="formats" className={`${W} mt-20 md:mt-32 rounded-[2rem] md:rounded-[3rem] ${DARK} text-white p-5 sm:p-8 md:p-14`}>
+    <section ref={root} id="formats" className={`${W} mt-20 md:mt-32 rounded-[1.5rem] md:rounded-[2rem] ${DARK} text-white p-5 sm:p-8 md:p-14`}>
       <h2 className={`fmt-title ${H2} max-w-3xl`}>{t('formatsTitle')}</h2>
 
       {!f && <OffersStatus status={status} empty dark className="mt-8" />}
@@ -241,7 +207,7 @@ function Formats() {
               <span className="fmt-chip absolute left-4 top-4 rounded-full bg-white/90 text-slate-900 text-sm font-medium px-4 py-1.5">{f.tab}</span>
             </div>
             <div className="fmt-body">
-              <h3 className="text-2xl md:text-4xl font-medium leading-tight">{f.title}</h3>
+              <h3 className="text-2xl md:text-4xl font-bold leading-tight">{f.title}</h3>
               <p className="mt-4 text-sm md:text-base text-white/75 leading-relaxed">{f.text}</p>
               <ul className="mt-6 flex flex-col gap-3">
                 {f.points.map((p) => (
@@ -290,10 +256,10 @@ function Weeks() {
           {weeks.map((week, i) => ({ ...week, ...t('weeks')[i], image: photo(`long.week.${i + 1}`) })).map((w) => (
             <li key={w.week} className="wk-card snap-start relative shrink-0 w-[78vw] sm:w-[360px] md:w-[420px] aspect-[3/4] overflow-hidden rounded-[2rem] text-white">
               <img src={w.image} alt={w.place} className="wk-img absolute inset-0 w-full h-full object-cover" />
-              <div className="absolute inset-0 bg-gradient-to-t from-slate-950/85 via-slate-950/10 to-transparent" />
+              <div className="absolute inset-0 bg-gradient-to-t from-[#072a1f]/85 via-[#072a1f]/10 to-transparent" />
               <span className="wk-badge absolute left-5 top-5 bg-[#C49849] text-xs sm:text-sm font-medium px-3 py-1.5 rounded-sm">{w.week}</span>
               <div className="wk-text absolute inset-x-0 bottom-0 p-6">
-                <h3 className="text-2xl md:text-3xl font-medium">{w.place}</h3>
+                <h3 className="text-2xl md:text-3xl font-bold">{w.place}</h3>
                 <p className="mt-2 text-sm text-white/80 leading-snug">{w.text}</p>
               </div>
             </li>
@@ -326,9 +292,9 @@ function Services() {
         {services.map((service, i) => ({ ...service, ...t('services')[i], image: photo(`long.service.${i + 1}`) })).map((s) => (
           <li key={s.title} className={`svc-tile ${s.span} relative overflow-hidden rounded-[1.5rem] md:rounded-[2rem] text-white`}>
             <img src={s.image} alt="" className={`svc-img absolute inset-0 w-full h-full object-cover ${s.pos}`} />
-            <div className="absolute inset-0 bg-gradient-to-t from-slate-950/80 via-slate-950/20 to-transparent" />
+            <div className="absolute inset-0 bg-gradient-to-t from-[#072a1f]/80 via-[#072a1f]/20 to-transparent" />
             <div className="svc-text absolute inset-x-0 bottom-0 p-4 md:p-6">
-              <h3 className="text-lg md:text-2xl font-medium">{s.title}</h3>
+              <h3 className="text-lg md:text-2xl font-bold">{s.title}</h3>
               <p className="mt-1 text-xs md:text-sm text-white/80 leading-snug">{s.text}</p>
             </div>
           </li>
@@ -338,66 +304,14 @@ function Services() {
   )
 }
 
-function Quote() {
-  const root = useRef(null)
-  const t = useT('longstay')
-  const quote = t('quote')
-  const words = quote.split(' ')
-
-  // La photo s'ouvre de gauche à droite ; la citation s'éclaire mot après mot,
-  // au rythme du scroll
-  useGsap(root, () => {
-    reveal('.q-img', { clipPath: 'inset(0% 100% 0% 0%)' }, { clipPath: 'inset(0% 0% 0% 0%)', duration: 1.3, ease: 'expo.out', scrollTrigger: { trigger: root.current, start: 'top 80%', once: true } })
-
-    gsap.fromTo(
-      '.q-word',
-      { opacity: 0.15 },
-      { opacity: 1, ease: 'none', stagger: 0.1, scrollTrigger: { trigger: '.q-text', start: 'top 80%', end: 'bottom 50%', scrub: true } }
-    )
-    reveal('.q-cap', { y: 16, opacity: 0 }, { y: 0, opacity: 1, duration: 0.8, ease: 'power2.out', scrollTrigger: { trigger: '.q-cap', start: 'top 92%', once: true } })
-  })
-
-  return (
-    <section ref={root} className={`${W} mt-20 md:mt-32 grid grid-cols-1 md:grid-cols-[1fr_1.4fr] overflow-hidden rounded-[2rem] md:rounded-[3rem] bg-white`}>
-      <SiteMedia slot="long.quote" alt="" className="q-img w-full h-64 md:h-full object-cover" />
-      <figure className="p-8 md:p-16 flex flex-col justify-center">
-        <blockquote aria-label={quote} className="q-text text-2xl md:text-4xl font-medium leading-snug text-slate-900">
-          {words.map((w, i) => (
-            <span key={i} aria-hidden="true" className="q-word">{w}{i < words.length - 1 ? ' ' : ''}</span>
-          ))}
-        </blockquote>
-        <figcaption className="q-cap mt-6 text-sm md:text-base text-slate-600">{t('quoteAuthor')}</figcaption>
-      </figure>
-    </section>
-  )
-}
 
 function FinalCta() {
-  const root = useRef(null)
   const t = useT('longstay')
-
-  // La carte se pose en grossissant, le fond passe de flou à net, texte puis boutons arrivent
-  useGsap(root, () => {
-    const tl = gsap.timeline({ scrollTrigger: { trigger: root.current, start: 'top 82%', once: true } })
-    tl.fromTo(root.current, { y: 80, opacity: 0, scale: 0.88, transition: 'none' }, { y: 0, opacity: 1, scale: 1, duration: 1.1, ease: 'power3.out', clearProps: 'all' })
-      .fromTo('.fin-bg', { filter: 'blur(14px)', scale: 1.15, transition: 'none' }, { filter: 'blur(0px)', scale: 1, duration: 1.6, ease: 'power2.out', clearProps: 'all' }, 0)
-      .fromTo('.fin-text > h2, .fin-text > p', { x: -60, opacity: 0, transition: 'none' }, { x: 0, opacity: 1, duration: 0.8, stagger: 0.15, ease: 'power3.out', clearProps: 'all' }, 0.4)
-      .fromTo('.fin-btn', { scale: 0.6, opacity: 0, transition: 'none' }, { scale: 1, opacity: 1, duration: 0.7, stagger: 0.12, ease: 'back.out(2.2)', clearProps: 'all' }, 0.9)
-  })
-
   return (
-    <section ref={root} className={`${W} mt-20 md:mt-32 relative overflow-hidden rounded-[2rem] md:rounded-[3rem] text-white min-h-[420px] flex items-center`}>
-      <SiteMedia slot="long.cta" alt="" className="fin-bg absolute inset-0 w-full h-full object-cover" />
-      <div className="absolute inset-0 bg-slate-950/65" />
-      <div className="fin-text relative p-8 md:p-16 max-w-3xl">
-        <h2 className={H2}>{t('finalTitle')}</h2>
-        <p className="mt-4 text-sm md:text-lg text-white/85">{t('finalText')}</p>
-        <div className="mt-8 flex flex-wrap gap-3">
-          <A href="/contact" className={`fin-btn ${BTN} ${GOLD} text-white`}>{t('planButton')}</A>
-          <A href="/circuits" className={`fin-btn ${BTN} border border-white/50 hover:bg-white/10`}>{t('browse')}</A>
-        </div>
-      </div>
-    </section>
+    <PageCta slot="long.cta" title={t('finalTitle')} text={t('finalText')}>
+      <A href="/contact" className={PAGE_CTA_GOLD}>{t('planButton')}</A>
+      <A href="/circuits" className={PAGE_CTA_GHOST}>{t('browse')}</A>
+    </PageCta>
   )
 }
 
@@ -415,13 +329,12 @@ function LongStay() {
 
   return (
     <>
-      <main className="w-full bg-[#D5E8E2] pb-16 md:pb-24 flex flex-col items-center overflow-hidden">
+      <main className="w-full bg-[#D5E8E2] flex flex-col items-center overflow-hidden">
         <Hero />
         <Manifesto />
         <Formats />
         <Weeks />
         <Services />
-        <Quote />
         <FinalCta />
       </main>
       <Footer />

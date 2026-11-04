@@ -1,6 +1,9 @@
 // /blog/:slug : un article du journal, géré depuis /admin/blog.
 // Corps en blocs : intertitre, paragraphe, liste (mot-clé en gras + texte), photo, bandeau d'offre.
-import React, { useEffect, useRef, useState } from 'react'
+import React, { useEffect, useLayoutEffect, useRef, useState } from 'react'
+import gsap from 'gsap'
+import { ScrollTrigger } from 'gsap/ScrollTrigger'
+import { ArrowRight, ChevronRight } from 'lucide-react'
 import { useParams, A } from '../i18n/router'
 import Navbar from '../components/Navbar'
 import Footer from '../components/Footer'
@@ -11,9 +14,13 @@ import { formatDate } from '../utils/format'
 import { useScrollReveal } from '../utils/useScrollReveal'
 import { PostCard } from './Blog'
 
+gsap.registerPlugin(ScrollTrigger)
+
 const W = 'w-[90vw] lg:max-w-[95vw]'
-const TEXT = 'mx-auto w-full max-w-3xl'
+const TEXT = 'w-full max-w-4xl'
 const BTN = 'inline-flex items-center justify-center text-sm md:text-base font-medium px-6 py-3 rounded-full active:scale-95 transition'
+// Photo plus haute que son cadre : c'est cette marge qui permet le mouvement au défilement
+const PARALLAX_IMG = 'absolute inset-x-0 -top-[10%] h-[120%] w-full object-cover'
 
 function usePost(slug) {
   const { lang } = useLanguage()
@@ -39,29 +46,57 @@ function usePost(slug) {
   return state
 }
 
-// Bandeau d'offre : photo, grand titre, sous-titre et bouton (comme « Explore your journey »)
+// En-tête en cascade ; couverture et bandeaux s'ouvrent en fenêtre, leur photo glisse au défilement
+function usePostMotion(scope, deps) {
+  useLayoutEffect(() => {
+    if (!scope.current) return
+    const mm = gsap.matchMedia()
+    mm.add('(prefers-reduced-motion: no-preference)', () => {
+      gsap.from('.post-head > *', { y: 28, opacity: 0, duration: 0.8, stagger: 0.08, ease: 'power3.out', clearProps: 'all' })
+
+      gsap.utils.toArray('.post-frame').forEach((frame) => {
+        const r = getComputedStyle(frame).borderTopLeftRadius
+        gsap.fromTo(frame,
+          { clipPath: `inset(8% 4% 0% 4% round ${r})` },
+          { clipPath: `inset(0% 0% 0% 0% round ${r})`, duration: 1.3, ease: 'expo.out', clearProps: 'clipPath', scrollTrigger: { trigger: frame, start: 'top 88%', once: true } })
+        gsap.fromTo(frame.querySelector('img'),
+          { yPercent: -8 },
+          { yPercent: 8, ease: 'none', scrollTrigger: { trigger: frame, start: 'top bottom', end: 'bottom top', scrub: 0.6 } })
+      })
+
+      gsap.utils.toArray('.post-cta').forEach((cta) => {
+        const trigger = { trigger: cta, start: 'top 75%', once: true }
+        gsap.from(cta.querySelectorAll('.cta-in'), { y: 34, opacity: 0, duration: 0.8, stagger: 0.1, ease: 'power3.out', clearProps: 'all', scrollTrigger: trigger })
+        gsap.from(cta.querySelector('.cta-line'), { scaleX: 0, duration: 1, delay: 0.2, ease: 'power3.out', clearProps: 'transform', scrollTrigger: trigger })
+      })
+    }, scope.current)
+    return () => mm.revert()
+  }, deps) // eslint-disable-line react-hooks/exhaustive-deps
+}
+
+// Bandeau d'offre : photo, grand titre souligné et sous-titre à gauche, bouton en bas à droite
 function Cta({ block }) {
   const external = /^https?:/.test(block.link)
   return (
-    <section className="relative my-12 md:my-20 overflow-hidden rounded-[2rem] md:rounded-[2.5rem] bg-[#084838] text-white min-h-[340px] md:min-h-[440px] flex">
-      <img src={block.image} alt="" className="absolute inset-0 w-full h-full object-cover" />
-      <div className="absolute inset-0 bg-gradient-to-r from-slate-950/80 via-slate-950/40 to-slate-950/10" />
+    <section data-no-reveal className="post-frame post-cta relative my-12 md:my-16 overflow-hidden rounded-[1.5rem] md:rounded-[2rem] bg-[#074636] text-white min-h-[380px] md:min-h-[440px] flex">
+      <img src={block.image} alt="" className={PARALLAX_IMG} />
+      <div className="absolute inset-0 bg-gradient-to-t md:bg-gradient-to-r from-[#072a1f]/90 via-[#072a1f]/45 to-[#072a1f]/10" />
       <div className="relative w-full flex flex-col justify-between gap-10 p-6 sm:p-10 md:p-14">
-        {block.subtitle && <p className="max-w-md text-sm md:text-lg text-white/85">{block.subtitle}</p>}
-        <div className="flex flex-col md:flex-row md:items-end justify-between gap-6">
-          <div>
-            <h2 className="text-5xl sm:text-6xl md:text-8xl font-bold uppercase leading-[0.95] tracking-tight">{block.title}</h2>
-          </div>
-          {block.button && (
-            <A
-              href={block.link}
-              {...(external ? { target: '_blank', rel: 'noreferrer' } : {})}
-              className={`${BTN} self-start md:self-end bg-[#C49849] hover:bg-[#a9813a] text-white`}
-            >
-              {block.button}
-            </A>
-          )}
+        <div className="max-w-3xl">
+          <h2 className="cta-in text-[clamp(2.25rem,6vw,5.5rem)] font-bold uppercase leading-[0.98] tracking-tight break-words">{block.title}</h2>
+          <span aria-hidden="true" className="cta-line block mt-4 md:mt-5 h-0.5 w-40 md:w-64 origin-left bg-[#E6C58A]" />
+          {block.subtitle && <p className="cta-in mt-4 max-w-md text-sm md:text-lg text-white/90">{block.subtitle}</p>}
         </div>
+        {block.button && (
+          <A
+            href={block.link}
+            {...(external ? { target: '_blank', rel: 'noreferrer' } : {})}
+            className={`cta-in ${BTN} group self-start md:self-end gap-2 whitespace-nowrap bg-[#C49849] hover:bg-[#a9813a] text-white`}
+          >
+            {block.button}
+            <ArrowRight className="w-4 h-4 transition-transform group-hover:translate-x-1" aria-hidden="true" />
+          </A>
+        )}
       </div>
     </section>
   )
@@ -70,7 +105,7 @@ function Cta({ block }) {
 function Block({ block }) {
   const { lang } = useLanguage()
   if (block.type === 'heading') {
-    return <h2 className={`${TEXT} mt-12 md:mt-16 text-2xl sm:text-3xl md:text-4xl font-medium leading-tight tracking-tight text-forest`}>{block.text}</h2>
+    return <h2 className={`${TEXT} mt-12 md:mt-16 text-[clamp(1.6rem,2.6vw,2.25rem)] font-bold leading-tight tracking-tight text-forest`}>{block.text}</h2>
   }
   if (block.type === 'paragraph') {
     // Lignes vides : nouveaux paragraphes
@@ -84,7 +119,7 @@ function Block({ block }) {
         {block.items.map((item, i) => (
           <li key={i} className="flex gap-4 text-base md:text-lg leading-relaxed text-slate-700">
             <span aria-hidden="true" className="mt-2.5 h-2 w-2 shrink-0 rounded-full bg-[#C49849]" />
-            <span>{item.lead && <strong className="font-semibold text-slate-900">{item.lead}{lang === 'fr' ? ' : ' : ': '}</strong>}{item.text}</span>
+            <span>{item.lead && <strong className="font-semibold text-forest">{item.lead}{lang === 'fr' ? ' : ' : ': '}</strong>}{item.text}</span>
           </li>
         ))}
       </ul>
@@ -92,9 +127,9 @@ function Block({ block }) {
   }
   if (block.type === 'image') {
     return (
-      <figure className="mx-auto w-full max-w-5xl mt-10 md:mt-14">
+      <figure className="w-full mt-10 md:mt-14">
         <img src={block.image} alt={block.caption || ''} className="w-full max-h-[620px] object-cover rounded-[1.5rem] md:rounded-[2rem]" />
-        {block.caption && <figcaption className="mt-3 text-center text-sm text-slate-600">{block.caption}</figcaption>}
+        {block.caption && <figcaption className="mt-3 text-sm text-slate-600">{block.caption}</figcaption>}
       </figure>
     )
   }
@@ -121,6 +156,7 @@ function BlogPost() {
   const { post, related, status } = usePost(slug)
   const root = useRef(null)
   useScrollReveal(root, [slug, status])
+  usePostMotion(root, [slug, status])
 
   if (status === 'loading' || status === 'error') {
     return <Shell><OffersStatus status={status} className={`${W} mt-16`} /></Shell>
@@ -131,7 +167,7 @@ function BlogPost() {
         <section className={`${W} mt-16 rounded-3xl bg-white p-10 text-center`}>
           <h1 className="text-3xl md:text-5xl font-medium tracking-tight text-forest">{t('notFoundTitle')}</h1>
           <p className="mt-4 text-slate-600">{t('notFoundText')}</p>
-          <A href="/blog" className={`${BTN} mt-6 bg-[#084838] hover:bg-[#0a5c47] text-white`}>{t('allArticles')}</A>
+          <A href="/blog" className={`${BTN} mt-6 bg-[#074636] hover:bg-[#0a5c47] text-white`}>{t('allArticles')}</A>
         </section>
       </Shell>
     )
@@ -143,21 +179,26 @@ function BlogPost() {
         <Navbar />
 
         <article className={`${W} mt-6`}>
-          <nav aria-label="Breadcrumb" className="text-sm md:text-base text-slate-700">
-            <A href="/" className="hover:underline">{t('home')}</A> / <A href="/blog" className="hover:underline">{t('crumb')}</A> /{' '}
-            <span className="text-slate-500">{post.title}</span>
-          </nav>
-          <h1 className="mt-5 max-w-5xl text-4xl sm:text-5xl md:text-6xl xl:text-7xl font-semibold leading-[1.05] tracking-tight text-forest">{post.title}</h1>
-          <p className="mt-5 flex items-center gap-3 text-sm md:text-base text-slate-600">
-            <span>{formatDate(post.date, lang)}</span>
-            <span aria-hidden="true" className="h-1.5 w-1.5 rounded-full bg-[#C49849]" />
-            <span>{t('readTime', { count: post.minutes })}</span>
-          </p>
+          <header data-no-reveal className="post-head">
+            <nav aria-label="Breadcrumb" className="flex items-center gap-2 text-sm text-slate-700">
+              <A href="/" className="hover:underline underline-offset-4">{t('home')}</A>
+              <ChevronRight className="w-3.5 h-3.5 text-slate-500" aria-hidden="true" />
+              <A href="/blog" className="hover:underline underline-offset-4">{t('crumb')}</A>
+            </nav>
+            <h1 className="mt-5 max-w-5xl text-[clamp(2.25rem,4.4vw,4rem)] font-bold leading-[1.08] tracking-tight text-forest">{post.title}</h1>
+            <p className="mt-4 flex items-center gap-3 text-sm text-slate-600">
+              <span>{formatDate(post.date, lang)}</span>
+              <span aria-hidden="true" className="w-px h-4 bg-slate-500" />
+              <span>{t('readTime', { count: post.minutes })}</span>
+            </p>
+          </header>
 
-          <img src={post.image} alt="" className="mt-8 w-full h-64 sm:h-80 md:h-[520px] object-cover rounded-[1.5rem] md:rounded-[2rem]" />
+          <div data-no-reveal className="post-frame relative mt-8 h-64 sm:h-80 md:h-[min(68vh,620px)] overflow-hidden rounded-[1.5rem] md:rounded-[2rem] bg-[#074636]">
+            <img src={post.image} alt="" className={PARALLAX_IMG} />
+          </div>
 
-          <div className="mt-12 md:mt-16">
-            {post.excerpt && <p className={`${TEXT} text-xl md:text-2xl leading-relaxed text-slate-800`}>{post.excerpt}</p>}
+          <div className="mt-10 md:mt-14">
+            {post.excerpt && <p className={`${TEXT} font-display text-xl md:text-2xl font-medium leading-snug text-forest`}>{post.excerpt}</p>}
             {post.body.map((block, i) => <Block key={i} block={block} />)}
           </div>
         </article>
@@ -165,8 +206,8 @@ function BlogPost() {
         {related.length > 0 && (
           <section className={`${W} mt-20 md:mt-28`}>
             <div className="flex flex-wrap items-end justify-between gap-4">
-              <h2 className="text-3xl sm:text-4xl md:text-5xl font-medium leading-[1.1] tracking-tight text-forest">{t('related')}</h2>
-              <A href="/blog" className="text-sm md:text-base font-medium text-[#a9813a] hover:underline">{t('allArticles')}</A>
+              <h2 className="text-[clamp(2rem,4.4vw,4rem)] font-bold leading-[1.08] tracking-tight text-forest">{t('related')}</h2>
+              <A href="/blog" className="text-sm md:text-base font-medium text-forest underline-offset-4 hover:underline">{t('allArticles')}</A>
             </div>
             <div className="mt-8 md:mt-10 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-9">
               {related.map((p) => <PostCard key={p.slug} post={p} />)}

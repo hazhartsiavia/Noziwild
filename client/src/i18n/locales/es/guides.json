@@ -86,33 +86,6 @@
       "text": "Una recomendación para la cena, una foto en el mejor lugar y un plan para mañana."
     }
   ],
-  "testimonials": [
-    {
-      "text": "Nuestro guía hizo el viaje. Conocía cada sendero, cada familia y cada historia. Solos no habríamos descubierto ni la mitad.",
-      "origin": "Viajeros de Lyon",
-      "trip": "Conductor-guía · 8 días"
-    },
-    {
-      "text": "Lina nos enseñó una cara de la isla que no esperábamos. La comida, la gente, los pequeños talleres. Realmente inolvidable.",
-      "origin": "Viajera de Milán",
-      "trip": "Guía cultural · 5 días"
-    },
-    {
-      "text": "El trekking fue exigente pero perfectamente dosificado. Siempre nos sentimos seguros y las vistas merecieron cada paso.",
-      "origin": "Viajero de Múnich",
-      "trip": "Guía de trekking · 3 días"
-    },
-    {
-      "text": "Tener una sola persona a quien llamar para todo hizo que nuestro viaje en familia fuera tranquilo. Los niños todavía hablan de su guía.",
-      "origin": "Viajera de Montreal",
-      "trip": "Acompañante de viaje · 10 días"
-    },
-    {
-      "text": "Vimos lémures la primera mañana gracias a Hery. Sabía exactamente adónde ir y cuándo. Increíble.",
-      "origin": "Viajeros de Madrid",
-      "trip": "Guía de fauna · 4 días"
-    }
-  ],
   "faqs": [
     {
       "q": "¿Necesito un guía durante todo el viaje?",
@@ -181,13 +154,6 @@
   "stepOf": "Paso {n} de {total} · {time}",
   "again": "Empezar de nuevo",
   "nextStep": "Paso siguiente",
-  "testimonialsLabel": "Opiniones",
-  "testimonialsTitle": "Lo que los viajeros dicen de nosotros",
-  "average": "Valoración media de más de 300 viajeros",
-  "outOf5": "{rating} de 5",
-  "show": "Ver la opinión {n}",
-  "previousTestimonial": "Opinión anterior",
-  "nextTestimonial": "Opinión siguiente",
   "faqTitle": "Preguntas frecuentes",
   "faqText": "¿No encuentra su respuesta? Nuestro equipo responde en pocas horas.",
   "connected": "Sigamos en contacto",

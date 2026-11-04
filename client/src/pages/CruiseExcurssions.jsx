@@ -3,6 +3,9 @@ import Ramena from '../assets/images/Ramena.jpg'
 import NosyIranja from '../assets/images/NosyIranja.jpg'
 import Navbar from '../components/Navbar'
 import Footer from '../components/Footer'
+import { CARD, CARD_BADGE, CARD_BODY, CARD_FOOT, CARD_IMG, CARD_MEDIA, CARD_TEXT, CARD_TITLE } from '../components/Card'
+import PageHero from '../components/PageHero'
+import PageCta, { PAGE_CTA_GOLD, PAGE_CTA_GHOST } from '../components/PageCta'
 import OffersStatus from '../components/OffersStatus'
 import AddToTrip from '../components/AddToTrip'
 import { Trans, useLanguage, useT } from '../i18n/LanguageContext'
@@ -11,12 +14,11 @@ import { useOffers } from '../utils/useOffers'
 import { useScrollReveal } from '../utils/useScrollReveal'
 import { usePhoto } from '../sitePhotos'
 import { A } from '../i18n/router'
-import SiteMedia from '../components/SiteMedia'
 
 const W = 'w-[90vw] lg:max-w-[95vw]'
 const GOLD = 'bg-[#C49849] hover:bg-[#a9813a]'
 const BTN = 'inline-flex items-center justify-center text-sm md:text-base font-medium px-6 py-3 rounded-full active:scale-95 transition'
-const H2 = 'text-3xl sm:text-4xl md:text-5xl font-medium leading-[1.1] tracking-tight text-slate-900'
+const H2 = 'text-[clamp(2rem,4.4vw,4rem)] font-bold text-forest leading-[1.08] tracking-tight'
 
 /* ---------------------------- Données ---------------------------- */
 /* Les excursions (textes, prix, photos, port, durée) sont en base : admin > Offers > Cruise excursions.
@@ -42,25 +44,6 @@ const fmt = (h) => (Number.isInteger(h) ? `${h} h` : `${Math.floor(h)} h 30`)
 
 /* -------------------------- Composants --------------------------- */
 
-function Hero() {
-  const t = useT('cruise')
-  return (
-    <>
-      <Navbar />
-      <section className={`${W} relative overflow-hidden rounded-[2rem] md:rounded-[3rem] bg-[#084838] text-white min-h-[520px] md:min-h-[78vh] flex items-end`}>
-        <SiteMedia slot="cruise.hero" alt={t('heroAlt')} className="absolute inset-0 w-full h-full object-cover" />
-        <div className="absolute inset-0 bg-gradient-to-t from-slate-950/85 via-slate-950/30 to-slate-950/10" />
-        <div className="relative p-6 sm:p-10 md:p-16 max-w-4xl">
-          <p className="text-sm md:text-base text-white/80">{t('eyebrow')}</p>
-          <h1 className="mt-3 text-5xl sm:text-6xl md:text-7xl xl:text-[96px] font-semibold leading-[0.95] tracking-tight">{t('title')}</h1>
-          <p className="mt-6 text-base md:text-xl text-white/90 max-w-2xl">{t('intro')}</p>
-          <A href="#plan" className={`${BTN} ${GOLD} text-white mt-8`}>{t('planButton')}</A>
-        </div>
-      </section>
-    </>
-  )
-}
-
 function ExcursionCard({ item, ashore }) {
   const t = useT('cruise')
   const { lang } = useLanguage()
@@ -68,15 +51,15 @@ function ExcursionCard({ item, ashore }) {
   const spare = Math.round((ashore - item.hours) * 60)
   const pct = Math.min(100, (item.hours / ashore) * 100)
   return (
-    <li className={`flex flex-col rounded-[2rem] bg-white p-3 transition ${fits ? '' : 'opacity-55'}`}>
-      <div className="relative aspect-[4/3] overflow-hidden rounded-[1.5rem]">
-        <img src={item.image} alt={item.title} className="absolute inset-0 w-full h-full object-cover" />
-        <span className="absolute left-3 top-3 bg-[#C49849] text-white text-xs sm:text-sm font-medium px-3 py-1.5 rounded-sm">{t('tags')[item.tag]}</span>
+    <li className={`${CARD} transition ${fits ? '' : 'opacity-55'}`}>
+      <div className={CARD_MEDIA}>
+        <img src={item.image} alt={item.title} className={CARD_IMG} />
+        <span className={CARD_BADGE}>{t('tags')[item.tag]}</span>
         <span className="absolute right-3 top-3 bg-white/90 text-slate-900 text-xs sm:text-sm font-medium px-3 py-1.5 rounded-full">{fmt(item.hours)}</span>
       </div>
-      <div className="flex flex-1 flex-col px-3 pt-5 pb-3">
-        <h3 className="text-xl md:text-2xl font-medium leading-snug text-forest">{item.title}</h3>
-        <p className="mt-2 text-sm md:text-base text-slate-600 leading-relaxed">{item.text}</p>
+      <div className={CARD_BODY}>
+        <h3 className={CARD_TITLE.replace('mt-4 ', '')}>{item.title}</h3>
+        <p className={CARD_TEXT}>{item.text}</p>
 
         <div className="mt-5" aria-hidden="true">
           <div className="h-2 rounded-full bg-slate-200 overflow-hidden"><div className="h-full rounded-full bg-[#C49849]" style={{ width: `${pct}%` }} /></div>
@@ -85,7 +68,7 @@ function ExcursionCard({ item, ashore }) {
           {fits ? t('spare', { minutes: spare }) : t('tooLong')}
         </p>
 
-        <div className="mt-auto pt-5 flex items-center justify-between gap-3">
+        <div className={CARD_FOOT}>
           <p className="text-slate-600 text-sm"><Trans text={t('from')} values={{ price: <span className="text-2xl font-semibold text-slate-900">{formatPrice(item.price, lang)}</span> }} /></p>
           <AddToTrip item={{ kind: 'cruise', ref: String(item.id), title: item.title, image: item.image, link: '/cruise-excursions', details: fmt(item.hours), price: item.price, unit: 'person' }} />
         </div>
@@ -110,8 +93,9 @@ function CruiseExcursions() {
 
   return (
     <>
-      <main ref={root} className="w-full bg-[#D5E8E2] pb-16 md:pb-24 flex flex-col items-center">
-        <Hero />
+      <main ref={root} className="w-full overflow-x-clip bg-[#D5E8E2] flex flex-col items-center">
+        <Navbar />
+        <PageHero slot="cruise.hero" alt={t('heroAlt')} title={t('title')} crumb={t('eyebrow')} text={t('intro')} moreHref="#plan" moreLabel={t('planButton')} />
 
         {/* Planificateur */}
         <section id="plan" className={`${W} mt-16 md:mt-28 scroll-mt-6`}>
@@ -125,10 +109,10 @@ function CruiseExcursions() {
                   type="button"
                   onClick={() => setPort(p.id)}
                   aria-pressed={port === p.id}
-                  className={`group relative block w-full aspect-[16/9] md:aspect-[2/1] overflow-hidden rounded-[2rem] text-left text-white focus:outline-none focus-visible:ring-4 focus-visible:ring-[#084838] ${port === p.id ? 'ring-4 ring-[#C49849]' : ''}`}
+                  className={`group relative block w-full aspect-[16/9] md:aspect-[2/1] overflow-hidden rounded-[2rem] text-left text-white focus:outline-none focus-visible:ring-4 focus-visible:ring-[#074636] ${port === p.id ? 'ring-4 ring-[#C49849]' : ''}`}
                 >
                   <img src={photo(`cruise.port.${p.id}`)} alt="" className="absolute inset-0 w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" />
-                  <div className="absolute inset-0 bg-gradient-to-t from-slate-950/85 via-slate-950/20 to-transparent" />
+                  <div className="absolute inset-0 bg-gradient-to-t from-[#072a1f]/85 via-[#072a1f]/20 to-transparent" />
                   <div className="absolute inset-x-0 bottom-0 p-6 md:p-8">
                     <p className="text-sm text-white/80">{p.sub}</p>
                     <h3 className="text-3xl md:text-4xl font-semibold">{p.name}</h3>
@@ -166,12 +150,12 @@ function CruiseExcursions() {
         </section>
 
         {/* Engagements */}
-        <section className={`${W} mt-16 md:mt-28 rounded-[2rem] md:rounded-[3rem] bg-[#084838] text-white p-6 sm:p-10 md:p-14`}>
-          <h2 className="text-3xl sm:text-4xl md:text-5xl font-medium leading-[1.1] tracking-tight max-w-2xl">{t('promisesTitle')}</h2>
+        <section className={`${W} mt-16 md:mt-28 rounded-[1.5rem] md:rounded-[2rem] bg-[#074636] text-white p-6 sm:p-10 md:p-14`}>
+          <h2 className="text-[clamp(2rem,4.4vw,4rem)] font-bold leading-[1.08] tracking-tight max-w-2xl">{t('promisesTitle')}</h2>
           <ul className="mt-10 grid grid-cols-1 md:grid-cols-3 gap-8">
             {t('promises').map((p) => (
               <li key={p.title} className="border-t border-white/25 pt-5">
-                <h3 className="text-xl md:text-2xl font-medium">{p.title}</h3>
+                <h3 className="text-xl md:text-2xl font-bold">{p.title}</h3>
                 <p className="mt-2 text-sm md:text-base text-white/75 leading-relaxed">{p.text}</p>
               </li>
             ))}
@@ -211,15 +195,9 @@ function CruiseExcursions() {
         </section>
 
         {/* Groupe */}
-        <section className={`${W} mt-16 md:mt-28 relative overflow-hidden rounded-[2rem] md:rounded-[3rem] text-white min-h-[380px] flex items-center`}>
-          <SiteMedia slot="cruise.cta" alt="" className="absolute inset-0 w-full h-full object-cover" />
-          <div className="absolute inset-0 bg-slate-950/65" />
-          <div className="relative p-8 md:p-16 max-w-3xl">
-            <h2 className="text-3xl sm:text-4xl md:text-5xl font-medium leading-[1.1] tracking-tight">{t('groupTitle')}</h2>
-            <p className="mt-4 text-sm md:text-lg text-white/85">{t('groupText')}</p>
-            <A href="/contact?type=cruise-group" className={`${BTN} ${GOLD} text-white mt-8`}>{t('groupButton')}</A>
-          </div>
-        </section>
+        <PageCta slot="cruise.cta" title={t('groupTitle')} text={t('groupText')}>
+          <A href="/contact?type=cruise-group" className={PAGE_CTA_GOLD}>{t('groupButton')}</A>
+        </PageCta>
       </main>
       <Footer />
     </>

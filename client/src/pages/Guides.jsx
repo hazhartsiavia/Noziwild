@@ -7,6 +7,7 @@ import Ramena from "../assets/images/Ramena.jpg";
 import Tana from "../assets/images/Tana.jpg";
 import Navbar from '../components/Navbar';
 import Footer from '../components/Footer';
+import PageHero from '../components/PageHero'
 import AddToTrip from '../components/AddToTrip'
 import { subscribeNewsletter } from '../api';
 import { useT } from '../i18n/LanguageContext';
@@ -22,7 +23,7 @@ gsap.registerPlugin(ScrollTrigger)
 
 /* Constantes partagées : mêmes valeurs que dans les autres pages */
 const SECTION_WIDTH = "w-[90vw] lg:max-w-[90vw] xl:max-w-[95vw]"
-const SECTION_TITLE = "text-3xl sm:text-4xl md:text-5xl lg:text-[52px] font-medium text-forest leading-[1.15] tracking-tight"
+const SECTION_TITLE = "text-[clamp(2rem,4.4vw,4rem)] font-bold text-forest leading-[1.08] tracking-tight"
 const SECTION_SUBTITLE = "text-sm sm:text-base md:text-lg text-slate-600 leading-relaxed max-w-3xl"
 const META_TEXT = "text-xs sm:text-sm"
 const STATEMENT_TITLE = "text-4xl sm:text-5xl md:text-6xl xl:text-7xl font-medium uppercase leading-[1.15] tracking-tight text-forest"
@@ -63,15 +64,6 @@ const DAY = [
   { time: '18:00', title: 'Back For Sunset', text: 'A tip for tonight’s dinner, a photo at the best spot and a plan for tomorrow.', image: NosyIranja },
 ]
 
-// Ajoute autant de témoignages que tu veux : les boutons prev/next et la barre de progression les font défiler en boucle
-const TESTIMONIALS = [
-  { id: 1, text: 'Our guide made the whole trip. He knew every path, every family and every story. We would not have found half of it alone.', name: 'Emma & Tom', origin: 'Travelers from Lyon', trip: 'Driver-Guide · 8 days', image: Ambanja, rating: 5 },
-  { id: 2, text: 'Lina showed us a side of the island we never expected. The food, the people, the little workshops. Truly unforgettable.', name: 'Giulia R.', origin: 'Traveler from Milan', trip: 'Cultural Guide · 5 days', image: Ramena, rating: 5 },
-  { id: 3, text: 'The trek was challenging but perfectly paced. We always felt safe, and the views were worth every step.', name: 'Markus B.', origin: 'Traveler from Munich', trip: 'Trek Guide · 3 days', image: NosyIranja, rating: 5 },
-  { id: 4, text: 'Having one person to call for everything made our family trip stress-free. The kids still talk about their guide.', name: 'Sophie L.', origin: 'Traveler from Montréal', trip: 'Trip Companion · 10 days', image: Tana, rating: 5 },
-  { id: 5, text: 'We saw lemurs on the first morning thanks to Hery. He knew exactly where to go and when. Amazing.', name: 'Daniel & Ana', origin: 'Travelers from Madrid', trip: 'Wildlife Guide · 4 days', image: Deux, rating: 4 },
-]
-
 const FAQS = [
   { q: 'Do I need a guide for my whole trip?', a: 'No. Many travelers book a guide only for key days, like a national park or a trek, and explore freely the rest of the time.' },
   { q: 'Can I choose my guide?', a: 'Yes. Tell us your interests and language and we suggest the best match. You can also request a guide you already know.' },
@@ -107,42 +99,6 @@ function useSwap(ref, dep) {
   }, [dep]) // eslint-disable-line react-hooks/exhaustive-deps
 }
 
-// Hero coupé en deux : texte à gauche, photos inclinées à droite
-function Hero() {
-  const photo = usePhoto()
-  const t = useT('guides')
-  return (
-    <div className="grid grid-cols-1 lg:grid-cols-[1.2fr_1fr] gap-10 lg:gap-16 items-center">
-      <div>
-        <span data-hero className={`${BADGE}`}>{t('badge')}</span>
-        <h1 data-hero className={`${STATEMENT_TITLE} mt-6`}>{t('title')}</h1>
-        <p data-hero className={`mt-6 md:mt-8 ${SECTION_SUBTITLE}`}>
-          {t('intro')}
-        </p>
-        <div data-hero className="mt-8 flex flex-wrap items-center gap-4">
-          <A href="/contact" className={`bg-[#084838] hover:bg-[#0a5c47] text-white ${BUTTON}`}>{t('findGuide')}</A>
-          <A href="#guides" className="inline-flex items-center gap-2 text-sm md:text-base font-medium text-slate-800 hover:gap-3 transition-all">
-            {t('meetTeam')} <ArrowIcon />
-          </A>
-        </div>
-      </div>
-
-      <div className="relative w-full max-w-[520px] aspect-[4/3] mx-auto lg:ml-auto">
-        <div data-hero-photo className="absolute left-0 top-0 w-[52%] -rotate-6 rounded-xl bg-white p-2 md:p-3 shadow-sm">
-          <img src={photo('guides.hero.1')} alt={t('heroAlt1')} className="w-full aspect-[4/5] object-cover rounded-md" />
-        </div>
-        <div data-hero-photo className="absolute right-0 top-[12%] w-[52%] rotate-6 rounded-xl bg-white p-2 md:p-3 shadow-sm">
-          <img src={photo('guides.hero.2')} alt={t('heroAlt2')} className="w-full aspect-[4/5] object-cover rounded-md" />
-        </div>
-        <div data-hero-photo className="absolute left-[8%] bottom-0 flex items-center gap-3 rounded-2xl bg-[#084838] text-white px-5 py-3">
-          <div className="flex gap-0.5"><StarIcon /><StarIcon /><StarIcon /><StarIcon /><StarIcon /></div>
-          <span className="text-sm font-medium">{t('happy')}</span>
-        </div>
-      </div>
-    </div>
-  )
-}
-
 // Bande de chiffres simple
 function StatsStrip() {
   const labels = useT('guides')('stats')
@@ -152,9 +108,9 @@ function StatsStrip() {
   }
   const stats = ['40+', '5', '12+', '24/7'].map((value, i) => [value, labels[i]])
   return (
-    <ul data-stagger className="mt-12 md:mt-20 grid grid-cols-2 md:grid-cols-4 border-y border-[#084838]/15">
+    <ul data-stagger className="mt-12 md:mt-20 grid grid-cols-2 md:grid-cols-4 border-y border-[#074636]/15">
       {stats.map(([value, label], i) => (
-        <li key={label} className={`py-6 md:py-8 px-2 md:px-6 ${i > 0 ? 'md:border-l md:border-[#084838]/15' : ''}`}>
+        <li key={label} className={`py-6 md:py-8 px-2 md:px-6 ${i > 0 ? 'md:border-l md:border-[#074636]/15' : ''}`}>
           <p className="text-3xl md:text-5xl text-slate-800 leading-none" {...countProps(value)}>{value}</p>
           <p className="mt-2 md:mt-3 text-sm md:text-base text-slate-600">{label}</p>
         </li>
@@ -184,16 +140,16 @@ function Services() {
 
       <div data-stagger className="grid grid-cols-1 lg:grid-cols-3 gap-4 md:gap-6">
         {services.map((s, i) => (
-          <article key={s.id} className={`group relative overflow-hidden rounded-3xl bg-[#084838] text-white flex ${bentoLayout[i]}`}>
+          <article key={s.id} className={`group relative overflow-hidden rounded-3xl bg-[#074636] text-white flex ${bentoLayout[i]}`}>
             <img src={photo(`guides.service.${i + 1}`)} alt={s.name} className="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" />
-            <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/25 to-transparent" />
+            <div className="absolute inset-0 bg-gradient-to-t from-[#072a1f]/80 via-[#072a1f]/25 to-transparent" />
 
             <div className="relative flex flex-col justify-between w-full p-5 md:p-7">
               <span className="self-start rounded-full bg-white/90 text-slate-900 text-sm font-medium px-3 py-1">
                 {String(s.id).padStart(2, '0')}
               </span>
               <div>
-                <h3 className="text-2xl md:text-3xl font-medium tracking-tight">{s.name}</h3>
+                <h3 className="text-2xl md:text-3xl font-bold tracking-tight">{s.name}</h3>
                 <p className="mt-2 text-sm md:text-base text-white/85 leading-relaxed max-w-md">{s.text}</p>
                 <ul className="mt-4 flex flex-wrap gap-2">
                   {s.tags.map((t) => (
@@ -252,9 +208,9 @@ function GuideShowcase() {
   }
 
   const arrowClass =
-    "w-11 h-11 md:w-12 md:h-12 flex items-center justify-center rounded-full border border-[#084838] text-[#084838] " +
-    "hover:bg-[#084838]/10 active:bg-[#084838]/20 transition " +
-    "focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#084838]"
+    "w-11 h-11 md:w-12 md:h-12 flex items-center justify-center rounded-full border border-[#074636] text-[#074636] " +
+    "hover:bg-[#074636]/10 active:bg-[#074636]/20 transition " +
+    "focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#074636]"
 
   return (
     <div id="guides" className={`${SECTION_GAP} scroll-mt-8`}>
@@ -271,7 +227,7 @@ function GuideShowcase() {
               aria-label={tr('guidesLabel')}
               className="relative flex lg:flex-col gap-3 overflow-x-auto lg:overflow-x-hidden pb-2 lg:pb-0 lg:pr-2
                          lg:absolute lg:inset-0 lg:overflow-y-auto snap-x lg:snap-none
-                         [scrollbar-width:thin] [scrollbar-color:#084838_transparent]"
+                         [scrollbar-width:thin] [scrollbar-color:#074636_transparent]"
             >
               {guides.map((item, i) => (
                 <button
@@ -282,7 +238,7 @@ function GuideShowcase() {
                   aria-selected={i === active}
                   onClick={() => setActive(i)}
                   className={`snap-start shrink-0 w-[240px] lg:w-auto flex items-center gap-3 rounded-2xl p-3 text-left transition ${
-                    i === active ? 'bg-[#084838] text-white' : 'bg-white text-slate-800 hover:bg-white/70'
+                    i === active ? 'bg-[#074636] text-white' : 'bg-white text-slate-800 hover:bg-white/70'
                   }`}
                 >
                   <img src={item.image} alt="" className="w-14 h-14 rounded-full object-cover" />
@@ -315,7 +271,7 @@ function GuideShowcase() {
           </div>
           <div className="p-6 md:p-10 flex flex-col">
             <span className={`${BADGE} self-start`}>{tr('years', { count: g.years })}</span>
-            <h3 className="mt-5 text-2xl md:text-4xl font-medium tracking-tight text-forest">{g.name}</h3>
+            <h3 className="mt-5 text-2xl md:text-4xl font-bold tracking-tight text-forest">{g.name}</h3>
             <p className="mt-1 text-base md:text-lg text-slate-700">{g.role}</p>
             <p className="mt-5 text-sm md:text-base leading-relaxed text-slate-600">{g.bio}</p>
             <p className={`mt-5 ${META_TEXT} text-slate-500 uppercase tracking-wide`}>{tr('languages')}</p>
@@ -350,7 +306,7 @@ function Compare() {
             <tr className="border-b border-slate-200">
               <th className="p-4 md:p-6" />
               {cols.map((c, i) => (
-                <th key={c} className={`p-4 md:p-6 text-base md:text-xl font-medium text-center ${i === 1 ? 'bg-[#084838] text-white' : 'text-slate-900'}`}>
+                <th key={c} className={`p-4 md:p-6 text-base md:text-xl font-medium text-center ${i === 1 ? 'bg-[#074636] text-white' : 'text-slate-900'}`}>
                   {c}
                   {i === 1 && <span className="block mt-1 text-xs font-normal text-[#E6C58A]">{tr('popular')}</span>}
                 </th>
@@ -362,7 +318,7 @@ function Compare() {
               <tr key={row.label} className="border-b border-slate-100 last:border-0">
                 <td className="p-4 md:p-6 text-sm md:text-base text-slate-700">{row.label}</td>
                 {row.values.map((v, i) => (
-                  <td key={i} className={`p-4 md:p-6 ${i === 1 ? 'bg-[#084838]/5' : ''}`}>
+                  <td key={i} className={`p-4 md:p-6 ${i === 1 ? 'bg-[#074636]/5' : ''}`}>
                     <span className="flex justify-center">{v ? <CheckIcon /> : <span className="text-slate-300">—</span>}</span>
                   </td>
                 ))}
@@ -395,7 +351,7 @@ function DayTimeline() {
       {/* Frise horizontale */}
       <div className="relative overflow-x-auto pb-2">
         <ol className="relative grid grid-cols-5 min-w-[520px]" role="tablist" aria-label={tr('dayLabel')}>
-          <span className="absolute left-[10%] right-[10%] top-[11px] h-px bg-[#084838]/25" aria-hidden="true" />
+          <span className="absolute left-[10%] right-[10%] top-[11px] h-px bg-[#074636]/25" aria-hidden="true" />
           {day.map((d, i) => (
             <li key={d.time} className="relative">
               <button
@@ -424,12 +380,12 @@ function DayTimeline() {
         </div>
         <div className="p-6 md:p-12 flex flex-col">
           <span className={`${BADGE} self-start`}>{tr('stepOf', { n: active + 1, total, time: step.time })}</span>
-          <h3 className="mt-5 text-2xl md:text-4xl font-medium tracking-tight text-forest">{step.title}</h3>
+          <h3 className="mt-5 text-2xl md:text-4xl font-bold tracking-tight text-forest">{step.title}</h3>
           <p className="mt-4 text-sm md:text-lg leading-relaxed text-slate-600 max-w-md">{step.text}</p>
           <button
             type="button"
             onClick={() => setActive((i) => (i + 1) % total)}
-            className={`mt-8 self-start inline-flex items-center gap-2 bg-[#084838] hover:bg-[#0a5c47] text-white ${BUTTON}`}
+            className={`mt-8 self-start inline-flex items-center gap-2 bg-[#074636] hover:bg-[#0a5c47] text-white ${BUTTON}`}
           >
             {active === total - 1 ? tr('again') : tr('nextStep')} <ArrowIcon />
           </button>
@@ -439,97 +395,6 @@ function DayTimeline() {
   )
 }
 
-// Témoignages : grande carte verte (photo + citation) avec barre de progression et boutons prev/next
-function Testimonials() {
-  const tr = useT('guides')
-  const testimonials = localize(TESTIMONIALS, tr('testimonials'))
-  const total = testimonials.length
-  const [active, setActive] = useState(0)
-  const goPrev = () => setActive((i) => (i - 1 + total) % total)
-  const goNext = () => setActive((i) => (i + 1) % total)
-  const t = testimonials[active]
-  const textRef = useRef(null)
-  useSwap(textRef, active)
-
-  const arrowClass =
-    "w-11 h-11 md:w-12 md:h-12 flex items-center justify-center rounded-full border border-white/40 text-white " +
-    "hover:bg-white/10 active:bg-white/20 transition " +
-    "focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white"
-
-  return (
-    <div className={SECTION_GAP}>
-
-      {/* Titre + note moyenne */}
-      <div className="mb-8 md:mb-12 flex flex-col lg:flex-row lg:items-end lg:justify-between gap-5 lg:gap-12">
-        <div>
-          <p className="mb-3 text-xs sm:text-sm md:text-base uppercase tracking-wide text-slate-700">{tr('testimonialsLabel')}</p>
-          <h2 className={SECTION_TITLE}>{tr('testimonialsTitle')}</h2>
-        </div>
-        <div className="flex items-center gap-4">
-          <p className="text-5xl md:text-6xl leading-none text-slate-900">4.9</p>
-          <div>
-            <div className="flex gap-0.5"><StarIcon /><StarIcon /><StarIcon /><StarIcon /><StarIcon /></div>
-            <p className={`mt-1 ${META_TEXT} text-slate-600`}>{tr('average')}</p>
-          </div>
-        </div>
-      </div>
-
-      {/* Carte */}
-      <figure className="grid grid-cols-1 lg:grid-cols-[1fr_1.3fr] overflow-hidden rounded-3xl bg-[#084838] text-white">
-        <div className="relative min-h-[280px] lg:min-h-[500px]">
-          <img key={t.id} src={t.image} alt={`${t.name}, ${t.origin}`} className="absolute inset-0 w-full h-full object-cover" />
-          <span className={`${BADGE} absolute left-5 bottom-5`}>{t.trip}</span>
-        </div>
-
-        <div className="flex flex-col p-6 md:p-12">
-          <div ref={textRef} aria-live="polite">
-            <div className="flex items-center justify-between gap-4">
-              <p className="text-6xl md:text-8xl leading-none text-[#C49849]" aria-hidden="true">“</p>
-              <div className="flex gap-0.5" aria-label={tr('outOf5', { rating: t.rating })}>
-                {Array.from({ length: t.rating }).map((_, i) => <StarIcon key={i} />)}
-              </div>
-            </div>
-            <blockquote className="-mt-2 md:-mt-4 text-xl md:text-3xl leading-snug tracking-tight">
-              {t.text}
-            </blockquote>
-            <figcaption className="mt-6 md:mt-8">
-              <span className="block text-base md:text-lg font-medium">{t.name}</span>
-              <span className="block text-sm text-white/70">{t.origin}</span>
-            </figcaption>
-          </div>
-
-          {/* Navigation : barre de progression cliquable + flèches */}
-          <div className="mt-auto pt-10 flex items-center gap-4 md:gap-6">
-            <div className="flex-1 flex items-center gap-2" role="tablist" aria-label={tr('testimonialsLabel')}>
-              {testimonials.map((item, i) => (
-                <button
-                  key={item.id}
-                  type="button"
-                  role="tab"
-                  aria-selected={i === active}
-                  aria-label={tr('show', { n: i + 1 })}
-                  onClick={() => setActive(i)}
-                  className={`h-1.5 flex-1 rounded-full transition ${i === active ? 'bg-[#C49849]' : 'bg-white/25 hover:bg-white/40'}`}
-                />
-              ))}
-            </div>
-            <span className="text-sm tabular-nums text-white/70" aria-hidden="true">
-              {String(active + 1).padStart(2, '0')} / {String(total).padStart(2, '0')}
-            </span>
-            <div className="flex items-center gap-2">
-              <button type="button" onClick={goPrev} aria-label={tr('previousTestimonial')} className={arrowClass}>
-                <span className="rotate-180"><ArrowIcon /></span>
-              </button>
-              <button type="button" onClick={goNext} aria-label={tr('nextTestimonial')} className={arrowClass}>
-                <ArrowIcon />
-              </button>
-            </div>
-          </div>
-        </div>
-      </figure>
-    </div>
-  )
-}
 
 // FAQ : questions en cartes blanches à gauche, titre à droite
 function Faq() {
@@ -685,7 +550,7 @@ function Cta() {
               {tr('experienceText')}
             </p>
           </div>
-          <A href="/contact" className={`mt-6 self-start bg-[#084838] hover:bg-[#0a5c47] text-white ${BUTTON}`}>
+          <A href="/contact" className={`mt-6 self-start bg-[#074636] hover:bg-[#0a5c47] text-white ${BUTTON}`}>
             {tr('findGuide')}
           </A>
         </div>
@@ -696,6 +561,7 @@ function Cta() {
 }
 
 function Guides() {
+  const t = useT('guides')
   const contentRef = useRef(null)
 
   useLayoutEffect(() => {
@@ -703,13 +569,8 @@ function Guides() {
     if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return
 
     const ctx = gsap.context(() => {
-      // Entrée du hero
-      gsap.timeline({ defaults: { ease: 'power3.out' } })
-        .from('[data-hero]', { y: 40, opacity: 0, duration: 0.9, stagger: 0.12 })
-        .from('[data-hero-photo]', { opacity: 0, duration: 0.9, stagger: 0.2 }, '-=0.6')
-
       // Chaque section apparaît en remontant quand elle entre dans l'écran
-      Array.from(contentRef.current.children).slice(1).forEach((el) => {
+      Array.from(contentRef.current.children).forEach((el) => {
         if (el.hasAttribute('data-stagger')) return
         gsap.from(el, {
           y: 50, opacity: 0, duration: 0.9, ease: 'power3.out',
@@ -753,14 +614,13 @@ function Guides() {
     <>
     <section className="w-full pt-0 pb-12 md:pb-20 bg-[#D5E8E2] flex flex-col items-center">
       <Navbar />
+      <PageHero slot="guides.hero.1" title={t('title')} crumb={t('badge')} text={t('intro')} moreHref="#guides" moreLabel={t('meetTeam')} />
       <div ref={contentRef} className={`${SECTION_WIDTH} mt-8 md:mt-16`}>
-        <Hero />
         <StatsStrip />
         <Services />
         <GuideShowcase />
         <Compare />
         <DayTimeline />
-        <Testimonials />
         <Faq />
         <Cta />
       </div>

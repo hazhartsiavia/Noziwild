@@ -5,6 +5,9 @@ import Ramena from '../assets/images/Ramena.jpg'
 import NosyIranja from '../assets/images/NosyIranja.jpg'
 import Navbar from '../components/Navbar'
 import Footer from '../components/Footer'
+import { CARD, CARD_BADGE, CARD_BODY, CARD_FOOT, CARD_IMG, CARD_MEDIA, CARD_TEXT, CARD_TITLE, CardMeta } from '../components/Card'
+import PageHero from '../components/PageHero'
+import PageCta, { PAGE_CTA_GOLD, PAGE_CTA_GHOST } from '../components/PageCta'
 import OffersStatus from '../components/OffersStatus'
 import AddToTrip from '../components/AddToTrip'
 import { useLanguage, useT } from '../i18n/LanguageContext'
@@ -19,7 +22,7 @@ gsap.registerPlugin(ScrollTrigger)
 const W = 'w-[90vw] lg:max-w-[95vw]'
 const GOLD = 'bg-[#C49849] hover:bg-[#a9813a]'
 const BTN = 'inline-flex items-center justify-center text-sm md:text-base font-medium px-6 py-3 rounded-full active:scale-95 transition'
-const H2 = 'text-3xl sm:text-4xl md:text-5xl font-medium leading-[1.1] tracking-tight text-slate-900'
+const H2 = 'text-[clamp(2rem,4.4vw,4rem)] font-bold text-forest leading-[1.08] tracking-tight'
 const SELECT = 'w-full h-12 rounded-full border border-slate-300 bg-white px-5 text-base text-slate-800 focus:outline-none focus:border-slate-700 focus:ring-1 focus:ring-slate-700'
 
 /* ---------------------------- Données ---------------------------- */
@@ -73,31 +76,10 @@ const reveal = (targets, from, to, extra = {}) =>
 /* -------------------------- Composants --------------------------- */
 
 function Hero({ region, setRegion, length, setLength }) {
-  const heroRef = useRef(null)
   const formRef = useRef(null)
   const t = useT('excursions')
 
   // Hero : l'image se dézoome, le titre « respire » (espacement des lettres + flou),
-  // le bloc texte dérive vers le haut quand on scrolle
-  useGsap(heroRef, () => {
-    const tl = gsap.timeline({ defaults: { ease: 'power3.out' } })
-    tl.fromTo('.hero-bg', { scale: 1.2 }, { scale: 1, duration: 2, ease: 'power2.out', clearProps: 'all' }, 0)
-      .fromTo(
-        '.hero-title',
-        { letterSpacing: '0.12em', opacity: 0, filter: 'blur(16px)' },
-        { letterSpacing: '-0.025em', opacity: 1, filter: 'blur(0px)', duration: 1.6, ease: 'expo.out', clearProps: 'all' },
-        0.2
-      )
-      .fromTo('.hero-sub', { y: 24, opacity: 0 }, { y: 0, opacity: 1, duration: 0.9, clearProps: 'all' }, 0.9)
-
-    gsap.to('.hero-content', {
-      yPercent: -18,
-      opacity: 0.2,
-      ease: 'none',
-      scrollTrigger: { trigger: heroRef.current, start: 'top top', end: 'bottom top', scrub: true },
-    })
-  })
-
   // Barre de recherche : monte avec un léger rebond, puis les champs se posent un par un
   useGsap(formRef, () => {
     const tl = gsap.timeline({ delay: 0.9 })
@@ -109,20 +91,13 @@ function Hero({ region, setRegion, length, setLength }) {
   return (
     <>
       <Navbar />
-      <section ref={heroRef} className={`${W} relative overflow-hidden rounded-[2rem] md:rounded-[3rem] bg-[#084838] text-white min-h-[460px] md:min-h-[70vh] flex items-center`}>
-        <SiteMedia slot="exc.hero" alt={t('heroAlt')} className="hero-bg absolute inset-0 w-full h-full object-cover" />
-        <div className="absolute inset-0 bg-slate-950/55" />
-        <div className="hero-content relative w-full px-6 sm:px-10 md:px-16 pb-16 text-center flex flex-col items-center">
-          <h1 className="hero-title text-6xl sm:text-7xl md:text-8xl xl:text-[120px] font-semibold leading-[0.95] tracking-tight">{t('title')}</h1>
-          <p className="hero-sub mt-5 text-base md:text-xl text-white/90 max-w-2xl">{t('intro')}</p>
-        </div>
-      </section>
+      <PageHero slot="exc.hero" alt={t('heroAlt')} title={t('title')} crumb={t('title')} text={t('intro')} />
 
-      {/* Barre de recherche flottante */}
+      {/* Barre de recherche */}
       <form
         ref={formRef}
         onSubmit={(e) => { e.preventDefault(); document.getElementById('results')?.scrollIntoView({ behavior: 'smooth' }) }}
-        className={`${W} relative z-10 -mt-10 md:-mt-12 grid grid-cols-1 md:grid-cols-[1fr_1fr_auto] gap-4 items-end rounded-[2rem] bg-white p-5 md:p-7 shadow-lg`}
+        className={`${W} relative z-10 mt-4 md:mt-5 grid grid-cols-1 md:grid-cols-[1fr_1fr_auto] gap-4 items-end rounded-[2rem] bg-white p-5 md:p-7 shadow-lg`}
       >
         <div className="hero-field">
           <label htmlFor="region" className="block mb-2 text-sm md:text-base text-slate-700">{t('region')}</label>
@@ -150,27 +125,20 @@ function Row({ item }) {
   const Photo = href ? 'a' : 'div'
   const tripItem = { kind: 'excursion', ref: String(item.id), title: item.title, image: item.image, link: item.link || '/excursions', details: [item.duration, item.place].filter(Boolean).join(' · '), price: item.price, unit: 'person' }
   return (
-    <li className="excursion-row grid grid-cols-1 md:grid-cols-[300px_1fr_auto] lg:grid-cols-[360px_1fr_auto] gap-4 md:gap-8 rounded-[2rem] bg-white p-3 md:p-4 md:items-stretch">
-      <Photo href={href || undefined} className="group relative block aspect-[4/3] md:aspect-auto md:min-h-[220px] overflow-hidden rounded-[1.5rem]">
-        <img src={item.image} alt={item.title} className="row-img absolute inset-0 w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" />
-        <span className="row-badge absolute left-3 top-3 bg-[#C49849] text-white text-xs sm:text-sm font-medium px-3 py-1.5 rounded-sm">{item.duration}</span>
+    <li className={`excursion-row ${CARD}`}>
+      <Photo href={href || undefined} className={`block ${CARD_MEDIA}`}>
+        <img src={item.image} alt={item.title} className={`row-img ${CARD_IMG}`} />
+        <span className={`row-badge ${CARD_BADGE}`}>{item.duration}</span>
       </Photo>
-
-      <div className="px-2 md:px-0 md:py-4 flex flex-col justify-center">
-        <p className="flex items-center gap-3 text-xs sm:text-sm text-slate-600">
-          <span>{item.place}</span><span className="w-px h-4 bg-slate-500" /><span>{item.level}</span><span className="w-px h-4 bg-slate-500" /><span>{item.group}</span>
-        </p>
-        <h3 className="mt-3 text-xl md:text-3xl font-medium leading-snug text-forest">
+      <div className={CARD_BODY}>
+        <CardMeta items={[item.place, item.level, item.group]} />
+        <h3 className={CARD_TITLE}>
           {href ? <A href={href} className="hover:underline">{item.title}</A> : item.title}
         </h3>
-        <p className="mt-3 text-sm md:text-base text-slate-600 leading-relaxed max-w-xl">{item.text}</p>
-      </div>
-
-      <div className="row-side px-2 pb-3 md:p-4 md:pr-6 flex md:flex-col items-center md:items-end justify-between md:justify-center gap-4 md:border-l md:border-slate-200 md:pl-8">
-        <p className="text-slate-600 text-sm md:text-right">{t('from')}<br className="hidden md:block" /> <span className="text-2xl md:text-3xl font-semibold text-slate-900">{formatPrice(item.price, lang)}</span><span className="block text-xs">{t('perPerson')}</span></p>
-        <div className="flex flex-col items-end gap-2">
+        <p className={CARD_TEXT}>{item.text}</p>
+        <div className={`row-side ${CARD_FOOT}`}>
+          <p className="text-slate-600 text-sm">{t('from')} <span className="text-2xl font-semibold text-slate-900">{formatPrice(item.price, lang)}</span><span className="block text-xs">{t('perPerson')}</span></p>
           <AddToTrip item={tripItem} />
-          {href && <A href={href} className="text-sm text-slate-600 hover:underline">{t('details')}</A>}
         </div>
       </div>
     </li>
@@ -187,7 +155,6 @@ function Excursions() {
   const resultsRef = useRef(null)
   const dayRef = useRef(null)
   const multiRef = useRef(null)
-  const ctaRef = useRef(null)
 
   const visible = offers.filter(
     (e) => (region === 'All regions' || e.region === region) && (length === 'any' || e.length === length)
@@ -239,19 +206,6 @@ function Excursions() {
   })
 
   /* CTA : la section s'ouvre depuis le centre, le fond se dézoome au scroll */
-  useGsap(ctaRef, () => {
-    const tl = gsap.timeline({ scrollTrigger: { trigger: ctaRef.current, start: 'top 80%', once: true } })
-    tl.fromTo(ctaRef.current, { clipPath: 'inset(0% 50% 0% 50% round 2rem)', transition: 'none' }, { clipPath: 'inset(0% 0% 0% 0% round 2rem)', duration: 1.2, ease: 'expo.out', clearProps: 'clipPath,transition' })
-      .fromTo('.cta-text > h2, .cta-text > p', { y: 30, opacity: 0, transition: 'none' }, { y: 0, opacity: 1, duration: 0.7, stagger: 0.12, ease: 'power3.out', clearProps: 'all' }, '-=0.6')
-      .fromTo('.cta-btn', { y: 20, opacity: 0, transition: 'none' }, { y: 0, opacity: 1, duration: 0.6, ease: 'power2.out', clearProps: 'all' }, '-=0.3')
-
-    gsap.fromTo(
-      '.cta-bg',
-      { scale: 1.15 },
-      { scale: 1, ease: 'none', scrollTrigger: { trigger: ctaRef.current, start: 'top bottom', end: 'bottom top', scrub: true } }
-    )
-  })
-
   // Recalcule les positions une fois les images chargées
   useLayoutEffect(() => {
     const refresh = () => ScrollTrigger.refresh()
@@ -265,7 +219,7 @@ function Excursions() {
 
   return (
     <>
-      <main className="w-full bg-[#D5E8E2] pb-16 md:pb-24 flex flex-col items-center">
+      <main className="w-full overflow-x-clip bg-[#D5E8E2] flex flex-col items-center">
         <Hero region={region} setRegion={setRegion} length={length} setLength={setLength} />
 
         {/* Résultats */}
@@ -280,23 +234,23 @@ function Excursions() {
           {status !== 'ready' ? (
             <OffersStatus status={status} />
           ) : visible.length > 0 ? (
-            <ul className="flex flex-col gap-5">{visible.map((item) => <Row key={item.id} item={item} />)}</ul>
+            <ul className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-9">{visible.map((item) => <Row key={item.id} item={item} />)}</ul>
           ) : (
             <div className="rounded-[2rem] bg-white p-10 text-center">
               <p className="text-lg text-slate-700">{t('empty')}</p>
-              <button type="button" onClick={() => { setRegion('All regions'); setLength('any') }} className={`${BTN} bg-[#084838] hover:bg-[#0a5c47] text-white mt-5`}>{t('showAll')}</button>
+              <button type="button" onClick={() => { setRegion('All regions'); setLength('any') }} className={`${BTN} bg-[#074636] hover:bg-[#0a5c47] text-white mt-5`}>{t('showAll')}</button>
             </div>
           )}
         </section>
 
         {/* Une journée type */}
-        <section ref={dayRef} className={`${W} mt-16 md:mt-28 rounded-[2rem] md:rounded-[3rem] bg-[#084838] text-white p-6 sm:p-10 md:p-14`}>
-          <h2 className="day-title text-3xl sm:text-4xl md:text-5xl font-medium leading-[1.1] tracking-tight max-w-2xl">{t('dayTitle')}</h2>
+        <section ref={dayRef} className={`${W} mt-16 md:mt-28 rounded-[1.5rem] md:rounded-[2rem] bg-[#074636] text-white p-6 sm:p-10 md:p-14`}>
+          <h2 className="day-title text-[clamp(2rem,4.4vw,4rem)] font-bold leading-[1.08] tracking-tight max-w-2xl">{t('dayTitle')}</h2>
           <ol className="mt-10 grid grid-cols-1 md:grid-cols-4 gap-8">
             {t('steps').map((s, i) => (
               <li key={steps[i].title} className="day-step border-t border-white/25 pt-5">
                 <span className="day-num inline-block text-[#C49849] text-lg font-semibold">{i + 1}</span>
-                <h3 className="mt-2 text-xl font-medium">{s.title}</h3>
+                <h3 className="mt-2 text-xl font-bold">{s.title}</h3>
                 <p className="mt-2 text-sm md:text-base text-white/75 leading-relaxed">{s.text}</p>
               </li>
             ))}
@@ -305,7 +259,7 @@ function Excursions() {
 
         {/* Escapade de plusieurs jours */}
         <section ref={multiRef} className={`${W} mt-16 md:mt-28 grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-16 items-center`}>
-          <div className="multi-frame relative aspect-[4/3] lg:aspect-[4/5] overflow-hidden rounded-[2rem] md:rounded-[3rem]">
+          <div className="multi-frame relative aspect-[4/3] lg:aspect-[4/5] overflow-hidden rounded-[1.5rem] md:rounded-[2rem]">
             <SiteMedia slot="exc.multi" alt={t('multiAlt')} className="multi-img absolute inset-0 w-full h-full object-cover" />
             <span className="multi-badge absolute left-5 top-5 bg-[#C49849] text-white text-sm font-medium px-3 py-1.5 rounded-sm">{t('multiBadge')}</span>
           </div>
@@ -329,15 +283,9 @@ function Excursions() {
         </section>
 
         {/* Appel à l'action */}
-        <section ref={ctaRef} className={`${W} mt-16 md:mt-28 relative overflow-hidden rounded-[2rem] md:rounded-[3rem] text-white min-h-[380px] flex items-center`}>
-          <SiteMedia slot="exc.cta" alt="" className="cta-bg absolute inset-0 w-full h-full object-cover" />
-          <div className="absolute inset-0 bg-slate-950/65" />
-          <div className="cta-text relative p-8 md:p-16 max-w-3xl">
-            <h2 className="text-3xl sm:text-4xl md:text-5xl font-medium leading-[1.1] tracking-tight">{t('ctaTitle')}</h2>
-            <p className="mt-4 text-sm md:text-lg text-white/85">{t('ctaText')}</p>
-            <A href="/contact" className={`cta-btn ${BTN} ${GOLD} text-white mt-8`}>{t('ctaButton')}</A>
-          </div>
-        </section>
+        <PageCta slot="exc.cta" title={t('ctaTitle')} text={t('ctaText')}>
+          <A href="/contact" className={PAGE_CTA_GOLD}>{t('ctaButton')}</A>
+        </PageCta>
       </main>
       <Footer />
     </>

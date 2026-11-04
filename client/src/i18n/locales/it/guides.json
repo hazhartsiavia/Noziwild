@@ -86,33 +86,6 @@
       "text": "Un consiglio per la cena, una foto nel punto migliore e un programma per domani."
     }
   ],
-  "testimonials": [
-    {
-      "text": "La nostra guida ha fatto il viaggio. Conosceva ogni sentiero, ogni famiglia e ogni storia. Da soli non ne avremmo scoperto nemmeno la metà.",
-      "origin": "Viaggiatori da Lione",
-      "trip": "Autista-guida · 8 giorni"
-    },
-    {
-      "text": "Lina ci ha mostrato un lato dell'isola che non ci aspettavamo. Il cibo, le persone, le piccole botteghe. Davvero indimenticabile.",
-      "origin": "Viaggiatrice da Milano",
-      "trip": "Guida culturale · 5 giorni"
-    },
-    {
-      "text": "Il trekking era impegnativo ma perfettamente dosato. Ci siamo sempre sentiti al sicuro e i panorami valevano ogni passo.",
-      "origin": "Viaggiatore da Monaco di Baviera",
-      "trip": "Guida di trekking · 3 giorni"
-    },
-    {
-      "text": "Avere una sola persona da chiamare per tutto ha reso il nostro viaggio in famiglia senza stress. I bambini parlano ancora della loro guida.",
-      "origin": "Viaggiatrice da Montréal",
-      "trip": "Accompagnatore di viaggio · 10 giorni"
-    },
-    {
-      "text": "Abbiamo visto i lemuri già la prima mattina grazie a Hery. Sapeva esattamente dove andare e quando. Fantastico.",
-      "origin": "Viaggiatori da Madrid",
-      "trip": "Guida naturalistica · 4 giorni"
-    }
-  ],
   "faqs": [
     {
       "q": "Mi serve una guida per tutto il viaggio?",
@@ -181,13 +154,6 @@
   "stepOf": "Passo {n} di {total} · {time}",
   "again": "Ricomincia",
   "nextStep": "Passo successivo",
-  "testimonialsLabel": "Testimonianze",
-  "testimonialsTitle": "Cosa dicono di noi i viaggiatori",
-  "average": "Valutazione media di oltre 300 viaggiatori",
-  "outOf5": "{rating} su 5",
-  "show": "Mostra la testimonianza {n}",
-  "previousTestimonial": "Testimonianza precedente",
-  "nextTestimonial": "Testimonianza successiva",
   "faqTitle": "Domande frequenti",
   "faqText": "Non trovi la risposta? Il nostro team risponde in poche ore.",
   "connected": "Restiamo in contatto",

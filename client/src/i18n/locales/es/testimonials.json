@@ -4,5 +4,9 @@
   "average": "Valoración media de los viajeros",
   "from": "Viajeros de todo el mundo",
   "text": "Lo que dicen los viajeros después de descubrir Madagascar con nosotros.",
-  "ratingLabel": "Valoración: {rating} de 5"
+  "ratingLabel": "Valoración: {rating} de 5",
+  "videoLabel": "En vídeo",
+  "videoTitle": "Cuentan su viaje",
+  "play": "Ver el vídeo de {name}",
+  "others": "Más vídeos"
 }

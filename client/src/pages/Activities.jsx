@@ -7,6 +7,9 @@ import Ramena from "../assets/images/Ramena.jpg";
 import Tana from "../assets/images/Tana.jpg";
 import Navbar from '../components/Navbar';
 import Footer from '../components/Footer';
+import { CARD, CARD_BADGE, CARD_BODY, CARD_FOOT, CARD_IMG, CARD_MEDIA, CARD_TEXT, CARD_TITLE, CardMeta } from '../components/Card'
+import PageHero from '../components/PageHero'
+import PageCta, { PAGE_CTA_GOLD, PAGE_CTA_GHOST } from '../components/PageCta'
 import { gsap } from 'gsap'
 import { ScrollTrigger } from 'gsap/ScrollTrigger'
 import OffersStatus from '../components/OffersStatus'
@@ -14,15 +17,13 @@ import AddToTrip from '../components/AddToTrip'
 import { useLanguage, useT } from '../i18n/LanguageContext'
 import { monthName } from '../utils/format'
 import { useOffers } from '../utils/useOffers'
-import { usePhoto } from '../sitePhotos'
 import { A } from '../i18n/router'
-import SiteMedia from '../components/SiteMedia'
 
 gsap.registerPlugin(ScrollTrigger)
 
 /* Constantes partagées : mêmes valeurs que dans les autres pages */
 const SECTION_WIDTH = "w-[90vw] lg:max-w-[90vw] xl:max-w-[95vw]"
-const SECTION_TITLE = "text-3xl sm:text-4xl md:text-5xl lg:text-[52px] font-medium text-forest leading-[1.15] tracking-tight"
+const SECTION_TITLE = "text-[clamp(2rem,4.4vw,4rem)] font-bold text-forest leading-[1.08] tracking-tight"
 const SECTION_SUBTITLE = "text-sm sm:text-base md:text-lg text-slate-600 leading-relaxed max-w-3xl"
 const META_TEXT = "text-xs sm:text-sm"
 const BADGE = "inline-block bg-[#C49849] text-white text-xs sm:text-sm font-medium px-3 py-1.5 rounded-sm"
@@ -42,65 +43,10 @@ const Svg = ({ children, className = "w-4 h-4" }) => (
     {children}
   </svg>
 )
-const ClockIcon = () => <Svg><circle cx="12" cy="12" r="10" /><path d="M12 6v6l4 2" /></Svg>
-const UsersIcon = () => <Svg><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2" /><circle cx="9" cy="7" r="4" /><path d="M22 21v-2a4 4 0 0 0-3-3.87M16 3.13a4 4 0 0 1 0 7.75" /></Svg>
-const LevelIcon = () => <Svg><path d="M4 20v-4M9 20v-8M14 20V8M19 20V4" /></Svg>
 const ArrowIcon = () => <Svg className="w-5 h-5"><path d="M5 12h14M13 6l6 6-6 6" /></Svg>
 
 /* -------------------------- Composants --------------------------- */
 
-// Numéro affiché devant chaque activité : 01, 02...
-const number = (i) => String(i + 1).padStart(2, '0')
-
-// Hero : grande image avec l'index des activités (comme un menu)
-function Hero({ list }) {
-  const t = useT('activities')
-  return (
-    <section className="relative overflow-hidden rounded-3xl bg-[#084838] text-white min-h-[540px] md:min-h-[620px] flex">
-      <SiteMedia slot="act.banner" alt="" className="absolute inset-0 w-full h-full object-cover" />
-      <div className="absolute inset-0 bg-gradient-to-r from-black/80 via-black/45 to-black/20" />
-
-      <div className="relative w-full grid grid-cols-1 lg:grid-cols-[1.3fr_1fr] gap-8 lg:gap-12 items-end p-6 md:p-12">
-        <div>
-          <span data-hero className={BADGE}>{t('badge')}</span>
-          <h1 data-hero className="mt-5 text-5xl sm:text-6xl md:text-7xl font-medium uppercase leading-[1.1] tracking-tight">
-            {t('title')}
-          </h1>
-          <p data-hero className="mt-5 md:mt-6 max-w-xl text-sm md:text-lg text-white/85 leading-relaxed">
-            {t('intro')}
-          </p>
-          <div data-hero className="mt-8 flex flex-wrap items-center gap-4">
-            <A href="#activities" className={`bg-[#C49849] hover:bg-[#b08339] text-white ${BUTTON}`}>{t('seeAll')}</A>
-            <A href="/contact" className="inline-flex items-center gap-2 text-sm md:text-base font-medium hover:gap-3 transition-all">
-              {t('planStay')} <ArrowIcon />
-            </A>
-          </div>
-        </div>
-
-        <nav data-hero aria-label={t('index')}>
-          <ol className="flex flex-col gap-2 md:gap-3">
-            {list.map((a, i) => (
-              <li key={a.id}>
-                <A
-                  href="#activities"
-                  className="flex items-center justify-between gap-4 rounded-2xl border border-white/20 bg-white/10 backdrop-blur-md px-5 py-3 md:py-4 hover:bg-white/20 transition"
-                >
-                  <span className="flex items-center gap-4">
-                    <span className="text-sm tabular-nums text-[#E6C58A]">{number(i)}</span>
-                    <span className="text-base md:text-lg font-medium">{a.title}</span>
-                  </span>
-                  <ArrowIcon />
-                </A>
-              </li>
-            ))}
-          </ol>
-        </nav>
-      </div>
-    </section>
-  )
-}
-
-// Carrousel horizontal : cartes hautes avec défilement, boutons prev/next et barre de progression
 function ActivityCarousel({ list, status }) {
   const t = useT('activities')
   const trackRef = useRef(null)
@@ -128,9 +74,9 @@ function ActivityCarousel({ list, status }) {
   }
 
   const arrowClass =
-    "w-11 h-11 md:w-12 md:h-12 flex items-center justify-center rounded-full border border-[#084838] text-[#084838] transition " +
-    "hover:bg-[#084838]/10 active:bg-[#084838]/20 disabled:opacity-30 disabled:pointer-events-none " +
-    "focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#084838]"
+    "w-11 h-11 md:w-12 md:h-12 flex items-center justify-center rounded-full border border-[#074636] text-[#074636] transition " +
+    "hover:bg-[#074636]/10 active:bg-[#074636]/20 disabled:opacity-30 disabled:pointer-events-none " +
+    "focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#074636]"
 
   return (
     <div id="activities" className={`${SECTION_GAP} scroll-mt-8`}>
@@ -155,34 +101,21 @@ function ActivityCarousel({ list, status }) {
         onScroll={update}
         className="flex gap-4 overflow-x-auto snap-x snap-mandatory scroll-smooth pb-2 [scrollbar-width:none] [&::-webkit-scrollbar]:hidden"
       >
-        {list.map((a, i) => (
-          <article
-            key={a.id}
-            className="group relative snap-start shrink-0 w-[82%] sm:w-[46%] lg:w-[31.5%] xl:w-[24%] h-[480px] md:h-[540px] overflow-hidden rounded-3xl bg-[#084838] text-white flex"
-          >
-            <img src={a.image} alt={a.title} className="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" />
-            <div className="absolute inset-0 bg-gradient-to-t from-black/85 via-black/25 to-transparent" />
-
-            <div className="relative flex flex-col justify-between w-full p-5 md:p-6">
-              <div className="flex items-center justify-between">
-                <span className="rounded-full bg-white/90 text-slate-900 text-sm font-medium px-3 py-1">{number(i)}</span>
-                <span className="rounded-full border border-white/40 bg-white/10 backdrop-blur-sm text-xs md:text-sm px-3 py-1">{a.type}</span>
-              </div>
-
-              <div>
-                <h3 className="text-2xl md:text-3xl font-medium leading-tight tracking-tight">{a.title}</h3>
-                <p className="mt-3 text-sm text-white/85 leading-relaxed">{a.text}</p>
-                <ul className="mt-4 flex flex-wrap gap-x-4 gap-y-1 text-xs md:text-sm text-white/90">
-                  <li className="flex items-center gap-1.5"><ClockIcon />{a.duration}</li>
-                  <li className="flex items-center gap-1.5"><LevelIcon />{a.level}</li>
-                  <li className="flex items-center gap-1.5"><UsersIcon />{a.group}</li>
-                </ul>
-                <div className="mt-5 pt-4 border-t border-white/25 flex items-center justify-end">
-                  <AddToTrip
-                    variant="icon"
-                    item={{ kind: 'activity', ref: String(a.id), title: a.title, image: a.image, link: '/activities', details: [a.duration, a.level].filter(Boolean).join(' · '), price: a.price, unit: 'person' }}
-                  />
-                </div>
+        {list.map((a) => (
+          <article key={a.id} className={`${CARD} snap-start shrink-0 w-[82%] sm:w-[46%] lg:w-[31.5%] xl:w-[24%]`}>
+            <div className={CARD_MEDIA}>
+              <img src={a.image} alt={a.title} className={CARD_IMG} />
+              <span className={CARD_BADGE}>{a.type}</span>
+            </div>
+            <div className={CARD_BODY}>
+              <CardMeta items={[a.duration, a.level, a.group]} />
+              <h3 className={CARD_TITLE}>{a.title}</h3>
+              <p className={CARD_TEXT}>{a.text}</p>
+              <div className={`${CARD_FOOT} justify-end`}>
+                <AddToTrip
+                  variant="icon"
+                  item={{ kind: 'activity', ref: String(a.id), title: a.title, image: a.image, link: '/activities', details: [a.duration, a.level].filter(Boolean).join(' · '), price: a.price, unit: 'person' }}
+                />
               </div>
             </div>
           </article>
@@ -190,8 +123,8 @@ function ActivityCarousel({ list, status }) {
       </div>
 
       {/* Barre de progression */}
-      <div className="mt-6 h-1.5 rounded-full bg-[#084838]/20 overflow-hidden" aria-hidden="true">
-        <div className="h-full rounded-full bg-[#084838] transition-all duration-300" style={{ width: `${25 + pos.progress * 75}%` }} />
+      <div className="mt-6 h-1.5 rounded-full bg-[#074636]/20 overflow-hidden" aria-hidden="true">
+        <div className="h-full rounded-full bg-[#074636] transition-all duration-300" style={{ width: `${25 + pos.progress * 75}%` }} />
       </div>
     </div>
   )
@@ -202,7 +135,7 @@ function BestTime({ list }) {
   const t = useT('activities')
   const { lang } = useLanguage()
   const levels = t('levels')
-  const cell = ['bg-[#084838]/10', 'bg-[#C49849]/40', 'bg-[#C49849]']
+  const cell = ['bg-[#074636]/10', 'bg-[#C49849]/40', 'bg-[#C49849]']
   return (
     <div className={SECTION_GAP}>
       <div className="mb-8 md:mb-12 flex flex-col lg:flex-row lg:items-end lg:justify-between gap-4 lg:gap-12">
@@ -311,36 +244,8 @@ function Faq() {
 }
 
 // CTA : carte verte avec texte et photos empilées
-function Cta() {
-  const photo = usePhoto()
-  const t = useT('activities')
-  const frame = "absolute w-[46%] rounded-xl bg-white p-1.5 md:p-2.5 shadow-md"
-  const photoCls = "w-full aspect-[4/5] object-cover rounded-md"
-
-  return (
-    <div className={`${SECTION_GAP} grid grid-cols-1 lg:grid-cols-2 gap-8 overflow-hidden rounded-3xl bg-[#084838] text-white p-6 md:p-12`}>
-      <div className="flex flex-col justify-center">
-        <p className="mb-3 text-xs sm:text-sm md:text-base uppercase tracking-wide text-white/70">{t('ctaEyebrow')}</p>
-        <h2 className="text-3xl sm:text-4xl md:text-5xl font-medium leading-[1.15] tracking-tight">{t('ctaTitle')}</h2>
-        <p className="mt-4 text-sm md:text-lg text-white/75 leading-relaxed max-w-md">
-          {t('ctaText')}
-        </p>
-        <div className="mt-8 flex flex-wrap gap-3">
-          <A href="/contact" className={`bg-[#C49849] hover:bg-[#b08339] text-white ${BUTTON}`}>{t('ctaButton')}</A>
-          <A href="tel:+261340000000" className={`border border-white/40 hover:bg-white/10 text-white ${BUTTON}`}>+261 34 00 000 00</A>
-        </div>
-      </div>
-
-      <div className="relative min-h-[320px] md:min-h-[400px]" aria-hidden="true">
-        <div className={`${frame} left-[2%] top-[6%] -rotate-6`}><img src={photo('act.photo.1')} alt="" className={photoCls} /></div>
-        <div className={`${frame} left-[28%] top-0 rotate-3 z-10`}><img src={photo('act.photo.2')} alt="" className={photoCls} /></div>
-        <div className={`${frame} right-[2%] top-[14%] rotate-6 z-20`}><img src={photo('act.photo.3')} alt="" className={photoCls} /></div>
-      </div>
-    </div>
-  )
-}
-
 function Activities() {
+  const t = useT('activities')
   const contentRef = useRef(null)
   const { offers: list, status } = useOffers('activity')
 
@@ -349,11 +254,8 @@ function Activities() {
     if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return
 
     const ctx = gsap.context(() => {
-      // Entrée du hero
-      gsap.from('[data-hero]', { y: 40, opacity: 0, duration: 0.9, ease: 'power3.out', stagger: 0.12 })
-
       // Chaque section apparaît en remontant quand elle entre dans l'écran
-      Array.from(contentRef.current.children).slice(1).forEach((el) => {
+      Array.from(contentRef.current.children).forEach((el) => {
         gsap.from(el, {
           y: 50, opacity: 0, duration: 0.9, ease: 'power3.out',
           scrollTrigger: { trigger: el, start: 'top 88%', once: true },
@@ -386,16 +288,19 @@ function Activities() {
 
   return (
     <>
-    <section className="w-full pt-0 pb-12 md:pb-20 bg-[#D5E8E2] flex flex-col items-center">
+    <section className="w-full overflow-x-clip bg-[#D5E8E2] flex flex-col items-center">
       <Navbar />
-      <div ref={contentRef} className={`${SECTION_WIDTH} mt-8 md:mt-12`}>
-        <Hero list={list} />
+      <PageHero slot="act.banner" title={t('title')} crumb={t('eyebrow')} text={t('intro')} moreHref="#activities" moreLabel={t('seeAll')} />
+      <div ref={contentRef} className={SECTION_WIDTH}>
         <ActivityCarousel list={list} status={status} />
         {list.length > 0 && <BestTime list={list} />}
         <Moments />
         <Faq />
-        <Cta />
       </div>
+      <PageCta slot="act.banner" title={t('ctaTitle')} text={t('ctaText')} floats={['act.photo.1', 'act.photo.2', 'act.photo.3']}>
+        <A href="/contact" className={PAGE_CTA_GOLD}>{t('ctaButton')}</A>
+        <A href="tel:+261340000000" className={PAGE_CTA_GHOST}>+261 34 00 000 00</A>
+      </PageCta>
     </section>
     <Footer />
     </>

@@ -9,19 +9,20 @@ import Deux from '../assets/images/2.jpg'
 import Tana from '../assets/images/Tana.jpg'
 import Navbar from '../components/Navbar'
 import Footer from '../components/Footer'
+import PageHero from '../components/PageHero'
+import PageCta, { PAGE_CTA_GOLD, PAGE_CTA_GHOST } from '../components/PageCta'
 import { slugify } from './destinationsData'
 import { useLanguage, useT } from '../i18n/LanguageContext'
 import { monthName } from '../utils/format'
 import { usePhoto } from '../sitePhotos'
 import { A } from '../i18n/router'
-import SiteMedia from '../components/SiteMedia'
 
 gsap.registerPlugin(ScrollTrigger)
 
 const W = 'w-[90vw] lg:max-w-[95vw]'
 const GOLD = 'bg-[#C49849] hover:bg-[#a9813a]'
 const BTN = 'inline-flex items-center justify-center text-sm font-medium px-6 py-3 rounded-full active:scale-95 transition'
-const H2 = 'text-3xl sm:text-4xl md:text-5xl lg:text-[56px] font-medium leading-[1.1] tracking-tight text-slate-900'
+const H2 = 'text-[clamp(2rem,4.4vw,4rem)] font-bold text-forest leading-[1.08] tracking-tight'
 
 /* ---------------------------- Données ---------------------------- */
 // Noms, accroches, textes et lieux affichés : les mêmes que la page d'accueil (home.regions, même ordre).
@@ -110,70 +111,6 @@ function useGsap(scope, setup, deps = []) {
 
 /* -------------------------- Composants --------------------------- */
 
-function Hero() {
-  const photo = usePhoto()
-  const root = useRef(null)
-  const t = useT('destinations')
-  const strip = [
-    { slot: 'dest.hero.1', cls: 'mt-0' },
-    { slot: 'dest.hero.2', cls: 'mt-10 md:mt-16' },
-    { slot: 'dest.hero.3', cls: 'mt-4 md:mt-6' },
-  ]
-
-  useGsap(root, () => {
-    // Séquence d'arrivée (une seule fois au chargement)
-    const tl = gsap.timeline({ defaults: { ease: 'power4.out' } })
-    tl.from('.hero-eyebrow', { y: 20, opacity: 0, duration: 0.6 })
-      .from('.hero-line', { y: 60, opacity: 0, duration: 1, stagger: 0.12, clearProps: 'all' }, '-=0.3')
-      .from('.hero-copy', { y: 24, opacity: 0, duration: 0.7, clearProps: 'all' }, '-=0.6')
-      .from('.hero-cta', { y: 20, opacity: 0, duration: 0.6, stagger: 0.1, clearProps: 'all' }, '-=0.5')
-      .from(
-        '.hero-img',
-        { yPercent: 25, opacity: 0, scale: 0.92, duration: 1.2, stagger: 0.15, ease: 'expo.out' },
-        0.2
-      )
-
-    // Parallaxe (créée une fois l'entrée terminée pour éviter tout conflit)
-    tl.add(() => {
-      gsap.utils.toArray('.hero-img').forEach((el, i) => {
-        gsap.to(el, {
-          yPercent: -8 - i * 6,
-          ease: 'none',
-          scrollTrigger: { trigger: root.current, start: 'top top', end: 'bottom top', scrub: true },
-        })
-      })
-    })
-  })
-
-  return (
-    <>
-      <Navbar />
-      <section ref={root} className={`${W} mt-6 grid grid-cols-1 lg:grid-cols-[1fr_1.1fr] gap-10 lg:gap-14 items-center`}>
-        <div>
-          <p className="hero-eyebrow text-sm md:text-base text-slate-700 mb-4">{t('list.eyebrow')}</p>
-          <h1 className="text-6xl sm:text-7xl md:text-8xl xl:text-[120px] font-semibold leading-[0.9] tracking-tight text-forest">
-            <span className="hero-line inline-block">{t('list.title1')}</span><br />
-            <span className="hero-line inline-block">{t('list.title2')}</span>
-          </h1>
-          <p className="hero-copy mt-6 text-base md:text-lg text-slate-700 leading-relaxed max-w-lg">
-            {t('list.intro')}
-          </p>
-          <div className="mt-8 flex flex-wrap gap-3">
-            <A href="#regions" className={`hero-cta ${BTN} bg-[#084838] hover:bg-[#0a5c47] text-white`}>{t('list.explore')}</A>
-            <A href="#planner" className={`hero-cta ${BTN} border border-slate-400 hover:border-slate-800 text-slate-800`}>{t('list.when')}</A>
-          </div>
-        </div>
-
-        <div className="grid grid-cols-3 gap-3 md:gap-5">
-          {strip.map((s, i) => (
-            <img key={i} src={photo(s.slot)} alt="" className={`hero-img ${s.cls} w-full aspect-[3/5] object-cover rounded-[1.5rem] md:rounded-[2.5rem] `} />
-          ))}
-        </div>
-      </section>
-    </>
-  )
-}
-
 function RegionNav() {
   const root = useRef(null)
   const t = useT('destinations')
@@ -185,7 +122,7 @@ function RegionNav() {
     const setActive = (id) =>
       links.forEach((l) => {
         const on = l.getAttribute('href') === `#${id}`
-        l.classList.toggle('bg-[#084838]', on)
+        l.classList.toggle('bg-[#074636]', on)
         l.classList.toggle('text-white', on)
       })
 
@@ -214,7 +151,7 @@ function RegionNav() {
       <ul className="flex gap-2 rounded-full bg-white/85 backdrop-blur-md p-2 shadow-sm overflow-x-auto max-w-[90vw] [scrollbar-width:none] [&::-webkit-scrollbar]:hidden">
         {regions.map((r, i) => (
           <li key={r.id} className="shrink-0">
-            <A href={`#${r.id}`} className="region-link block rounded-full px-5 py-2.5 text-sm md:text-base text-slate-800 hover:bg-[#084838] hover:text-white transition">
+            <A href={`#${r.id}`} className="region-link block rounded-full px-5 py-2.5 text-sm md:text-base text-slate-800 hover:bg-[#074636] hover:text-white transition">
               {names[i]}
             </A>
           </li>
@@ -262,9 +199,9 @@ function Region({ region, flip }) {
 
   return (
     <section ref={root} id={region.id} className={`${W} mt-16 md:mt-28 scroll-mt-24 grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-16 items-center`}>
-      <div className={`region-frame relative aspect-[4/5] sm:aspect-[4/3] lg:aspect-[4/5] overflow-hidden rounded-[2rem] md:rounded-[3rem] ${flip ? 'lg:order-2' : ''}`}>
+      <div className={`region-frame relative aspect-[4/5] sm:aspect-[4/3] lg:aspect-[4/5] overflow-hidden rounded-[1.5rem] md:rounded-[2rem] ${flip ? 'lg:order-2' : ''}`}>
         <img src={photo(region.slot)} alt={region.name} className="region-img absolute inset-0 w-full h-full object-cover" />
-        <div className="absolute inset-0 bg-gradient-to-t from-slate-950/60 via-transparent to-transparent" />
+        <div className="absolute inset-0 bg-gradient-to-t from-[#072a1f]/60 via-transparent to-transparent" />
         <span className="region-badge absolute left-5 top-5 bg-[#C49849] text-white text-xs sm:text-sm font-medium px-3 py-1.5 rounded-sm">
           {t('list.bestFrom', { from: monthName(first, lang, 'long'), to: monthName(last, lang, 'long') })}
         </span>
@@ -336,7 +273,7 @@ function Planner() {
   }, [month])
 
   return (
-    <section ref={root} id="planner" className={`${W} mt-20 md:mt-32 scroll-mt-8 rounded-[2rem] md:rounded-[3rem] bg-[#084838] text-white p-5 sm:p-8 md:p-14`}>
+    <section ref={root} id="planner" className={`${W} mt-20 md:mt-32 scroll-mt-8 rounded-[1.5rem] md:rounded-[2rem] bg-[#074636] text-white p-5 sm:p-8 md:p-14`}>
       <h2 className={`${H2} !text-white max-w-3xl`}>{t('list.plannerTitle')}</h2>
       <p className="mt-4 text-sm md:text-base text-white/75 max-w-xl">{t('list.plannerText')}</p>
 
@@ -362,7 +299,7 @@ function Planner() {
               <li key={r.id} className="planner-card">
                 <A href={`#${r.id}`} className="group relative block aspect-[3/4] overflow-hidden rounded-[1.5rem]">
                   <img src={photo(r.slot)} alt="" className="absolute inset-0 w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" />
-                  <div className="absolute inset-0 bg-gradient-to-t from-slate-950/85 to-transparent" />
+                  <div className="absolute inset-0 bg-gradient-to-t from-[#072a1f]/85 to-transparent" />
                   <p className="absolute inset-x-0 bottom-0 p-4 text-lg md:text-xl font-medium">{names[regions.indexOf(r)]}</p>
                 </A>
               </li>
@@ -376,66 +313,25 @@ function Planner() {
   )
 }
 
-function FinalCta() {
-  const root = useRef(null)
-  const t = useT('destinations')
-
-  useGsap(root, () => {
-    // Parallaxe du fond
-    gsap.fromTo(
-      '.cta-bg',
-      { scale: 1.15 },
-      {
-        scale: 1,
-        ease: 'none',
-        scrollTrigger: { trigger: root.current, start: 'top bottom', end: 'bottom top', scrub: true },
-      }
-    )
-    // Contenu
-    gsap.from('.cta-content > *', {
-      y: 40,
-      opacity: 0,
-      duration: 0.8,
-      stagger: 0.12,
-      ease: 'power3.out',
-      clearProps: 'all',
-      scrollTrigger: { trigger: root.current, start: 'top 70%', once: true },
-    })
-  })
-
-  return (
-    <section ref={root} className={`${W} mt-20 md:mt-32 relative overflow-hidden rounded-[2rem] md:rounded-[3rem] text-white min-h-[420px] flex items-center`}>
-      <SiteMedia slot="dest.cta" alt="" className="cta-bg absolute inset-0 w-full h-full object-cover" />
-      <div className="absolute inset-0 bg-slate-950/65" />
-      <div className="cta-content relative p-8 md:p-16 max-w-3xl">
-        <h2 className="text-3xl sm:text-4xl md:text-5xl font-medium leading-[1.1] tracking-tight">{t('list.ctaTitle')}</h2>
-        <p className="mt-4 text-sm md:text-lg text-white/85">{t('list.ctaText')}</p>
-        <div className="mt-8 flex flex-wrap gap-3">
-          <A href="/contact" className={`${BTN} ${GOLD} text-white`}>{t('list.ctaExpert')}</A>
-          <A href="/circuits" className={`${BTN} border border-white/50 hover:bg-white/10`}>{t('list.ctaCircuits')}</A>
-        </div>
-      </div>
-    </section>
-  )
-}
-
 function Destinations() {
+  const t = useT('destinations')
   const texts = useT('home')('regions')
   // Recalcule les positions une fois les images chargées
   useLayoutEffect(() => {
     const refresh = () => ScrollTrigger.refresh()
     window.addEventListener('load', refresh)
-    const t = setTimeout(refresh, 600)
+    const timer = setTimeout(refresh, 600)
     return () => {
       window.removeEventListener('load', refresh)
-      clearTimeout(t)
+      clearTimeout(timer)
     }
   }, [])
 
   return (
     <>
-      <main className="w-full bg-[#D5E8E2] pb-16 md:pb-24 flex flex-col items-center">
-        <Hero />
+      <main className="w-full overflow-x-clip bg-[#D5E8E2] flex flex-col items-center">
+        <Navbar />
+        <PageHero slot="dest.hero.2" title={`${t('list.title1')} ${t('list.title2')}`} crumb={t('list.eyebrow')} text={t('list.intro')} moreHref="#regions" moreLabel={t('list.explore')} />
         <RegionNav />
         {regions.map((r, i) => (
           <Region
@@ -445,7 +341,10 @@ function Destinations() {
           />
         ))}
         <Planner />
-        <FinalCta />
+        <PageCta slot="dest.cta" title={t('list.ctaTitle')} text={t('list.ctaText')} floats={['dest.hero.1', 'dest.hero.3']}>
+          <A href="/contact" className={PAGE_CTA_GOLD}>{t('list.ctaExpert')}</A>
+          <A href="/circuits" className={PAGE_CTA_GHOST}>{t('list.ctaCircuits')}</A>
+        </PageCta>
       </main>
       <Footer />
     </>

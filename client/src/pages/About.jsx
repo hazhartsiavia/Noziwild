@@ -5,9 +5,10 @@ import NosyLonjo from "../assets/images/NosyLonjo.jpg";
 import NosyIranja from "../assets/images/NosyIranja.jpg";
 import Ramena from "../assets/images/Ramena.jpg";
 import Tana from "../assets/images/Tana.jpg";
-import Icone from "../assets/icone.png";
+import Icone from "../assets/logo/icon.svg";
 import Navbar from '../components/Navbar';
 import Footer from '../components/Footer';
+import PageHero from '../components/PageHero'
 import { useT } from '../i18n/LanguageContext';
 import { useScrollReveal } from '../utils/useScrollReveal'
 import { usePhoto } from '../sitePhotos'
@@ -16,14 +17,14 @@ import SiteMedia from '../components/SiteMedia'
 
 /* Constantes partagées : mêmes valeurs que dans Explore, Choose, Trips et Blog */
 const SECTION_WIDTH = "w-[90vw] lg:max-w-[90vw] xl:max-w-[95vw]"
-const SECTION_TITLE = "text-3xl sm:text-4xl md:text-5xl lg:text-[52px] font-medium text-forest leading-[1.15] tracking-tight"
+const SECTION_TITLE = "text-[clamp(2rem,4.4vw,4rem)] font-bold text-forest leading-[1.08] tracking-tight"
 const SECTION_SUBTITLE = "text-sm sm:text-base md:text-lg text-slate-600 leading-relaxed max-w-3xl"
 const META_TEXT = "text-xs sm:text-sm"
 
 // Propres à cette section
 const STATEMENT_TITLE = "text-4xl sm:text-5xl md:text-6xl xl:text-7xl font-medium uppercase leading-[1.15] tracking-tight text-forest"
 // Même échelle que SECTION_TITLE, en blanc pour être posé sur l'image
-const ON_IMAGE_TITLE = "text-3xl sm:text-4xl md:text-5xl lg:text-[52px] font-medium text-white leading-[1.15] tracking-tight"
+const ON_IMAGE_TITLE = "text-[clamp(2rem,4.4vw,4rem)] font-bold text-white leading-[1.08] tracking-tight"
 
 /* ---------------------------- Données ---------------------------- */
 // Textes affichés : locales/<langue>/about.json (les listes suivent l'ordre de celles-ci)
@@ -267,14 +268,14 @@ function HelpPill() {
   return (
     <A
       href={content.helpHref}
-      className="inline-flex items-center gap-5 md:gap-8 self-start rounded-full bg-[#084838] hover:bg-[#0a5c47] transition text-white pl-6 pr-2.5 py-2.5 md:pl-7 md:py-3"
+      className="inline-flex items-center gap-5 md:gap-8 self-start rounded-full bg-[#074636] hover:bg-[#0a5c47] transition text-white pl-6 pr-2.5 py-2.5 md:pl-7 md:py-3"
     >
       <span className="text-lg md:text-xl font-medium">{t('helpLabel')}</span>
       <span className="flex items-center">
         {team.map((person) => (
           <span
             key={person.name}
-            className={`-ml-3 first:ml-0 w-11 h-11 md:w-14 md:h-14 rounded-full overflow-hidden ring-2 ring-[#084838] flex items-center justify-center text-slate-800 font-medium ${person.bg}`}
+            className={`-ml-3 first:ml-0 w-11 h-11 md:w-14 md:h-14 rounded-full overflow-hidden ring-2 ring-[#074636] flex items-center justify-center text-slate-800 font-medium ${person.bg}`}
           >
             {person.image
               ? <img src={person.image} alt={person.name} className="w-full h-full object-cover" />
@@ -290,7 +291,7 @@ function FeatureCard({ feature, title }) {
   const IconComponent = feature.icon
   return (
     <div className="flex flex-row md:flex-col items-center md:items-start justify-between gap-3 md:min-h-[145px] rounded-xl border border-white/20 bg-white/10 backdrop-blur-md p-4 md:p-5 text-white">
-      <h3 className="text-sm md:text-base font-medium leading-snug">{title}</h3>
+      <h3 className="text-sm md:text-base font-bold leading-snug">{title}</h3>
       <IconComponent />
     </div>
   )
@@ -393,7 +394,7 @@ function ExpertSideCard({ expert, onSelect }) {
           className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
         />
       </div>
-      <h3 className="mt-4 md:mt-8 text-lg md:text-2xl font-medium leading-snug text-forest">
+      <h3 className="mt-4 md:mt-8 text-lg md:text-2xl font-bold leading-snug text-forest">
         {expert.name}
       </h3>
       <p className="mt-1 md:mt-3 text-sm md:text-base text-slate-600">{expert.role}</p>
@@ -419,7 +420,7 @@ function ExpertsSection() {
 
   const arrowClass =
     "w-10 h-10 md:w-12 md:h-12 flex items-center justify-center rounded-full border border-slate-700 text-slate-800 " +
-    "hover:bg-[#084838]/10 active:bg-[#084838]/20 transition " +
+    "hover:bg-[#074636]/10 active:bg-[#074636]/20 transition " +
     "focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-slate-800"
 
   return (
@@ -457,7 +458,7 @@ function ExpertsSection() {
           <hr className="mt-6 md:mt-9 border-slate-900/15" />
 
           <div className="mt-6 md:mt-8 flex flex-wrap items-center gap-x-4 gap-y-1">
-            <h3 className="text-2xl md:text-3xl lg:text-4xl font-medium tracking-tight leading-tight text-forest">
+            <h3 className="text-2xl md:text-3xl lg:text-4xl font-bold tracking-tight leading-tight text-forest">
               {current.name}
             </h3>
             <span className="hidden sm:block w-px h-5 bg-slate-500" aria-hidden="true" />
@@ -507,17 +508,17 @@ function ExpertsSection() {
 
 function About() {
   const t = useT('about')
+  const nav = useT('nav')
   const root = useRef(null)
   useScrollReveal(root)
   return (
     <>
     <section ref={root} className="w-full pt-0 pb-12 bg-[#D5E8E2] flex flex-col items-center">
         <Navbar />
+      <PageHero slot="about.hero" title={t('title')} crumb={nav('about')} />
       <div className={`${SECTION_WIDTH} mt-8 md:mt-12`}>
-        {/* Titre + texte + aide */}
-        <h2 className={`${STATEMENT_TITLE} max-w-5xl`}>{t('title')}</h2>
-
-        <div className="mt-8 md:mt-10 flex flex-col lg:flex-row lg:items-center lg:justify-between gap-6 lg:gap-12">
+        {/* Texte + aide */}
+        <div className="flex flex-col lg:flex-row lg:items-center lg:justify-between gap-6 lg:gap-12">
           <div className="flex items-center gap-5 md:gap-6 max-w-2xl">
             <div className="hidden sm:block"><TalkBadge /></div>
             <p className="text-sm sm:text-base md:text-lg text-slate-600 leading-relaxed">
@@ -529,13 +530,13 @@ function About() {
         </div>
 
         {/* Carte "Our Promise" */}
-        <div className="relative mt-10 md:mt-16 overflow-hidden rounded-3xl bg-[#084838] text-white min-h-[520px] md:min-h-[625px]">
+        <div className="relative mt-10 md:mt-16 overflow-hidden rounded-3xl bg-[#074636] text-white min-h-[520px] md:min-h-[625px]">
           <SiteMedia
             slot="about.promise"
             alt={t('imageAlt')}
             className="absolute inset-0 w-full h-full object-cover"
           />
-          <div className="absolute inset-0 bg-gradient-to-r from-black/30 via-black/10 to-black/80" />
+          <div className="absolute inset-0 bg-gradient-to-r from-[#072a1f]/30 via-[#072a1f]/10 to-[#072a1f]/80" />
 
           <div className="relative min-h-[inherit] flex flex-col p-5 md:p-8">
             <p className="flex items-center gap-2 text-lg md:text-xl font-medium">

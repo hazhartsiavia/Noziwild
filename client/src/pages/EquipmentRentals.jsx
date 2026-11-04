@@ -7,6 +7,8 @@ import Ramena from "../assets/images/Ramena.jpg";
 import Tana from "../assets/images/Tana.jpg";
 import Navbar from '../components/Navbar';
 import Footer from '../components/Footer';
+import { CARD, CARD_BADGE, CARD_BODY, CARD_CHIP, CARD_CHIPS, CARD_FOOT, CARD_IMG, CARD_MEDIA, CARD_TEXT, CARD_TITLE } from '../components/Card'
+import PageHero from '../components/PageHero'
 import { useTrip } from '../context/TripContext';
 import { useTripItem } from '../components/AddToTrip';
 import { sendRequest } from '../api';
@@ -24,7 +26,7 @@ gsap.registerPlugin(ScrollTrigger)
 
 /* Constantes partagées : mêmes valeurs que dans les autres pages */
 const SECTION_WIDTH = "w-[90vw] lg:max-w-[90vw] xl:max-w-[95vw]"
-const SECTION_TITLE = "text-3xl sm:text-4xl md:text-5xl lg:text-[52px] font-medium text-forest leading-[1.15] tracking-tight"
+const SECTION_TITLE = "text-[clamp(2rem,4.4vw,4rem)] font-bold text-forest leading-[1.08] tracking-tight"
 const SECTION_SUBTITLE = "text-sm sm:text-base md:text-lg text-slate-600 leading-relaxed max-w-3xl"
 const META_TEXT = "text-xs sm:text-sm"
 const STATEMENT_TITLE = "text-4xl sm:text-5xl md:text-6xl xl:text-7xl font-medium uppercase leading-[1.15] tracking-tight text-forest"
@@ -77,26 +79,13 @@ const pickupIcons = {
 
 /* -------------------------- Composants --------------------------- */
 
-// Hero : titre + arches cliquables (filtrent le catalogue)
+// Arches cliquables sous la bannière (filtrent le catalogue)
 function Hero({ counts, onPick }) {
   const photo = usePhoto()
   const t = useT('equipment')
   const arches = localize(ARCHES, t('arches'))
   return (
     <section>
-      <div className="grid grid-cols-1 lg:grid-cols-[1.4fr_1fr] gap-6 lg:gap-16 lg:items-end">
-        <div>
-          <p data-hero className="mb-4 text-xs sm:text-sm md:text-base uppercase tracking-wide text-slate-700">{t('eyebrow')}</p>
-          <h1 data-hero className={STATEMENT_TITLE}>{t('title')}</h1>
-        </div>
-        <div data-hero>
-          <p className={SECTION_SUBTITLE}>
-            {t('intro')}
-          </p>
-          <A href="#catalog" className={`mt-6 inline-block bg-[#084838] hover:bg-[#0a5c47] text-white ${BUTTON}`}>{t('browse')}</A>
-        </div>
-      </div>
-
       <ul className="mt-10 md:mt-16 grid grid-cols-2 lg:grid-cols-4 gap-4 md:gap-6">
         {arches.map((a, i) => (
           <li key={a.id} data-arch>
@@ -109,7 +98,7 @@ function Hero({ counts, onPick }) {
                   <p className="text-lg md:text-2xl font-medium text-slate-900">{a.label}</p>
                   <p className={`${META_TEXT} text-slate-600`}>{counts[a.id] === 1 ? t('itemOne') : t('items', { count: counts[a.id] })}</p>
                 </div>
-                <span className="shrink-0 w-10 h-10 md:w-12 md:h-12 rounded-full bg-[#084838] text-white flex items-center justify-center transition group-hover:bg-[#C49849]">
+                <span className="shrink-0 w-10 h-10 md:w-12 md:h-12 rounded-full bg-[#074636] text-white flex items-center justify-center transition group-hover:bg-[#C49849]">
                   <ArrowIcon />
                 </span>
               </div>
@@ -127,28 +116,28 @@ function GearCard({ item, qty, onChange }) {
   const round = "w-9 h-9 flex items-center justify-center rounded-full transition active:scale-95"
 
   return (
-    <article className="flex flex-col overflow-hidden rounded-2xl bg-white">
-      <div className="relative aspect-[4/3] overflow-hidden">
-        <img src={item.image} alt={item.name} className="w-full h-full object-cover" />
-        <span className="absolute left-3 top-3 rounded-full bg-white/90 px-3 py-1 text-xs font-medium text-slate-800">{label}</span>
+    <article className={CARD}>
+      <div className={CARD_MEDIA}>
+        <img src={item.image} alt={item.name} className={CARD_IMG} />
+        <span className={CARD_BADGE}>{label}</span>
       </div>
-      <div className="flex flex-col flex-1 p-4 md:p-5">
-        <h3 className="text-lg md:text-xl font-medium text-forest">{item.name}</h3>
-        <p className="mt-2 text-sm text-slate-600 leading-relaxed">{item.text}</p>
-        <ul className="mt-3 flex flex-wrap gap-2">
-          {item.specs.map((s) => <li key={s} className="rounded-full bg-[#D5E8E2] px-3 py-1 text-xs text-slate-700">{s}</li>)}
+      <div className={CARD_BODY}>
+        <h3 className={CARD_TITLE.replace('mt-4 ', '')}>{item.name}</h3>
+        <p className={CARD_TEXT}>{item.text}</p>
+        <ul className={CARD_CHIPS}>
+          {item.specs.map((s) => <li key={s} className={CARD_CHIP}>{s}</li>)}
         </ul>
 
-        <div className="mt-auto pt-5 flex items-center justify-end gap-3">
+        <div className={`${CARD_FOOT} justify-end`}>
           {qty === 0 ? (
-            <button type="button" onClick={() => onChange(item.id, 1)} className={`inline-flex items-center gap-1.5 bg-[#084838] hover:bg-[#0a5c47] text-white text-sm font-medium px-4 py-2 rounded-full active:scale-95 transition`}>
+            <button type="button" onClick={() => onChange(item.id, 1)} className={`inline-flex items-center gap-1.5 bg-[#074636] hover:bg-[#0a5c47] text-white text-sm font-medium px-4 py-2 rounded-full active:scale-95 transition`}>
               <PlusIcon /> {t('add')}
             </button>
           ) : (
             <div className="flex items-center gap-2 rounded-full bg-[#D5E8E2] p-1">
-              <button type="button" onClick={() => onChange(item.id, -1)} aria-label={t('removeOne', { name: item.name })} className={`${round} bg-white text-[#084838]`}><MinusIcon /></button>
+              <button type="button" onClick={() => onChange(item.id, -1)} aria-label={t('removeOne', { name: item.name })} className={`${round} bg-white text-[#074636]`}><MinusIcon /></button>
               <span className="w-5 text-center text-sm font-medium tabular-nums" aria-live="polite">{qty}</span>
-              <button type="button" onClick={() => onChange(item.id, 1)} aria-label={t('addOne', { name: item.name })} className={`${round} bg-[#084838] text-white`}><PlusIcon /></button>
+              <button type="button" onClick={() => onChange(item.id, 1)} aria-label={t('addOne', { name: item.name })} className={`${round} bg-[#074636] text-white`}><PlusIcon /></button>
             </div>
           )}
         </div>
@@ -206,7 +195,7 @@ function Catalog({ category, setCategory, gear, status }) {
   const upToDate = saved && saved.details === rental.details
 
   const tab = (active) =>
-    `rounded-full px-5 py-2 text-sm md:text-base font-medium transition ${active ? 'bg-[#084838] text-white' : 'bg-white text-slate-700 hover:bg-white/70'}`
+    `rounded-full px-5 py-2 text-sm md:text-base font-medium transition ${active ? 'bg-[#074636] text-white' : 'bg-white text-slate-700 hover:bg-white/70'}`
 
   return (
     <div id="catalog" className={`${SECTION_GAP} scroll-mt-8`}>
@@ -227,15 +216,15 @@ function Catalog({ category, setCategory, gear, status }) {
 
         <div>
           <OffersStatus status={status} empty={list.length === 0} />
-          <div ref={gridRef} className="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-3 gap-4">
+          <div ref={gridRef} className="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-3 gap-6 lg:gap-9">
             {list.map((item) => <GearCard key={item.id} item={item} qty={cart[item.id] || 0} onChange={change} />)}
           </div>
         </div>
 
         {/* Liste de location : reste visible au défilement sur grand écran */}
-        <aside className="lg:sticky lg:top-8 rounded-3xl bg-[#084838] text-white p-5 md:p-7">
+        <aside className="lg:sticky lg:top-8 rounded-3xl bg-[#074636] text-white p-5 md:p-7">
           <div className="flex items-center justify-between gap-3">
-            <h3 className="text-xl md:text-2xl font-medium">{t('listTitle')}</h3>
+            <h3 className="text-xl md:text-2xl font-bold">{t('listTitle')}</h3>
             <span className="rounded-full bg-white/15 px-3 py-1 text-sm tabular-nums">{itemCount === 1 ? t('itemOne') : t('items', { count: itemCount })}</span>
           </div>
 
@@ -259,7 +248,7 @@ function Catalog({ category, setCategory, gear, status }) {
           )}
 
           {upToDate ? (
-            <Link to="/my-trip" className={`mt-6 block text-center bg-white text-[#084838] hover:bg-white/90 ${BUTTON}`}>
+            <Link to="/my-trip" className={`mt-6 block text-center bg-white text-[#074636] hover:bg-white/90 ${BUTTON}`}>
               ✓ {tt('viewTrip')}
             </Link>
           ) : (
@@ -283,7 +272,7 @@ function Catalog({ category, setCategory, gear, status }) {
 function Included() {
   const included = useT('equipment')('included')
   return (
-    <ul className={`${SECTION_GAP} grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-x-8 gap-y-4 border-y border-[#084838]/20 py-6 md:py-8`}>
+    <ul className={`${SECTION_GAP} grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-x-8 gap-y-4 border-y border-[#074636]/20 py-6 md:py-8`}>
       {included.map((text) => (
         <li key={text} className="flex items-center gap-3 text-sm md:text-base text-slate-800">
           <span className="shrink-0 w-7 h-7 rounded-full bg-[#C49849] text-white flex items-center justify-center"><CheckIcon /></span>
@@ -308,9 +297,9 @@ function Pickup() {
       <ul className="flex flex-col gap-3">
         {pickups.map((p) => (
           <li key={p.id} className="flex items-center gap-4 md:gap-6 rounded-2xl bg-white p-4 md:p-6">
-            <span className="shrink-0 w-12 h-12 md:w-16 md:h-16 rounded-full bg-[#084838] text-white flex items-center justify-center">{pickupIcons[p.icon]}</span>
+            <span className="shrink-0 w-12 h-12 md:w-16 md:h-16 rounded-full bg-[#074636] text-white flex items-center justify-center">{pickupIcons[p.icon]}</span>
             <div className="flex-1">
-              <h3 className="text-base md:text-2xl font-medium text-forest">{p.title}</h3>
+              <h3 className="text-base md:text-2xl font-bold text-forest">{p.title}</h3>
               <p className="mt-1 text-sm md:text-base text-slate-600 leading-relaxed">{p.text}</p>
             </div>
           </li>
@@ -376,12 +365,12 @@ function Cta() {
   }
 
   return (
-    <div className={`${SECTION_GAP} relative overflow-hidden rounded-3xl bg-[#084838] text-white`}>
+    <div className={`${SECTION_GAP} relative overflow-hidden rounded-3xl bg-[#074636] text-white`}>
       <SiteMedia slot="gear.cta" alt="" className="absolute inset-0 w-full h-full object-cover" />
-      <div className="absolute inset-0 bg-[#084838]/80" />
+      <div className="absolute inset-0 bg-[#074636]/80" />
 
       <div className="relative px-6 py-14 md:px-12 md:py-24 text-center">
-        <h2 className="mx-auto max-w-3xl text-3xl sm:text-4xl md:text-5xl font-medium leading-[1.15] tracking-tight">{t('ctaTitle')}</h2>
+        <h2 className="mx-auto max-w-3xl text-[clamp(2rem,4.4vw,4rem)] font-bold leading-[1.08] tracking-tight">{t('ctaTitle')}</h2>
         <p className="mx-auto mt-4 max-w-xl text-sm md:text-lg text-white/80 leading-relaxed">
           {t('ctaText')}
         </p>
@@ -402,6 +391,7 @@ function Cta() {
 }
 
 function EquipmentRentals() {
+  const t = useT('equipment')
   const contentRef = useRef(null)
   const [category, setCategory] = useState('all')
   const { offers, status } = useOffers('gear')
@@ -417,10 +407,8 @@ function EquipmentRentals() {
     if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return
 
     const ctx = gsap.context(() => {
-      // Entrée du hero : textes puis arches qui montent l'une après l'autre
-      gsap.timeline({ defaults: { ease: 'power3.out' } })
-        .from('[data-hero]', { y: 40, opacity: 0, duration: 0.9, stagger: 0.12 })
-        .from('[data-arch]', { y: 80, opacity: 0, duration: 1, stagger: 0.15 }, '-=0.5')
+      // Les arches montent l'une après l'autre
+      gsap.from('[data-arch]', { y: 80, opacity: 0, duration: 1, stagger: 0.15, ease: 'power3.out' })
 
       // Chaque section apparaît en remontant quand elle entre dans l'écran
       Array.from(contentRef.current.children).slice(1).forEach((el) => {
@@ -444,7 +432,8 @@ function EquipmentRentals() {
     <>
     <section className="w-full pt-0 pb-12 md:pb-20 bg-[#D5E8E2] flex flex-col items-center">
       <Navbar />
-      <div ref={contentRef} className={`${SECTION_WIDTH} mt-8 md:mt-16`}>
+      <PageHero slot="gear.arch.trek" title={t('title')} crumb={t('eyebrow')} text={t('intro')} moreHref="#catalog" moreLabel={t('browse')} />
+      <div ref={contentRef} className={SECTION_WIDTH}>
         <Hero counts={counts} onPick={setCategory} />
         <Catalog category={category} setCategory={setCategory} gear={gear} status={status} />
         <Included />

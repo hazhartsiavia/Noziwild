@@ -1,11 +1,14 @@
 // Section Témoignages : carte de note fixe à gauche, avis qui défilent à droite.
 // Les avis sont en base : admin > Offers > Testimonials (publication, ordre, note, photo, traductions).
-// La note affichée est la moyenne des avis publiés. Sans avis publié, la section n'apparaît pas.
+// La note affichée est la moyenne des avis publiés.
+// Vidéos : admin > Offers > Client videos ; seules celles de la langue du site sont montrées.
+// Sans avis ni vidéo à montrer, la section n'apparaît pas.
 // Textes de la section : locales/<langue>/testimonials.json
-import React, { useLayoutEffect, useRef } from 'react'
+import React, { useLayoutEffect, useRef, useState } from 'react'
 import gsap from 'gsap'
 import { ScrollTrigger } from 'gsap/ScrollTrigger'
-import { Quote, Star } from 'lucide-react'
+import { Play, Quote, Star } from 'lucide-react'
+import { assetUrl } from '../api'
 import { useLanguage, useT } from '../i18n/LanguageContext'
 import { LOCALES } from '../utils/format'
 import { useOffers } from '../utils/useOffers'
@@ -14,7 +17,7 @@ import './testimonials.css'
 
 gsap.registerPlugin(ScrollTrigger)
 
-const SECTION_TITLE = 'text-3xl sm:text-4xl md:text-5xl lg:text-[52px] font-medium text-forest leading-[1.15] tracking-tight'
+const SECTION_TITLE = 'text-[clamp(2rem,4.4vw,4rem)] font-bold text-forest leading-[1.08] tracking-tight'
 const SECTION_SUBTITLE = 'text-sm sm:text-base md:text-lg text-slate-600 leading-relaxed'
 const MIN_CARDS = 6 // assez de cartes pour remplir la largeur pendant le défilement
 const SECONDS_PER_CARD = 9
@@ -64,12 +67,112 @@ function Column({ item, starsFirst, copy }) {
   )
 }
 
+// Lecteur à gauche ; à droite le voyageur et, s'il y en a plusieurs, les autres vidéos de cette langue
+function ClientVideos({ videos }) {
+  const t = useT('testimonials')
+  const root = useRef(null)
+  const player = useRef(null)
+  const [activeId, setActiveId] = useState(videos[0].id)
+  const [started, setStarted] = useState(false)
+  const current = videos.find((v) => v.id === activeId) || videos[0]
+  const others = videos.filter((v) => v.id !== current.id)
+
+  useLayoutEffect(() => {
+    const mm = gsap.matchMedia()
+    mm.add('(prefers-reduced-motion: no-preference)', () => {
+      gsap.fromTo('.tm-video', { y: 50, opacity: 0 }, { y: 0, opacity: 1, duration: 0.9, stagger: 0.12, ease: 'power3.out', clearProps: 'all', scrollTrigger: { trigger: root.current, start: 'top 85%', once: true } })
+    }, root.current)
+    ScrollTrigger.refresh()
+    return () => mm.revert()
+  }, [])
+
+  const start = () => {
+    setStarted(true)
+    player.current?.play()
+  }
+
+  // Une autre vidéo choisie : elle démarre aussitôt
+  const choose = (id) => {
+    setActiveId(id)
+    setStarted(true)
+  }
+
+  return (
+    <div ref={root} data-no-reveal className="mt-4 md:mt-5 grid grid-cols-1 lg:grid-cols-[minmax(0,1.6fr)_minmax(0,1fr)] gap-4 md:gap-5">
+      <div className="tm-video relative aspect-video overflow-hidden rounded-2xl bg-[#072a1f]">
+        {/* Sans image choisie, #t=0.1 fait apparaître la première image de la vidéo */}
+        <video
+          key={current.id}
+          ref={player}
+          src={`${assetUrl(current.video)}${current.image ? '' : '#t=0.1'}`}
+          poster={current.image || undefined}
+          preload={current.image ? 'none' : 'metadata'}
+          controls={started}
+          autoPlay={started}
+          playsInline
+          className="absolute inset-0 w-full h-full object-contain"
+        />
+        {!started && (
+          <button
+            type="button"
+            onClick={start}
+            aria-label={t('play', { name: current.title })}
+            className="group absolute inset-0 flex items-center justify-center bg-[#072a1f]/25 transition-colors hover:bg-[#072a1f]/10 focus:outline-none focus-visible:ring-4 focus-visible:ring-inset focus-visible:ring-[#E6C58A]"
+          >
+            <span className="flex w-16 h-16 md:w-20 md:h-20 items-center justify-center rounded-full bg-[#C49849] text-white shadow-xl transition-transform duration-300 group-hover:scale-110">
+              <Play className="w-6 h-6 md:w-8 md:h-8 fill-current" aria-hidden="true" />
+            </span>
+          </button>
+        )}
+      </div>
+
+      <aside className="tm-video flex flex-col rounded-2xl bg-white p-5 md:p-8">
+        <p className="text-xs sm:text-sm font-medium uppercase tracking-wide text-[#8a6a2b]">{t('videoLabel')}</p>
+        <h3 className="mt-2 text-2xl md:text-3xl font-bold leading-tight tracking-tight text-forest">{t('videoTitle')}</h3>
+        {current.text && <blockquote className="mt-4 text-base leading-relaxed text-slate-800">{current.text}</blockquote>}
+        <p className="mt-4 text-sm md:text-base">
+          <span className="font-medium text-slate-900">{current.title}</span>
+          <span className="block text-xs md:text-sm text-slate-500">{current.origin}</span>
+        </p>
+
+        {others.length > 0 && (
+          <div className="mt-auto pt-6">
+            <p className="border-t border-slate-200 pt-4 text-sm font-medium text-slate-700">{t('others')}</p>
+            <ul className="mt-2 flex flex-col">
+              {others.map((v) => (
+                <li key={v.id}>
+                  <button
+                    type="button"
+                    onClick={() => choose(v.id)}
+                    aria-label={t('play', { name: v.title })}
+                    className="group w-full flex items-center gap-3 rounded-xl p-2 text-left transition-colors hover:bg-[#D5E8E2] focus:outline-none focus-visible:ring-2 focus-visible:ring-[#C49849]"
+                  >
+                    <span className="flex w-9 h-9 shrink-0 items-center justify-center rounded-full bg-[#C49849] text-white">
+                      <Play className="w-3.5 h-3.5 fill-current" aria-hidden="true" />
+                    </span>
+                    <span className="min-w-0">
+                      <span className="block truncate text-sm font-medium text-slate-900">{v.title}</span>
+                      <span className="block truncate text-xs text-slate-500">{v.origin}</span>
+                    </span>
+                  </button>
+                </li>
+              ))}
+            </ul>
+          </div>
+        )}
+      </aside>
+    </div>
+  )
+}
+
 function Testimonials({ className = '' }) {
   const t = useT('testimonials')
   const { lang } = useLanguage()
   const { offers, status } = useOffers('testimonial')
+  const { offers: allVideos, status: videoStatus } = useOffers('client_video')
+  const videos = allVideos.filter((v) => v.language === lang)
   const root = useRef(null)
-  useScrollReveal(root, [status])
+  useScrollReveal(root, [status, videoStatus])
 
   // À l'arrivée dans l'écran : la carte de note entre par la gauche, puis les avis montent l'un après l'autre
   useLayoutEffect(() => {
@@ -85,14 +188,14 @@ function Testimonials({ className = '' }) {
     return () => mm.revert()
   }, [status])
 
-  if (status !== 'ready' || !offers.length) return null
+  if (!offers.length && !videos.length) return null
 
-  const average = offers.reduce((sum, o) => sum + Number(o.rating), 0) / offers.length
+  const average = offers.length ? offers.reduce((sum, o) => sum + Number(o.rating), 0) / offers.length : 0
   const shown = new Intl.NumberFormat(LOCALES[lang] || 'en-US', { minimumFractionDigits: 1, maximumFractionDigits: 1 }).format(average)
 
   // Répétés pour une boucle sans à-coup : la seconde moitié prend la place de la première.
   // Les copies sont cachées aux lecteurs d'écran, et retirées sur écran tactile où la liste défile au doigt.
-  const copies = Math.ceil(MIN_CARDS / offers.length)
+  const copies = offers.length ? Math.ceil(MIN_CARDS / offers.length) : 0
   const half = Array.from({ length: copies }, () => offers).flat()
   const loop = [...half, ...half]
 
@@ -103,7 +206,7 @@ function Testimonials({ className = '' }) {
         <p className={`${SECTION_SUBTITLE} lg:max-w-md`}>{t('text')}</p>
       </div>
 
-      <div className="tm-stage grid grid-cols-1 lg:grid-cols-[280px_minmax(0,1fr)] xl:grid-cols-[320px_minmax(0,1fr)] gap-4 md:gap-5" data-no-reveal>
+      {offers.length > 0 && <div className="tm-stage grid grid-cols-1 lg:grid-cols-[280px_minmax(0,1fr)] xl:grid-cols-[320px_minmax(0,1fr)] gap-4 md:gap-5" data-no-reveal>
         <aside className="tm-trust flex flex-col rounded-2xl bg-[#074636] text-white p-6 md:p-8 min-h-[280px] lg:min-h-[420px]">
           <p className="text-xs sm:text-sm font-medium uppercase tracking-wide text-[#E6C58A]">{t('trustLabel')}</p>
           <p className="mt-5 text-4xl md:text-5xl font-medium leading-none tabular-nums">
@@ -126,7 +229,9 @@ function Testimonials({ className = '' }) {
             ))}
           </ul>
         </div>
-      </div>
+      </div>}
+
+      {videos.length > 0 && <ClientVideos key={lang} videos={videos} />}
     </section>
   )
 }

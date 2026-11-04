@@ -19,7 +19,7 @@ function HiddenMessage() {
         <section className="w-[90vw] max-w-3xl mt-16 rounded-3xl bg-white p-10 text-center">
           <h1 className="text-3xl md:text-5xl font-medium tracking-tight text-forest">{t('hiddenTitle')}</h1>
           <p className="mt-4 text-slate-600">{t('hiddenText')}</p>
-          <A href="/" className="mt-6 inline-block rounded-full bg-[#084838] hover:bg-[#0a5c47] px-6 py-3 text-sm font-medium text-white">{t('backHome')}</A>
+          <A href="/" className="mt-6 inline-block rounded-full bg-[#074636] hover:bg-[#0a5c47] px-6 py-3 text-sm font-medium text-white">{t('backHome')}</A>
         </section>
       </main>
       <Footer />

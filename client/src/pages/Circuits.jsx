@@ -6,15 +6,17 @@ import NosyIranja from '../assets/images/NosyIranja.jpg'
 import Ambanja from '../assets/images/Ambanja.jpg'
 import Navbar from '../components/Navbar'
 import Footer from '../components/Footer'
+import { CARD, CARD_BADGE, CARD_BODY, CARD_IMG, CARD_MEDIA, CARD_TITLE, CardMeta } from '../components/Card'
+import PageHero from '../components/PageHero'
+import PageCta, { PAGE_CTA_GOLD, PAGE_CTA_GHOST } from '../components/PageCta'
 import { fetchCircuits, assetUrl } from '../api'
 import { useLanguage, useT } from '../i18n/LanguageContext'
-import SiteMedia from '../components/SiteMedia'
 
 gsap.registerPlugin(ScrollTrigger)
 
 /* Constantes partagées : mêmes valeurs que Blog et Contact */
 const SECTION_WIDTH = 'w-[90vw] lg:max-w-[95vw]'
-const SECTION_TITLE = 'text-3xl sm:text-4xl md:text-5xl lg:text-[52px] font-medium text-forest leading-[1.15] tracking-tight'
+const SECTION_TITLE = 'text-[clamp(2rem,4.4vw,4rem)] font-bold text-forest leading-[1.08] tracking-tight'
 const SECTION_SUBTITLE = 'text-sm sm:text-base md:text-lg text-slate-600 leading-relaxed max-w-3xl'
 const META_TEXT = 'text-xs sm:text-sm'
 const PAGE_TITLE = 'text-5xl sm:text-6xl md:text-7xl lg:text-[80px] font-bold uppercase leading-none tracking-tight'
@@ -58,43 +60,6 @@ const reveal = (targets, from, to, extra = {}) =>
 
 /* -------------------------- Composants --------------------------- */
 
-function CircuitsHero() {
-  const root = useRef(null)
-  const t = useT('circuits')
-
-  // Hero : l'image se dézoome, le titre se découvre comme un rideau de gauche à droite
-  useGsap(root, () => {
-    const tl = gsap.timeline({ defaults: { ease: 'power3.out' } })
-    tl.fromTo('.hero-bg', { scale: 1.25 }, { scale: 1, duration: 2.2, ease: 'power2.out', clearProps: 'all' }, 0)
-      .fromTo('.hero-shade', { opacity: 0 }, { opacity: 1, duration: 1, clearProps: 'all' }, 0)
-      .fromTo(
-        '.hero-title',
-        { clipPath: 'inset(-10% 100% -10% 0%)', x: -40 },
-        { clipPath: 'inset(-10% 0% -10% 0%)', x: 0, duration: 1.2, ease: 'expo.out', clearProps: 'all' },
-        0.3
-      )
-      .fromTo('.hero-rule', { scaleX: 0, transformOrigin: 'left center' }, { scaleX: 1, duration: 0.9, ease: 'power2.inOut', clearProps: 'all' }, 0.8)
-      .fromTo('.hero-crumb', { y: 16, opacity: 0 }, { y: 0, opacity: 1, duration: 0.6, clearProps: 'all' }, 1.1)
-  })
-
-  return (
-    <>
-      <Navbar />
-      <section ref={root} className={`${SECTION_WIDTH} relative flex items-center overflow-hidden rounded-3xl bg-[#084838] text-white min-h-[100px] md:min-h-[360px]`}>
-        <SiteMedia slot="circ.hero" alt="" className="hero-bg absolute inset-0 w-full h-full object-cover" />
-        <div className="hero-shade absolute inset-0 bg-slate-950/60" />
-        <div className="relative w-full max-w-5xl mx-auto px-6 md:px-10 py-16">
-          <h1 className={`hero-title ${PAGE_TITLE}`}>{t('title')}</h1>
-          <hr className="hero-rule my-6 md:my-8 border-white/30" />
-          <nav aria-label="Breadcrumb" className="hero-crumb text-sm md:text-base font-medium">
-            <A href="/" className="hover:underline underline-offset-4">{t('home')}</A> <span aria-hidden="true">/</span> {t('crumb')}
-          </nav>
-        </div>
-      </section>
-    </>
-  )
-}
-
 function Chip({ active, onClick, children }) {
   return (
     <button
@@ -103,7 +68,7 @@ function Chip({ active, onClick, children }) {
       aria-pressed={active}
       className={`chip rounded-full border px-4 py-2 text-sm transition focus:outline-none focus-visible:ring-2 focus-visible:ring-slate-700 focus-visible:ring-offset-2 ${
         active
-          ? 'bg-[#084838] border-[#084838] text-white'
+          ? 'bg-[#074636] border-[#074636] text-white'
           : 'bg-white border-slate-300 text-slate-700 hover:border-slate-500'
       }`}
     >
@@ -115,22 +80,14 @@ function Chip({ active, onClick, children }) {
 function CircuitCard({ circuit }) {
   const t = useT('circuits')
   return (
-    <Link to={`/circuits/${circuit.slug}`} className="circuit-card group flex flex-col rounded-xl bg-white p-3 text-slate-800">
-      <div className="relative aspect-[4/3] overflow-hidden rounded-md">
-        <img
-          src={assetUrl(circuit.image)}
-          alt={circuit.title}
-          className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
-        />
-        <span className={`circuit-badge ${BADGE} absolute left-3 top-3`}>{t('days', { count: circuit.days })}</span>
+    <Link to={`/circuits/${circuit.slug}`} className={`circuit-card ${CARD}`}>
+      <div className={CARD_MEDIA}>
+        <img src={assetUrl(circuit.image)} alt={circuit.title} className={CARD_IMG} />
+        <span className={`circuit-badge ${CARD_BADGE}`}>{t('days', { count: circuit.days })}</span>
       </div>
-      <div className="flex flex-1 flex-col px-3 pt-6 pb-4">
-        <p className={`flex items-center gap-3 ${META_TEXT} text-slate-600`}>
-          <span>{circuit.regionLabel || circuit.region}</span>
-          <span className="w-px h-4 bg-slate-700" />
-          <span>{circuit.level}</span>
-        </p>
-        <h3 className="mt-4 text-xl md:text-2xl leading-snug group-hover:underline">{circuit.title}</h3>
+      <div className={CARD_BODY}>
+        <CardMeta items={[circuit.regionLabel || circuit.region, circuit.level]} />
+        <h3 className={`${CARD_TITLE} group-hover:underline`}>{circuit.title}</h3>
         <p className={`mt-3 ${META_TEXT} text-slate-600`}>{circuit.stops}</p>
       </div>
     </Link>
@@ -173,7 +130,6 @@ function Circuits() {
   const introRef = useRef(null)
   const gridRef = useRef(null)
   const highlightsRef = useRef(null)
-  const ctaRef = useRef(null)
 
   const visible = circuits.filter(
     (c) => (region === 'All' || c.region === region) && durations[duration].test(c.days)
@@ -223,19 +179,6 @@ function Circuits() {
   })
 
   /* CTA : la carte grandit, le fond se dézoome au scroll, le bouton rebondit */
-  useGsap(ctaRef, () => {
-    const tl = gsap.timeline({ scrollTrigger: { trigger: ctaRef.current, start: 'top 80%', once: true } })
-    tl.fromTo('.cta-card', { scale: 0.92, opacity: 0, transition: 'none' }, { scale: 1, opacity: 1, duration: 1, ease: 'power3.out', clearProps: 'all' })
-      .fromTo('.cta-text > *', { x: -30, opacity: 0, transition: 'none' }, { x: 0, opacity: 1, duration: 0.7, stagger: 0.12, ease: 'power2.out', clearProps: 'all' }, '-=0.5')
-      .fromTo('.cta-btn', { scale: 0.6, opacity: 0, transition: 'none' }, { scale: 1, opacity: 1, duration: 1, ease: 'elastic.out(1, 0.5)', clearProps: 'all' }, '-=0.3')
-
-    gsap.fromTo(
-      '.cta-bg',
-      { scale: 1.15 },
-      { scale: 1, ease: 'none', scrollTrigger: { trigger: ctaRef.current, start: 'top bottom', end: 'bottom top', scrub: true } }
-    )
-  })
-
   // Recalcule les positions une fois les images chargées
   useLayoutEffect(() => {
     const refresh = () => ScrollTrigger.refresh()
@@ -249,8 +192,9 @@ function Circuits() {
 
   return (
     <>
-      <main className="relative overflow-hidden w-full bg-[#D5E8E2] pt-0 pb-16 md:pb-24 flex flex-col items-center">
-        <CircuitsHero />
+      <main className="relative overflow-hidden w-full bg-[#D5E8E2] flex flex-col items-center">
+        <Navbar />
+        <PageHero slot="circ.hero" title={t('title')} crumb={t('crumb')} />
 
         {/* Intro + filtres */}
         <section className={`${SECTION_WIDTH} mt-[50px] md:mt-[100px]`}>
@@ -304,7 +248,7 @@ function Circuits() {
                 <button
                   type="button"
                   onClick={() => window.location.reload()}
-                  className={`mt-4 bg-[#084838] hover:bg-[#0a5c47] active:scale-95 transition text-white ${BUTTON}`}
+                  className={`mt-4 bg-[#074636] hover:bg-[#0a5c47] active:scale-95 transition text-white ${BUTTON}`}
                 >
                   {t('reload')}
                 </button>
@@ -322,7 +266,7 @@ function Circuits() {
                 <button
                   type="button"
                   onClick={() => { setRegion('All'); setDuration(0) }}
-                  className={`mt-4 bg-[#084838] hover:bg-[#0a5c47] active:scale-95 transition text-white ${BUTTON}`}
+                  className={`mt-4 bg-[#074636] hover:bg-[#0a5c47] active:scale-95 transition text-white ${BUTTON}`}
                 >
                   {t('reset')}
                 </button>
@@ -335,31 +279,16 @@ function Circuits() {
         <section ref={highlightsRef} className={`${SECTION_WIDTH} mt-16 md:mt-24 grid grid-cols-1 md:grid-cols-3 gap-6`}>
           {t('highlights').map((item) => (
             <div key={item.title} className="highlight rounded-3xl bg-white p-6 md:p-8">
-              <h3 className="text-xl md:text-2xl font-medium text-forest">{item.title}</h3>
+              <h3 className="text-xl md:text-2xl font-bold text-forest">{item.title}</h3>
               <p className="mt-3 text-sm md:text-base text-slate-600 leading-relaxed">{item.text}</p>
             </div>
           ))}
         </section>
 
         {/* Appel à l'action */}
-        <section ref={ctaRef} className={`${SECTION_WIDTH} mt-16 md:mt-24`}>
-          <div className="cta-card relative overflow-hidden rounded-3xl text-white">
-            <SiteMedia slot="circ.cta" alt="" className="cta-bg absolute inset-0 w-full h-full object-cover" />
-            <div className="absolute inset-0 bg-slate-950/70" />
-            <div className="relative flex flex-col md:flex-row md:items-center justify-between gap-6 p-8 md:p-12">
-              <div className="cta-text max-w-2xl">
-                <h2 className="text-2xl md:text-4xl font-medium leading-snug">{t('ctaTitle')}</h2>
-                <p className="mt-3 text-sm md:text-base">{t('ctaText')}</p>
-              </div>
-              <A
-                href="/contact"
-                className={`cta-btn shrink-0 self-start md:self-center bg-[#C49849] hover:bg-[#a9813a] active:scale-95 transition text-white ${BUTTON} md:px-6 md:py-3`}
-              >
-                {t('ctaButton')}
-              </A>
-            </div>
-          </div>
-        </section>
+        <PageCta slot="circ.cta" title={t('ctaTitle')} text={t('ctaText')}>
+          <A href="/contact" className={PAGE_CTA_GOLD}>{t('ctaButton')}</A>
+        </PageCta>
       </main>
 
       <Footer />

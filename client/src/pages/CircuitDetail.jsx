@@ -97,7 +97,7 @@ function Lightbox({ photos, index, title, onClose, onMove }) {
       role="dialog"
       aria-modal="true"
       aria-label={label}
-      className="fixed inset-0 z-50 flex items-center justify-center bg-slate-950/90 p-4 md:p-10"
+      className="fixed inset-0 z-50 flex items-center justify-center bg-[#072a1f]/90 p-4 md:p-10"
       onClick={onClose}
     >
       <figure className="relative w-full max-w-5xl" onClick={(e) => e.stopPropagation()}>
@@ -126,7 +126,7 @@ function Lightbox({ photos, index, title, onClose, onMove }) {
 function Endpoint({ icon, label, place }) {
   return (
     <li className="relative pl-14 md:pl-16">
-      <span className="route-end absolute left-0 top-0 z-10 flex w-10 h-10 md:w-12 md:h-12 items-center justify-center rounded-full bg-[#084838] text-white">
+      <span className="route-end absolute left-0 top-0 z-10 flex w-10 h-10 md:w-12 md:h-12 items-center justify-center rounded-full bg-[#074636] text-white">
         <Icon name={icon} className="w-5 h-5 md:w-6 md:h-6" />
       </span>
       <p className="pt-2 md:pt-3 text-base md:text-lg text-slate-800">
@@ -279,7 +279,7 @@ function Itinerary({ circuit }) {
                                   className="group relative block w-full aspect-[4/3] overflow-hidden rounded-xl sm:rounded-2xl focus:outline-none focus-visible:ring-2 focus-visible:ring-slate-700 focus-visible:ring-offset-2"
                                 >
                                   <img src={assetUrl(src)} alt="" loading="lazy" className="absolute inset-0 w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" />
-                                  <span aria-hidden="true" className="absolute inset-0 flex items-center justify-center bg-slate-950/0 text-white opacity-0 transition group-hover:bg-slate-950/30 group-hover:opacity-100">
+                                  <span aria-hidden="true" className="absolute inset-0 flex items-center justify-center bg-[#072a1f]/0 text-white opacity-0 transition group-hover:bg-[#072a1f]/30 group-hover:opacity-100">
                                     <Icon name="expand" className="w-6 h-6" />
                                   </span>
                                 </button>
@@ -361,7 +361,7 @@ function BookingCard({ circuit }) {
     }
   }
 
-  const tabCls = (name) => `flex-1 rounded-full py-3 text-sm md:text-base font-medium transition ${tab === name ? 'bg-[#084838] text-white' : 'text-slate-700 hover:bg-slate-100'}`
+  const tabCls = (name) => `flex-1 rounded-full py-3 text-sm md:text-base font-medium transition ${tab === name ? 'bg-[#074636] text-white' : 'text-slate-700 hover:bg-slate-100'}`
 
   return (
     <aside id="booking" className="booking-card scroll-mt-6 rounded-3xl bg-white p-6 md:p-8 lg:sticky lg:top-6 self-start shadow-sm">
@@ -441,7 +441,7 @@ function MobileBookingBar({ circuit }) {
           type="button"
           tabIndex={cardVisible ? -1 : 0}
           onClick={() => document.getElementById('booking')?.scrollIntoView({ behavior: 'smooth' })}
-          className={`${BTN} bg-[#084838] hover:bg-[#0a5c47] text-white`}
+          className={`${BTN} bg-[#074636] hover:bg-[#0a5c47] text-white`}
         >
           {t('bookNow')}
         </button>
@@ -597,7 +597,7 @@ function CircuitDetail() {
               {!notFound && (
                 <button type="button" onClick={() => window.location.reload()} className={`${BTN} ${GOLD} text-white`}>{t('tryAgain')}</button>
               )}
-              <Link to="/circuits" className={`${BTN} bg-[#084838] hover:bg-[#0a5c47] text-white`}>{t('allCircuits')}</Link>
+              <Link to="/circuits" className={`${BTN} bg-[#074636] hover:bg-[#0a5c47] text-white`}>{t('allCircuits')}</Link>
             </div>
           </section>
         </main>
@@ -672,7 +672,7 @@ function CircuitDetail() {
                 { title: t('excludes'), list: circuit.excluded, icon: 'cross', color: 'text-red-700' },
               ].map(({ title, list, icon, color }) => (
                 <div key={title} className="gs-incl rounded-3xl bg-white p-6 md:p-8">
-                  <h3 className="text-xl font-medium text-forest">{title}</h3>
+                  <h3 className="text-xl font-bold text-forest">{title}</h3>
                   <ul className="mt-4 flex flex-col gap-3">
                     {list.map((x) => (
                       <li key={x} className="flex gap-3 text-sm md:text-base text-slate-700">
@@ -686,8 +686,8 @@ function CircuitDetail() {
 
             <Itinerary circuit={circuit} />
 
-            <div className="gs-know mt-12 rounded-3xl bg-[#084838] text-white p-6 md:p-8">
-              <h3 className="text-xl font-medium">{t('goodToKnow')}</h3>
+            <div className="gs-know mt-12 rounded-3xl bg-[#074636] text-white p-6 md:p-8">
+              <h3 className="text-xl font-bold">{t('goodToKnow')}</h3>
               <p className="mt-3 text-sm md:text-base text-white/75 leading-relaxed">
                 {circuit.bestTime && `${t('bestTime', { time: circuit.bestTime })} `}{circuit.tip} {t('adaptable')}
               </p>
@@ -710,7 +710,7 @@ function CircuitDetail() {
               <li key={c.slug} className="gs-related">
                 <Link to={`/circuits/${c.slug}`} className="group relative block aspect-[4/3] overflow-hidden rounded-[1.5rem] text-white">
                   <img src={assetUrl(c.image)} alt="" className="absolute inset-0 w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" />
-                  <div className="absolute inset-0 bg-gradient-to-t from-slate-950/85 via-slate-950/20 to-transparent" />
+                  <div className="absolute inset-0 bg-gradient-to-t from-[#072a1f]/85 via-[#072a1f]/20 to-transparent" />
                   <span className="absolute left-4 top-4 rounded-sm bg-[#C49849] px-3 py-1.5 text-xs sm:text-sm font-medium">{t('days', { count: c.days })}</span>
                   <div className="absolute inset-x-0 bottom-0 p-5">
                     <p className="text-xl font-medium leading-snug">{c.title}</p>

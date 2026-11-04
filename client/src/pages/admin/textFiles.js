@@ -16,7 +16,7 @@ export const TEXT_FILES = {
   accommodation: { label: 'Accommodation', page: '/accommodation', group: 'pages' },
   transport: { label: 'Transport', page: '/transport', group: 'pages' },
   pages: { label: 'Hidden page message', page: '/', group: 'pages' },
-  testimonials: { label: 'Testimonials', page: '/transport', group: 'pages' },
+  testimonials: { label: 'Testimonials', page: '/', group: 'pages' },
   guides: { label: 'Guides', page: '/guides', group: 'pages' },
   food: { label: 'Food & dining', page: '/food-dining', group: 'pages' },
   photography: { label: 'Photography', page: '/photography', group: 'pages' },

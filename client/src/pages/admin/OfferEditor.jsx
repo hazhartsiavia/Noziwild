@@ -7,6 +7,7 @@ import Field from '../../components/admin/Field'
 import ListEditor from '../../components/admin/ListEditor'
 import PhotoPicker from '../../components/admin/PhotoPicker'
 import TranslationsEditor from '../../components/admin/TranslationsEditor'
+import VideoField from '../../components/admin/VideoField'
 import { BTN_GHOST, BTN_GOLD, CARD, CARD_TITLE, INPUT, TEXTAREA } from '../../components/admin/ui'
 import { monthName } from '../../utils/format'
 import { OFFER_KINDS, translationFields } from './offerKinds'
@@ -90,11 +91,12 @@ function MultiField({ label, options, value, error, onChange }) {
 // Un champ propre au type d'offre (voir offerKinds.js)
 function KindField({ field, form, error, set }) {
   const value = form[field.key]
-  const wide = ['months', 'multi', 'list', 'link'].includes(field.type)
+  const wide = ['months', 'multi', 'list', 'link', 'video'].includes(field.type)
   const className = wide ? 'sm:col-span-2' : ''
 
   if (field.type === 'months') return <div className={className}><MonthsField label={field.label} value={value} error={error} onChange={set} /></div>
   if (field.type === 'multi') return <div className={className}><MultiField label={field.label} options={field.options} value={value} error={error} onChange={set} /></div>
+  if (field.type === 'video') return <div className={className}><VideoField label={field.label} hint={field.hint} value={value} error={error} onChange={set} /></div>
   if (field.type === 'list') {
     return (
       <div className={className}>
@@ -263,7 +265,7 @@ function OfferEditor() {
             </div>
           </section>
 
-          <TranslationsEditor form={form} setForm={setForm} {...translationFields(kind)} />
+          {!config.noTranslations && <TranslationsEditor form={form} setForm={setForm} {...translationFields(kind)} />}
         </div>
 
         {/* Colonne de droite : publication et photo */}

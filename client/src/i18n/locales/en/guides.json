@@ -86,33 +86,6 @@
       "text": "A tip for tonight’s dinner, a photo at the best spot and a plan for tomorrow."
     }
   ],
-  "testimonials": [
-    {
-      "text": "Our guide made the whole trip. He knew every path, every family and every story. We would not have found half of it alone.",
-      "origin": "Travelers from Lyon",
-      "trip": "Driver-Guide · 8 days"
-    },
-    {
-      "text": "Lina showed us a side of the island we never expected. The food, the people, the little workshops. Truly unforgettable.",
-      "origin": "Traveler from Milan",
-      "trip": "Cultural Guide · 5 days"
-    },
-    {
-      "text": "The trek was challenging but perfectly paced. We always felt safe, and the views were worth every step.",
-      "origin": "Traveler from Munich",
-      "trip": "Trek Guide · 3 days"
-    },
-    {
-      "text": "Having one person to call for everything made our family trip stress-free. The kids still talk about their guide.",
-      "origin": "Traveler from Montréal",
-      "trip": "Trip Companion · 10 days"
-    },
-    {
-      "text": "We saw lemurs on the first morning thanks to Hery. He knew exactly where to go and when. Amazing.",
-      "origin": "Travelers from Madrid",
-      "trip": "Wildlife Guide · 4 days"
-    }
-  ],
   "faqs": [
     {
       "q": "Do I need a guide for my whole trip?",
@@ -181,13 +154,6 @@
   "stepOf": "Step {n} of {total} · {time}",
   "again": "Start again",
   "nextStep": "Next step",
-  "testimonialsLabel": "Testimonials",
-  "testimonialsTitle": "What Travelers Say About Us",
-  "average": "Average rating from 300+ travelers",
-  "outOf5": "{rating} out of 5",
-  "show": "Show testimonial {n}",
-  "previousTestimonial": "Previous testimonial",
-  "nextTestimonial": "Next testimonial",
   "faqTitle": "Frequently Asked Questions",
   "faqText": "Can't find your answer? Our team replies within a few hours.",
   "connected": "Stay connected",

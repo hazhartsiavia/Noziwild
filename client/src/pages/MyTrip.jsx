@@ -74,7 +74,7 @@ function ItemCard({ item }) {
         )}
         <div className="min-w-0 flex-1">
           <p className="text-xs md:text-sm uppercase tracking-wide text-[#9a742f]">{kinds[item.kind] || item.kind}</p>
-          <h3 className="mt-1 text-lg md:text-xl font-medium leading-snug text-forest">
+          <h3 className="mt-1 text-lg md:text-xl font-bold leading-snug text-forest">
             {item.link ? <Link to={item.link} className="hover:underline">{item.title}</Link> : item.title}
           </h3>
           {item.details && <p className="mt-1 text-sm text-slate-600 break-words">{item.details}</p>}

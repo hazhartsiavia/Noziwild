@@ -20,6 +20,8 @@ const SEED_FILE = path.join(here, '..', '..', 'sql', 'offers.seed.json')
 //   link    : page ouverte par la carte (facultatif)
 //   numbers : nombres { champ: [min, max, pas] } (note sur 5, années d'expérience)
 //   textOptional / imageOptional : la description ou la photo peut rester vide
+//   video   : fichier vidéo envoyé depuis l'admin (obligatoire)
+//   noTranslations : le contenu est écrit dans une seule langue, pas de traductions
 export const KINDS = {
   activity: {
     price: true,
@@ -103,6 +105,15 @@ export const KINDS = {
     texts: { origin: 120 },
     numbers: { rating: [1, 5, 0.5] },
   },
+  // Vidéo d'un voyageur : montrée seulement aux visiteurs qui lisent le site dans sa langue
+  client_video: {
+    imageOptional: true,
+    textOptional: true,
+    noTranslations: true,
+    texts: { origin: 120 },
+    choices: { language: ['en', ...LANGUAGES] },
+    video: true,
+  },
 }
 export const isKind = (value) => Object.hasOwn(KINDS, value)
 
@@ -146,6 +157,7 @@ export function toOffer(row, lang = 'en') {
   if (kind.months) offer.months = details.months || Array(12).fill(0)
   if (kind.hours) offer.hours = details.hours
   if (kind.link) offer.link = details.link || ''
+  if (kind.video) offer.video = details.video || ''
   return offer
 }
 
@@ -165,6 +177,8 @@ export function toOfferForAdmin(row) {
 ------------------------------------------------------------------ */
 // Image servie par l'API (/uploads/...) ou adresse web complète
 const IMAGE_RE = /^(\/uploads\/[\w\-/]+\.(?:png|jpe?g|webp)|https?:\/\/\S+)$/i
+// Vidéo envoyée depuis l'admin
+const VIDEO_RE = /^\/uploads\/[\w\-/]+\.(?:mp4|webm)$/i
 // Page du site (/contact, /destinations/...) ou adresse web complète
 const LINK_RE = /^(\/[^\s]*|https?:\/\/\S+)$/i
 
@@ -251,7 +265,13 @@ export function validateOffer(body, kindName) {
     details.link = link
   }
 
-  data.translations = validateTranslations(body.translations, kind, errors)
+  if (kind.video) {
+    const video = clean(body.video, 500) || ''
+    if (!VIDEO_RE.test(video) || video.includes('..')) errors.video = 'A video is required (upload an MP4 or WebM file).'
+    details.video = video
+  }
+
+  data.translations = kind.noTranslations ? {} : validateTranslations(body.translations, kind, errors)
 
   if (Object.keys(errors).length) throw new ValidationError(errors)
   return data

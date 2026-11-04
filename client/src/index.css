@@ -1,15 +1,17 @@
-@import url('https://fonts.googleapis.com/css2?family=Figtree:wght@300..900&family=Syne:wght@400..800&display=swap');
+/* Figtree reste chargée pour le hero de l'accueil (voir pages/homeHero.css) */
+@import url('https://fonts.googleapis.com/css2?family=Figtree:wght@300..900&family=Nata+Sans:wght@300..800&display=swap');
+@import url('https://api.fontshare.com/v2/css?f[]=cabinet-grotesk@400,500,700,800&display=swap');
 @import "tailwindcss";
 
-/* Polices et couleur de la marque : Figtree pour le texte, Syne pour les titres, vert forêt */
+/* Polices et couleur de la marque : Nata Sans pour le texte, Cabinet Grotesk pour les titres, vert forêt */
 @theme {
-  --font-sans: "Figtree", system-ui, -apple-system, "Segoe UI", sans-serif;
-  --font-display: "Syne", "Figtree", system-ui, sans-serif;
+  --font-sans: "Nata Sans", system-ui, -apple-system, "Segoe UI", sans-serif;
+  --font-display: "Cabinet Grotesk", "Nata Sans", system-ui, sans-serif;
   --color-forest: #0c3e2e;
 }
 
 @layer base {
-  h1, h2 { font-family: var(--font-display); }
+  h1, h2, h3 { font-family: var(--font-display); }
 }
 
 /* Téléphone : petits textes un cran plus grands (text-sm 14 -> 15 px, text-xs 12 -> 13 px).

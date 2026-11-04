@@ -6,8 +6,8 @@ import Deux from "../assets/images/2.jpg";
 import Tana from "../assets/images/Tana.jpg";
 import Navbar from '../components/Navbar';
 import Footer from '../components/Footer';
+import { CARD, CARD_BADGE, CARD_BODY, CARD_FOOT, CARD_MEDIA, CARD_TEXT, CARD_TITLE, CardMeta } from '../components/Card'
 import AddToTrip from '../components/AddToTrip'
-import Testimonials from '../components/Testimonials'
 import { useT } from '../i18n/LanguageContext';
 import { localize } from '../i18n/localize';
 import OffersStatus from '../components/OffersStatus'
@@ -20,13 +20,13 @@ gsap.registerPlugin(ScrollTrigger)
 
 /* Constantes partagées : mêmes valeurs que dans About, Explore, Choose, Trips et Blog */
 const SECTION_WIDTH = "w-[90vw] lg:max-w-[90vw] xl:max-w-[95vw]"
-const SECTION_TITLE = "text-3xl sm:text-4xl md:text-5xl lg:text-[52px] font-medium text-forest leading-[1.15] tracking-tight"
+const SECTION_TITLE = "text-[clamp(2rem,4.4vw,4rem)] font-bold text-forest leading-[1.08] tracking-tight"
 const SECTION_SUBTITLE = "text-sm sm:text-base md:text-lg text-slate-600 leading-relaxed max-w-3xl"
 const META_TEXT = "text-xs sm:text-sm"
 // Une seule ligne à partir de la tablette : la taille se calcule sur la longueur du titre (--chars), qui change selon la langue.
 // Sur téléphone, une ligne serait illisible : le titre passe sur deux lignes.
-const HERO_TITLE = "text-[clamp(1.5rem,7vw,2.25rem)] md:whitespace-nowrap md:text-[min(calc((90vw-4rem)/(var(--chars)*0.72)),3rem)] lg:text-[min(calc((90vw-23rem)/(var(--chars)*0.72)),3.5rem)] font-semibold uppercase leading-[1.1] tracking-tight text-white [text-wrap:balance]"
-const ON_IMAGE_TITLE = "text-3xl sm:text-4xl md:text-5xl lg:text-[52px] font-medium text-white leading-[1.15] tracking-tight"
+const HERO_TITLE = "text-[clamp(1.5rem,7vw,2.25rem)] md:whitespace-nowrap md:text-[min(calc((90vw-4rem)/(var(--chars)*0.58)),3rem)] lg:text-[min(calc((90vw-23rem)/(var(--chars)*0.58)),3.5rem)] font-semibold uppercase leading-[1.1] tracking-tight text-white [text-wrap:balance]"
+const ON_IMAGE_TITLE = "text-[clamp(2rem,4.4vw,4rem)] font-bold text-white leading-[1.08] tracking-tight"
 const SECTION_GAP = "mt-[50px] md:mt-[100px]"
 const GOLD = "bg-[#C49849]"
 const GREEN = "bg-[#074636]"
@@ -257,28 +257,24 @@ function ModesMarquee() {
 function TransportCard({ item, categoryLabel }) {
   const t = useT('trip')
   return (
-    <article className="transport-card group flex flex-col rounded-xl bg-white p-3 text-slate-800">
-      <div className="card-frame relative aspect-[4/3] overflow-hidden rounded-md">
+    <article className={`transport-card ${CARD}`}>
+      <div className={`card-frame ${CARD_MEDIA}`}>
         {/* Plus haute que le cadre : c'est la marge dans laquelle la photo glisse au défilement */}
         <div className="card-media absolute inset-x-0 -inset-y-[10%]">
           <img src={item.image} alt={item.name} className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" />
         </div>
-        <span className={`transport-badge absolute left-3 top-3 inline-block ${GOLD} text-white text-xs sm:text-sm font-medium px-3 py-1.5 rounded-sm`}>{item.duration}</span>
+        <span className={`transport-badge ${CARD_BADGE}`}>{item.duration}</span>
       </div>
-      <div className="flex flex-1 flex-col px-3 pt-6 pb-4">
-        <p className={`card-line flex flex-wrap items-center gap-3 ${META_TEXT} text-slate-600`}>
-          <span>{categoryLabel}</span>
-          <span className="w-px h-4 bg-slate-700" />
-          <span>{item.capacity}</span>
-        </p>
-        <h3 className="card-line mt-4 text-xl md:text-2xl leading-snug">{item.name}</h3>
-        <p className="card-line mt-3 text-sm text-slate-600 leading-relaxed">{item.text}</p>
+      <div className={CARD_BODY}>
+        <CardMeta items={[categoryLabel, item.capacity]} className="card-line" />
+        <h3 className={`card-line ${CARD_TITLE}`}>{item.name}</h3>
+        <p className={`card-line ${CARD_TEXT}`}>{item.text}</p>
         <ul className="mt-4 flex flex-col gap-2 text-sm text-slate-700">
           {item.perks.map((perk) => (
             <li key={perk} className="card-line flex items-center gap-2"><CheckIcon />{perk}</li>
           ))}
         </ul>
-        <div className="card-foot mt-auto pt-6 flex items-center justify-between gap-3">
+        <div className={`card-foot ${CARD_FOOT}`}>
           <p className="text-base md:text-lg font-medium text-slate-900">{t('onRequest')}</p>
           <AddToTrip variant="icon" item={{ kind: 'transport', ref: String(item.id), title: item.name, image: item.image, link: '/transport', details: item.capacity, price: null, unit: null }} />
         </div>
@@ -588,7 +584,6 @@ function Transport() {
         <TransportTypes />
         <Included />
         <HowItWorks />
-        <Testimonials className={SECTION_GAP} />
         <Faq />
         <Cta />
       </div>

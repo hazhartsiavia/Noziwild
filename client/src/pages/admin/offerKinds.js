@@ -9,6 +9,8 @@
 //     list   : lignes de texte, traduisibles     multi  : plusieurs valeurs parmi `options`
 //     months : meilleure période (12 mois)       hours  : durée en heures       link : page ouverte par la carte
 //     number : nombre entre min et max, par pas de step
+//     video  : fichier vidéo envoyé depuis l'admin
+//   noTranslations : le contenu est écrit dans une seule langue, pas de traductions
 //   empty   : valeurs d'une nouvelle offre de ce type
 
 const option = (value, label = value) => ({ value, label })
@@ -213,7 +215,7 @@ export const OFFER_KINDS = {
     group: 'reviews',
     label: 'Testimonials',
     singular: 'testimonial',
-    page: '/transport',
+    page: '/',
     price: false,
     titleLabel: 'Name',
     textLabel: 'Testimonial',
@@ -224,6 +226,31 @@ export const OFFER_KINDS = {
       { key: 'rating', type: 'number', label: 'Rating (1 to 5)', min: 1, max: 5, step: 0.5 },
     ],
     empty: { origin: '', rating: 5 },
+  },
+  client_video: {
+    group: 'reviews',
+    label: 'Client videos',
+    singular: 'client video',
+    page: '/',
+    price: false,
+    titleLabel: 'Client name',
+    textLabel: 'Short quote',
+    textOptional: true,
+    imageOptional: true,
+    imageHint: 'Image shown before the video plays. Without one, the first frame of the video is used.',
+    noTranslations: true,
+    fields: [
+      {
+        key: 'language',
+        type: 'select',
+        label: 'Language of the video',
+        hint: 'Shown only to visitors reading the site in this language.',
+        options: [option('fr', 'French'), option('en', 'English'), option('de', 'German'), option('it', 'Italian'), option('es', 'Spanish')],
+      },
+      { key: 'origin', type: 'text', label: 'City or country', placeholder: 'Lyon' },
+      { key: 'video', type: 'video', label: 'Video', hint: 'MP4 or WebM, 60 MB maximum.' },
+    ],
+    empty: { language: 'fr', origin: '', video: '' },
   },
 }
 

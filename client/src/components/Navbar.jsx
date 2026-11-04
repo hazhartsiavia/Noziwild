@@ -1,7 +1,7 @@
 
 import React, { useRef, useLayoutEffect, useState } from 'react'
 import gsap from 'gsap'
-import icone from '../assets/icone.png'
+import icone from '../assets/logo/icon.svg'
 import { Link } from '../i18n/router'
 import { useAuth } from '../context/AuthContext'
 import { useTrip } from '../context/TripContext'
@@ -375,7 +375,7 @@ function Navbar() {
               <img
                 src={icone}
                 alt={t('logo')}
-                className="h-9 w-auto lg:h-10"
+                className="h-10 w-auto lg:h-11"
               />
             </Link>
 

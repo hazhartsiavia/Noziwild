@@ -4,5 +4,9 @@
   "average": "Durchschnittliche Bewertung der Reisenden",
   "from": "Reisende aus aller Welt",
   "text": "Was Reisende sagen, nachdem sie Madagaskar mit uns entdeckt haben.",
-  "ratingLabel": "Bewertung: {rating} von 5"
+  "ratingLabel": "Bewertung: {rating} von 5",
+  "videoLabel": "Im Video",
+  "videoTitle": "Sie erzählen von ihrer Reise",
+  "play": "Video von {name} abspielen",
+  "others": "Weitere Videos"
 }

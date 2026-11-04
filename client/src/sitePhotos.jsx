@@ -59,6 +59,7 @@ export const PHOTO_PAGES = [
   {
     id: 'about', label: 'About', page: '/about',
     slots: {
+      'about.hero': { label: 'Page banner', src: Ramena },
       'about.promise': { label: '“Our promise” card', src: Deux },
       'about.mission': { label: 'Mission, large photo', src: NosyIranja },
       ...list('about.mission', 'Mission, small photo', [Ambanja, NosyLonjo]),
@@ -75,7 +76,7 @@ export const PHOTO_PAGES = [
   },
   {
     id: 'contact', label: 'Contact', page: '/contact',
-    slots: { 'contact.banner': { label: '“Book a call” banner', src: NosyIranja }, ...list('contact.photo', 'Small photo', [Ambanja, NosyLonjo]) },
+    slots: { 'contact.hero': { label: 'Page banner', src: Ramena }, 'contact.banner': { label: '“Book a call” banner', src: NosyIranja }, ...list('contact.photo', 'Small photo', [Ambanja, NosyLonjo]) },
   },
   {
     id: 'cruise', label: 'Cruise excursions', page: '/cruise-excursions',
@@ -135,7 +136,6 @@ export const PHOTO_PAGES = [
       ...list('long.week', 'Week', [Tana, Ramena, Ambanja, NosyIranja]),
       ...list('long.manage', 'Planning photo', [Ambanja, Deux]),
       ...list('long.service', 'Service', [NosyLonjo, Deux, Tana, Ambanja, Ramena]),
-      'long.quote': { label: 'Quote block', src: Tana },
       'long.cta': { label: 'Final banner', src: Ramena },
     },
   },
@@ -161,7 +161,7 @@ export const PHOTO_PAGES = [
   },
   {
     id: 'tickets', label: 'Ticket reservations', page: '/ticket-reservation',
-    slots: {},
+    slots: { 'tickets.hero': { label: 'Page banner', src: NosyIranja } },
   },
   {
     id: 'account', label: 'Sign in and sign up', page: '/login',
@@ -176,8 +176,9 @@ export const VIDEO_SLOTS = new Set([
   'home.hero.1', 'home.hero.2', 'home.hero.3', 'home.hero.4', 'home.hero.5', 'home.cta',
   'dest.cta', 'blog.hero', 'about.promise', 'about.mission', 'act.banner', 'circ.hero', 'circ.cta', 'contact.banner',
   'cruise.hero', 'cruise.cta', 'gear.cta', 'exc.hero', 'exc.multi', 'exc.cta', 'food.class',
-  'hosting.hero', 'hosting.featured', 'hosting.cta', 'long.hero', 'long.quote', 'long.cta', 'photo.cta', 'tm.cta',
-  'transport.hero', 'transport.cta', 'auth.background',
+  'hosting.hero', 'hosting.featured', 'hosting.cta', 'long.hero', 'long.cta', 'photo.cta', 'tm.cta',
+  'transport.hero', 'transport.cta', 'auth.background', 'tm.hero.2',
+  'about.hero', 'contact.hero', 'tickets.hero', 'guides.hero.1', 'photo.hero.1', 'gear.arch.trek', 'dest.hero.2',
 ])
 
 const STORAGE_KEY = 'noziwild-photos'

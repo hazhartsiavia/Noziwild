@@ -86,33 +86,6 @@
       "text": "Une adresse pour le dîner, une photo au meilleur endroit et le programme du lendemain."
     }
   ],
-  "testimonials": [
-    {
-      "text": "Notre guide a fait tout le voyage. Il connaissait chaque sentier, chaque famille et chaque histoire. Seuls, nous n'en aurions pas trouvé la moitié.",
-      "origin": "Voyageurs de Lyon",
-      "trip": "Chauffeur-guide · 8 jours"
-    },
-    {
-      "text": "Lina nous a montré une facette de l'île que nous n'imaginions pas. La cuisine, les gens, les petits ateliers. Vraiment inoubliable.",
-      "origin": "Voyageuse de Milan",
-      "trip": "Guide culturel · 5 jours"
-    },
-    {
-      "text": "Le trek était exigeant mais parfaitement dosé. Nous nous sommes toujours sentis en sécurité, et les paysages valaient chaque pas.",
-      "origin": "Voyageur de Munich",
-      "trip": "Guide de trek · 3 jours"
-    },
-    {
-      "text": "Avoir une seule personne à appeler pour tout a rendu notre voyage en famille serein. Les enfants parlent encore de leur guide.",
-      "origin": "Voyageuse de Montréal",
-      "trip": "Accompagnateur de voyage · 10 jours"
-    },
-    {
-      "text": "Nous avons vu des lémuriens dès le premier matin grâce à Hery. Il savait exactement où aller et quand. Incroyable.",
-      "origin": "Voyageurs de Madrid",
-      "trip": "Guide naturaliste · 4 jours"
-    }
-  ],
   "faqs": [
     {
       "q": "Ai-je besoin d'un guide pendant tout le voyage ?",
@@ -181,13 +154,6 @@
   "stepOf": "Étape {n} sur {total} · {time}",
   "again": "Recommencer",
   "nextStep": "Étape suivante",
-  "testimonialsLabel": "Témoignages",
-  "testimonialsTitle": "Ce que les voyageurs disent de nous",
-  "average": "Note moyenne de plus de 300 voyageurs",
-  "outOf5": "{rating} sur 5",
-  "show": "Afficher le témoignage {n}",
-  "previousTestimonial": "Témoignage précédent",
-  "nextTestimonial": "Témoignage suivant",
   "faqTitle": "Questions fréquentes",
   "faqText": "Vous ne trouvez pas votre réponse ? Notre équipe répond en quelques heures.",
   "connected": "Restons en contact",

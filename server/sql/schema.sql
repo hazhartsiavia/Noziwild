@@ -211,12 +211,13 @@ CREATE TABLE IF NOT EXISTS circuit_days (
 --          stay (Hébergement) | transport | guide (équipe de guides) | food (expériences culinaires)
 --          session (séances photo) | photo (galerie photo) | gear (location de matériel) | ticket (billets)
 --          testimonial (avis des voyageurs : le titre est le nom, le texte l'avis)
+--          client_video (vidéo d'un voyageur, montrée dans une seule langue du site)
 --   details : champs propres à chaque type (durée, niveau, région, port, points...), en anglais
 --   translations : autres langues, { "fr": { "title": ..., "text": ..., "duration": ... } }
 --   Les photos sont des chemins servis par l'API, ex. /uploads/circuits/ramena.jpg
 CREATE TABLE IF NOT EXISTS offers (
   id           INT UNSIGNED AUTO_INCREMENT PRIMARY KEY,
-  kind         ENUM('activity', 'excursion', 'cruise', 'longstay', 'idea', 'stay', 'transport', 'guide', 'food', 'session', 'photo', 'gear', 'ticket', 'testimonial') NOT NULL,
+  kind         ENUM('activity', 'excursion', 'cruise', 'longstay', 'idea', 'stay', 'transport', 'guide', 'food', 'session', 'photo', 'gear', 'ticket', 'testimonial', 'client_video') NOT NULL,
   title        VARCHAR(190)  NOT NULL,
   text         VARCHAR(1000) NOT NULL,
   image        VARCHAR(500)  NOT NULL,

@@ -4,6 +4,9 @@ import NosyIranja from "../assets/images/NosyIranja.jpg";
 import Ramena from "../assets/images/Ramena.jpg";
 import Navbar from '../components/Navbar';
 import Footer from '../components/Footer';
+import { CARD, CARD_BADGE, CARD_BODY, CARD_CHIP, CARD_CHIPS, CARD_FOOT, CARD_IMG, CARD_MEDIA, CARD_TITLE, CardMeta } from '../components/Card'
+import PageHero from '../components/PageHero'
+import PageCta, { PAGE_CTA_GOLD, PAGE_CTA_GHOST } from '../components/PageCta'
 import AddToTrip from '../components/AddToTrip'
 import { useT } from '../i18n/LanguageContext';
 import { localize } from '../i18n/localize';
@@ -16,11 +19,11 @@ import SiteMedia from '../components/SiteMedia'
 
 /* Constantes partagées : mêmes valeurs que dans les autres pages */
 const SECTION_WIDTH = "w-[90vw] lg:max-w-[90vw] xl:max-w-[95vw]"
-const SECTION_TITLE = "text-3xl sm:text-4xl md:text-5xl lg:text-[52px] font-medium text-forest leading-[1.15] tracking-tight"
+const SECTION_TITLE = "text-[clamp(2rem,4.4vw,4rem)] font-bold text-forest leading-[1.08] tracking-tight"
 const SECTION_SUBTITLE = "text-sm sm:text-base md:text-lg text-slate-600 leading-relaxed max-w-3xl"
 const META_TEXT = "text-xs sm:text-sm"
 const PAGE_TITLE = "text-5xl sm:text-6xl md:text-7xl lg:text-[80px] font-bold uppercase leading-none tracking-tight"
-const ON_IMAGE_TITLE = "text-3xl sm:text-4xl md:text-5xl lg:text-[52px] font-medium text-white leading-[1.15] tracking-tight"
+const ON_IMAGE_TITLE = "text-[clamp(2rem,4.4vw,4rem)] font-bold text-white leading-[1.08] tracking-tight"
 const BADGE = "inline-block bg-[#C49849] text-white text-xs sm:text-sm font-medium px-3 py-1.5 rounded-sm"
 const BUTTON = "text-sm font-medium px-5 py-2.5 rounded-full"
 const SECTION_GAP = "mt-[50px] md:mt-[100px]"
@@ -123,19 +126,7 @@ const PlusIcon = ({ open }) => (
 
 function Hero() {
   const t = useT('accommodation')
-  return (
-    <section className={`${SECTION_WIDTH} relative flex items-center overflow-hidden rounded-3xl bg-[#084838] text-white min-h-[240px] md:min-h-[360px]`}>
-      <SiteMedia slot="hosting.hero" alt="" className="absolute inset-0 w-full h-full object-cover" />
-      <div className="absolute inset-0 bg-slate-950/60" />
-      <div className="relative w-full max-w-5xl mx-auto px-6 md:px-10 py-16">
-        <h1 className={PAGE_TITLE}>{t('title')}</h1>
-        <hr className="my-6 md:my-8 border-white/30" />
-        <nav aria-label="Breadcrumb" className="text-sm md:text-base font-medium">
-          <A href="/" className="hover:underline underline-offset-4">{t('home')}</A> <span aria-hidden="true">/</span> {t('title')}
-        </nav>
-      </div>
-    </section>
-  )
+  return <PageHero slot="hosting.hero" title={t('title')} crumb={t('title')} />
 }
 
 function Intro() {
@@ -161,22 +152,18 @@ function Intro() {
 
 function StayCard({ stay }) {
   return (
-    <article className="group flex flex-col rounded-xl bg-white p-3">
-      <div className="relative aspect-[4/3] overflow-hidden rounded-md">
-        <img src={stay.image} alt={stay.name} className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" />
-        <span className="absolute left-3 top-3 flex items-center gap-1 rounded-full bg-white px-3 py-1 text-xs font-medium text-slate-800">
-          <StarIcon /> {stay.rating}
-        </span>
+    <article className={CARD}>
+      <div className={CARD_MEDIA}>
+        <img src={stay.image} alt={stay.name} className={CARD_IMG} />
+        <span className={CARD_BADGE}>★ {stay.rating}</span>
       </div>
-      <div className="flex flex-col flex-1 px-3 pt-5 pb-4">
-        <p className={`flex items-center gap-1.5 ${META_TEXT} text-slate-600`}><PinIcon />{stay.place}</p>
-        <h3 className="mt-2 text-xl md:text-2xl leading-snug text-forest">{stay.name}</h3>
-        <ul className="mt-4 flex flex-wrap gap-2">
-          {stay.amenities.map((a) => (
-            <li key={a} className="rounded-full border border-slate-300 px-3 py-1 text-xs text-slate-700">{a}</li>
-          ))}
+      <div className={CARD_BODY}>
+        <CardMeta items={[stay.place]} />
+        <h3 className={CARD_TITLE}>{stay.name}</h3>
+        <ul className={CARD_CHIPS}>
+          {stay.amenities.map((a) => <li key={a} className={CARD_CHIP}>{a}</li>)}
         </ul>
-        <div className="mt-auto pt-6 flex items-center justify-end gap-3">
+        <div className={`${CARD_FOOT} justify-end`}>
           <AddToTrip item={{ kind: 'stay', ref: String(stay.id), title: stay.name, image: stay.image, link: '/accommodation', details: stay.place, price: stay.price, unit: 'night', qty: 3 }} />
         </div>
       </div>
@@ -206,7 +193,7 @@ function Stays({ stays, status }) {
             aria-selected={category === c.id}
             onClick={() => setCategory(c.id)}
             className={`rounded-full px-5 py-2 text-sm md:text-base font-medium transition ${
-              category === c.id ? 'bg-[#084838] text-white' : 'bg-white text-slate-700 hover:bg-white/70'
+              category === c.id ? 'bg-[#074636] text-white' : 'bg-white text-slate-700 hover:bg-white/70'
             }`}
           >
             {c.label}
@@ -230,9 +217,9 @@ function Featured({ stays }) {
   const featured = localize(FEATURED, t('featured'))
   const stay = stays.find((s) => s.name === featured.name)
   return (
-    <div className={`${SECTION_GAP} relative overflow-hidden rounded-3xl bg-[#084838] text-white min-h-[480px] md:min-h-[560px]`}>
+    <div className={`${SECTION_GAP} relative overflow-hidden rounded-3xl bg-[#074636] text-white min-h-[480px] md:min-h-[560px]`}>
       <SiteMedia slot="hosting.featured" alt={featured.name} className="absolute inset-0 w-full h-full object-cover" />
-      <div className="absolute inset-0 bg-gradient-to-r from-black/80 via-black/30 to-black/10" />
+      <div className="absolute inset-0 bg-gradient-to-r from-[#072a1f]/80 via-[#072a1f]/30 to-[#072a1f]/10" />
       <div className="relative min-h-[inherit] flex flex-col justify-end p-5 md:p-10 max-w-2xl">
         <span className={`${BADGE} self-start`}>{featured.label}</span>
         <h2 className={`${ON_IMAGE_TITLE} mt-5`}>{featured.name}</h2>
@@ -261,7 +248,7 @@ function Criteria() {
         {criteria.map((c) => (
           <li key={c.id} className="rounded-2xl bg-white p-6 md:p-8">
             <span className="w-12 h-12 rounded-full bg-[#C49849] flex items-center justify-center text-white text-lg font-medium">{c.id}</span>
-            <h3 className="mt-6 text-xl md:text-2xl font-medium text-forest leading-snug">{c.title}</h3>
+            <h3 className="mt-6 text-xl md:text-2xl font-bold text-forest leading-snug">{c.title}</h3>
             <p className="mt-3 text-sm md:text-base leading-relaxed text-slate-600">{c.text}</p>
           </li>
         ))}
@@ -274,7 +261,7 @@ function Included() {
   const t = useT('accommodation')
   const included = localize(INCLUDED, t('included'))
   return (
-    <div className={`${SECTION_GAP} rounded-3xl bg-[#084838] text-white p-6 md:p-12`}>
+    <div className={`${SECTION_GAP} rounded-3xl bg-[#074636] text-white p-6 md:p-12`}>
       <div className="flex flex-col lg:flex-row lg:items-center lg:justify-between gap-5 lg:gap-12">
         <h2 className={`${ON_IMAGE_TITLE} lg:max-w-[45%]`}>{t('incTitle')}</h2>
         <p className="text-sm md:text-lg text-white/70 leading-relaxed lg:max-w-lg">
@@ -284,7 +271,7 @@ function Included() {
       <div className="mt-8 md:mt-12 grid grid-cols-2 lg:grid-cols-4 gap-3 md:gap-5">
         {included.map((item) => (
           <div key={item.id} className="rounded-xl border border-white/20 bg-white/10 p-4 md:p-5 md:min-h-[160px]">
-            <h3 className="text-sm md:text-lg font-medium leading-snug">{item.title}</h3>
+            <h3 className="text-sm md:text-lg font-bold leading-snug">{item.title}</h3>
             <p className="mt-2 md:mt-3 text-xs md:text-sm text-white/70 leading-relaxed">{item.text}</p>
           </div>
         ))}
@@ -327,37 +314,15 @@ function Faq() {
   )
 }
 
-function Cta() {
-  const t = useT('accommodation')
-  return (
-    <div className={`${SECTION_GAP} relative overflow-hidden rounded-3xl min-h-[380px] md:min-h-[460px] flex`}>
-      <SiteMedia slot="hosting.cta" alt="" className="absolute inset-0 w-full h-full object-cover" />
-      <div className="absolute inset-0 bg-gradient-to-r from-black/70 via-black/40 to-black/10" />
-      <div className="relative flex flex-col justify-end p-6 md:p-12 max-w-2xl">
-        <h2 className={ON_IMAGE_TITLE}>{t('ctaTitle')}</h2>
-        <p className="mt-4 text-sm md:text-lg text-white/85 leading-relaxed">
-          {t('ctaText')}
-        </p>
-        <A
-          href="/contact"
-          className="mt-6 md:mt-8 self-start inline-flex items-center gap-3 rounded-full bg-white hover:bg-white/90 transition text-slate-900 pl-6 pr-2.5 py-2.5 font-medium"
-        >
-          {t('ctaButton')}
-          <span className="w-10 h-10 rounded-full bg-[#C49849] flex items-center justify-center text-white"><ArrowIcon /></span>
-        </A>
-      </div>
-    </div>
-  )
-}
-
 function Accommodation() {
+  const t = useT('accommodation')
   const { offers, status } = useOffers('stay')
   const stays = offers.map(toStay)
   const root = useRef(null)
   useScrollReveal(root, [status])
   return (
     <>
-    <section ref={root} className="w-full pt-0 pb-12 md:pb-20 bg-[#D5E8E2] flex flex-col items-center">
+    <section ref={root} className="w-full overflow-x-clip bg-[#D5E8E2] flex flex-col items-center">
       <Navbar />
       <Hero />
       <div className={`${SECTION_WIDTH} ${SECTION_GAP}`}>
@@ -367,8 +332,10 @@ function Accommodation() {
         <Criteria />
         <Included />
         <Faq />
-        <Cta />
       </div>
+      <PageCta slot="hosting.cta" title={t('ctaTitle')} text={t('ctaText')}>
+        <A href="/contact" className={PAGE_CTA_GOLD}>{t('ctaButton')}</A>
+      </PageCta>
     </section>
     <Footer />
     </>

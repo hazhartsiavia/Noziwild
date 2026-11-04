@@ -138,6 +138,8 @@ function AdminOffers({ kind }) {
               <div className="flex items-center gap-4 min-w-0 flex-1">
                 {o.image ? (
                   <img src={assetUrl(o.image)} alt="" className="h-16 w-24 sm:h-20 sm:w-28 shrink-0 rounded-xl object-cover" />
+                ) : o.video ? (
+                  <video src={`${assetUrl(o.video)}#t=0.1`} preload="metadata" muted aria-hidden="true" className="h-16 w-24 sm:h-20 sm:w-28 shrink-0 rounded-xl bg-slate-900 object-cover" />
                 ) : (
                   <span aria-hidden="true" className="h-16 w-24 sm:h-20 sm:w-28 shrink-0 rounded-xl bg-[#084838]/10" />
                 )}

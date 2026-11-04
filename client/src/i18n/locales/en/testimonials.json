@@ -4,5 +4,9 @@
   "average": "Average traveler rating",
   "from": "Travelers from around the world",
   "text": "What travelers say after exploring Madagascar with us.",
-  "ratingLabel": "Rated {rating} out of 5"
+  "ratingLabel": "Rated {rating} out of 5",
+  "videoLabel": "On video",
+  "videoTitle": "In their own words",
+  "play": "Play {name}'s video",
+  "others": "More videos"
 }

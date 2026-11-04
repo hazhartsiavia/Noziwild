@@ -49,7 +49,7 @@ function BookingCard({ place, dest }) {
   const setGuests = (qty) => { setGuestsState(qty); sync({ qty }) }
   const setDate = (value) => { setDateState(value); sync({ date: value }) }
   const [sent, setSent] = useState(false)
-  const tabCls = (name) => `flex-1 rounded-full py-3 text-sm md:text-base font-medium transition ${tab === name ? 'bg-[#084838] text-white' : 'text-slate-700 hover:bg-slate-100'}`
+  const tabCls = (name) => `flex-1 rounded-full py-3 text-sm md:text-base font-medium transition ${tab === name ? 'bg-[#074636] text-white' : 'text-slate-700 hover:bg-slate-100'}`
 
   const [sending, setSending] = useState(false)
   const [error, setError] = useState('')
@@ -130,7 +130,7 @@ function PlaceDetail() {
           <Navbar />
           <section className={`${W} mt-16 rounded-3xl bg-white p-10 text-center`}>
             <h1 className={H2}>{t('place.notFound')}</h1>
-            <A href="/destinations" className={`${BTN} bg-[#084838] hover:bg-[#0a5c47] text-white mt-6`}>{t('place.all')}</A>
+            <A href="/destinations" className={`${BTN} bg-[#074636] hover:bg-[#0a5c47] text-white mt-6`}>{t('place.all')}</A>
           </section>
         </main>
         <Footer />
@@ -209,7 +209,7 @@ function PlaceDetail() {
               <div className="mt-12 grid grid-cols-1 md:grid-cols-2 gap-5">
                 {[[t('place.included'), place.included, '✓'], [t('place.excluded'), place.excluded, '×']].map(([title, list, mark]) => list && (
                   <div key={title} className="rounded-3xl bg-white p-6 md:p-8">
-                    <h3 className="text-xl font-medium text-forest">{title}</h3>
+                    <h3 className="text-xl font-bold text-forest">{title}</h3>
                     <ul className="mt-4 flex flex-col gap-2">
                       {list.map((x) => <li key={x} className="flex gap-3 text-sm md:text-base text-slate-700"><span aria-hidden="true" className="text-[#a9813a] font-semibold">{mark}</span>{x}</li>)}
                     </ul>
@@ -218,8 +218,8 @@ function PlaceDetail() {
               </div>
             )}
 
-            <div className="mt-8 rounded-3xl bg-[#084838] text-white p-6 md:p-8">
-              <h3 className="text-xl font-medium">{t('place.goodToKnow')}</h3>
+            <div className="mt-8 rounded-3xl bg-[#074636] text-white p-6 md:p-8">
+              <h3 className="text-xl font-bold">{t('place.goodToKnow')}</h3>
               <p className="mt-3 text-sm md:text-base text-white/75 leading-relaxed">{t('place.bestTime', { time: d.best })} {d.tip}</p>
             </div>
           </div>
@@ -236,7 +236,7 @@ function PlaceDetail() {
                 <li key={o.slug}>
                   <A href={`/destinations/${d.slug}/${o.slug}`} className="group relative block aspect-[4/3] overflow-hidden rounded-[1.5rem] text-white">
                     <img src={o.image} alt="" className="absolute inset-0 w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" />
-                    <div className="absolute inset-0 bg-gradient-to-t from-slate-950/85 to-transparent" />
+                    <div className="absolute inset-0 bg-gradient-to-t from-[#072a1f]/85 to-transparent" />
                     <p className="absolute inset-x-0 bottom-0 p-5 text-xl font-medium">{o.name}</p>
                   </A>
                 </li>
