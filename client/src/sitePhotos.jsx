@@ -17,6 +17,7 @@ import bg2 from './assets/images/hero/bg2-2400.jpg'
 import bg3 from './assets/images/hero/bg3-2400.jpg'
 import bg4 from './assets/images/hero/bg4-2400.jpg'
 import bg5 from './assets/images/hero/bg5-2400.jpg'
+import { PHOTO_CHOICES } from './sitePhotoChoices'
 
 const list = (prefix, label, sources) =>
   Object.fromEntries(sources.map((src, i) => [`${prefix}.${i + 1}`, { label: `${label} ${i + 1}`, src }]))
@@ -168,6 +169,11 @@ export const PHOTO_PAGES = [
     slots: { 'auth.background': { label: 'Background', src: NosyIranja } },
   },
 ]
+
+// Photos Noziwild choisies selon le contenu de chaque emplacement (sitePhotoChoices.js)
+for (const page of PHOTO_PAGES) {
+  for (const [key, slot] of Object.entries(page.slots)) if (PHOTO_CHOICES[key]) slot.src = PHOTO_CHOICES[key]
+}
 
 export const PHOTO_SLOTS = Object.fromEntries(PHOTO_PAGES.flatMap((p) => Object.entries(p.slots)))
 

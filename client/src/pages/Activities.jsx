@@ -1,10 +1,10 @@
 import React, { useEffect, useLayoutEffect, useRef, useState } from 'react'
-import Deux from "../assets/images/2.jpg";
-import Ambanja from "../assets/images/Ambanja.jpg";
-import NosyLonjo from "../assets/images/NosyLonjo.jpg";
-import NosyIranja from "../assets/images/NosyIranja.jpg";
-import Ramena from "../assets/images/Ramena.jpg";
-import Tana from "../assets/images/Tana.jpg";
+import p_nosy_iranja_sandbar from '../assets/images/site/nosy-iranja-sandbar.jpg'
+import p_crowned_sifaka from '../assets/images/site/crowned-sifaka.jpg'
+import p_red_tsingy_hikers from '../assets/images/site/red-tsingy-hikers.jpg'
+import p_snorkelling from '../assets/images/site/snorkelling.jpg'
+import p_amber_mountain_waterfall from '../assets/images/site/amber-mountain-waterfall.jpg'
+import p_nosy_komba_craft_market from '../assets/images/site/nosy-komba-craft-market.jpg'
 import Navbar from '../components/Navbar';
 import Footer from '../components/Footer';
 import { CARD, CARD_BADGE, CARD_BODY, CARD_FOOT, CARD_IMG, CARD_MEDIA, CARD_TEXT, CARD_TITLE, CardMeta } from '../components/Card'
@@ -34,7 +34,7 @@ const SECTION_GAP = "mt-[60px] md:mt-[120px]"
 // Les activités (textes, prix, photos, meilleure période) sont en base : admin > Offers > Activities.
 // Autres textes de la page : locales/<langue>/activities.json
 
-const moments = [Ramena, NosyIranja, Tana, NosyLonjo, Deux, Ambanja]
+const moments = [p_nosy_iranja_sandbar, p_crowned_sifaka, p_red_tsingy_hikers, p_snorkelling, p_amber_mountain_waterfall, p_nosy_komba_craft_market]
 
 /* ---------------------------- Icônes ----------------------------- */
 

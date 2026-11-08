@@ -155,7 +155,7 @@
           "Tips",
           "Hotel on arrival"
         ],
-        "image": "/uploads/circuits/nosy-iranja.jpg",
+        "image": "/uploads/circuits/speedboat.jpg",
         "price": 45,
         "rating": 4.7,
         "reviews": 64
@@ -761,12 +761,12 @@
       "Ramena is a small fishing village on the bay of Diego Suarez, known for calm turquoise water and steady winds.",
       "It is an easy day trip from town, or a relaxed base for a few days of sailing and watersports."
     ],
-    "image": "/uploads/circuits/ramena.jpg",
+    "image": "/uploads/circuits/ramena-beach-aerial.jpg",
     "todo": [
       {
         "title": "Sail across the bay",
         "text": "Half-day and full-day boat trips with swimming stops.",
-        "image": "/uploads/circuits/ramena.jpg"
+        "image": "/uploads/circuits/speedboat.jpg"
       },
       {
         "title": "Try kitesurfing",
@@ -783,7 +783,7 @@
       {
         "name": "Emerald Sea",
         "text": "Shallow, bright water, best reached by boat.",
-        "image": "/uploads/circuits/ramena.jpg",
+        "image": "/uploads/circuits/diego-bay-view.jpg",
         "price": null,
         "rating": null,
         "reviews": null
@@ -791,7 +791,7 @@
       {
         "name": "Sugar Loaf",
         "text": "The iconic rock rising from Diego Bay.",
-        "image": "/uploads/circuits/nosy-lonjo.jpg",
+        "image": "/uploads/circuits/sugar-loaf-view.jpg",
         "price": null,
         "rating": null,
         "reviews": null
@@ -799,7 +799,7 @@
       {
         "name": "Dunes Bay",
         "text": "Wind and white sand for kitesurfers.",
-        "image": "/uploads/circuits/coastal-tsingy.jpg",
+        "image": "/uploads/circuits/three-bays-shore.jpg",
         "price": null,
         "rating": null,
         "reviews": null
@@ -985,29 +985,29 @@
       "Nosy Iranja is a pair of small islands joined by a long sandbar that appears at low tide. Sea turtles nest on its beaches.",
       "It is reached by boat from Nosy Be, usually as a full-day trip or an overnight stay."
     ],
-    "image": "/uploads/circuits/nosy-iranja.jpg",
+    "image": "/uploads/circuits/nosy-iranja-aerial.jpg",
     "todo": [
       {
         "title": "Walk the sandbar",
         "text": "Cross between the two islands at low tide.",
-        "image": "/uploads/circuits/nosy-iranja.jpg"
+        "image": "/uploads/circuits/nosy-iranja-walk.jpg"
       },
       {
         "title": "Snorkel with turtles",
         "text": "Calm, clear water close to the beach.",
-        "image": "/uploads/circuits/ramena.jpg"
+        "image": "/uploads/circuits/snorkelling.jpg"
       },
       {
         "title": "Climb to the lighthouse",
         "text": "A short walk for views over the whole area.",
-        "image": "/uploads/circuits/nosy-lonjo.jpg"
+        "image": "/uploads/circuits/nosy-iranja-lighthouse-aerial.jpg"
       }
     ],
     "visit": [
       {
         "name": "The sandbar",
         "text": "The signature view of the island.",
-        "image": "/uploads/circuits/nosy-iranja.jpg",
+        "image": "/uploads/circuits/nosy-iranja-sandbar-drone.jpg",
         "price": null,
         "rating": null,
         "reviews": null
@@ -1015,7 +1015,7 @@
       {
         "name": "Turtle beach",
         "text": "A protected nesting area, visit with respect.",
-        "image": "/uploads/circuits/ramena.jpg",
+        "image": "/uploads/circuits/nosy-iranja-island-aerial.jpg",
         "price": null,
         "rating": null,
         "reviews": null
