@@ -1,10 +1,14 @@
 import React, { useEffect, useLayoutEffect, useRef, useState } from 'react'
-import Deux from "../assets/images/2.jpg";
-import Ambanja from "../assets/images/Ambanja.jpg";
-import NosyLonjo from "../assets/images/NosyLonjo.jpg";
-import NosyIranja from "../assets/images/NosyIranja.jpg";
-import Ramena from "../assets/images/Ramena.jpg";
-import Tana from "../assets/images/Tana.jpg";
+import p_noziwild_van_team from '../assets/images/site/noziwild-van-team.jpg'
+import p_nosy_komba_craft_market from '../assets/images/site/nosy-komba-craft-market.jpg'
+import p_nosy_komba_beach_village from '../assets/images/site/nosy-komba-beach-village.jpg'
+import p_palm_beach from '../assets/images/site/palm-beach.jpg'
+import p_mont_passot_sunset from '../assets/images/site/mont-passot-sunset.jpg'
+import p_guide_nosy_iranja from '../assets/images/site/guide-nosy-iranja.jpg'
+import p_noziwild_guides_market from '../assets/images/site/noziwild-guides-market.jpg'
+import p_ring_tailed_lemur from '../assets/images/site/ring-tailed-lemur.jpg'
+import p_red_tsingy_hikers from '../assets/images/site/red-tsingy-hikers.jpg'
+import p_guide_on_beach from '../assets/images/site/guide-on-beach.jpg'
 import Navbar from '../components/Navbar';
 import Footer from '../components/Footer';
 import AddToTrip from '../components/AddToTrip'
@@ -34,10 +38,10 @@ const SECTION_GAP = "mt-[60px] md:mt-[120px]"
 // Textes affichés : locales/<langue>/guides.json, posés sur ces données par localize()
 
 const SERVICES = [
-  { id: 1, name: 'Cultural Guide', image: Tana, text: 'Markets, history, food and daily life explained by someone who grew up there. Half or full day, at your pace.', tags: ['Half / full day', '1–10 travelers', 'Food stops'] },
-  { id: 2, name: 'Wildlife & Nature Guide', image: Deux, text: 'Spot lemurs, birds and chameleons with a naturalist who knows exactly where and when to look.', tags: ['Park entry handled', 'Small groups', 'Binoculars'] },
-  { id: 3, name: 'Adventure & Trek Guide', image: NosyIranja, text: 'Hikes, canyons and coastal trails led by trained, first-aid certified guides, adapted to your level.', tags: ['1–5 days', 'Safety gear', 'Porters on request'] },
-  { id: 4, name: 'Trip Companion', image: NosyLonjo, text: 'A Noziwild host who welcomes you, handles logistics and stays reachable from arrival to departure.', tags: ['Airport welcome', 'Daily check-in', '24/7 help'] },
+  { id: 1, name: 'Cultural Guide', image: p_noziwild_guides_market, text: 'Markets, history, food and daily life explained by someone who grew up there. Half or full day, at your pace.', tags: ['Half / full day', '1–10 travelers', 'Food stops'] },
+  { id: 2, name: 'Wildlife & Nature Guide', image: p_ring_tailed_lemur, text: 'Spot lemurs, birds and chameleons with a naturalist who knows exactly where and when to look.', tags: ['Park entry handled', 'Small groups', 'Binoculars'] },
+  { id: 3, name: 'Adventure & Trek Guide', image: p_red_tsingy_hikers, text: 'Hikes, canyons and coastal trails led by trained, first-aid certified guides, adapted to your level.', tags: ['1–5 days', 'Safety gear', 'Porters on request'] },
+  { id: 4, name: 'Trip Companion', image: p_guide_on_beach, text: 'A Noziwild host who welcomes you, handles logistics and stays reachable from arrival to departure.', tags: ['Airport welcome', 'Daily check-in', '24/7 help'] },
 ]
 
 // Guides de l'équipe : dans la base, gérés depuis /admin/offers/guide
@@ -56,11 +60,11 @@ const COMPARE = {
 }
 
 const DAY = [
-  { time: '08:00', title: 'Pickup At Your Hotel', text: 'Meet your guide, get a quick overview of the day and adjust the plan to your mood and the weather.', image: Ambanja },
-  { time: '10:00', title: 'First Discovery', text: 'A market, a trail or a village, depending on your guide. This is where the stories start.', image: Tana },
-  { time: '13:00', title: 'Lunch With Locals', text: 'A family table or a small restaurant your guide loves, far from the tourist menus.', image: Ramena },
-  { time: '15:30', title: 'Slow Afternoon', text: 'Swim, walk or simply relax. The pace is yours and your guide adapts.', image: NosyLonjo },
-  { time: '18:00', title: 'Back For Sunset', text: 'A tip for tonight’s dinner, a photo at the best spot and a plan for tomorrow.', image: NosyIranja },
+  { time: '08:00', title: 'Pickup At Your Hotel', text: 'Meet your guide, get a quick overview of the day and adjust the plan to your mood and the weather.', image: p_noziwild_van_team },
+  { time: '10:00', title: 'First Discovery', text: 'A market, a trail or a village, depending on your guide. This is where the stories start.', image: p_nosy_komba_craft_market },
+  { time: '13:00', title: 'Lunch With Locals', text: 'A family table or a small restaurant your guide loves, far from the tourist menus.', image: p_nosy_komba_beach_village },
+  { time: '15:30', title: 'Slow Afternoon', text: 'Swim, walk or simply relax. The pace is yours and your guide adapts.', image: p_palm_beach },
+  { time: '18:00', title: 'Back For Sunset', text: 'A tip for tonight’s dinner, a photo at the best spot and a plan for tomorrow.', image: p_mont_passot_sunset },
 ]
 
 const FAQS = [
@@ -580,7 +584,7 @@ function Cta() {
             <span className="text-2xl md:text-3xl font-medium">{tr('experience')}</span>
           </p>
           <div className="mt-6 flex items-center gap-4">
-            <img src={Ambanja} alt="" className="shrink-0 w-14 h-14 md:w-16 md:h-16 rounded-full object-cover" />
+            <img src={p_guide_nosy_iranja} alt="" className="shrink-0 w-14 h-14 md:w-16 md:h-16 rounded-full object-cover" />
             <p className="text-sm md:text-base text-slate-600 leading-relaxed">
               {tr('experienceText')}
             </p>

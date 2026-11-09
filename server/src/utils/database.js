@@ -8,6 +8,7 @@ import { seedCircuits } from './circuits.js'
 import { replaceOldExcursions, seedOffers } from './offers.js'
 import { seedDestinations } from './destinations.js'
 import { seedPosts } from './posts.js'
+import { updateSeedPhotos } from './photoUpdate.js'
 
 const here = path.dirname(fileURLToPath(import.meta.url))
 const schemaPath = path.join(here, '..', '..', 'sql', 'schema.sql')
@@ -137,6 +138,8 @@ export async function initDatabase({ log = console.log } = {}) {
     if (destinations) log(`  + ${destinations} destinations ajoutées (sql/destinations.seed.json)`)
     const posts = await seedPosts(connection)
     if (posts) log(`  + ${posts} articles ajoutés (sql/blog.seed.json)`)
+    const photos = await updateSeedPhotos(connection)
+    if (photos) log(`  ~ ${photos} photos remplacées par les photos Noziwild (sql/photos.update.json)`)
     log(`Base "${dbName}" et tables prêtes.`)
   } finally {
     await connection.end()

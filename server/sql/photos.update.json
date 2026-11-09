@@ -1,0 +1,1688 @@
+[
+  {
+    "table": "offers",
+    "where": {
+      "kind": "activity",
+      "title": "Birdwatching"
+    },
+    "column": "image",
+    "path": [],
+    "old": "/uploads/circuits/antananarivo-rice-fields.jpg",
+    "new": "/uploads/circuits/island-forest-view.jpg"
+  },
+  {
+    "table": "offers",
+    "where": {
+      "kind": "activity",
+      "title": "Nature & Adventure"
+    },
+    "column": "image",
+    "path": [],
+    "old": "/uploads/circuits/coastal-tsingy.jpg",
+    "new": "/uploads/circuits/ankarana-bridge.jpg"
+  },
+  {
+    "table": "offers",
+    "where": {
+      "kind": "activity",
+      "title": "Cruise Boat Excursions"
+    },
+    "column": "image",
+    "path": [],
+    "old": "/uploads/circuits/nosy-iranja.jpg",
+    "new": "/uploads/circuits/boat-to-nosy-iranja.jpg"
+  },
+  {
+    "table": "offers",
+    "where": {
+      "kind": "activity",
+      "title": "Wildlife & Flora Discovery"
+    },
+    "column": "image",
+    "path": [],
+    "old": "/uploads/circuits/sambirano-river.jpg",
+    "new": "/uploads/circuits/crowned-sifaka.jpg"
+  },
+  {
+    "table": "offers",
+    "where": {
+      "kind": "excursion",
+      "title": "Nosy Sakatia"
+    },
+    "column": "image",
+    "path": [],
+    "old": "/uploads/circuits/boat-ride-beach.jpg",
+    "new": "/uploads/circuits/green-island-bay.jpg"
+  },
+  {
+    "table": "offers",
+    "where": {
+      "kind": "excursion",
+      "title": "Nosy Komba + Nosy Tanikely"
+    },
+    "column": "image",
+    "path": [],
+    "old": "/uploads/circuits/lemur.jpg",
+    "new": "/uploads/circuits/nosy-tanikely-aerial.jpg"
+  },
+  {
+    "table": "offers",
+    "where": {
+      "kind": "excursion",
+      "title": "Nosy Iranja"
+    },
+    "column": "image",
+    "path": [],
+    "old": "/uploads/circuits/nosy-iranja.jpg",
+    "new": "/uploads/circuits/nosy-iranja-aerial.jpg"
+  },
+  {
+    "table": "offers",
+    "where": {
+      "kind": "excursion",
+      "title": "Nosy Be Island Tour"
+    },
+    "column": "image",
+    "path": [],
+    "old": "/uploads/circuits/coast-road-van.jpg",
+    "new": "/uploads/circuits/hell-ville-port.jpg"
+  },
+  {
+    "table": "offers",
+    "where": {
+      "kind": "excursion",
+      "title": "Lemuria Land + Andilana"
+    },
+    "column": "image",
+    "path": [],
+    "old": "/uploads/circuits/guide-with-lemur.jpg",
+    "new": "/uploads/circuits/ring-tailed-lemur.jpg"
+  },
+  {
+    "table": "offers",
+    "where": {
+      "kind": "excursion",
+      "title": "Red Tsingy + Ramena"
+    },
+    "column": "image",
+    "path": [],
+    "old": "/uploads/circuits/coastal-tsingy.jpg",
+    "new": "/uploads/circuits/red-tsingy.jpg"
+  },
+  {
+    "table": "offers",
+    "where": {
+      "kind": "excursion",
+      "title": "Emerald Sea"
+    },
+    "column": "image",
+    "path": [],
+    "old": "/uploads/circuits/ramena.jpg",
+    "new": "/uploads/circuits/diego-bay-view.jpg"
+  },
+  {
+    "table": "offers",
+    "where": {
+      "kind": "excursion",
+      "title": "Amber Mountain + Ramena"
+    },
+    "column": "image",
+    "path": [],
+    "old": "/uploads/circuits/forest-trail-bike.jpg",
+    "new": "/uploads/circuits/amber-mountain-waterfall.jpg"
+  },
+  {
+    "table": "offers",
+    "where": {
+      "kind": "excursion",
+      "title": "Montagne des Français + Ramena"
+    },
+    "column": "image",
+    "path": [],
+    "old": "/uploads/circuits/dunes-bay.jpg",
+    "new": "/uploads/circuits/ramena-beach-aerial.jpg"
+  },
+  {
+    "table": "offers",
+    "where": {
+      "kind": "cruise",
+      "title": "Nosy Iranja By Speedboat"
+    },
+    "column": "image",
+    "path": [],
+    "old": "/uploads/circuits/nosy-lonjo.jpg",
+    "new": "/uploads/circuits/boat-to-nosy-iranja.jpg"
+  },
+  {
+    "table": "offers",
+    "where": {
+      "kind": "cruise",
+      "title": "Nosy Tanikely Snorkel"
+    },
+    "column": "image",
+    "path": [],
+    "old": "/uploads/circuits/nosy-iranja.jpg",
+    "new": "/uploads/circuits/snorkelling.jpg"
+  },
+  {
+    "table": "offers",
+    "where": {
+      "kind": "cruise",
+      "title": "Lokobe Forest And Hell-Ville"
+    },
+    "column": "image",
+    "path": [],
+    "old": "/uploads/circuits/sambirano-river.jpg",
+    "new": "/uploads/circuits/black-lemur.jpg"
+  },
+  {
+    "table": "offers",
+    "where": {
+      "kind": "cruise",
+      "title": "Ylang-Ylang And Mount Passot"
+    },
+    "column": "image",
+    "path": [],
+    "old": "/uploads/circuits/antananarivo-rice-fields.jpg",
+    "new": "/uploads/circuits/ylang-distillery.jpg"
+  },
+  {
+    "table": "offers",
+    "where": {
+      "kind": "cruise",
+      "title": "Emerald Sea And Sugar Loaf"
+    },
+    "column": "image",
+    "path": [],
+    "old": "/uploads/circuits/ramena.jpg",
+    "new": "/uploads/circuits/bay-islands-view.jpg"
+  },
+  {
+    "table": "offers",
+    "where": {
+      "kind": "cruise",
+      "title": "Red Tsingy And Old Town"
+    },
+    "column": "image",
+    "path": [],
+    "old": "/uploads/circuits/coastal-tsingy.jpg",
+    "new": "/uploads/circuits/red-tsingy-spires.jpg"
+  },
+  {
+    "table": "offers",
+    "where": {
+      "kind": "cruise",
+      "title": "Amber Mountain Rainforest"
+    },
+    "column": "image",
+    "path": [],
+    "old": "/uploads/circuits/sambirano-river.jpg",
+    "new": "/uploads/circuits/amber-mountain-stream.jpg"
+  },
+  {
+    "table": "offers",
+    "where": {
+      "kind": "longstay",
+      "title": "One Month Of Slow Travel"
+    },
+    "column": "image",
+    "path": [],
+    "old": "/uploads/circuits/ramena.jpg",
+    "new": "/uploads/circuits/palm-beach.jpg"
+  },
+  {
+    "table": "offers",
+    "where": {
+      "kind": "longstay",
+      "title": "Live Here, Fully Supported"
+    },
+    "column": "image",
+    "path": [],
+    "old": "/uploads/circuits/nosy-lonjo.jpg",
+    "new": "/uploads/circuits/noziwild-van-team.jpg"
+  },
+  {
+    "table": "offers",
+    "where": {
+      "kind": "idea",
+      "title": "Romantic islands"
+    },
+    "column": "image",
+    "path": [],
+    "old": "/uploads/circuits/nosy-iranja.jpg",
+    "new": "/uploads/circuits/nosy-iranja-aerial-2.jpg"
+  },
+  {
+    "table": "offers",
+    "where": {
+      "kind": "idea",
+      "title": "Family wildlife trail"
+    },
+    "column": "image",
+    "path": [],
+    "old": "/uploads/circuits/sambirano-river.jpg",
+    "new": "/uploads/circuits/guide-with-sifaka.jpg"
+  },
+  {
+    "table": "offers",
+    "where": {
+      "kind": "idea",
+      "title": "Culture and countryside"
+    },
+    "column": "image",
+    "path": [],
+    "old": "/uploads/circuits/antananarivo-rice-fields.jpg",
+    "new": "/uploads/circuits/nosy-komba-beach-village.jpg"
+  },
+  {
+    "table": "offers",
+    "where": {
+      "kind": "stay",
+      "title": "Ramena Sea Bungalows"
+    },
+    "column": "image",
+    "path": [],
+    "old": "/uploads/circuits/ramena.jpg",
+    "new": "/uploads/circuits/ramena-beach-boats.jpg"
+  },
+  {
+    "table": "offers",
+    "where": {
+      "kind": "stay",
+      "title": "Nosy Iranja Retreat"
+    },
+    "column": "image",
+    "path": [],
+    "old": "/uploads/circuits/nosy-iranja.jpg",
+    "new": "/uploads/circuits/nosy-iranja-island.jpg"
+  },
+  {
+    "table": "offers",
+    "where": {
+      "kind": "transport",
+      "title": "Private 4x4"
+    },
+    "column": "image",
+    "path": [],
+    "old": "/uploads/circuits/antananarivo-rice-fields.jpg",
+    "new": "/uploads/circuits/noziwild-van-amber-mountain.jpg"
+  },
+  {
+    "table": "offers",
+    "where": {
+      "kind": "transport",
+      "title": "Shared Minibus"
+    },
+    "column": "image",
+    "path": [],
+    "old": "/uploads/circuits/sambirano-river.jpg",
+    "new": "/uploads/circuits/noziwild-van-red-tsingy.jpg"
+  },
+  {
+    "table": "offers",
+    "where": {
+      "kind": "transport",
+      "title": "Speedboat"
+    },
+    "column": "image",
+    "path": [],
+    "old": "/uploads/circuits/nosy-iranja.jpg",
+    "new": "/uploads/circuits/speedboat.jpg"
+  },
+  {
+    "table": "offers",
+    "where": {
+      "kind": "food",
+      "title": "Seafood On The Beach"
+    },
+    "column": "image",
+    "path": [],
+    "old": "/uploads/circuits/ramena.jpg",
+    "new": "/uploads/circuits/ramena-beach-boats.jpg"
+  },
+  {
+    "table": "offers",
+    "where": {
+      "kind": "photo",
+      "title": "Sunrise over the island"
+    },
+    "column": "image",
+    "path": [],
+    "old": "/uploads/circuits/nosy-iranja.jpg",
+    "new": "/uploads/circuits/mont-passot-sunset.jpg"
+  },
+  {
+    "table": "offers",
+    "where": {
+      "kind": "photo",
+      "title": "A slow walk through the village"
+    },
+    "column": "image",
+    "path": [],
+    "old": "/uploads/circuits/sambirano-river.jpg",
+    "new": "/uploads/circuits/nosy-komba-beach-village.jpg"
+  },
+  {
+    "table": "offers",
+    "where": {
+      "kind": "photo",
+      "title": "Face to face with the wild"
+    },
+    "column": "image",
+    "path": [],
+    "old": "/uploads/circuits/coastal-tsingy.jpg",
+    "new": "/uploads/circuits/ankarana-chameleon.jpg"
+  },
+  {
+    "table": "offers",
+    "where": {
+      "kind": "photo",
+      "title": "Sailing along the coast"
+    },
+    "column": "image",
+    "path": [],
+    "old": "/uploads/circuits/ramena.jpg",
+    "new": "/uploads/circuits/speedboat.jpg"
+  },
+  {
+    "table": "offers",
+    "where": {
+      "kind": "photo",
+      "title": "Friends on the shore"
+    },
+    "column": "image",
+    "path": [],
+    "old": "/uploads/circuits/nosy-lonjo.jpg",
+    "new": "/uploads/circuits/snorkel-friends.jpg"
+  },
+  {
+    "table": "offers",
+    "where": {
+      "kind": "photo",
+      "title": "The road to nowhere"
+    },
+    "column": "image",
+    "path": [],
+    "old": "/uploads/circuits/coastal-tsingy.jpg",
+    "new": "/uploads/circuits/noziwild-van-road-north.jpg"
+  },
+  {
+    "table": "offers",
+    "where": {
+      "kind": "photo",
+      "title": "Quiet moment in the forest"
+    },
+    "column": "image",
+    "path": [],
+    "old": "/uploads/circuits/antananarivo-rice-fields.jpg",
+    "new": "/uploads/circuits/amber-mountain-cascade.jpg"
+  },
+  {
+    "table": "offers",
+    "where": {
+      "kind": "photo",
+      "title": "Turquoise water, empty beach"
+    },
+    "column": "image",
+    "path": [],
+    "old": "/uploads/circuits/nosy-lonjo.jpg",
+    "new": "/uploads/circuits/bay-of-pigeons.jpg"
+  },
+  {
+    "table": "offers",
+    "where": {
+      "kind": "gear",
+      "title": "Snorkel Set"
+    },
+    "column": "image",
+    "path": [],
+    "old": "/uploads/circuits/ramena.jpg",
+    "new": "/uploads/circuits/snorkel-gear-beach.jpg"
+  },
+  {
+    "table": "offers",
+    "where": {
+      "kind": "gear",
+      "title": "Trekking Backpack 50L"
+    },
+    "column": "image",
+    "path": [],
+    "old": "/uploads/circuits/coastal-tsingy.jpg",
+    "new": "/uploads/circuits/red-tsingy-trail.jpg"
+  },
+  {
+    "table": "offers",
+    "where": {
+      "kind": "gear",
+      "title": "Binoculars 8x42"
+    },
+    "column": "image",
+    "path": [],
+    "old": "/uploads/circuits/antananarivo-rice-fields.jpg",
+    "new": "/uploads/circuits/sifaka-in-tree.jpg"
+  },
+  {
+    "table": "offers",
+    "where": {
+      "kind": "gear",
+      "title": "Waterproof Camera"
+    },
+    "column": "image",
+    "path": [],
+    "old": "/uploads/circuits/nosy-iranja.jpg",
+    "new": "/uploads/circuits/snorkelling-reef.jpg"
+  },
+  {
+    "table": "offers",
+    "where": {
+      "kind": "ticket",
+      "title": "Lokobe Reserve"
+    },
+    "column": "image",
+    "path": [],
+    "old": "/uploads/circuits/sambirano-river.jpg",
+    "new": "/uploads/circuits/black-lemur.jpg"
+  },
+  {
+    "table": "offers",
+    "where": {
+      "kind": "ticket",
+      "title": "Marine Park Snorkel Trip"
+    },
+    "column": "image",
+    "path": [],
+    "old": "/uploads/circuits/ramena.jpg",
+    "new": "/uploads/circuits/snorkelling-reef.jpg"
+  },
+  {
+    "table": "circuits",
+    "where": {
+      "slug": "diego-suarez-bay-and-ramena-coast"
+    },
+    "column": "cover_image",
+    "path": [],
+    "old": "/uploads/circuits/ramena.jpg",
+    "new": "/uploads/circuits/diego-bay-view.jpg"
+  },
+  {
+    "table": "circuits",
+    "where": {
+      "slug": "diego-suarez-bay-and-ramena-coast"
+    },
+    "column": "gallery",
+    "path": [
+      0
+    ],
+    "old": "/uploads/circuits/ramena.jpg",
+    "new": "/uploads/circuits/diego-bay-view.jpg"
+  },
+  {
+    "table": "circuits",
+    "where": {
+      "slug": "diego-suarez-bay-and-ramena-coast"
+    },
+    "column": "gallery",
+    "path": [
+      1
+    ],
+    "old": "/uploads/circuits/noziwild-boat.jpg",
+    "new": "/uploads/circuits/red-tsingy.jpg"
+  },
+  {
+    "table": "circuits",
+    "where": {
+      "slug": "diego-suarez-bay-and-ramena-coast"
+    },
+    "column": "gallery",
+    "path": [
+      2
+    ],
+    "old": "/uploads/circuits/sakalava-bay.jpg",
+    "new": "/uploads/circuits/ramena-beach-aerial.jpg"
+  },
+  {
+    "table": "circuit_days",
+    "circuit": "diego-suarez-bay-and-ramena-coast",
+    "where": {
+      "position": 0
+    },
+    "column": "images",
+    "path": [
+      0
+    ],
+    "old": "/uploads/circuits/nosy-lonjo.jpg",
+    "new": "/uploads/circuits/sugar-loaf-view.jpg"
+  },
+  {
+    "table": "circuit_days",
+    "circuit": "diego-suarez-bay-and-ramena-coast",
+    "where": {
+      "position": 0
+    },
+    "column": "images",
+    "path": [
+      1
+    ],
+    "old": "/uploads/circuits/coast-road-van.jpg",
+    "new": "/uploads/circuits/noziwild-van-road-north.jpg"
+  },
+  {
+    "table": "circuit_days",
+    "circuit": "diego-suarez-bay-and-ramena-coast",
+    "where": {
+      "position": 0
+    },
+    "column": "images",
+    "path": [
+      2
+    ],
+    "old": "/uploads/circuits/ramena.jpg",
+    "new": "/uploads/circuits/diego-bay-panorama.jpg"
+  },
+  {
+    "table": "circuit_days",
+    "circuit": "diego-suarez-bay-and-ramena-coast",
+    "where": {
+      "position": 1
+    },
+    "column": "images",
+    "path": [
+      0
+    ],
+    "old": "/uploads/circuits/coastal-tsingy.jpg",
+    "new": "/uploads/circuits/red-tsingy.jpg"
+  },
+  {
+    "table": "circuit_days",
+    "circuit": "diego-suarez-bay-and-ramena-coast",
+    "where": {
+      "position": 1
+    },
+    "column": "images",
+    "path": [
+      1
+    ],
+    "old": "/uploads/circuits/dirt-track-motorbike.jpg",
+    "new": "/uploads/circuits/red-tsingy-hikers.jpg"
+  },
+  {
+    "table": "circuit_days",
+    "circuit": "diego-suarez-bay-and-ramena-coast",
+    "where": {
+      "position": 1
+    },
+    "column": "images",
+    "path": [
+      2
+    ],
+    "old": "/uploads/circuits/noziwild-van-road.jpg",
+    "new": "/uploads/circuits/noziwild-van-red-tsingy.jpg"
+  },
+  {
+    "table": "circuit_days",
+    "circuit": "diego-suarez-bay-and-ramena-coast",
+    "where": {
+      "position": 2
+    },
+    "column": "images",
+    "path": [
+      0
+    ],
+    "old": "/uploads/circuits/ramena.jpg",
+    "new": "/uploads/circuits/ramena-beach-aerial.jpg"
+  },
+  {
+    "table": "circuit_days",
+    "circuit": "diego-suarez-bay-and-ramena-coast",
+    "where": {
+      "position": 2
+    },
+    "column": "images",
+    "path": [
+      1
+    ],
+    "old": "/uploads/circuits/noziwild-boat.jpg",
+    "new": "/uploads/circuits/ramena-beach-boats.jpg"
+  },
+  {
+    "table": "circuit_days",
+    "circuit": "diego-suarez-bay-and-ramena-coast",
+    "where": {
+      "position": 2
+    },
+    "column": "images",
+    "path": [
+      2
+    ],
+    "old": "/uploads/circuits/jet-ski.jpg",
+    "new": "/uploads/circuits/bay-islands-view.jpg"
+  },
+  {
+    "table": "circuit_days",
+    "circuit": "diego-suarez-bay-and-ramena-coast",
+    "where": {
+      "position": 3
+    },
+    "column": "images",
+    "path": [
+      0
+    ],
+    "old": "/uploads/circuits/sakalava-bay.jpg",
+    "new": "/uploads/circuits/bay-of-pigeons.jpg"
+  },
+  {
+    "table": "circuit_days",
+    "circuit": "diego-suarez-bay-and-ramena-coast",
+    "where": {
+      "position": 3
+    },
+    "column": "images",
+    "path": [
+      1
+    ],
+    "old": "/uploads/circuits/dunes-bay.jpg",
+    "new": "/uploads/circuits/three-bays-shore.jpg"
+  },
+  {
+    "table": "circuit_days",
+    "circuit": "diego-suarez-bay-and-ramena-coast",
+    "where": {
+      "position": 3
+    },
+    "column": "images",
+    "path": [
+      2
+    ],
+    "old": "/uploads/circuits/beach-sunset.jpg",
+    "new": "/uploads/circuits/three-bays-cannon.jpg"
+  },
+  {
+    "table": "circuit_days",
+    "circuit": "diego-suarez-bay-and-ramena-coast",
+    "where": {
+      "position": 4
+    },
+    "column": "images",
+    "path": [
+      0
+    ],
+    "old": "/uploads/circuits/forest-trail-bike.jpg",
+    "new": "/uploads/circuits/amber-mountain-waterfall.jpg"
+  },
+  {
+    "table": "circuit_days",
+    "circuit": "diego-suarez-bay-and-ramena-coast",
+    "where": {
+      "position": 4
+    },
+    "column": "images",
+    "path": [
+      1
+    ],
+    "old": "/uploads/circuits/lemur.jpg",
+    "new": "/uploads/circuits/amber-mountain-stream.jpg"
+  },
+  {
+    "table": "circuit_days",
+    "circuit": "diego-suarez-bay-and-ramena-coast",
+    "where": {
+      "position": 4
+    },
+    "column": "images",
+    "path": [
+      2
+    ],
+    "old": "/uploads/circuits/guide-with-lemur.jpg",
+    "new": "/uploads/circuits/noziwild-van-amber-mountain.jpg"
+  },
+  {
+    "table": "circuit_days",
+    "circuit": "diego-suarez-bay-and-ramena-coast",
+    "where": {
+      "position": 5
+    },
+    "column": "images",
+    "path": [
+      0
+    ],
+    "old": "/uploads/circuits/coast-road-van.jpg",
+    "new": "/uploads/circuits/noziwild-team-three-bays.jpg"
+  },
+  {
+    "table": "circuit_days",
+    "circuit": "diego-suarez-bay-and-ramena-coast",
+    "where": {
+      "position": 5
+    },
+    "column": "images",
+    "path": [
+      1
+    ],
+    "old": "/uploads/circuits/nosy-lonjo.jpg",
+    "new": "/uploads/circuits/sugar-loaf-view.jpg"
+  },
+  {
+    "table": "circuit_days",
+    "circuit": "diego-suarez-bay-and-ramena-coast",
+    "where": {
+      "position": 5
+    },
+    "column": "images",
+    "path": [
+      2
+    ],
+    "old": "/uploads/circuits/sea-sunset.jpg",
+    "new": "/uploads/circuits/diego-bay-view.jpg"
+  },
+  {
+    "table": "circuits",
+    "where": {
+      "slug": "nosy-be-and-nosy-iranja"
+    },
+    "column": "cover_image",
+    "path": [],
+    "old": "/uploads/circuits/nosy-iranja.jpg",
+    "new": "/uploads/circuits/nosy-iranja-aerial.jpg"
+  },
+  {
+    "table": "circuits",
+    "where": {
+      "slug": "nosy-be-and-nosy-iranja"
+    },
+    "column": "gallery",
+    "path": [
+      0
+    ],
+    "old": "/uploads/circuits/nosy-iranja.jpg",
+    "new": "/uploads/circuits/nosy-iranja-aerial.jpg"
+  },
+  {
+    "table": "circuits",
+    "where": {
+      "slug": "nosy-be-and-nosy-iranja"
+    },
+    "column": "gallery",
+    "path": [
+      1
+    ],
+    "old": "/uploads/circuits/island-beach-aerial.jpg",
+    "new": "/uploads/circuits/nosy-tanikely-aerial.jpg"
+  },
+  {
+    "table": "circuits",
+    "where": {
+      "slug": "nosy-be-and-nosy-iranja"
+    },
+    "column": "gallery",
+    "path": [
+      2
+    ],
+    "old": "/uploads/circuits/noziwild-boat.jpg",
+    "new": "/uploads/circuits/snorkelling.jpg"
+  },
+  {
+    "table": "circuit_days",
+    "circuit": "nosy-be-and-nosy-iranja",
+    "where": {
+      "position": 0
+    },
+    "column": "images",
+    "path": [
+      0
+    ],
+    "old": "/uploads/circuits/island-beach-aerial.jpg",
+    "new": "/uploads/circuits/hell-ville-port.jpg"
+  },
+  {
+    "table": "circuit_days",
+    "circuit": "nosy-be-and-nosy-iranja",
+    "where": {
+      "position": 0
+    },
+    "column": "images",
+    "path": [
+      1
+    ],
+    "old": "/uploads/circuits/coast-road-van.jpg",
+    "new": "/uploads/circuits/noziwild-van-team.jpg"
+  },
+  {
+    "table": "circuit_days",
+    "circuit": "nosy-be-and-nosy-iranja",
+    "where": {
+      "position": 0
+    },
+    "column": "images",
+    "path": [
+      2
+    ],
+    "old": "/uploads/circuits/boat-ride-beach.jpg",
+    "new": "/uploads/circuits/nosy-be-coastline.jpg"
+  },
+  {
+    "table": "circuit_days",
+    "circuit": "nosy-be-and-nosy-iranja",
+    "where": {
+      "position": 1
+    },
+    "column": "images",
+    "path": [
+      0
+    ],
+    "old": "/uploads/circuits/forest-trail-bike.jpg",
+    "new": "/uploads/circuits/black-lemur.jpg"
+  },
+  {
+    "table": "circuit_days",
+    "circuit": "nosy-be-and-nosy-iranja",
+    "where": {
+      "position": 1
+    },
+    "column": "images",
+    "path": [
+      1
+    ],
+    "old": "/uploads/circuits/lemur.jpg",
+    "new": "/uploads/circuits/forest-walk-group.jpg"
+  },
+  {
+    "table": "circuit_days",
+    "circuit": "nosy-be-and-nosy-iranja",
+    "where": {
+      "position": 1
+    },
+    "column": "images",
+    "path": [
+      2
+    ],
+    "old": "/uploads/circuits/boat-ride-beach.jpg",
+    "new": "/uploads/circuits/nosy-komba-beach-village.jpg"
+  },
+  {
+    "table": "circuit_days",
+    "circuit": "nosy-be-and-nosy-iranja",
+    "where": {
+      "position": 2
+    },
+    "column": "images",
+    "path": [
+      0
+    ],
+    "old": "/uploads/circuits/guide-with-lemur.jpg",
+    "new": "/uploads/circuits/nosy-komba-village-aerial.jpg"
+  },
+  {
+    "table": "circuit_days",
+    "circuit": "nosy-be-and-nosy-iranja",
+    "where": {
+      "position": 2
+    },
+    "column": "images",
+    "path": [
+      1
+    ],
+    "old": "/uploads/circuits/island-beach-aerial.jpg",
+    "new": "/uploads/circuits/nosy-tanikely-aerial.jpg"
+  },
+  {
+    "table": "circuit_days",
+    "circuit": "nosy-be-and-nosy-iranja",
+    "where": {
+      "position": 2
+    },
+    "column": "images",
+    "path": [
+      2
+    ],
+    "old": "/uploads/circuits/jet-ski.jpg",
+    "new": "/uploads/circuits/snorkelling.jpg"
+  },
+  {
+    "table": "circuit_days",
+    "circuit": "nosy-be-and-nosy-iranja",
+    "where": {
+      "position": 3
+    },
+    "column": "images",
+    "path": [
+      0
+    ],
+    "old": "/uploads/circuits/nosy-iranja.jpg",
+    "new": "/uploads/circuits/nosy-iranja-aerial.jpg"
+  },
+  {
+    "table": "circuit_days",
+    "circuit": "nosy-be-and-nosy-iranja",
+    "where": {
+      "position": 3
+    },
+    "column": "images",
+    "path": [
+      1
+    ],
+    "old": "/uploads/circuits/noziwild-boat.jpg",
+    "new": "/uploads/circuits/nosy-iranja-sandbar-drone.jpg"
+  },
+  {
+    "table": "circuit_days",
+    "circuit": "nosy-be-and-nosy-iranja",
+    "where": {
+      "position": 3
+    },
+    "column": "images",
+    "path": [
+      2
+    ],
+    "old": "/uploads/circuits/dunes-bay.jpg",
+    "new": "/uploads/circuits/nosy-iranja-lighthouse-aerial.jpg"
+  },
+  {
+    "table": "circuit_days",
+    "circuit": "nosy-be-and-nosy-iranja",
+    "where": {
+      "position": 4
+    },
+    "column": "images",
+    "path": [
+      0
+    ],
+    "old": "/uploads/circuits/sambirano-river.jpg",
+    "new": "/uploads/circuits/ylang-distillery.jpg"
+  },
+  {
+    "table": "circuit_days",
+    "circuit": "nosy-be-and-nosy-iranja",
+    "where": {
+      "position": 4
+    },
+    "column": "images",
+    "path": [
+      1
+    ],
+    "old": "/uploads/circuits/sea-sunset.jpg",
+    "new": "/uploads/circuits/mont-passot-deck.jpg"
+  },
+  {
+    "table": "circuit_days",
+    "circuit": "nosy-be-and-nosy-iranja",
+    "where": {
+      "position": 4
+    },
+    "column": "images",
+    "path": [
+      2
+    ],
+    "old": "/uploads/circuits/coast-road-van.jpg",
+    "new": "/uploads/circuits/mont-passot-sunset-aerial.jpg"
+  },
+  {
+    "table": "circuit_days",
+    "circuit": "nosy-be-and-nosy-iranja",
+    "where": {
+      "position": 5
+    },
+    "column": "images",
+    "path": [
+      0
+    ],
+    "old": "/uploads/circuits/jet-ski.jpg",
+    "new": "/uploads/circuits/palm-beach.jpg"
+  },
+  {
+    "table": "circuit_days",
+    "circuit": "nosy-be-and-nosy-iranja",
+    "where": {
+      "position": 5
+    },
+    "column": "images",
+    "path": [
+      1
+    ],
+    "old": "/uploads/circuits/sakalava-bay.jpg",
+    "new": "/uploads/circuits/tanikely-beach.jpg"
+  },
+  {
+    "table": "circuit_days",
+    "circuit": "nosy-be-and-nosy-iranja",
+    "where": {
+      "position": 5
+    },
+    "column": "images",
+    "path": [
+      2
+    ],
+    "old": "/uploads/circuits/beach-sunset.jpg",
+    "new": "/uploads/circuits/turquoise-rocks.jpg"
+  },
+  {
+    "table": "circuit_days",
+    "circuit": "nosy-be-and-nosy-iranja",
+    "where": {
+      "position": 6
+    },
+    "column": "images",
+    "path": [
+      0
+    ],
+    "old": "/uploads/circuits/island-beach-aerial.jpg",
+    "new": "/uploads/circuits/hell-ville-port.jpg"
+  },
+  {
+    "table": "circuit_days",
+    "circuit": "nosy-be-and-nosy-iranja",
+    "where": {
+      "position": 6
+    },
+    "column": "images",
+    "path": [
+      1
+    ],
+    "old": "/uploads/circuits/boat-ride-beach.jpg",
+    "new": "/uploads/circuits/speedboat.jpg"
+  },
+  {
+    "table": "circuit_days",
+    "circuit": "nosy-be-and-nosy-iranja",
+    "where": {
+      "position": 6
+    },
+    "column": "images",
+    "path": [
+      2
+    ],
+    "old": "/uploads/circuits/sea-sunset.jpg",
+    "new": "/uploads/circuits/mont-passot-sunset-aerial.jpg"
+  },
+  {
+    "table": "circuits",
+    "where": {
+      "slug": "ambanja-cocoa-country-and-northern-wildlife"
+    },
+    "column": "gallery",
+    "path": [
+      1
+    ],
+    "old": "/uploads/circuits/lemur.jpg",
+    "new": "/uploads/circuits/ankarana-bridge.jpg"
+  },
+  {
+    "table": "circuits",
+    "where": {
+      "slug": "ambanja-cocoa-country-and-northern-wildlife"
+    },
+    "column": "gallery",
+    "path": [
+      2
+    ],
+    "old": "/uploads/circuits/coastal-tsingy.jpg",
+    "new": "/uploads/circuits/red-tsingy.jpg"
+  },
+  {
+    "table": "circuit_days",
+    "circuit": "ambanja-cocoa-country-and-northern-wildlife",
+    "where": {
+      "position": 0
+    },
+    "column": "images",
+    "path": [
+      0
+    ],
+    "old": "/uploads/circuits/noziwild-boat.jpg",
+    "new": "/uploads/circuits/speedboat.jpg"
+  },
+  {
+    "table": "circuit_days",
+    "circuit": "ambanja-cocoa-country-and-northern-wildlife",
+    "where": {
+      "position": 0
+    },
+    "column": "images",
+    "path": [
+      1
+    ],
+    "old": "/uploads/circuits/boat-ride-beach.jpg",
+    "new": "/uploads/circuits/nosy-be-sea.jpg"
+  },
+  {
+    "table": "circuit_days",
+    "circuit": "ambanja-cocoa-country-and-northern-wildlife",
+    "where": {
+      "position": 3
+    },
+    "column": "images",
+    "path": [
+      0
+    ],
+    "old": "/uploads/circuits/coastal-tsingy.jpg",
+    "new": "/uploads/circuits/ankarana-bridge.jpg"
+  },
+  {
+    "table": "circuit_days",
+    "circuit": "ambanja-cocoa-country-and-northern-wildlife",
+    "where": {
+      "position": 3
+    },
+    "column": "images",
+    "path": [
+      1
+    ],
+    "old": "/uploads/circuits/lemur.jpg",
+    "new": "/uploads/circuits/ankarana-tsingy.jpg"
+  },
+  {
+    "table": "circuit_days",
+    "circuit": "ambanja-cocoa-country-and-northern-wildlife",
+    "where": {
+      "position": 3
+    },
+    "column": "images",
+    "path": [
+      2
+    ],
+    "old": "/uploads/circuits/forest-trail-bike.jpg",
+    "new": "/uploads/circuits/ankarana-chameleon.jpg"
+  },
+  {
+    "table": "circuit_days",
+    "circuit": "ambanja-cocoa-country-and-northern-wildlife",
+    "where": {
+      "position": 4
+    },
+    "column": "images",
+    "path": [
+      0
+    ],
+    "old": "/uploads/circuits/dirt-track-motorbike.jpg",
+    "new": "/uploads/circuits/red-tsingy.jpg"
+  },
+  {
+    "table": "circuit_days",
+    "circuit": "ambanja-cocoa-country-and-northern-wildlife",
+    "where": {
+      "position": 4
+    },
+    "column": "images",
+    "path": [
+      1
+    ],
+    "old": "/uploads/circuits/nosy-lonjo.jpg",
+    "new": "/uploads/circuits/noziwild-van-red-tsingy.jpg"
+  },
+  {
+    "table": "circuit_days",
+    "circuit": "ambanja-cocoa-country-and-northern-wildlife",
+    "where": {
+      "position": 4
+    },
+    "column": "images",
+    "path": [
+      2
+    ],
+    "old": "/uploads/circuits/coast-road-van.jpg",
+    "new": "/uploads/circuits/sugar-loaf-view.jpg"
+  },
+  {
+    "table": "circuit_days",
+    "circuit": "ambanja-cocoa-country-and-northern-wildlife",
+    "where": {
+      "position": 5
+    },
+    "column": "images",
+    "path": [
+      0
+    ],
+    "old": "/uploads/circuits/guide-with-lemur.jpg",
+    "new": "/uploads/circuits/amber-mountain-waterfall.jpg"
+  },
+  {
+    "table": "circuit_days",
+    "circuit": "ambanja-cocoa-country-and-northern-wildlife",
+    "where": {
+      "position": 5
+    },
+    "column": "images",
+    "path": [
+      1
+    ],
+    "old": "/uploads/circuits/forest-track-quad.jpg",
+    "new": "/uploads/circuits/amber-mountain-forest.jpg"
+  },
+  {
+    "table": "circuit_days",
+    "circuit": "ambanja-cocoa-country-and-northern-wildlife",
+    "where": {
+      "position": 5
+    },
+    "column": "images",
+    "path": [
+      2
+    ],
+    "old": "/uploads/circuits/lemur.jpg",
+    "new": "/uploads/circuits/ring-tailed-lemur.jpg"
+  },
+  {
+    "table": "circuit_days",
+    "circuit": "ambanja-cocoa-country-and-northern-wildlife",
+    "where": {
+      "position": 6
+    },
+    "column": "images",
+    "path": [
+      0
+    ],
+    "old": "/uploads/circuits/ramena.jpg",
+    "new": "/uploads/circuits/diego-bay-view.jpg"
+  },
+  {
+    "table": "circuit_days",
+    "circuit": "ambanja-cocoa-country-and-northern-wildlife",
+    "where": {
+      "position": 6
+    },
+    "column": "images",
+    "path": [
+      1
+    ],
+    "old": "/uploads/circuits/noziwild-boat.jpg",
+    "new": "/uploads/circuits/bay-islands-view.jpg"
+  },
+  {
+    "table": "circuit_days",
+    "circuit": "ambanja-cocoa-country-and-northern-wildlife",
+    "where": {
+      "position": 6
+    },
+    "column": "images",
+    "path": [
+      2
+    ],
+    "old": "/uploads/circuits/jet-ski.jpg",
+    "new": "/uploads/circuits/diego-bay-panorama.jpg"
+  },
+  {
+    "table": "circuit_days",
+    "circuit": "ambanja-cocoa-country-and-northern-wildlife",
+    "where": {
+      "position": 7
+    },
+    "column": "images",
+    "path": [
+      0
+    ],
+    "old": "/uploads/circuits/nosy-lonjo.jpg",
+    "new": "/uploads/circuits/sugar-loaf-view.jpg"
+  },
+  {
+    "table": "circuit_days",
+    "circuit": "ambanja-cocoa-country-and-northern-wildlife",
+    "where": {
+      "position": 7
+    },
+    "column": "images",
+    "path": [
+      1
+    ],
+    "old": "/uploads/circuits/sea-sunset.jpg",
+    "new": "/uploads/circuits/noziwild-team-lookout.jpg"
+  },
+  {
+    "table": "circuit_days",
+    "circuit": "ambanja-cocoa-country-and-northern-wildlife",
+    "where": {
+      "position": 2
+    },
+    "column": "images",
+    "path": [
+      0
+    ],
+    "old": "/uploads/circuits/noziwild-van-road.jpg",
+    "new": "/uploads/circuits/noziwild-van-road-north.jpg"
+  },
+  {
+    "table": "circuit_days",
+    "circuit": "ambanja-cocoa-country-and-northern-wildlife",
+    "where": {
+      "position": 2
+    },
+    "column": "images",
+    "path": [
+      1
+    ],
+    "old": "/uploads/circuits/dirt-track-motorbike.jpg",
+    "new": "/uploads/circuits/noziwild-van-ankarana.jpg"
+  },
+  {
+    "table": "circuit_days",
+    "circuit": "ambanja-cocoa-country-and-northern-wildlife",
+    "where": {
+      "position": 2
+    },
+    "column": "images",
+    "path": [
+      2
+    ],
+    "old": "/uploads/circuits/forest-track-quad.jpg",
+    "new": "/uploads/circuits/ankarana-forest-trail.jpg"
+  },
+  {
+    "table": "destinations",
+    "where": {
+      "slug": "ambanja"
+    },
+    "column": "details",
+    "path": [
+      "visit",
+      2,
+      "image"
+    ],
+    "old": "/uploads/circuits/nosy-iranja.jpg",
+    "new": "/uploads/circuits/speedboat.jpg"
+  },
+  {
+    "table": "destinations",
+    "where": {
+      "slug": "ramena-beach"
+    },
+    "column": "image",
+    "path": [],
+    "old": "/uploads/circuits/ramena.jpg",
+    "new": "/uploads/circuits/ramena-beach-aerial.jpg"
+  },
+  {
+    "table": "destinations",
+    "where": {
+      "slug": "ramena-beach"
+    },
+    "column": "details",
+    "path": [
+      "todo",
+      0,
+      "image"
+    ],
+    "old": "/uploads/circuits/ramena.jpg",
+    "new": "/uploads/circuits/speedboat.jpg"
+  },
+  {
+    "table": "destinations",
+    "where": {
+      "slug": "ramena-beach"
+    },
+    "column": "details",
+    "path": [
+      "visit",
+      0,
+      "image"
+    ],
+    "old": "/uploads/circuits/ramena.jpg",
+    "new": "/uploads/circuits/diego-bay-view.jpg"
+  },
+  {
+    "table": "destinations",
+    "where": {
+      "slug": "ramena-beach"
+    },
+    "column": "details",
+    "path": [
+      "visit",
+      1,
+      "image"
+    ],
+    "old": "/uploads/circuits/nosy-lonjo.jpg",
+    "new": "/uploads/circuits/sugar-loaf-view.jpg"
+  },
+  {
+    "table": "destinations",
+    "where": {
+      "slug": "ramena-beach"
+    },
+    "column": "details",
+    "path": [
+      "visit",
+      2,
+      "image"
+    ],
+    "old": "/uploads/circuits/coastal-tsingy.jpg",
+    "new": "/uploads/circuits/three-bays-shore.jpg"
+  },
+  {
+    "table": "destinations",
+    "where": {
+      "slug": "nosy-iranja"
+    },
+    "column": "image",
+    "path": [],
+    "old": "/uploads/circuits/nosy-iranja.jpg",
+    "new": "/uploads/circuits/nosy-iranja-aerial.jpg"
+  },
+  {
+    "table": "destinations",
+    "where": {
+      "slug": "nosy-iranja"
+    },
+    "column": "details",
+    "path": [
+      "todo",
+      0,
+      "image"
+    ],
+    "old": "/uploads/circuits/nosy-iranja.jpg",
+    "new": "/uploads/circuits/nosy-iranja-walk.jpg"
+  },
+  {
+    "table": "destinations",
+    "where": {
+      "slug": "nosy-iranja"
+    },
+    "column": "details",
+    "path": [
+      "todo",
+      1,
+      "image"
+    ],
+    "old": "/uploads/circuits/ramena.jpg",
+    "new": "/uploads/circuits/snorkelling.jpg"
+  },
+  {
+    "table": "destinations",
+    "where": {
+      "slug": "nosy-iranja"
+    },
+    "column": "details",
+    "path": [
+      "todo",
+      2,
+      "image"
+    ],
+    "old": "/uploads/circuits/nosy-lonjo.jpg",
+    "new": "/uploads/circuits/nosy-iranja-lighthouse-aerial.jpg"
+  },
+  {
+    "table": "destinations",
+    "where": {
+      "slug": "nosy-iranja"
+    },
+    "column": "details",
+    "path": [
+      "visit",
+      0,
+      "image"
+    ],
+    "old": "/uploads/circuits/nosy-iranja.jpg",
+    "new": "/uploads/circuits/nosy-iranja-sandbar-drone.jpg"
+  },
+  {
+    "table": "destinations",
+    "where": {
+      "slug": "nosy-iranja"
+    },
+    "column": "details",
+    "path": [
+      "visit",
+      1,
+      "image"
+    ],
+    "old": "/uploads/circuits/ramena.jpg",
+    "new": "/uploads/circuits/nosy-iranja-island-aerial.jpg"
+  },
+  {
+    "table": "blog_posts",
+    "where": {
+      "slug": "discover-offbeat-destinations-beyond-the-usual-tourist-trails"
+    },
+    "column": "image",
+    "path": [],
+    "old": "/uploads/circuits/coastal-tsingy.jpg",
+    "new": "/uploads/circuits/ankarana-bridge.jpg"
+  },
+  {
+    "table": "blog_posts",
+    "where": {
+      "slug": "discover-offbeat-destinations-beyond-the-usual-tourist-trails"
+    },
+    "column": "body",
+    "path": [
+      3,
+      "image"
+    ],
+    "old": "/uploads/circuits/coastal-tsingy.jpg",
+    "new": "/uploads/circuits/ankarana-bridge.jpg"
+  },
+  {
+    "table": "blog_posts",
+    "where": {
+      "slug": "from-beach-resorts-to-hidden-bays-heres-where-families-love-to-go"
+    },
+    "column": "image",
+    "path": [],
+    "old": "/uploads/circuits/island-beach-aerial.jpg",
+    "new": "/uploads/circuits/nosy-tanikely-aerial.jpg"
+  },
+  {
+    "table": "blog_posts",
+    "where": {
+      "slug": "from-beach-resorts-to-hidden-bays-heres-where-families-love-to-go"
+    },
+    "column": "body",
+    "path": [
+      5,
+      "image"
+    ],
+    "old": "/uploads/circuits/island-beach-aerial.jpg",
+    "new": "/uploads/circuits/nosy-tanikely-aerial.jpg"
+  },
+  {
+    "table": "blog_posts",
+    "where": {
+      "slug": "a-wildlife-adventure-in-northern-madagascar"
+    },
+    "column": "image",
+    "path": [],
+    "old": "/uploads/circuits/guide-with-lemur.jpg",
+    "new": "/uploads/circuits/crowned-sifaka.jpg"
+  },
+  {
+    "table": "blog_posts",
+    "where": {
+      "slug": "a-wildlife-adventure-in-northern-madagascar"
+    },
+    "column": "body",
+    "path": [
+      5,
+      "image"
+    ],
+    "old": "/uploads/circuits/guide-with-lemur.jpg",
+    "new": "/uploads/circuits/crowned-sifaka.jpg"
+  },
+  {
+    "table": "blog_posts",
+    "where": {
+      "slug": "from-beaches-to-baobabs-heres-everything"
+    },
+    "column": "image",
+    "path": [],
+    "old": "/uploads/circuits/nosy-iranja.jpg",
+    "new": "/uploads/circuits/nosy-iranja-aerial.jpg"
+  },
+  {
+    "table": "blog_posts",
+    "where": {
+      "slug": "from-beaches-to-baobabs-heres-everything"
+    },
+    "column": "body",
+    "path": [
+      3,
+      "image"
+    ],
+    "old": "/uploads/circuits/nosy-iranja.jpg",
+    "new": "/uploads/circuits/nosy-iranja-aerial.jpg"
+  },
+  {
+    "table": "blog_posts",
+    "where": {
+      "slug": "sailing-the-coast-of-ramena"
+    },
+    "column": "image",
+    "path": [],
+    "old": "/uploads/circuits/ramena.jpg",
+    "new": "/uploads/circuits/ramena-beach-aerial.jpg"
+  },
+  {
+    "table": "blog_posts",
+    "where": {
+      "slug": "sailing-the-coast-of-ramena"
+    },
+    "column": "body",
+    "path": [
+      5,
+      "image"
+    ],
+    "old": "/uploads/circuits/ramena.jpg",
+    "new": "/uploads/circuits/ramena-beach-aerial.jpg"
+  },
+  {
+    "table": "blog_posts",
+    "where": {
+      "slug": "a-slow-weekend-in-ambanja-and-nosy-be"
+    },
+    "column": "image",
+    "path": [],
+    "old": "/uploads/circuits/sambirano-river.jpg",
+    "new": "/uploads/circuits/nosy-komba-coast.jpg"
+  },
+  {
+    "table": "blog_posts",
+    "where": {
+      "slug": "a-slow-weekend-in-ambanja-and-nosy-be"
+    },
+    "column": "body",
+    "path": [
+      5,
+      "image"
+    ],
+    "old": "/uploads/circuits/sambirano-river.jpg",
+    "new": "/uploads/circuits/nosy-komba-coast.jpg"
+  },
+  {
+    "table": "blog_posts",
+    "where": {
+      "slug": "the-complete-guide-to-diego-suarez-bay"
+    },
+    "column": "image",
+    "path": [],
+    "old": "/uploads/circuits/dunes-bay.jpg",
+    "new": "/uploads/circuits/diego-bay-view.jpg"
+  },
+  {
+    "table": "blog_posts",
+    "where": {
+      "slug": "the-complete-guide-to-diego-suarez-bay"
+    },
+    "column": "body",
+    "path": [
+      5,
+      "image"
+    ],
+    "old": "/uploads/circuits/dunes-bay.jpg",
+    "new": "/uploads/circuits/diego-bay-view.jpg"
+  }
+]

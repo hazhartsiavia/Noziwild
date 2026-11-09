@@ -14,11 +14,11 @@
     "end": "Diego Suarez (Arrachart airport)",
     "bestTime": "April to December",
     "tip": "From June to September the varatraza trade wind blows hard on the bay: perfect for kitesurfers, a little choppy for boat trips.",
-    "image": "/uploads/circuits/ramena.jpg",
+    "image": "/uploads/circuits/diego-bay-view.jpg",
     "gallery": [
-      "/uploads/circuits/ramena.jpg",
-      "/uploads/circuits/noziwild-boat.jpg",
-      "/uploads/circuits/sakalava-bay.jpg"
+      "/uploads/circuits/diego-bay-view.jpg",
+      "/uploads/circuits/red-tsingy.jpg",
+      "/uploads/circuits/ramena-beach-aerial.jpg"
     ],
     "overview": [
       "Diego Suarez sits on one of the largest natural bays in the world. In six relaxed days you sail to the Emerald Sea, walk among the Red Tsingy and drive along the Three Bays, with time left for long lunches of grilled fish on the beach.",
@@ -55,9 +55,9 @@
         "stay": "Diego Suarez",
         "meals": "Dinner on your own",
         "images": [
-          "/uploads/circuits/nosy-lonjo.jpg",
-          "/uploads/circuits/coast-road-van.jpg",
-          "/uploads/circuits/ramena.jpg"
+          "/uploads/circuits/sugar-loaf-view.jpg",
+          "/uploads/circuits/noziwild-van-road-north.jpg",
+          "/uploads/circuits/diego-bay-panorama.jpg"
         ]
       },
       {
@@ -67,9 +67,9 @@
         "stay": "Diego Suarez",
         "meals": "Breakfast, lunch",
         "images": [
-          "/uploads/circuits/coastal-tsingy.jpg",
-          "/uploads/circuits/dirt-track-motorbike.jpg",
-          "/uploads/circuits/noziwild-van-road.jpg"
+          "/uploads/circuits/red-tsingy.jpg",
+          "/uploads/circuits/red-tsingy-hikers.jpg",
+          "/uploads/circuits/noziwild-van-red-tsingy.jpg"
         ]
       },
       {
@@ -79,9 +79,9 @@
         "stay": "Ramena",
         "meals": "Breakfast, lunch",
         "images": [
-          "/uploads/circuits/ramena.jpg",
-          "/uploads/circuits/noziwild-boat.jpg",
-          "/uploads/circuits/jet-ski.jpg"
+          "/uploads/circuits/ramena-beach-aerial.jpg",
+          "/uploads/circuits/ramena-beach-boats.jpg",
+          "/uploads/circuits/bay-islands-view.jpg"
         ]
       },
       {
@@ -91,9 +91,9 @@
         "stay": "Ramena",
         "meals": "Breakfast, lunch",
         "images": [
-          "/uploads/circuits/sakalava-bay.jpg",
-          "/uploads/circuits/dunes-bay.jpg",
-          "/uploads/circuits/beach-sunset.jpg"
+          "/uploads/circuits/bay-of-pigeons.jpg",
+          "/uploads/circuits/three-bays-shore.jpg",
+          "/uploads/circuits/three-bays-cannon.jpg"
         ]
       },
       {
@@ -103,9 +103,9 @@
         "stay": "Diego Suarez",
         "meals": "Breakfast, lunch",
         "images": [
-          "/uploads/circuits/forest-trail-bike.jpg",
-          "/uploads/circuits/lemur.jpg",
-          "/uploads/circuits/guide-with-lemur.jpg"
+          "/uploads/circuits/amber-mountain-waterfall.jpg",
+          "/uploads/circuits/amber-mountain-stream.jpg",
+          "/uploads/circuits/noziwild-van-amber-mountain.jpg"
         ]
       },
       {
@@ -115,9 +115,9 @@
         "stay": null,
         "meals": "Breakfast",
         "images": [
-          "/uploads/circuits/coast-road-van.jpg",
-          "/uploads/circuits/nosy-lonjo.jpg",
-          "/uploads/circuits/sea-sunset.jpg"
+          "/uploads/circuits/noziwild-team-three-bays.jpg",
+          "/uploads/circuits/sugar-loaf-view.jpg",
+          "/uploads/circuits/diego-bay-view.jpg"
         ]
       }
     ]
@@ -137,11 +137,11 @@
     "end": "Nosy Be (Fascene airport)",
     "bestTime": "April to December",
     "tip": "Whale sharks visit the waters around Nosy Be from October to December, humpback whales from July to September.",
-    "image": "/uploads/circuits/nosy-iranja.jpg",
+    "image": "/uploads/circuits/nosy-iranja-aerial.jpg",
     "gallery": [
-      "/uploads/circuits/nosy-iranja.jpg",
-      "/uploads/circuits/island-beach-aerial.jpg",
-      "/uploads/circuits/noziwild-boat.jpg"
+      "/uploads/circuits/nosy-iranja-aerial.jpg",
+      "/uploads/circuits/nosy-tanikely-aerial.jpg",
+      "/uploads/circuits/snorkelling.jpg"
     ],
     "overview": [
       "Nosy Be smells of ylang-ylang and vanilla. From there, small boats take you to the islands around it: Nosy Komba and its friendly black lemurs, the marine reserve of Nosy Tanikely, and Nosy Iranja, two islands joined by a long sandbar at low tide.",
@@ -179,9 +179,9 @@
         "stay": "Nosy Be",
         "meals": "Dinner on your own",
         "images": [
-          "/uploads/circuits/island-beach-aerial.jpg",
-          "/uploads/circuits/coast-road-van.jpg",
-          "/uploads/circuits/boat-ride-beach.jpg"
+          "/uploads/circuits/hell-ville-port.jpg",
+          "/uploads/circuits/noziwild-van-team.jpg",
+          "/uploads/circuits/nosy-be-coastline.jpg"
         ]
       },
       {
@@ -191,9 +191,9 @@
         "stay": "Nosy Be",
         "meals": "Breakfast, lunch",
         "images": [
-          "/uploads/circuits/forest-trail-bike.jpg",
-          "/uploads/circuits/lemur.jpg",
-          "/uploads/circuits/boat-ride-beach.jpg"
+          "/uploads/circuits/black-lemur.jpg",
+          "/uploads/circuits/forest-walk-group.jpg",
+          "/uploads/circuits/nosy-komba-beach-village.jpg"
         ]
       },
       {
@@ -203,9 +203,9 @@
         "stay": "Nosy Be",
         "meals": "Breakfast, lunch",
         "images": [
-          "/uploads/circuits/guide-with-lemur.jpg",
-          "/uploads/circuits/island-beach-aerial.jpg",
-          "/uploads/circuits/jet-ski.jpg"
+          "/uploads/circuits/nosy-komba-village-aerial.jpg",
+          "/uploads/circuits/nosy-tanikely-aerial.jpg",
+          "/uploads/circuits/snorkelling.jpg"
         ]
       },
       {
@@ -215,9 +215,9 @@
         "stay": "Nosy Iranja",
         "meals": "Breakfast, lunch",
         "images": [
-          "/uploads/circuits/nosy-iranja.jpg",
-          "/uploads/circuits/noziwild-boat.jpg",
-          "/uploads/circuits/dunes-bay.jpg"
+          "/uploads/circuits/nosy-iranja-aerial.jpg",
+          "/uploads/circuits/nosy-iranja-sandbar-drone.jpg",
+          "/uploads/circuits/nosy-iranja-lighthouse-aerial.jpg"
         ]
       },
       {
@@ -227,9 +227,9 @@
         "stay": "Nosy Be",
         "meals": "Breakfast",
         "images": [
-          "/uploads/circuits/sambirano-river.jpg",
-          "/uploads/circuits/sea-sunset.jpg",
-          "/uploads/circuits/coast-road-van.jpg"
+          "/uploads/circuits/ylang-distillery.jpg",
+          "/uploads/circuits/mont-passot-deck.jpg",
+          "/uploads/circuits/mont-passot-sunset-aerial.jpg"
         ]
       },
       {
@@ -239,9 +239,9 @@
         "stay": "Nosy Be",
         "meals": "Breakfast",
         "images": [
-          "/uploads/circuits/jet-ski.jpg",
-          "/uploads/circuits/sakalava-bay.jpg",
-          "/uploads/circuits/beach-sunset.jpg"
+          "/uploads/circuits/palm-beach.jpg",
+          "/uploads/circuits/tanikely-beach.jpg",
+          "/uploads/circuits/turquoise-rocks.jpg"
         ]
       },
       {
@@ -251,9 +251,9 @@
         "stay": null,
         "meals": "Breakfast",
         "images": [
-          "/uploads/circuits/island-beach-aerial.jpg",
-          "/uploads/circuits/boat-ride-beach.jpg",
-          "/uploads/circuits/sea-sunset.jpg"
+          "/uploads/circuits/hell-ville-port.jpg",
+          "/uploads/circuits/speedboat.jpg",
+          "/uploads/circuits/mont-passot-sunset-aerial.jpg"
         ]
       }
     ]
@@ -276,8 +276,8 @@
     "image": "/uploads/circuits/sambirano-river.jpg",
     "gallery": [
       "/uploads/circuits/sambirano-river.jpg",
-      "/uploads/circuits/lemur.jpg",
-      "/uploads/circuits/coastal-tsingy.jpg"
+      "/uploads/circuits/ankarana-bridge.jpg",
+      "/uploads/circuits/red-tsingy.jpg"
     ],
     "overview": [
       "The Sambirano valley around Ambanja grows some of the finest cocoa in the world. You walk the plantations with the farmers, then follow the road north to the limestone massif of Ankarana, its caves and its suspension bridge over the tsingy.",
@@ -314,8 +314,8 @@
         "stay": "Ambanja",
         "meals": "Dinner",
         "images": [
-          "/uploads/circuits/noziwild-boat.jpg",
-          "/uploads/circuits/boat-ride-beach.jpg",
+          "/uploads/circuits/speedboat.jpg",
+          "/uploads/circuits/nosy-be-sea.jpg",
           "/uploads/circuits/noziwild-van-road.jpg"
         ]
       },
@@ -338,9 +338,9 @@
         "stay": "Ankarana",
         "meals": "Breakfast, dinner",
         "images": [
-          "/uploads/circuits/noziwild-van-road.jpg",
-          "/uploads/circuits/dirt-track-motorbike.jpg",
-          "/uploads/circuits/forest-track-quad.jpg"
+          "/uploads/circuits/noziwild-van-road-north.jpg",
+          "/uploads/circuits/noziwild-van-ankarana.jpg",
+          "/uploads/circuits/ankarana-forest-trail.jpg"
         ]
       },
       {
@@ -350,9 +350,9 @@
         "stay": "Ankarana",
         "meals": "Breakfast, dinner",
         "images": [
-          "/uploads/circuits/coastal-tsingy.jpg",
-          "/uploads/circuits/lemur.jpg",
-          "/uploads/circuits/forest-trail-bike.jpg"
+          "/uploads/circuits/ankarana-bridge.jpg",
+          "/uploads/circuits/ankarana-tsingy.jpg",
+          "/uploads/circuits/ankarana-chameleon.jpg"
         ]
       },
       {
@@ -362,9 +362,9 @@
         "stay": "Diego Suarez",
         "meals": "Breakfast, dinner",
         "images": [
-          "/uploads/circuits/dirt-track-motorbike.jpg",
-          "/uploads/circuits/nosy-lonjo.jpg",
-          "/uploads/circuits/coast-road-van.jpg"
+          "/uploads/circuits/red-tsingy.jpg",
+          "/uploads/circuits/noziwild-van-red-tsingy.jpg",
+          "/uploads/circuits/sugar-loaf-view.jpg"
         ]
       },
       {
@@ -374,9 +374,9 @@
         "stay": "Diego Suarez",
         "meals": "Breakfast, dinner",
         "images": [
-          "/uploads/circuits/guide-with-lemur.jpg",
-          "/uploads/circuits/forest-track-quad.jpg",
-          "/uploads/circuits/lemur.jpg"
+          "/uploads/circuits/amber-mountain-waterfall.jpg",
+          "/uploads/circuits/amber-mountain-forest.jpg",
+          "/uploads/circuits/ring-tailed-lemur.jpg"
         ]
       },
       {
@@ -386,9 +386,9 @@
         "stay": "Diego Suarez",
         "meals": "Breakfast, dinner",
         "images": [
-          "/uploads/circuits/ramena.jpg",
-          "/uploads/circuits/noziwild-boat.jpg",
-          "/uploads/circuits/jet-ski.jpg"
+          "/uploads/circuits/diego-bay-view.jpg",
+          "/uploads/circuits/bay-islands-view.jpg",
+          "/uploads/circuits/diego-bay-panorama.jpg"
         ]
       },
       {
@@ -398,8 +398,8 @@
         "stay": null,
         "meals": "Breakfast",
         "images": [
-          "/uploads/circuits/nosy-lonjo.jpg",
-          "/uploads/circuits/sea-sunset.jpg",
+          "/uploads/circuits/sugar-loaf-view.jpg",
+          "/uploads/circuits/noziwild-team-lookout.jpg",
           "/uploads/circuits/noziwild-car-antananarivo.jpg"
         ]
       }
