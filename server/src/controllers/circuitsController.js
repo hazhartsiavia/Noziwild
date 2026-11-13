@@ -74,6 +74,7 @@ export async function adminListCircuits(req, res) {
     ok: true,
     circuits: rows.map((row) => ({
       ...toCircuitCard(row),
+      price: row.price,
       sortOrder: row.sort_order,
       isPublished: Boolean(row.is_published),
       updatedAt: row.updated_at,

@@ -10,8 +10,7 @@ import PageHero from '../components/PageHero'
 import PageCta, { PAGE_CTA_GOLD, PAGE_CTA_GHOST } from '../components/PageCta'
 import OffersStatus from '../components/OffersStatus'
 import AddToTrip from '../components/AddToTrip'
-import { useLanguage, useT } from '../i18n/LanguageContext'
-import { formatPrice } from '../utils/format'
+import { useT } from '../i18n/LanguageContext'
 import { useOffers } from '../utils/useOffers'
 import { A } from '../i18n/router'
 
@@ -98,12 +97,10 @@ function Hero({ region, setRegion }) {
 }
 
 function Row({ item }) {
-  const t = useT('excursions')
-  const { lang } = useLanguage()
   // Page de détail si l'admin en a indiqué une
   const href = item.link
   const Photo = href ? 'a' : 'div'
-  const tripItem = { kind: 'excursion', ref: String(item.id), title: item.title, image: item.image, link: item.link || '/excursions', details: [item.duration, item.place].filter(Boolean).join(' · '), price: item.price, unit: 'person' }
+  const tripItem = { kind: 'excursion', ref: String(item.id), title: item.title, image: item.image, link: item.link || '/excursions', details: [item.duration, item.place].filter(Boolean).join(' · '), price: null, unit: 'person' }
   return (
     <li className={`excursion-row ${CARD}`}>
       <Photo href={href || undefined} className={`block ${CARD_MEDIA}`}>
@@ -117,7 +114,6 @@ function Row({ item }) {
         </h3>
         <p className={CARD_TEXT}>{item.text}</p>
         <div className={`row-side ${CARD_FOOT}`}>
-          <p className="text-slate-600 text-sm"><span className="text-2xl font-semibold text-slate-900">{formatPrice(item.price, lang)}</span><span className="block text-xs">{t('perPerson')}</span>{item.priceNote && <span className="block text-xs">{item.priceNote}</span>}</p>
           <AddToTrip item={tripItem} />
         </div>
       </div>
@@ -143,7 +139,7 @@ function Excursions() {
   })
 
   /* Lignes : chaque excursion se déplie en perspective (bascule vers l'avant),
-     l'image se dézoome et le bloc prix arrive après. Rejoué à chaque filtre. */
+     l'image se dézoome et le bouton arrive après. Rejoué à chaque filtre. */
   useGsap(resultsRef, () => {
     const rows = gsap.utils.toArray('.excursion-row')
     if (!rows.length) return

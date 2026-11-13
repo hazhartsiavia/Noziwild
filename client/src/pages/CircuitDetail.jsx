@@ -365,7 +365,6 @@ function BookingCard({ circuit }) {
 
   return (
     <aside id="booking" className="booking-card scroll-mt-6 rounded-3xl bg-white p-6 md:p-8 lg:sticky lg:top-6 self-start shadow-sm">
-      <p className="text-lg text-slate-800">{t('price')}</p>
       <p className="mt-2 text-2xl font-semibold text-slate-900">{t('onRequest')}</p>
 
       <div className="mt-6 flex gap-1 rounded-full border border-slate-200 p-1" role="tablist" aria-label={t('bookingOptions')}>

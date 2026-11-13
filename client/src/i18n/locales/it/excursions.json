@@ -18,8 +18,8 @@
       "text": "Un pasto semplice in un villaggio o in riva al mare."
     },
     {
-      "title": "Rientro nel tardo pomeriggio",
-      "text": "Riaccompagnato in hotel in tempo per riposare."
+      "title": "Rientro in hotel",
+      "text": "Rientro secondo il programma, con una notte in campeggio per Nosy Hara."
     }
   ],
   "heroAlt": "Barche nella baia vicino a Ramena",
@@ -33,7 +33,7 @@
   "foundOne": "1 escursione trovata",
   "empty": "Nessuna escursione corrisponde ancora a questa ricerca.",
   "showAll": "Mostra tutte le escursioni",
-  "dayTitle": "Una gita di un giorno, dall'inizio alla fine",
+  "dayTitle": "La vostra escursione, tappa per tappa",
   "ctaTitle": "Vuoi un'escursione su misura per te?",
   "ctaText": "Indicaci date e interessi. Un esperto di viaggi ti risponde entro un giorno lavorativo.",
   "ctaButton": "Organizza la mia escursione"

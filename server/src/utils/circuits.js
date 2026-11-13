@@ -51,7 +51,6 @@ export function toCircuitCard(row, lang = 'en') {
     regionLabel: pick(tr.region, row.region),
     days: row.days,
     level: pick(tr.level, row.level),
-    price: row.price,
     stops: pick(tr.stops, row.stops),
     summary: pick(tr.summary, row.summary),
     image: row.cover_image,
@@ -92,7 +91,7 @@ export function toCircuit(row, dayRows = [], lang = 'en') {
 
 // Pour l'éditeur admin : textes anglais + toutes les traductions telles qu'enregistrées
 export function toCircuitForAdmin(row, dayRows = []) {
-  return { ...toCircuit(row, dayRows), translations: parseJson(row.translations, {}) }
+  return { ...toCircuit(row, dayRows), price: row.price, translations: parseJson(row.translations, {}) }
 }
 
 /* ------------------------------------------------------------------
@@ -149,7 +148,7 @@ export function validateCircuit(body) {
     bestTime: clean(body.bestTime, 120),
     tip: clean(body.tip, 2000),
     days: integer(body.days, 'days', 1, 60, errors),
-    price: integer(body.price, 'price', 0, 1_000_000, errors),
+    price: integer(body.price ?? 0, 'price', 0, 1_000_000, errors),
     sortOrder: body.sortOrder === undefined ? 0 : integer(body.sortOrder, 'sortOrder', -1000, 1000, errors),
     isPublished: body.isPublished === undefined ? true : Boolean(body.isPublished),
     image: clean(body.image, 500),
@@ -238,7 +237,7 @@ function validateTranslations(value, dayCount, errors) {
 const json = (value) => JSON.stringify(value)
 
 // `db` : une connexion mysql2 (pas le pool) pour que la transaction porte sur toutes les requêtes
-export async function saveCircuit(db, data, existingId = null) {
+export async function saveCircuit(db, data, existingId = null, { transaction = true } = {}) {
   const values = [
     data.slug, data.title, data.region, data.days, data.level, data.price, data.stops, data.summary,
     data.groupSize, data.tourType, data.start, data.end, data.bestTime, data.tip, data.image,
@@ -246,7 +245,7 @@ export async function saveCircuit(db, data, existingId = null) {
     json(data.translations || {}), data.sortOrder, data.isPublished ? 1 : 0,
   ]
 
-  await db.beginTransaction()
+  if (transaction) await db.beginTransaction()
   try {
     let id = existingId
     if (id) {
@@ -277,10 +276,10 @@ export async function saveCircuit(db, data, existingId = null) {
       )
     }
 
-    await db.commit()
+    if (transaction) await db.commit()
     return id
   } catch (error) {
-    await db.rollback()
+    if (transaction) await db.rollback()
     throw error
   }
 }
@@ -288,7 +287,7 @@ export async function saveCircuit(db, data, existingId = null) {
 // Remplit la table avec les circuits de sql/circuits.seed.json si elle est vide.
 // Sinon, ajoute les traductions du fichier aux circuits de départ qui n'en ont encore aucune
 // (bases créées avant les traductions) ; un circuit déjà traduit depuis l'admin n'est pas touché.
-async function loadSeed() {
+export async function loadCircuitSeed() {
   const seed = JSON.parse(await fs.readFile(SEED_FILE, 'utf8'))
   for (const lang of LANGUAGES) {
     const file = path.join(SEED_TRANSLATIONS, `${lang}.json`)
@@ -301,7 +300,7 @@ async function loadSeed() {
 }
 
 export async function seedCircuits(db) {
-  const seed = await loadSeed()
+  const seed = await loadCircuitSeed()
   const [[{ total }]] = await db.query('SELECT COUNT(*) AS total FROM circuits')
   if (total === 0) {
     for (const circuit of seed) {

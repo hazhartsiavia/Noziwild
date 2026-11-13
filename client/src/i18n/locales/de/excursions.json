@@ -18,8 +18,8 @@
       "text": "Ein einfaches Essen im Dorf oder am Wasser."
     },
     {
-      "title": "Rückkehr am späten Nachmittag",
-      "text": "Rechtzeitig zum Ausruhen zurück im Hotel."
+      "title": "Rückkehr zum Hotel",
+      "text": "Rückkehr laut Programm, mit einer Nacht im Camp bei Nosy Hara."
     }
   ],
   "heroAlt": "Boote in der Bucht bei Ramena",
@@ -33,7 +33,7 @@
   "foundOne": "1 Ausflug gefunden",
   "empty": "Noch kein Ausflug entspricht dieser Suche.",
   "showAll": "Alle Ausflüge anzeigen",
-  "dayTitle": "Ein Tagesausflug von Anfang bis Ende",
+  "dayTitle": "Ihr Ausflug, Schritt für Schritt",
   "ctaTitle": "Möchten Sie einen Ausflug nur für Sie?",
   "ctaText": "Nennen Sie uns Ihre Daten und Interessen. Ein Reiseexperte antwortet innerhalb eines Werktags.",
   "ctaButton": "Meinen Ausflug planen"

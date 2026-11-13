@@ -43,6 +43,7 @@ export const KINDS = {
   },
   longstay: {
     texts: { tab: 40, priceLabel: 60 },
+    optionalTexts: ['priceLabel'],
     lists: { points: [10, 200] },
   },
   idea: {
@@ -139,7 +140,7 @@ const pickList = (translated, english) =>
   Array.isArray(translated) ? english.map((item, i) => translated[i] || item) : english
 
 // `lang` absent ou 'en' : textes anglais. Les valeurs de `choices` restent en anglais.
-export function toOffer(row, lang = 'en') {
+export function toOffer(row, lang = 'en', includePrices = false) {
   const kind = KINDS[row.kind]
   const details = parseJson(row.details, {})
   const tr = (lang !== 'en' && parseJson(row.translations, {})[lang]) || {}
@@ -150,7 +151,7 @@ export function toOffer(row, lang = 'en') {
     text: pick(tr.text, row.text),
     image: row.image,
   }
-  if (kind.price) offer.price = row.price
+  if (includePrices && kind.price) offer.price = row.price
   for (const key of Object.keys(kind.texts || {})) offer[key] = pick(tr[key], details[key] ?? '')
   for (const key of Object.keys(kind.lists || {})) offer[key] = pickList(tr[key], details[key] || [])
   for (const key of Object.keys(kind.choices || {})) offer[key] = details[key]
@@ -160,13 +161,17 @@ export function toOffer(row, lang = 'en') {
   if (kind.hours) offer.hours = details.hours
   if (kind.link) offer.link = details.link || ''
   if (kind.video) offer.video = details.video || ''
+  if (!includePrices) {
+    delete offer.priceNote
+    delete offer.priceLabel
+  }
   return offer
 }
 
 // Pour l'admin : textes anglais, réglages et toutes les traductions telles qu'enregistrées
 export function toOfferForAdmin(row) {
   return {
-    ...toOffer(row),
+    ...toOffer(row, 'en', true),
     sortOrder: row.sort_order,
     isPublished: Boolean(row.is_published),
     updatedAt: row.updated_at,
@@ -205,7 +210,7 @@ export function validateOffer(body, kindName) {
     title: required('title', TITLE_MAX),
     text: kind.textOptional ? clean(body.text, TEXT_MAX) || '' : required('text', TEXT_MAX),
     image: clean(body.image, 500) || '',
-    price: kind.price ? integer(body.price, 'price', 0, 1_000_000, errors) : null,
+    price: kind.price && body.price != null ? integer(body.price, 'price', 0, 1_000_000, errors) : null,
     sortOrder: body.sortOrder === undefined ? 0 : integer(body.sortOrder, 'sortOrder', -1000, 1000, errors),
     isPublished: body.isPublished === undefined ? true : Boolean(body.isPublished),
     details: {},

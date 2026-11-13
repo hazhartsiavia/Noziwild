@@ -18,8 +18,8 @@
       "text": "A simple meal in a village or by the water."
     },
     {
-      "title": "Back by late afternoon",
-      "text": "Dropped at your hotel in time to rest."
+      "title": "Return to your hotel",
+      "text": "Return according to the programme, with one night camping for Nosy Hara."
     }
   ],
   "heroAlt": "Boats on the bay near Ramena",
@@ -33,7 +33,7 @@
   "foundOne": "1 excursion found",
   "empty": "No excursion matches this search yet.",
   "showAll": "Show all excursions",
-  "dayTitle": "A Day Trip, Start To Finish",
+  "dayTitle": "Your excursion, step by step",
   "ctaTitle": "Want an excursion made for you?",
   "ctaText": "Tell us your dates and interests. A travel expert replies within one working day.",
   "ctaButton": "Plan my excursion"

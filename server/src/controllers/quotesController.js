@@ -7,8 +7,6 @@ import { sendMail } from '../utils/mailer.js'
 
 // Types d'éléments acceptés (voir quote_items dans sql/schema.sql)
 const KINDS = ['circuit', 'activity', 'excursion', 'cruise', 'longstay', 'place', 'stay', 'food', 'gear', 'ticket', 'photo', 'guide', 'transport', 'plan']
-// Ces offres sont en base : leur prix est relu ici plutôt que pris tel quel du navigateur
-const OFFER_KINDS = ['activity', 'excursion', 'cruise', 'longstay']
 const UNITS = ['person', 'night', 'unit', 'fixed']
 const STATUSES = ['new', 'quoted', 'accepted', 'declined']
 const MAX_ITEMS = 30
@@ -40,38 +38,11 @@ function readItems(list) {
       date: toDate(raw.date),
       quantity: unit === 'fixed' ? 1 : toInt(raw.qty, 1, 99) || 1,
       unit,
-      price: unit ? toInt(raw.price, 0, 1_000_000) : null,
+      price: null,
       note: clean(raw.note, 500),
     }
   })
 }
-
-// Prix à jour des circuits et des offres en base ; une offre introuvable (retirée du site) passe sur devis
-async function refreshPrices(items) {
-  const slugs = items.filter((i) => i.kind === 'circuit' && i.ref).map((i) => i.ref)
-  const ids = items.filter((i) => OFFER_KINDS.includes(i.kind) && /^\d+$/.test(i.ref || '')).map((i) => Number(i.ref))
-  const circuits = new Map()
-  const offers = new Map()
-  if (slugs.length) {
-    const [rows] = await pool.query('SELECT slug, price FROM circuits WHERE slug IN (?)', [slugs])
-    rows.forEach((row) => circuits.set(row.slug, row.price))
-  }
-  if (ids.length) {
-    const [rows] = await pool.query('SELECT id, kind, price FROM offers WHERE id IN (?)', [ids])
-    rows.forEach((row) => offers.set(`${row.kind}:${row.id}`, row.price))
-  }
-  for (const item of items) {
-    if (item.kind !== 'circuit' && !OFFER_KINDS.includes(item.kind)) continue
-    const key = item.kind === 'circuit' ? item.ref : `${item.kind}:${item.ref}`
-    const known = item.kind === 'circuit' ? circuits : offers
-    const price = known.get(key) ?? null
-    item.price = price
-    // Circuits et offres en base ont tous un prix par personne
-    item.unit = price === null ? null : 'person'
-  }
-}
-
-const lineTotal = (item) => (item.unit && item.price !== null ? item.price * item.quantity : 0)
 
 // Résumé texte de la demande, pour l'email envoyé à l'équipe
 function summary(quote, items) {
@@ -112,9 +83,7 @@ export async function createQuote(req, res) {
   }
 
   const items = readItems(req.body.items)
-  await refreshPrices(items)
-  const priced = items.filter((item) => item.unit && item.price !== null)
-  quote.estimate = priced.length ? priced.reduce((sum, item) => sum + lineTotal(item), 0) : null
+  quote.estimate = null
 
   const connection = await pool.getConnection()
   try {

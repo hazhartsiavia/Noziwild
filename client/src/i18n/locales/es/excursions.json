@@ -18,8 +18,8 @@
       "text": "Una comida sencilla en un pueblo o junto al agua."
     },
     {
-      "title": "Regreso a media tarde",
-      "text": "De vuelta en su hotel a tiempo para descansar."
+      "title": "Regreso al hotel",
+      "text": "Regreso según el programa, con una noche en campamento para Nosy Hara."
     }
   ],
   "heroAlt": "Barcos en la bahía cerca de Ramena",
@@ -33,7 +33,7 @@
   "foundOne": "1 excursión encontrada",
   "empty": "Todavía ninguna excursión coincide con esta búsqueda.",
   "showAll": "Ver todas las excursiones",
-  "dayTitle": "Una excursión de un día, de principio a fin",
+  "dayTitle": "Su excursión, paso a paso",
   "ctaTitle": "¿Quiere una excursión hecha para usted?",
   "ctaText": "Cuéntenos sus fechas e intereses. Un experto en viajes le responde en un día laborable.",
   "ctaButton": "Planificar mi excursión"

@@ -18,8 +18,8 @@
       "text": "Un repas simple dans un village ou au bord de l'eau."
     },
     {
-      "title": "Retour en fin d'après-midi",
-      "text": "Déposé à votre hôtel à temps pour vous reposer."
+      "title": "Retour à votre hôtel",
+      "text": "Retour selon le programme, avec une nuit au campement pour Nosy Hara."
     }
   ],
   "heroAlt": "Bateaux dans la baie près de Ramena",
@@ -33,7 +33,7 @@
   "foundOne": "1 excursion trouvée",
   "empty": "Aucune excursion ne correspond encore à cette recherche.",
   "showAll": "Voir toutes les excursions",
-  "dayTitle": "Une excursion à la journée, du début à la fin",
+  "dayTitle": "Votre excursion, étape par étape",
   "ctaTitle": "Envie d'une excursion faite pour vous ?",
   "ctaText": "Indiquez-nous vos dates et vos envies. Un expert du voyage vous répond sous un jour ouvré.",
   "ctaButton": "Organiser mon excursion"

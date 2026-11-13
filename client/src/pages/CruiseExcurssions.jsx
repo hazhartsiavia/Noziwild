@@ -8,8 +8,7 @@ import PageHero from '../components/PageHero'
 import PageCta, { PAGE_CTA_GOLD, PAGE_CTA_GHOST } from '../components/PageCta'
 import OffersStatus from '../components/OffersStatus'
 import AddToTrip from '../components/AddToTrip'
-import { Trans, useLanguage, useT } from '../i18n/LanguageContext'
-import { formatPrice } from '../utils/format'
+import { useT } from '../i18n/LanguageContext'
 import { useOffers } from '../utils/useOffers'
 import { useScrollReveal } from '../utils/useScrollReveal'
 import { usePhoto } from '../sitePhotos'
@@ -46,7 +45,6 @@ const fmt = (h) => (Number.isInteger(h) ? `${h} h` : `${Math.floor(h)} h 30`)
 
 function ExcursionCard({ item, ashore }) {
   const t = useT('cruise')
-  const { lang } = useLanguage()
   const fits = item.hours <= ashore
   const spare = Math.round((ashore - item.hours) * 60)
   const pct = Math.min(100, (item.hours / ashore) * 100)
@@ -69,8 +67,7 @@ function ExcursionCard({ item, ashore }) {
         </p>
 
         <div className={CARD_FOOT}>
-          <p className="text-slate-600 text-sm"><Trans text={t('from')} values={{ price: <span className="text-2xl font-semibold text-slate-900">{formatPrice(item.price, lang)}</span> }} /></p>
-          <AddToTrip item={{ kind: 'cruise', ref: String(item.id), title: item.title, image: item.image, link: '/cruise-excursions', details: fmt(item.hours), price: item.price, unit: 'person' }} />
+          <AddToTrip item={{ kind: 'cruise', ref: String(item.id), title: item.title, image: item.image, link: '/cruise-excursions', details: fmt(item.hours), price: null, unit: 'person' }} />
         </div>
       </div>
     </li>

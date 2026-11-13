@@ -89,27 +89,27 @@ export const PAGES = {
     en: {
       title: 'Excursions & Day Trips in Madagascar | Noziwild',
       description:
-        'From a morning on the water to a three-day escape around Nosy Be. Choose how long you have, we handle the boats, transfers and guides.',
+        'Explore Nosy Be and Diego-Suarez with guided day trips and a two-day excursion to Nosy Hara. Boats, transfers and guides arranged by Noziwild.',
     },
     fr: {
-      title: 'Excursions à la journée à Madagascar | Noziwild',
+      title: 'Excursions à Madagascar | Noziwild',
       description:
-        'D’une matinée sur l’eau à une escapade de trois jours autour de Nosy Be. Dites-nous combien de temps vous avez, on s’occupe des bateaux, transferts et guides.',
+        'Découvrez Nosy Be et Diego-Suarez à la journée, ou Nosy Hara en deux jours. Noziwild organise les bateaux, les transferts et les guides.',
     },
     de: {
       title: 'Ausflüge & Tagestouren in Madagaskar | Noziwild',
       description:
-        'Vom Vormittag auf dem Wasser bis zum Dreitagestrip rund um Nosy Be. Sagen Sie uns, wie viel Zeit Sie haben – Boote, Transfers und Guides übernehmen wir.',
+        'Entdecken Sie Nosy Be und Diego-Suarez bei Tagesausflügen oder Nosy Hara in zwei Tagen. Noziwild organisiert Boote, Transfers und Reiseleitung.',
     },
     it: {
       title: 'Escursioni e gite in Madagascar | Noziwild',
       description:
-        'Da una mattina in barca a una fuga di tre giorni intorno a Nosy Be. Dicci quanto tempo hai: barche, trasferimenti e guide li organizziamo noi.',
+        'Scoprite Nosy Be e Diego-Suarez con escursioni giornaliere o Nosy Hara in due giorni. Noziwild organizza barche, trasferimenti e guide.',
     },
     es: {
-      title: 'Excursiones de un día en Madagascar | Noziwild',
+      title: 'Excursiones en Madagascar | Noziwild',
       description:
-        'De una mañana en el agua a una escapada de tres días por Nosy Be. Dinos cuánto tiempo tienes y nos ocupamos de barcos, traslados y guías.',
+        'Descubra Nosy Be y Diego-Suarez en excursiones de un día, o Nosy Hara en dos días. Noziwild organiza barcos, traslados y guías.',
     },
   },
   '/cruise-excursions': {

@@ -6,7 +6,7 @@
 //     unit : 'person' (prix par personne × qty) | 'night' (prix par nuit × qty) | 'unit' (prix × qty)
 //            | 'fixed' (prix total) | null (sur devis)
 //   Les titres sont copiés dans la langue du moment : c'est ce que l'équipe lira dans la demande.
-//   Seules les excursions gardent un prix : le reste passe sur devis, y compris dans une sélection déjà enregistrée.
+//   Toutes les offres passent sur devis, y compris dans une sélection déjà enregistrée.
 import React, { createContext, useCallback, useContext, useEffect, useMemo, useRef, useState } from 'react'
 import { Link } from '../i18n/router'
 import { Check, X } from 'lucide-react'
@@ -14,23 +14,15 @@ import { useT } from '../i18n/LanguageContext'
 
 const STORAGE_KEY = 'noziwild-trip'
 const MAX_ITEMS = 30
-const PRICED_KINDS = ['excursion', 'cruise']
-
-const withAllowedPrice = (item) => (PRICED_KINDS.includes(item.kind) ? item : { ...item, price: null })
+const withoutPrice = (item) => ({ ...item, price: null })
 
 function readStorage() {
   try {
     const items = JSON.parse(localStorage.getItem(STORAGE_KEY))
-    return Array.isArray(items) ? items.filter((item) => item && item.id && item.title).slice(0, MAX_ITEMS).map(withAllowedPrice) : []
+    return Array.isArray(items) ? items.filter((item) => item && item.id && item.title).slice(0, MAX_ITEMS).map(withoutPrice) : []
   } catch {
     return []
   }
-}
-
-// Total indicatif d'un élément, null si son prix n'est pas connu
-export function lineTotal(item) {
-  if (!item.unit || item.price === null || item.price === undefined) return null
-  return item.unit === 'fixed' ? item.price : item.price * (item.qty || 1)
 }
 
 const TripContext = createContext(null)
@@ -57,7 +49,7 @@ export function TripProvider({ children }) {
   // Ajoute un élément, ou remplace celui qui a le même id (nouvelles dates, quantité...).
   // Sans quantité donnée, un prix par personne (ou sur devis) prend le nombre de voyageurs déjà choisi ailleurs (2 par défaut).
   const add = useCallback((item) => {
-    const base = withAllowedPrice({ date: '', note: '', ...item, id: item.id || `${item.kind}:${item.ref}` })
+    const base = withoutPrice({ date: '', note: '', ...item, id: item.id || `${item.kind}:${item.ref}` })
     setItems((prev) => {
       const people = Math.max(0, ...prev.filter((i) => i.unit === 'person').map((i) => i.qty || 1))
       const perPerson = item.unit === 'person' || !item.unit
@@ -70,7 +62,7 @@ export function TripProvider({ children }) {
   }, [])
 
   const remove = useCallback((id) => setItems((prev) => prev.filter((i) => i.id !== id)), [])
-  const update = useCallback((id, patch) => setItems((prev) => prev.map((i) => (i.id === id ? { ...i, ...patch } : i))), [])
+  const update = useCallback((id, patch) => setItems((prev) => prev.map((i) => (i.id === id ? withoutPrice({ ...i, ...patch }) : i))), [])
   const clear = useCallback(() => setItems([]), [])
   const closeToast = useCallback(() => setToast(null), [])
 

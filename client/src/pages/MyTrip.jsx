@@ -8,9 +8,8 @@ import Navbar from '../components/Navbar'
 import Footer from '../components/Footer'
 import { LABEL, FIELD, BUTTON, PRIMARY, SECONDARY } from '../components/authStyles'
 import { useAuth } from '../context/AuthContext'
-import { lineTotal, useTrip } from '../context/TripContext'
+import { useTrip } from '../context/TripContext'
 import { Trans, useLanguage, useT } from '../i18n/LanguageContext'
-import { formatPrice } from '../utils/format'
 import { sendQuote } from '../api'
 import { useSitePages } from '../context/SitePagesContext'
 import { useScrollReveal } from '../utils/useScrollReveal'
@@ -31,28 +30,11 @@ const BROWSE = [
 
 const today = () => new Date().toISOString().slice(0, 10)
 
-// Libellés par unité : prix unitaire × quantité, et valeur affichée entre les boutons − / +
+// Libellés des quantités entre les boutons − / +
 const UNIT_TEXT = {
-  person: { times: 'perPersonTimes', one: 'personOne', many: 'personMany', group: 'people', max: 30 },
-  night: { times: 'perNightTimes', one: 'nightOne', many: 'nightMany', group: 'nights', max: 60 },
-  unit: { times: 'times', one: 'quantityValue', many: 'quantityValue', group: 'quantity', max: 99 },
-}
-
-// Prix d'une ligne : « 45 € / pers. × 2 », « 30 € × 3 », « 90 € » ou « Sur devis »
-function PriceLine({ item }) {
-  const t = useT('trip')
-  const { lang } = useLanguage()
-  const total = lineTotal(item)
-  if (total === null) return <p className="text-sm text-slate-500">{t('onRequest')}</p>
-  const unitPrice = formatPrice(item.price, lang)
-  return (
-    <p className="text-right">
-      <span className="block text-lg md:text-xl font-medium text-slate-900 tabular-nums">{formatPrice(total, lang)}</span>
-      {UNIT_TEXT[item.unit] && (
-        <span className="block text-xs text-slate-500 tabular-nums">{t(UNIT_TEXT[item.unit].times, { price: unitPrice, count: item.qty })}</span>
-      )}
-    </p>
-  )
+  person: { one: 'personOne', many: 'personMany', group: 'people', max: 30 },
+  night: { one: 'nightOne', many: 'nightMany', group: 'nights', max: 60 },
+  unit: { one: 'quantityValue', many: 'quantityValue', group: 'quantity', max: 99 },
 }
 
 function ItemCard({ item }) {
@@ -79,7 +61,7 @@ function ItemCard({ item }) {
           </h3>
           {item.details && <p className="mt-1 text-sm text-slate-600 break-words">{item.details}</p>}
         </div>
-        <div className="shrink-0"><PriceLine item={item} /></div>
+        <div className="shrink-0"><p className="text-sm text-slate-500">{t('onRequest')}</p></div>
       </div>
 
       <div className="flex flex-wrap items-center gap-3">
@@ -140,9 +122,6 @@ function QuoteForm({ items, onSent }) {
   const [status, setStatus] = useState('idle') // 'idle' | 'sending' | 'error'
   const [error, setError] = useState('')
   const people = Math.max(0, ...items.filter((i) => i.unit === 'person').map((i) => i.qty))
-  const priced = items.map(lineTotal).filter((v) => v !== null)
-  const estimate = priced.reduce((sum, v) => sum + v, 0)
-  const unpriced = items.length - priced.length
 
   const submit = async (event) => {
     event.preventDefault()
@@ -165,12 +144,10 @@ function QuoteForm({ items, onSent }) {
   return (
     <form onSubmit={submit} className={`${CARD} flex flex-col gap-5 lg:sticky lg:top-6`}>
       <div>
-        <p className="text-sm text-slate-600">{t('estimate')}</p>
         <p className="mt-1 text-3xl md:text-4xl font-medium text-slate-900 tabular-nums">
-          {priced.length ? t('fromPrice', { price: formatPrice(estimate, lang) }) : t('onRequest')}
+          {t('onRequest')}
         </p>
         <p className="mt-2 text-xs text-slate-500 leading-relaxed">
-          {unpriced > 0 && priced.length > 0 && `${t(unpriced === 1 ? 'unpricedOne' : 'unpricedMany', { count: unpriced })} `}
           {t('estimateNote')}
         </p>
       </div>

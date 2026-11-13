@@ -4,9 +4,21 @@
     "title": "Birdwatching",
     "text": "Walk quiet trails at sunrise with a naturalist and spot rare birds you will not see anywhere else.",
     "image": "/uploads/circuits/island-forest-view.jpg",
-    "price": 35,
     "group": "2–8",
-    "months": [0, 0, 0, 1, 1, 1, 1, 1, 2, 2, 2, 1],
+    "months": [
+      0,
+      0,
+      0,
+      1,
+      1,
+      1,
+      1,
+      1,
+      2,
+      2,
+      2,
+      1
+    ],
     "type": "Land",
     "duration": "3–5 h",
     "level": "Easy",
@@ -41,9 +53,21 @@
     "title": "Nature & Adventure",
     "text": "Hikes, viewpoints and hidden waterfalls, led by guides who know every path and every shortcut.",
     "image": "/uploads/circuits/ankarana-bridge.jpg",
-    "price": 55,
     "group": "2–10",
-    "months": [0, 0, 0, 1, 2, 2, 2, 2, 2, 1, 0, 0],
+    "months": [
+      0,
+      0,
+      0,
+      1,
+      2,
+      2,
+      2,
+      2,
+      2,
+      1,
+      0,
+      0
+    ],
     "type": "Land",
     "duration": "Full day",
     "level": "Moderate",
@@ -82,9 +106,21 @@
     "title": "Cruise Boat Excursions",
     "text": "Cross the bay to quiet islands and white-sand beaches, with lunch and swimming stops on the way.",
     "image": "/uploads/circuits/boat-to-nosy-iranja.jpg",
-    "price": 45,
     "group": "4–20",
-    "months": [0, 0, 0, 1, 2, 2, 2, 2, 2, 2, 1, 0],
+    "months": [
+      0,
+      0,
+      0,
+      1,
+      2,
+      2,
+      2,
+      2,
+      2,
+      2,
+      1,
+      0
+    ],
     "type": "Sea",
     "duration": "Half or full day",
     "level": "Easy",
@@ -124,9 +160,21 @@
     "title": "Catamaran Cruise",
     "text": "Sail in comfort along the coast, snorkel in clear water and watch the sunset from the deck.",
     "image": "/uploads/circuits/ramena.jpg",
-    "price": 85,
     "group": "2–12",
-    "months": [0, 0, 0, 1, 2, 2, 2, 2, 2, 2, 1, 0],
+    "months": [
+      0,
+      0,
+      0,
+      1,
+      2,
+      2,
+      2,
+      2,
+      2,
+      2,
+      1,
+      0
+    ],
     "type": "Sea",
     "duration": "Full day",
     "level": "Easy",
@@ -166,9 +214,21 @@
     "title": "Wildlife & Flora Discovery",
     "text": "Meet lemurs, chameleons and orchids in the wild, with a guide who explains what you are seeing.",
     "image": "/uploads/circuits/crowned-sifaka.jpg",
-    "price": 30,
     "group": "2–10",
-    "months": [1, 1, 1, 1, 2, 2, 2, 2, 2, 2, 1, 1],
+    "months": [
+      1,
+      1,
+      1,
+      1,
+      2,
+      2,
+      2,
+      2,
+      2,
+      2,
+      1,
+      1
+    ],
     "type": "Land",
     "duration": "2–4 h",
     "level": "Easy",
@@ -204,7 +264,6 @@
     "title": "Nosy Sakatia",
     "text": "The orchid island, a short boat ride west of Nosy Be.",
     "image": "/uploads/circuits/green-island-bay.jpg",
-    "price": 75,
     "place": "Nosy Be",
     "region": "Nosy Be",
     "link": "",
@@ -240,7 +299,6 @@
     "title": "Nosy Komba + Nosy Tanikely",
     "text": "The lemurs of Nosy Komba, then the clear water of the Nosy Tanikely marine reserve.",
     "image": "/uploads/circuits/nosy-tanikely-aerial.jpg",
-    "price": 70,
     "place": "Nosy Be",
     "region": "Nosy Be",
     "link": "",
@@ -276,7 +334,6 @@
     "title": "Nosy Iranja",
     "text": "Two islets joined by a long white sandbar, surrounded by turquoise water.",
     "image": "/uploads/circuits/nosy-iranja-aerial.jpg",
-    "price": 80,
     "place": "Nosy Be",
     "region": "Nosy Be",
     "link": "",
@@ -312,7 +369,6 @@
     "title": "Nosy Be Island Tour",
     "text": "The beaches, villages and viewpoints of Nosy Be in a single day.",
     "image": "/uploads/circuits/hell-ville-port.jpg",
-    "price": 60,
     "place": "Nosy Be",
     "region": "Nosy Be",
     "link": "",
@@ -348,7 +404,6 @@
     "title": "Lemuria Land + Andilana",
     "text": "The animals of Lemuria Land park, then the beach at Andilana.",
     "image": "/uploads/circuits/ring-tailed-lemur.jpg",
-    "price": 70,
     "place": "Nosy Be",
     "region": "Nosy Be",
     "link": "",
@@ -381,237 +436,393 @@
   },
   {
     "kind": "excursion",
-    "title": "Red Tsingy + Ramena",
-    "text": "The red earth needles of the Tsingy Rouge, then the beach at Ramena.",
-    "image": "/uploads/circuits/red-tsingy.jpg",
-    "price": 75,
-    "place": "Diego Suarez",
-    "region": "Diego Suarez",
-    "link": "",
-    "duration": "1 day",
+    "title": "Montagne des Français and Ramena",
+    "text": "Transfer from Diego-Suarez to Montagne des Français for a hike through dry forest, baobabs and historical remains, with views of Diego Bay. Lunch by the sea in Ramena, then swimming and a visit to the fishing village. Return to your hotel at about 17:00.\n\nTransport, driver, guide, entrance fees and lunch included. \n\nAccommodation in Diego, personal expenses, extra drinks and tips excluded.",
+    "place": "Diego-Suarez",
+    "duration": "1 day · 08:00–17:00",
     "group": "",
     "level": "",
-    "priceNote": "for 2 people or more",
+    "priceNote": "",
+    "image": "/uploads/circuits/sugar-loaf-view.jpg",
+    "region": "Diego Suarez",
+    "link": "",
+    "sortOrder": 6,
+    "isPublished": true,
     "translations": {
       "fr": {
-        "title": "Tsingy Rouge + Ramena",
-        "text": "Les aiguilles de terre rouge du Tsingy Rouge, puis la plage de Ramena.",
-        "duration": "1 jour",
-        "priceNote": "pour 2 personnes ou plus"
-      },
-      "de": {
-        "title": "Tsingy Rouge + Ramena",
-        "text": "Die roten Erdnadeln des Tsingy Rouge, danach der Strand von Ramena.",
-        "duration": "1 Tag",
-        "priceNote": "ab 2 Personen"
+        "title": "Montagne des Français et Ramena",
+        "text": "Transfert de Diego-Suarez vers la Montagne des Français. Randonnée dans la forêt sèche, découverte des baobabs, des vestiges historiques et des panoramas sur la baie. Déjeuner en bord de mer à Ramena, puis baignade et visite du village de pêcheurs. Retour à l’hôtel vers 17 h.\n\nTransport, chauffeur, guide, entrées et déjeuner inclus. \n\nHébergement à Diego, dépenses personnelles, boissons supplémentaires et pourboires exclus.",
+        "place": "Diego-Suarez",
+        "duration": "1 journée · 08:00–17:00",
+        "group": "",
+        "level": ""
       },
       "it": {
-        "title": "Tsingy Rouge + Ramena",
-        "text": "Le guglie di terra rossa dello Tsingy Rouge, poi la spiaggia di Ramena.",
-        "duration": "1 giorno",
-        "priceNote": "da 2 persone in su"
+        "title": "Montagne des Français e Ramena",
+        "text": "Trasferimento da Diego-Suarez alla Montagne des Français. Escursione nella foresta secca tra baobab, vestigia storiche e panorami sulla baia. Pranzo sul mare a Ramena, bagno e visita del villaggio di pescatori. Rientro in hotel verso le 17:00.\n\nTrasporto, autista, guida, ingressi e pranzo inclusi. \n\nEsclusi alloggio a Diego, spese personali, bevande extra e mance.",
+        "place": "Diego-Suarez",
+        "duration": "1 giorno · 08:00–17:00",
+        "group": "",
+        "level": ""
+      },
+      "de": {
+        "title": "Montagne des Français und Ramena",
+        "text": "Von Diego-Suarez zur Montagne des Français. Wanderung durch Trockenwald mit Baobabs, historischen Überresten und Blick über die Bucht. Mittagessen am Meer in Ramena, Baden und Besuch des Fischerdorfes. Rückkehr zum Hotel gegen 17 Uhr.\n\nTransport, Fahrer, Reiseleitung, Eintritte und Mittagessen inklusive. \n\nUnterkunft in Diego, persönliche Ausgaben, zusätzliche Getränke und Trinkgelder ausgenommen.",
+        "place": "Diego-Suarez",
+        "duration": "1 Tag · 08:00–17:00",
+        "group": "",
+        "level": ""
       },
       "es": {
-        "title": "Tsingy Rouge + Ramena",
-        "text": "Las agujas de tierra roja del Tsingy Rouge y después la playa de Ramena.",
-        "duration": "1 día",
-        "priceNote": "a partir de 2 personas"
+        "title": "Montagne des Français y Ramena",
+        "text": "Traslado desde Diego-Suarez a la Montagne des Français. Caminata entre bosque seco, baobabs, vestigios históricos y vistas de la bahía. Almuerzo junto al mar en Ramena, baño y visita al pueblo pesquero. Regreso al hotel hacia las 17:00.\n\nTransporte, conductor, guía, entradas y almuerzo incluidos. \n\nAlojamiento en Diego, gastos personales, bebidas extra y propinas excluidos.",
+        "place": "Diego-Suarez",
+        "duration": "1 día · 08:00–17:00",
+        "group": "",
+        "level": ""
+      }
+    }
+  },
+  {
+    "kind": "excursion",
+    "title": "Amber Mountain National Park",
+    "text": "Drive from Diego-Suarez towards Joffreville for a guided walk of 2–3 hours in Amber Mountain National Park. Discover rainforest, waterfalls, lemurs, chameleons and endemic plants. Lunch at a local restaurant, then return to Diego in the afternoon.\n\nTransport, driver, guide, entrance fees and lunch included. \n\nAccommodation in Diego, personal expenses, extra drinks and tips excluded.",
+    "place": "Diego-Suarez",
+    "duration": "1 day · 08:00–16:30",
+    "group": "",
+    "level": "",
+    "priceNote": "",
+    "image": "/uploads/circuits/amber-mountain-waterfall.jpg",
+    "region": "Diego Suarez",
+    "link": "",
+    "sortOrder": 7,
+    "isPublished": true,
+    "translations": {
+      "fr": {
+        "title": "Parc national de la Montagne d’Ambre",
+        "text": "Route vers Joffreville pour une randonnée guidée de 2 à 3 h dans le parc national de la Montagne d’Ambre. Forêt tropicale, cascades, lémuriens, caméléons et flore endémique. Déjeuner dans un restaurant local, puis retour à Diego dans l’après-midi.\n\nTransport, chauffeur, guide, entrées et déjeuner inclus. \n\nHébergement à Diego, dépenses personnelles, boissons supplémentaires et pourboires exclus.",
+        "place": "Diego-Suarez",
+        "duration": "1 journée · 08:00–16:30",
+        "group": "",
+        "level": ""
+      },
+      "it": {
+        "title": "Parco Nazionale della Montagna d’Ambra",
+        "text": "Partenza verso Joffreville per una passeggiata guidata di 2–3 ore nel Parco Nazionale della Montagna d’Ambra. Foresta tropicale, cascate, lemuri, camaleonti e flora endemica. Pranzo in un ristorante locale e rientro nel pomeriggio.\n\nTrasporto, autista, guida, ingressi e pranzo inclusi. \n\nEsclusi alloggio a Diego, spese personali, bevande extra e mance.",
+        "place": "Diego-Suarez",
+        "duration": "1 giorno · 08:00–16:30",
+        "group": "",
+        "level": ""
+      },
+      "de": {
+        "title": "Nationalpark Montagne d’Ambre",
+        "text": "Fahrt nach Joffreville und geführte Wanderung von 2–3 Stunden im Nationalpark Montagne d’Ambre. Regenwald, Wasserfälle, Lemuren, Chamäleons und endemische Pflanzen. Mittagessen in einem lokalen Restaurant, Rückfahrt am Nachmittag.\n\nTransport, Fahrer, Reiseleitung, Eintritte und Mittagessen inklusive. \n\nUnterkunft in Diego, persönliche Ausgaben, zusätzliche Getränke und Trinkgelder ausgenommen.",
+        "place": "Diego-Suarez",
+        "duration": "1 Tag · 08:00–16:30",
+        "group": "",
+        "level": ""
+      },
+      "es": {
+        "title": "Parque Nacional Montagne d’Ambre",
+        "text": "Ruta hacia Joffreville para una caminata guiada de 2–3 horas en Montagne d’Ambre. Bosque tropical, cascadas, lémures, camaleones y flora endémica. Almuerzo en un restaurante local y regreso por la tarde.\n\nTransporte, conductor, guía, entradas y almuerzo incluidos. \n\nAlojamiento en Diego, gastos personales, bebidas extra y propinas excluidos.",
+        "place": "Diego-Suarez",
+        "duration": "1 día · 08:00–16:30",
+        "group": "",
+        "level": ""
+      }
+    }
+  },
+  {
+    "kind": "excursion",
+    "title": "Three Bays and Ramena",
+    "text": "Explore Sakalava Bay, Pigeons Bay and Dunes Bay with beach walks and photography stops. Continue to Ramena for lunch, a visit to the fishing village and time by the sea. Return to Diego-Suarez in the late afternoon.\n\nTransport, driver, guide, entrance fees and lunch included. \n\nAccommodation in Diego, personal expenses, extra drinks and tips excluded.",
+    "place": "Diego-Suarez",
+    "duration": "1 day · 09:00–17:00",
+    "group": "",
+    "level": "",
+    "priceNote": "",
+    "image": "/uploads/circuits/bay-of-pigeons.jpg",
+    "region": "Diego Suarez",
+    "link": "",
+    "sortOrder": 8,
+    "isPublished": true,
+    "translations": {
+      "fr": {
+        "title": "Trois Baies et Ramena",
+        "text": "Découverte de la baie des Sakalava, de la baie des Pigeons et de la baie des Dunes, avec promenades sur les plages et pauses photographiques. Déjeuner à Ramena, visite du village de pêcheurs et détente en bord de mer. Retour à Diego en fin de journée.\n\nTransport, chauffeur, guide, entrées et déjeuner inclus. \n\nHébergement à Diego, dépenses personnelles, boissons supplémentaires et pourboires exclus.",
+        "place": "Diego-Suarez",
+        "duration": "1 journée · 09:00–17:00",
+        "group": "",
+        "level": ""
+      },
+      "it": {
+        "title": "Tre Baie e Ramena",
+        "text": "Scoperta della Baia dei Sakalava, della Baia dei Piccioni e della Baia delle Dune, con passeggiate sulle spiagge e soste fotografiche. Pranzo a Ramena, visita del villaggio e relax sul mare. Rientro a Diego nel tardo pomeriggio.\n\nTrasporto, autista, guida, ingressi e pranzo inclusi. \n\nEsclusi alloggio a Diego, spese personali, bevande extra e mance.",
+        "place": "Diego-Suarez",
+        "duration": "1 giorno · 09:00–17:00",
+        "group": "",
+        "level": ""
+      },
+      "de": {
+        "title": "Drei Buchten und Ramena",
+        "text": "Entdecken Sie die Sakalava-, Tauben- und Dünenbucht bei Strandspaziergängen und Fotostopps. Mittagessen in Ramena, Besuch des Fischerdorfes und Zeit am Meer. Rückkehr nach Diego am späten Nachmittag.\n\nTransport, Fahrer, Reiseleitung, Eintritte und Mittagessen inklusive. \n\nUnterkunft in Diego, persönliche Ausgaben, zusätzliche Getränke und Trinkgelder ausgenommen.",
+        "place": "Diego-Suarez",
+        "duration": "1 Tag · 09:00–17:00",
+        "group": "",
+        "level": ""
+      },
+      "es": {
+        "title": "Tres Bahías y Ramena",
+        "text": "Descubra las bahías de Sakalava, de las Palomas y de las Dunas con paseos por la playa y paradas fotográficas. Almuerzo en Ramena, visita al pueblo pesquero y descanso junto al mar. Regreso a Diego al final del día.\n\nTransporte, conductor, guía, entradas y almuerzo incluidos. \n\nAlojamiento en Diego, gastos personales, bebidas extra y propinas excluidos.",
+        "place": "Diego-Suarez",
+        "duration": "1 día · 09:00–17:00",
+        "group": "",
+        "level": ""
+      }
+    }
+  },
+  {
+    "kind": "excursion",
+    "title": "Red Tsingy",
+    "text": "Travel by 4x4 to the Red Tsingy. Discover the red and orange formations shaped by erosion, with viewpoints, a short walk of 1–2 hours and photography stops. Picnic lunch, then return to Diego-Suarez.\n\nTransport, driver, guide, entrance fees and lunch included. \n\nAccommodation in Diego, personal expenses, extra drinks and tips excluded.",
+    "place": "Diego-Suarez",
+    "duration": "1 day · 07:30–16:00",
+    "group": "",
+    "level": "",
+    "priceNote": "",
+    "image": "/uploads/circuits/red-tsingy.jpg",
+    "region": "Diego Suarez",
+    "link": "",
+    "sortOrder": 9,
+    "isPublished": true,
+    "translations": {
+      "fr": {
+        "title": "Tsingy Rouges",
+        "text": "Départ en 4x4 vers les Tsingy Rouges. Découverte des formations rouges et orangées façonnées par l’érosion, des points de vue et d’une randonnée de 1 à 2 h. Pauses photographiques, déjeuner pique-nique et retour à Diego-Suarez.\n\nTransport, chauffeur, guide, entrées et déjeuner inclus. \n\nHébergement à Diego, dépenses personnelles, boissons supplémentaires et pourboires exclus.",
+        "place": "Diego-Suarez",
+        "duration": "1 journée · 07:30–16:00",
+        "group": "",
+        "level": ""
+      },
+      "it": {
+        "title": "Tsingy Rossi",
+        "text": "Escursione in 4x4 agli Tsingy Rossi, tra formazioni rosse e arancioni modellate dall’erosione. Punti panoramici, passeggiata di 1–2 ore e fotografie. Pranzo al sacco e rientro a Diego-Suarez.\n\nTrasporto, autista, guida, ingressi e pranzo inclusi. \n\nEsclusi alloggio a Diego, spese personali, bevande extra e mance.",
+        "place": "Diego-Suarez",
+        "duration": "1 giorno · 07:30–16:00",
+        "group": "",
+        "level": ""
+      },
+      "de": {
+        "title": "Rote Tsingy",
+        "text": "Fahrt im Geländewagen zu den Roten Tsingy. Rote und orangefarbene Erosionsformen, Aussichtspunkte und eine Wanderung von 1–2 Stunden. Fotostopps, Picknick und Rückkehr nach Diego-Suarez.\n\nTransport, Fahrer, Reiseleitung, Eintritte und Mittagessen inklusive. \n\nUnterkunft in Diego, persönliche Ausgaben, zusätzliche Getränke und Trinkgelder ausgenommen.",
+        "place": "Diego-Suarez",
+        "duration": "1 Tag · 07:30–16:00",
+        "group": "",
+        "level": ""
+      },
+      "es": {
+        "title": "Tsingy Rojos",
+        "text": "Excursión en 4x4 a los Tsingy Rojos. Formaciones rojas y anaranjadas modeladas por la erosión, miradores y caminata de 1–2 horas. Fotografías, almuerzo de pícnic y regreso a Diego-Suarez.\n\nTransporte, conductor, guía, entradas y almuerzo incluidos. \n\nAlojamiento en Diego, gastos personales, bebidas extra y propinas excluidos.",
+        "place": "Diego-Suarez",
+        "duration": "1 día · 07:30–16:00",
+        "group": "",
+        "level": ""
       }
     }
   },
   {
     "kind": "excursion",
     "title": "Emerald Sea",
-    "text": "A day on the bright green lagoon of the Emerald Sea, reached by boat.",
-    "image": "/uploads/circuits/diego-bay-view.jpg",
-    "price": 70,
-    "place": "Diego Suarez",
-    "region": "Diego Suarez",
-    "link": "",
-    "duration": "1 day",
+    "text": "Transfer to Ramena and take a local boat to the Emerald Sea. Enjoy the turquoise lagoon, swimming, snorkelling when conditions allow and time on sandy islets. Lunch on site and return to Diego in the afternoon.\n\nTransport, driver, guide, entrance fees and lunch included. \n\nBoat trips depend on weather, tides and access permissions. Accommodation in Diego, personal expenses, extra drinks and tips excluded.",
+    "place": "Diego-Suarez",
+    "duration": "1 day · 08:30–16:00",
     "group": "",
     "level": "",
-    "priceNote": "for 2 people or more",
+    "priceNote": "",
+    "image": "/uploads/circuits/bay-islands-view.jpg",
+    "region": "Diego Suarez",
+    "link": "",
+    "sortOrder": 10,
+    "isPublished": true,
     "translations": {
       "fr": {
-        "title": "Mer d'Émeraude",
-        "text": "Une journée sur le lagon vert éclatant de la mer d'Émeraude, accessible en bateau.",
-        "duration": "1 jour",
-        "priceNote": "pour 2 personnes ou plus"
-      },
-      "de": {
-        "title": "Smaragdmeer",
-        "text": "Ein Tag in der leuchtend grünen Lagune des Smaragdmeers, per Boot erreichbar.",
-        "duration": "1 Tag",
-        "priceNote": "ab 2 Personen"
+        "title": "Mer d’Émeraude",
+        "text": "Transfert à Ramena, puis embarcation locale vers la Mer d’Émeraude. Lagon turquoise, baignade, snorkeling selon les conditions et détente sur les îlots de sable blanc. Déjeuner sur place et retour à Diego dans l’après-midi.\n\nTransport, chauffeur, guide, entrées et déjeuner inclus. \n\nSorties en mer selon la météo, les marées et les autorisations d’accès. Hébergement à Diego, dépenses personnelles, boissons supplémentaires et pourboires exclus.",
+        "place": "Diego-Suarez",
+        "duration": "1 journée · 08:30–16:00",
+        "group": "",
+        "level": ""
       },
       "it": {
         "title": "Mare di Smeraldo",
-        "text": "Una giornata nella laguna verde brillante del Mare di Smeraldo, raggiungibile in barca.",
-        "duration": "1 giorno",
-        "priceNote": "da 2 persone in su"
+        "text": "Trasferimento a Ramena e barca locale verso il Mare di Smeraldo. Laguna turchese, bagno, snorkeling secondo le condizioni e relax sugli isolotti sabbiosi. Pranzo sul posto e rientro nel pomeriggio.\n\nTrasporto, autista, guida, ingressi e pranzo inclusi. \n\nUscite in mare secondo meteo, maree e autorizzazioni. Esclusi alloggio a Diego, spese personali, bevande extra e mance.",
+        "place": "Diego-Suarez",
+        "duration": "1 giorno · 08:30–16:00",
+        "group": "",
+        "level": ""
+      },
+      "de": {
+        "title": "Smaragdmeer",
+        "text": "Transfer nach Ramena und Fahrt mit einem lokalen Boot zum Smaragdmeer. Türkisfarbene Lagune, Baden, Schnorcheln je nach Bedingungen und Sandinseln. Mittagessen vor Ort und Rückkehr am Nachmittag.\n\nTransport, Fahrer, Reiseleitung, Eintritte und Mittagessen inklusive. \n\nBootsausflüge hängen von Wetter, Gezeiten und Genehmigungen ab. Unterkunft in Diego, persönliche Ausgaben, zusätzliche Getränke und Trinkgelder ausgenommen.",
+        "place": "Diego-Suarez",
+        "duration": "1 Tag · 08:30–16:00",
+        "group": "",
+        "level": ""
       },
       "es": {
         "title": "Mar Esmeralda",
-        "text": "Un día en la laguna verde intensa del Mar Esmeralda, a la que se llega en barco.",
-        "duration": "1 día",
-        "priceNote": "a partir de 2 personas"
+        "text": "Traslado a Ramena y embarcación local hacia el Mar Esmeralda. Laguna turquesa, baño, snorkel según las condiciones e islotes de arena blanca. Almuerzo en el lugar y regreso por la tarde.\n\nTransporte, conductor, guía, entradas y almuerzo incluidos. \n\nSalidas en barco según el tiempo, las mareas y las autorizaciones. Alojamiento en Diego, gastos personales, bebidas extra y propinas excluidos.",
+        "place": "Diego-Suarez",
+        "duration": "1 día · 08:30–16:00",
+        "group": "",
+        "level": ""
       }
     }
   },
   {
     "kind": "excursion",
-    "title": "Amber Mountain + Ramena",
-    "text": "The rainforest and waterfalls of the Montagne d'Ambre, then the beach at Ramena.",
-    "image": "/uploads/circuits/amber-mountain-waterfall.jpg",
-    "price": 90,
-    "place": "Diego Suarez",
-    "region": "Diego Suarez",
-    "link": "",
-    "duration": "1 day",
+    "title": "Ankarana National Park",
+    "text": "Early departure from Diego-Suarez, with about three hours of road travel to Ankarana. Guided walk among limestone Tsingy and caves, including Tsingy Meva and the bat cave when accessible. Lunch in Mahamasina. Moderate hike requiring walking shoes; return time depends on the RN6 and the visit.\n\nTransport, driver, guide, entrance fees and lunch included. \n\nAccommodation in Diego, personal expenses, extra drinks and tips excluded.",
+    "place": "Diego-Suarez",
+    "duration": "1 day · 06:00–18:30",
     "group": "",
     "level": "",
-    "priceNote": "for 2 people or more",
-    "translations": {
-      "fr": {
-        "title": "Montagne d'Ambre + Ramena",
-        "text": "La forêt tropicale et les cascades de la Montagne d'Ambre, puis la plage de Ramena.",
-        "duration": "1 jour",
-        "priceNote": "pour 2 personnes ou plus"
-      },
-      "de": {
-        "title": "Montagne d'Ambre + Ramena",
-        "text": "Regenwald und Wasserfälle der Montagne d'Ambre, danach der Strand von Ramena.",
-        "duration": "1 Tag",
-        "priceNote": "ab 2 Personen"
-      },
-      "it": {
-        "title": "Montagne d'Ambre + Ramena",
-        "text": "La foresta pluviale e le cascate della Montagne d'Ambre, poi la spiaggia di Ramena.",
-        "duration": "1 giorno",
-        "priceNote": "da 2 persone in su"
-      },
-      "es": {
-        "title": "Montagne d'Ambre + Ramena",
-        "text": "La selva y las cascadas de la Montagne d'Ambre y después la playa de Ramena.",
-        "duration": "1 día",
-        "priceNote": "a partir de 2 personas"
-      }
-    }
-  },
-  {
-    "kind": "excursion",
-    "title": "Montagne des Français + Ramena",
-    "text": "The limestone massif and its views over the bay, then the beach at Ramena.",
-    "image": "/uploads/circuits/ramena-beach-aerial.jpg",
-    "price": 80,
-    "place": "Diego Suarez",
+    "priceNote": "",
+    "image": "/uploads/circuits/ankarana-bridge.jpg",
     "region": "Diego Suarez",
     "link": "",
-    "duration": "1 day",
-    "group": "",
-    "level": "",
-    "priceNote": "for 2 people or more",
+    "sortOrder": 11,
+    "isPublished": true,
     "translations": {
       "fr": {
-        "title": "Montagne des Français + Ramena",
-        "text": "Le massif calcaire et ses vues sur la baie, puis la plage de Ramena.",
-        "duration": "1 jour",
-        "priceNote": "pour 2 personnes ou plus"
-      },
-      "de": {
-        "title": "Montagne des Français + Ramena",
-        "text": "Das Kalksteinmassiv mit Blick über die Bucht, danach der Strand von Ramena.",
-        "duration": "1 Tag",
-        "priceNote": "ab 2 Personen"
+        "title": "Parc national de l’Ankarana",
+        "text": "Départ matinal de Diego-Suarez, avec environ trois heures de route jusqu’à l’Ankarana. Randonnée guidée parmi les Tsingy et les grottes, circuit Tsingy Meva et grotte des Chauves-souris selon l’accès. Déjeuner à Mahamasina. Difficulté modérée et chaussures de marche nécessaires. Retour selon la RN6 et la durée de visite.\n\nTransport, chauffeur, guide, entrées et déjeuner inclus. \n\nHébergement à Diego, dépenses personnelles, boissons supplémentaires et pourboires exclus.",
+        "place": "Diego-Suarez",
+        "duration": "1 journée · 06:00–18:30",
+        "group": "",
+        "level": ""
       },
       "it": {
-        "title": "Montagne des Français + Ramena",
-        "text": "Il massiccio calcareo e le sue viste sulla baia, poi la spiaggia di Ramena.",
-        "duration": "1 giorno",
-        "priceNote": "da 2 persone in su"
+        "title": "Parco Nazionale dell’Ankarana",
+        "text": "Partenza all’alba e circa tre ore di strada fino all’Ankarana. Trekking tra Tsingy e grotte, con Tsingy Meva e grotta dei pipistrelli secondo l’accessibilità. Pranzo a Mahamasina. Difficoltà moderata e scarpe da trekking necessarie. Rientro secondo le condizioni della RN6.\n\nTrasporto, autista, guida, ingressi e pranzo inclusi. \n\nEsclusi alloggio a Diego, spese personali, bevande extra e mance.",
+        "place": "Diego-Suarez",
+        "duration": "1 giorno · 06:00–18:30",
+        "group": "",
+        "level": ""
+      },
+      "de": {
+        "title": "Ankarana-Nationalpark",
+        "text": "Früher Start und etwa drei Stunden Fahrt nach Ankarana. Geführte Wanderung zwischen Kalkstein-Tsingy und Höhlen, Tsingy Meva und Fledermaushöhle je nach Zugang. Mittagessen in Mahamasina. Mittlere Schwierigkeit, Wanderschuhe erforderlich. Rückkehr je nach Zustand der RN6.\n\nTransport, Fahrer, Reiseleitung, Eintritte und Mittagessen inklusive. \n\nUnterkunft in Diego, persönliche Ausgaben, zusätzliche Getränke und Trinkgelder ausgenommen.",
+        "place": "Diego-Suarez",
+        "duration": "1 Tag · 06:00–18:30",
+        "group": "",
+        "level": ""
       },
       "es": {
-        "title": "Montagne des Français + Ramena",
-        "text": "El macizo calcáreo y sus vistas sobre la bahía y después la playa de Ramena.",
-        "duration": "1 día",
-        "priceNote": "a partir de 2 personas"
+        "title": "Parque Nacional de Ankarana",
+        "text": "Salida temprana y unas tres horas de carretera hasta Ankarana. Caminata guiada entre Tsingy y cuevas, Tsingy Meva y cueva de murciélagos según el acceso. Almuerzo en Mahamasina. Dificultad moderada, requiere calzado de senderismo. Regreso según el estado de la RN6.\n\nTransporte, conductor, guía, entradas y almuerzo incluidos. \n\nAlojamiento en Diego, gastos personales, bebidas extra y propinas excluidos.",
+        "place": "Diego-Suarez",
+        "duration": "1 día · 06:00–18:30",
+        "group": "",
+        "level": ""
       }
     }
   },
   {
     "kind": "excursion",
-    "title": "Antalaha Bay",
-    "text": "A day around the bay of Antalaha.",
+    "title": "Antalaha Bay near Diego-Suarez",
+    "text": "Travel by 4x4 to Antalaha Bay near Diego-Suarez, about two hours each way. Explore the wild beach, walk, relax and swim when conditions allow. Picnic lunch before returning to Diego.\n\nTransport, driver, guide, entrance fees and lunch included. \n\nAccommodation in Diego, personal expenses, extra drinks and tips excluded.",
+    "place": "Diego-Suarez",
+    "duration": "1 day · 08:00–17:00",
+    "group": "",
+    "level": "",
+    "priceNote": "",
     "image": "/uploads/circuits/sakalava-bay.jpg",
-    "price": 70,
-    "place": "Diego Suarez",
     "region": "Diego Suarez",
     "link": "",
-    "duration": "1 day",
-    "group": "",
-    "level": "",
-    "priceNote": "for 2 people or more",
+    "sortOrder": 12,
+    "isPublished": true,
     "translations": {
       "fr": {
-        "title": "Baie d'Antalaha",
-        "text": "Une journée autour de la baie d'Antalaha.",
-        "duration": "1 jour",
-        "priceNote": "pour 2 personnes ou plus"
-      },
-      "de": {
-        "title": "Bucht von Antalaha",
-        "text": "Ein Tag rund um die Bucht von Antalaha.",
-        "duration": "1 Tag",
-        "priceNote": "ab 2 Personen"
+        "title": "Baie d’Antalaha près de Diego-Suarez",
+        "text": "Route en 4x4 vers la baie d’Antalaha, dans les environs de Diego-Suarez, environ deux heures par trajet. Découverte de la plage sauvage, promenade, détente et baignade selon les conditions. Déjeuner pique-nique avant le retour.\n\nTransport, chauffeur, guide, entrées et déjeuner inclus. \n\nHébergement à Diego, dépenses personnelles, boissons supplémentaires et pourboires exclus.",
+        "place": "Diego-Suarez",
+        "duration": "1 journée · 08:00–17:00",
+        "group": "",
+        "level": ""
       },
       "it": {
-        "title": "Baia di Antalaha",
-        "text": "Una giornata intorno alla baia di Antalaha.",
-        "duration": "1 giorno",
-        "priceNote": "da 2 persone in su"
+        "title": "Baia di Antalaha vicino a Diego-Suarez",
+        "text": "Escursione in 4x4 alla Baia di Antalaha nei dintorni di Diego-Suarez, circa due ore per tratta. Spiaggia selvaggia, passeggiata, relax e bagno secondo le condizioni. Pranzo al sacco prima del rientro.\n\nTrasporto, autista, guida, ingressi e pranzo inclusi. \n\nEsclusi alloggio a Diego, spese personali, bevande extra e mance.",
+        "place": "Diego-Suarez",
+        "duration": "1 giorno · 08:00–17:00",
+        "group": "",
+        "level": ""
+      },
+      "de": {
+        "title": "Antalaha-Bucht bei Diego-Suarez",
+        "text": "Fahrt im Geländewagen zur Antalaha-Bucht bei Diego-Suarez, etwa zwei Stunden pro Strecke. Naturstrand, Spaziergang, Erholung und Baden je nach Bedingungen. Picknick vor der Rückfahrt.\n\nTransport, Fahrer, Reiseleitung, Eintritte und Mittagessen inklusive. \n\nUnterkunft in Diego, persönliche Ausgaben, zusätzliche Getränke und Trinkgelder ausgenommen.",
+        "place": "Diego-Suarez",
+        "duration": "1 Tag · 08:00–17:00",
+        "group": "",
+        "level": ""
       },
       "es": {
-        "title": "Bahía de Antalaha",
-        "text": "Un día alrededor de la bahía de Antalaha.",
-        "duration": "1 día",
-        "priceNote": "a partir de 2 personas"
+        "title": "Bahía de Antalaha cerca de Diego-Suarez",
+        "text": "Ruta en 4x4 a la bahía de Antalaha, cerca de Diego-Suarez, unas dos horas por trayecto. Playa salvaje, paseo, descanso y baño según las condiciones. Almuerzo de pícnic antes del regreso.\n\nTransporte, conductor, guía, entradas y almuerzo incluidos. \n\nAlojamiento en Diego, gastos personales, bebidas extra y propinas excluidos.",
+        "place": "Diego-Suarez",
+        "duration": "1 día · 08:00–17:00",
+        "group": "",
+        "level": ""
       }
     }
   },
   {
     "kind": "excursion",
-    "title": "Nosy Hara",
-    "text": "The islands and limestone rocks of the Nosy Hara marine park.",
-    "image": "/uploads/circuits/island-beach-aerial.jpg",
-    "price": 350,
-    "place": "Diego Suarez",
-    "region": "Diego Suarez",
-    "link": "",
-    "duration": "",
+    "title": "Nosy Hara archipelago",
+    "text": "Day 1 — Early transfer to Ampasindava and boat crossing to Nosy Hara. Explore limestone islets and wild beaches, swim and snorkel when conditions allow, then spend the night camping. Day 2 — Guided walk in the marine park to discover island wildlife, rock formations and viewpoints. Return by boat to Ampasindava and by road to Diego.\n\nTransport, driver, guide, entrance fees and lunch included. Boat trips, lunches and one night camping included. \n\nBoat trips depend on weather, tides and access permissions. Accommodation in Diego, personal expenses, extra drinks and tips excluded.",
+    "place": "Diego-Suarez",
+    "duration": "2 days / 1 night",
     "group": "",
     "level": "",
-    "priceNote": "for 2 people or more",
+    "priceNote": "",
+    "image": "/uploads/circuits/coastal-tsingy.jpg",
+    "region": "Diego Suarez",
+    "link": "",
+    "sortOrder": 13,
+    "isPublished": true,
     "translations": {
       "fr": {
-        "title": "Nosy Hara",
-        "text": "Les îles et les rochers calcaires du parc marin de Nosy Hara.",
-        "priceNote": "pour 2 personnes ou plus"
-      },
-      "de": {
-        "title": "Nosy Hara",
-        "text": "Die Inseln und Kalkfelsen des Meeresparks Nosy Hara.",
-        "priceNote": "ab 2 Personen"
+        "title": "Archipel de Nosy Hara",
+        "text": "Jour 1 — Départ matinal vers Ampasindava, puis traversée vers Nosy Hara. Îlots calcaires, plages sauvages, baignade et snorkeling selon les conditions. Installation au campement et nuit sur place. Jour 2 — Randonnée guidée dans le parc marin, découverte de la biodiversité et des points de vue. Retour en bateau vers Ampasindava, puis transfert à Diego.\n\nTransport, chauffeur, guide, entrées et déjeuner inclus. Bateaux, déjeuners et une nuit au campement inclus. \n\nSorties en mer selon la météo, les marées et les autorisations d’accès. Hébergement à Diego, dépenses personnelles, boissons supplémentaires et pourboires exclus.",
+        "place": "Diego-Suarez",
+        "duration": "2 jours / 1 nuit",
+        "group": "",
+        "level": ""
       },
       "it": {
-        "title": "Nosy Hara",
-        "text": "Le isole e le rocce calcaree del parco marino di Nosy Hara.",
-        "priceNote": "da 2 persone in su"
+        "title": "Arcipelago di Nosy Hara",
+        "text": "Giorno 1 — Trasferimento mattutino ad Ampasindava e barca verso Nosy Hara. Isolotti calcarei, spiagge selvagge, bagno e snorkeling secondo le condizioni. Notte in campeggio. Giorno 2 — Passeggiata guidata nel parco marino tra fauna insulare, rocce e panorami. Rientro in barca ad Ampasindava e trasferimento a Diego.\n\nTrasporto, autista, guida, ingressi e pranzo inclusi. Barche, pranzi e una notte in campeggio inclusi. \n\nUscite in mare secondo meteo, maree e autorizzazioni. Esclusi alloggio a Diego, spese personali, bevande extra e mance.",
+        "place": "Diego-Suarez",
+        "duration": "2 giorni / 1 notte",
+        "group": "",
+        "level": ""
+      },
+      "de": {
+        "title": "Nosy-Hara-Archipel",
+        "text": "Tag 1 — Früher Transfer nach Ampasindava und Bootsfahrt nach Nosy Hara. Kalksteininseln, Naturstrände, Baden und Schnorcheln je nach Bedingungen. Übernachtung im Camp. Tag 2 — Geführte Wanderung im Meerespark mit Tierbeobachtung, Felsformationen und Aussichtspunkten. Rückfahrt über Ampasindava nach Diego.\n\nTransport, Fahrer, Reiseleitung, Eintritte und Mittagessen inklusive. Bootsfahrten, Mittagessen und eine Nacht im Camp inklusive. \n\nBootsausflüge hängen von Wetter, Gezeiten und Genehmigungen ab. Unterkunft in Diego, persönliche Ausgaben, zusätzliche Getränke und Trinkgelder ausgenommen.",
+        "place": "Diego-Suarez",
+        "duration": "2 Tage / 1 Nacht",
+        "group": "",
+        "level": ""
       },
       "es": {
-        "title": "Nosy Hara",
-        "text": "Las islas y las rocas calcáreas del parque marino de Nosy Hara.",
-        "priceNote": "a partir de 2 personas"
+        "title": "Archipiélago de Nosy Hara",
+        "text": "Día 1 — Traslado temprano a Ampasindava y barco a Nosy Hara. Islotes calcáreos, playas salvajes, baño y snorkel según las condiciones. Noche en campamento. Día 2 — Caminata guiada por el parque marino, fauna insular, formaciones rocosas y miradores. Regreso en barco a Ampasindava y traslado a Diego.\n\nTransporte, conductor, guía, entradas y almuerzo incluidos. Barcos, almuerzos y una noche de campamento incluidos. \n\nSalidas en barco según el tiempo, las mareas y las autorizaciones. Alojamiento en Diego, gastos personales, bebidas extra y propinas excluidos.",
+        "place": "Diego-Suarez",
+        "duration": "2 días / 1 noche",
+        "group": "",
+        "level": ""
       }
     }
   },
@@ -620,7 +831,6 @@
     "title": "Nosy Iranja By Speedboat",
     "text": "Walk the white sandbar, swim and snorkel with turtles.",
     "image": "/uploads/circuits/boat-to-nosy-iranja.jpg",
-    "price": 110,
     "port": "nosybe",
     "hours": 7,
     "tag": "Sea",
@@ -648,7 +858,6 @@
     "title": "Nosy Tanikely Snorkel",
     "text": "Calm reef snorkelling in a marine park, with a beach stop.",
     "image": "/uploads/circuits/snorkelling.jpg",
-    "price": 70,
     "port": "nosybe",
     "hours": 4.5,
     "tag": "Sea",
@@ -676,7 +885,6 @@
     "title": "Lokobe Forest And Hell-Ville",
     "text": "Look for lemurs with a guide, then browse the town market.",
     "image": "/uploads/circuits/black-lemur.jpg",
-    "price": 65,
     "port": "nosybe",
     "hours": 4,
     "tag": "Nature",
@@ -704,7 +912,6 @@
     "title": "Ylang-Ylang And Mount Passot",
     "text": "A working distillery and a sunset-worthy viewpoint over crater lakes.",
     "image": "/uploads/circuits/ylang-distillery.jpg",
-    "price": 50,
     "port": "nosybe",
     "hours": 3.5,
     "tag": "Culture",
@@ -732,7 +939,6 @@
     "title": "Emerald Sea And Sugar Loaf",
     "text": "A boat across Diego Bay with swimming in shallow, bright water.",
     "image": "/uploads/circuits/bay-islands-view.jpg",
-    "price": 75,
     "port": "diego",
     "hours": 5,
     "tag": "Sea",
@@ -760,7 +966,6 @@
     "title": "Red Tsingy And Old Town",
     "text": "Sculpted red rock formations, then a walk through Diego Suarez.",
     "image": "/uploads/circuits/red-tsingy-spires.jpg",
-    "price": 90,
     "port": "diego",
     "hours": 6,
     "tag": "Culture",
@@ -788,7 +993,6 @@
     "title": "Amber Mountain Rainforest",
     "text": "Waterfalls, crater lakes and chameleons in a cool mountain park.",
     "image": "/uploads/circuits/amber-mountain-stream.jpg",
-    "price": 120,
     "port": "diego",
     "hours": 8,
     "tag": "Nature",
@@ -822,7 +1026,7 @@
       "Private driver for transfers",
       "Guided excursions each week"
     ],
-    "priceLabel": "From €1,900",
+    "priceLabel": "",
     "translations": {
       "fr": {
         "tab": "1 mois",
@@ -832,8 +1036,7 @@
           "Logements meublés dans 2 à 3 régions",
           "Chauffeur privé pour les transferts",
           "Excursions guidées chaque semaine"
-        ],
-        "priceLabel": "À partir de 1 900 €"
+        ]
       },
       "de": {
         "tab": "1 Monat",
@@ -843,8 +1046,7 @@
           "Möblierte Unterkünfte in 2 bis 3 Regionen",
           "Privater Fahrer für die Transfers",
           "Jede Woche geführte Ausflüge"
-        ],
-        "priceLabel": "Ab 1.900 €"
+        ]
       },
       "it": {
         "tab": "1 mese",
@@ -854,8 +1056,7 @@
           "Alloggi arredati in 2-3 regioni",
           "Autista privato per i trasferimenti",
           "Escursioni guidate ogni settimana"
-        ],
-        "priceLabel": "Da 1.900 €"
+        ]
       },
       "es": {
         "tab": "1 mes",
@@ -865,8 +1066,7 @@
           "Alojamientos amueblados en 2 o 3 regiones",
           "Conductor privado para los traslados",
           "Excursiones guiadas cada semana"
-        ],
-        "priceLabel": "Desde 1900 €"
+        ]
       }
     }
   },
@@ -881,7 +1081,7 @@
       "Monthly guided getaways",
       "Language lessons and community projects"
     ],
-    "priceLabel": "From €4,800",
+    "priceLabel": "",
     "translations": {
       "fr": {
         "tab": "3 mois",
@@ -891,8 +1091,7 @@
           "Un seul point de chute avec une connexion fiable",
           "Une escapade guidée chaque mois",
           "Cours de langue et projets solidaires"
-        ],
-        "priceLabel": "À partir de 4 800 €"
+        ]
       },
       "de": {
         "tab": "3 Monate",
@@ -902,8 +1101,7 @@
           "Ein fester Wohnsitz mit zuverlässigem Internet",
           "Jeden Monat eine geführte Auszeit",
           "Sprachunterricht und Gemeinschaftsprojekte"
-        ],
-        "priceLabel": "Ab 4.800 €"
+        ]
       },
       "it": {
         "tab": "3 mesi",
@@ -913,8 +1111,7 @@
           "Una sola base con internet affidabile",
           "Una fuga guidata ogni mese",
           "Lezioni di lingua e progetti solidali"
-        ],
-        "priceLabel": "Da 4.800 €"
+        ]
       },
       "es": {
         "tab": "3 meses",
@@ -924,8 +1121,7 @@
           "Una sola base con internet fiable",
           "Una escapada guiada cada mes",
           "Clases de idioma y proyectos solidarios"
-        ],
-        "priceLabel": "Desde 4800 €"
+        ]
       }
     }
   },
@@ -940,7 +1136,7 @@
       "Paperwork and visa extensions",
       "A named contact for your whole stay"
     ],
-    "priceLabel": "On request",
+    "priceLabel": "",
     "translations": {
       "fr": {
         "tab": "6 mois +",
@@ -950,8 +1146,7 @@
           "Recherche de logement longue durée",
           "Démarches et prolongations de visa",
           "Un interlocuteur dédié pendant tout votre séjour"
-        ],
-        "priceLabel": "Sur demande"
+        ]
       },
       "de": {
         "tab": "6 Monate +",
@@ -961,8 +1156,7 @@
           "Suche nach einer Langzeitunterkunft",
           "Formalitäten und Visumverlängerungen",
           "Ein fester Ansprechpartner für Ihren ganzen Aufenthalt"
-        ],
-        "priceLabel": "Auf Anfrage"
+        ]
       },
       "it": {
         "tab": "6 mesi +",
@@ -972,8 +1166,7 @@
           "Ricerca di un alloggio a lungo termine",
           "Pratiche e proroghe del visto",
           "Un referente dedicato per tutto il soggiorno"
-        ],
-        "priceLabel": "Su richiesta"
+        ]
       },
       "es": {
         "tab": "6 meses +",
@@ -983,8 +1176,7 @@
           "Búsqueda de alojamiento de larga duración",
           "Trámites y prórrogas de visado",
           "Un interlocutor fijo durante toda su estancia"
-        ],
-        "priceLabel": "A consultar"
+        ]
       }
     }
   },
@@ -1082,7 +1274,6 @@
     "category": "bungalow",
     "title": "Ramena Sea Bungalows",
     "place": "Ramena, Diego Suarez",
-    "price": 65,
     "rating": 4.8,
     "amenities": [
       "Sea view",
@@ -1131,7 +1322,6 @@
     "category": "hotel",
     "title": "Nosy Iranja Retreat",
     "place": "Nosy Iranja",
-    "price": 140,
     "rating": 4.9,
     "amenities": [
       "Infinity pool",
@@ -1180,7 +1370,6 @@
     "category": "lodge",
     "title": "Ambanja Cocoa Lodge",
     "place": "Ambanja",
-    "price": 75,
     "rating": 4.7,
     "amenities": [
       "Garden",
@@ -1229,7 +1418,6 @@
     "category": "guesthouse",
     "title": "Maison Tana",
     "place": "Antananarivo",
-    "price": 40,
     "rating": 4.6,
     "amenities": [
       "Family-run",
@@ -1278,7 +1466,6 @@
     "category": "bungalow",
     "title": "Lonjo Beach Huts",
     "place": "Nosy Be",
-    "price": 90,
     "rating": 4.8,
     "amenities": [
       "Beachfront",
@@ -1327,7 +1514,6 @@
     "category": "lodge",
     "title": "Baobab Safari Camp",
     "place": "Northern Madagascar",
-    "price": 110,
     "rating": 4.7,
     "amenities": [
       "Guided walks",
@@ -1960,7 +2146,6 @@
     "category": "tour",
     "title": "Street Food Walk",
     "duration": "3 hours",
-    "price": 25,
     "translations": {
       "fr": {
         "title": "Balade street food",
@@ -1991,7 +2176,6 @@
     "category": "tour",
     "title": "Spice & Vanilla Farm",
     "duration": "Half day",
-    "price": 40,
     "translations": {
       "fr": {
         "title": "Ferme d'épices et de vanille",
@@ -2022,7 +2206,6 @@
     "category": "class",
     "title": "Cooking Class",
     "duration": "3 hours",
-    "price": 45,
     "translations": {
       "fr": {
         "title": "Cours de cuisine",
@@ -2053,7 +2236,6 @@
     "category": "meal",
     "title": "Local Family Lunch",
     "duration": "2 hours",
-    "price": 30,
     "translations": {
       "fr": {
         "title": "Déjeuner en famille",
@@ -2084,7 +2266,6 @@
     "category": "meal",
     "title": "Seafood On The Beach",
     "duration": "2 hours",
-    "price": 38,
     "translations": {
       "fr": {
         "title": "Fruits de mer sur la plage",
@@ -2115,7 +2296,6 @@
     "category": "meal",
     "title": "Sunset Dinner",
     "duration": "2 hours",
-    "price": 55,
     "translations": {
       "fr": {
         "title": "Dîner au coucher du soleil",
@@ -2147,7 +2327,6 @@
     "duration": "1 hour",
     "photos": "25 edited photos",
     "delivery": "48 h",
-    "price": 90,
     "translations": {
       "fr": {
         "title": "Séance au lever du soleil",
@@ -2187,7 +2366,6 @@
     "duration": "2 hours",
     "photos": "40 edited photos",
     "delivery": "3 days",
-    "price": 150,
     "translations": {
       "fr": {
         "title": "Moment privé",
@@ -2227,7 +2405,6 @@
     "duration": "4 hours",
     "photos": "80 edited photos",
     "delivery": "3 days",
-    "price": 220,
     "translations": {
       "fr": {
         "title": "Récit d'une demi-journée",
@@ -2267,7 +2444,6 @@
     "duration": "8 hours",
     "photos": "200 edited photos",
     "delivery": "5 days",
-    "price": 380,
     "translations": {
       "fr": {
         "title": "Récit d'une journée",
@@ -2503,7 +2679,6 @@
     "image": "/uploads/circuits/snorkel-gear-beach.jpg",
     "category": "water",
     "title": "Snorkel Set",
-    "price": 6,
     "specs": [
       "Mask + fins + snorkel",
       "All sizes"
@@ -2549,7 +2724,6 @@
     "image": "/uploads/circuits/nosy-iranja.jpg",
     "category": "water",
     "title": "Double Kayak",
-    "price": 25,
     "specs": [
       "2 persons",
       "Paddles + vests"
@@ -2595,7 +2769,6 @@
     "image": "/uploads/circuits/nosy-lonjo.jpg",
     "category": "water",
     "title": "Stand-Up Paddle Board",
-    "price": 20,
     "specs": [
       "Inflatable",
       "Pump + paddle"
@@ -2641,7 +2814,6 @@
     "image": "/uploads/circuits/red-tsingy-trail.jpg",
     "category": "trek",
     "title": "Trekking Backpack 50L",
-    "price": 6,
     "specs": [
       "50 L",
       "Rain cover"
@@ -2687,7 +2859,6 @@
     "image": "/uploads/circuits/antananarivo-rice-fields.jpg",
     "category": "trek",
     "title": "2-Person Tent",
-    "price": 15,
     "specs": [
       "2 persons",
       "Waterproof"
@@ -2733,7 +2904,6 @@
     "image": "/uploads/circuits/sambirano-river.jpg",
     "category": "ride",
     "title": "Mountain Bike",
-    "price": 12,
     "specs": [
       "21 speeds",
       "Helmet included"
@@ -2779,7 +2949,6 @@
     "image": "/uploads/circuits/ramena.jpg",
     "category": "ride",
     "title": "Scooter 125cc",
-    "price": 20,
     "specs": [
       "Licence required",
       "Helmet included"
@@ -2825,7 +2994,6 @@
     "image": "/uploads/circuits/sifaka-in-tree.jpg",
     "category": "optics",
     "title": "Binoculars 8x42",
-    "price": 5,
     "specs": [
       "8x42",
       "Neck strap + case"
@@ -2871,7 +3039,6 @@
     "image": "/uploads/circuits/snorkelling-reef.jpg",
     "category": "optics",
     "title": "Waterproof Camera",
-    "price": 18,
     "specs": [
       "4K video",
       "64 GB card"
@@ -2918,7 +3085,6 @@
     "category": "parks",
     "title": "Andasibe-Mantadia Park",
     "place": "Andasibe",
-    "price": 35,
     "perks": [
       "Entry + local guide",
       "Half day"
@@ -2961,7 +3127,6 @@
     "category": "parks",
     "title": "Lokobe Reserve",
     "place": "Nosy Be",
-    "price": 25,
     "perks": [
       "Entry + guide",
       "Pirogue included"
@@ -3004,7 +3169,6 @@
     "category": "sea",
     "title": "Marine Park Snorkel Trip",
     "place": "Nosy Be",
-    "price": 30,
     "perks": [
       "Boat + snorkel gear",
       "Lunch option"
@@ -3047,7 +3211,6 @@
     "category": "sea",
     "title": "Catamaran Sunset Cruise",
     "place": "Nosy Be",
-    "price": 65,
     "perks": [
       "Drinks on board",
       "3 hours"
@@ -3090,7 +3253,6 @@
     "category": "sites",
     "title": "Avenue Of The Baobabs",
     "place": "Morondava",
-    "price": 15,
     "perks": [
       "Site entry",
       "Sunset slot"
@@ -3133,7 +3295,6 @@
     "category": "sites",
     "title": "Royal Hill Visit",
     "place": "Antananarivo",
-    "price": 12,
     "perks": [
       "Entry + guide",
       "Skip the queue"
@@ -3176,7 +3337,6 @@
     "category": "events",
     "title": "Folk Music Night",
     "place": "Antananarivo",
-    "price": 20,
     "perks": [
       "Reserved seat",
       "Evening"
@@ -3219,7 +3379,6 @@
     "category": "events",
     "title": "Local Festival Pass",
     "place": "Varies by date",
-    "price": 18,
     "perks": [
       "Entry + transport tip",
       "Dates on request"

@@ -9,6 +9,7 @@ import { replaceOldExcursions, seedOffers } from './offers.js'
 import { seedDestinations } from './destinations.js'
 import { seedPosts } from './posts.js'
 import { updateSeedPhotos } from './photoUpdate.js'
+import { updateCatalogue } from './catalogUpdate.js'
 
 const here = path.dirname(fileURLToPath(import.meta.url))
 const schemaPath = path.join(here, '..', '..', 'sql', 'schema.sql')
@@ -140,6 +141,7 @@ export async function initDatabase({ log = console.log } = {}) {
     if (posts) log(`  + ${posts} articles ajoutés (sql/blog.seed.json)`)
     const photos = await updateSeedPhotos(connection)
     if (photos) log(`  ~ ${photos} photos remplacées par les photos Noziwild (sql/photos.update.json)`)
+    if (await updateCatalogue(connection)) log('  ~ catalogue mis à jour : 3 circuits, 8 excursions Diego, offres sur devis')
     log(`Base "${dbName}" et tables prêtes.`)
   } finally {
     await connection.end()

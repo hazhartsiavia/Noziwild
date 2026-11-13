@@ -92,7 +92,9 @@ Le rôle est relu à chaque requête : il suffit de recharger la page, pas besoi
 
 Les circuits (textes, prix, itinéraire jour par jour, photos) sont dans MySQL :
 table `circuits`, et table `circuit_days` pour les jours de l'itinéraire.
-Au premier `npm run db:init`, les 6 circuits de `sql/circuits.seed.json` sont ajoutés.
+Au premier `npm run db:init`, les 3 circuits de `sql/circuits.seed.json` sont ajoutés.
+
+La mise à jour du catalogue du 13 novembre 2026 remplace une seule fois tous les circuits existants et les excursions de Diego par les programmes validés. Elle retire les montants des offres. Elle est appliquée au démarrage ou par `db:init`, dans une transaction suivie dans `catalogue_updates`. Les modifications ultérieures effectuées dans l’administration sont conservées. Les pages publiques et les demandes de devis utilisent désormais des offres sans prix affiché.
 
 | Méthode | Route | Rôle |
 |---|---|---|
@@ -277,7 +279,7 @@ Dans l'admin, l'onglet *Traductions* de l'éditeur de circuit permet de les remp
 s'affiche en anglais. L'API publique prend la langue en paramètre : `/api/circuits?lang=fr`,
 `/api/circuits/:slug?lang=de`.
 
-Les traductions des 6 circuits de départ sont dans `sql/circuits.translations/<langue>.json` ;
+Les traductions des 3 circuits de départ sont dans `sql/circuits.translations/<langue>.json` ;
 `npm run db:init` (et le démarrage du serveur) les ajoute aux circuits de départ qui n'en ont pas encore,
 sans toucher aux traductions déjà saisies dans l'admin.
 
@@ -386,7 +388,7 @@ Variables d'environnement à définir dans le panneau de l'hébergeur (pas de fi
 node -e "console.log(require('crypto').randomBytes(48).toString('hex'))"
 ```
 
-Au démarrage, le serveur crée les tables et les 6 circuits de départ si la base est vide.
+Au démarrage, le serveur crée les tables et les 3 circuits de départ si la base est vide.
 Vérification : `https://ton-site/api/health` doit répondre `{"ok":true,"database":"connected","uploads":"persistent"}`.
 
 Sans accès en ligne de commande, pour donner le rôle admin, dans phpMyAdmin :
