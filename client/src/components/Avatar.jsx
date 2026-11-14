@@ -6,7 +6,7 @@ function Avatar({ user, className = 'w-10 h-10 text-base' }) {
     return <img src={user.avatarUrl} alt="" referrerPolicy="no-referrer" className={`${className} shrink-0 rounded-full object-cover`} />
   }
   return (
-    <span aria-hidden="true" className={`${className} shrink-0 rounded-full bg-[#A9813A] text-white font-medium flex items-center justify-center`}>
+    <span aria-hidden="true" className={`${className} shrink-0 rounded-full bg-[#C49849] text-white font-medium flex items-center justify-center`}>
       {user.name.charAt(0).toUpperCase()}
     </span>
   )

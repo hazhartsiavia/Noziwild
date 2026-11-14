@@ -18,16 +18,15 @@ import { useLanguage, useT } from '../i18n/LanguageContext'
 import { monthName } from '../utils/format'
 import { useOffers } from '../utils/useOffers'
 import { A } from '../i18n/router'
-import Img from '../components/Img'
 
 gsap.registerPlugin(ScrollTrigger)
 
 /* Constantes partagées : mêmes valeurs que dans les autres pages */
-const SECTION_WIDTH = "w-[90vw] max-w-[1360px]"
-const SECTION_TITLE = 'text-[clamp(2.6rem,5.4vw,5rem)] text-forest leading-[1] [text-wrap:balance]'
+const SECTION_WIDTH = "w-[90vw] lg:max-w-[90vw] xl:max-w-[95vw]"
+const SECTION_TITLE = "text-[clamp(2rem,4.4vw,4rem)] font-bold text-forest leading-[1.08] tracking-tight"
 const SECTION_SUBTITLE = "text-sm sm:text-base md:text-lg text-slate-600 leading-relaxed max-w-3xl"
 const META_TEXT = "text-xs sm:text-sm"
-const BADGE = "inline-block bg-[#F4F1EA] text-forest text-[11px] font-semibold uppercase tracking-[0.14em] px-3 py-1.5 rounded-sm"
+const BADGE = "inline-block bg-[#C49849] text-white text-xs sm:text-sm font-medium px-3 py-1.5 rounded-sm"
 const BUTTON = "text-sm font-medium px-5 py-2.5 rounded-full md:px-6 md:py-3 active:scale-95 transition"
 const SECTION_GAP = "mt-[60px] md:mt-[120px]"
 
@@ -75,9 +74,9 @@ function ActivityCarousel({ list, status }) {
   }
 
   const arrowClass =
-    "w-11 h-11 md:w-12 md:h-12 flex items-center justify-center rounded-full border border-[#0C3E2E] text-[#0C3E2E] transition " +
-    "hover:bg-[#0C3E2E]/10 active:bg-[#0C3E2E]/20 disabled:opacity-30 disabled:pointer-events-none " +
-    "focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#0C3E2E]"
+    "w-11 h-11 md:w-12 md:h-12 flex items-center justify-center rounded-full border border-[#074636] text-[#074636] transition " +
+    "hover:bg-[#074636]/10 active:bg-[#074636]/20 disabled:opacity-30 disabled:pointer-events-none " +
+    "focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#074636]"
 
   return (
     <div id="activities" className={`${SECTION_GAP} scroll-mt-8`}>
@@ -105,7 +104,7 @@ function ActivityCarousel({ list, status }) {
         {list.map((a) => (
           <article key={a.id} className={`${CARD} snap-start shrink-0 w-[82%] sm:w-[46%] lg:w-[31.5%] xl:w-[24%]`}>
             <div className={CARD_MEDIA}>
-              <Img src={a.image} alt={a.title} className={CARD_IMG} />
+              <img src={a.image} alt={a.title} className={CARD_IMG} />
               <span className={CARD_BADGE}>{a.type}</span>
             </div>
             <div className={CARD_BODY}>
@@ -124,8 +123,8 @@ function ActivityCarousel({ list, status }) {
       </div>
 
       {/* Barre de progression */}
-      <div className="mt-6 h-1.5 rounded-full bg-[#0C3E2E]/20 overflow-hidden" aria-hidden="true">
-        <div className="h-full rounded-full bg-[#0C3E2E] transition-all duration-300" style={{ width: `${25 + pos.progress * 75}%` }} />
+      <div className="mt-6 h-1.5 rounded-full bg-[#074636]/20 overflow-hidden" aria-hidden="true">
+        <div className="h-full rounded-full bg-[#074636] transition-all duration-300" style={{ width: `${25 + pos.progress * 75}%` }} />
       </div>
     </div>
   )
@@ -136,7 +135,7 @@ function BestTime({ list }) {
   const t = useT('activities')
   const { lang } = useLanguage()
   const levels = t('levels')
-  const cell = ['bg-[#0C3E2E]/10', 'bg-[#A9813A]/40', 'bg-[#A9813A]']
+  const cell = ['bg-[#074636]/10', 'bg-[#C49849]/40', 'bg-[#C49849]']
   return (
     <div className={SECTION_GAP}>
       <div className="mb-8 md:mb-12 flex flex-col lg:flex-row lg:items-end lg:justify-between gap-4 lg:gap-12">
@@ -198,7 +197,7 @@ function Moments() {
         <div ref={trackRef} className="flex w-max">
           {items.map((src, i) => (
             <div key={i} className="shrink-0 mr-4 w-[240px] md:w-[340px] aspect-[4/3] overflow-hidden rounded-2xl">
-              <Img src={src} alt="" className="w-full h-full object-cover" />
+              <img src={src} alt="" className="w-full h-full object-cover" />
             </div>
           ))}
         </div>
@@ -289,7 +288,7 @@ function Activities() {
 
   return (
     <>
-    <section className="w-full overflow-x-clip bg-[#F4F1EA] flex flex-col items-center">
+    <section className="w-full overflow-x-clip bg-[#D5E8E2] flex flex-col items-center">
       <Navbar />
       <PageHero slot="act.banner" title={t('title')} crumb={t('eyebrow')} text={t('intro')} moreHref="#activities" moreLabel={t('seeAll')} />
       <div ref={contentRef} className={SECTION_WIDTH}>

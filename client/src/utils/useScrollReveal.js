@@ -32,7 +32,7 @@ export function useScrollReveal(scope, deps = []) {
       const holdsFaded = (el) => [...faded].some((f) => el.contains(f))
 
       // 1. Grands blocs arrondis (bannières, cartes sur photo) : ouverture en fenêtre, photo qui se dézoome
-      const blocks = pick('[class*="rounded-3xl"], [class*="rounded-3xl"]').filter((el) => el.offsetHeight > 280)
+      const blocks = pick('[class*="rounded-3xl"], [class*="rounded-[2rem]"]').filter((el) => el.offsetHeight > 280)
       blocks.filter((el) => !seen(el)).forEach((el) => {
         const r = getComputedStyle(el).borderTopLeftRadius
         const img = [...el.children].find((c) => c.tagName === 'IMG')

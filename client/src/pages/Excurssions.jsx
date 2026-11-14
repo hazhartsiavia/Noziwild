@@ -1,8 +1,8 @@
 import React, { useState, useRef, useLayoutEffect } from 'react'
 import gsap from 'gsap'
 import { ScrollTrigger } from 'gsap/ScrollTrigger'
-import Ramena from '../assets/images/site/ramena-beach-aerial.jpg'
-import NosyIranja from '../assets/images/site/nosy-iranja-aerial.jpg'
+import Ramena from '../assets/images/Ramena.jpg'
+import NosyIranja from '../assets/images/NosyIranja.jpg'
 import Navbar from '../components/Navbar'
 import Footer from '../components/Footer'
 import { CARD, CARD_BADGE, CARD_BODY, CARD_FOOT, CARD_IMG, CARD_MEDIA, CARD_TEXT, CARD_TITLE, CardMeta } from '../components/Card'
@@ -13,14 +13,13 @@ import AddToTrip from '../components/AddToTrip'
 import { useT } from '../i18n/LanguageContext'
 import { useOffers } from '../utils/useOffers'
 import { A } from '../i18n/router'
-import Img from '../components/Img'
 
 gsap.registerPlugin(ScrollTrigger)
 
-const W = 'w-[90vw] max-w-[1360px]'
-const GOLD = 'bg-[#A9813A] hover:bg-[#8C6A2C]'
+const W = 'w-[90vw] lg:max-w-[95vw]'
+const GOLD = 'bg-[#C49849] hover:bg-[#a9813a]'
 const BTN = 'inline-flex items-center justify-center text-sm md:text-base font-medium px-6 py-3 rounded-full active:scale-95 transition'
-const H2 = 'text-[clamp(2.6rem,5.4vw,5rem)] text-forest leading-[1] [text-wrap:balance]'
+const H2 = 'text-[clamp(2rem,4.4vw,4rem)] font-bold text-forest leading-[1.08] tracking-tight'
 const SELECT = 'w-full h-12 rounded-full border border-slate-300 bg-white px-5 text-base text-slate-800 focus:outline-none focus:border-slate-700 focus:ring-1 focus:ring-slate-700'
 
 /* ---------------------------- Données ---------------------------- */
@@ -83,7 +82,7 @@ function Hero({ region, setRegion }) {
       <form
         ref={formRef}
         onSubmit={(e) => { e.preventDefault(); document.getElementById('results')?.scrollIntoView({ behavior: 'smooth' }) }}
-        className={`${W} relative z-10 mt-4 md:mt-5 grid grid-cols-1 md:grid-cols-[1fr_auto] gap-4 items-end rounded-3xl bg-white p-5 md:p-7 shadow-lg`}
+        className={`${W} relative z-10 mt-4 md:mt-5 grid grid-cols-1 md:grid-cols-[1fr_auto] gap-4 items-end rounded-[2rem] bg-white p-5 md:p-7 shadow-lg`}
       >
         <div className="hero-field">
           <label htmlFor="region" className="block mb-2 text-sm md:text-base text-slate-700">{t('region')}</label>
@@ -105,7 +104,7 @@ function Row({ item }) {
   return (
     <li className={`excursion-row ${CARD}`}>
       <Photo href={href || undefined} className={`block ${CARD_MEDIA}`}>
-        <Img src={item.image} alt={item.title} className={`row-img ${CARD_IMG}`} />
+        <img src={item.image} alt={item.title} className={`row-img ${CARD_IMG}`} />
         <span className={`row-badge ${CARD_BADGE}`}>{item.duration || item.place}</span>
       </Photo>
       <div className={CARD_BODY}>
@@ -180,7 +179,7 @@ function Excursions() {
 
   return (
     <>
-      <main className="w-full overflow-x-clip bg-[#F4F1EA] flex flex-col items-center">
+      <main className="w-full overflow-x-clip bg-[#D5E8E2] flex flex-col items-center">
         <Hero region={region} setRegion={setRegion} />
 
         {/* Résultats */}
@@ -197,20 +196,20 @@ function Excursions() {
           ) : visible.length > 0 ? (
             <ul className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-9">{visible.map((item) => <Row key={item.id} item={item} />)}</ul>
           ) : (
-            <div className="rounded-3xl bg-white p-10 text-center">
+            <div className="rounded-[2rem] bg-white p-10 text-center">
               <p className="text-lg text-slate-700">{t('empty')}</p>
-              <button type="button" onClick={() => setRegion('All regions')} className={`${BTN} bg-[#0C3E2E] hover:bg-[#14523F] text-white mt-5`}>{t('showAll')}</button>
+              <button type="button" onClick={() => setRegion('All regions')} className={`${BTN} bg-[#074636] hover:bg-[#0a5c47] text-white mt-5`}>{t('showAll')}</button>
             </div>
           )}
         </section>
 
         {/* Une journée type */}
-        <section ref={dayRef} className={`${W} mt-16 md:mt-28 rounded-3xl bg-[#0C3E2E] text-white p-6 sm:p-10 md:p-14`}>
-          <h2 className="day-title text-[clamp(2.6rem,5.4vw,5rem)] leading-[1] [text-wrap:balance] max-w-2xl">{t('dayTitle')}</h2>
+        <section ref={dayRef} className={`${W} mt-16 md:mt-28 rounded-[1.5rem] md:rounded-[2rem] bg-[#074636] text-white p-6 sm:p-10 md:p-14`}>
+          <h2 className="day-title text-[clamp(2rem,4.4vw,4rem)] font-bold leading-[1.08] tracking-tight max-w-2xl">{t('dayTitle')}</h2>
           <ol className="mt-10 grid grid-cols-1 md:grid-cols-4 gap-8">
             {t('steps').map((s, i) => (
               <li key={steps[i].title} className="day-step border-t border-white/25 pt-5">
-                <span className="day-num inline-block text-[#A9813A] text-lg font-semibold">{i + 1}</span>
+                <span className="day-num inline-block text-[#C49849] text-lg font-semibold">{i + 1}</span>
                 <h3 className="mt-2 text-xl font-bold">{s.title}</h3>
                 <p className="mt-2 text-sm md:text-base text-white/75 leading-relaxed">{s.text}</p>
               </li>

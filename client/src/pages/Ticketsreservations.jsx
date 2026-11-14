@@ -9,16 +9,15 @@ import { useOffers } from '../utils/useOffers'
 import { gsap } from 'gsap'
 import { ScrollTrigger } from 'gsap/ScrollTrigger'
 import { A } from '../i18n/router'
-import Img from '../components/Img'
 
 gsap.registerPlugin(ScrollTrigger)
 
 /* Constantes partagées : mêmes valeurs que dans les autres pages */
-const SECTION_WIDTH = "w-[90vw] max-w-[1360px]"
+const SECTION_WIDTH = "w-[90vw] lg:max-w-[90vw] xl:max-w-[95vw]"
 const SECTION_TITLE = "text-3xl sm:text-4xl md:text-5xl lg:text-[52px] font-medium text-forest leading-[1.15] tracking-tight"
 const SECTION_SUBTITLE = "text-sm sm:text-base md:text-lg text-slate-600 leading-relaxed max-w-3xl"
 const META_TEXT = "text-xs sm:text-sm"
-const BADGE = "inline-block bg-[#F4F1EA] text-forest text-[11px] font-semibold uppercase tracking-[0.14em] px-3 py-1.5 rounded-sm"
+const BADGE = "inline-block bg-[#C49849] text-white text-xs sm:text-sm font-medium px-3 py-1.5 rounded-sm"
 const BUTTON = "text-sm font-medium px-5 py-2.5 rounded-full md:px-6 md:py-3 active:scale-95 transition"
 const SECTION_GAP = "mt-[60px] md:mt-[120px]"
 
@@ -68,7 +67,7 @@ function Qr({ className = '' }) {
   })
   return (
     <div className={`grid grid-cols-9 gap-[3px] rounded-xl bg-white p-3 ${className}`} aria-hidden="true">
-      {cells.map((on, i) => <span key={i} className={`aspect-square rounded-[2px] ${on ? 'bg-[#0C3E2E]' : 'bg-transparent'}`} />)}
+      {cells.map((on, i) => <span key={i} className={`aspect-square rounded-[2px] ${on ? 'bg-[#084838]' : 'bg-transparent'}`} />)}
     </div>
   )
 }
@@ -76,10 +75,10 @@ function Qr({ className = '' }) {
 // Hero : un grand billet avec souche détachable
 function Hero() {
   const t = useT('tickets')
-  const notch = "absolute w-8 h-8 rounded-full bg-[#F4F1EA]"
+  const notch = "absolute w-8 h-8 rounded-full bg-[#D5E8E2]"
   return (
     <section data-ticket>
-      <div className="relative grid grid-cols-1 lg:grid-cols-[1fr_290px] overflow-hidden rounded-3xl bg-[#0C3E2E] text-white">
+      <div className="relative grid grid-cols-1 lg:grid-cols-[1fr_290px] overflow-hidden rounded-3xl bg-[#084838] text-white">
         <div className="p-6 md:p-14">
           <span data-hero className={BADGE}>{t('badge')}</span>
           <h1 data-hero className="mt-6 text-4xl sm:text-5xl md:text-6xl xl:text-7xl font-medium uppercase leading-[1.1] tracking-tight">
@@ -89,7 +88,7 @@ function Hero() {
             {t('intro')}
           </p>
           <div data-hero className="mt-8 flex flex-wrap items-center gap-4">
-            <A href="#tickets" className={`bg-[#A9813A] hover:bg-[#8C6A2C] text-white ${BUTTON}`}>{t('browse')}</A>
+            <A href="#tickets" className={`bg-[#C49849] hover:bg-[#b08339] text-white ${BUTTON}`}>{t('browse')}</A>
             <A href="/contact" className="inline-flex items-center gap-2 text-sm md:text-base font-medium hover:gap-3 transition-all">{t('ask')} <ArrowIcon /></A>
           </div>
         </div>
@@ -109,15 +108,15 @@ function Hero() {
 
 // Carte en forme de billet : photo, infos, souche
 function TicketCard({ t }) {
-  const notch = "absolute -left-[9px] w-4 h-4 rounded-full bg-[#F4F1EA]"
+  const notch = "absolute -left-[9px] w-4 h-4 rounded-full bg-[#D5E8E2]"
   return (
     <article className="flex overflow-hidden rounded-2xl bg-white">
-      <Img src={t.image} alt={t.name} className="w-[30%] sm:w-[34%] object-cover" />
+      <img src={t.image} alt={t.name} className="w-[30%] sm:w-[34%] object-cover" />
       <div className="flex-1 min-w-0 p-4 md:p-5">
         <p className={`flex items-center gap-1.5 ${META_TEXT} text-slate-600`}><PinIcon />{t.place}</p>
         <h3 className="mt-1 text-lg md:text-2xl font-medium leading-snug text-forest">{t.name}</h3>
         <ul className="mt-3 flex flex-wrap gap-2">
-          {t.perks.map((p) => <li key={p} className="rounded-full bg-[#F4F1EA] px-3 py-1 text-xs text-slate-700">{p}</li>)}
+          {t.perks.map((p) => <li key={p} className="rounded-full bg-[#D5E8E2] px-3 py-1 text-xs text-slate-700">{p}</li>)}
         </ul>
       </div>
       <div className="relative shrink-0 w-[100px] md:w-[130px] flex flex-col items-center justify-center gap-1.5 border-l-2 border-dashed border-slate-300 p-3 text-center">
@@ -163,7 +162,7 @@ function Browse() {
             role="tab"
             aria-selected={category === c.id}
             onClick={() => setCategory(c.id)}
-            className={`rounded-full px-5 py-2 text-sm md:text-base font-medium transition ${category === c.id ? 'bg-[#0C3E2E] text-white' : 'bg-white text-slate-700 hover:bg-white/70'}`}
+            className={`rounded-full px-5 py-2 text-sm md:text-base font-medium transition ${category === c.id ? 'bg-[#084838] text-white' : 'bg-white text-slate-700 hover:bg-white/70'}`}
           >
             {c.label}
           </button>
@@ -186,10 +185,10 @@ function HowItWorks() {
     <div className={SECTION_GAP}>
       <h2 className={`${SECTION_TITLE} text-center mb-10 md:mb-16`}>{t('stepsTitle')}</h2>
       <ol data-stagger className="relative grid grid-cols-1 md:grid-cols-3 gap-10 md:gap-6">
-        <span className="hidden md:block absolute left-[17%] right-[17%] top-8 border-t-2 border-dashed border-[#0C3E2E]/30" aria-hidden="true" />
+        <span className="hidden md:block absolute left-[17%] right-[17%] top-8 border-t-2 border-dashed border-[#084838]/30" aria-hidden="true" />
         {steps.map((s) => (
           <li key={s.id} className="relative flex flex-col items-center text-center">
-            <span className="w-16 h-16 rounded-full bg-[#A9813A] text-white text-2xl font-medium flex items-center justify-center ring-8 ring-[#F4F1EA]">{s.id}</span>
+            <span className="w-16 h-16 rounded-full bg-[#C49849] text-white text-2xl font-medium flex items-center justify-center ring-8 ring-[#D5E8E2]">{s.id}</span>
             <h3 className="mt-6 text-xl md:text-2xl font-medium text-forest">{s.title}</h3>
             <p className="mt-2 max-w-xs text-sm md:text-base text-slate-600 leading-relaxed">{s.text}</p>
           </li>
@@ -205,10 +204,10 @@ function AppSection() {
   return (
     <div className={`${SECTION_GAP} grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-center`}>
       <div className="mx-auto w-[280px] md:w-[300px]">
-        <div data-bob className="rounded-3xl border-[10px] border-[#0C3E2E] bg-white p-4 shadow-xl">
+        <div data-bob className="rounded-[2.5rem] border-[10px] border-[#084838] bg-white p-4 shadow-xl">
           <div className="mx-auto mb-4 h-1.5 w-16 rounded-full bg-slate-200" />
-          <div className="rounded-2xl bg-[#F4F1EA] p-4 text-center">
-            <span className="inline-flex items-center gap-1.5 rounded-full bg-[#0C3E2E] px-3 py-1 text-xs text-white"><CheckIcon /> {t('confirmed')}</span>
+          <div className="rounded-2xl bg-[#D5E8E2] p-4 text-center">
+            <span className="inline-flex items-center gap-1.5 rounded-full bg-[#084838] px-3 py-1 text-xs text-white"><CheckIcon /> {t('confirmed')}</span>
             <p className="mt-3 text-lg font-medium text-slate-900">{t('phoneTitle')}</p>
             <p className={`${META_TEXT} text-slate-600`}>{t('phoneMeta')}</p>
             <Qr className="mx-auto mt-4 w-40" />
@@ -223,7 +222,7 @@ function AppSection() {
         <ul className="mt-8 flex flex-col gap-4">
           {t('benefits').map((b) => (
             <li key={b} className="flex items-center gap-4 text-base md:text-xl text-slate-800">
-              <span className="shrink-0 w-8 h-8 rounded-full bg-[#0C3E2E] text-white flex items-center justify-center"><CheckIcon /></span>
+              <span className="shrink-0 w-8 h-8 rounded-full bg-[#084838] text-white flex items-center justify-center"><CheckIcon /></span>
               {b}
             </li>
           ))}
@@ -245,7 +244,7 @@ function Faq() {
       <div data-stagger className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-4 md:gap-6">
         {t('faqs').map((f, i) => (
           <article key={f.q} className="rounded-2xl bg-white p-6 md:p-7">
-            <span className="w-9 h-9 rounded-full bg-[#A9813A] text-white text-sm font-medium flex items-center justify-center">{i + 1}</span>
+            <span className="w-9 h-9 rounded-full bg-[#C49849] text-white text-sm font-medium flex items-center justify-center">{i + 1}</span>
             <h3 className="mt-4 text-lg md:text-xl font-medium text-forest leading-snug">{f.q}</h3>
             <p className="mt-2 text-sm md:text-base text-slate-600 leading-relaxed">{f.a}</p>
           </article>
@@ -258,9 +257,9 @@ function Faq() {
 // CTA : bandeau en forme de billet
 function Cta() {
   const t = useT('tickets')
-  const notch = "absolute w-8 h-8 rounded-full bg-[#F4F1EA]"
+  const notch = "absolute w-8 h-8 rounded-full bg-[#D5E8E2]"
   return (
-    <div className={`${SECTION_GAP} relative overflow-hidden rounded-3xl bg-[#A9813A] text-white grid grid-cols-1 md:grid-cols-[1fr_auto]`}>
+    <div className={`${SECTION_GAP} relative overflow-hidden rounded-3xl bg-[#C49849] text-white grid grid-cols-1 md:grid-cols-[1fr_auto]`}>
       <div className="p-6 md:p-12">
         <h2 className="text-3xl sm:text-4xl md:text-5xl font-medium leading-[1.15] tracking-tight">{t('ctaTitle')}</h2>
         <p className="mt-3 max-w-xl text-sm md:text-lg text-white/90 leading-relaxed">{t('ctaText')}</p>
@@ -268,7 +267,7 @@ function Cta() {
       <div className="relative flex items-center justify-center p-6 md:p-12 border-t-2 md:border-t-0 md:border-l-2 border-dashed border-white/50">
         <span className={`${notch} -top-4 -left-4 md:left-[-16px]`} />
         <span className={`${notch} -top-4 -right-4 md:top-auto md:right-auto md:-bottom-4 md:-left-4`} />
-        <A href="/contact" className={`inline-flex items-center gap-3 bg-[#0C3E2E] hover:bg-[#14523F] text-white ${BUTTON}`}>{t('ctaButton')} <ArrowIcon /></A>
+        <A href="/contact" className={`inline-flex items-center gap-3 bg-[#084838] hover:bg-[#0a5c47] text-white ${BUTTON}`}>{t('ctaButton')} <ArrowIcon /></A>
       </div>
     </div>
   )
@@ -308,7 +307,7 @@ function TicketsReservations() {
 
   return (
     <>
-    <section className="w-full pt-0 pb-12 md:pb-20 bg-[#F4F1EA] flex flex-col items-center">
+    <section className="w-full pt-0 pb-12 md:pb-20 bg-[#D5E8E2] flex flex-col items-center">
       <Navbar />
       <div ref={contentRef} className={`${SECTION_WIDTH} mt-6 md:mt-10`}>
         <Hero />

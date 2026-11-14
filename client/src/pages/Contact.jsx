@@ -1,7 +1,7 @@
 import React, { useRef, useState } from 'react'
-import NosyIranja from "../assets/images/site/nosy-iranja-aerial.jpg";
-import Ambanja from "../assets/images/site/sambirano-river.jpg";
-import NosyLonjo from "../assets/images/site/sugar-loaf-view.jpg";
+import NosyIranja from "../assets/images/NosyIranja.jpg";
+import Ambanja from "../assets/images/Ambanja.jpg";
+import NosyLonjo from "../assets/images/NosyLonjo.jpg";
 import Navbar from '../components/Navbar';
 import Footer from '../components/Footer';
 import PageHero from '../components/PageHero'
@@ -12,11 +12,10 @@ import { useScrollReveal } from '../utils/useScrollReveal'
 import { usePhoto } from '../sitePhotos'
 import { A } from '../i18n/router'
 import SiteMedia from '../components/SiteMedia'
-import Img from '../components/Img'
 
 
 /* Constantes partagées : mêmes valeurs que dans les autres sections */
-const SECTION_WIDTH = "w-[90vw] max-w-[1360px] mt-10"
+const SECTION_WIDTH = "w-[90vw] lg:max-w-[90vw] xl:max-w-[95vw] mt-10"
 const SECTION_SUBTITLE = "text-sm sm:text-base md:text-lg text-slate-600 leading-relaxed max-w-3xl"
 const META_TEXT = "text-xs sm:text-sm"
 const BUTTON = "text-sm font-medium px-5 py-2.5 rounded-full"
@@ -133,7 +132,7 @@ const socials = [
 function ContactItem({ icon, text, href }) {
   const inner = (
     <>
-      <span className="shrink-0 w-12 h-12 md:w-[68px] md:h-[68px] rounded-full bg-[#A9813A] text-white flex items-center justify-center">
+      <span className="shrink-0 w-12 h-12 md:w-[68px] md:h-[68px] rounded-full bg-[#C49849] text-white flex items-center justify-center">
         {icon}
       </span>
       <span className="text-base md:text-xl lg:text-2xl text-slate-800 break-words">{text}</span>
@@ -150,7 +149,7 @@ function ContactItem({ icon, text, href }) {
 function SocialCard() {
   const t = useT('contact')
   return (
-    <div className="relative md:absolute md:-top-12 md:right-10 z-10 w-fit mb-8 md:mb-0 rounded-2xl bg-[#0C3E2E] text-white px-6 py-4 md:px-9 md:py-5">
+    <div className="relative md:absolute md:-top-12 md:right-10 z-10 w-fit mb-8 md:mb-0 rounded-2xl bg-[#074636] text-white px-6 py-4 md:px-9 md:py-5">
       <p className="text-sm md:text-base font-medium">{t('social')}</p>
       <ul className="mt-3 md:mt-4 flex items-center gap-5 md:gap-6">
         {socials.map((social) => {
@@ -185,11 +184,11 @@ function CallBanner() {
 
         {/* Deux photos inclinées */}
         <div className="relative shrink-0 w-36 h-32 md:w-44 md:h-40 mx-auto sm:mx-0" aria-hidden="true">
-          <div className={`${frame} left-0 top-0`}>
-            <Img src={first} alt="" className={photoCls} />
+          <div className={`${frame} left-0 top-0 -rotate-6`}>
+            <img src={first} alt="" className={photoCls} />
           </div>
-          <div className={`${frame} left-[42%] top-[10%]`}>
-            <Img src={second} alt="" className={photoCls} />
+          <div className={`${frame} left-[42%] top-[10%] rotate-6`}>
+            <img src={second} alt="" className={photoCls} />
           </div>
         </div>
 
@@ -200,7 +199,7 @@ function CallBanner() {
 
         <A
           href={call.href}
-          className={`self-start sm:self-center shrink-0 bg-[#A9813A] hover:bg-[#8C6A2C] active:scale-95 transition text-white ${BUTTON} md:px-6 md:py-3`}
+          className={`self-start sm:self-center shrink-0 bg-[#C49849] hover:bg-[#b53d2a] active:scale-95 transition text-white ${BUTTON} md:px-6 md:py-3`}
         >
           {t('callCta')}
         </A>
@@ -237,7 +236,7 @@ function Contact() {
   return (
     <>
 
-    <section ref={root} id="contact" className="w-full pt-0 pb-12 md:pb-20 bg-[#F4F1EA] flex flex-col items-center">
+    <section ref={root} id="contact" className="w-full pt-0 pb-12 md:pb-20 bg-[#D5E8E2] flex flex-col items-center">
         <Navbar />
       <PageHero slot="contact.hero" title={t('title')} crumb={t('title')} text={t('text')} moreHref="#contact-form" moreLabel={t('cta')} />
       <div className={SECTION_WIDTH}>
@@ -281,7 +280,7 @@ function Contact() {
                     <span
                       className="block text-center rounded-full border border-slate-300 px-3 py-3 text-sm text-slate-700 transition
                                  hover:border-slate-500
-                                 peer-checked:bg-[#0C3E2E] peer-checked:border-[#0C3E2E] peer-checked:text-white
+                                 peer-checked:bg-[#074636] peer-checked:border-[#074636] peer-checked:text-white
                                  peer-focus-visible:ring-2 peer-focus-visible:ring-slate-700 peer-focus-visible:ring-offset-2"
                     >
                       {t('inquiryTypes')[i]}
@@ -314,7 +313,7 @@ function Contact() {
               <button
                 type="submit"
                 disabled={status === 'sending'}
-                className={`self-start bg-[#A9813A] hover:bg-[#8C6A2C] active:scale-95 transition text-white disabled:opacity-60 disabled:cursor-wait ${BUTTON} md:px-6 md:py-3`}
+                className={`self-start bg-[#C49849] hover:bg-[#b53d2a] active:scale-95 transition text-white disabled:opacity-60 disabled:cursor-wait ${BUTTON} md:px-6 md:py-3`}
               >
                 {status === 'sending' ? t('sending') : t('send')}
               </button>

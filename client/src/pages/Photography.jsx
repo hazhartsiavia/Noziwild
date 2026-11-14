@@ -1,10 +1,10 @@
 import React, { useEffect, useLayoutEffect, useRef, useState } from 'react'
 import { createPortal } from 'react-dom'
-import Ambanja from "../assets/images/site/sambirano-river.jpg";
-import NosyLonjo from "../assets/images/site/sugar-loaf-view.jpg";
-import NosyIranja from "../assets/images/site/nosy-iranja-aerial.jpg";
-import Ramena from "../assets/images/site/ramena-beach-aerial.jpg";
-import Tana from "../assets/images/site/antananarivo-rice-fields.jpg";
+import Ambanja from "../assets/images/Ambanja.jpg";
+import NosyLonjo from "../assets/images/NosyLonjo.jpg";
+import NosyIranja from "../assets/images/NosyIranja.jpg";
+import Ramena from "../assets/images/Ramena.jpg";
+import Tana from "../assets/images/Tana.jpg";
 import Navbar from '../components/Navbar';
 import Footer from '../components/Footer';
 import AddToTrip from '../components/AddToTrip'
@@ -17,17 +17,16 @@ import { ScrollTrigger } from 'gsap/ScrollTrigger'
 import { usePhoto } from '../sitePhotos'
 import { A } from '../i18n/router'
 import SiteMedia from '../components/SiteMedia'
-import Img from '../components/Img'
 
 gsap.registerPlugin(ScrollTrigger)
 
 /* Constantes partagées : mêmes valeurs que dans les autres pages */
-const SECTION_WIDTH = "w-[90vw] max-w-[1360px]"
+const SECTION_WIDTH = "w-[90vw] lg:max-w-[90vw] xl:max-w-[95vw]"
 const SECTION_TITLE = "text-3xl sm:text-4xl md:text-5xl lg:text-[52px] font-medium text-forest leading-[1.15] tracking-tight"
 const SECTION_SUBTITLE = "text-sm sm:text-base md:text-lg text-slate-600 leading-relaxed max-w-3xl"
 const META_TEXT = "text-xs sm:text-sm"
 const STATEMENT_TITLE = "text-4xl sm:text-5xl md:text-6xl xl:text-7xl font-medium uppercase leading-[1.15] tracking-tight text-forest"
-const BADGE = "inline-block bg-[#F4F1EA] text-forest text-[11px] font-semibold uppercase tracking-[0.14em] px-3 py-1.5 rounded-sm"
+const BADGE = "inline-block bg-[#C49849] text-white text-xs sm:text-sm font-medium px-3 py-1.5 rounded-sm"
 const BUTTON = "text-sm font-medium px-5 py-2.5 rounded-full md:px-6 md:py-3 active:scale-95 transition"
 const SECTION_GAP = "mt-[60px] md:mt-[120px]"
 
@@ -82,7 +81,7 @@ function Polaroid({ src, speed, tilt, className = '' }) {
     <div data-float data-speed={speed} className={`w-[62%] ${className}`}>
       <div data-bob>
         <div className={`${tilt} rounded-xl bg-white p-2 lg:p-3 shadow-md`}>
-          <Img src={src} alt="" className="w-full aspect-[4/5] object-cover rounded-md" />
+          <img src={src} alt="" className="w-full aspect-[4/5] object-cover rounded-md" />
         </div>
       </div>
     </div>
@@ -104,9 +103,9 @@ function Hero() {
 
       {/* Pile de gauche */}
       <div className="hidden lg:flex flex-col">
-        <Polaroid src={photo('photo.hero.1')} speed={-10} tilt="" className="self-start" />
-        <Polaroid src={photo('photo.hero.2')} speed={6} tilt="" className="self-end -mt-10 relative z-10" />
-        <Polaroid src={photo('photo.hero.3')} speed={-6} tilt="" className="self-start -mt-10 relative z-20" />
+        <Polaroid src={photo('photo.hero.1')} speed={-10} tilt="-rotate-6" className="self-start" />
+        <Polaroid src={photo('photo.hero.2')} speed={6} tilt="rotate-3" className="self-end -mt-10 relative z-10" />
+        <Polaroid src={photo('photo.hero.3')} speed={-6} tilt="-rotate-3" className="self-start -mt-10 relative z-20" />
       </div>
 
       {/* Texte */}
@@ -120,7 +119,7 @@ function Hero() {
           {t('intro')}
         </p>
         <div data-hero className="mt-8 flex flex-wrap items-center justify-center gap-4">
-          <A href="#sessions" className={`bg-[#0C3E2E] hover:bg-[#14523F] text-white ${BUTTON}`}>{t('book')}</A>
+          <A href="#sessions" className={`bg-[#084838] hover:bg-[#0a5c47] text-white ${BUTTON}`}>{t('book')}</A>
           <A href="#gallery" className="inline-flex items-center gap-2 text-sm md:text-base font-medium text-slate-800 hover:gap-3 transition-all">
             {t('seeGallery')} <ArrowIcon />
           </A>
@@ -128,7 +127,7 @@ function Hero() {
 
         <ul data-hero className="mt-10 md:mt-12 flex flex-wrap items-center justify-center gap-x-8 md:gap-x-12 gap-y-4">
           {heroStats.map((st, i) => (
-            <li key={st.id} className={`text-center ${i > 0 ? 'sm:pl-8 md:pl-12 sm:border-l sm:border-[#0C3E2E]/20' : ''}`}>
+            <li key={st.id} className={`text-center ${i > 0 ? 'sm:pl-8 md:pl-12 sm:border-l sm:border-[#084838]/20' : ''}`}>
               <p className="text-2xl md:text-4xl leading-none text-slate-800">{st.value}</p>
               <p className={`mt-1 ${META_TEXT} text-slate-600`}>{t('heroStats')[i]}</p>
             </li>
@@ -138,15 +137,15 @@ function Hero() {
 
       {/* Pile de droite */}
       <div className="hidden lg:flex flex-col">
-        <Polaroid src={photo('photo.hero.4')} speed={10} tilt="" className="self-end" />
-        <Polaroid src={photo('photo.hero.5')} speed={-6} tilt="" className="self-start -mt-10 relative z-10" />
-        <Polaroid src={photo('photo.hero.6')} speed={6} tilt="" className="self-end -mt-10 relative z-20" />
+        <Polaroid src={photo('photo.hero.4')} speed={10} tilt="rotate-6" className="self-end" />
+        <Polaroid src={photo('photo.hero.5')} speed={-6} tilt="-rotate-3" className="self-start -mt-10 relative z-10" />
+        <Polaroid src={photo('photo.hero.6')} speed={6} tilt="rotate-3" className="self-end -mt-10 relative z-20" />
       </div>
 
       {/* Tablette / mobile : rangée de photos sous le texte */}
       <div data-hero className="lg:hidden grid grid-cols-3 md:grid-cols-6 gap-3">
         {[1, 2, 6, 4, 5, 3].map((n) => photo(`photo.hero.${n}`)).map((src, i) => (
-          <Img key={i} src={src} alt="" className="w-full aspect-square object-cover rounded-xl" />
+          <img key={i} src={src} alt="" className="w-full aspect-square object-cover rounded-xl" />
         ))}
       </div>
     </section>
@@ -196,7 +195,7 @@ function Lightbox({ items, index, onClose, onStep }) {
       </button>
 
       <figure className="max-w-5xl max-h-full flex flex-col items-center" onClick={(e) => e.stopPropagation()}>
-        <Img ref={imgRef} src={item.image} alt={item.caption} className="max-h-[75vh] w-auto max-w-full rounded-xl object-contain" />
+        <img ref={imgRef} src={item.image} alt={item.caption} className="max-h-[75vh] w-auto max-w-full rounded-xl object-contain" />
         <figcaption className="mt-4 text-center text-white">
           <span className="block text-base md:text-lg">{item.caption}</span>
           <span className="block text-sm text-white/60 tabular-nums">{String(index + 1).padStart(2, '0')} / {String(items.length).padStart(2, '0')}</span>
@@ -230,7 +229,7 @@ function Gallery() {
   const step = (delta) => setOpen((i) => (i === null ? i : (i + delta + list.length) % list.length))
 
   const tab = (active) =>
-    `rounded-full px-5 py-2 text-sm md:text-base font-medium transition ${active ? 'bg-[#0C3E2E] text-white' : 'bg-white text-slate-700 hover:bg-white/70'}`
+    `rounded-full px-5 py-2 text-sm md:text-base font-medium transition ${active ? 'bg-[#084838] text-white' : 'bg-white text-slate-700 hover:bg-white/70'}`
 
   return (
     <div id="gallery" className={`${SECTION_GAP} scroll-mt-8`}>
@@ -257,7 +256,7 @@ function Gallery() {
             aria-label={t('open', { caption: p.caption })}
             className="group relative mb-3 md:mb-5 block w-full break-inside-avoid overflow-hidden rounded-2xl"
           >
-            <Img src={p.image} alt={p.caption} className={`w-full ${p.ratio} object-cover img-zoom`} />
+            <img src={p.image} alt={p.caption} className={`w-full ${p.ratio} object-cover transition-transform duration-700 group-hover:scale-105`} />
             <span className="absolute inset-x-0 bottom-0 bg-gradient-to-t from-black/70 to-transparent p-4 text-left text-sm text-white opacity-0 transition-opacity duration-300 group-hover:opacity-100 group-focus-visible:opacity-100">
               {p.caption}
             </span>
@@ -283,9 +282,9 @@ function Sessions() {
       </div>
 
       <OffersStatus status={status} empty={sessions.length === 0} />
-      <ul className="border-t border-[#0C3E2E]/20">
+      <ul className="border-t border-[#084838]/20">
         {sessions.map((s, i) => (
-          <li key={s.id} className="border-b border-[#0C3E2E]/20">
+          <li key={s.id} className="border-b border-[#084838]/20">
             <div className="group grid grid-cols-1 lg:grid-cols-[60px_1.4fr_1.6fr_40px] items-center gap-3 lg:gap-8 py-6 md:py-8 px-2 md:px-4 transition hover:bg-white/60 rounded-2xl">
               <span className="text-sm md:text-lg tabular-nums text-[#9a742f]">{String(i + 1).padStart(2, '0')}</span>
 
@@ -337,7 +336,7 @@ function BeforeAfter() {
         <ol className="mt-8 flex flex-col gap-5">
           {steps.map((s) => (
             <li key={s.id} className="flex items-start gap-4">
-              <span className="shrink-0 w-9 h-9 rounded-full bg-[#A9813A] text-white flex items-center justify-center text-sm font-medium">{s.id}</span>
+              <span className="shrink-0 w-9 h-9 rounded-full bg-[#C49849] text-white flex items-center justify-center text-sm font-medium">{s.id}</span>
               <div>
                 <h3 className="text-lg md:text-xl font-medium text-forest">{s.title}</h3>
                 <p className="mt-1 text-sm md:text-base text-slate-600 leading-relaxed">{s.text}</p>
@@ -349,15 +348,15 @@ function BeforeAfter() {
 
       <div ref={boxRef} className="relative aspect-[4/3] overflow-hidden rounded-3xl select-none">
         {/* Avant : photo terne */}
-        <Img src={photo('photo.edit')} alt={t('beforeAlt')} className="absolute inset-0 w-full h-full object-cover" style={{ filter: 'saturate(0.45) contrast(0.85) brightness(0.9)' }} />
+        <img src={photo('photo.edit')} alt={t('beforeAlt')} className="absolute inset-0 w-full h-full object-cover" style={{ filter: 'saturate(0.45) contrast(0.85) brightness(0.9)' }} />
         {/* Après : photo retouchée, révélée par le curseur */}
-        <Img src={photo('photo.edit')} alt={t('afterAlt')} className="absolute inset-0 w-full h-full object-cover" style={{ clipPath: `inset(0 ${100 - pos}% 0 0)` }} />
+        <img src={photo('photo.edit')} alt={t('afterAlt')} className="absolute inset-0 w-full h-full object-cover" style={{ clipPath: `inset(0 ${100 - pos}% 0 0)` }} />
 
-        <span className="absolute left-4 top-4 rounded-full bg-[#0C3E2E] px-3 py-1 text-xs md:text-sm text-white">{t('after')}</span>
+        <span className="absolute left-4 top-4 rounded-full bg-[#084838] px-3 py-1 text-xs md:text-sm text-white">{t('after')}</span>
         <span className="absolute right-4 top-4 rounded-full bg-white/90 px-3 py-1 text-xs md:text-sm text-slate-800">{t('before')}</span>
 
         <div className="absolute inset-y-0 w-0.5 bg-white pointer-events-none" style={{ left: `${pos}%` }}>
-          <span className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-11 h-11 rounded-full bg-white shadow-md flex items-center justify-center text-[#0C3E2E]">
+          <span className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-11 h-11 rounded-full bg-white shadow-md flex items-center justify-center text-[#084838]">
             <Svg className="w-5 h-5"><path d="m9 6-6 6 6 6M15 6l6 6-6 6" /></Svg>
           </span>
         </div>
@@ -378,7 +377,7 @@ function Keepsakes() {
   const t = useT('photography')
   const keepsakes = localize(KEEPSAKES, t('keepsakes'))
   return (
-    <div className={`${SECTION_GAP} rounded-3xl bg-[#0C3E2E] text-white p-6 md:p-12`}>
+    <div className={`${SECTION_GAP} rounded-3xl bg-[#084838] text-white p-6 md:p-12`}>
       <div className="flex flex-col lg:flex-row lg:items-end lg:justify-between gap-5 lg:gap-12">
         <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-[52px] font-medium leading-[1.15] tracking-tight lg:max-w-[45%]">{t('keepTitle')}</h2>
         <p className="text-sm md:text-lg text-white/75 leading-relaxed lg:max-w-md">{t('keepText')}</p>
@@ -440,7 +439,7 @@ function Cta() {
           {t('ctaText')}
         </p>
         <div className="mt-8 flex flex-wrap items-center justify-center gap-3">
-          <A href="/contact" className={`bg-[#A9813A] hover:bg-[#8C6A2C] text-white ${BUTTON}`}>{t('ctaBook')}</A>
+          <A href="/contact" className={`bg-[#C49849] hover:bg-[#b08339] text-white ${BUTTON}`}>{t('ctaBook')}</A>
           <A href="#gallery" className={`border border-white/50 hover:bg-white/10 text-white ${BUTTON}`}>{t('ctaBack')}</A>
         </div>
       </div>
@@ -494,7 +493,7 @@ function Photography() {
 
   return (
     <>
-    <section className="w-full pt-0 pb-12 md:pb-20 bg-[#F4F1EA] flex flex-col items-center">
+    <section className="w-full pt-0 pb-12 md:pb-20 bg-[#D5E8E2] flex flex-col items-center">
       <Navbar />
       <div ref={contentRef} className={`${SECTION_WIDTH} mt-6 md:mt-10`}>
         <Hero />

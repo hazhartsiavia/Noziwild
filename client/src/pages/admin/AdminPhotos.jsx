@@ -172,7 +172,7 @@ function VisibilitySwitch({ page, onChanged, onError }) {
       disabled={busy}
       className="inline-flex items-center gap-2 text-sm text-slate-700 disabled:opacity-60"
     >
-      <span className={`relative h-6 w-11 rounded-full transition-colors ${visible ? 'bg-[#0C3E2E]' : 'bg-slate-300'}`}>
+      <span className={`relative h-6 w-11 rounded-full transition-colors ${visible ? 'bg-[#084838]' : 'bg-slate-300'}`}>
         <span className={`absolute top-0.5 h-5 w-5 rounded-full bg-white transition-all ${visible ? 'left-[22px]' : 'left-0.5'}`} />
       </span>
       {visible ? 'Visible' : 'Hidden'}

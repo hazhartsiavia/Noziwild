@@ -1,16 +1,15 @@
 import React, { useState, useRef, useLayoutEffect } from 'react'
 import gsap from 'gsap'
 import { ScrollTrigger } from 'gsap/ScrollTrigger'
-import Ramena from '../assets/images/site/ramena-beach-aerial.jpg'
-import NosyIranja from '../assets/images/site/nosy-iranja-aerial.jpg'
-import NosyLonjo from '../assets/images/site/sugar-loaf-view.jpg'
-import Ambanja from '../assets/images/site/sambirano-river.jpg'
-import Deux from '../assets/images/site/coastal-tsingy.jpg'
-import Tana from '../assets/images/site/antananarivo-rice-fields.jpg'
+import Ramena from '../assets/images/Ramena.jpg'
+import NosyIranja from '../assets/images/NosyIranja.jpg'
+import NosyLonjo from '../assets/images/NosyLonjo.jpg'
+import Ambanja from '../assets/images/Ambanja.jpg'
+import Deux from '../assets/images/2.jpg'
+import Tana from '../assets/images/Tana.jpg'
 import Navbar from '../components/Navbar'
 import Footer from '../components/Footer'
 import PageHero from '../components/PageHero'
-import Img from '../components/Img'
 import PageCta, { PAGE_CTA_GOLD, PAGE_CTA_GHOST } from '../components/PageCta'
 import { slugify } from './destinationsData'
 import { useLanguage, useT } from '../i18n/LanguageContext'
@@ -20,10 +19,10 @@ import { A } from '../i18n/router'
 
 gsap.registerPlugin(ScrollTrigger)
 
-const W = 'w-[90vw] max-w-[1360px]'
-const GOLD = 'bg-[#A9813A] hover:bg-[#8C6A2C]'
+const W = 'w-[90vw] lg:max-w-[95vw]'
+const GOLD = 'bg-[#C49849] hover:bg-[#a9813a]'
 const BTN = 'inline-flex items-center justify-center text-sm font-medium px-6 py-3 rounded-full active:scale-95 transition'
-const H2 = 'text-[clamp(2.6rem,5.4vw,5rem)] text-forest leading-[1] [text-wrap:balance]'
+const H2 = 'text-[clamp(2rem,4.4vw,4rem)] font-bold text-forest leading-[1.08] tracking-tight'
 
 /* ---------------------------- Données ---------------------------- */
 // Noms, accroches, textes et lieux affichés : les mêmes que la page d'accueil (home.regions, même ordre).
@@ -123,7 +122,7 @@ function RegionNav() {
     const setActive = (id) =>
       links.forEach((l) => {
         const on = l.getAttribute('href') === `#${id}`
-        l.classList.toggle('bg-[#0C3E2E]', on)
+        l.classList.toggle('bg-[#074636]', on)
         l.classList.toggle('text-white', on)
       })
 
@@ -152,7 +151,7 @@ function RegionNav() {
       <ul className="flex gap-2 rounded-full bg-white/85 backdrop-blur-md p-2 shadow-sm overflow-x-auto max-w-[90vw] [scrollbar-width:none] [&::-webkit-scrollbar]:hidden">
         {regions.map((r, i) => (
           <li key={r.id} className="shrink-0">
-            <A href={`#${r.id}`} className="region-link block rounded-full px-5 py-2.5 text-sm md:text-base text-slate-800 hover:bg-[#0C3E2E] hover:text-white transition">
+            <A href={`#${r.id}`} className="region-link block rounded-full px-5 py-2.5 text-sm md:text-base text-slate-800 hover:bg-[#074636] hover:text-white transition">
               {names[i]}
             </A>
           </li>
@@ -186,12 +185,12 @@ function Region({ region, flip }) {
       .from('.region-text > *', { y: 30, opacity: 0, duration: 0.8, stagger: 0.1, clearProps: 'all' }, '-=1')
       .from('.region-place', { y: 40, opacity: 0, duration: 0.7, stagger: 0.1, clearProps: 'all' }, '-=0.5')
 
-    // L'image glisse légèrement au défilement (elle dépasse du cadre en hauteur : jamais agrandie, donc nette)
+    // Léger dézoom de l'image au scroll (scrub), sans changer sa taille de base
     gsap.fromTo(
       '.region-img',
-      { yPercent: -4 },
+      { scale: 1.12 },
       {
-        yPercent: 4,
+        scale: 1,
         ease: 'none',
         scrollTrigger: { trigger: root.current, start: 'top bottom', end: 'bottom top', scrub: true },
       }
@@ -200,10 +199,10 @@ function Region({ region, flip }) {
 
   return (
     <section ref={root} id={region.id} className={`${W} mt-16 md:mt-28 scroll-mt-24 grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-16 items-center`}>
-      <div className={`region-frame relative aspect-[4/5] sm:aspect-[4/3] lg:aspect-[4/5] overflow-hidden rounded-3xl ${flip ? 'lg:order-2' : ''}`}>
-        <Img src={photo(region.slot)} alt={region.name} sizes="(min-width: 1024px) 1400px, 250vw" className="region-img absolute inset-x-0 -top-[6%] w-full h-[112%] object-cover" />
+      <div className={`region-frame relative aspect-[4/5] sm:aspect-[4/3] lg:aspect-[4/5] overflow-hidden rounded-[1.5rem] md:rounded-[2rem] ${flip ? 'lg:order-2' : ''}`}>
+        <img src={photo(region.slot)} alt={region.name} className="region-img absolute inset-0 w-full h-full object-cover" />
         <div className="absolute inset-0 bg-gradient-to-t from-[#072a1f]/60 via-transparent to-transparent" />
-        <span className="region-badge absolute left-5 top-5 bg-[#F4F1EA] text-forest text-[11px] font-semibold uppercase tracking-[0.14em] px-3 py-1.5 rounded-sm">
+        <span className="region-badge absolute left-5 top-5 bg-[#C49849] text-white text-xs sm:text-sm font-medium px-3 py-1.5 rounded-sm">
           {t('list.bestFrom', { from: monthName(first, lang, 'long'), to: monthName(last, lang, 'long') })}
         </span>
       </div>
@@ -218,8 +217,8 @@ function Region({ region, flip }) {
           {region.places.map((p) => (
             <li key={p.name} className="region-place">
               <A href={`/destinations/${slugify(p.name)}`} className="group block">
-                <div className="aspect-square overflow-hidden rounded-3xl">
-                  <Img src={photo(p.slot)} alt={p.label} className="w-full h-full object-cover img-zoom" />
+                <div className="aspect-square overflow-hidden rounded-2xl md:rounded-3xl">
+                  <img src={photo(p.slot)} alt={p.label} className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" />
                 </div>
                 <p className="mt-2 text-xs sm:text-sm md:text-base text-slate-800 leading-snug group-hover:underline">{p.label}</p>
               </A>
@@ -274,7 +273,7 @@ function Planner() {
   }, [month])
 
   return (
-    <section ref={root} id="planner" className={`${W} mt-20 md:mt-32 scroll-mt-8 rounded-3xl bg-[#0C3E2E] text-white p-5 sm:p-8 md:p-14`}>
+    <section ref={root} id="planner" className={`${W} mt-20 md:mt-32 scroll-mt-8 rounded-[1.5rem] md:rounded-[2rem] bg-[#074636] text-white p-5 sm:p-8 md:p-14`}>
       <h2 className={`${H2} !text-white max-w-3xl`}>{t('list.plannerTitle')}</h2>
       <p className="mt-4 text-sm md:text-base text-white/75 max-w-xl">{t('list.plannerText')}</p>
 
@@ -284,8 +283,8 @@ function Planner() {
             key={i}
             onClick={() => setMonth(i + 1)}
             aria-pressed={month === i + 1}
-            className={`planner-month rounded-full px-4 py-2 text-sm transition focus:outline-none focus-visible:ring-2 focus-visible:ring-[#A9813A] ${
-              month === i + 1 ? 'bg-[#A9813A] text-white' : 'border border-white/30 text-white/80 hover:border-white'
+            className={`planner-month rounded-full px-4 py-2 text-sm transition focus:outline-none focus-visible:ring-2 focus-visible:ring-[#C49849] ${
+              month === i + 1 ? 'bg-[#C49849] text-white' : 'border border-white/30 text-white/80 hover:border-white'
             }`}
           >
             {monthName(i + 1, lang)}
@@ -298,8 +297,8 @@ function Planner() {
           <ul className="mt-10 grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-4">
             {good.map((r) => (
               <li key={r.id} className="planner-card">
-                <A href={`#${r.id}`} className="group relative block aspect-[3/4] overflow-hidden rounded-3xl">
-                  <Img src={photo(r.slot)} alt="" className="absolute inset-0 w-full h-full object-cover img-zoom" />
+                <A href={`#${r.id}`} className="group relative block aspect-[3/4] overflow-hidden rounded-[1.5rem]">
+                  <img src={photo(r.slot)} alt="" className="absolute inset-0 w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" />
                   <div className="absolute inset-0 bg-gradient-to-t from-[#072a1f]/85 to-transparent" />
                   <p className="absolute inset-x-0 bottom-0 p-4 text-lg md:text-xl font-medium">{names[regions.indexOf(r)]}</p>
                 </A>
@@ -330,7 +329,7 @@ function Destinations() {
 
   return (
     <>
-      <main className="w-full overflow-x-clip bg-[#F4F1EA] flex flex-col items-center">
+      <main className="w-full overflow-x-clip bg-[#D5E8E2] flex flex-col items-center">
         <Navbar />
         <PageHero slot="dest.hero.2" title={`${t('list.title1')} ${t('list.title2')}`} crumb={t('list.eyebrow')} text={t('list.intro')} moreHref="#regions" moreLabel={t('list.explore')} />
         <RegionNav />

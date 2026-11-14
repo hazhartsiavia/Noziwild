@@ -6,24 +6,23 @@ import OffersStatus from '../components/OffersStatus'
 import { useDestinations } from './destinationsData'
 import { useT } from '../i18n/LanguageContext'
 import { useScrollReveal } from '../utils/useScrollReveal'
-import Img from '../components/Img'
 
-const W = 'w-[90vw] max-w-[1360px]'
-const GOLD = 'bg-[#A9813A] hover:bg-[#8C6A2C]'
+const W = 'w-[90vw] lg:max-w-[95vw]'
+const GOLD = 'bg-[#C49849] hover:bg-[#a9813a]'
 const BTN = 'inline-flex items-center justify-center text-sm font-medium px-6 py-3 rounded-full active:scale-95 transition'
-const H2 = 'text-[clamp(2.6rem,5.4vw,5rem)] text-forest leading-[1] [text-wrap:balance]'
+const H2 = 'text-[clamp(2rem,4.4vw,4rem)] font-bold text-forest leading-[1.08] tracking-tight'
 
 function NotFound() {
   const t = useT('destinations')
   return (
     <>
-      <main className="w-full bg-[#F4F1EA] pb-24 flex flex-col items-center">
+      <main className="w-full bg-[#D5E8E2] pb-24 flex flex-col items-center">
         <Navbar />
         <section className={`${W} mt-16 rounded-3xl bg-white p-10 text-center`}>
           <h1 className={H2}>{t('detail.soonTitle')}</h1>
           <p className="mt-4 text-slate-600">{t('detail.soonText')}</p>
           <div className="mt-6 flex justify-center gap-3">
-            <A href="/destinations" className={`${BTN} bg-[#0C3E2E] hover:bg-[#14523F] text-white`}>{t('detail.all')}</A>
+            <A href="/destinations" className={`${BTN} bg-[#074636] hover:bg-[#0a5c47] text-white`}>{t('detail.all')}</A>
             <A href="/contact" className={`${BTN} ${GOLD} text-white`}>{t('detail.contact')}</A>
           </div>
         </section>
@@ -37,7 +36,7 @@ function NotFound() {
 export function DestinationsStatus({ status }) {
   return (
     <>
-      <main className="w-full min-h-[70vh] bg-[#F4F1EA] pb-24 flex flex-col items-center">
+      <main className="w-full min-h-[70vh] bg-[#D5E8E2] pb-24 flex flex-col items-center">
         <Navbar />
         <OffersStatus status={status} className={`${W} mt-16`} />
       </main>
@@ -50,9 +49,9 @@ function PlacesCarousel({ d }) {
   const ref = useRef(null)
   const t = useT('destinations')
   const scroll = (dir) => ref.current?.scrollBy({ left: dir * ref.current.clientWidth * 0.8, behavior: 'smooth' })
-  const arrow = 'w-11 h-11 rounded-full border border-slate-300 text-slate-800 hover:bg-[#0C3E2E] hover:text-white transition flex items-center justify-center text-xl focus:outline-none focus-visible:ring-2 focus-visible:ring-slate-700'
+  const arrow = 'w-11 h-11 rounded-full border border-slate-300 text-slate-800 hover:bg-[#074636] hover:text-white transition flex items-center justify-center text-xl focus:outline-none focus-visible:ring-2 focus-visible:ring-slate-700'
   return (
-    <section className={`${W} mt-16 md:mt-24 rounded-3xl bg-white p-5 sm:p-8 md:p-14`}>
+    <section className={`${W} mt-16 md:mt-24 rounded-[1.5rem] md:rounded-[2rem] bg-white p-5 sm:p-8 md:p-14`}>
       <div className="flex items-end justify-between gap-4">
         <h2 className={H2}>{t('detail.placesTitle')}</h2>
         {d.visit.length > 1 && (
@@ -66,8 +65,8 @@ function PlacesCarousel({ d }) {
         {d.visit.map((v) => (
           <li key={v.slug} className="snap-start shrink-0 w-[82%] sm:w-[46%] lg:w-[31%]">
             <A href={`/destinations/${d.slug}/${v.slug}`} className="group block">
-              <div className="aspect-[4/3] overflow-hidden rounded-3xl">
-                <Img src={v.image} alt={v.name} className="w-full h-full object-cover img-zoom" />
+              <div className="aspect-[4/3] overflow-hidden rounded-[1.5rem]">
+                <img src={v.image} alt={v.name} className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" />
               </div>
               <h3 className="mt-4 text-xl md:text-2xl font-bold text-forest group-hover:underline">{v.name}</h3>
               <p className="mt-2 text-sm md:text-base text-slate-600 leading-relaxed">{v.text}</p>
@@ -99,12 +98,12 @@ function DestinationDetail() {
 
   return (
     <>
-      <main ref={root} className="w-full bg-[#F4F1EA] pb-16 md:pb-24 flex flex-col items-center">
+      <main ref={root} className="w-full bg-[#D5E8E2] pb-16 md:pb-24 flex flex-col items-center">
         <Navbar />
 
         {/* Hero */}
-        <section className={`${W} relative overflow-hidden rounded-3xl bg-[#0C3E2E] text-white min-h-[520px] md:min-h-[78vh] flex items-end`}>
-          <Img src={d.image} alt={d.name} className="absolute inset-0 w-full h-full object-cover" />
+        <section className={`${W} relative overflow-hidden rounded-[1.5rem] md:rounded-[2rem] bg-[#074636] text-white min-h-[520px] md:min-h-[78vh] flex items-end`}>
+          <img src={d.image} alt={d.name} className="absolute inset-0 w-full h-full object-cover" />
           <div className="absolute inset-0 bg-gradient-to-t from-[#072a1f]/85 via-[#072a1f]/25 to-[#072a1f]/10" />
           <div className="relative p-6 sm:p-10 md:p-16">
             <nav aria-label="Breadcrumb" className="text-sm md:text-base text-white/80">
@@ -138,8 +137,8 @@ function DestinationDetail() {
           <h2 className={H2}>{t('detail.todo', { name: d.name })}</h2>
           <ul className="mt-10 grid grid-cols-1 md:grid-cols-3 gap-5">
             {d.todo.map((item) => (
-              <li key={item.title} className="group relative aspect-[4/5] overflow-hidden rounded-3xl text-white">
-                <Img src={item.image} alt="" className="absolute inset-0 w-full h-full object-cover img-zoom" />
+              <li key={item.title} className="group relative aspect-[4/5] overflow-hidden rounded-[2rem] text-white">
+                <img src={item.image} alt="" className="absolute inset-0 w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" />
                 <div className="absolute inset-0 bg-gradient-to-t from-[#072a1f]/85 via-[#072a1f]/10 to-transparent" />
                 <div className="absolute inset-x-0 bottom-0 p-6">
                   <h3 className="text-xl md:text-2xl font-bold">{item.title}</h3>
@@ -153,7 +152,7 @@ function DestinationDetail() {
         <PlacesCarousel d={d} />
 
         {/* Pratique */}
-        <section className={`${W} mt-16 md:mt-24 rounded-3xl bg-[#0C3E2E] text-white p-6 sm:p-10 md:p-14 grid grid-cols-1 md:grid-cols-2 gap-10`}>
+        <section className={`${W} mt-16 md:mt-24 rounded-[1.5rem] md:rounded-[2rem] bg-[#074636] text-white p-6 sm:p-10 md:p-14 grid grid-cols-1 md:grid-cols-2 gap-10`}>
           <div>
             <h3 className="text-xl md:text-2xl font-bold">{t('detail.getting')}</h3>
             <p className="mt-3 text-sm md:text-base text-white/75 leading-relaxed">{d.getting}</p>
@@ -171,8 +170,8 @@ function DestinationDetail() {
             <ul className="mt-8 grid grid-cols-2 md:grid-cols-4 gap-4">
               {nearby.map((n) => (
                 <li key={n.slug}>
-                  <A href={`/destinations/${n.slug}`} className="group relative block aspect-[3/4] overflow-hidden rounded-3xl text-white">
-                    <Img src={n.image} alt="" className="absolute inset-0 w-full h-full object-cover img-zoom" />
+                  <A href={`/destinations/${n.slug}`} className="group relative block aspect-[3/4] overflow-hidden rounded-[1.5rem] text-white">
+                    <img src={n.image} alt="" className="absolute inset-0 w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" />
                     <div className="absolute inset-0 bg-gradient-to-t from-[#072a1f]/85 to-transparent" />
                     <p className="absolute inset-x-0 bottom-0 p-4 text-lg font-medium">{n.name}</p>
                   </A>
@@ -183,7 +182,7 @@ function DestinationDetail() {
         )}
 
         {/* CTA */}
-        <section className={`${W} mt-16 md:mt-24 rounded-3xl bg-white p-8 md:p-14 flex flex-col md:flex-row md:items-center justify-between gap-6`}>
+        <section className={`${W} mt-16 md:mt-24 rounded-[1.5rem] md:rounded-[2rem] bg-white p-8 md:p-14 flex flex-col md:flex-row md:items-center justify-between gap-6`}>
           <h2 className={`${H2} max-w-2xl`}>{t('detail.ctaTitle', { name: d.name })}</h2>
           <A href="/contact" className={`${BTN} ${GOLD} text-white self-start md:self-center`}>{t('detail.ctaButton')}</A>
         </section>

@@ -9,10 +9,9 @@ import { sendRequest } from '../api'
 import { useAuth } from '../context/AuthContext'
 import { BookingAdd, useTripItem } from '../components/AddToTrip'
 import { useScrollReveal } from '../utils/useScrollReveal'
-import Img from '../components/Img'
 
-const W = 'w-[90vw] max-w-[1360px]'
-const GOLD = 'bg-[#A9813A] hover:bg-[#8C6A2C]'
+const W = 'w-[90vw] lg:max-w-[95vw]'
+const GOLD = 'bg-[#C49849] hover:bg-[#a9813a]'
 const BTN = 'inline-flex items-center justify-center text-sm md:text-base font-medium px-6 py-3 rounded-full active:scale-95 transition'
 const H2 = 'text-2xl md:text-4xl font-medium leading-tight tracking-tight text-slate-900'
 const FIELD = 'w-full h-12 rounded-full border border-slate-300 bg-white px-5 text-base text-slate-800 focus:outline-none focus:border-slate-700 focus:ring-1 focus:ring-slate-700'
@@ -50,7 +49,7 @@ function BookingCard({ place, dest }) {
   const setGuests = (qty) => { setGuestsState(qty); sync({ qty }) }
   const setDate = (value) => { setDateState(value); sync({ date: value }) }
   const [sent, setSent] = useState(false)
-  const tabCls = (name) => `flex-1 rounded-full py-3 text-sm md:text-base font-medium transition ${tab === name ? 'bg-[#0C3E2E] text-white' : 'text-slate-700 hover:bg-slate-100'}`
+  const tabCls = (name) => `flex-1 rounded-full py-3 text-sm md:text-base font-medium transition ${tab === name ? 'bg-[#074636] text-white' : 'text-slate-700 hover:bg-slate-100'}`
 
   const [sending, setSending] = useState(false)
   const [error, setError] = useState('')
@@ -91,7 +90,7 @@ function BookingCard({ place, dest }) {
           </div>
           <div>
             <p className="mb-2 text-sm md:text-base text-slate-700">{t('place.guests')}</p>
-            <div className="flex items-center justify-between rounded-full bg-[#F4F1EA] px-2 py-2">
+            <div className="flex items-center justify-between rounded-full bg-[#D5E8E2] px-2 py-2">
               <button type="button" aria-label={t('place.fewer')} onClick={() => setGuests(Math.max(1, guests - 1))} className="w-10 h-10 rounded-full bg-white text-xl text-slate-800 hover:bg-slate-100">−</button>
               <span className="text-lg font-medium text-slate-900" aria-live="polite">{guests}</span>
               <button type="button" aria-label={t('place.more')} onClick={() => setGuests(Math.min(20, guests + 1))} className="w-10 h-10 rounded-full bg-white text-xl text-slate-800 hover:bg-slate-100">+</button>
@@ -127,11 +126,11 @@ function PlaceDetail() {
   if (!place) {
     return (
       <>
-        <main className="w-full bg-[#F4F1EA] pb-24 flex flex-col items-center">
+        <main className="w-full bg-[#D5E8E2] pb-24 flex flex-col items-center">
           <Navbar />
           <section className={`${W} mt-16 rounded-3xl bg-white p-10 text-center`}>
             <h1 className={H2}>{t('place.notFound')}</h1>
-            <A href="/destinations" className={`${BTN} bg-[#0C3E2E] hover:bg-[#14523F] text-white mt-6`}>{t('place.all')}</A>
+            <A href="/destinations" className={`${BTN} bg-[#074636] hover:bg-[#0a5c47] text-white mt-6`}>{t('place.all')}</A>
           </section>
         </main>
         <Footer />
@@ -151,7 +150,7 @@ function PlaceDetail() {
 
   return (
     <>
-      <main ref={root} className="w-full bg-[#F4F1EA] pb-16 md:pb-24 flex flex-col items-center">
+      <main ref={root} className="w-full bg-[#D5E8E2] pb-16 md:pb-24 flex flex-col items-center">
         <Navbar />
 
         {/* En-tête */}
@@ -175,7 +174,7 @@ function PlaceDetail() {
           {/* Galerie */}
           <div className={`mt-8 grid grid-cols-1 gap-4 md:gap-6 ${gallery.length === 3 ? 'md:grid-cols-[1fr_1.5fr_1fr]' : 'md:grid-cols-2'}`}>
             {gallery.map((src, i) => (
-              <Img key={i} src={src} alt={i === 0 ? place.name : ''} className="w-full h-64 md:h-[440px] object-cover rounded-3xl" />
+              <img key={i} src={src} alt={i === 0 ? place.name : ''} className="w-full h-64 md:h-[440px] object-cover rounded-[1.5rem] md:rounded-[2rem]" />
             ))}
           </div>
         </section>
@@ -201,7 +200,7 @@ function PlaceDetail() {
             <ul className="mt-6 flex flex-col gap-3 max-w-3xl">
               {(place.highlights || place.does || []).map((h) => (
                 <li key={h} className="flex items-start gap-3 text-base md:text-lg text-slate-700">
-                  <span className="mt-2.5 w-2 h-2 rounded-full bg-[#A9813A] shrink-0" />{h}
+                  <span className="mt-2.5 w-2 h-2 rounded-full bg-[#C49849] shrink-0" />{h}
                 </li>
               ))}
             </ul>
@@ -219,7 +218,7 @@ function PlaceDetail() {
               </div>
             )}
 
-            <div className="mt-8 rounded-3xl bg-[#0C3E2E] text-white p-6 md:p-8">
+            <div className="mt-8 rounded-3xl bg-[#074636] text-white p-6 md:p-8">
               <h3 className="text-xl font-bold">{t('place.goodToKnow')}</h3>
               <p className="mt-3 text-sm md:text-base text-white/75 leading-relaxed">{t('place.bestTime', { time: d.best })} {d.tip}</p>
             </div>
@@ -235,8 +234,8 @@ function PlaceDetail() {
             <ul className="mt-8 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
               {others.map((o) => (
                 <li key={o.slug}>
-                  <A href={`/destinations/${d.slug}/${o.slug}`} className="group relative block aspect-[4/3] overflow-hidden rounded-3xl text-white">
-                    <Img src={o.image} alt="" className="absolute inset-0 w-full h-full object-cover img-zoom" />
+                  <A href={`/destinations/${d.slug}/${o.slug}`} className="group relative block aspect-[4/3] overflow-hidden rounded-[1.5rem] text-white">
+                    <img src={o.image} alt="" className="absolute inset-0 w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" />
                     <div className="absolute inset-0 bg-gradient-to-t from-[#072a1f]/85 to-transparent" />
                     <p className="absolute inset-x-0 bottom-0 p-5 text-xl font-medium">{o.name}</p>
                   </A>

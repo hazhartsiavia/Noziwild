@@ -1,10 +1,10 @@
 import React, { useLayoutEffect, useRef, useState } from 'react'
 import { Link, A } from '../i18n/router'
-import Deux from "../assets/images/site/coastal-tsingy.jpg";
-import Ambanja from "../assets/images/site/sambirano-river.jpg";
-import NosyIranja from "../assets/images/site/nosy-iranja-aerial.jpg";
-import Ramena from "../assets/images/site/ramena-beach-aerial.jpg";
-import Tana from "../assets/images/site/antananarivo-rice-fields.jpg";
+import Deux from "../assets/images/2.jpg";
+import Ambanja from "../assets/images/Ambanja.jpg";
+import NosyIranja from "../assets/images/NosyIranja.jpg";
+import Ramena from "../assets/images/Ramena.jpg";
+import Tana from "../assets/images/Tana.jpg";
 import Navbar from '../components/Navbar';
 import Footer from '../components/Footer';
 import { useTrip } from '../context/TripContext';
@@ -19,12 +19,11 @@ import { gsap } from 'gsap'
 import { ScrollTrigger } from 'gsap/ScrollTrigger'
 import { usePhoto } from '../sitePhotos'
 import SiteMedia from '../components/SiteMedia'
-import Img from '../components/Img'
 
 gsap.registerPlugin(ScrollTrigger)
 
 /* Constantes partagées : mêmes valeurs que dans les autres pages */
-const SECTION_WIDTH = "w-[90vw] max-w-[1360px]"
+const SECTION_WIDTH = "w-[90vw] lg:max-w-[90vw] xl:max-w-[95vw]"
 const SECTION_TITLE = "text-3xl sm:text-4xl md:text-5xl lg:text-[52px] font-medium text-forest leading-[1.15] tracking-tight"
 const SECTION_SUBTITLE = "text-sm sm:text-base md:text-lg text-slate-600 leading-relaxed max-w-3xl"
 const META_TEXT = "text-xs sm:text-sm"
@@ -94,7 +93,7 @@ function Hero({ counts, onPick }) {
           <p className={SECTION_SUBTITLE}>
             {t('intro')}
           </p>
-          <A href="#catalog" className={`mt-6 inline-block bg-[#0C3E2E] hover:bg-[#14523F] text-white ${BUTTON}`}>{t('browse')}</A>
+          <A href="#catalog" className={`mt-6 inline-block bg-[#084838] hover:bg-[#0a5c47] text-white ${BUTTON}`}>{t('browse')}</A>
         </div>
       </div>
 
@@ -103,14 +102,14 @@ function Hero({ counts, onPick }) {
           <li key={a.id} data-arch>
             <A href="#catalog" onClick={() => onPick(a.id)} className="group block">
               <div className="aspect-[3/4] overflow-hidden rounded-t-[999px] rounded-b-3xl">
-                <Img src={photo(`gear.arch.${a.id}`)} alt="" className="w-full h-full object-cover img-zoom" />
+                <img src={photo(`gear.arch.${a.id}`)} alt="" className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" />
               </div>
               <div className="mt-4 flex items-center justify-between gap-3">
                 <div>
                   <p className="text-lg md:text-2xl font-medium text-slate-900">{a.label}</p>
                   <p className={`${META_TEXT} text-slate-600`}>{counts[a.id] === 1 ? t('itemOne') : t('items', { count: counts[a.id] })}</p>
                 </div>
-                <span className="shrink-0 w-10 h-10 md:w-12 md:h-12 rounded-full bg-[#0C3E2E] text-white flex items-center justify-center transition group-hover:bg-[#A9813A]">
+                <span className="shrink-0 w-10 h-10 md:w-12 md:h-12 rounded-full bg-[#084838] text-white flex items-center justify-center transition group-hover:bg-[#C49849]">
                   <ArrowIcon />
                 </span>
               </div>
@@ -130,26 +129,26 @@ function GearCard({ item, qty, onChange }) {
   return (
     <article className="flex flex-col overflow-hidden rounded-2xl bg-white">
       <div className="relative aspect-[4/3] overflow-hidden">
-        <Img src={item.image} alt={item.name} className="w-full h-full object-cover" />
+        <img src={item.image} alt={item.name} className="w-full h-full object-cover" />
         <span className="absolute left-3 top-3 rounded-full bg-white/90 px-3 py-1 text-xs font-medium text-slate-800">{label}</span>
       </div>
       <div className="flex flex-col flex-1 p-4 md:p-5">
         <h3 className="text-lg md:text-xl font-medium text-forest">{item.name}</h3>
         <p className="mt-2 text-sm text-slate-600 leading-relaxed">{item.text}</p>
         <ul className="mt-3 flex flex-wrap gap-2">
-          {item.specs.map((s) => <li key={s} className="rounded-full bg-[#F4F1EA] px-3 py-1 text-xs text-slate-700">{s}</li>)}
+          {item.specs.map((s) => <li key={s} className="rounded-full bg-[#D5E8E2] px-3 py-1 text-xs text-slate-700">{s}</li>)}
         </ul>
 
         <div className="mt-auto pt-5 flex items-center justify-end gap-3">
           {qty === 0 ? (
-            <button type="button" onClick={() => onChange(item.id, 1)} className={`inline-flex items-center gap-1.5 bg-[#0C3E2E] hover:bg-[#14523F] text-white text-sm font-medium px-4 py-2 rounded-full active:scale-95 transition`}>
+            <button type="button" onClick={() => onChange(item.id, 1)} className={`inline-flex items-center gap-1.5 bg-[#084838] hover:bg-[#0a5c47] text-white text-sm font-medium px-4 py-2 rounded-full active:scale-95 transition`}>
               <PlusIcon /> {t('add')}
             </button>
           ) : (
-            <div className="flex items-center gap-2 rounded-full bg-[#F4F1EA] p-1">
-              <button type="button" onClick={() => onChange(item.id, -1)} aria-label={t('removeOne', { name: item.name })} className={`${round} bg-white text-[#0C3E2E]`}><MinusIcon /></button>
+            <div className="flex items-center gap-2 rounded-full bg-[#D5E8E2] p-1">
+              <button type="button" onClick={() => onChange(item.id, -1)} aria-label={t('removeOne', { name: item.name })} className={`${round} bg-white text-[#084838]`}><MinusIcon /></button>
               <span className="w-5 text-center text-sm font-medium tabular-nums" aria-live="polite">{qty}</span>
-              <button type="button" onClick={() => onChange(item.id, 1)} aria-label={t('addOne', { name: item.name })} className={`${round} bg-[#0C3E2E] text-white`}><PlusIcon /></button>
+              <button type="button" onClick={() => onChange(item.id, 1)} aria-label={t('addOne', { name: item.name })} className={`${round} bg-[#084838] text-white`}><PlusIcon /></button>
             </div>
           )}
         </div>
@@ -207,7 +206,7 @@ function Catalog({ category, setCategory, gear, status }) {
   const upToDate = saved && saved.details === rental.details
 
   const tab = (active) =>
-    `rounded-full px-5 py-2 text-sm md:text-base font-medium transition ${active ? 'bg-[#0C3E2E] text-white' : 'bg-white text-slate-700 hover:bg-white/70'}`
+    `rounded-full px-5 py-2 text-sm md:text-base font-medium transition ${active ? 'bg-[#084838] text-white' : 'bg-white text-slate-700 hover:bg-white/70'}`
 
   return (
     <div id="catalog" className={`${SECTION_GAP} scroll-mt-8`}>
@@ -234,7 +233,7 @@ function Catalog({ category, setCategory, gear, status }) {
         </div>
 
         {/* Liste de location : reste visible au défilement sur grand écran */}
-        <aside className="lg:sticky lg:top-8 rounded-3xl bg-[#0C3E2E] text-white p-5 md:p-7">
+        <aside className="lg:sticky lg:top-8 rounded-3xl bg-[#084838] text-white p-5 md:p-7">
           <div className="flex items-center justify-between gap-3">
             <h3 className="text-xl md:text-2xl font-medium">{t('listTitle')}</h3>
             <span className="rounded-full bg-white/15 px-3 py-1 text-sm tabular-nums">{itemCount === 1 ? t('itemOne') : t('items', { count: itemCount })}</span>
@@ -260,7 +259,7 @@ function Catalog({ category, setCategory, gear, status }) {
           )}
 
           {upToDate ? (
-            <Link to="/my-trip" className={`mt-6 block text-center bg-white text-[#0C3E2E] hover:bg-white/90 ${BUTTON}`}>
+            <Link to="/my-trip" className={`mt-6 block text-center bg-white text-[#084838] hover:bg-white/90 ${BUTTON}`}>
               ✓ {tt('viewTrip')}
             </Link>
           ) : (
@@ -268,7 +267,7 @@ function Catalog({ category, setCategory, gear, status }) {
               type="button"
               onClick={() => add(rental)}
               disabled={lines.length === 0}
-              className={`mt-6 block w-full text-center bg-[#A9813A] hover:bg-[#8C6A2C] text-white disabled:opacity-50 disabled:cursor-not-allowed ${BUTTON}`}
+              className={`mt-6 block w-full text-center bg-[#C49849] hover:bg-[#b08339] text-white disabled:opacity-50 disabled:cursor-not-allowed ${BUTTON}`}
             >
               {saved ? tt('updateTrip') : tt('add')}
             </button>
@@ -284,10 +283,10 @@ function Catalog({ category, setCategory, gear, status }) {
 function Included() {
   const included = useT('equipment')('included')
   return (
-    <ul className={`${SECTION_GAP} grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-x-8 gap-y-4 border-y border-[#0C3E2E]/20 py-6 md:py-8`}>
+    <ul className={`${SECTION_GAP} grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-x-8 gap-y-4 border-y border-[#084838]/20 py-6 md:py-8`}>
       {included.map((text) => (
         <li key={text} className="flex items-center gap-3 text-sm md:text-base text-slate-800">
-          <span className="shrink-0 w-7 h-7 rounded-full bg-[#A9813A] text-white flex items-center justify-center"><CheckIcon /></span>
+          <span className="shrink-0 w-7 h-7 rounded-full bg-[#C49849] text-white flex items-center justify-center"><CheckIcon /></span>
           {text}
         </li>
       ))}
@@ -309,7 +308,7 @@ function Pickup() {
       <ul className="flex flex-col gap-3">
         {pickups.map((p) => (
           <li key={p.id} className="flex items-center gap-4 md:gap-6 rounded-2xl bg-white p-4 md:p-6">
-            <span className="shrink-0 w-12 h-12 md:w-16 md:h-16 rounded-full bg-[#0C3E2E] text-white flex items-center justify-center">{pickupIcons[p.icon]}</span>
+            <span className="shrink-0 w-12 h-12 md:w-16 md:h-16 rounded-full bg-[#084838] text-white flex items-center justify-center">{pickupIcons[p.icon]}</span>
             <div className="flex-1">
               <h3 className="text-base md:text-2xl font-medium text-forest">{p.title}</h3>
               <p className="mt-1 text-sm md:text-base text-slate-600 leading-relaxed">{p.text}</p>
@@ -377,9 +376,9 @@ function Cta() {
   }
 
   return (
-    <div className={`${SECTION_GAP} relative overflow-hidden rounded-3xl bg-[#0C3E2E] text-white`}>
+    <div className={`${SECTION_GAP} relative overflow-hidden rounded-3xl bg-[#084838] text-white`}>
       <SiteMedia slot="gear.cta" alt="" className="absolute inset-0 w-full h-full object-cover" />
-      <div className="absolute inset-0 bg-[#0C3E2E]/80" />
+      <div className="absolute inset-0 bg-[#084838]/80" />
 
       <div className="relative px-6 py-14 md:px-12 md:py-24 text-center">
         <h2 className="mx-auto max-w-3xl text-3xl sm:text-4xl md:text-5xl font-medium leading-[1.15] tracking-tight">{t('ctaTitle')}</h2>
@@ -392,7 +391,7 @@ function Cta() {
           <input id="gear-request" name="gear" type="text" required placeholder={t('gearPlaceholder')} className="flex-1 min-w-0 bg-transparent px-4 py-2 sm:px-0 text-sm md:text-base text-slate-800 placeholder:text-slate-500 focus:outline-none" />
           <label htmlFor="gear-email" className="sr-only">{t('emailLabel')}</label>
           <input id="gear-email" name="email" key={`e-${user?.id}`} defaultValue={user?.email} type="email" required placeholder={t('emailLabel')} className="sm:w-56 min-w-0 bg-transparent px-4 py-2 sm:border-l sm:border-slate-200 text-sm md:text-base text-slate-800 placeholder:text-slate-500 focus:outline-none" />
-          <button type="submit" disabled={status === 'sending'} className={`shrink-0 bg-[#A9813A] hover:bg-[#8C6A2C] text-white disabled:opacity-60 disabled:cursor-wait ${BUTTON}`}>{status === 'sending' ? t('sending') : t('send')}</button>
+          <button type="submit" disabled={status === 'sending'} className={`shrink-0 bg-[#C49849] hover:bg-[#b08339] text-white disabled:opacity-60 disabled:cursor-wait ${BUTTON}`}>{status === 'sending' ? t('sending') : t('send')}</button>
         </form>
 
         {status === 'sent' && <p role="status" className="mt-4 text-sm md:text-base text-[#E6C58A]">{t('thanks')}</p>}
@@ -443,7 +442,7 @@ function EquipmentRentals() {
 
   return (
     <>
-    <section className="w-full pt-0 pb-12 md:pb-20 bg-[#F4F1EA] flex flex-col items-center">
+    <section className="w-full pt-0 pb-12 md:pb-20 bg-[#D5E8E2] flex flex-col items-center">
       <Navbar />
       <div ref={contentRef} className={`${SECTION_WIDTH} mt-8 md:mt-16`}>
         <Hero counts={counts} onPick={setCategory} />

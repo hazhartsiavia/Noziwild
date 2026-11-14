@@ -8,26 +8,21 @@
   --nz-gold: #b29147;
   --nz-gold-soft: #d4b878;
   --nz-cream: #f6f1e7;
-  --nz-font: "Figtree Variable", system-ui, -apple-system, "Segoe UI", sans-serif;
-  --nz-display: "Instrument Serif", "Iowan Old Style", Georgia, serif;
+  --nz-font: "Figtree", system-ui, -apple-system, "Segoe UI", sans-serif;
   --nz-ease: cubic-bezier(.76, 0, .24, 1);
   --nz-gutter: clamp(16px, 2.2vw, 40px);
   --nz-header-h: 84px;
   --nz-shade:
-    linear-gradient(180deg, rgba(7, 42, 31, .42) 0%, rgba(7, 42, 31, .06) 26%, rgba(7, 42, 31, .12) 58%, rgba(7, 42, 31, .66) 100%),
-    linear-gradient(90deg, rgba(7, 42, 31, .5) 0%, rgba(7, 42, 31, 0) 58%);
+    linear-gradient(180deg, rgba(7, 42, 31, .55) 0%, rgba(7, 42, 31, .18) 28%, rgba(7, 42, 31, .25) 60%, rgba(7, 42, 31, .72) 100%),
+    linear-gradient(90deg, rgba(7, 42, 31, .55) 0%, rgba(7, 42, 31, 0) 55%);
   font-family: var(--nz-font);
   color: var(--nz-cream);
   -webkit-font-smoothing: antialiased;
 }
 
-/* Texte en Figtree ; le titre et le grand mot en Instrument Serif, comme les titres du reste du site */
+/* Le hero reste tout en Figtree, titre compris (ailleurs les h1 et h2 sont en Syne) */
 .nzpl *,
 .nzh * { font-family: var(--nz-font); }
-.nzh .nzh__title,
-.nzh .nzh__title *,
-.nzh .nzh__giant,
-.nzh .nzh__giant * { font-family: var(--nz-display); }
 
 .nzh :focus-visible { outline: 2px solid var(--nz-gold-soft); outline-offset: 4px; }
 
@@ -159,7 +154,7 @@
 
 .nzh__strip {
   height: 10px;
-  background: #f4f1ea;
+  background: #fff;
   transform-origin: top;
 }
 
@@ -187,20 +182,31 @@
 
 .nzh__slide img,
 .nzh__slide video {
-  /* La photo remplit le hero (cover) et rien de plus : aucun zoom, aucune animation d'échelle.
-     Elle est affichée à sa taille exacte, le seul recadrage est celui qu'impose le format de l'écran. */
   width: 100%;
   height: 100%;
   object-fit: cover;
-  object-position: center;
+  transform: scale(1.1);
+}
+
+.nzh__slide.is-active img,
+.nzh__slide.is-active video,
+.nzh__slide.is-leaving img,
+.nzh__slide.is-leaving video { animation: nzh-kenburns 9s linear forwards; }
+
+.nzh.is-loading .nzh__slide img,
+.nzh.is-loading .nzh__slide video { animation: none; }
+
+@keyframes nzh-kenburns {
+  from { transform: scale(1.1); }
+  to   { transform: scale(1.02); }
 }
 
 .nzh__content {
   position: absolute;
   left: var(--nz-gutter);
   top: 50%;
-  max-width: min(980px, 66vw);
-  transform: translateY(-18%);
+  max-width: min(760px, 60vw);
+  transform: translateY(-12%);
 }
 
 .nzh__reveal {
@@ -213,10 +219,9 @@
 
 .nzh__eyebrow {
   margin: 0 0 clamp(20px, 3vh, 36px);
-  font-size: 11px;
+  font-size: clamp(17px, 1.35vw, 23px);
   font-weight: 600;
-  letter-spacing: .22em;
-  text-transform: uppercase;
+  letter-spacing: .02em;
   color: rgba(246, 241, 231, .92);
 }
 
@@ -224,18 +229,18 @@
   content: "";
   display: inline-block;
   width: 28px;
-  height: 1px;
-  margin: 0 12px .25em 0;
+  height: 1.5px;
+  margin: 0 12px .3em 0;
   vertical-align: middle;
   background: var(--nz-gold);
 }
 
 .nzh__title {
   margin: 0;
-  font-size: clamp(48px, 6.4vw, 124px);
+  font-size: clamp(40px, 4.4vw, 84px);
   font-weight: 400;
-  line-height: .96;
-  letter-spacing: -.02em;
+  line-height: 1.06;
+  letter-spacing: -.025em;
   color: var(--nz-cream);
   text-shadow: 0 2px 30px rgba(7, 42, 31, .25);
 }
@@ -245,13 +250,14 @@
   align-items: center;
   gap: 14px;
   margin-top: clamp(28px, 4vh, 44px);
-  padding: 13px 14px 13px 24px;
+  padding: 15px 18px 15px 24px;
   border-radius: 999px;
-  border: 1px solid rgba(246, 241, 231, .5);
-  font-size: 14px;
+  border: 1px solid rgba(246, 241, 231, .4);
+  font-size: 16px;
   font-weight: 500;
-  letter-spacing: .02em;
   color: var(--nz-cream);
+  backdrop-filter: blur(6px);
+  -webkit-backdrop-filter: blur(6px);
   transition: background .35s, border-color .35s, color .35s;
 }
 
@@ -261,14 +267,14 @@
   width: 30px;
   height: 30px;
   border-radius: 50%;
-  background: var(--nz-cream);
+  background: var(--nz-gold);
   color: var(--nz-green-900);
   font-style: normal;
   transition: transform .4s var(--nz-ease);
 }
 
 .nzh__cta:hover { background: var(--nz-cream); border-color: var(--nz-cream); color: var(--nz-green-900); }
-.nzh__cta:hover i { transform: rotate(-45deg); background: var(--nz-green-800); color: var(--nz-cream); }
+.nzh__cta:hover i { transform: rotate(-45deg); }
 
 /* ---------- carte latérale ---------- */
 
@@ -278,12 +284,13 @@
   inset-block: 0;
   height: fit-content;
   margin-block: auto;
-  width: clamp(220px, 15vw, 270px);
-  padding: 12px 12px 16px;
-  border-radius: 4px;
-  /* Fond plein, sans flou : rien ne vient brouiller la photo derrière */
-  background: rgba(7, 42, 31, .58);
-  border: 1px solid rgba(246, 241, 231, .16);
+  width: clamp(240px, 16.5vw, 300px);
+  padding: 16px 16px 20px;
+  border-radius: 6px;
+  background: rgba(246, 241, 231, .14);
+  border: 1px solid rgba(246, 241, 231, .2);
+  backdrop-filter: blur(16px) saturate(1.2);
+  -webkit-backdrop-filter: blur(16px) saturate(1.2);
 }
 
 .nzh__card-media {
@@ -302,23 +309,25 @@
   transition: transform .8s var(--nz-ease);
 }
 
-.nzh__card-media:hover img { transform: scale(1.03); }
+.nzh__card-media:hover img { transform: scale(1.06); }
 
 .nzh__toggle {
   position: absolute;
-  top: 20px;
-  right: 20px;
+  top: 26px;
+  right: 26px;
   display: grid;
   place-items: center;
   width: 34px;
   height: 34px;
   border-radius: 50%;
-  background: rgba(7, 42, 31, .6);
+  background: rgba(246, 241, 231, .5);
+  backdrop-filter: blur(6px);
+  -webkit-backdrop-filter: blur(6px);
   cursor: pointer;
   transition: background .3s;
 }
 
-.nzh__toggle:hover { background: rgba(7, 42, 31, .85); }
+.nzh__toggle:hover { background: rgba(246, 241, 231, .8); }
 
 .nzh__i-pause,
 .nzh__i-play { display: block; }
@@ -339,9 +348,10 @@
 
 .nzh__card-title {
   margin: 18px 0 0;
-  font-size: clamp(15px, 1.05vw, 17px);
+  font-size: clamp(18px, 1.3vw, 22px);
   font-weight: 500;
-  line-height: 1.4;
+  line-height: 1.35;
+  letter-spacing: -.01em;
 }
 
 .nzh__progress {
@@ -367,12 +377,11 @@
   bottom: 0;
   margin: 0;
   overflow: hidden;
-  font-size: clamp(90px, 13vw, 280px);
+  font-size: clamp(90px, 12vw, 260px);
   font-weight: 400;
-  font-style: italic;
-  line-height: .78;
-  letter-spacing: -.03em;
-  color: rgba(246, 241, 231, .9);
+  line-height: .74;
+  letter-spacing: -.04em;
+  color: rgba(246, 241, 231, .78);
   pointer-events: none;
   user-select: none;
 }
@@ -388,9 +397,8 @@
   display: flex;
   align-items: center;
   gap: 12px;
-  font-size: 11px;
-  font-weight: 600;
-  letter-spacing: .22em;
+  font-size: 13px;
+  letter-spacing: .18em;
   text-transform: uppercase;
   color: rgba(246, 241, 231, .7);
 }
@@ -475,7 +483,7 @@
   .nzh__giant { font-size: 20vw; }
 
   .nzh__content { bottom: calc(var(--nz-gutter) + 26vw); }
-  .nzh__title { font-size: clamp(40px, 12.5vw, 56px); }
+  .nzh__title { font-size: clamp(30px, 9vw, 40px); }
   .nzh__cta { padding: 12px 14px 12px 20px; font-size: 15px; }
 }
 

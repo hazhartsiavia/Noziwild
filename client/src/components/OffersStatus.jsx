@@ -4,7 +4,7 @@ import { useT } from '../i18n/LanguageContext'
 
 function OffersStatus({ status, empty = false, dark = false, className = '' }) {
   const t = useT('offers')
-  const box = `rounded-3xl p-8 text-center ${dark ? 'bg-white/10 text-white' : 'bg-white text-slate-700'} ${className}`
+  const box = `rounded-[2rem] p-8 text-center ${dark ? 'bg-white/10 text-white' : 'bg-white text-slate-700'} ${className}`
 
   if (status === 'loading') {
     return (
@@ -21,7 +21,7 @@ function OffersStatus({ status, empty = false, dark = false, className = '' }) {
         <button
           type="button"
           onClick={() => window.location.reload()}
-          className="mt-4 rounded-full bg-[#0C3E2E] px-6 py-3 text-sm font-medium text-white transition hover:bg-[#14523F] active:scale-95"
+          className="mt-4 rounded-full bg-[#084838] px-6 py-3 text-sm font-medium text-white transition hover:bg-[#0a5c47] active:scale-95"
         >
           {t('reload')}
         </button>

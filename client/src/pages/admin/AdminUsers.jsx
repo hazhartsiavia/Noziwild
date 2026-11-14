@@ -16,7 +16,7 @@ export function AccountBadges({ account }) {
   const badge = 'rounded-full px-2.5 py-0.5 text-xs font-medium'
   return (
     <span className="flex flex-wrap gap-1.5">
-      {account.role === 'admin' && <span className={`${badge} bg-[#0C3E2E] text-white`}>Admin</span>}
+      {account.role === 'admin' && <span className={`${badge} bg-[#084838] text-white`}>Admin</span>}
       {account.disabled && <span className={`${badge} bg-red-50 text-red-800`}>Suspended</span>}
       {account.hasGoogle && <span className={`${badge} bg-slate-100 text-slate-700`}>Google</span>}
       {account.hasPassword && <span className={`${badge} bg-slate-100 text-slate-700`}>Password</span>}
@@ -118,7 +118,7 @@ function AdminUsers() {
 
   const pages = data ? Math.max(1, Math.ceil(data.total / data.limit)) : 1
   const pill = (active) =>
-    `rounded-full px-4 py-2 text-sm font-medium transition ${active ? 'bg-[#0C3E2E] text-white' : 'border border-slate-300 bg-white text-slate-700 hover:border-slate-700'}`
+    `rounded-full px-4 py-2 text-sm font-medium transition ${active ? 'bg-[#084838] text-white' : 'border border-slate-300 bg-white text-slate-700 hover:border-slate-700'}`
 
   return (
     <section aria-labelledby="users-title">
@@ -187,7 +187,7 @@ function AdminUsers() {
         <ul className="mt-6 flex flex-col gap-2">
           {data.accounts.map((a) => (
             <li key={a.id}>
-              <Link to={`/admin/users/${a.id}`} className={`group flex flex-col sm:flex-row sm:items-center gap-3 sm:gap-4 rounded-3xl bg-white p-4 transition hover:ring-2 hover:ring-[#0C3E2E] ${a.disabled ? 'opacity-70' : ''}`}>
+              <Link to={`/admin/users/${a.id}`} className={`group flex flex-col sm:flex-row sm:items-center gap-3 sm:gap-4 rounded-3xl bg-white p-4 transition hover:ring-2 hover:ring-[#084838] ${a.disabled ? 'opacity-70' : ''}`}>
                 <span className="flex items-center gap-3 min-w-0 flex-1">
                   <Avatar user={a} className="h-11 w-11 text-base" />
                   <span className="min-w-0">

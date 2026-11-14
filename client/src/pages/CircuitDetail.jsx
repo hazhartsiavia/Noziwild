@@ -9,13 +9,12 @@ import { sendRequest, fetchCircuit, assetUrl } from '../api'
 import { useAuth } from '../context/AuthContext'
 import { BookingAdd, useTripItem } from '../components/AddToTrip'
 import { Trans, useLanguage, useT } from '../i18n/LanguageContext'
-import Img from '../components/Img'
 
 gsap.registerPlugin(ScrollTrigger)
 
 /* Mêmes valeurs que PlaceDetail */
-const W = 'w-[90vw] max-w-[1360px]'
-const GOLD = 'bg-[#A9813A] hover:bg-[#8C6A2C]'
+const W = 'w-[90vw] lg:max-w-[95vw]'
+const GOLD = 'bg-[#C49849] hover:bg-[#a9813a]'
 const BTN = 'inline-flex items-center justify-center text-sm md:text-base font-medium px-6 py-3 rounded-full active:scale-95 transition'
 const H2 = 'text-2xl md:text-4xl font-medium leading-tight tracking-tight text-slate-900'
 const FIELD = 'w-full h-12 rounded-full border border-slate-300 bg-white px-5 text-base text-slate-800 focus:outline-none focus:border-slate-700 focus:ring-1 focus:ring-slate-700'
@@ -102,7 +101,7 @@ function Lightbox({ photos, index, title, onClose, onMove }) {
       onClick={onClose}
     >
       <figure className="relative w-full max-w-5xl" onClick={(e) => e.stopPropagation()}>
-        <Img src={assetUrl(photos[index])} alt={label} className="w-full max-h-[78vh] object-contain rounded-2xl" />
+        <img src={assetUrl(photos[index])} alt={label} className="w-full max-h-[78vh] object-contain rounded-2xl" />
         <figcaption className="mt-4 flex items-center justify-between gap-4 text-sm md:text-base text-white/85">
           <span>{title}</span>
           <span aria-hidden="true">{index + 1} / {photos.length}</span>
@@ -127,7 +126,7 @@ function Lightbox({ photos, index, title, onClose, onMove }) {
 function Endpoint({ icon, label, place }) {
   return (
     <li className="relative pl-14 md:pl-16">
-      <span className="route-end absolute left-0 top-0 z-10 flex w-10 h-10 md:w-12 md:h-12 items-center justify-center rounded-full bg-[#0C3E2E] text-white">
+      <span className="route-end absolute left-0 top-0 z-10 flex w-10 h-10 md:w-12 md:h-12 items-center justify-center rounded-full bg-[#074636] text-white">
         <Icon name={icon} className="w-5 h-5 md:w-6 md:h-6" />
       </span>
       <p className="pt-2 md:pt-3 text-base md:text-lg text-slate-800">
@@ -232,8 +231,8 @@ function Itinerary({ circuit }) {
       <div className="relative mt-8">
         {/* Piste pointillée qui relie les étapes, et par-dessus la progression dorée qui suit le défilement */}
         <span aria-hidden="true" className="route-track absolute left-5 md:left-6 top-6 bottom-6 -translate-x-1/2 border-l-2 border-dashed border-slate-300">
-          <span className="route-progress absolute -left-0.5 top-0 w-0.5 bg-[#A9813A]" style={{ height: '100%' }}>
-            <span className="absolute left-1/2 bottom-0 -translate-x-1/2 translate-y-1/2 w-3.5 h-3.5 rounded-full bg-[#A9813A] ring-4 ring-[#A9813A]/25" />
+          <span className="route-progress absolute -left-0.5 top-0 w-0.5 bg-[#C49849]" style={{ height: '100%' }}>
+            <span className="absolute left-1/2 bottom-0 -translate-x-1/2 translate-y-1/2 w-3.5 h-3.5 rounded-full bg-[#C49849] ring-4 ring-[#C49849]/25" />
           </span>
         </span>
 
@@ -245,7 +244,7 @@ function Itinerary({ circuit }) {
             const panelId = `day-panel-${i}`
             return (
               <li key={step.day} className="route-step relative pl-14 md:pl-16">
-                <span aria-hidden="true" className={`route-dot absolute left-5 md:left-6 top-6 -translate-x-1/2 -translate-y-1/2 w-4 h-4 rounded-full border-4 border-[#F4F1EA] transition-colors ${isOpen ? 'bg-[#A9813A]' : 'bg-slate-400'}`} />
+                <span aria-hidden="true" className={`route-dot absolute left-5 md:left-6 top-6 -translate-x-1/2 -translate-y-1/2 w-4 h-4 rounded-full border-4 border-[#D5E8E2] transition-colors ${isOpen ? 'bg-[#C49849]' : 'bg-slate-400'}`} />
                 <div className="route-card rounded-3xl bg-white">
                   <h3>
                     <button
@@ -255,7 +254,7 @@ function Itinerary({ circuit }) {
                       aria-controls={panelId}
                       className="flex w-full items-center gap-4 rounded-3xl px-5 py-4 md:px-6 md:py-5 text-left focus:outline-none focus-visible:ring-2 focus-visible:ring-slate-700"
                     >
-                      <span className="route-pill shrink-0 rounded-full bg-[#F4F1EA] px-3 py-1 text-xs md:text-sm font-medium text-slate-800">{step.day}</span>
+                      <span className="route-pill shrink-0 rounded-full bg-[#D5E8E2] px-3 py-1 text-xs md:text-sm font-medium text-slate-800">{step.day}</span>
                       <span className="flex-1 text-base md:text-lg font-medium text-slate-900">{step.title}</span>
                       <Icon name="chevron" className={`w-5 h-5 shrink-0 text-slate-500 transition-transform duration-300 ${isOpen ? 'rotate-180' : ''}`} />
                     </button>
@@ -279,7 +278,7 @@ function Itinerary({ circuit }) {
                                   aria-label={t('enlarge', { n: n + 1, total: step.images.length, title: step.title })}
                                   className="group relative block w-full aspect-[4/3] overflow-hidden rounded-xl sm:rounded-2xl focus:outline-none focus-visible:ring-2 focus-visible:ring-slate-700 focus-visible:ring-offset-2"
                                 >
-                                  <Img src={assetUrl(src)} alt="" loading="lazy" className="absolute inset-0 w-full h-full object-cover img-zoom" />
+                                  <img src={assetUrl(src)} alt="" loading="lazy" className="absolute inset-0 w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" />
                                   <span aria-hidden="true" className="absolute inset-0 flex items-center justify-center bg-[#072a1f]/0 text-white opacity-0 transition group-hover:bg-[#072a1f]/30 group-hover:opacity-100">
                                     <Icon name="expand" className="w-6 h-6" />
                                   </span>
@@ -362,7 +361,7 @@ function BookingCard({ circuit }) {
     }
   }
 
-  const tabCls = (name) => `flex-1 rounded-full py-3 text-sm md:text-base font-medium transition ${tab === name ? 'bg-[#0C3E2E] text-white' : 'text-slate-700 hover:bg-slate-100'}`
+  const tabCls = (name) => `flex-1 rounded-full py-3 text-sm md:text-base font-medium transition ${tab === name ? 'bg-[#074636] text-white' : 'text-slate-700 hover:bg-slate-100'}`
 
   return (
     <aside id="booking" className="booking-card scroll-mt-6 rounded-3xl bg-white p-6 md:p-8 lg:sticky lg:top-6 self-start shadow-sm">
@@ -381,7 +380,7 @@ function BookingCard({ circuit }) {
           </div>
           <div>
             <p className={LABEL} id="travellers-label">{t('travellers')}</p>
-            <div className="flex items-center justify-between rounded-full bg-[#F4F1EA] px-2 py-2" role="group" aria-labelledby="travellers-label">
+            <div className="flex items-center justify-between rounded-full bg-[#D5E8E2] px-2 py-2" role="group" aria-labelledby="travellers-label">
               <button type="button" aria-label={t('fewer')} onClick={() => setTravellers(Math.max(1, travellers - 1))} disabled={travellers <= 1} className="w-10 h-10 rounded-full bg-white text-xl text-slate-800 hover:bg-slate-100 disabled:opacity-40">−</button>
               <span className="text-lg font-medium text-slate-900" aria-live="polite">{travellers}</span>
               <button type="button" aria-label={t('more')} onClick={() => setTravellers(Math.min(12, travellers + 1))} disabled={travellers >= 12} className="w-10 h-10 rounded-full bg-white text-xl text-slate-800 hover:bg-slate-100 disabled:opacity-40">+</button>
@@ -441,7 +440,7 @@ function MobileBookingBar({ circuit }) {
           type="button"
           tabIndex={cardVisible ? -1 : 0}
           onClick={() => document.getElementById('booking')?.scrollIntoView({ behavior: 'smooth' })}
-          className={`${BTN} bg-[#0C3E2E] hover:bg-[#14523F] text-white`}
+          className={`${BTN} bg-[#074636] hover:bg-[#0a5c47] text-white`}
         >
           {t('bookNow')}
         </button>
@@ -566,7 +565,7 @@ function CircuitDetail() {
   if (data.status === 'loading') {
     return (
       <>
-        <main className="w-full bg-[#F4F1EA] pb-24 flex flex-col items-center">
+        <main className="w-full bg-[#D5E8E2] pb-24 flex flex-col items-center">
           <Navbar />
           <section role="status" aria-label={t('loading')} className={`${W} mt-6 animate-pulse`}>
             <div className="h-4 w-64 rounded bg-white/70" />
@@ -574,7 +573,7 @@ function CircuitDetail() {
             <div className="mt-4 h-6 w-full max-w-xl rounded bg-white/70" />
             <div className="mt-8 grid grid-cols-1 md:grid-cols-[1fr_1.5fr_1fr] gap-4 md:gap-6">
               {[0, 1, 2].map((n) => (
-                <div key={n} className={`h-64 md:h-[440px] rounded-3xl bg-white/70 ${n > 0 ? 'hidden md:block' : ''}`} />
+                <div key={n} className={`h-64 md:h-[440px] rounded-[1.5rem] md:rounded-[2rem] bg-white/70 ${n > 0 ? 'hidden md:block' : ''}`} />
               ))}
             </div>
           </section>
@@ -588,7 +587,7 @@ function CircuitDetail() {
     const notFound = data.status === 'notfound'
     return (
       <>
-        <main className="w-full bg-[#F4F1EA] pb-24 flex flex-col items-center">
+        <main className="w-full bg-[#D5E8E2] pb-24 flex flex-col items-center">
           <Navbar />
           <section className={`${W} mt-16 rounded-3xl bg-white p-10 text-center`}>
             <h1 className={H2}>{notFound ? t('notFound') : t('loadError')}</h1>
@@ -597,7 +596,7 @@ function CircuitDetail() {
               {!notFound && (
                 <button type="button" onClick={() => window.location.reload()} className={`${BTN} ${GOLD} text-white`}>{t('tryAgain')}</button>
               )}
-              <Link to="/circuits" className={`${BTN} bg-[#0C3E2E] hover:bg-[#14523F] text-white`}>{t('allCircuits')}</Link>
+              <Link to="/circuits" className={`${BTN} bg-[#074636] hover:bg-[#0a5c47] text-white`}>{t('allCircuits')}</Link>
             </div>
           </section>
         </main>
@@ -615,7 +614,7 @@ function CircuitDetail() {
 
   return (
     <>
-      <main className="w-full bg-[#F4F1EA] pb-16 md:pb-24 flex flex-col items-center">
+      <main className="w-full bg-[#D5E8E2] pb-16 md:pb-24 flex flex-col items-center">
         <Navbar />
 
         {/* En-tête + galerie */}
@@ -633,8 +632,8 @@ function CircuitDetail() {
 
           <div className="mt-8 grid grid-cols-1 md:grid-cols-[1fr_1.5fr_1fr] gap-4 md:gap-6">
             {circuit.gallery.map((src, i) => (
-              <div key={i} className={`detail-photo relative h-64 md:h-[440px] overflow-hidden rounded-3xl ${i > 0 ? 'hidden md:block' : ''}`}>
-                <Img src={assetUrl(src)} alt={i === 0 ? circuit.title : ''} className="gs-parallax absolute inset-x-0 -top-[15%] w-full h-[130%] object-cover" />
+              <div key={i} className={`detail-photo relative h-64 md:h-[440px] overflow-hidden rounded-[1.5rem] md:rounded-[2rem] ${i > 0 ? 'hidden md:block' : ''}`}>
+                <img src={assetUrl(src)} alt={i === 0 ? circuit.title : ''} className="gs-parallax absolute inset-x-0 -top-[15%] w-full h-[130%] object-cover" />
               </div>
             ))}
           </div>
@@ -661,7 +660,7 @@ function CircuitDetail() {
             <ul className="gs-bullets mt-6 flex flex-col gap-3 max-w-3xl">
               {circuit.highlights.map((h) => (
                 <li key={h} className="flex items-start gap-3 text-base md:text-lg text-slate-700">
-                  <span className="mt-2.5 w-2 h-2 rounded-full bg-[#A9813A] shrink-0" />{h}
+                  <span className="mt-2.5 w-2 h-2 rounded-full bg-[#C49849] shrink-0" />{h}
                 </li>
               ))}
             </ul>
@@ -686,7 +685,7 @@ function CircuitDetail() {
 
             <Itinerary circuit={circuit} />
 
-            <div className="gs-know mt-12 rounded-3xl bg-[#0C3E2E] text-white p-6 md:p-8">
+            <div className="gs-know mt-12 rounded-3xl bg-[#074636] text-white p-6 md:p-8">
               <h3 className="text-xl font-bold">{t('goodToKnow')}</h3>
               <p className="mt-3 text-sm md:text-base text-white/75 leading-relaxed">
                 {circuit.bestTime && `${t('bestTime', { time: circuit.bestTime })} `}{circuit.tip} {t('adaptable')}
@@ -708,10 +707,10 @@ function CircuitDetail() {
           <ul className="mt-8 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
             {related.map((c) => (
               <li key={c.slug} className="gs-related">
-                <Link to={`/circuits/${c.slug}`} className="group relative block aspect-[4/3] overflow-hidden rounded-3xl text-white">
-                  <Img src={assetUrl(c.image)} alt="" className="absolute inset-0 w-full h-full object-cover img-zoom" />
+                <Link to={`/circuits/${c.slug}`} className="group relative block aspect-[4/3] overflow-hidden rounded-[1.5rem] text-white">
+                  <img src={assetUrl(c.image)} alt="" className="absolute inset-0 w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" />
                   <div className="absolute inset-0 bg-gradient-to-t from-[#072a1f]/85 via-[#072a1f]/20 to-transparent" />
-                  <span className="absolute left-4 top-4 rounded-sm bg-[#F4F1EA] text-forest px-3 py-1.5 text-[11px] font-semibold uppercase tracking-[0.14em]">{t('days', { count: c.days })}</span>
+                  <span className="absolute left-4 top-4 rounded-sm bg-[#C49849] px-3 py-1.5 text-xs sm:text-sm font-medium">{t('days', { count: c.days })}</span>
                   <div className="absolute inset-x-0 bottom-0 p-5">
                     <p className="text-xl font-medium leading-snug">{c.title}</p>
                   </div>

@@ -32,7 +32,7 @@ const snapshot = (form) => JSON.stringify(toPayload(form))
 
 // Meilleure période : un clic fait passer le mois de « possible » à « bon » puis « idéal »
 const SEASON_LEVELS = [
-  { label: 'Possible', className: 'bg-[#0C3E2E]/10 text-slate-700' },
+  { label: 'Possible', className: 'bg-[#084838]/10 text-slate-700' },
   { label: 'Good', className: 'bg-[#C49849]/40 text-slate-900' },
   { label: 'Ideal', className: 'bg-[#C49849] text-white' },
 ]
@@ -75,7 +75,7 @@ function MultiField({ label, options, value, error, onChange }) {
           <label
             key={o.value}
             className={`cursor-pointer rounded-full px-4 py-2 text-sm transition ${
-              value.includes(o.value) ? 'bg-[#0C3E2E] text-white' : 'border border-slate-300 bg-white text-slate-700 hover:border-slate-700'
+              value.includes(o.value) ? 'bg-[#084838] text-white' : 'border border-slate-300 bg-white text-slate-700 hover:border-slate-700'
             }`}
           >
             <input type="checkbox" checked={value.includes(o.value)} onChange={() => toggle(o.value)} className="sr-only" />
@@ -299,7 +299,7 @@ function OfferEditor() {
 
       {/* Barre d'enregistrement */}
       <div className="fixed inset-x-0 bottom-0 z-40 border-t border-slate-200 bg-white/95 backdrop-blur">
-        <div className="mx-auto flex w-[90vw] max-w-[1360px] items-center justify-between gap-4 py-3">
+        <div className="mx-auto flex w-[90vw] lg:max-w-[95vw] items-center justify-between gap-4 py-3">
           <p className="text-sm text-slate-600" aria-live="polite">
             {status === 'saving' ? 'Saving…' : dirty ? 'Unsaved changes' : isNew ? 'Not saved yet' : 'All changes saved'}
           </p>

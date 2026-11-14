@@ -34,7 +34,7 @@ export function KindTabs({ current }) {
               to={`/admin/offers/${name}`}
               aria-current={name === current ? 'page' : undefined}
               className={`rounded-full px-4 py-2 text-sm font-medium transition ${
-                name === current ? 'bg-[#0C3E2E] text-white' : 'border border-slate-300 bg-white text-slate-700 hover:border-slate-700'
+                name === current ? 'bg-[#084838] text-white' : 'border border-slate-300 bg-white text-slate-700 hover:border-slate-700'
               }`}
             >
               {OFFER_KINDS[name].label}
@@ -141,7 +141,7 @@ function AdminOffers({ kind }) {
                 ) : o.video ? (
                   <video src={`${assetUrl(o.video)}#t=0.1`} preload="metadata" muted aria-hidden="true" className="h-16 w-24 sm:h-20 sm:w-28 shrink-0 rounded-xl bg-slate-900 object-cover" />
                 ) : (
-                  <span aria-hidden="true" className="h-16 w-24 sm:h-20 sm:w-28 shrink-0 rounded-xl bg-[#0C3E2E]/10" />
+                  <span aria-hidden="true" className="h-16 w-24 sm:h-20 sm:w-28 shrink-0 rounded-xl bg-[#084838]/10" />
                 )}
                 <div className="min-w-0">
                   <p className="flex flex-wrap items-center gap-2">

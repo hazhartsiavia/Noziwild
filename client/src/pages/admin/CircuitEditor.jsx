@@ -103,7 +103,7 @@ function DayEditor({ day, index, count, open, errors, onToggle, onChange, onMove
           className="flex min-w-0 flex-1 items-center gap-3 rounded-xl px-2 py-1.5 text-left hover:bg-slate-50"
         >
           <ChevronRight size={18} aria-hidden="true" className={`shrink-0 text-slate-500 transition-transform ${open ? 'rotate-90' : ''}`} />
-          <span className="shrink-0 rounded-full bg-[#F4F1EA] px-3 py-1 text-xs font-medium text-slate-800">{day.day || `#${index + 1}`}</span>
+          <span className="shrink-0 rounded-full bg-[#D5E8E2] px-3 py-1 text-xs font-medium text-slate-800">{day.day || `#${index + 1}`}</span>
           <span className={`truncate text-sm sm:text-base ${day.title ? 'text-slate-900' : 'italic text-slate-400'}`}>{day.title || 'Untitled day'}</span>
           {hasError && <span className="shrink-0 text-xs font-medium text-red-700">To fix</span>}
         </button>
@@ -482,7 +482,7 @@ function CircuitEditor() {
 
       {/* Barre d'enregistrement */}
       <div className="fixed inset-x-0 bottom-0 z-40 border-t border-slate-200 bg-white/95 backdrop-blur">
-        <div className="mx-auto flex w-[90vw] max-w-[1360px] items-center justify-between gap-4 py-3">
+        <div className="mx-auto flex w-[90vw] lg:max-w-[95vw] items-center justify-between gap-4 py-3">
           <p className="text-sm text-slate-600" aria-live="polite">
             {status === 'saving' ? 'Saving…' : dirty ? 'Unsaved changes' : isNew ? 'New circuit, not saved yet' : 'All changes saved'}
           </p>

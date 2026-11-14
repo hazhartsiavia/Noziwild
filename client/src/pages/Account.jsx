@@ -262,10 +262,10 @@ function RequestsCard() {
       {state.status === 'error' && <p role="alert" className="mt-6 text-sm md:text-base text-red-700">{state.error}</p>}
 
       {state.status === 'ready' && state.requests.length === 0 && (
-        <div className="mt-6 rounded-3xl bg-[#F4F1EA]/60 p-6">
+        <div className="mt-6 rounded-3xl bg-[#D5E8E2]/60 p-6">
           <p className="text-base text-slate-800">{t('noRequests')}</p>
           <div className="mt-4 flex flex-col sm:flex-row gap-3">
-            <Link to="/tailor-made" className={`text-center bg-[#A9813A] hover:bg-[#8C6A2C] active:scale-95 transition text-white ${BUTTON}`}>
+            <Link to="/tailor-made" className={`text-center bg-[#C49849] hover:bg-[#b08339] active:scale-95 transition text-white ${BUTTON}`}>
               {t('planTrip')}
             </Link>
             <Link to="/contact" className={`text-center ${SECONDARY}`}>{t('contact')}</Link>
@@ -377,7 +377,7 @@ function Account() {
 
   if (loading) {
     return (
-      <section className="w-full min-h-screen bg-[#F4F1EA] flex flex-col items-center">
+      <section className="w-full min-h-screen bg-[#D5E8E2] flex flex-col items-center">
         <Navbar />
         <p role="status" className="mt-20 text-slate-600">{t('loading')}</p>
       </section>
@@ -406,7 +406,7 @@ function Account() {
 
   return (
     <>
-      <section ref={root} className="w-full pt-0 pb-12 md:pb-20 bg-[#F4F1EA] flex flex-col items-center gap-6">
+      <section ref={root} className="w-full pt-0 pb-12 md:pb-20 bg-[#D5E8E2] flex flex-col items-center gap-6">
         <Navbar />
 
         {notice && (
@@ -434,11 +434,11 @@ function Account() {
 
         <div className="w-[90vw] max-w-3xl flex flex-col sm:flex-row gap-3">
           {user.role === 'admin' && (
-            <Link to="/admin" className={`text-center bg-[#0C3E2E] hover:bg-[#14523F] active:scale-95 transition text-white ${BUTTON}`}>
+            <Link to="/admin" className={`text-center bg-[#074636] hover:bg-[#0a5c47] active:scale-95 transition text-white ${BUTTON}`}>
               {t('adminLink')}
             </Link>
           )}
-          <Link to="/tailor-made" className={`text-center bg-[#A9813A] hover:bg-[#8C6A2C] active:scale-95 transition text-white ${BUTTON}`}>
+          <Link to="/tailor-made" className={`text-center bg-[#C49849] hover:bg-[#b08339] active:scale-95 transition text-white ${BUTTON}`}>
             {t('planTrip')}
           </Link>
           <button type="button" onClick={handleLogout} className={`bg-white ${SECONDARY}`}>

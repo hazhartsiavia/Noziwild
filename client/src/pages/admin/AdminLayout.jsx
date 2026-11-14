@@ -18,7 +18,7 @@ const TABS = [
 
 function Shell({ children }) {
   return (
-    <main className="w-full min-h-screen bg-[#F4F1EA] pb-20 flex flex-col items-center">
+    <main className="w-full min-h-screen bg-[#D5E8E2] pb-20 flex flex-col items-center">
       <Navbar />
       {children}
     </main>
@@ -46,7 +46,7 @@ function AdminLayout() {
           <p className="mt-3 text-slate-600">
             Your account ({user.email}) does not have access to this area. Ask the Noziwild team to give you the administrator role.
           </p>
-          <Link to="/" className="mt-6 inline-flex rounded-full bg-[#0C3E2E] px-6 py-3 text-sm font-medium text-white hover:bg-[#14523F]">Back to the site</Link>
+          <Link to="/" className="mt-6 inline-flex rounded-full bg-[#084838] px-6 py-3 text-sm font-medium text-white hover:bg-[#0a5c47]">Back to the site</Link>
         </section>
       </Shell>
     )
@@ -54,7 +54,7 @@ function AdminLayout() {
 
   return (
     <Shell>
-      <div className="w-[90vw] max-w-[1360px] mt-6">
+      <div className="w-[90vw] lg:max-w-[95vw] mt-6">
         <header className="flex flex-col sm:flex-row sm:items-end justify-between gap-4">
           <div>
             <p className="text-sm uppercase tracking-wide text-slate-600">Noziwild</p>
@@ -66,7 +66,7 @@ function AdminLayout() {
                 key={to}
                 to={to}
                 className={({ isActive }) =>
-                  `flex items-center gap-2 rounded-full px-4 py-2 text-sm font-medium transition ${isActive ? 'bg-[#0C3E2E] text-white' : 'text-slate-700 hover:bg-slate-100'}`
+                  `flex items-center gap-2 rounded-full px-4 py-2 text-sm font-medium transition ${isActive ? 'bg-[#084838] text-white' : 'text-slate-700 hover:bg-slate-100'}`
                 }
               >
                 <Icon size={16} aria-hidden="true" /> {label}

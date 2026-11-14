@@ -1,12 +1,12 @@
 import React, { useState, useRef, useLayoutEffect } from 'react'
 import gsap from 'gsap'
 import { ScrollTrigger } from 'gsap/ScrollTrigger'
-import Ramena from '../assets/images/site/ramena-beach-aerial.jpg'
-import NosyIranja from '../assets/images/site/nosy-iranja-aerial.jpg'
-import NosyLonjo from '../assets/images/site/sugar-loaf-view.jpg'
-import Ambanja from '../assets/images/site/sambirano-river.jpg'
-import Deux from '../assets/images/site/coastal-tsingy.jpg'
-import Tana from '../assets/images/site/antananarivo-rice-fields.jpg'
+import Ramena from '../assets/images/Ramena.jpg'
+import NosyIranja from '../assets/images/NosyIranja.jpg'
+import NosyLonjo from '../assets/images/NosyLonjo.jpg'
+import Ambanja from '../assets/images/Ambanja.jpg'
+import Deux from '../assets/images/2.jpg'
+import Tana from '../assets/images/Tana.jpg'
 import Navbar from '../components/Navbar'
 import Footer from '../components/Footer'
 import { CARD, CARD_BODY, CARD_IMG, CARD_MEDIA, CARD_TEXT, CARD_TITLE } from '../components/Card'
@@ -19,15 +19,14 @@ import { monthName } from '../utils/format'
 import { useOffers } from '../utils/useOffers'
 import { usePhoto } from '../sitePhotos'
 import { A } from '../i18n/router'
-import Img from '../components/Img'
 
 gsap.registerPlugin(ScrollTrigger)
 
-const W = 'w-[90vw] max-w-[1360px]'
-const GOLD = 'bg-[#A9813A] hover:bg-[#8C6A2C]'
-const DARK = 'bg-[#0C3E2E]'
+const W = 'w-[90vw] lg:max-w-[95vw]'
+const GOLD = 'bg-[#C49849] hover:bg-[#a9813a]'
+const DARK = 'bg-[#074636]'
 const BTN = 'inline-flex items-center justify-center text-sm md:text-base font-medium px-6 py-3 rounded-full active:scale-95 transition disabled:opacity-40 disabled:pointer-events-none'
-const H2 = 'text-[clamp(2.6rem,5.4vw,5rem)] text-forest leading-[1] [text-wrap:balance]'
+const H2 = 'text-[clamp(2rem,4.4vw,4rem)] font-bold text-forest leading-[1.08] tracking-tight'
 const FIELD = 'w-full h-12 rounded-full border border-slate-300 bg-white px-5 text-base text-slate-800 focus:outline-none focus:ring-2 focus:ring-[#E6C58A]'
 const LABEL = 'block mb-2 text-sm md:text-base text-white/85'
 const QUESTION = 'text-4xl sm:text-5xl md:text-6xl font-medium leading-[1.05] tracking-tight text-white'
@@ -53,7 +52,7 @@ const comforts = ['Comfortable', 'Premium', 'Luxury']
 const groups = ['Solo', 'Couple', 'Family', 'Friends']
 
 // Couleur de chaque carte de « De l'idée à l'itinéraire » (textes : locales/<langue>/tailormade.json, clé steps)
-const STEP_TONES = ['bg-white text-slate-900', 'bg-[#0C3E2E] text-white', 'bg-[#A9813A] text-white', 'bg-white text-slate-900']
+const STEP_TONES = ['bg-white text-slate-900', 'bg-[#074636] text-white', 'bg-[#C49849] text-white', 'bg-white text-slate-900']
 
 /* ----------------------- Utilitaires GSAP ------------------------ */
 
@@ -124,7 +123,7 @@ function Pill({ active, onClick, children }) {
       onClick={handleClick}
       aria-pressed={active}
       className={`pill rounded-full border px-5 py-2.5 text-sm md:text-base transition-colors duration-200 focus:outline-none focus-visible:ring-2 focus-visible:ring-[#E6C58A] ${
-        active ? 'bg-[#A9813A] border-[#A9813A] text-white' : 'bg-white/10 border-white/35 text-white hover:bg-white/20'
+        active ? 'bg-[#C49849] border-[#C49849] text-white' : 'bg-white/10 border-white/35 text-white hover:bg-white/20'
       }`}
     >
       {children}
@@ -221,16 +220,16 @@ function Builder({ form, setForm }) {
     if (prevSummary.current === null) { prevSummary.current = summaryKey; return }
     if (prevSummary.current === summaryKey) return
     prevSummary.current = summaryKey
-    gsap.fromTo('.sum-val', { y: 6, color: '#A9813A' }, { y: 0, color: '#0c3e2e', duration: 0.55, stagger: 0.03, ease: 'power2.out', clearProps: 'color,transform' })
+    gsap.fromTo('.sum-val', { y: 6, color: '#C49849' }, { y: 0, color: '#0c3e2e', duration: 0.55, stagger: 0.03, ease: 'power2.out', clearProps: 'color,transform' })
   }, [summaryKey])
 
   // La photo de fond suit la dernière envie choisie
   const backdrop = form.interests[form.interests.length - 1] || interests[0].id
 
   return (
-    <section ref={root} id="builder" className={`${W} mt-16 md:mt-28 scroll-mt-6 relative overflow-hidden rounded-3xl ${DARK} text-white`}>
+    <section ref={root} id="builder" className={`${W} mt-16 md:mt-28 scroll-mt-6 relative overflow-hidden rounded-[1.5rem] md:rounded-[2rem] ${DARK} text-white`}>
       {interests.map((it) => (
-        <Img key={it.id} src={photo(it.slot)} alt="" loading="lazy" className={`absolute inset-0 w-full h-full object-cover transition-opacity duration-1000 ${backdrop === it.id ? 'opacity-100' : 'opacity-0'}`} />
+        <img key={it.id} src={photo(it.slot)} alt="" loading="lazy" className={`absolute inset-0 w-full h-full object-cover transition-opacity duration-1000 ${backdrop === it.id ? 'opacity-100' : 'opacity-0'}`} />
       ))}
       <div className="absolute inset-0 bg-gradient-to-b from-[#072a1f]/90 via-[#072a1f]/75 to-[#072a1f]/95" />
 
@@ -255,10 +254,10 @@ function Builder({ form, setForm }) {
                     aria-current={i === step ? 'step' : undefined}
                     className="flex items-center gap-2.5 rounded-full focus:outline-none focus-visible:ring-2 focus-visible:ring-[#E6C58A] disabled:cursor-default"
                   >
-                    <span className={`w-8 h-8 shrink-0 rounded-full flex items-center justify-center text-sm tabular-nums transition-colors ${i <= step ? 'bg-[#A9813A] text-white' : 'border border-white/40 text-white/70'}`}>{i < step ? '✓' : i + 1}</span>
+                    <span className={`w-8 h-8 shrink-0 rounded-full flex items-center justify-center text-sm tabular-nums transition-colors ${i <= step ? 'bg-[#C49849] text-white' : 'border border-white/40 text-white/70'}`}>{i < step ? '✓' : i + 1}</span>
                     <span className={`hidden md:block text-sm whitespace-nowrap ${i === step ? 'font-medium text-white' : 'text-white/70'}`}>{title}</span>
                   </button>
-                  {i < titles.length - 1 && <span aria-hidden="true" className={`flex-1 mx-2 md:mx-4 border-t-2 border-dashed transition-colors ${i < step ? 'border-[#A9813A]' : 'border-white/25'}`} />}
+                  {i < titles.length - 1 && <span aria-hidden="true" className={`flex-1 mx-2 md:mx-4 border-t-2 border-dashed transition-colors ${i < step ? 'border-[#C49849]' : 'border-white/25'}`} />}
                 </li>
               ))}
             </ol>
@@ -273,11 +272,11 @@ function Builder({ form, setForm }) {
                       const on = form.interests.includes(it.id)
                       return (
                         <button key={it.id} type="button" onClick={() => toggle(it.id)} aria-pressed={on}
-                          className={`interest-card group relative aspect-[3/4] overflow-hidden rounded-t-[999px] rounded-b-3xl text-white transition-transform duration-300 hover:-translate-y-1.5 focus:outline-none focus-visible:ring-4 focus-visible:ring-[#E6C58A] ${on ? 'ring-4 ring-[#A9813A]' : 'ring-1 ring-white/25'}`}>
-                          <Img src={photo(it.slot)} alt="" className="absolute inset-0 w-full h-full object-cover img-zoom" />
+                          className={`interest-card group relative aspect-[3/4] overflow-hidden rounded-t-[999px] rounded-b-[1.5rem] text-white transition-transform duration-300 hover:-translate-y-1.5 focus:outline-none focus-visible:ring-4 focus-visible:ring-[#E6C58A] ${on ? 'ring-4 ring-[#C49849]' : 'ring-1 ring-white/25'}`}>
+                          <img src={photo(it.slot)} alt="" className="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" />
                           <div className="absolute inset-0 bg-gradient-to-t from-[#072a1f]/90 via-[#072a1f]/20 to-transparent" />
                           <span className="absolute inset-x-0 bottom-0 p-3 md:p-4 text-center text-sm md:text-base font-medium leading-snug">{label(it.id)}</span>
-                          {on && <span aria-hidden="true" className="absolute left-1/2 top-5 -translate-x-1/2 w-8 h-8 rounded-full bg-[#A9813A] flex items-center justify-center text-sm">✓</span>}
+                          {on && <span aria-hidden="true" className="absolute left-1/2 top-5 -translate-x-1/2 w-8 h-8 rounded-full bg-[#C49849] flex items-center justify-center text-sm">✓</span>}
                         </button>
                       )
                     })}
@@ -361,9 +360,9 @@ function IdeaCard({ it, onSelect }) {
   const t = useT('tailormade')
   return (
     <li className="idea-card flex">
-      <button type="button" onClick={onSelect} className={`${CARD} w-full text-left focus:outline-none focus-visible:ring-4 focus-visible:ring-[#0C3E2E]`}>
+      <button type="button" onClick={onSelect} className={`${CARD} w-full text-left focus:outline-none focus-visible:ring-4 focus-visible:ring-[#074636]`}>
         <span className={`block ${CARD_MEDIA}`}>
-          <Img src={it.image} alt="" className={`idea-img ${CARD_IMG}`} />
+          <img src={it.image} alt="" className={`idea-img ${CARD_IMG}`} />
         </span>
         <span className={`idea-text ${CARD_BODY}`}>
           <span className={`block ${CARD_TITLE.replace('mt-4 ', '')}`}>{it.title}</span>
@@ -432,7 +431,7 @@ function TailorMade() {
 
   return (
     <>
-      <main className="w-full overflow-x-clip bg-[#F4F1EA] flex flex-col items-center">
+      <main className="w-full overflow-x-clip bg-[#D5E8E2] flex flex-col items-center">
         <Hero />
 
         {/* Comment ça marche */}
