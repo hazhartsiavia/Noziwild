@@ -135,14 +135,12 @@
   background: var(--nz-green-800);
 }
 
-.nzh__media,
-.nzh__shade {
+.nzh__media {
   position: absolute;
   inset: 0;
+  z-index: -2;
+  background: var(--nz-green-900);
 }
-
-.nzh__media { z-index: -2; background: var(--nz-green-900); }
-.nzh__shade { z-index: -1; background: var(--nz-shade); }
 
 /* ---------- navbar du site ---------- */
 

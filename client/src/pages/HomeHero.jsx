@@ -269,7 +269,6 @@ export function Hero({ ready }) {
           </div>
         ))}
       </div>
-      <div className="nzh__shade" aria-hidden="true" />
 
       {/* Navbar du site, inchangée, accrochée à une bande blanche comme sur les autres pages à photo.
           Montée après le preloader pour que son animation d'entrée se voie. */}
