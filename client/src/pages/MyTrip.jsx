@@ -13,6 +13,7 @@ import { Trans, useLanguage, useT } from '../i18n/LanguageContext'
 import { sendQuote } from '../api'
 import { useSitePages } from '../context/SitePagesContext'
 import { useScrollReveal } from '../utils/useScrollReveal'
+import Img from '../components/Img'
 
 const CARD = 'rounded-3xl bg-white p-5 md:p-7'
 const H1 = 'text-4xl sm:text-5xl md:text-6xl font-medium tracking-tight text-slate-900'
@@ -52,7 +53,7 @@ function ItemCard({ item }) {
     <li className={`${CARD} flex flex-col gap-4`}>
       <div className="flex gap-4">
         {imageOk && (
-          <img src={item.image} alt="" onError={() => setImageOk(false)} className="hidden sm:block w-28 h-24 md:w-36 md:h-28 shrink-0 rounded-2xl object-cover" />
+          <Img src={item.image} alt="" onError={() => setImageOk(false)} className="hidden sm:block w-28 h-24 md:w-36 md:h-28 shrink-0 rounded-2xl object-cover" />
         )}
         <div className="min-w-0 flex-1">
           <p className="text-xs md:text-sm uppercase tracking-wide text-[#9a742f]">{kinds[item.kind] || item.kind}</p>
@@ -66,7 +67,7 @@ function ItemCard({ item }) {
 
       <div className="flex flex-wrap items-center gap-3">
         {item.unit !== 'fixed' && (
-          <div className="flex items-center gap-2 rounded-full bg-[#D5E8E2] p-1" role="group" aria-label={t(units.group)}>
+          <div className="flex items-center gap-2 rounded-full bg-[#F4F1EA] p-1" role="group" aria-label={t(units.group)}>
             <button type="button" onClick={() => setQty(item.qty - 1)} disabled={item.qty <= 1} aria-label={t('fewer')} className="flex h-8 w-8 items-center justify-center rounded-full bg-white text-slate-800 hover:bg-slate-100 disabled:opacity-40">
               <Minus size={14} aria-hidden="true" />
             </button>
@@ -219,7 +220,7 @@ function MyTrip() {
 
   return (
     <>
-      <section ref={root} className="w-full pt-0 pb-12 md:pb-20 bg-[#D5E8E2] flex flex-col items-center">
+      <section ref={root} className="w-full pt-0 pb-12 md:pb-20 bg-[#F4F1EA] flex flex-col items-center">
         <Navbar />
 
         <div className="w-[90vw] max-w-6xl mt-4 md:mt-8">

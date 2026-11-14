@@ -1,7 +1,7 @@
 import React, { useRef, useState } from 'react'
-import NosyLonjo from "../assets/images/NosyLonjo.jpg";
-import NosyIranja from "../assets/images/NosyIranja.jpg";
-import Ramena from "../assets/images/Ramena.jpg";
+import NosyLonjo from "../assets/images/site/sugar-loaf-view.jpg";
+import NosyIranja from "../assets/images/site/nosy-iranja-aerial.jpg";
+import Ramena from "../assets/images/site/ramena-beach-aerial.jpg";
 import Navbar from '../components/Navbar';
 import Footer from '../components/Footer';
 import AddToTrip from '../components/AddToTrip'
@@ -13,15 +13,16 @@ import { useScrollReveal } from '../utils/useScrollReveal'
 import { usePhoto } from '../sitePhotos'
 import { A } from '../i18n/router'
 import SiteMedia from '../components/SiteMedia'
+import Img from '../components/Img'
 
 /* Constantes partagées : mêmes valeurs que dans les autres pages */
-const SECTION_WIDTH = "w-[90vw] lg:max-w-[90vw] xl:max-w-[95vw]"
+const SECTION_WIDTH = "w-[90vw] max-w-[1360px]"
 const SECTION_TITLE = "text-3xl sm:text-4xl md:text-5xl lg:text-[52px] font-medium text-forest leading-[1.15] tracking-tight"
 const SECTION_SUBTITLE = "text-sm sm:text-base md:text-lg text-slate-600 leading-relaxed max-w-3xl"
 const META_TEXT = "text-xs sm:text-sm"
 const PAGE_TITLE = "text-5xl sm:text-6xl md:text-7xl lg:text-[80px] font-bold uppercase leading-none tracking-tight"
 const ON_IMAGE_TITLE = "text-3xl sm:text-4xl md:text-5xl lg:text-[52px] font-medium text-white leading-[1.15] tracking-tight"
-const BADGE = "inline-block bg-[#C49849] text-white text-xs sm:text-sm font-medium px-3 py-1.5 rounded-sm"
+const BADGE = "inline-block bg-[#F4F1EA] text-forest text-[11px] font-semibold uppercase tracking-[0.14em] px-3 py-1.5 rounded-sm"
 const BUTTON = "text-sm font-medium px-5 py-2.5 rounded-full"
 const SECTION_GAP = "mt-[50px] md:mt-[100px]"
 
@@ -102,7 +103,7 @@ const StarIcon = () => (
 )
 
 const CheckIcon = () => (
-  <Svg className="w-4 h-4 shrink-0 text-[#C49849]">
+  <Svg className="w-4 h-4 shrink-0 text-[#A9813A]">
     <path d="M20 6 9 17l-5-5" />
   </Svg>
 )
@@ -124,7 +125,7 @@ const PlusIcon = ({ open }) => (
 function Hero() {
   const t = useT('accommodation')
   return (
-    <section className={`${SECTION_WIDTH} relative flex items-center overflow-hidden rounded-3xl bg-[#084838] text-white min-h-[240px] md:min-h-[360px]`}>
+    <section className={`${SECTION_WIDTH} relative flex items-center overflow-hidden rounded-3xl bg-[#0C3E2E] text-white min-h-[240px] md:min-h-[360px]`}>
       <SiteMedia slot="hosting.hero" alt="" className="absolute inset-0 w-full h-full object-cover" />
       <div className="absolute inset-0 bg-slate-950/60" />
       <div className="relative w-full max-w-5xl mx-auto px-6 md:px-10 py-16">
@@ -163,7 +164,7 @@ function StayCard({ stay }) {
   return (
     <article className="group flex flex-col rounded-xl bg-white p-3">
       <div className="relative aspect-[4/3] overflow-hidden rounded-md">
-        <img src={stay.image} alt={stay.name} className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" />
+        <Img src={stay.image} alt={stay.name} className="w-full h-full object-cover img-zoom" />
         <span className="absolute left-3 top-3 flex items-center gap-1 rounded-full bg-white px-3 py-1 text-xs font-medium text-slate-800">
           <StarIcon /> {stay.rating}
         </span>
@@ -206,7 +207,7 @@ function Stays({ stays, status }) {
             aria-selected={category === c.id}
             onClick={() => setCategory(c.id)}
             className={`rounded-full px-5 py-2 text-sm md:text-base font-medium transition ${
-              category === c.id ? 'bg-[#084838] text-white' : 'bg-white text-slate-700 hover:bg-white/70'
+              category === c.id ? 'bg-[#0C3E2E] text-white' : 'bg-white text-slate-700 hover:bg-white/70'
             }`}
           >
             {c.label}
@@ -230,7 +231,7 @@ function Featured({ stays }) {
   const featured = localize(FEATURED, t('featured'))
   const stay = stays.find((s) => s.name === featured.name)
   return (
-    <div className={`${SECTION_GAP} relative overflow-hidden rounded-3xl bg-[#084838] text-white min-h-[480px] md:min-h-[560px]`}>
+    <div className={`${SECTION_GAP} relative overflow-hidden rounded-3xl bg-[#0C3E2E] text-white min-h-[480px] md:min-h-[560px]`}>
       <SiteMedia slot="hosting.featured" alt={featured.name} className="absolute inset-0 w-full h-full object-cover" />
       <div className="absolute inset-0 bg-gradient-to-r from-black/80 via-black/30 to-black/10" />
       <div className="relative min-h-[inherit] flex flex-col justify-end p-5 md:p-10 max-w-2xl">
@@ -260,7 +261,7 @@ function Criteria() {
       <ul className="grid grid-cols-1 md:grid-cols-3 gap-4 md:gap-6">
         {criteria.map((c) => (
           <li key={c.id} className="rounded-2xl bg-white p-6 md:p-8">
-            <span className="w-12 h-12 rounded-full bg-[#C49849] flex items-center justify-center text-white text-lg font-medium">{c.id}</span>
+            <span className="w-12 h-12 rounded-full bg-[#A9813A] flex items-center justify-center text-white text-lg font-medium">{c.id}</span>
             <h3 className="mt-6 text-xl md:text-2xl font-medium text-forest leading-snug">{c.title}</h3>
             <p className="mt-3 text-sm md:text-base leading-relaxed text-slate-600">{c.text}</p>
           </li>
@@ -274,7 +275,7 @@ function Included() {
   const t = useT('accommodation')
   const included = localize(INCLUDED, t('included'))
   return (
-    <div className={`${SECTION_GAP} rounded-3xl bg-[#084838] text-white p-6 md:p-12`}>
+    <div className={`${SECTION_GAP} rounded-3xl bg-[#0C3E2E] text-white p-6 md:p-12`}>
       <div className="flex flex-col lg:flex-row lg:items-center lg:justify-between gap-5 lg:gap-12">
         <h2 className={`${ON_IMAGE_TITLE} lg:max-w-[45%]`}>{t('incTitle')}</h2>
         <p className="text-sm md:text-lg text-white/70 leading-relaxed lg:max-w-lg">
@@ -343,7 +344,7 @@ function Cta() {
           className="mt-6 md:mt-8 self-start inline-flex items-center gap-3 rounded-full bg-white hover:bg-white/90 transition text-slate-900 pl-6 pr-2.5 py-2.5 font-medium"
         >
           {t('ctaButton')}
-          <span className="w-10 h-10 rounded-full bg-[#C49849] flex items-center justify-center text-white"><ArrowIcon /></span>
+          <span className="w-10 h-10 rounded-full bg-[#A9813A] flex items-center justify-center text-white"><ArrowIcon /></span>
         </A>
       </div>
     </div>
@@ -357,7 +358,7 @@ function Accommodation() {
   useScrollReveal(root, [status])
   return (
     <>
-    <section ref={root} className="w-full pt-0 pb-12 md:pb-20 bg-[#D5E8E2] flex flex-col items-center">
+    <section ref={root} className="w-full pt-0 pb-12 md:pb-20 bg-[#F4F1EA] flex flex-col items-center">
       <Navbar />
       <Hero />
       <div className={`${SECTION_WIDTH} ${SECTION_GAP}`}>

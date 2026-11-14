@@ -8,12 +8,13 @@ import { assetUrl, fetchPosts } from '../api'
 import { useLanguage, useT } from '../i18n/LanguageContext'
 import { formatDate } from '../utils/format'
 import { A } from '../i18n/router'
+import Img from '../components/Img'
 
-const SECTION_WIDTH = 'w-[90vw] lg:max-w-[95vw]'
-const SECTION_TITLE = 'text-[clamp(2rem,4.4vw,4rem)] font-bold text-forest leading-[1.08] tracking-tight'
+const SECTION_WIDTH = 'w-[90vw] max-w-[1360px]'
+const SECTION_TITLE = 'text-[clamp(2.6rem,5.4vw,5rem)] text-forest leading-[1] [text-wrap:balance]'
 const META_TEXT = 'text-xs sm:text-sm'
 const PAGE_TITLE = 'text-5xl sm:text-6xl md:text-7xl lg:text-[80px] font-bold uppercase leading-none tracking-tight'
-const BADGE = 'inline-block bg-[#C49849] text-white text-xs sm:text-sm font-medium px-3 py-1.5 rounded-sm'
+const BADGE = 'inline-block bg-[#F4F1EA] text-forest text-[11px] font-semibold uppercase tracking-[0.14em] px-3 py-1.5 rounded-sm'
 
 // Articles : dans la base, gérés depuis /admin/blog. « À la une » : les 3 plus récents cochés comme tels.
 export function usePosts() {
@@ -47,7 +48,7 @@ function FeaturedJournal({ posts }) {
   return (
     <div className="grid grid-cols-1 lg:grid-cols-[5fr_7fr] overflow-hidden rounded-3xl bg-white">
       <A href={`/blog/${posts[0].slug}`} className="relative block min-h-[260px] sm:min-h-[340px] lg:min-h-full">
-        <img src={posts[0].image} alt={t('imageAlt')} className="absolute inset-0 w-full h-full object-cover" />
+        <Img src={posts[0].image} alt={t('imageAlt')} className="absolute inset-0 w-full h-full object-cover" />
       </A>
       <ul className="flex flex-col divide-y divide-slate-200 px-5 py-2 md:px-12 md:py-6">
         {posts.map((post) => (
@@ -57,7 +58,7 @@ function FeaturedJournal({ posts }) {
                 <span className={BADGE}>{formatDate(post.date, lang)}</span>
                 <h3 className="mt-4 text-lg md:text-2xl leading-snug group-hover:underline">{post.title}</h3>
               </div>
-              <img src={post.image} alt="" className="shrink-0 w-24 h-24 sm:w-40 sm:h-32 rounded-xl object-cover" />
+              <Img src={post.image} alt="" className="shrink-0 w-24 h-24 sm:w-40 sm:h-32 rounded-xl object-cover" />
             </A>
           </li>
         ))}
@@ -72,7 +73,7 @@ export function PostCard({ post }) {
   return (
     <A href={`/blog/${post.slug}`} className={CARD}>
       <div className={CARD_MEDIA}>
-        <img src={post.image} alt={post.title} className={CARD_IMG} />
+        <Img src={post.image} alt={post.title} className={CARD_IMG} />
       </div>
       <div className={CARD_BODY}>
         <CardMeta items={[formatDate(post.date, lang), t('readTime', { count: post.minutes })]} />
@@ -91,7 +92,7 @@ function Blog() {
 
   return (
     <>
-      <main className="w-full bg-[#D5E8E2] pt-0 pb-16 md:pb-24 flex flex-col items-center">
+      <main className="w-full bg-[#F4F1EA] pt-0 pb-16 md:pb-24 flex flex-col items-center">
         <div className="w-full flex flex-col items-center">
           <BlogHero />
 

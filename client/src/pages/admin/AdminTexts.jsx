@@ -38,7 +38,7 @@ function AdminTexts() {
                 const changed = files?.[ns] || {}
                 return (
                   <li key={ns}>
-                    <Link to={`/admin/texts/${ns}`} className="group flex items-center justify-between gap-4 rounded-2xl bg-white p-4 sm:p-5 transition hover:ring-2 hover:ring-[#084838]">
+                    <Link to={`/admin/texts/${ns}`} className="group flex items-center justify-between gap-4 rounded-2xl bg-white p-4 sm:p-5 transition hover:ring-2 hover:ring-[#0C3E2E]">
                       <span className="min-w-0">
                         <span className="block truncate font-medium text-slate-900">{textFile(ns).label}</span>
                         <span className="mt-1 block text-xs text-slate-500">

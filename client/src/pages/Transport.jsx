@@ -2,8 +2,8 @@ import React, { useState, useRef, useLayoutEffect } from 'react'
 import { ArrowDown, BadgeCheck, Car, Headset, Plane, ReceiptText, ShieldCheck, Ship } from 'lucide-react'
 import gsap from 'gsap'
 import { ScrollTrigger } from 'gsap/ScrollTrigger'
-import Deux from "../assets/images/2.jpg";
-import Tana from "../assets/images/Tana.jpg";
+import Deux from "../assets/images/site/coastal-tsingy.jpg";
+import Tana from "../assets/images/site/antananarivo-rice-fields.jpg";
 import Navbar from '../components/Navbar';
 import Footer from '../components/Footer';
 import AddToTrip from '../components/AddToTrip'
@@ -14,11 +14,12 @@ import { useOffers } from '../utils/useOffers'
 import { A } from '../i18n/router'
 import './transport.css'
 import SiteMedia from '../components/SiteMedia'
+import Img from '../components/Img'
 
 gsap.registerPlugin(ScrollTrigger)
 
 /* Constantes partagées : mêmes valeurs que dans About, Explore, Choose, Trips et Blog */
-const SECTION_WIDTH = "w-[90vw] lg:max-w-[90vw] xl:max-w-[95vw]"
+const SECTION_WIDTH = "w-[90vw] max-w-[1360px]"
 const SECTION_TITLE = "text-3xl sm:text-4xl md:text-5xl lg:text-[52px] font-medium text-forest leading-[1.15] tracking-tight"
 const SECTION_SUBTITLE = "text-sm sm:text-base md:text-lg text-slate-600 leading-relaxed max-w-3xl"
 const META_TEXT = "text-xs sm:text-sm"
@@ -27,8 +28,8 @@ const META_TEXT = "text-xs sm:text-sm"
 const HERO_TITLE = "text-[clamp(1.5rem,7vw,2.25rem)] md:whitespace-nowrap md:text-[min(calc((90vw-4rem)/(var(--chars)*0.58)),3rem)] lg:text-[min(calc((90vw-23rem)/(var(--chars)*0.58)),3.5rem)] font-semibold uppercase leading-[1.1] tracking-tight text-white [text-wrap:balance]"
 const ON_IMAGE_TITLE = "text-3xl sm:text-4xl md:text-5xl lg:text-[52px] font-medium text-white leading-[1.15] tracking-tight"
 const SECTION_GAP = "mt-[50px] md:mt-[100px]"
-const GOLD = "bg-[#C49849]"
-const GREEN = "bg-[#074636]"
+const GOLD = "bg-[#A9813A]"
+const GREEN = "bg-[#0C3E2E]"
 
 /* ---------------------------- Données ---------------------------- */
 // Textes affichés : locales/<langue>/transport.json, posés sur ces données par localize()
@@ -152,7 +153,7 @@ const Svg = ({ children, className = "w-5 h-5 md:w-6 md:h-6" }) => (
 )
 
 const CheckIcon = () => (
-  <Svg className="w-4 h-4 shrink-0 text-[#C49849]">
+  <Svg className="w-4 h-4 shrink-0 text-[#A9813A]">
     <path d="M20 6 9 17l-5-5" />
   </Svg>
 )
@@ -188,9 +189,9 @@ function Hero() {
       .fromTo('.hero-more', { y: -16, opacity: 0, transition: 'none' }, { y: 0, opacity: 1, duration: 0.7, ease: 'power3.out', clearProps: 'all' }, 1.45)
       .fromTo('.hero-cta', { y: 20, opacity: 0, transition: 'none' }, { y: 0, opacity: 1, duration: 0.7, ease: 'back.out(1.7)', clearProps: 'all' }, 1.45)
 
-    // 2. L'image glisse doucement au défilement
-    gsap.fromTo('.hero-img', { yPercent: -6, scale: 1.15 }, {
-      yPercent: 6, scale: 1.15, ease: 'none',
+    // 2. L'image glisse doucement au défilement (elle dépasse du cadre en hauteur : aucun agrandissement, elle reste nette)
+    gsap.fromTo('.hero-img', { yPercent: -6 }, {
+      yPercent: 6, ease: 'none',
       scrollTrigger: { trigger: root.current, start: 'top top', end: 'bottom top', scrub: 0.6 },
     })
   })
@@ -198,13 +199,13 @@ function Hero() {
   return (
     <div ref={root} className={`relative flex flex-col overflow-hidden rounded-3xl ${GREEN} text-white min-h-[calc(100svh-7rem)] md:min-h-[max(620px,calc(100svh-7rem))]`}>
       <div className="hero-media absolute inset-0">
-        <SiteMedia slot="transport.hero" alt={hero.imageAlt} className="hero-img absolute inset-0 w-full h-full object-cover" />
+        <SiteMedia slot="transport.hero" alt={hero.imageAlt} sizes="(min-width: 768px) 1500px, 260vw" fetchPriority="high" className="hero-img absolute inset-x-0 -top-[8%] w-full h-[116%] object-cover" />
       </div>
       {/* Seul le bas s'assombrit, sous le titre : le reste de la photo ou de la vidéo reste intact */}
       <div className="absolute inset-0 bg-gradient-to-t from-[#072a1f]/90 via-[#072a1f]/40 via-15% to-transparent to-35%" />
 
       {/* Coin en haut : descend vers la liste des transports */}
-      <a href="#transports" className="hero-more absolute right-4 top-4 md:right-6 md:top-6 z-10 inline-flex items-center gap-2 rounded-full border border-white/30 bg-[#072a1f]/55 hover:bg-[#072a1f]/75 backdrop-blur-md transition-colors pl-4 pr-1.5 py-1.5 text-sm font-medium text-white">
+      <a href="#transports" className="hero-more absolute right-4 top-4 md:right-6 md:top-6 z-10 inline-flex items-center gap-2 rounded-full border border-white/30 bg-[#072a1f]/60 hover:bg-[#072a1f]/85 transition-colors pl-4 pr-1.5 py-1.5 text-sm font-medium text-white">
         {hero.more}
         <span className={`w-7 h-7 rounded-full ${GOLD} flex items-center justify-center`}><ArrowDown size={15} aria-hidden="true" /></span>
       </a>
@@ -260,7 +261,7 @@ function TransportCard({ item, categoryLabel }) {
       <div className="card-frame relative aspect-[4/3] overflow-hidden rounded-md">
         {/* Plus haute que le cadre : c'est la marge dans laquelle la photo glisse au défilement */}
         <div className="card-media absolute inset-x-0 -inset-y-[10%]">
-          <img src={item.image} alt={item.name} className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" />
+          <Img src={item.image} alt={item.name} className="w-full h-full object-cover img-zoom" />
         </div>
         <span className={`transport-badge absolute left-3 top-3 inline-block ${GOLD} text-white text-xs sm:text-sm font-medium px-3 py-1.5 rounded-sm`}>{item.duration}</span>
       </div>
@@ -426,7 +427,7 @@ function Included() {
       </div>
 
       <div className="mt-14 md:mt-16 flex flex-col lg:flex-row lg:items-end gap-10 lg:gap-8">
-        <A href={HERO.ctaHref} className={`order-last lg:order-first self-start shrink-0 inline-flex items-center gap-3 rounded-full ${GREEN} hover:bg-[#0a5f48] transition-colors text-white pl-5 pr-1.5 py-1.5 font-medium`}>
+        <A href={HERO.ctaHref} className={`order-last lg:order-first self-start shrink-0 inline-flex items-center gap-3 rounded-full ${GREEN} hover:bg-[#14523F] transition-colors text-white pl-5 pr-1.5 py-1.5 font-medium`}>
           {hero.ctaLabel}
           <span className={`w-9 h-9 rounded-full ${GOLD} flex items-center justify-center`}><ArrowIcon /></span>
         </A>
@@ -523,15 +524,15 @@ function Cta() {
       .fromTo('.cta-copy > h2, .cta-copy > p', { y: 26, opacity: 0 }, { y: 0, opacity: 1, duration: 0.75, stagger: 0.12, ease: 'power3.out', clearProps: 'all' }, 0.7)
       .fromTo('.cta-link', { y: 20, opacity: 0, transition: 'none' }, { y: 0, opacity: 1, duration: 0.65, ease: 'back.out(2)', clearProps: 'all' }, 1.1)
 
-    gsap.fromTo('.cta-bg', { yPercent: -8, scale: 1.2 }, {
-      yPercent: 8, scale: 1.2, ease: 'none',
+    gsap.fromTo('.cta-bg', { yPercent: -8 }, {
+      yPercent: 8, ease: 'none',
       scrollTrigger: { trigger: root.current, start: 'top bottom', end: 'bottom top', scrub: 0.6 },
     })
   })
 
   return (
     <div ref={root} className={`${SECTION_GAP} relative overflow-hidden rounded-3xl min-h-[380px] md:min-h-[460px] flex`}>
-      <SiteMedia slot="transport.cta" alt="" className="cta-bg absolute inset-0 w-full h-full object-cover" />
+      <SiteMedia slot="transport.cta" alt="" loading="lazy" sizes="(min-width: 768px) 1500px, 260vw" className="cta-bg absolute inset-x-0 -top-[10%] w-full h-[120%] object-cover" />
       <div className="absolute inset-0 bg-gradient-to-r from-black/70 via-black/40 to-black/10" />
       <div className="cta-copy relative flex flex-col justify-end p-6 md:p-12 max-w-2xl">
         <h2 className={ON_IMAGE_TITLE}>{cta.title}</h2>
@@ -577,7 +578,7 @@ function Transport() {
 
   return (
     <>
-    <section className="w-full overflow-x-clip pt-0 pb-12 bg-[#D5E8E2] flex flex-col items-center">
+    <section className="w-full overflow-x-clip pt-0 pb-12 bg-[#F4F1EA] flex flex-col items-center">
       <Navbar />
       <div className={`${SECTION_WIDTH} mt-2 md:mt-4`}>
         <Hero />

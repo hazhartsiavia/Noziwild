@@ -4,9 +4,11 @@
 // si le système demande de réduire les animations ou si le visiteur économise ses données.
 // La vidéo ne se télécharge et ne joue que lorsqu'elle est près de l'écran.
 //   active={false} : vidéo en pause (diapositive du hero qui n'est pas à l'écran)
+//   sizes : largeur occupée par la photo (voir components/Img.jsx), pour servir la version HD quand il la faut
 import React, { useEffect, useRef, useState } from 'react'
 import { assetUrl } from '../api'
 import { usePhoto, useSiteVideos } from '../sitePhotos'
+import Img from './Img'
 
 const canPlayVideo = () =>
   !window.matchMedia('(prefers-reduced-motion: reduce)').matches && !navigator.connection?.saveData
@@ -37,7 +39,8 @@ function SiteMedia({ slot, active = true, alt = '', src, ...props }) {
     return () => observer.disconnect()
   }, [showVideo, active])
 
-  if (!showVideo) return <img src={poster} alt={alt} {...props} />
+  // loading : par défaut la photo d'un fond se charge tout de suite (elle est souvent en haut de page)
+  if (!showVideo) return <Img src={poster} alt={alt} loading="eager" {...props} />
 
   const { srcSet, sizes, loading, fetchPriority, ...videoProps } = props
   return (

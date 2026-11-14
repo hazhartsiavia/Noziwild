@@ -16,7 +16,7 @@ import { useSitePages } from '../context/SitePagesContext'
 const Fillet = ({ side, fRef }) => (
   <svg
     ref={fRef}
-    className="hidden md:block h-6 w-6 shrink-0 fill-current text-white"
+    className="hidden md:block h-6 w-6 shrink-0 fill-current text-[#F4F1EA]"
     viewBox="0 0 24 24"
     aria-hidden="true"
   >
@@ -350,8 +350,8 @@ function Navbar() {
               items-center
               justify-between
               gap-6
-              rounded-b-[1.75rem]
-              md:bg-white
+              rounded-b-3xl
+              md:bg-[#F4F1EA]
               px-5
               py-3
               md:w-auto
@@ -653,7 +653,7 @@ function Navbar() {
               {tripCount > 0 ? (
                 <>
                   {tt('navLabel')}
-                  <span className="flex h-5 min-w-5 items-center justify-center rounded-full bg-[#C49849] px-1.5 text-xs font-semibold text-white tabular-nums">{tripCount}</span>
+                  <span className="flex h-5 min-w-5 items-center justify-center rounded-full bg-[#A9813A] px-1.5 text-xs font-semibold text-white tabular-nums">{tripCount}</span>
                 </>
               ) : t('quote')}
 
@@ -996,7 +996,7 @@ function Navbar() {
                   {tripCount > 0 ? (
                     <>
                       {tt('navLabel')}
-                      <span className="flex h-5 min-w-5 items-center justify-center rounded-full bg-[#C49849] px-1.5 text-xs font-semibold text-white tabular-nums">{tripCount}</span>
+                      <span className="flex h-5 min-w-5 items-center justify-center rounded-full bg-[#A9813A] px-1.5 text-xs font-semibold text-white tabular-nums">{tripCount}</span>
                     </>
                   ) : t('quote')}
 

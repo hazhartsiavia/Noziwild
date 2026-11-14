@@ -2,15 +2,15 @@ import React, { useEffect, useLayoutEffect, useRef, useState } from 'react'
 import gsap from 'gsap'
 import { ScrollTrigger } from 'gsap/ScrollTrigger'
 import {
-  ArrowRight, Backpack, BedDouble, Camera, Car, Compass, Route, Ship,
+  ArrowUpRight, Backpack, BedDouble, Camera, Car, Compass, Route, Ship,
   Sparkles, Sun, Ticket, Users, UtensilsCrossed,
 } from 'lucide-react'
-import Ramena from '../assets/images/Ramena.jpg'
-import NosyIranja from '../assets/images/NosyIranja.jpg'
-import NosyLonjo from '../assets/images/NosyLonjo.jpg'
-import Ambanja from '../assets/images/Ambanja.jpg'
-import Deux from '../assets/images/2.jpg'
-import Tana from '../assets/images/Tana.jpg'
+import Ramena from '../assets/images/site/ramena-beach-aerial.jpg'
+import NosyIranja from '../assets/images/site/nosy-iranja-aerial.jpg'
+import NosyLonjo from '../assets/images/site/sugar-loaf-view.jpg'
+import Ambanja from '../assets/images/site/sambirano-river.jpg'
+import Deux from '../assets/images/site/coastal-tsingy.jpg'
+import Tana from '../assets/images/site/antananarivo-rice-fields.jpg'
 import Icone from '../assets/logo/icon.svg'
 import Footer from '../components/Footer'
 import Testimonials from '../components/Testimonials'
@@ -22,22 +22,22 @@ import { monthName } from '../utils/format'
 import { usePhoto } from '../sitePhotos'
 import { A } from '../i18n/router'
 import SiteMedia from '../components/SiteMedia'
+import Img from '../components/Img'
 
 gsap.registerPlugin(ScrollTrigger)
 
 /* Constantes partagées : mêmes valeurs que About, Transport, Hébergement et Destinations */
-const SECTION_WIDTH = 'w-[90vw] lg:max-w-[90vw] xl:max-w-[95vw]'
-const SECTION_TITLE = 'text-[clamp(2rem,4.4vw,4rem)] font-bold text-forest leading-[1.08] tracking-tight'
-const SECTION_SUBTITLE = 'text-sm sm:text-base md:text-lg text-slate-600 leading-relaxed max-w-3xl'
-const SECTION_GAP = 'mt-[50px] md:mt-[100px]'
-const SECTION_LABEL = 'mb-3 flex items-center gap-2 text-xs sm:text-sm font-medium uppercase tracking-wide text-slate-700'
-const ON_IMAGE_TITLE = 'text-[clamp(2rem,4.4vw,4rem)] font-bold text-white leading-[1.08] tracking-tight'
-const BTN = 'inline-flex items-center justify-center text-sm md:text-base font-medium px-6 py-3 rounded-full active:scale-95 transition'
-const GOLD = 'bg-[#C49849] hover:bg-[#a9813a]'
-const GREEN = 'bg-[#074636]'
-// Inclinaison de chaque carte tant qu'elle n'est pas redressée par le défilement
-const WAY_TILTS = [-9, 6, -5, 8]
+const SECTION_WIDTH = 'w-[90vw] max-w-[1360px]'
+const SECTION_TITLE = 'text-[clamp(2.6rem,5.4vw,5rem)] text-forest leading-[1] [text-wrap:balance]'
+const SECTION_SUBTITLE = 'text-base md:text-lg text-slate-600 leading-relaxed max-w-xl'
+const SECTION_GAP = 'mt-24 md:mt-40'
+const SECTION_LABEL = 'eyebrow mb-5 md:mb-6'
+const HAIRLINE = 'border-forest/15'
+const BTN = 'inline-flex items-center justify-center gap-2 text-sm font-medium tracking-wide px-7 py-3.5 rounded-full transition-colors duration-300'
+const LIGHT = 'bg-[#F4F1EA] text-forest hover:bg-white'
+const GHOST = 'border border-white/50 text-white hover:bg-white hover:text-forest'
 const quoteHref = (k, v) => `/contact?type=quote&${k}=${encodeURIComponent(v)}`
+const number = (i) => String(i + 1).padStart(2, '0')
 
 /* ---------------------------- Données ---------------------------- */
 // Les textes affichés viennent de locales/<langue>/home.json (mêmes listes, même ordre) ;
@@ -120,10 +120,10 @@ function useGsap(scope, setup, deps = []) {
 function useReveal(scope, selector) {
   useGsap(scope, () => {
     gsap.from(selector, {
-      y: 40,
+      y: 28,
       opacity: 0,
-      duration: 0.8,
-      stagger: 0.1,
+      duration: 1,
+      stagger: 0.08,
       ease: 'power3.out',
       clearProps: 'all',
       scrollTrigger: { trigger: scope.current, start: 'top 80%', once: true },
@@ -137,8 +137,8 @@ function useReveal(scope, selector) {
 function TalkBadge() {
   const t = useT('home')
   return (
-    <div className="relative shrink-0 w-24 h-24 md:w-32 md:h-32 text-slate-700" aria-hidden="true">
-      <svg viewBox="0 0 140 140" className="absolute inset-0 w-full h-full animate-spin [animation-duration:20s] motion-reduce:animate-none">
+    <div className="relative shrink-0 w-24 h-24 md:w-28 md:h-28 text-forest/70" aria-hidden="true">
+      <svg viewBox="0 0 140 140" className="absolute inset-0 w-full h-full animate-spin [animation-duration:24s] motion-reduce:animate-none">
         <defs>
           <path id="home-talk-circle" d="M70,70 m-52,0 a52,52 0 1,1 104,0 a52,52 0 1,1 -104,0" />
         </defs>
@@ -149,7 +149,7 @@ function TalkBadge() {
         </text>
       </svg>
       <span className="absolute inset-0 m-auto w-[48%] h-[48%] flex items-center justify-center">
-        <img src={Icone} alt="" className="w-[64px] h-[64px] object-contain" />
+        <img src={Icone} alt="" className="w-[56px] h-[56px] object-contain" />
       </span>
     </div>
   )
@@ -157,51 +157,53 @@ function TalkBadge() {
 
 /* -------------------------- Sections --------------------------- */
 
-/* Les 4 façons de voyager : cartes photo (même style que les cartes de la page Destinations) */
+/* Les 4 façons de voyager : quatre photos droites, numérotées, en quinconce. Rien d'incliné ni d'agrandi :
+   une photo tournée ou zoomée est recalculée par le navigateur et perd sa netteté. */
 function Ways() {
   const photo = usePhoto()
   const root = useRef(null)
   const t = useT('home')
   const { isHidden } = useSitePages()
 
-  // Au défilement, les cartes inclinées et serrées se redressent et s'alignent (et l'inverse en remontant)
+  // Les photos se dévoilent de bas en haut, l'une après l'autre
   useGsap(root, () => {
     const trigger = { trigger: root.current, start: 'top 75%', once: true }
-    gsap.from('.ways-head > *', { y: 30, opacity: 0, duration: 0.8, stagger: 0.1, ease: 'power3.out', clearProps: 'all', scrollTrigger: trigger })
-    gsap.fromTo('.way-card', {
-      rotation: (i) => WAY_TILTS[i % WAY_TILTS.length],
-      x: (i, el, all) => ((all.length - 1) / 2 - i) * el.offsetWidth * 0.12,
-      y: (i) => (i % 2 ? 46 : 14),
-    }, {
-      rotation: 0, x: 0, y: 0, ease: 'none',
-      scrollTrigger: { trigger: '.ways-list', start: 'top 92%', end: 'top 38%', scrub: 0.7 },
+    gsap.from('.ways-head > *', { y: 28, opacity: 0, duration: 1, stagger: 0.08, ease: 'power3.out', clearProps: 'all', scrollTrigger: trigger })
+    gsap.fromTo('.way-media', { clipPath: 'inset(100% 0% 0% 0%)' }, {
+      clipPath: 'inset(0% 0% 0% 0%)', duration: 1.3, stagger: 0.12, ease: 'expo.out', clearProps: 'clipPath',
+      scrollTrigger: { trigger: '.ways-list', start: 'top 85%', once: true },
     })
+    gsap.from('.way-text', { y: 16, opacity: 0, duration: 0.9, stagger: 0.12, delay: 0.25, ease: 'power3.out', clearProps: 'all', scrollTrigger: { trigger: '.ways-list', start: 'top 85%', once: true } })
   })
 
   return (
     <section ref={root} className={`${SECTION_WIDTH} ${SECTION_GAP}`}>
-      <div className="ways-head mx-auto max-w-3xl text-center">
-        <p className={`${SECTION_LABEL} justify-center`}><span className="w-1.5 h-1.5 rounded-full bg-[#C49849]" aria-hidden="true" />{t('waysLabel')}</p>
-        <h2 className={SECTION_TITLE}>{t('waysTitle')}</h2>
-        <p className={`mt-4 mx-auto ${SECTION_SUBTITLE}`}>{t('waysText')}</p>
+      <div className="ways-head grid grid-cols-1 lg:grid-cols-[1.35fr_1fr] gap-6 lg:gap-20 lg:items-end">
+        <div>
+          <p className={SECTION_LABEL}>{t('waysLabel')}</p>
+          <h2 className={SECTION_TITLE}>{t('waysTitle')}</h2>
+        </div>
+        <p className={SECTION_SUBTITLE}>{t('waysText')}</p>
       </div>
 
-      <ul className="ways-list mt-12 md:mt-16 grid grid-cols-2 lg:grid-cols-4 gap-3 md:gap-5">
+      <ul className="ways-list mt-12 md:mt-20 grid grid-cols-2 lg:grid-cols-4 gap-x-4 md:gap-x-6 gap-y-12">
         {ways.map((way, i) => {
           if (isHidden(way.href)) return null
           const w = { ...way, ...t('ways')[i] }
-          const WayIcon = w.icon
           return (
-            <li key={way.href} className="way-card relative hover:z-10">
-              <A href={w.href} className={`group block rounded-2xl bg-white p-2 md:p-3 pb-4 md:pb-5 text-center shadow-xl shadow-[#072a1f]/15 transition-transform duration-500 hover:-translate-y-2 focus:outline-none focus-visible:ring-4 focus-visible:ring-[#C49849]`}>
-                <span className="relative block aspect-[4/5] overflow-hidden rounded-xl">
-                  <img src={photo(w.slot)} alt="" className="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" />
-                  <span className="absolute left-2.5 top-2.5 w-9 h-9 md:w-11 md:h-11 rounded-full bg-[#C49849] text-white flex items-center justify-center">
-                    <WayIcon className="w-4 h-4 md:w-5 md:h-5" strokeWidth={1.8} aria-hidden="true" />
-                  </span>
+            <li key={way.href} className={`way-card ${i % 2 ? 'lg:mt-20' : ''}`}>
+              <A href={w.href} className="group block">
+                <span className="way-media relative block aspect-[3/4] overflow-hidden rounded-xl bg-[#EAE5D9]">
+                  <Img src={photo(w.slot)} sizes="(min-width: 1024px) 45vw, 95vw" className="img-zoom absolute inset-0 w-full h-full object-cover" />
                 </span>
-                <span className="mt-3 md:mt-4 block font-display text-lg md:text-2xl font-bold text-forest">{w.title}</span>
-                <span className="mt-1 block px-1 text-xs md:text-sm leading-snug text-slate-600">{w.text}</span>
+                <span className="way-text block">
+                  <span className={`mt-5 flex items-center justify-between border-t ${HAIRLINE} pt-4 text-[11px] font-medium tracking-[0.2em] text-slate-500 tabular-nums`}>
+                    {number(i)}
+                    <ArrowUpRight className="w-4 h-4 text-forest transition-transform duration-500 group-hover:translate-x-0.5 group-hover:-translate-y-0.5" strokeWidth={1.5} aria-hidden="true" />
+                  </span>
+                  <span className="mt-3 block font-display text-[1.75rem] md:text-4xl leading-none text-forest">{w.title}</span>
+                  <span className="mt-2.5 block text-sm leading-relaxed text-slate-600">{w.text}</span>
+                </span>
               </A>
             </li>
           )
@@ -211,7 +213,7 @@ function Ways() {
   )
 }
 
-/* Qui sommes-nous : titre + badge expert, puis nos engagements */
+/* Qui sommes-nous : grande phrase + invitation à nous écrire, puis nos engagements séparés par de simples filets */
 function Intro() {
   const root = useRef(null)
   const t = useT('home')
@@ -220,36 +222,40 @@ function Intro() {
 
   return (
     <section ref={root} className={`${SECTION_WIDTH} ${SECTION_GAP}`}>
-      <div className="grid grid-cols-1 lg:grid-cols-[1.3fr_1fr] gap-8 lg:gap-16 items-center">
+      <div className="grid grid-cols-1 lg:grid-cols-[1.5fr_1fr] gap-10 lg:gap-24 lg:items-end">
         <div className="intro-text">
           <p className={SECTION_LABEL}>{t('introLabel')}</p>
           <h2 className={SECTION_TITLE}>{t('introTitle')}</h2>
-          <p className={`mt-5 md:mt-6 ${SECTION_SUBTITLE}`}>
+          <p className={`mt-6 md:mt-8 ${SECTION_SUBTITLE}`}>
             {t('introText')}
           </p>
         </div>
 
-        <div className="intro-card flex items-center gap-5 md:gap-6 rounded-3xl bg-white p-5 md:p-8">
+        <div className={`intro-card flex items-center gap-6 border-t ${HAIRLINE} pt-8 lg:border-t-0 lg:border-l lg:pt-0 lg:pl-12`}>
           <TalkBadge />
           <div>
-            <p className="text-lg md:text-2xl font-medium leading-snug text-slate-900">{t('notSure')}</p>
+            <p className="font-display text-2xl md:text-3xl leading-tight text-forest">{t('notSure')}</p>
             <p className="mt-2 text-sm md:text-base text-slate-600">{t('notSureText')}</p>
-            <A href="/contact" className={`${BTN} ${GREEN} hover:bg-[#0a5f48] text-white mt-4`}>{t('talkExpert')}</A>
+            <A href="/contact" className="group mt-4 inline-flex items-center gap-2 border-b border-forest pb-1 text-sm font-medium text-forest">
+              {t('talkExpert')}
+              <ArrowUpRight className="w-4 h-4 transition-transform duration-500 group-hover:translate-x-0.5 group-hover:-translate-y-0.5" strokeWidth={1.5} aria-hidden="true" />
+            </A>
           </div>
         </div>
       </div>
 
-      <ul className="mt-10 md:mt-14 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3 md:gap-5">
+      <ul className={`mt-14 md:mt-24 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 border-t ${HAIRLINE}`}>
         {promises.map((promise, i) => {
           const p = { ...promise, ...t('promises')[i] }
           const PromiseIcon = p.icon
           return (
-            <li key={promise.title} className="intro-card flex flex-col rounded-2xl bg-white p-5 md:p-6">
-              <span className="w-11 h-11 lg:w-[52px] lg:h-[52px] rounded-full bg-[#C49849] flex items-center justify-center text-white">
-                <PromiseIcon className="w-5 h-5 md:w-6 md:h-6" strokeWidth={1.8} aria-hidden="true" />
+            <li key={promise.title} className={`intro-card flex flex-col py-8 md:py-10 border-b ${HAIRLINE} lg:border-b-0 lg:border-l lg:first:border-l-0 sm:px-6 lg:px-8 lg:first:pl-0 lg:last:pr-0`}>
+              <span className="flex items-center justify-between text-forest">
+                <PromiseIcon className="w-6 h-6" strokeWidth={1.25} aria-hidden="true" />
+                <span className="text-[11px] font-medium tracking-[0.2em] text-slate-400 tabular-nums">{number(i)}</span>
               </span>
-              <h3 className="mt-5 text-lg md:text-xl font-medium text-forest">{p.title}</h3>
-              <p className="mt-2 text-sm md:text-base text-slate-600 leading-relaxed">{p.text}</p>
+              <h3 className="mt-8 md:mt-12 text-lg md:text-xl font-medium text-forest">{p.title}</h3>
+              <p className="mt-2.5 text-sm md:text-[0.9375rem] text-slate-600 leading-relaxed">{p.text}</p>
             </li>
           )
         })}
@@ -290,21 +296,22 @@ function Regions() {
 
   // Les textes de la région ouverte arrivent l'un après l'autre
   useGsap(stage, () => {
-    gsap.fromTo('.region-content > *', { y: 24, opacity: 0 }, { y: 0, opacity: 1, duration: 0.6, stagger: 0.06, delay: 0.2, ease: 'power3.out', clearProps: 'all' })
+    gsap.fromTo('.region-content > *', { y: 20, opacity: 0 }, { y: 0, opacity: 1, duration: 0.7, stagger: 0.06, delay: 0.25, ease: 'power3.out', clearProps: 'all' })
   }, [active])
 
   return (
     <section ref={root} className={`${SECTION_WIDTH} ${SECTION_GAP}`}>
-      <div className="regions-head flex flex-col lg:flex-row lg:items-end lg:justify-between gap-5 lg:gap-12">
+      <div className="regions-head grid grid-cols-1 lg:grid-cols-[1.35fr_1fr] gap-6 lg:gap-20 lg:items-end">
         <div>
           <p className={SECTION_LABEL}>{t('regionsLabel')}</p>
           <h2 className={SECTION_TITLE}>{t('regionsTitle')}</h2>
         </div>
-        <p className={`${SECTION_SUBTITLE} lg:max-w-md`}>{t('regionsText')}</p>
+        <p className={SECTION_SUBTITLE}>{t('regionsText')}</p>
       </div>
 
-      {/* Fresque : un panneau photo par région, celui qui est choisi s'ouvre en grand */}
-      <ul ref={stage} aria-label={t('regionsTabs')} className="mt-8 md:mt-12 flex flex-col lg:flex-row gap-2 md:gap-3 lg:h-[max(600px,min(82vh,760px))]">
+      {/* Fresque : un panneau photo par région, celui qui est choisi s'ouvre en grand.
+          Les photos gardent leurs couleurs : seul le bas s'assombrit, sous le texte. */}
+      <ul ref={stage} aria-label={t('regionsTabs')} className="mt-10 md:mt-16 flex flex-col lg:flex-row gap-1.5 lg:h-[max(600px,min(84vh,780px))]">
         {regions.map((r, i) => {
           const open = i === active
           const tr = texts[i]
@@ -313,60 +320,63 @@ function Regions() {
               key={r.id}
               onMouseEnter={() => openSoon(i)}
               onMouseLeave={cancelOpen}
-              className={`region-panel relative flex flex-col justify-end min-w-0 overflow-hidden rounded-2xl md:rounded-3xl bg-[#084838] text-white transition-[flex-grow,min-height] duration-700 ease-[cubic-bezier(0.22,1,0.36,1)] motion-reduce:transition-none lg:basis-0 ${
-                open ? 'min-h-[560px] lg:min-h-0 lg:grow-[7]' : 'min-h-[84px] md:min-h-[100px] lg:min-h-0 lg:grow'
+              className={`region-panel relative flex flex-col justify-end min-w-0 overflow-hidden rounded-xl bg-forest text-white transition-[flex-grow,min-height] duration-[900ms] ease-[cubic-bezier(0.22,1,0.36,1)] motion-reduce:transition-none lg:basis-0 ${
+                open ? 'min-h-[560px] lg:min-h-0 lg:grow-[8]' : 'min-h-[84px] md:min-h-[100px] lg:min-h-0 lg:grow'
               }`}
             >
-              <img
+              <Img
                 src={photo(r.slot)}
                 alt={open ? tr.name : ''}
-                className={`absolute inset-0 w-full h-full object-cover transition-transform duration-[1400ms] ease-out motion-reduce:transition-none ${open ? 'scale-100' : 'scale-110'}`}
+                sizes="(min-width: 1024px) 1400px, 300vw"
+                className="absolute inset-0 w-full h-full object-cover"
               />
-              <div className={`absolute inset-0 transition-colors duration-700 ${open ? 'bg-transparent' : 'bg-[#072a1f]/55 hover:bg-[#072a1f]/35'}`} />
 
               {open ? (
                 <>
-                  <div className="absolute inset-0 bg-gradient-to-t from-[#072a1f]/95 via-[#072a1f]/75 via-65% to-[#072a1f]/30 lg:via-[#072a1f]/45 lg:via-45% lg:to-transparent lg:to-75%" />
-                  <div className="region-content relative p-5 md:p-8 lg:p-10 lg:w-[min(46rem,50vw)] max-w-full">
-                    <span className="inline-block bg-[#C49849] text-white text-xs sm:text-sm font-medium px-3 py-1.5 rounded-sm">
+                  <div className="absolute inset-0 bg-gradient-to-t from-[#072a1f]/90 via-[#072a1f]/35 via-50% to-transparent to-80%" />
+                  <div className="region-content relative p-6 md:p-10 lg:p-12 lg:w-[min(44rem,50vw)] max-w-full">
+                    <p className="eyebrow eyebrow-light">
                       {t('bestFrom', { from: monthName(r.months[0], lang, 'long'), to: monthName(r.months[1], lang, 'long') })}
-                    </span>
-                    <h3 tabIndex={-1} className="region-title mt-4 font-display text-4xl md:text-5xl lg:text-6xl font-medium leading-[1.05] tracking-tight focus:outline-none">{tr.name}</h3>
-                    <p className="mt-3 text-lg md:text-2xl text-white">{tr.tagline}</p>
-                    <p className="mt-3 text-sm md:text-base text-white/85 leading-relaxed max-w-xl">{tr.text}</p>
+                    </p>
+                    <h3 tabIndex={-1} className="region-title mt-5 font-display text-5xl md:text-6xl lg:text-7xl leading-[0.95] focus:outline-none">{tr.name}</h3>
+                    <p className="mt-4 text-lg md:text-xl text-white/95">{tr.tagline}</p>
+                    <p className="mt-3 text-sm md:text-base text-white/80 leading-relaxed max-w-xl">{tr.text}</p>
 
-                    <ul aria-label={t('mustSee')} className="mt-5 flex flex-wrap gap-2">
+                    <ul aria-label={t('mustSee')} className="mt-6 flex flex-wrap gap-x-6 gap-y-2 text-sm">
                       {r.places.map((p, n) => (
                         <li key={p.name}>
-                          <A href={`/destinations/${slugify(p.name)}`} className="flex items-center gap-2 rounded-full border border-white/30 bg-[#072a1f]/50 backdrop-blur-md hover:bg-white hover:text-slate-900 transition-colors pl-1 pr-4 py-1 text-sm">
-                            <img src={photo(p.slot)} alt="" className="w-8 h-8 rounded-full object-cover" />
+                          <A href={`/destinations/${slugify(p.name)}`} className="inline-flex items-center gap-2.5 border-b border-white/35 pb-1 hover:border-white transition-colors">
+                            <Img src={photo(p.slot)} alt="" loading="lazy" decoding="async" className="w-6 h-6 rounded-full object-cover" />
                             {tr.places[n]}
                           </A>
                         </li>
                       ))}
                     </ul>
 
-                    <div className="mt-6 flex flex-wrap gap-3">
-                      <A href="/destinations" className={`${BTN} ${GOLD} text-white`}>{t('exploreRegion')}</A>
-                      <A href="/circuits" className={`${BTN} border border-white/50 hover:bg-white hover:text-slate-900 text-white`}>{t('seeCircuits')}</A>
+                    <div className="mt-8 flex flex-wrap gap-3">
+                      <A href="/destinations" className={`${BTN} ${LIGHT}`}>{t('exploreRegion')}</A>
+                      <A href="/circuits" className={`${BTN} ${GHOST}`}>{t('seeCircuits')}</A>
                     </div>
                   </div>
                 </>
               ) : (
-                <button
-                  type="button"
-                  aria-expanded={false}
-                  aria-label={tr.name}
-                  onClick={(event) => {
-                    cancelOpen()
-                    moveFocus.current = event.detail === 0
-                    setActive(i)
-                  }}
-                  className="absolute inset-0 flex items-center lg:flex-col lg:items-center lg:justify-end gap-4 lg:gap-5 p-5 lg:px-2 lg:py-8 text-left focus:outline-none focus-visible:ring-4 focus-visible:ring-inset focus-visible:ring-[#C49849]"
-                >
-                  <span className="lg:order-2 text-sm tabular-nums text-[#E6C58A]">{String(i + 1).padStart(2, '0')}</span>
-                  <span className="font-display text-xl md:text-2xl lg:text-3xl font-medium whitespace-nowrap lg:[writing-mode:vertical-rl] lg:rotate-180">{tr.name}</span>
-                </button>
+                <>
+                  <div className="absolute inset-0 bg-gradient-to-t from-[#072a1f]/85 via-[#072a1f]/20 to-transparent lg:via-40%" />
+                  <button
+                    type="button"
+                    aria-expanded={false}
+                    aria-label={tr.name}
+                    onClick={(event) => {
+                      cancelOpen()
+                      moveFocus.current = event.detail === 0
+                      setActive(i)
+                    }}
+                    className="absolute inset-0 flex items-center lg:flex-col lg:items-center lg:justify-end gap-4 lg:gap-5 p-5 lg:px-2 lg:py-8 text-left focus:outline-none focus-visible:ring-2 focus-visible:ring-inset focus-visible:ring-[#E6C58A]"
+                  >
+                    <span className="lg:order-2 text-[11px] font-medium tracking-[0.2em] tabular-nums text-[#E6C58A]">{number(i)}</span>
+                    <span className="font-display text-2xl md:text-3xl lg:text-4xl whitespace-nowrap lg:[writing-mode:vertical-rl] lg:rotate-180">{tr.name}</span>
+                  </button>
+                </>
               )}
             </li>
           )
@@ -376,7 +386,7 @@ function Regions() {
   )
 }
 
-/* Voyages signature : bande de couleur, photo qui change selon le voyage survolé */
+/* Voyages signature : une grande photo nette à gauche, la liste des voyages à droite. Survoler un voyage change la photo. */
 function Trips() {
   const photo = usePhoto()
   const root = useRef(null)
@@ -386,68 +396,61 @@ function Trips() {
   const items = trips.map((trip, i) => ({ ...trip, ...t('trips')[i] }))
   const current = items[active]
 
-  useReveal(root, '.trips-head > *, .trip-card')
+  useReveal(root, '.trips-head > *, .trip-card > *')
 
-  // Le texte posé sur la photo se renouvelle à chaque voyage
+  // La légende de la photo se renouvelle à chaque voyage
   useGsap(root, () => {
-    gsap.fromTo('.trip-caption > *', { y: 18, opacity: 0 }, { y: 0, opacity: 1, duration: 0.5, stagger: 0.05, ease: 'power3.out', clearProps: 'all' })
+    gsap.fromTo('.trip-caption > *', { y: 10, opacity: 0 }, { y: 0, opacity: 1, duration: 0.6, stagger: 0.05, ease: 'power3.out', clearProps: 'all' })
   }, [active])
 
   return (
-    <section ref={root} className={`w-full ${SECTION_GAP} bg-[#BBD9CF] py-14 md:py-24 flex justify-center`}>
+    <section ref={root} className={`w-full ${SECTION_GAP} bg-[#EAE5D9] py-20 md:py-32 flex justify-center`}>
       <div className={SECTION_WIDTH}>
-        <div className="trips-head flex flex-col lg:flex-row lg:items-end lg:justify-between gap-5 lg:gap-12">
+        <div className="trips-head grid grid-cols-1 lg:grid-cols-[1.35fr_1fr] gap-6 lg:gap-20 lg:items-end">
           <div>
-            <p className={SECTION_LABEL}><span className="w-1.5 h-1.5 rounded-full bg-[#C49849]" aria-hidden="true" />{t('tripsLabel')}</p>
-            <h2 className={`${SECTION_TITLE} max-w-4xl`}>{t('tripsTitle')}</h2>
+            <p className={SECTION_LABEL}>{t('tripsLabel')}</p>
+            <h2 className={SECTION_TITLE}>{t('tripsTitle')}</h2>
           </div>
-          <p className={`${SECTION_SUBTITLE} lg:max-w-md text-slate-700`}>{t('tripsText')}</p>
+          <p className={SECTION_SUBTITLE}>{t('tripsText')}</p>
         </div>
 
-        {/* Grande photo à gauche, liste à droite : survoler un voyage change la photo */}
-        <div className="trip-card mt-10 md:mt-12 grid grid-cols-1 lg:grid-cols-[1.15fr_1fr] overflow-hidden rounded-[1.5rem] md:rounded-[2.5rem] bg-[#074636] text-white">
-          <div className="relative min-h-[360px] lg:min-h-[600px] flex flex-col justify-end overflow-hidden">
-            {items.map((trip, i) => (
-              <img key={trip.name} src={photo(trip.slot)} alt={i === active ? trip.name : ''} className={`absolute inset-0 w-full h-full object-cover transition-all duration-1000 ${i === active ? 'opacity-100 scale-100' : 'opacity-0 scale-105'}`} />
-            ))}
-            <div className="absolute inset-0 bg-gradient-to-t from-[#072a1f]/90 via-[#072a1f]/15 to-transparent" />
-            <div className="trip-caption relative p-5 md:p-8">
-              <p className="font-display text-3xl md:text-5xl font-bold tracking-tight">{current.name}</p>
-              {current.tags && (
-                <ul className="mt-4 flex flex-wrap gap-2">
-                  {current.tags.map((tag) => <li key={tag} className="rounded-full border border-white/40 bg-[#072a1f]/40 backdrop-blur-sm px-3 py-1 text-xs md:text-sm">{tag}</li>)}
-                </ul>
-              )}
-              {current.months && (
-                <p className="mt-4 flex flex-wrap items-center gap-2 text-sm text-white/85">
-                  {t('bestMonths')} {current.months.map((m) => <span key={m} className="rounded-full bg-white px-3 py-1 text-xs font-medium text-slate-900">{monthName(m, lang)}</span>)}
-                </p>
-              )}
+        <div className="trip-card mt-12 md:mt-20 grid grid-cols-1 lg:grid-cols-[1.05fr_1fr] gap-10 lg:gap-20">
+          <figure className="flex flex-col">
+            <div className="relative flex-1 aspect-[4/5] sm:aspect-[5/4] lg:aspect-auto lg:min-h-[620px] overflow-hidden rounded-xl bg-[#d9d3c4]">
+              {/* Simple fondu entre les photos : aucun zoom, pour qu'elles restent nettes */}
+              {items.map((trip, i) => (
+                <Img key={trip.name} src={photo(trip.slot)} alt={i === active ? trip.name : ''} sizes="(min-width: 1024px) 1300px, 190vw" className={`absolute inset-0 w-full h-full object-cover transition-opacity duration-1000 ${i === active ? 'opacity-100' : 'opacity-0'}`} />
+              ))}
             </div>
-          </div>
+            <figcaption className="trip-caption mt-4 flex flex-wrap items-baseline justify-between gap-x-6 gap-y-1 text-sm text-slate-600 min-h-6">
+              <span className="font-medium text-forest">{current.name}</span>
+              {current.tags && <span>{current.tags.join(' · ')}</span>}
+              {current.months && <span>{t('bestMonths')} {current.months.map((m) => monthName(m, lang)).join(' · ')}</span>}
+            </figcaption>
+          </figure>
 
-          <ul className="flex flex-col p-3 md:p-5 lg:p-6">
+          <ul className={`flex flex-col border-t ${HAIRLINE}`}>
             {items.map((trip, i) => (
-              <li key={trip.name} className="flex-1 border-b border-white/15 last:border-b-0">
+              <li key={trip.name} className={`border-b ${HAIRLINE}`}>
                 <A
                   href={quoteHref('trip', trip.name)}
                   onMouseEnter={() => setActive(i)}
                   onFocus={() => setActive(i)}
-                  className={`group h-full flex items-center gap-4 md:gap-5 rounded-2xl p-3 md:p-4 transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-[#E6C58A] ${i === active ? 'bg-white/10' : 'hover:bg-white/5'}`}
+                  className="group flex items-start gap-5 md:gap-8 py-8 md:py-10"
                 >
-                  <img src={photo(trip.slot)} alt="" className="w-20 h-20 md:w-28 md:h-28 shrink-0 rounded-xl object-cover" />
+                  <span className="pt-2 text-[11px] font-medium tracking-[0.2em] text-slate-500 tabular-nums">{number(i)}</span>
                   <span className="min-w-0 flex-1">
-                    <span className="inline-block bg-[#C49849] text-xs font-medium px-2.5 py-1 rounded-sm">{t('days', { count: trip.days })}</span>
-                    <span className="mt-2 block text-lg md:text-2xl font-medium leading-snug">{trip.name}</span>
-                    <span className="mt-1 block text-sm leading-relaxed text-white/75">{trip.text}</span>
+                    <span className="block text-[11px] font-semibold uppercase tracking-[0.2em] text-[#8a6a2b]">{t('days', { count: trip.days })}</span>
+                    <span className={`mt-3 block font-display text-4xl md:text-5xl leading-none transition-colors duration-500 ${i === active ? 'text-forest' : 'text-forest/40'}`}>{trip.name}</span>
+                    <span className="mt-4 block max-w-md text-sm md:text-base leading-relaxed text-slate-600">{trip.text}</span>
                   </span>
-                  <span aria-hidden="true" className={`hidden sm:flex shrink-0 w-10 h-10 rounded-full items-center justify-center transition-all ${i === active ? 'bg-[#C49849] text-white' : 'border border-white/30'} group-hover:translate-x-1`}>
-                    <ArrowRight className="w-4 h-4" />
+                  <span aria-hidden="true" className={`hidden sm:flex shrink-0 w-11 h-11 rounded-full items-center justify-center border transition-colors duration-500 ${i === active ? 'bg-forest border-forest text-[#F4F1EA]' : 'border-forest/25 text-forest'}`}>
+                    <ArrowUpRight className="w-4 h-4" strokeWidth={1.5} />
                   </span>
                 </A>
               </li>
             ))}
-            <li className="px-3 md:px-4 pt-4 text-sm text-white/75">{t('freeQuote')}</li>
+            <li className="pt-6 text-sm text-slate-500">{t('freeQuote')}</li>
           </ul>
         </div>
       </div>
@@ -455,7 +458,7 @@ function Trips() {
   )
 }
 
-/* Services : grande bande verte, titre fixe à gauche et liste en grandes lignes à droite */
+/* Services : grande bande vert forêt, titre fixe à gauche et liste en grandes lignes à droite */
 function Services() {
   const root = useRef(null)
   const t = useT('home')
@@ -464,26 +467,23 @@ function Services() {
   useReveal(root, '.services-head > *, .service-item')
 
   return (
-    <section ref={root} className={`w-full ${GREEN} text-white py-14 md:py-24 flex justify-center`}>
-      <div className={`${SECTION_WIDTH} grid grid-cols-1 lg:grid-cols-[1fr_1.4fr] gap-8 lg:gap-20`}>
-        <div className="services-head lg:sticky lg:top-8 self-start">
-          <p className={`${SECTION_LABEL} text-white/80`}><span className="w-1.5 h-1.5 rounded-full bg-[#C49849]" aria-hidden="true" />{t('servicesLabel')}</p>
-          <h2 className={ON_IMAGE_TITLE}>{t('servicesTitle')}</h2>
-          <p className="mt-4 text-sm sm:text-base md:text-lg text-white/80 leading-relaxed max-w-md">{t('servicesText')}</p>
+    <section ref={root} className="w-full bg-forest text-[#F4F1EA] py-20 md:py-32 flex justify-center">
+      <div className={`${SECTION_WIDTH} grid grid-cols-1 lg:grid-cols-[1fr_1.5fr] gap-10 lg:gap-24`}>
+        <div className="services-head lg:sticky lg:top-12 self-start">
+          <p className={`${SECTION_LABEL} eyebrow-light`}>{t('servicesLabel')}</p>
+          <h2 className="text-[clamp(2.6rem,5.4vw,5rem)] leading-[1] [text-wrap:balance]">{t('servicesTitle')}</h2>
+          <p className="mt-6 text-base md:text-lg text-[#F4F1EA]/70 leading-relaxed max-w-md">{t('servicesText')}</p>
         </div>
 
-        <ul className="border-t border-white/20">
+        <ul className="border-t border-white/15">
           {services.map((s, i) => {
             if (isHidden(s.href)) return null
-            const ServiceIcon = s.icon
             return (
-              <li key={s.title} className="service-item border-b border-white/20">
-                <A href={s.href} className="group flex items-center gap-4 md:gap-6 py-4 md:py-5 transition-all duration-300 hover:pl-3 hover:text-[#E6C58A] focus:outline-none focus-visible:ring-2 focus-visible:ring-[#E6C58A]">
-                  <span className="shrink-0 w-11 h-11 md:w-14 md:h-14 rounded-full bg-[#C49849] flex items-center justify-center text-white">
-                    <ServiceIcon className="w-5 h-5 md:w-6 md:h-6" strokeWidth={1.8} aria-hidden="true" />
-                  </span>
-                  <span className="flex-1 text-xl md:text-3xl font-medium tracking-tight">{t('services')[i]}</span>
-                  <ArrowRight className="w-5 h-5 md:w-6 md:h-6 shrink-0 transition-transform group-hover:translate-x-1.5" aria-hidden="true" />
+              <li key={s.title} className="service-item border-b border-white/15">
+                <A href={s.href} className="group flex items-baseline gap-5 md:gap-8 py-5 md:py-7 focus:outline-none focus-visible:ring-2 focus-visible:ring-[#E6C58A]">
+                  <span className="w-6 text-[11px] font-medium tracking-[0.2em] text-[#E6C58A] tabular-nums">{number(i)}</span>
+                  <span className="flex-1 font-display text-3xl md:text-5xl leading-none transition-transform duration-500 ease-out group-hover:translate-x-3">{t('services')[i]}</span>
+                  <ArrowUpRight className="w-5 h-5 md:w-6 md:h-6 shrink-0 self-center opacity-40 transition-all duration-500 group-hover:opacity-100 group-hover:translate-x-0.5 group-hover:-translate-y-0.5" strokeWidth={1.25} aria-hidden="true" />
                 </A>
               </li>
             )
@@ -494,44 +494,34 @@ function Services() {
   )
 }
 
-/* Appel final : photo sur toute la largeur, grand titre et photos inclinées qui flottent au défilement */
+/* Appel final : une seule photo sur toute la largeur, le titre posé en bas. La photo glisse lentement au
+   défilement (elle est plus haute que son cadre) au lieu d'être agrandie, pour rester nette. */
 function FinalCta() {
-  const photo = usePhoto()
   const root = useRef(null)
   const t = useT('home')
-  const floats = [
-    { slot: 'home.ways.2', cls: 'left-[4%] top-[16%] w-[15vw] max-w-[230px] -rotate-6', move: -50 },
-    { slot: 'home.trips.1', cls: 'right-[5%] top-[6%] w-[13vw] max-w-[200px] rotate-6', move: -40 },
-    { slot: 'home.ways.4', cls: 'right-[13%] bottom-[6%] w-[12vw] max-w-[190px] -rotate-3', move: 40 },
-  ]
 
   useGsap(root, () => {
-    const whileVisible = { trigger: root.current, start: 'top bottom', end: 'bottom top', scrub: 0.6 }
-    gsap.fromTo('.cta-bg', { scale: 1.15 }, { scale: 1, ease: 'none', scrollTrigger: whileVisible })
-    gsap.utils.toArray('.cta-float').forEach((el, i) => {
-      gsap.fromTo(el, { y: -floats[i].move }, { y: floats[i].move, ease: 'none', scrollTrigger: whileVisible })
-    })
+    gsap.fromTo('.cta-bg', { yPercent: -6 }, { yPercent: 6, ease: 'none', scrollTrigger: { trigger: root.current, start: 'top bottom', end: 'bottom top', scrub: 0.6 } })
     gsap.from('.cta-content > *', {
-      y: 40, opacity: 0, duration: 0.8, stagger: 0.12, ease: 'power3.out', clearProps: 'all',
-      scrollTrigger: { trigger: root.current, start: 'top 70%', once: true },
+      y: 28, opacity: 0, duration: 1, stagger: 0.1, ease: 'power3.out', clearProps: 'all',
+      scrollTrigger: { trigger: root.current, start: 'top 65%', once: true },
     })
   })
 
   return (
-    <section ref={root} className={`w-full ${SECTION_GAP} relative overflow-hidden text-white min-h-[560px] md:min-h-[720px] flex items-center justify-center`}>
-      <SiteMedia slot="home.cta" alt="" className="cta-bg absolute inset-0 w-full h-full object-cover" />
-      <div className="absolute inset-0 bg-[#072a1f]/65" />
-      {floats.map((f) => (
-        <div key={f.slot} aria-hidden="true" className={`cta-float absolute hidden lg:block ${f.cls}`}>
-          <img src={photo(f.slot)} alt="" className="w-full aspect-[4/5] object-cover rounded-xl border-[6px] border-white shadow-2xl" />
-        </div>
-      ))}
-      <div className="cta-content relative w-[90vw] max-w-4xl py-16 text-center flex flex-col items-center">
-        <h2 className="text-[clamp(2.25rem,6vw,5.5rem)] font-bold uppercase leading-[1.02] tracking-tight [text-wrap:balance]">{t('ctaTitle')}</h2>
-        <p className="mt-5 max-w-2xl text-sm md:text-lg text-white/90">{t('ctaText')}</p>
-        <div className="mt-8 flex flex-wrap justify-center gap-3">
-          <A href="/contact?type=quote" className={`${BTN} ${GOLD} text-white`}>{t('ctaQuote')}</A>
-          <A href="/tailor-made" className={`${BTN} border border-white/60 hover:bg-white/10`}>{t('ctaDesign')}</A>
+    <section ref={root} className={`w-full ${SECTION_GAP} relative overflow-hidden bg-forest text-white min-h-[600px] md:min-h-[88vh] flex items-end justify-center`}>
+      <div className="cta-bg absolute inset-x-0 -top-[8%] h-[116%]">
+        <SiteMedia slot="home.cta" alt="" sizes="(min-width: 768px) 120vw, 260vw" loading="lazy" className="absolute inset-0 w-full h-full object-cover" />
+      </div>
+      <div className="absolute inset-0 bg-gradient-to-t from-[#072a1f]/90 via-[#072a1f]/60 via-50% to-transparent to-90% md:via-[#072a1f]/30 md:via-45% md:to-75%" />
+      <div className={`cta-content relative ${SECTION_WIDTH} pb-12 md:pb-20 pt-40 grid grid-cols-1 lg:grid-cols-[1.5fr_1fr] gap-8 lg:gap-20 lg:items-end`}>
+        <h2 className="text-[clamp(3rem,8vw,8rem)] leading-[0.92] [text-wrap:balance]">{t('ctaTitle')}</h2>
+        <div>
+          <p className="max-w-md text-base md:text-lg text-white/85 leading-relaxed">{t('ctaText')}</p>
+          <div className="mt-7 flex flex-wrap gap-3">
+            <A href="/contact?type=quote" className={`${BTN} ${LIGHT}`}>{t('ctaQuote')}</A>
+            <A href="/tailor-made" className={`${BTN} ${GHOST}`}>{t('ctaDesign')}</A>
+          </div>
         </div>
       </div>
     </section>
@@ -558,7 +548,7 @@ function Home() {
   return (
     <>
       {!ready && <Preloader onDone={() => setReady(true)} />}
-      <main className="w-full overflow-x-clip bg-[#D5E8E2] flex flex-col items-center">
+      <main className="w-full overflow-x-clip bg-[#F4F1EA] flex flex-col items-center">
         <Hero ready={ready} />
         <Ways />
         <Intro />

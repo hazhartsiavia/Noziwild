@@ -21,16 +21,17 @@ import { gsap } from 'gsap'
 import { ScrollTrigger } from 'gsap/ScrollTrigger'
 import { usePhoto } from '../sitePhotos'
 import { A } from '../i18n/router'
+import Img from '../components/Img'
 
 gsap.registerPlugin(ScrollTrigger)
 
 /* Constantes partagées : mêmes valeurs que dans les autres pages */
-const SECTION_WIDTH = "w-[90vw] lg:max-w-[90vw] xl:max-w-[95vw]"
+const SECTION_WIDTH = "w-[90vw] max-w-[1360px]"
 const SECTION_TITLE = "text-3xl sm:text-4xl md:text-5xl lg:text-[52px] font-medium text-forest leading-[1.15] tracking-tight"
 const SECTION_SUBTITLE = "text-sm sm:text-base md:text-lg text-slate-600 leading-relaxed max-w-3xl"
 const META_TEXT = "text-xs sm:text-sm"
 const STATEMENT_TITLE = "text-4xl sm:text-5xl md:text-6xl xl:text-7xl font-medium uppercase leading-[1.15] tracking-tight text-forest"
-const BADGE = "inline-block bg-[#C49849] text-white text-xs sm:text-sm font-medium px-3 py-1.5 rounded-sm"
+const BADGE = "inline-block bg-[#F4F1EA] text-forest text-[11px] font-semibold uppercase tracking-[0.14em] px-3 py-1.5 rounded-sm"
 const BUTTON = "text-sm font-medium px-5 py-2.5 rounded-full md:px-6 md:py-3 active:scale-95 transition"
 const SECTION_GAP = "mt-[60px] md:mt-[120px]"
 
@@ -82,7 +83,7 @@ const Svg = ({ children, className = "w-4 h-4" }) => (
     {children}
   </svg>
 )
-const CheckIcon = () => <Svg className="w-5 h-5 text-[#C49849]"><path d="M20 6 9 17l-5-5" /></Svg>
+const CheckIcon = () => <Svg className="w-5 h-5 text-[#A9813A]"><path d="M20 6 9 17l-5-5" /></Svg>
 const ArrowIcon = () => <Svg className="w-5 h-5"><path d="M5 12h14M13 6l6 6-6 6" /></Svg>
 const StarIcon = () => (
   <svg className="w-4 h-4 text-[#F5B800] fill-current" viewBox="0 0 20 20" aria-hidden="true">
@@ -115,7 +116,7 @@ function Hero() {
           {t('intro')}
         </p>
         <div data-hero className="mt-8 flex flex-wrap items-center gap-4">
-          <A href="/contact" className={`bg-[#084838] hover:bg-[#0a5c47] text-white ${BUTTON}`}>{t('findGuide')}</A>
+          <A href="/contact" className={`bg-[#0C3E2E] hover:bg-[#14523F] text-white ${BUTTON}`}>{t('findGuide')}</A>
           <A href="#guides" className="inline-flex items-center gap-2 text-sm md:text-base font-medium text-slate-800 hover:gap-3 transition-all">
             {t('meetTeam')} <ArrowIcon />
           </A>
@@ -123,13 +124,13 @@ function Hero() {
       </div>
 
       <div className="relative w-full max-w-[520px] aspect-[4/3] mx-auto lg:ml-auto">
-        <div data-hero-photo className="absolute left-0 top-0 w-[52%] -rotate-6 rounded-xl bg-white p-2 md:p-3 shadow-sm">
-          <img src={photo('guides.hero.1')} alt={t('heroAlt1')} className="w-full aspect-[4/5] object-cover rounded-md" />
+        <div data-hero-photo className="absolute left-0 top-0 w-[52%] rounded-xl bg-white p-2 md:p-3 shadow-sm">
+          <Img src={photo('guides.hero.1')} alt={t('heroAlt1')} className="w-full aspect-[4/5] object-cover rounded-md" />
         </div>
-        <div data-hero-photo className="absolute right-0 top-[12%] w-[52%] rotate-6 rounded-xl bg-white p-2 md:p-3 shadow-sm">
-          <img src={photo('guides.hero.2')} alt={t('heroAlt2')} className="w-full aspect-[4/5] object-cover rounded-md" />
+        <div data-hero-photo className="absolute right-0 top-[12%] w-[52%] rounded-xl bg-white p-2 md:p-3 shadow-sm">
+          <Img src={photo('guides.hero.2')} alt={t('heroAlt2')} className="w-full aspect-[4/5] object-cover rounded-md" />
         </div>
-        <div data-hero-photo className="absolute left-[8%] bottom-0 flex items-center gap-3 rounded-2xl bg-[#084838] text-white px-5 py-3">
+        <div data-hero-photo className="absolute left-[8%] bottom-0 flex items-center gap-3 rounded-2xl bg-[#0C3E2E] text-white px-5 py-3">
           <div className="flex gap-0.5"><StarIcon /><StarIcon /><StarIcon /><StarIcon /><StarIcon /></div>
           <span className="text-sm font-medium">{t('happy')}</span>
         </div>
@@ -147,9 +148,9 @@ function StatsStrip() {
   }
   const stats = ['40+', '5', '12+', '24/7'].map((value, i) => [value, labels[i]])
   return (
-    <ul data-stagger className="mt-12 md:mt-20 grid grid-cols-2 md:grid-cols-4 border-y border-[#084838]/15">
+    <ul data-stagger className="mt-12 md:mt-20 grid grid-cols-2 md:grid-cols-4 border-y border-[#0C3E2E]/15">
       {stats.map(([value, label], i) => (
-        <li key={label} className={`py-6 md:py-8 px-2 md:px-6 ${i > 0 ? 'md:border-l md:border-[#084838]/15' : ''}`}>
+        <li key={label} className={`py-6 md:py-8 px-2 md:px-6 ${i > 0 ? 'md:border-l md:border-[#0C3E2E]/15' : ''}`}>
           <p className="text-3xl md:text-5xl text-slate-800 leading-none" {...countProps(value)}>{value}</p>
           <p className="mt-2 md:mt-3 text-sm md:text-base text-slate-600">{label}</p>
         </li>
@@ -179,8 +180,8 @@ function Services() {
 
       <div data-stagger className="grid grid-cols-1 lg:grid-cols-3 gap-4 md:gap-6">
         {services.map((s, i) => (
-          <article key={s.id} className={`group relative overflow-hidden rounded-3xl bg-[#084838] text-white flex ${bentoLayout[i]}`}>
-            <img src={photo(`guides.service.${i + 1}`)} alt={s.name} className="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" />
+          <article key={s.id} className={`group relative overflow-hidden rounded-3xl bg-[#0C3E2E] text-white flex ${bentoLayout[i]}`}>
+            <Img src={photo(`guides.service.${i + 1}`)} alt={s.name} className="absolute inset-0 w-full h-full object-cover img-zoom" />
             <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/25 to-transparent" />
 
             <div className="relative flex flex-col justify-between w-full p-5 md:p-7">
@@ -192,7 +193,7 @@ function Services() {
                 <p className="mt-2 text-sm md:text-base text-white/85 leading-relaxed max-w-md">{s.text}</p>
                 <ul className="mt-4 flex flex-wrap gap-2">
                   {s.tags.map((t) => (
-                    <li key={t} className="rounded-full border border-white/40 bg-white/10 backdrop-blur-sm px-3 py-1 text-xs md:text-sm">{t}</li>
+                    <li key={t} className="rounded-full border border-white/40 bg-[#072a1f]/45 px-3 py-1 text-xs md:text-sm">{t}</li>
                   ))}
                 </ul>
                 <AddToTrip variant="light" className="mt-5" item={{ kind: 'guide', ref: String(s.id), title: s.name, image: s.image, link: '/guides', price: null, unit: null }} />
@@ -247,9 +248,9 @@ function GuideShowcase() {
   }
 
   const arrowClass =
-    "w-11 h-11 md:w-12 md:h-12 flex items-center justify-center rounded-full border border-[#084838] text-[#084838] " +
-    "hover:bg-[#084838]/10 active:bg-[#084838]/20 transition " +
-    "focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#084838]"
+    "w-11 h-11 md:w-12 md:h-12 flex items-center justify-center rounded-full border border-[#0C3E2E] text-[#0C3E2E] " +
+    "hover:bg-[#0C3E2E]/10 active:bg-[#0C3E2E]/20 transition " +
+    "focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#0C3E2E]"
 
   return (
     <div id="guides" className={`${SECTION_GAP} scroll-mt-8`}>
@@ -266,7 +267,7 @@ function GuideShowcase() {
               aria-label={tr('guidesLabel')}
               className="relative flex lg:flex-col gap-3 overflow-x-auto lg:overflow-x-hidden pb-2 lg:pb-0 lg:pr-2
                          lg:absolute lg:inset-0 lg:overflow-y-auto snap-x lg:snap-none
-                         [scrollbar-width:thin] [scrollbar-color:#084838_transparent]"
+                         [scrollbar-width:thin] [scrollbar-color:#0C3E2E_transparent]"
             >
               {guides.map((item, i) => (
                 <button
@@ -277,10 +278,10 @@ function GuideShowcase() {
                   aria-selected={i === active}
                   onClick={() => setActive(i)}
                   className={`snap-start shrink-0 w-[240px] lg:w-auto flex items-center gap-3 rounded-2xl p-3 text-left transition ${
-                    i === active ? 'bg-[#084838] text-white' : 'bg-white text-slate-800 hover:bg-white/70'
+                    i === active ? 'bg-[#0C3E2E] text-white' : 'bg-white text-slate-800 hover:bg-white/70'
                   }`}
                 >
-                  <img src={item.image} alt="" className="w-14 h-14 rounded-full object-cover" />
+                  <Img src={item.image} alt="" className="w-14 h-14 rounded-full object-cover" />
                   <span>
                     <span className="block font-medium">{item.name}</span>
                     <span className={`block text-sm ${i === active ? 'text-white/70' : 'text-slate-600'}`}>{item.role}</span>
@@ -306,7 +307,7 @@ function GuideShowcase() {
         {/* Fiche du guide */}
         <article ref={cardRef} aria-live="polite" className="grid grid-cols-1 md:grid-cols-[1fr_1.2fr] overflow-hidden rounded-3xl bg-white">
           <div className="min-h-[280px] md:min-h-[440px] relative">
-            <img src={g.image} alt={g.name} className="absolute inset-0 w-full h-full object-cover" />
+            <Img src={g.image} alt={g.name} className="absolute inset-0 w-full h-full object-cover" />
           </div>
           <div className="p-6 md:p-10 flex flex-col">
             <span className={`${BADGE} self-start`}>{tr('years', { count: g.years })}</span>
@@ -316,9 +317,9 @@ function GuideShowcase() {
             <p className={`mt-5 ${META_TEXT} text-slate-500 uppercase tracking-wide`}>{tr('languages')}</p>
             <p className="mt-1 text-sm md:text-base text-slate-800">{g.langs}</p>
             <ul className="mt-5 flex flex-wrap gap-2">
-              {g.specialties.map((t) => <li key={t} className="rounded-full bg-[#D5E8E2] px-4 py-1.5 text-sm text-slate-700">{t}</li>)}
+              {g.specialties.map((t) => <li key={t} className="rounded-full bg-[#F4F1EA] px-4 py-1.5 text-sm text-slate-700">{t}</li>)}
             </ul>
-            <A href="/contact" className={`mt-8 self-start bg-[#C49849] hover:bg-[#b08339] text-white ${BUTTON}`}>
+            <A href="/contact" className={`mt-8 self-start bg-[#A9813A] hover:bg-[#8C6A2C] text-white ${BUTTON}`}>
               {tr('request', { name: g.name.split(' ')[0] })}
             </A>
           </div>
@@ -345,7 +346,7 @@ function Compare() {
             <tr className="border-b border-slate-200">
               <th className="p-4 md:p-6" />
               {cols.map((c, i) => (
-                <th key={c} className={`p-4 md:p-6 text-base md:text-xl font-medium text-center ${i === 1 ? 'bg-[#084838] text-white' : 'text-slate-900'}`}>
+                <th key={c} className={`p-4 md:p-6 text-base md:text-xl font-medium text-center ${i === 1 ? 'bg-[#0C3E2E] text-white' : 'text-slate-900'}`}>
                   {c}
                   {i === 1 && <span className="block mt-1 text-xs font-normal text-[#E6C58A]">{tr('popular')}</span>}
                 </th>
@@ -357,7 +358,7 @@ function Compare() {
               <tr key={row.label} className="border-b border-slate-100 last:border-0">
                 <td className="p-4 md:p-6 text-sm md:text-base text-slate-700">{row.label}</td>
                 {row.values.map((v, i) => (
-                  <td key={i} className={`p-4 md:p-6 ${i === 1 ? 'bg-[#084838]/5' : ''}`}>
+                  <td key={i} className={`p-4 md:p-6 ${i === 1 ? 'bg-[#0C3E2E]/5' : ''}`}>
                     <span className="flex justify-center">{v ? <CheckIcon /> : <span className="text-slate-300">—</span>}</span>
                   </td>
                 ))}
@@ -390,7 +391,7 @@ function DayTimeline() {
       {/* Frise horizontale */}
       <div className="relative overflow-x-auto pb-2">
         <ol className="relative grid grid-cols-5 min-w-[520px]" role="tablist" aria-label={tr('dayLabel')}>
-          <span className="absolute left-[10%] right-[10%] top-[11px] h-px bg-[#084838]/25" aria-hidden="true" />
+          <span className="absolute left-[10%] right-[10%] top-[11px] h-px bg-[#0C3E2E]/25" aria-hidden="true" />
           {day.map((d, i) => (
             <li key={d.time} className="relative">
               <button
@@ -401,8 +402,8 @@ function DayTimeline() {
                 className="w-full flex flex-col items-center gap-3 text-center"
               >
                 <span
-                  className={`relative w-6 h-6 rounded-full ring-4 ring-[#D5E8E2] transition ${
-                    i === active ? 'bg-[#C49849] scale-125' : i < active ? 'bg-[#C49849]/60' : 'bg-slate-300'
+                  className={`relative w-6 h-6 rounded-full ring-4 ring-[#F4F1EA] transition ${
+                    i === active ? 'bg-[#A9813A] scale-125' : i < active ? 'bg-[#A9813A]/60' : 'bg-slate-300'
                   }`}
                 />
                 <span className={`text-sm md:text-lg tabular-nums transition ${i === active ? 'font-medium text-slate-900' : 'text-slate-600'}`}>{d.time}</span>
@@ -415,7 +416,7 @@ function DayTimeline() {
       {/* Carte de l'étape */}
       <article key={step.time} ref={stepRef} aria-live="polite" className="mt-8 md:mt-10 grid grid-cols-1 md:grid-cols-[1fr_1.1fr] overflow-hidden rounded-3xl bg-white">
         <div className="relative min-h-[240px] md:min-h-[360px]">
-          <img src={step.image} alt={step.title} className="absolute inset-0 w-full h-full object-cover" />
+          <Img src={step.image} alt={step.title} className="absolute inset-0 w-full h-full object-cover" />
         </div>
         <div className="p-6 md:p-12 flex flex-col">
           <span className={`${BADGE} self-start`}>{tr('stepOf', { n: active + 1, total, time: step.time })}</span>
@@ -424,7 +425,7 @@ function DayTimeline() {
           <button
             type="button"
             onClick={() => setActive((i) => (i + 1) % total)}
-            className={`mt-8 self-start inline-flex items-center gap-2 bg-[#084838] hover:bg-[#0a5c47] text-white ${BUTTON}`}
+            className={`mt-8 self-start inline-flex items-center gap-2 bg-[#0C3E2E] hover:bg-[#14523F] text-white ${BUTTON}`}
           >
             {active === total - 1 ? tr('again') : tr('nextStep')} <ArrowIcon />
           </button>
@@ -486,7 +487,7 @@ const photoCell = "overflow-hidden rounded-3xl h-[200px] sm:h-[260px] lg:h-[320p
 function Photo({ src, alt = '', className = '' }) {
   return (
     <div className={`${photoCell} ${className}`}>
-      <img src={src} alt={alt} className="w-full h-full object-cover transition-transform duration-700 hover:scale-105" />
+      <Img src={src} alt={alt} className="w-full h-full object-cover transition-transform duration-700 hover:scale-[1.03]" />
     </div>
   )
 }
@@ -537,7 +538,7 @@ function Cta() {
               placeholder={tr('emailPlaceholder')}
               className="flex-1 min-w-0 bg-transparent text-sm md:text-base text-slate-800 placeholder:text-slate-500 focus:outline-none"
             />
-            <button type="submit" disabled={status === 'sending'} className={`shrink-0 bg-[#C49849] hover:bg-[#b08339] text-white disabled:opacity-60 disabled:cursor-wait ${BUTTON}`}>
+            <button type="submit" disabled={status === 'sending'} className={`shrink-0 bg-[#A9813A] hover:bg-[#8C6A2C] text-white disabled:opacity-60 disabled:cursor-wait ${BUTTON}`}>
               {status === 'sending' ? tr('sending') : tr('subscribe')}
             </button>
           </form>
@@ -559,7 +560,7 @@ function Cta() {
         <ul className="col-span-2 lg:col-span-1 order-first lg:order-none flex flex-col justify-center gap-4 lg:gap-5 lg:px-4">
           {followList.map((item) => (
             <li key={item.id} className="flex items-center gap-4 text-lg md:text-xl text-slate-800">
-              <span className="shrink-0 w-10 h-10 rounded-full bg-[#C49849] flex items-center justify-center text-white">
+              <span className="shrink-0 w-10 h-10 rounded-full bg-[#A9813A] flex items-center justify-center text-white">
                 <Svg className="w-5 h-5">{item.paths.map((d) => <path key={d} d={d} />)}</Svg>
               </span>
               {item.label}
@@ -584,12 +585,12 @@ function Cta() {
             <span className="text-2xl md:text-3xl font-medium">{tr('experience')}</span>
           </p>
           <div className="mt-6 flex items-center gap-4">
-            <img src={p_guide_nosy_iranja} alt="" className="shrink-0 w-14 h-14 md:w-16 md:h-16 rounded-full object-cover" />
+            <Img src={p_guide_nosy_iranja} alt="" className="shrink-0 w-14 h-14 md:w-16 md:h-16 rounded-full object-cover" />
             <p className="text-sm md:text-base text-slate-600 leading-relaxed">
               {tr('experienceText')}
             </p>
           </div>
-          <A href="/contact" className={`mt-6 self-start bg-[#084838] hover:bg-[#0a5c47] text-white ${BUTTON}`}>
+          <A href="/contact" className={`mt-6 self-start bg-[#0C3E2E] hover:bg-[#14523F] text-white ${BUTTON}`}>
             {tr('findGuide')}
           </A>
         </div>
@@ -655,7 +656,7 @@ function Guides() {
 
   return (
     <>
-    <section className="w-full pt-0 pb-12 md:pb-20 bg-[#D5E8E2] flex flex-col items-center">
+    <section className="w-full pt-0 pb-12 md:pb-20 bg-[#F4F1EA] flex flex-col items-center">
       <Navbar />
       <div ref={contentRef} className={`${SECTION_WIDTH} mt-8 md:mt-16`}>
         <Hero />

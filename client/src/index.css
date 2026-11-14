@@ -1,17 +1,104 @@
-/* Figtree reste chargée pour le hero de l'accueil (voir pages/homeHero.css) */
-@import url('https://fonts.googleapis.com/css2?family=Figtree:wght@300..900&family=Nata+Sans:wght@300..800&display=swap');
-@import url('https://api.fontshare.com/v2/css?f[]=cabinet-grotesk@400,500,700,800&display=swap');
+/* Polices servies par le site lui-même (paquets @fontsource) : pas d'appel à Google Fonts,
+   pas de texte qui change de police pendant le chargement. */
+@import "@fontsource-variable/figtree/wght.css";
+@import "@fontsource/instrument-serif/400.css";
+@import "@fontsource/instrument-serif/400-italic.css";
 @import "tailwindcss";
 
-/* Polices et couleur de la marque : Nata Sans pour le texte, Cabinet Grotesk pour les titres, vert forêt */
+/* Identité Noziwild, version épurée :
+   - papier ivoire et vert forêt, l'or du logo ne sert plus que de filet et de petit accent ;
+   - Instrument Serif pour les grands titres (h1, h2), Figtree pour tout le reste ;
+   - angles presque droits, aucune ombre portée : ce sont les photos qui donnent le relief. */
 @theme {
-  --font-sans: "Nata Sans", system-ui, -apple-system, "Segoe UI", sans-serif;
-  --font-display: "Cabinet Grotesk", "Nata Sans", system-ui, sans-serif;
+  --font-sans: "Figtree Variable", system-ui, -apple-system, "Segoe UI", sans-serif;
+  --font-display: "Instrument Serif", "Iowan Old Style", "Palatino Linotype", Georgia, serif;
+
   --color-forest: #0c3e2e;
+  --color-ink: #10231c;
+  --color-paper: #f4f1ea;
+  --color-sand: #eae5d9;
+  --color-brass: #b08d4f;
+
+  /* Gris chauds (les classes slate-* du site prennent ces valeurs) */
+  --color-slate-50: #f8f6f1;
+  --color-slate-100: #f0ede5;
+  --color-slate-200: #e3dfd3;
+  --color-slate-300: #cfcabb;
+  --color-slate-400: #a39f92;
+  --color-slate-500: #7a776b;
+  --color-slate-600: #5b594f;
+  --color-slate-700: #43423a;
+  --color-slate-800: #2a2a24;
+  --color-slate-900: #171a16;
+  --color-slate-950: #0e100d;
+
+  /* Angles */
+  --radius-sm: 2px;
+  --radius-md: 3px;
+  --radius-lg: 4px;
+  --radius-xl: 4px;
+  --radius-2xl: 6px;
+  --radius-3xl: 6px;
+
+  /* Ombres : à peine un souffle */
+  --shadow-sm: 0 1px 2px rgb(16 35 28 / 0.04);
+  --shadow-md: 0 6px 20px -8px rgb(16 35 28 / 0.10);
+  --shadow-lg: 0 14px 34px -14px rgb(16 35 28 / 0.14);
+  --shadow-xl: 0 22px 48px -20px rgb(16 35 28 / 0.16);
+  --shadow-2xl: 0 30px 70px -28px rgb(16 35 28 / 0.20);
 }
 
 @layer base {
-  h1, h2, h3 { font-family: var(--font-display); }
+  html { background: var(--color-paper); }
+  body {
+    background: var(--color-paper);
+    color: var(--color-slate-800);
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    text-rendering: optimizeLegibility;
+  }
+  h3 { font-family: var(--font-sans); letter-spacing: -0.01em; }
+  ::selection { background: var(--color-forest); color: var(--color-paper); }
+  :focus-visible { outline: 2px solid var(--color-brass); outline-offset: 3px; }
+}
+
+/* Grands titres : serif fin, jamais gras (la police n'a qu'une graisse). Hors des couches Tailwind
+   pour passer devant les classes font-bold déjà posées dans les pages. */
+h1, h2, .font-display {
+  font-family: var(--font-display);
+  font-weight: 400;
+  letter-spacing: -0.015em;
+}
+h1 em, h2 em { font-style: italic; }
+
+/* Petite ligne au-dessus des titres : capitales espacées, filet doré */
+.eyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.75rem;
+  font-size: 0.6875rem;
+  font-weight: 600;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--color-slate-600);
+}
+.eyebrow::before {
+  content: "";
+  width: 1.75rem;
+  height: 1px;
+  background: var(--color-brass);
+}
+.eyebrow-light { color: rgb(244 241 234 / 0.75); }
+
+/* Photos toujours nettes :
+   - jamais agrandies au repos, zoom au survol limité à 3 % ;
+   - pas de flou d'attente : la photo arrive en fondu une fois décodée (voir components/Img.jsx). */
+img { image-rendering: auto; }
+.img-zoom { transition: transform 1.2s cubic-bezier(0.22, 1, 0.36, 1); }
+.group:hover .img-zoom { transform: scale(1.03); }
+@media (prefers-reduced-motion: reduce) {
+  .img-zoom { transition: none; }
+  .group:hover .img-zoom { transform: none; }
 }
 
 /* Téléphone : petits textes un cran plus grands (text-sm 14 -> 15 px, text-xs 12 -> 13 px).
@@ -22,7 +109,6 @@
     --text-sm: 0.9375rem;
   }
 }
-
 
 /* Textes de la navbar en vert forêt (couleur de la marque) */
 nav[aria-label="Main"] {
@@ -36,3 +122,6 @@ nav[aria-label="Main"] :is(a, button):not([aria-pressed="true"]):hover { color: 
 /* Chevrons des menus (gris en dur dans Navbar.jsx) et contour du bouton devis */
 nav[aria-label="Main"] svg path[stroke="#71717b"] { stroke: currentColor; }
 nav[aria-label="Main"] a.border { border-color: var(--nav-forest); }
+
+/* Titres toujours en bas de casse (les capitales en serif alourdissent) */
+h1, h2 { text-transform: none; }

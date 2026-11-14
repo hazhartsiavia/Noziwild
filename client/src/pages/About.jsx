@@ -1,10 +1,10 @@
 import React, { useRef, useState } from 'react'
-import Deux from "../assets/images/2.jpg";
-import Ambanja from "../assets/images/Ambanja.jpg";
-import NosyLonjo from "../assets/images/NosyLonjo.jpg";
-import NosyIranja from "../assets/images/NosyIranja.jpg";
-import Ramena from "../assets/images/Ramena.jpg";
-import Tana from "../assets/images/Tana.jpg";
+import Deux from "../assets/images/site/coastal-tsingy.jpg";
+import Ambanja from "../assets/images/site/sambirano-river.jpg";
+import NosyLonjo from "../assets/images/site/sugar-loaf-view.jpg";
+import NosyIranja from "../assets/images/site/nosy-iranja-aerial.jpg";
+import Ramena from "../assets/images/site/ramena-beach-aerial.jpg";
+import Tana from "../assets/images/site/antananarivo-rice-fields.jpg";
 import Icone from "../assets/logo/icon.svg";
 import Navbar from '../components/Navbar';
 import Footer from '../components/Footer';
@@ -14,17 +14,18 @@ import { useScrollReveal } from '../utils/useScrollReveal'
 import { usePhoto } from '../sitePhotos'
 import { A } from '../i18n/router'
 import SiteMedia from '../components/SiteMedia'
+import Img from '../components/Img'
 
 /* Constantes partagées : mêmes valeurs que dans Explore, Choose, Trips et Blog */
-const SECTION_WIDTH = "w-[90vw] lg:max-w-[90vw] xl:max-w-[95vw]"
-const SECTION_TITLE = "text-[clamp(2rem,4.4vw,4rem)] font-bold text-forest leading-[1.08] tracking-tight"
+const SECTION_WIDTH = "w-[90vw] max-w-[1360px]"
+const SECTION_TITLE = 'text-[clamp(2.6rem,5.4vw,5rem)] text-forest leading-[1] [text-wrap:balance]'
 const SECTION_SUBTITLE = "text-sm sm:text-base md:text-lg text-slate-600 leading-relaxed max-w-3xl"
 const META_TEXT = "text-xs sm:text-sm"
 
 // Propres à cette section
 const STATEMENT_TITLE = "text-4xl sm:text-5xl md:text-6xl xl:text-7xl font-medium uppercase leading-[1.15] tracking-tight text-forest"
 // Même échelle que SECTION_TITLE, en blanc pour être posé sur l'image
-const ON_IMAGE_TITLE = "text-[clamp(2rem,4.4vw,4rem)] font-bold text-white leading-[1.08] tracking-tight"
+const ON_IMAGE_TITLE = "text-[clamp(2.6rem,5.4vw,5rem)] text-white leading-[1] [text-wrap:balance]"
 
 /* ---------------------------- Données ---------------------------- */
 // Textes affichés : locales/<langue>/about.json (les listes suivent l'ordre de celles-ci)
@@ -268,17 +269,17 @@ function HelpPill() {
   return (
     <A
       href={content.helpHref}
-      className="inline-flex items-center gap-5 md:gap-8 self-start rounded-full bg-[#074636] hover:bg-[#0a5c47] transition text-white pl-6 pr-2.5 py-2.5 md:pl-7 md:py-3"
+      className="inline-flex items-center gap-5 md:gap-8 self-start rounded-full bg-[#0C3E2E] hover:bg-[#14523F] transition text-white pl-6 pr-2.5 py-2.5 md:pl-7 md:py-3"
     >
       <span className="text-lg md:text-xl font-medium">{t('helpLabel')}</span>
       <span className="flex items-center">
         {team.map((person) => (
           <span
             key={person.name}
-            className={`-ml-3 first:ml-0 w-11 h-11 md:w-14 md:h-14 rounded-full overflow-hidden ring-2 ring-[#074636] flex items-center justify-center text-slate-800 font-medium ${person.bg}`}
+            className={`-ml-3 first:ml-0 w-11 h-11 md:w-14 md:h-14 rounded-full overflow-hidden ring-2 ring-[#0C3E2E] flex items-center justify-center text-slate-800 font-medium ${person.bg}`}
           >
             {person.image
-              ? <img src={person.image} alt={person.name} className="w-full h-full object-cover" />
+              ? <Img src={person.image} alt={person.name} className="w-full h-full object-cover" />
               : person.name.charAt(0)}
           </span>
         ))}
@@ -290,7 +291,7 @@ function HelpPill() {
 function FeatureCard({ feature, title }) {
   const IconComponent = feature.icon
   return (
-    <div className="flex flex-row md:flex-col items-center md:items-start justify-between gap-3 md:min-h-[145px] rounded-xl border border-white/20 bg-white/10 backdrop-blur-md p-4 md:p-5 text-white">
+    <div className="flex flex-row md:flex-col items-center md:items-start justify-between gap-3 md:min-h-[145px] rounded-xl border border-white/20 bg-[#072a1f]/45 p-4 md:p-5 text-white">
       <h3 className="text-sm md:text-base font-bold leading-snug">{title}</h3>
       <IconComponent />
     </div>
@@ -307,11 +308,11 @@ function Polaroids() {
 
   return (
     <div className="relative w-full max-w-[440px] aspect-[3/2]">
-      <div className={`${frame} left-0 top-0 -rotate-6`}>
-        <img src={photo('about.mission.1')} alt={first.alt} className={photoCls} />
+      <div className={`${frame} left-0 top-0`}>
+        <Img src={photo('about.mission.1')} alt={first.alt} className={photoCls} />
       </div>
-      <div className={`${frame} left-[44%] top-[14%] rotate-6`}>
-        <img src={photo('about.mission.2')} alt={second.alt} className={photoCls} />
+      <div className={`${frame} left-[44%] top-[14%]`}>
+        <Img src={photo('about.mission.2')} alt={second.alt} className={photoCls} />
       </div>
     </div>
   )
@@ -346,7 +347,7 @@ function MissionSection() {
         </div>
 
         {/* Grande image */}
-        <div className="relative min-h-[280px] md:min-h-[375px] lg:min-h-[394px] overflow-hidden rounded-2xl md:rounded-3xl">
+        <div className="relative min-h-[280px] md:min-h-[375px] lg:min-h-[394px] overflow-hidden rounded-3xl">
           <SiteMedia
             slot="about.mission"
             alt={t('missionImageAlt')}
@@ -363,7 +364,7 @@ function MissionSection() {
                 key={pillar.id}
                 className="flex items-center gap-3 lg:gap-4 rounded-full bg-white p-2.5 lg:p-3 pr-6 lg:pr-12"
               >
-                <span className="shrink-0 w-11 h-11 lg:w-[62px] lg:h-[62px] rounded-full bg-[#C49849] flex items-center justify-center text-white">
+                <span className="shrink-0 w-11 h-11 lg:w-[62px] lg:h-[62px] rounded-full bg-[#A9813A] flex items-center justify-center text-white">
                   <PillarIcon />
                 </span>
                 <span className="text-sm lg:text-lg leading-snug text-slate-700">{t('pillars')[i]}</span>
@@ -388,10 +389,10 @@ function ExpertSideCard({ expert, onSelect }) {
       className="group block w-full text-left"
     >
       <div className="aspect-[17/10] overflow-hidden rounded-xl">
-        <img
+        <Img
           src={expert.image}
           alt={expert.name}
-          className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
+          className="w-full h-full object-cover img-zoom"
         />
       </div>
       <h3 className="mt-4 md:mt-8 text-lg md:text-2xl font-bold leading-snug text-forest">
@@ -420,7 +421,7 @@ function ExpertsSection() {
 
   const arrowClass =
     "w-10 h-10 md:w-12 md:h-12 flex items-center justify-center rounded-full border border-slate-700 text-slate-800 " +
-    "hover:bg-[#074636]/10 active:bg-[#074636]/20 transition " +
+    "hover:bg-[#0C3E2E]/10 active:bg-[#0C3E2E]/20 transition " +
     "focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-slate-800"
 
   return (
@@ -452,7 +453,7 @@ function ExpertsSection() {
           }
         >
           <div className="aspect-[3/2] md:aspect-[2/1] overflow-hidden rounded-xl">
-            <img src={current.image} alt={current.name} className="w-full h-full object-cover" />
+            <Img src={current.image} alt={current.name} className="w-full h-full object-cover" />
           </div>
 
           <hr className="mt-6 md:mt-9 border-slate-900/15" />
@@ -513,7 +514,7 @@ function About() {
   useScrollReveal(root)
   return (
     <>
-    <section ref={root} className="w-full pt-0 pb-12 bg-[#D5E8E2] flex flex-col items-center">
+    <section ref={root} className="w-full pt-0 pb-12 bg-[#F4F1EA] flex flex-col items-center">
         <Navbar />
       <PageHero slot="about.hero" title={t('title')} crumb={nav('about')} />
       <div className={`${SECTION_WIDTH} mt-8 md:mt-12`}>
@@ -530,7 +531,7 @@ function About() {
         </div>
 
         {/* Carte "Our Promise" */}
-        <div className="relative mt-10 md:mt-16 overflow-hidden rounded-3xl bg-[#074636] text-white min-h-[520px] md:min-h-[625px]">
+        <div className="relative mt-10 md:mt-16 overflow-hidden rounded-3xl bg-[#0C3E2E] text-white min-h-[520px] md:min-h-[625px]">
           <SiteMedia
             slot="about.promise"
             alt={t('imageAlt')}

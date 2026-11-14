@@ -3,7 +3,7 @@
 import React from 'react'
 import Navbar from './Navbar'
 import Footer from './Footer'
-import NosyIranja from '../assets/images/NosyIranja.jpg'
+import NosyIranja from '../assets/images/site/nosy-iranja-aerial.jpg'
 import { useT } from '../i18n/LanguageContext'
 import SiteMedia from './SiteMedia'
 
@@ -11,7 +11,7 @@ function AuthLayout({ title, text, children }) {
   const t = useT('auth')
   return (
     <>
-      <section className="w-full pt-0 pb-12 md:pb-20 bg-[#D5E8E2] flex flex-col items-center">
+      <section className="w-full pt-0 pb-12 md:pb-20 bg-[#F4F1EA] flex flex-col items-center">
         <Navbar />
 
         <div className="w-[90vw] max-w-6xl mt-10 grid grid-cols-1 lg:grid-cols-2 overflow-hidden rounded-3xl bg-white">

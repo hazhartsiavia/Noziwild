@@ -145,7 +145,7 @@ function AdminInbox() {
             role="tab"
             aria-selected={id === source}
             onClick={() => setParams({ source: id })}
-            className={`rounded-full border px-4 py-2 text-sm transition ${id === source ? 'border-[#084838] bg-[#084838] text-white' : 'border-slate-300 bg-white text-slate-700 hover:border-slate-500'}`}
+            className={`rounded-full border px-4 py-2 text-sm transition ${id === source ? 'border-[#0C3E2E] bg-[#0C3E2E] text-white' : 'border-slate-300 bg-white text-slate-700 hover:border-slate-500'}`}
           >
             {s.label}
           </button>
@@ -173,7 +173,7 @@ function AdminInbox() {
                       </a>
                     </div>
                     <div className="flex shrink-0 items-center gap-2 text-xs text-slate-500">
-                      {row.status && <span className="rounded-full bg-[#D5E8E2] px-2.5 py-0.5 font-medium text-slate-800">{STATUS[row.status] || row.status}</span>}
+                      {row.status && <span className="rounded-full bg-[#F4F1EA] px-2.5 py-0.5 font-medium text-slate-800">{STATUS[row.status] || row.status}</span>}
                       <time dateTime={row.created_at}>{formatDate(row.created_at)}</time>
                     </div>
                   </div>

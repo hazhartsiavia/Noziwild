@@ -1,6 +1,6 @@
 import React, { useRef, useState } from 'react'
-import Ramena from '../assets/images/Ramena.jpg'
-import NosyIranja from '../assets/images/NosyIranja.jpg'
+import Ramena from '../assets/images/site/ramena-beach-aerial.jpg'
+import NosyIranja from '../assets/images/site/nosy-iranja-aerial.jpg'
 import Navbar from '../components/Navbar'
 import Footer from '../components/Footer'
 import { CARD, CARD_BADGE, CARD_BODY, CARD_FOOT, CARD_IMG, CARD_MEDIA, CARD_TEXT, CARD_TITLE } from '../components/Card'
@@ -13,11 +13,12 @@ import { useOffers } from '../utils/useOffers'
 import { useScrollReveal } from '../utils/useScrollReveal'
 import { usePhoto } from '../sitePhotos'
 import { A } from '../i18n/router'
+import Img from '../components/Img'
 
-const W = 'w-[90vw] lg:max-w-[95vw]'
-const GOLD = 'bg-[#C49849] hover:bg-[#a9813a]'
+const W = 'w-[90vw] max-w-[1360px]'
+const GOLD = 'bg-[#A9813A] hover:bg-[#8C6A2C]'
 const BTN = 'inline-flex items-center justify-center text-sm md:text-base font-medium px-6 py-3 rounded-full active:scale-95 transition'
-const H2 = 'text-[clamp(2rem,4.4vw,4rem)] font-bold text-forest leading-[1.08] tracking-tight'
+const H2 = 'text-[clamp(2.6rem,5.4vw,5rem)] text-forest leading-[1] [text-wrap:balance]'
 
 /* ---------------------------- Données ---------------------------- */
 /* Les excursions (textes, prix, photos, port, durée) sont en base : admin > Offers > Cruise excursions.
@@ -51,7 +52,7 @@ function ExcursionCard({ item, ashore }) {
   return (
     <li className={`${CARD} transition ${fits ? '' : 'opacity-55'}`}>
       <div className={CARD_MEDIA}>
-        <img src={item.image} alt={item.title} className={CARD_IMG} />
+        <Img src={item.image} alt={item.title} className={CARD_IMG} />
         <span className={CARD_BADGE}>{t('tags')[item.tag]}</span>
         <span className="absolute right-3 top-3 bg-white/90 text-slate-900 text-xs sm:text-sm font-medium px-3 py-1.5 rounded-full">{fmt(item.hours)}</span>
       </div>
@@ -60,7 +61,7 @@ function ExcursionCard({ item, ashore }) {
         <p className={CARD_TEXT}>{item.text}</p>
 
         <div className="mt-5" aria-hidden="true">
-          <div className="h-2 rounded-full bg-slate-200 overflow-hidden"><div className="h-full rounded-full bg-[#C49849]" style={{ width: `${pct}%` }} /></div>
+          <div className="h-2 rounded-full bg-slate-200 overflow-hidden"><div className="h-full rounded-full bg-[#A9813A]" style={{ width: `${pct}%` }} /></div>
         </div>
         <p className="mt-2 text-xs sm:text-sm text-slate-600">
           {fits ? t('spare', { minutes: spare }) : t('tooLong')}
@@ -90,7 +91,7 @@ function CruiseExcursions() {
 
   return (
     <>
-      <main ref={root} className="w-full overflow-x-clip bg-[#D5E8E2] flex flex-col items-center">
+      <main ref={root} className="w-full overflow-x-clip bg-[#F4F1EA] flex flex-col items-center">
         <Navbar />
         <PageHero slot="cruise.hero" alt={t('heroAlt')} title={t('title')} crumb={t('eyebrow')} text={t('intro')} moreHref="#plan" moreLabel={t('planButton')} />
 
@@ -106,9 +107,9 @@ function CruiseExcursions() {
                   type="button"
                   onClick={() => setPort(p.id)}
                   aria-pressed={port === p.id}
-                  className={`group relative block w-full aspect-[16/9] md:aspect-[2/1] overflow-hidden rounded-[2rem] text-left text-white focus:outline-none focus-visible:ring-4 focus-visible:ring-[#074636] ${port === p.id ? 'ring-4 ring-[#C49849]' : ''}`}
+                  className={`group relative block w-full aspect-[16/9] md:aspect-[2/1] overflow-hidden rounded-3xl text-left text-white focus:outline-none focus-visible:ring-4 focus-visible:ring-[#0C3E2E] ${port === p.id ? 'ring-4 ring-[#A9813A]' : ''}`}
                 >
-                  <img src={photo(`cruise.port.${p.id}`)} alt="" className="absolute inset-0 w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" />
+                  <Img src={photo(`cruise.port.${p.id}`)} alt="" className="absolute inset-0 w-full h-full object-cover img-zoom" />
                   <div className="absolute inset-0 bg-gradient-to-t from-[#072a1f]/85 via-[#072a1f]/20 to-transparent" />
                   <div className="absolute inset-x-0 bottom-0 p-6 md:p-8">
                     <p className="text-sm text-white/80">{p.sub}</p>
@@ -120,7 +121,7 @@ function CruiseExcursions() {
             ))}
           </ul>
 
-          <div className="mt-6 rounded-[2rem] bg-white p-6 md:p-8">
+          <div className="mt-6 rounded-3xl bg-white p-6 md:p-8">
             <div className="flex flex-wrap items-baseline justify-between gap-2">
               <label htmlFor="ashore" className="text-base md:text-xl font-medium text-slate-900">{t('ashore')}</label>
               <p className="text-3xl md:text-4xl font-semibold text-slate-900" aria-live="polite">{fmt(ashore)}</p>
@@ -128,7 +129,7 @@ function CruiseExcursions() {
             <input
               id="ashore" type="range" min="3" max="10" step="0.5" value={ashore}
               onChange={(e) => setAshore(Number(e.target.value))}
-              className="mt-5 w-full accent-[#C49849]"
+              className="mt-5 w-full accent-[#A9813A]"
             />
             <div className="flex justify-between text-xs md:text-sm text-slate-500"><span>3 h</span><span>10 h</span></div>
             <p className="mt-3 text-sm text-slate-600">{t('ashoreHint')}</p>
@@ -147,8 +148,8 @@ function CruiseExcursions() {
         </section>
 
         {/* Engagements */}
-        <section className={`${W} mt-16 md:mt-28 rounded-[1.5rem] md:rounded-[2rem] bg-[#074636] text-white p-6 sm:p-10 md:p-14`}>
-          <h2 className="text-[clamp(2rem,4.4vw,4rem)] font-bold leading-[1.08] tracking-tight max-w-2xl">{t('promisesTitle')}</h2>
+        <section className={`${W} mt-16 md:mt-28 rounded-3xl bg-[#0C3E2E] text-white p-6 sm:p-10 md:p-14`}>
+          <h2 className="text-[clamp(2.6rem,5.4vw,5rem)] leading-[1] [text-wrap:balance] max-w-2xl">{t('promisesTitle')}</h2>
           <ul className="mt-10 grid grid-cols-1 md:grid-cols-3 gap-8">
             {t('promises').map((p) => (
               <li key={p.title} className="border-t border-white/25 pt-5">
@@ -167,7 +168,7 @@ function CruiseExcursions() {
             <span aria-hidden="true" className="hidden md:block absolute left-0 right-0 top-[9px] h-px bg-slate-900/25" />
             {timeline.map((step, i) => (
               <li key={step.time} className="relative md:pr-6">
-                <span className="block w-[18px] h-[18px] rounded-full bg-[#C49849] border-4 border-[#D5E8E2] relative" />
+                <span className="block w-[18px] h-[18px] rounded-full bg-[#A9813A] border-4 border-[#F4F1EA] relative" />
                 <p className="mt-4 text-2xl md:text-3xl font-semibold text-slate-900">{step.time}</p>
                 <p className="mt-1 text-sm md:text-base text-slate-700">{t('timeline')[i]}</p>
               </li>
@@ -178,12 +179,12 @@ function CruiseExcursions() {
         {/* Questions */}
         <section className={`${W} mt-16 md:mt-28 grid grid-cols-1 lg:grid-cols-[1fr_1.4fr] gap-8 lg:gap-16`}>
           <h2 className={H2}>{t('faqTitle')}</h2>
-          <div className="rounded-[2rem] bg-white px-6 md:px-10">
+          <div className="rounded-3xl bg-white px-6 md:px-10">
             {t('faqs').map((f) => (
               <details key={f.q} className="group border-b border-slate-200 last:border-b-0 py-5">
                 <summary className="flex cursor-pointer list-none items-center justify-between gap-4 text-base md:text-xl text-slate-800">
                   {f.q}
-                  <span aria-hidden="true" className="shrink-0 w-8 h-8 rounded-full bg-[#C49849] text-white flex items-center justify-center group-open:rotate-45 transition">+</span>
+                  <span aria-hidden="true" className="shrink-0 w-8 h-8 rounded-full bg-[#A9813A] text-white flex items-center justify-center group-open:rotate-45 transition">+</span>
                 </summary>
                 <p className="mt-3 pr-12 text-sm md:text-base text-slate-600 leading-relaxed">{f.a}</p>
               </details>

@@ -236,7 +236,7 @@ function TextsEditor() {
               type="button"
               onClick={() => pickLang(l.code)}
               aria-pressed={l.code === lang}
-              className={`rounded-full px-4 py-2 text-sm font-medium transition ${l.code === lang ? 'bg-[#084838] text-white' : 'text-slate-700 hover:bg-slate-100'}`}
+              className={`rounded-full px-4 py-2 text-sm font-medium transition ${l.code === lang ? 'bg-[#0C3E2E] text-white' : 'text-slate-700 hover:bg-slate-100'}`}
             >
               {l.label}
             </button>
@@ -289,7 +289,7 @@ function TextsEditor() {
 
       {/* Barre d'enregistrement */}
       <div className="fixed inset-x-0 bottom-0 z-40 border-t border-slate-200 bg-white/95 backdrop-blur">
-        <div className="mx-auto flex w-[90vw] lg:max-w-[95vw] items-center justify-between gap-4 py-3">
+        <div className="mx-auto flex w-[90vw] max-w-[1360px] items-center justify-between gap-4 py-3">
           <p className="text-sm text-slate-600" aria-live="polite">
             {status === 'saving' ? 'Saving…' : dirty ? 'Unsaved changes' : 'All changes saved'}
           </p>

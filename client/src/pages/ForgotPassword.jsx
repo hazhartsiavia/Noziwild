@@ -33,7 +33,7 @@ function ForgotPassword() {
       text={t('forgotText')}
     >
       {status === 'sent' ? (
-        <div className="mt-8 rounded-3xl bg-[#D5E8E2]/60 p-6">
+        <div className="mt-8 rounded-3xl bg-[#F4F1EA]/60 p-6">
           <p role="status" className="text-base md:text-lg text-slate-800">{message}</p>
           <p className="mt-3 text-sm md:text-base text-slate-600">
             {t('forgotExpires')}

@@ -13,10 +13,11 @@ import { useLanguage, useT } from '../i18n/LanguageContext'
 import { formatDate } from '../utils/format'
 import { useScrollReveal } from '../utils/useScrollReveal'
 import { PostCard } from './Blog'
+import Img from '../components/Img'
 
 gsap.registerPlugin(ScrollTrigger)
 
-const W = 'w-[90vw] lg:max-w-[95vw]'
+const W = 'w-[90vw] max-w-[1360px]'
 const TEXT = 'w-full max-w-4xl'
 const BTN = 'inline-flex items-center justify-center text-sm md:text-base font-medium px-6 py-3 rounded-full active:scale-95 transition'
 // Photo plus haute que son cadre : c'est cette marge qui permet le mouvement au défilement
@@ -78,8 +79,8 @@ function usePostMotion(scope, deps) {
 function Cta({ block }) {
   const external = /^https?:/.test(block.link)
   return (
-    <section data-no-reveal className="post-frame post-cta relative my-12 md:my-16 overflow-hidden rounded-[1.5rem] md:rounded-[2rem] bg-[#074636] text-white min-h-[380px] md:min-h-[440px] flex">
-      <img src={block.image} alt="" className={PARALLAX_IMG} />
+    <section data-no-reveal className="post-frame post-cta relative my-12 md:my-16 overflow-hidden rounded-3xl bg-[#0C3E2E] text-white min-h-[380px] md:min-h-[440px] flex">
+      <Img src={block.image} alt="" className={PARALLAX_IMG} />
       <div className="absolute inset-0 bg-gradient-to-t md:bg-gradient-to-r from-[#072a1f]/90 via-[#072a1f]/45 to-[#072a1f]/10" />
       <div className="relative w-full flex flex-col justify-between gap-10 p-6 sm:p-10 md:p-14">
         <div className="max-w-3xl">
@@ -91,7 +92,7 @@ function Cta({ block }) {
           <A
             href={block.link}
             {...(external ? { target: '_blank', rel: 'noreferrer' } : {})}
-            className={`cta-in ${BTN} group self-start md:self-end gap-2 whitespace-nowrap bg-[#C49849] hover:bg-[#a9813a] text-white`}
+            className={`cta-in ${BTN} group self-start md:self-end gap-2 whitespace-nowrap bg-[#A9813A] hover:bg-[#8C6A2C] text-white`}
           >
             {block.button}
             <ArrowRight className="w-4 h-4 transition-transform group-hover:translate-x-1" aria-hidden="true" />
@@ -118,7 +119,7 @@ function Block({ block }) {
       <ul className={`${TEXT} mt-6 flex flex-col gap-4`}>
         {block.items.map((item, i) => (
           <li key={i} className="flex gap-4 text-base md:text-lg leading-relaxed text-slate-700">
-            <span aria-hidden="true" className="mt-2.5 h-2 w-2 shrink-0 rounded-full bg-[#C49849]" />
+            <span aria-hidden="true" className="mt-2.5 h-2 w-2 shrink-0 rounded-full bg-[#A9813A]" />
             <span>{item.lead && <strong className="font-semibold text-forest">{item.lead}{lang === 'fr' ? ' : ' : ': '}</strong>}{item.text}</span>
           </li>
         ))}
@@ -128,7 +129,7 @@ function Block({ block }) {
   if (block.type === 'image') {
     return (
       <figure className="w-full mt-10 md:mt-14">
-        <img src={block.image} alt={block.caption || ''} className="w-full max-h-[620px] object-cover rounded-[1.5rem] md:rounded-[2rem]" />
+        <Img src={block.image} alt={block.caption || ''} className="w-full max-h-[620px] object-cover rounded-3xl" />
         {block.caption && <figcaption className="mt-3 text-sm text-slate-600">{block.caption}</figcaption>}
       </figure>
     )
@@ -140,7 +141,7 @@ function Block({ block }) {
 function Shell({ children }) {
   return (
     <>
-      <main className="w-full min-h-[70vh] bg-[#D5E8E2] pb-24 flex flex-col items-center">
+      <main className="w-full min-h-[70vh] bg-[#F4F1EA] pb-24 flex flex-col items-center">
         <Navbar />
         {children}
       </main>
@@ -167,7 +168,7 @@ function BlogPost() {
         <section className={`${W} mt-16 rounded-3xl bg-white p-10 text-center`}>
           <h1 className="text-3xl md:text-5xl font-medium tracking-tight text-forest">{t('notFoundTitle')}</h1>
           <p className="mt-4 text-slate-600">{t('notFoundText')}</p>
-          <A href="/blog" className={`${BTN} mt-6 bg-[#074636] hover:bg-[#0a5c47] text-white`}>{t('allArticles')}</A>
+          <A href="/blog" className={`${BTN} mt-6 bg-[#0C3E2E] hover:bg-[#14523F] text-white`}>{t('allArticles')}</A>
         </section>
       </Shell>
     )
@@ -175,7 +176,7 @@ function BlogPost() {
 
   return (
     <>
-      <main ref={root} className="w-full bg-[#D5E8E2] pb-16 md:pb-24 flex flex-col items-center">
+      <main ref={root} className="w-full bg-[#F4F1EA] pb-16 md:pb-24 flex flex-col items-center">
         <Navbar />
 
         <article className={`${W} mt-6`}>
@@ -193,8 +194,8 @@ function BlogPost() {
             </p>
           </header>
 
-          <div data-no-reveal className="post-frame relative mt-8 h-64 sm:h-80 md:h-[min(68vh,620px)] overflow-hidden rounded-[1.5rem] md:rounded-[2rem] bg-[#074636]">
-            <img src={post.image} alt="" className={PARALLAX_IMG} />
+          <div data-no-reveal className="post-frame relative mt-8 h-64 sm:h-80 md:h-[min(68vh,620px)] overflow-hidden rounded-3xl bg-[#0C3E2E]">
+            <Img src={post.image} alt="" className={PARALLAX_IMG} />
           </div>
 
           <div className="mt-10 md:mt-14">
@@ -206,7 +207,7 @@ function BlogPost() {
         {related.length > 0 && (
           <section className={`${W} mt-20 md:mt-28`}>
             <div className="flex flex-wrap items-end justify-between gap-4">
-              <h2 className="text-[clamp(2rem,4.4vw,4rem)] font-bold leading-[1.08] tracking-tight text-forest">{t('related')}</h2>
+              <h2 className="text-[clamp(2.6rem,5.4vw,5rem)] leading-[1] [text-wrap:balance] text-forest">{t('related')}</h2>
               <A href="/blog" className="text-sm md:text-base font-medium text-forest underline-offset-4 hover:underline">{t('allArticles')}</A>
             </div>
             <div className="mt-8 md:mt-10 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-9">

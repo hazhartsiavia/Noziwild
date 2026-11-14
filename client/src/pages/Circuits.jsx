@@ -2,8 +2,8 @@ import React, { useEffect, useState, useRef, useLayoutEffect } from 'react'
 import gsap from 'gsap'
 import { ScrollTrigger } from 'gsap/ScrollTrigger'
 import { Link, A } from '../i18n/router'
-import NosyIranja from '../assets/images/NosyIranja.jpg'
-import Ambanja from '../assets/images/Ambanja.jpg'
+import NosyIranja from '../assets/images/site/nosy-iranja-aerial.jpg'
+import Ambanja from '../assets/images/site/sambirano-river.jpg'
 import Navbar from '../components/Navbar'
 import Footer from '../components/Footer'
 import { CARD, CARD_BADGE, CARD_BODY, CARD_IMG, CARD_MEDIA, CARD_TITLE, CardMeta } from '../components/Card'
@@ -11,16 +11,17 @@ import PageHero from '../components/PageHero'
 import PageCta, { PAGE_CTA_GOLD, PAGE_CTA_GHOST } from '../components/PageCta'
 import { fetchCircuits, assetUrl } from '../api'
 import { useLanguage, useT } from '../i18n/LanguageContext'
+import Img from '../components/Img'
 
 gsap.registerPlugin(ScrollTrigger)
 
 /* Constantes partagées : mêmes valeurs que Blog et Contact */
-const SECTION_WIDTH = 'w-[90vw] lg:max-w-[95vw]'
-const SECTION_TITLE = 'text-[clamp(2rem,4.4vw,4rem)] font-bold text-forest leading-[1.08] tracking-tight'
+const SECTION_WIDTH = 'w-[90vw] max-w-[1360px]'
+const SECTION_TITLE = 'text-[clamp(2.6rem,5.4vw,5rem)] text-forest leading-[1] [text-wrap:balance]'
 const SECTION_SUBTITLE = 'text-sm sm:text-base md:text-lg text-slate-600 leading-relaxed max-w-3xl'
 const META_TEXT = 'text-xs sm:text-sm'
 const PAGE_TITLE = 'text-5xl sm:text-6xl md:text-7xl lg:text-[80px] font-bold uppercase leading-none tracking-tight'
-const BADGE = 'inline-block bg-[#C49849] text-white text-xs sm:text-sm font-medium px-3 py-1.5 rounded-sm'
+const BADGE = 'inline-block bg-[#F4F1EA] text-forest text-[11px] font-semibold uppercase tracking-[0.14em] px-3 py-1.5 rounded-sm'
 const BUTTON = 'text-sm font-medium px-5 py-2.5 rounded-full'
 
 /* ---------------------------- Données ---------------------------- */
@@ -68,7 +69,7 @@ function Chip({ active, onClick, children }) {
       aria-pressed={active}
       className={`chip rounded-full border px-4 py-2 text-sm transition focus:outline-none focus-visible:ring-2 focus-visible:ring-slate-700 focus-visible:ring-offset-2 ${
         active
-          ? 'bg-[#074636] border-[#074636] text-white'
+          ? 'bg-[#0C3E2E] border-[#0C3E2E] text-white'
           : 'bg-white border-slate-300 text-slate-700 hover:border-slate-500'
       }`}
     >
@@ -82,7 +83,7 @@ function CircuitCard({ circuit }) {
   return (
     <Link to={`/circuits/${circuit.slug}`} className={`circuit-card ${CARD}`}>
       <div className={CARD_MEDIA}>
-        <img src={assetUrl(circuit.image)} alt={circuit.title} className={CARD_IMG} />
+        <Img src={assetUrl(circuit.image)} alt={circuit.title} className={CARD_IMG} />
         <span className={`circuit-badge ${CARD_BADGE}`}>{t('days', { count: circuit.days })}</span>
       </div>
       <div className={CARD_BODY}>
@@ -192,7 +193,7 @@ function Circuits() {
 
   return (
     <>
-      <main className="relative overflow-hidden w-full bg-[#D5E8E2] flex flex-col items-center">
+      <main className="relative overflow-hidden w-full bg-[#F4F1EA] flex flex-col items-center">
         <Navbar />
         <PageHero slot="circ.hero" title={t('title')} crumb={t('crumb')} />
 
@@ -248,7 +249,7 @@ function Circuits() {
                 <button
                   type="button"
                   onClick={() => window.location.reload()}
-                  className={`mt-4 bg-[#074636] hover:bg-[#0a5c47] active:scale-95 transition text-white ${BUTTON}`}
+                  className={`mt-4 bg-[#0C3E2E] hover:bg-[#14523F] active:scale-95 transition text-white ${BUTTON}`}
                 >
                   {t('reload')}
                 </button>
@@ -266,7 +267,7 @@ function Circuits() {
                 <button
                   type="button"
                   onClick={() => { setRegion('All'); setDuration(0) }}
-                  className={`mt-4 bg-[#074636] hover:bg-[#0a5c47] active:scale-95 transition text-white ${BUTTON}`}
+                  className={`mt-4 bg-[#0C3E2E] hover:bg-[#14523F] active:scale-95 transition text-white ${BUTTON}`}
                 >
                   {t('reset')}
                 </button>

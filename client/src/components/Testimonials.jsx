@@ -17,7 +17,7 @@ import './testimonials.css'
 
 gsap.registerPlugin(ScrollTrigger)
 
-const SECTION_TITLE = 'text-[clamp(2rem,4.4vw,4rem)] font-bold text-forest leading-[1.08] tracking-tight'
+const SECTION_TITLE = 'text-[clamp(2.6rem,5.4vw,5rem)] text-forest leading-[1] [text-wrap:balance]'
 const SECTION_SUBTITLE = 'text-sm sm:text-base md:text-lg text-slate-600 leading-relaxed'
 const MIN_CARDS = 6 // assez de cartes pour remplir la largeur pendant le défilement
 const SECONDS_PER_CARD = 9
@@ -26,7 +26,7 @@ const initials = (name) => name.split(/[\s&.]+/).filter(Boolean).map((w) => w[0]
 
 function Avatar({ item, className }) {
   if (item.image) return <img src={item.image} alt="" className={`rounded-full object-cover ${className}`} />
-  return <span aria-hidden="true" className={`rounded-full bg-[#C49849] text-white text-sm font-medium flex items-center justify-center ${className}`}>{initials(item.title)}</span>
+  return <span aria-hidden="true" className={`rounded-full bg-[#A9813A] text-white text-sm font-medium flex items-center justify-center ${className}`}>{initials(item.title)}</span>
 }
 
 function Stars({ rating, label }) {
@@ -34,7 +34,7 @@ function Stars({ rating, label }) {
   return (
     <span role="img" aria-label={label} className="flex items-center justify-center gap-1">
       {[1, 2, 3, 4, 5].map((n) => (
-        <Star key={n} size={16} aria-hidden="true" className={n <= rounded ? 'fill-[#C49849] text-[#C49849]' : 'text-[#C49849]/40'} />
+        <Star key={n} size={16} aria-hidden="true" className={n <= rounded ? 'fill-[#A9813A] text-[#A9813A]' : 'text-[#A9813A]/40'} />
       ))}
     </span>
   )
@@ -52,7 +52,7 @@ function Column({ item, starsFirst, copy }) {
     <li aria-hidden={copy || undefined} className={`tm-column flex w-[280px] md:w-[320px] shrink-0 flex-col gap-3 mr-3 md:mr-4 ${copy ? 'tm-copy' : ''}`}>
       {starsFirst && stars}
       <figure className="tm-part flex flex-1 flex-col rounded-2xl bg-white p-5 md:p-6">
-        <Quote size={22} aria-hidden="true" className="fill-[#C49849] text-[#C49849]" />
+        <Quote size={22} aria-hidden="true" className="fill-[#A9813A] text-[#A9813A]" />
         <blockquote className="mt-4 text-base leading-relaxed text-slate-800">{item.text}</blockquote>
         <figcaption className="mt-auto pt-6 flex items-center gap-3">
           <Avatar item={item} className="w-11 h-11 shrink-0" />
@@ -119,7 +119,7 @@ function ClientVideos({ videos }) {
             aria-label={t('play', { name: current.title })}
             className="group absolute inset-0 flex items-center justify-center bg-[#072a1f]/25 transition-colors hover:bg-[#072a1f]/10 focus:outline-none focus-visible:ring-4 focus-visible:ring-inset focus-visible:ring-[#E6C58A]"
           >
-            <span className="flex w-16 h-16 md:w-20 md:h-20 items-center justify-center rounded-full bg-[#C49849] text-white shadow-xl transition-transform duration-300 group-hover:scale-110">
+            <span className="flex w-16 h-16 md:w-20 md:h-20 items-center justify-center rounded-full bg-[#A9813A] text-white shadow-xl img-zoom">
               <Play className="w-6 h-6 md:w-8 md:h-8 fill-current" aria-hidden="true" />
             </span>
           </button>
@@ -145,9 +145,9 @@ function ClientVideos({ videos }) {
                     type="button"
                     onClick={() => choose(v.id)}
                     aria-label={t('play', { name: v.title })}
-                    className="group w-full flex items-center gap-3 rounded-xl p-2 text-left transition-colors hover:bg-[#D5E8E2] focus:outline-none focus-visible:ring-2 focus-visible:ring-[#C49849]"
+                    className="group w-full flex items-center gap-3 rounded-xl p-2 text-left transition-colors hover:bg-[#F4F1EA] focus:outline-none focus-visible:ring-2 focus-visible:ring-[#A9813A]"
                   >
-                    <span className="flex w-9 h-9 shrink-0 items-center justify-center rounded-full bg-[#C49849] text-white">
+                    <span className="flex w-9 h-9 shrink-0 items-center justify-center rounded-full bg-[#A9813A] text-white">
                       <Play className="w-3.5 h-3.5 fill-current" aria-hidden="true" />
                     </span>
                     <span className="min-w-0">
@@ -207,7 +207,7 @@ function Testimonials({ className = '' }) {
       </div>
 
       {offers.length > 0 && <div className="tm-stage grid grid-cols-1 lg:grid-cols-[280px_minmax(0,1fr)] xl:grid-cols-[320px_minmax(0,1fr)] gap-4 md:gap-5" data-no-reveal>
-        <aside className="tm-trust flex flex-col rounded-2xl bg-[#074636] text-white p-6 md:p-8 min-h-[280px] lg:min-h-[420px]">
+        <aside className="tm-trust flex flex-col rounded-2xl bg-[#0C3E2E] text-white p-6 md:p-8 min-h-[280px] lg:min-h-[420px]">
           <p className="text-xs sm:text-sm font-medium uppercase tracking-wide text-[#E6C58A]">{t('trustLabel')}</p>
           <p className="mt-5 text-4xl md:text-5xl font-medium leading-none tabular-nums">
             {shown} <span className="text-2xl md:text-3xl text-[#E6C58A]">/ 5</span>
@@ -215,7 +215,7 @@ function Testimonials({ className = '' }) {
           <p className="mt-3 text-sm md:text-base text-white/75">{t('average')}</p>
           <div className="mt-auto pt-8">
             <div className="flex -space-x-2.5" aria-hidden="true">
-              {offers.slice(0, 4).map((o) => <Avatar key={o.id} item={o} className="w-11 h-11 ring-2 ring-[#074636]" />)}
+              {offers.slice(0, 4).map((o) => <Avatar key={o.id} item={o} className="w-11 h-11 ring-2 ring-[#0C3E2E]" />)}
             </div>
             <div className="mt-4 flex"><Stars rating={average} label={t('ratingLabel', { rating: shown })} /></div>
             <p className="mt-2 text-sm text-white/75">{t('from')}</p>

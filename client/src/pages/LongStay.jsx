@@ -1,12 +1,12 @@
 import React, { useState, useRef, useLayoutEffect } from 'react'
 import gsap from 'gsap'
 import { ScrollTrigger } from 'gsap/ScrollTrigger'
-import Ramena from '../assets/images/Ramena.jpg'
-import NosyIranja from '../assets/images/NosyIranja.jpg'
-import NosyLonjo from '../assets/images/NosyLonjo.jpg'
-import Ambanja from '../assets/images/Ambanja.jpg'
-import Deux from '../assets/images/2.jpg'
-import Tana from '../assets/images/Tana.jpg'
+import Ramena from '../assets/images/site/ramena-beach-aerial.jpg'
+import NosyIranja from '../assets/images/site/nosy-iranja-aerial.jpg'
+import NosyLonjo from '../assets/images/site/sugar-loaf-view.jpg'
+import Ambanja from '../assets/images/site/sambirano-river.jpg'
+import Deux from '../assets/images/site/coastal-tsingy.jpg'
+import Tana from '../assets/images/site/antananarivo-rice-fields.jpg'
 import Navbar from '../components/Navbar'
 import Footer from '../components/Footer'
 import PageHero from '../components/PageHero'
@@ -17,14 +17,15 @@ import { useT } from '../i18n/LanguageContext'
 import { useOffers } from '../utils/useOffers'
 import { usePhoto } from '../sitePhotos'
 import { A } from '../i18n/router'
+import Img from '../components/Img'
 
 gsap.registerPlugin(ScrollTrigger)
 
-const W = 'w-[90vw] lg:max-w-[95vw]'
-const GOLD = 'bg-[#C49849] hover:bg-[#a9813a]'
-const DARK = 'bg-[#074636]'
+const W = 'w-[90vw] max-w-[1360px]'
+const GOLD = 'bg-[#A9813A] hover:bg-[#8C6A2C]'
+const DARK = 'bg-[#0C3E2E]'
 const BTN = 'inline-flex items-center justify-center text-sm font-medium px-6 py-3 rounded-full active:scale-95 transition'
-const H2 = 'text-[clamp(2rem,4.4vw,4rem)] font-bold leading-[1.08] tracking-tight'
+const H2 = 'text-[clamp(2.6rem,5.4vw,5rem)] leading-[1] [text-wrap:balance]'
 
 /* ---------------------------- Données ---------------------------- */
 // Les formules (onglet, textes, points, prix, photo) sont en base : admin > Offers > Long stays.
@@ -140,8 +141,8 @@ function Manifesto() {
 
       {/* Collage */}
       <div className="relative h-[420px] sm:h-[520px] md:h-[600px]">
-        <img src={photo('long.manage.1')} alt={t('manAlt1')} className="man-img1 absolute left-0 top-0 w-[68%] h-[78%] object-cover rounded-[2rem]" />
-        <img src={photo('long.manage.2')} alt={t('manAlt2')} className="man-img2 absolute right-0 bottom-0 w-[52%] h-[52%] object-cover rounded-[2rem] border-[10px] border-[#D5E8E2]" />
+        <Img src={photo('long.manage.1')} alt={t('manAlt1')} className="man-img1 absolute left-0 top-0 w-[68%] h-[78%] object-cover rounded-3xl" />
+        <Img src={photo('long.manage.2')} alt={t('manAlt2')} className="man-img2 absolute right-0 bottom-0 w-[52%] h-[52%] object-cover rounded-3xl border-[10px] border-[#F4F1EA]" />
         <div className={`man-badge absolute left-[6%] bottom-[4%] rounded-2xl ${DARK} text-white px-5 py-4`}>
           <p className="text-3xl font-semibold">100+</p>
           <p className="text-xs text-white/70">{t('happy')}</p>
@@ -179,7 +180,7 @@ function Formats() {
   }, [active])
 
   return (
-    <section ref={root} id="formats" className={`${W} mt-20 md:mt-32 rounded-[1.5rem] md:rounded-[2rem] ${DARK} text-white p-5 sm:p-8 md:p-14`}>
+    <section ref={root} id="formats" className={`${W} mt-20 md:mt-32 rounded-3xl ${DARK} text-white p-5 sm:p-8 md:p-14`}>
       <h2 className={`fmt-title ${H2} max-w-3xl`}>{t('formatsTitle')}</h2>
 
       {!f && <OffersStatus status={status} empty dark className="mt-8" />}
@@ -192,8 +193,8 @@ function Formats() {
                 role="tab"
                 aria-selected={active === i}
                 onClick={() => setActive(i)}
-                className={`fmt-tab rounded-full px-5 py-2.5 text-sm md:text-base transition focus:outline-none focus-visible:ring-2 focus-visible:ring-[#C49849] ${
-                  active === i ? 'bg-[#C49849] text-white' : 'border border-white/30 text-white/80 hover:border-white'
+                className={`fmt-tab rounded-full px-5 py-2.5 text-sm md:text-base transition focus:outline-none focus-visible:ring-2 focus-visible:ring-[#A9813A] ${
+                  active === i ? 'bg-[#A9813A] text-white' : 'border border-white/30 text-white/80 hover:border-white'
                 }`}
               >
                 {item.tab}
@@ -202,8 +203,8 @@ function Formats() {
           </div>
 
           <div role="tabpanel" className="mt-10 grid grid-cols-1 lg:grid-cols-[1.2fr_1fr] gap-8 lg:gap-14 items-center">
-            <div className="fmt-frame relative aspect-[4/3] lg:aspect-[5/4] overflow-hidden rounded-[1.5rem] md:rounded-[2rem]">
-              <img key={f.id} src={f.image} alt={f.title} className="fmt-img absolute inset-0 w-full h-full object-cover" />
+            <div className="fmt-frame relative aspect-[4/3] lg:aspect-[5/4] overflow-hidden rounded-3xl">
+              <Img key={f.id} src={f.image} alt={f.title} className="fmt-img absolute inset-0 w-full h-full object-cover" />
               <span className="fmt-chip absolute left-4 top-4 rounded-full bg-white/90 text-slate-900 text-sm font-medium px-4 py-1.5">{f.tab}</span>
             </div>
             <div className="fmt-body">
@@ -212,7 +213,7 @@ function Formats() {
               <ul className="mt-6 flex flex-col gap-3">
                 {f.points.map((p) => (
                   <li key={p} className="flex items-start gap-3 text-sm md:text-base">
-                    <span className="mt-2 w-2 h-2 rounded-full bg-[#C49849] shrink-0" />
+                    <span className="mt-2 w-2 h-2 rounded-full bg-[#A9813A] shrink-0" />
                     {p}
                   </li>
                 ))}
@@ -254,10 +255,10 @@ function Weeks() {
       <div className="w-full overflow-x-auto snap-x snap-mandatory [scrollbar-width:none] [&::-webkit-scrollbar]:hidden">
         <ul className="wk-list flex gap-5 px-[5vw] pb-2 w-max">
           {weeks.map((week, i) => ({ ...week, ...t('weeks')[i], image: photo(`long.week.${i + 1}`) })).map((w) => (
-            <li key={w.week} className="wk-card snap-start relative shrink-0 w-[78vw] sm:w-[360px] md:w-[420px] aspect-[3/4] overflow-hidden rounded-[2rem] text-white">
-              <img src={w.image} alt={w.place} className="wk-img absolute inset-0 w-full h-full object-cover" />
+            <li key={w.week} className="wk-card snap-start relative shrink-0 w-[78vw] sm:w-[360px] md:w-[420px] aspect-[3/4] overflow-hidden rounded-3xl text-white">
+              <Img src={w.image} alt={w.place} className="wk-img absolute inset-0 w-full h-full object-cover" />
               <div className="absolute inset-0 bg-gradient-to-t from-[#072a1f]/85 via-[#072a1f]/10 to-transparent" />
-              <span className="wk-badge absolute left-5 top-5 bg-[#C49849] text-xs sm:text-sm font-medium px-3 py-1.5 rounded-sm">{w.week}</span>
+              <span className="wk-badge absolute left-5 top-5 bg-[#F4F1EA] text-forest text-[11px] font-semibold uppercase tracking-[0.14em] px-3 py-1.5 rounded-sm">{w.week}</span>
               <div className="wk-text absolute inset-x-0 bottom-0 p-6">
                 <h3 className="text-2xl md:text-3xl font-bold">{w.place}</h3>
                 <p className="mt-2 text-sm text-white/80 leading-snug">{w.text}</p>
@@ -290,8 +291,8 @@ function Services() {
       <h2 className={`svc-title ${H2} text-forest max-w-3xl`}>{t('servicesTitle')}</h2>
       <ul className="svc-grid mt-10 grid grid-cols-2 lg:grid-cols-4 auto-rows-[190px] md:auto-rows-[230px] gap-4 md:gap-5">
         {services.map((service, i) => ({ ...service, ...t('services')[i], image: photo(`long.service.${i + 1}`) })).map((s) => (
-          <li key={s.title} className={`svc-tile ${s.span} relative overflow-hidden rounded-[1.5rem] md:rounded-[2rem] text-white`}>
-            <img src={s.image} alt="" className={`svc-img absolute inset-0 w-full h-full object-cover ${s.pos}`} />
+          <li key={s.title} className={`svc-tile ${s.span} relative overflow-hidden rounded-3xl text-white`}>
+            <Img src={s.image} alt="" className={`svc-img absolute inset-0 w-full h-full object-cover ${s.pos}`} />
             <div className="absolute inset-0 bg-gradient-to-t from-[#072a1f]/80 via-[#072a1f]/20 to-transparent" />
             <div className="svc-text absolute inset-x-0 bottom-0 p-4 md:p-6">
               <h3 className="text-lg md:text-2xl font-bold">{s.title}</h3>
@@ -329,7 +330,7 @@ function LongStay() {
 
   return (
     <>
-      <main className="w-full bg-[#D5E8E2] flex flex-col items-center overflow-hidden">
+      <main className="w-full bg-[#F4F1EA] flex flex-col items-center overflow-hidden">
         <Hero />
         <Manifesto />
         <Formats />
