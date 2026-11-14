@@ -34,8 +34,11 @@ const slides = [
 ]
 const SLIDE_DURATION = 7
 const srcSet = (s) => `${s.small} 1200w, ${s.image} 2400w`
-// Taille servie selon l'écran ; une photo remplacée dans l'admin n'a qu'une taille
-const imgProps = (s) => (s.small ? { src: s.image, srcSet: srcSet(s), sizes: '100vw' } : { src: s.image })
+// Taille servie selon l'écran ; une photo remplacée dans l'admin n'a qu'une taille.
+// La photo remplit tout le hero (object-fit: cover) : sur un écran plus haut que large (téléphone), elle est
+// affichée bien plus large que l'écran. `sizes` en tient compte (photo au format 3:2 → 150 % de la hauteur),
+// sinon le téléphone reçoit la petite version (1200 px) et l'étire, ce qui la rend floue.
+const imgProps = (s) => (s.small ? { src: s.image, srcSet: srcSet(s), sizes: 'max(100vw, 150vh)' } : { src: s.image })
 
 // Diapositives avec les photos choisies dans l'admin (emplacements home.hero.1 à 5)
 function useSlides() {
