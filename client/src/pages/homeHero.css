@@ -209,6 +209,11 @@
   top: 50%;
   max-width: min(760px, 60vw);
   transform: translateY(-12%);
+  /* Écran peu haut (petit PC, portable) : le bloc remonte juste assez pour garder un espace
+     sous « Explorer » (bas du bloc au plus à la moitié du hero moins sa hauteur et la marge).
+     Sur les écrans plus hauts, rien ne change. 100% = hauteur du bloc ; 280px = moitié de min-height. */
+  transform: translateY(min(-12%, calc(max(50vh, 280px) - 100% - clamp(40px, 8vh, 72px))));
+  transform: translateY(min(-12%, calc(max(50svh, 280px) - 100% - clamp(40px, 8svh, 72px))));
 }
 
 .nzh__reveal {
