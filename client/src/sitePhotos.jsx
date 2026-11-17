@@ -177,6 +177,20 @@ for (const page of PHOTO_PAGES) {
 
 export const PHOTO_SLOTS = Object.fromEntries(PHOTO_PAGES.flatMap((p) => Object.entries(p.slots)))
 
+// Versions verticales (3:4) pour les écrans en portrait (téléphones, tablettes debout), coupées dans les
+// originaux en haute résolution avec le même cadrage : assets/images/<site|hero>/mobile/<nom>.webp.
+// Une photo paysage en plein écran sur un téléphone n'en montre qu'une bande étroite, agrandie : sans
+// cette version, elle paraît floue. Indexées par l'adresse de la photo d'origine (bg1-2400.jpg → bg1.webp).
+const fileName = (path) => path.split('/').pop().replace(/\.\w+$/, '').replace(/-2400$/, '')
+const PORTRAIT_FILES = import.meta.glob('./assets/images/*/mobile/*.webp', { eager: true, import: 'default' })
+const PORTRAIT_BY_NAME = Object.fromEntries(Object.entries(PORTRAIT_FILES).map(([path, url]) => [fileName(path), url]))
+const LANDSCAPE_FILES = import.meta.glob(['./assets/images/site/*.jpg', './assets/images/hero/*-2400.jpg'], { eager: true, import: 'default' })
+const PORTRAIT_BY_SRC = Object.fromEntries(
+  Object.entries(LANDSCAPE_FILES)
+    .filter(([path]) => PORTRAIT_BY_NAME[fileName(path)])
+    .map(([path, url]) => [url, PORTRAIT_BY_NAME[fileName(path)]]),
+)
+
 // Emplacements affichés avec <SiteMedia> : grands fonds où une vidéo a du sens
 export const VIDEO_SLOTS = new Set([
   'home.hero.1', 'home.hero.2', 'home.hero.3', 'home.hero.4', 'home.hero.5', 'home.cta',
@@ -231,6 +245,13 @@ export function SitePhotosProvider({ children }) {
 export function usePhoto() {
   const { custom } = useContext(SitePhotosContext)
   return useCallback((key) => (custom[key] ? assetUrl(custom[key]) : PHOTO_SLOTS[key]?.src), [custom])
+}
+
+// portraitPhoto('home.hero.1') : version verticale de la photo d'origine, ou null
+// (photo remplacée dans l'admin, ou pas de version verticale)
+export function usePortraitPhoto() {
+  const { custom } = useContext(SitePhotosContext)
+  return useCallback((key) => (custom[key] ? null : PORTRAIT_BY_SRC[PHOTO_SLOTS[key]?.src] || null), [custom])
 }
 
 // Vidéos de fond choisies dans l'admin : { 'blog.hero': '/uploads/files/....mp4' }

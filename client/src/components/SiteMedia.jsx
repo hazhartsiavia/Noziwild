@@ -6,13 +6,14 @@
 //   active={false} : vidéo en pause (diapositive du hero qui n'est pas à l'écran)
 import React, { useEffect, useRef, useState } from 'react'
 import { assetUrl } from '../api'
-import { usePhoto, useSiteVideos } from '../sitePhotos'
+import { usePhoto, usePortraitPhoto, useSiteVideos } from '../sitePhotos'
 
 const canPlayVideo = () =>
   !window.matchMedia('(prefers-reduced-motion: reduce)').matches && !navigator.connection?.saveData
 
 function SiteMedia({ slot, active = true, alt = '', src, ...props }) {
   const photo = usePhoto()
+  const portrait = usePortraitPhoto()(slot)
   const videos = useSiteVideos()
   const ref = useRef(null)
   const [failed, setFailed] = useState(null)
@@ -37,7 +38,17 @@ function SiteMedia({ slot, active = true, alt = '', src, ...props }) {
     return () => observer.disconnect()
   }, [showVideo, active])
 
-  if (!showVideo) return <img src={poster} alt={alt} {...props} />
+  if (!showVideo) {
+    const image = <img src={poster} alt={alt} {...props} />
+    // Écran en portrait : version verticale nette, coupée dans l'original (voir sitePhotos.jsx)
+    if (!portrait || (src && src !== photo(slot))) return image
+    return (
+      <picture>
+        <source media="(orientation: portrait)" srcSet={portrait} type="image/webp" />
+        {image}
+      </picture>
+    )
+  }
 
   const { srcSet, sizes, loading, fetchPriority, ...videoProps } = props
   return (

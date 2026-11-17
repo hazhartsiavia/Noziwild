@@ -13,6 +13,8 @@
 
 @layer base {
   h1, h2, h3 { font-family: var(--font-display); }
+  /* <picture> (photos verticales des fonds, voir SiteMedia) ne crée pas de boîte : l'image se place comme avant */
+  picture { display: contents; }
 }
 
 /* Téléphone : petits textes un cran plus grands (text-sm 14 -> 15 px, text-xs 12 -> 13 px).
