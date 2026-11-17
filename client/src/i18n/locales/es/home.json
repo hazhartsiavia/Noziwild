@@ -2,14 +2,42 @@
   "hero": {
     "label": "Bienvenido",
     "eyebrow": "Explora el alma de Madagascar",
-    "title1": "Vive la aventura en el",
-    "title2": "corazón de la Gran Isla",
-    "cta": "Descubre nuestros circuitos",
-    "scroll": "Desplazar",
+    "headlines": [
+      [
+        "Vive la aventura",
+        "de la Gran Isla"
+      ],
+      [
+        "Los lémures",
+        "te esperan"
+      ],
+      [
+        "La luz dorada",
+        "del Oeste"
+      ],
+      [
+        "La isla marca",
+        "el ritmo"
+      ],
+      [
+        "Cada atardecer,",
+        "una historia"
+      ]
+    ],
+    "cta": "Explorar",
     "slides": [
-      "La avenida de los Baobabs al atardecer",
-      "Conoce a los lémures en su bosque",
-      "Cielos de fuego sobre el Oeste salvaje"
+      [
+        "La avenida de los",
+        "Baobabs al atardecer"
+      ],
+      [
+        "Los lémures",
+        "en su bosque"
+      ],
+      [
+        "Cielos de fuego",
+        "sobre el Oeste"
+      ]
     ],
     "next": "Diapositiva siguiente",
     "pause": "Pausar la presentación",

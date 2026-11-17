@@ -1,5 +1,6 @@
-/* Figtree reste chargée pour le hero de l'accueil (voir pages/homeHero.css) */
-@import url('https://fonts.googleapis.com/css2?family=Figtree:wght@300..900&family=Nata+Sans:wght@300..800&display=swap');
+/* Figtree reste chargée pour le hero de l'accueil et sa navbar ; DM Sans et Lato pour les textes du hero
+   (titres, sur-titre, compteur), comme sur la maquette Aquvion (voir pages/homeHero.css) */
+@import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500&family=Figtree:wght@300..900&family=Lato:wght@400;700&family=Nata+Sans:wght@300..800&display=swap');
 @import url('https://api.fontshare.com/v2/css?f[]=cabinet-grotesk@400,500,700,800&display=swap');
 @import "tailwindcss";
 

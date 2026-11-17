@@ -24,6 +24,21 @@
 .nzpl *,
 .nzh * { font-family: var(--nz-font); }
 
+/* Textes du hero : polices et tailles de la maquette Aquvion (cruise-travel-home).
+   Titres en DM Sans, sur-titre et compteur en Lato. La navbar garde sa police. */
+.nzh .nzh__title,
+.nzh .nzh__title *,
+.nzh .nzh__card-title,
+.nzh .nzh__giant,
+.nzh .nzh__giant * { font-family: "DM Sans", system-ui, sans-serif; }
+
+.nzh .nzh__eyebrow,
+.nzh .nzh__eyebrow *,
+.nzh .nzh__counter,
+.nzh .nzh__counter *,
+.nzh .nzh__cta,
+.nzh .nzh__cta * { font-family: "Lato", system-ui, sans-serif; }
+
 .nzh :focus-visible { outline: 2px solid var(--nz-gold-soft); outline-offset: 4px; }
 
 /* =========================================================
@@ -205,60 +220,99 @@
 .nzh__reveal > span { display: block; }
 
 .nzh__eyebrow {
-  margin: 0 0 clamp(20px, 3vh, 36px);
-  font-size: clamp(17px, 1.35vw, 23px);
-  font-weight: 600;
-  letter-spacing: .02em;
-  color: rgba(246, 241, 231, .92);
+  margin: 0 0 22px;
+  font-size: 18px;
+  font-weight: 400;
+  line-height: 1.55;
+  color: rgba(246, 241, 231, .95);
+  text-shadow: 0 1px 18px rgba(7, 42, 31, .45);
 }
 
-.nzh__eyebrow > .nzh__reveal > span::before {
-  content: "";
-  display: inline-block;
-  width: 28px;
-  height: 1.5px;
-  margin: 0 12px .3em 0;
-  vertical-align: middle;
-  background: var(--nz-gold);
-}
-
+/* Grand titre : toujours deux lignes (une par .nzh__l), chaque mot dans son masque
+   pour remonter à chaque nouvelle diapositive */
 .nzh__title {
   margin: 0;
-  font-size: clamp(40px, 4.4vw, 84px);
-  font-weight: 400;
-  line-height: 1.06;
-  letter-spacing: -.025em;
+  font-size: 56px;
+  font-weight: 500;
+  line-height: 1.1;
+  letter-spacing: -2px;
   color: var(--nz-cream);
   text-shadow: 0 2px 30px rgba(7, 42, 31, .25);
 }
 
+.nzh__l { display: block; }
+
+.nzh__w {
+  display: inline-block;
+  overflow: hidden;
+  vertical-align: top;
+  padding-bottom: .1em;
+  margin-bottom: -.1em;
+}
+
+.nzh__w > span { display: inline-block; }
+
+/* Compteur « 01 ——— 05 » : la ligne se remplit pendant la diapositive */
+.nzh__counter {
+  display: flex;
+  align-items: center;
+  gap: clamp(12px, 1vw, 18px);
+  width: min(540px, 46vw);
+  margin-top: 2.3rem;
+  font-size: 18px;
+  line-height: 1.55;
+  font-variant-numeric: tabular-nums;
+  color: var(--nz-cream);
+  text-shadow: 0 1px 14px rgba(7, 42, 31, .45);
+}
+
+.nzh__line {
+  flex: 1;
+  height: 1.5px;
+  overflow: hidden;
+  background: rgba(246, 241, 231, .3);
+}
+
+.nzh__line span {
+  display: block;
+  height: 100%;
+  background: var(--nz-cream);
+  transform: scaleX(0);
+  transform-origin: left;
+}
+
+/* Bouton « Explorer » : pilule claire, flèche dans un rond doré qui pivote au survol */
 .nzh__cta {
   display: inline-flex;
   align-items: center;
   gap: 14px;
-  margin-top: clamp(28px, 4vh, 44px);
-  padding: 15px 18px 15px 24px;
+  margin-top: 28px;
+  padding: 7px 7px 7px 24px;
+  border: 1px solid rgba(246, 241, 231, .45);
   border-radius: 999px;
-  border: 1px solid rgba(246, 241, 231, .4);
-  font-size: 16px;
-  font-weight: 500;
+  background: rgba(7, 42, 31, .18);
+  -webkit-backdrop-filter: blur(8px);
+  backdrop-filter: blur(8px);
+  /* même police que le sur-titre (Lato 400, même taille à chaque écran) */
+  font-size: 18px;
+  font-weight: 400;
+  line-height: 1.55;
   color: var(--nz-cream);
-  backdrop-filter: blur(6px);
-  -webkit-backdrop-filter: blur(6px);
   transition: background .35s, border-color .35s, color .35s;
 }
 
 .nzh__cta i {
   display: grid;
   place-items: center;
-  width: 30px;
-  height: 30px;
+  width: 38px;
+  height: 38px;
   border-radius: 50%;
   background: var(--nz-gold);
   color: var(--nz-green-900);
-  font-style: normal;
-  transition: transform .4s var(--nz-ease);
+  transition: transform .45s var(--nz-ease);
 }
+
+.nzh__cta svg { width: 18px; height: 18px; }
 
 .nzh__cta:hover { background: var(--nz-cream); border-color: var(--nz-cream); color: var(--nz-green-900); }
 .nzh__cta:hover i { transform: rotate(-45deg); }
@@ -335,28 +389,21 @@
 
 .nzh__card-title {
   margin: 18px 0 0;
-  font-size: clamp(18px, 1.3vw, 22px);
+  font-size: 18px;
   font-weight: 500;
-  line-height: 1.35;
-  letter-spacing: -.01em;
-}
-
-.nzh__progress {
-  height: 2px;
-  margin-top: 16px;
-  background: rgba(246, 241, 231, .2);
-  overflow: hidden;
-}
-
-.nzh__progress span {
-  display: block;
-  height: 100%;
-  background: var(--nz-gold);
-  transform: scaleX(0);
-  transform-origin: left;
+  line-height: 1.55;
+  letter-spacing: -1px;
 }
 
 /* ---------- grand mot ---------- */
+
+/* Taille du grand mot, partagée avec la position du texte au-dessus (téléphone) */
+.nzh { --nzh-giant: clamp(54px, 15vw, 200px); }
+
+/* Ordinateur : un peu plus petit que la maquette (180 px au lieu de 200) */
+@media (min-width: 992px) {
+  .nzh { --nzh-giant: min(180px, 13.5vw); }
+}
 
 .nzh__giant {
   position: absolute;
@@ -364,10 +411,9 @@
   bottom: 0;
   margin: 0;
   overflow: hidden;
-  font-size: clamp(90px, 12vw, 260px);
-  font-weight: 400;
+  font-size: var(--nzh-giant);
+  font-weight: 500;
   line-height: .74;
-  letter-spacing: -.04em;
   color: rgba(246, 241, 231, .78);
   pointer-events: none;
   user-select: none;
@@ -375,61 +421,58 @@
 
 .nzh__giant span { display: block; }
 
-/* ---------- indication de défilement ---------- */
-
-.nzh__scroll {
-  position: absolute;
-  left: var(--nz-gutter);
-  bottom: var(--nz-gutter);
-  display: flex;
-  align-items: center;
-  gap: 12px;
-  font-size: 13px;
-  letter-spacing: .18em;
-  text-transform: uppercase;
-  color: rgba(246, 241, 231, .7);
-}
-
-.nzh__scroll i { font-style: normal; }
-
-.nzh__scroll span {
-  position: relative;
-  width: 1px;
-  height: 44px;
-  background: rgba(246, 241, 231, .25);
-  overflow: hidden;
-}
-
-.nzh__scroll span::after {
-  content: "";
-  position: absolute;
-  inset: 0;
-  background: var(--nz-gold);
-  animation: nzh-scroll-line 2s var(--nz-ease) infinite;
-}
-
-@keyframes nzh-scroll-line {
-  from { transform: translateY(-100%); }
-  to   { transform: translateY(100%); }
-}
-
 /* ---------- états avant l'apparition (GSAP) ---------- */
 
 .nzh.is-loading .nzh__card,
-.nzh.is-loading .nzh__cta,
-.nzh.is-loading .nzh__scroll { opacity: 0; }
+.nzh.is-loading .nzh__counter,
+.nzh.is-loading .nzh__cta { opacity: 0; }
 
 .nzh.is-loading .nzh__reveal > span,
+.nzh.is-loading .nzh__w > span,
 .nzh.is-loading .nzh__giant span { transform: translateY(105%); }
 
 /* =========================================================
    RESPONSIVE
    ========================================================= */
 
+/* Tailles de la maquette : jusqu'à 991 px, puis jusqu'à 767 px */
+@media (max-width: 991px) {
+  .nzh__eyebrow { margin-bottom: 16px; font-size: 16px; }
+  .nzh__cta { font-size: 16px; }
+  .nzh__title { font-size: 48px; }
+  .nzh__counter,
+  .nzh__card-title { font-size: 16px; }
+}
+
+/* Petites tablettes : tailles de la maquette ; « Noziwild » à 132 px
+   (moins sur les plus étroites, pour qu'il tienne en largeur) */
+@media (max-width: 767px) {
+  .nzh { --nzh-giant: min(132px, 22vw); }
+  .nzh__eyebrow { margin-bottom: 6px; font-size: 15px; }
+  .nzh__cta { font-size: 15px; }
+  .nzh__title { font-size: 36px; }
+  .nzh__counter,
+  .nzh__card-title { font-size: 15px; }
+}
+
+/* Téléphones seulement : plus grand que la maquette. Le titre prend la largeur disponible
+   (écran moins les marges de 16 px) : la plus longue ligne des titres mesure ~7,5 fois la taille
+   de la police, d'où le facteur 0.129, et 48 px au plus. Les lignes ne se recoupent donc jamais.
+   Garder les lignes de hero.headlines courtes (~15 caractères) pour que ce calcul reste juste.
+   « Noziwild » presque sur toute la largeur (le mot fait ~3,9 fois sa taille). */
+@media (max-width: 480px) {
+  .nzh { --nzh-giant: 24vw; }
+  .nzh__eyebrow { margin-bottom: 10px; font-size: 17px; }
+  .nzh__cta { font-size: 17px; }
+  .nzh__title { font-size: min(48px, calc((100vw - 32px) * .129)); }
+  .nzh__counter { font-size: 17px; }
+}
+
 @media (max-width: 900px) {
   .nzh__content {
     top: auto;
-    bottom: calc(var(--nz-gutter) + 120px);
+    /* juste au-dessus du grand mot (partie visible : 74 % de sa taille) */
+    bottom: calc(var(--nz-gutter) + var(--nzh-giant) * .74 + 16px);
     max-width: none;
     right: var(--nz-gutter);
     transform: none;
@@ -444,39 +487,22 @@
   }
 
   .nzh__toggle { top: 16px; right: 16px; width: 28px; height: 28px; }
-  .nzh__card-title { margin-top: 10px; font-size: 15px; }
-  .nzh__progress { margin-top: 10px; }
+  .nzh__card-title { margin-top: 10px; }
 
-  .nzh__giant { font-size: 25vw; }
-  .nzh__scroll { display: none; }
+  .nzh__counter { width: min(100%, 540px); }
+}
+
+/* Téléphone (maquette) : pas de carte, seulement le titre, le compteur et le grand mot */
+@media (max-width: 640px) {
+  .nzh__card { display: none; }
 }
 
 @media (max-width: 560px) {
   .nzpl { --pl-h: 9.6vw; }
-
-  .nzh__card {
-    top: calc(var(--nz-header-h) - 2px);
-    width: min(46vw, 180px);
-    padding: 8px 8px 10px;
-    border-radius: 5px;
-  }
-
-  .nzh__toggle { top: 13px; right: 13px; width: 24px; height: 24px; }
-  .nzh__toggle .nzh__i-pause { width: 8px; height: 10px; border-inline-width: 2.5px; }
-  .nzh__toggle .nzh__i-play { margin-left: 2px; border-left-width: 9px; border-block-width: 6px; }
-  .nzh__card-title { margin-top: 8px; font-size: 13px; line-height: 1.3; }
-  .nzh__progress { margin-top: 8px; }
-
-  .nzh__giant { font-size: 20vw; }
-
-  .nzh__content { bottom: calc(var(--nz-gutter) + 26vw); }
-  .nzh__title { font-size: clamp(30px, 9vw, 40px); }
-  .nzh__cta { padding: 12px 14px 12px 20px; font-size: 15px; }
 }
 
 @media (prefers-reduced-motion: reduce) {
   .nzh__slide { transition: none; }
   .nzh__slide img,
-  .nzh__slide video,
-  .nzh__scroll span::after { animation: none !important; }
+  .nzh__slide video { animation: none !important; }
 }

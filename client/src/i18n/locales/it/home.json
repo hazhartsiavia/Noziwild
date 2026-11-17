@@ -2,14 +2,42 @@
   "hero": {
     "label": "Benvenuti",
     "eyebrow": "Esplora l'anima del Madagascar",
-    "title1": "Vivi l'avventura nel",
-    "title2": "cuore della Grande Isola",
-    "cta": "Scopri i nostri circuiti",
-    "scroll": "Scorri",
+    "headlines": [
+      [
+        "Vivi l'avventura",
+        "dell'isola"
+      ],
+      [
+        "Incontra i lemuri",
+        "nella foresta"
+      ],
+      [
+        "La luce dorata",
+        "dell'Ovest"
+      ],
+      [
+        "L'isola detta",
+        "il ritmo"
+      ],
+      [
+        "Ogni tramonto,",
+        "una storia"
+      ]
+    ],
+    "cta": "Esplora",
     "slides": [
-      "Il viale dei Baobab al tramonto",
-      "Incontra i lemuri nella loro foresta",
-      "Cieli di fuoco sull'Ovest selvaggio"
+      [
+        "Il viale dei Baobab",
+        "al tramonto"
+      ],
+      [
+        "I lemuri nella",
+        "loro foresta"
+      ],
+      [
+        "Cieli di fuoco",
+        "sull'Ovest selvaggio"
+      ]
     ],
     "next": "Diapositiva successiva",
     "pause": "Metti in pausa la presentazione",

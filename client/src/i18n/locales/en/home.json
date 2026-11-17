@@ -2,14 +2,42 @@
   "hero": {
     "label": "Welcome",
     "eyebrow": "Explore the Soul of Madagascar",
-    "title1": "Live the adventure",
-    "title2": "of the Great Island",
-    "cta": "Explore our circuits",
-    "scroll": "Scroll",
+    "headlines": [
+      [
+        "The adventure",
+        "of the island"
+      ],
+      [
+        "Meet the lemurs",
+        "in their forest"
+      ],
+      [
+        "Golden light",
+        "of the wild West"
+      ],
+      [
+        "Let the island",
+        "set your pace"
+      ],
+      [
+        "Every sunset,",
+        "a new story"
+      ]
+    ],
+    "cta": "Explore",
     "slides": [
-      "The Avenue of the Baobabs at sunset",
-      "Meet the lemurs in their forest",
-      "Fiery skies over the wild West"
+      [
+        "The Baobab Avenue",
+        "at sunset"
+      ],
+      [
+        "Meet the lemurs",
+        "in their forest"
+      ],
+      [
+        "Fiery skies over",
+        "the wild West"
+      ]
     ],
     "next": "Next slide",
     "pause": "Pause the slideshow",

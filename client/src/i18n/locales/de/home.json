@@ -2,14 +2,42 @@
   "hero": {
     "label": "Willkommen",
     "eyebrow": "Entdecken Sie die Seele Madagaskars",
-    "title1": "Erleben Sie das Abenteuer",
-    "title2": "der Großen Insel",
-    "cta": "Unsere Rundreisen entdecken",
-    "scroll": "Scrollen",
+    "headlines": [
+      [
+        "Das Abenteuer",
+        "der Großen Insel"
+      ],
+      [
+        "Begegnen Sie",
+        "den Lemuren"
+      ],
+      [
+        "Goldenes Licht",
+        "im Westen"
+      ],
+      [
+        "Die Insel gibt",
+        "den Takt vor"
+      ],
+      [
+        "Jeder Abend,",
+        "eine Geschichte"
+      ]
+    ],
+    "cta": "Entdecken",
     "slides": [
-      "Die Allee der Baobabs bei Sonnenuntergang",
-      "Begegnen Sie den Lemuren in ihrem Wald",
-      "Feuerhimmel über dem wilden Westen"
+      [
+        "Die Baobab-Allee",
+        "bei Sonnenuntergang"
+      ],
+      [
+        "Lemuren in",
+        "ihrem Wald"
+      ],
+      [
+        "Feuerhimmel über",
+        "dem wilden Westen"
+      ]
     ],
     "next": "Nächstes Bild",
     "pause": "Diashow anhalten",

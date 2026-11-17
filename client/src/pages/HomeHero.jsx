@@ -1,11 +1,12 @@
 // Hero de l'accueil et preloader, repris de la maquette WebsitesV2 (index.html + main.js).
 //   1. Preloader : NOZI / WILD montent, une fenêtre s'ouvre entre les deux moitiés
 //      et grandit jusqu'à remplir l'écran, où elle se confond avec le hero.
-//   2. Hero : apparition du texte, diaporama plein écran et carte « diapositive suivante ».
+//   2. Hero (maquette « Journey ») : sur-titre, grand titre qui change avec chaque photo,
+//      compteur « 01 ——— 05 », carte « diapositive suivante » et grand mot Noziwild.
 import React, { useEffect, useLayoutEffect, useRef, useState } from 'react'
-import { Link } from '../i18n/router'
 import gsap from 'gsap'
 import { ScrollTrigger } from 'gsap/ScrollTrigger'
+import { Link } from '../i18n/router'
 import Navbar from '../components/Navbar'
 import SiteMedia from '../components/SiteMedia'
 import { useT } from '../i18n/LanguageContext'
@@ -33,6 +34,7 @@ const slides = [
   { image: bg5, small: bg5Small, title: 2 },
 ]
 const SLIDE_DURATION = 7
+const pad = (n) => String(n).padStart(2, '0')
 const srcSet = (s) => `${s.small} 1200w, ${s.image} 2400w`
 // Taille servie selon l'écran ; une photo remplacée dans l'admin n'a qu'une taille.
 // La photo remplit tout le hero (object-fit: cover) : sur un écran plus haut que large (téléphone), elle est
@@ -169,9 +171,14 @@ export function Hero({ ready }) {
   const bar = useRef(null)
   const card = useRef(null)
   const progress = useRef(null)
+  const title = useRef(null)
+  const firstTitle = useRef(true)
   const t = useT('home')
   const titles = t('hero.slides')
+  // Grand titre : un par diapositive, toujours en deux lignes (home.json → hero.headlines : [ligne 1, ligne 2])
+  const headlines = t('hero.headlines')
   const [index, setIndex] = useState(0)
+  const headline = headlines[index % headlines.length] || []
   const [leaving, setLeaving] = useState(null)
   // Pas de défilement automatique si l'utilisateur limite les animations
   const [paused, setPaused] = useState(reduceMotion)
@@ -196,11 +203,12 @@ export function Hero({ ready }) {
       // La navbar joue sa propre entrée en apparaissant ; ici, seulement la bande blanche où elle s'accroche
       gsap.timeline({ defaults: { ease: 'expo.out' } })
         .fromTo('.nzh__strip', { scaleY: 0 }, { scaleY: 1, duration: 0.5, ease: 'power2.out' }, 0)
-        .fromTo('.nzh__content .nzh__reveal > span', { y: 0, yPercent: 105 }, { yPercent: 0, duration: 1.3, stagger: 0.1 }, 0.1)
-        .fromTo('.nzh__cta', { y: 20, autoAlpha: 0 }, { y: 0, autoAlpha: 1, duration: 1.1 }, 0.45)
+        .fromTo('.nzh__eyebrow .nzh__reveal > span', { y: 0, yPercent: 105 }, { yPercent: 0, duration: 1.3 }, 0.1)
+        .fromTo('.nzh__title .nzh__w > span', { y: 0, yPercent: 110 }, { yPercent: 0, duration: 1.3, stagger: 0.05 }, 0.2)
+        .fromTo('.nzh__counter', { y: 20, autoAlpha: 0 }, { y: 0, autoAlpha: 1, duration: 1.1 }, 0.55)
+        .fromTo('.nzh__cta', { y: 20, autoAlpha: 0 }, { y: 0, autoAlpha: 1, duration: 1.1 }, 0.7)
         .fromTo('.nzh__card', { x: 40, autoAlpha: 0 }, { x: 0, autoAlpha: 1, duration: 1.3 }, 0.3)
         .fromTo('.nzh__giant span', { y: 0, yPercent: 105 }, { yPercent: 0, duration: 1.6 }, 0.25)
-        .fromTo('.nzh__scroll', { autoAlpha: 0 }, { autoAlpha: 1, duration: 1 }, 0.8)
     }, root)
     ScrollTrigger.refresh()
     return () => ctx.revert()
@@ -238,6 +246,19 @@ export function Hero({ ready }) {
     if (paused) progress.current?.pause()
     else progress.current?.resume()
   }, [paused])
+
+  // Nouveau titre à chaque diapositive : les mots remontent de leurs masques
+  useLayoutEffect(() => {
+    if (firstTitle.current) {
+      firstTitle.current = false
+      return undefined
+    }
+    if (reduceMotion()) return undefined
+    const tween = gsap.fromTo(title.current.querySelectorAll('.nzh__w > span'),
+      { yPercent: 110 },
+      { yPercent: 0, duration: 1.1, stagger: 0.045, ease: 'expo.out' })
+    return () => tween.kill()
+  }, [index])
 
   // La diapositive qui sort garde son zoom le temps du fondu
   useEffect(() => {
@@ -278,20 +299,40 @@ export function Hero({ ready }) {
       </div>
 
       <div className="nzh__content">
-        <p className="nzh__eyebrow"><span className="nzh__reveal"><span>{t('hero.eyebrow')}</span></span></p>
-        <h1 className="nzh__title">
-          <span className="nzh__reveal"><span>{t('hero.title1')}</span></span>
-          <span className="nzh__reveal"><span>{t('hero.title2')}</span></span>
-        </h1>
-        <Link className="nzh__cta" to="/circuits">
+        {/* Titre de la page : le sur-titre, qui ne change pas ; le grand titre suit les diapositives */}
+        <h1 className="nzh__eyebrow"><span className="nzh__reveal"><span>{t('hero.eyebrow')}</span></span></h1>
+        <p ref={title} className="nzh__title">
+          {headline.map((line, l) => (
+            <span key={`${index}-${l}`} className="nzh__l">
+              {line.split(' ').map((word, i, all) => (
+                <React.Fragment key={i}>
+                  <span className="nzh__w"><span>{word}</span></span>
+                  {i < all.length - 1 ? ' ' : null}
+                </React.Fragment>
+              ))}
+            </span>
+          ))}
+        </p>
+        {/* Compteur : diapositive en cours, ligne qui se remplit jusqu'à la suivante, nombre total */}
+        <div className="nzh__counter" aria-hidden="true">
+          <span>{pad(index + 1)}</span>
+          <span className="nzh__line"><span ref={bar} /></span>
+          <span>{pad(slides.length)}</span>
+        </div>
+        {/* Bouton : texte dans home.json → hero.cta */}
+        <Link className="nzh__cta" to="/destinations">
           <span>{t('hero.cta')}</span>
-          <i aria-hidden="true">→</i>
+          <i aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+              <path d="M5 12h14M13 6l6 6-6 6" />
+            </svg>
+          </i>
         </Link>
       </div>
 
       <aside ref={card} className="nzh__card">
         <button type="button" className="nzh__card-media" onClick={() => go(index + 1)} aria-label={t('hero.next')}>
-          <img src={next.small} alt="" />
+          <img src={next.small || next.image} alt="" />
         </button>
         <button
           type="button"
@@ -302,13 +343,13 @@ export function Hero({ ready }) {
         >
           <span className={paused ? 'nzh__i-play' : 'nzh__i-pause'} aria-hidden="true" />
         </button>
-        <p className="nzh__card-title">{titles[next.title]}</p>
-        <div className="nzh__progress" aria-hidden="true"><span ref={bar} /></div>
+        {/* Légende en deux lignes (home.json → hero.slides : [ligne 1, ligne 2]) */}
+        <p className="nzh__card-title">
+          {(titles[next.title] || []).map((line, l) => <span key={l} className="nzh__l">{line}</span>)}
+        </p>
       </aside>
 
       <p className="nzh__giant" aria-hidden="true"><span>Noziwild</span></p>
-
-      <div className="nzh__scroll" aria-hidden="true"><span /> <i>{t('hero.scroll')}</i></div>
     </section>
   )
 }
