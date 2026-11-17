@@ -257,7 +257,7 @@
   display: flex;
   align-items: center;
   gap: clamp(12px, 1vw, 18px);
-  width: min(540px, 46vw);
+  width: min(378px, 32.2vw); /* 30 % plus court que 540px / 46vw */
   margin-top: 2.3rem;
   font-size: 18px;
   line-height: 1.55;
@@ -489,7 +489,7 @@
   .nzh__toggle { top: 16px; right: 16px; width: 28px; height: 28px; }
   .nzh__card-title { margin-top: 10px; }
 
-  .nzh__counter { width: min(100%, 540px); }
+  .nzh__counter { width: min(70%, 378px); }
 }
 
 /* Téléphone (maquette) : pas de carte, seulement le titre, le compteur et le grand mot */
