@@ -25,12 +25,12 @@ import { usePhoto } from '../sitePhotos'
 
 gsap.registerPlugin(ScrollTrigger)
 
-// title : position dans home.json → hero.slides (comme la maquette, les trois dernières partagent un titre)
+// title : position dans home.json → hero.slides (légende de la carte « diapositive suivante »)
 const slides = [
   { image: bg1, small: bg1Small, title: 0 },
-  { image: bg2, small: bg2Small, title: 1 },
+  { image: bg2, small: bg2Small, title: 1 }, // cascade
   { image: bg4, small: bg4Small, title: 2 },
-  { image: bg3, small: bg3Small, title: 2 },
+  { image: bg3, small: bg3Small, title: 3 }, // montagnes
   { image: bg5, small: bg5Small, title: 2 },
 ]
 const SLIDE_DURATION = 7
