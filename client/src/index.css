@@ -1,13 +1,11 @@
-/* Figtree reste chargée pour le hero de l'accueil et sa navbar ; DM Sans et Lato pour les textes du hero
-   (titres, sur-titre, compteur), comme sur la maquette Aquvion (voir pages/homeHero.css) */
-@import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500&family=Figtree:wght@300..900&family=Lato:wght@400;700&family=Nata+Sans:wght@300..800&display=swap');
-@import url('https://api.fontshare.com/v2/css?f[]=cabinet-grotesk@400,500,700,800&display=swap');
+/* Une seule police pour tout le site : DM Sans (police variable, toutes les graisses, italique compris) */
+@import url('https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&display=swap');
 @import "tailwindcss";
 
-/* Polices et couleur de la marque : Nata Sans pour le texte, Cabinet Grotesk pour les titres, vert forêt */
+/* Police et couleur de la marque : DM Sans partout (texte et titres), vert forêt */
 @theme {
-  --font-sans: "Nata Sans", system-ui, -apple-system, "Segoe UI", sans-serif;
-  --font-display: "Cabinet Grotesk", "Nata Sans", system-ui, sans-serif;
+  --font-sans: "DM Sans", system-ui, -apple-system, "Segoe UI", sans-serif;
+  --font-display: "DM Sans", system-ui, -apple-system, "Segoe UI", sans-serif;
   --color-forest: #0c3e2e;
 }
 
