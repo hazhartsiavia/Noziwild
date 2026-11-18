@@ -17,6 +17,7 @@ import bg2 from './assets/images/hero/bg2-2400.jpg'
 import bg3 from './assets/images/hero/bg3-2400.jpg'
 import bg4 from './assets/images/hero/bg4-2400.jpg'
 import bg5 from './assets/images/hero/bg5-2400.jpg'
+import bg6 from './assets/images/hero/bg6-2000.jpg'
 import { PHOTO_CHOICES } from './sitePhotoChoices'
 
 const list = (prefix, label, sources) =>
@@ -28,7 +29,7 @@ export const PHOTO_PAGES = [
     id: 'home', label: 'Home', page: '/',
     slots: {
       // Même ordre que les diapositives du hero (HomeHero.jsx)
-      ...list('home.hero', 'Hero slide', [bg1, bg2, bg4, bg3, bg5]),
+      ...list('home.hero', 'Hero slide', [bg1, bg2, bg4, bg3, bg5, bg6]),
       ...list('home.ways', 'Ways to travel card', [Tana, Ramena, NosyIranja, Ambanja]),
       ...list('home.trips', 'Trip we love', [Tana, NosyIranja, Deux]),
       'home.cta': { label: 'Final banner', src: Ramena },
@@ -180,11 +181,11 @@ export const PHOTO_SLOTS = Object.fromEntries(PHOTO_PAGES.flatMap((p) => Object.
 // Versions verticales (3:4) pour les écrans en portrait (téléphones, tablettes debout), coupées dans les
 // originaux en haute résolution avec le même cadrage : assets/images/<site|hero>/mobile/<nom>.webp.
 // Une photo paysage en plein écran sur un téléphone n'en montre qu'une bande étroite, agrandie : sans
-// cette version, elle paraît floue. Indexées par l'adresse de la photo d'origine (bg1-2400.jpg → bg1.webp).
-const fileName = (path) => path.split('/').pop().replace(/\.\w+$/, '').replace(/-2400$/, '')
+// cette version, elle paraît floue. Indexées par l'adresse de la photo d'origine (bg1-2400.jpg → bg1.webp ; bg6 n'existe qu'en 2000 px).
+const fileName = (path) => path.split('/').pop().replace(/\.\w+$/, '').replace(/-(2000|2400)$/, '')
 const PORTRAIT_FILES = import.meta.glob('./assets/images/*/mobile/*.webp', { eager: true, import: 'default' })
 const PORTRAIT_BY_NAME = Object.fromEntries(Object.entries(PORTRAIT_FILES).map(([path, url]) => [fileName(path), url]))
-const LANDSCAPE_FILES = import.meta.glob(['./assets/images/site/*.jpg', './assets/images/hero/*-2400.jpg'], { eager: true, import: 'default' })
+const LANDSCAPE_FILES = import.meta.glob(['./assets/images/site/*.jpg', './assets/images/hero/*-2400.jpg', './assets/images/hero/*-2000.jpg'], { eager: true, import: 'default' })
 const PORTRAIT_BY_SRC = Object.fromEntries(
   Object.entries(LANDSCAPE_FILES)
     .filter(([path]) => PORTRAIT_BY_NAME[fileName(path)])
@@ -193,7 +194,7 @@ const PORTRAIT_BY_SRC = Object.fromEntries(
 
 // Emplacements affichés avec <SiteMedia> : grands fonds où une vidéo a du sens
 export const VIDEO_SLOTS = new Set([
-  'home.hero.1', 'home.hero.2', 'home.hero.3', 'home.hero.4', 'home.hero.5', 'home.cta',
+  'home.hero.1', 'home.hero.2', 'home.hero.3', 'home.hero.4', 'home.hero.5', 'home.hero.6', 'home.cta',
   'dest.cta', 'blog.hero', 'about.promise', 'about.mission', 'act.banner', 'circ.hero', 'circ.cta', 'contact.banner',
   'cruise.hero', 'cruise.cta', 'gear.cta', 'exc.hero', 'exc.multi', 'exc.cta', 'food.class',
   'hosting.hero', 'hosting.featured', 'hosting.cta', 'long.hero', 'long.cta', 'photo.cta', 'tm.cta',

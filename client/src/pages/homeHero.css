@@ -203,6 +203,33 @@
   object-position: center;
 }
 
+/* Photo trop claire pour lire le texte blanc (slide avec shade: true) : voile vert sombre
+   seulement côté texte, à gauche sur ordinateur, en bas sur téléphone et tablette (≤900 px) */
+.nzh__slide.has-shade::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background:
+    linear-gradient(90deg, rgba(7, 42, 31, .62) 0%, rgba(7, 42, 31, .38) 30%, rgba(7, 42, 31, 0) 55%),
+    linear-gradient(0deg, rgba(7, 42, 31, .35) 0%, rgba(7, 42, 31, 0) 35%);
+}
+
+@media (max-width: 900px) {
+  .nzh__slide.has-shade::after {
+    background: linear-gradient(0deg, rgba(7, 42, 31, .7) 0%, rgba(7, 42, 31, .45) 40%, rgba(7, 42, 31, 0) 70%);
+  }
+}
+
+/* Même photo : la carte vitrée prend un fond sombre pour que sa légende reste lisible */
+.nzh.is-bright .nzh__card {
+  background: rgba(7, 42, 31, .42);
+  border-color: rgba(246, 241, 231, .25);
+  transition: background .6s, border-color .6s;
+}
+
+.nzh__card { transition: background .6s, border-color .6s; }
+
 .nzh__content {
   position: absolute;
   left: var(--nz-gutter);

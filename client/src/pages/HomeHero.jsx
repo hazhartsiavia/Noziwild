@@ -20,33 +20,39 @@ import bg4 from '../assets/images/hero/bg4-2400.jpg'
 import bg4Small from '../assets/images/hero/bg4-1200.jpg'
 import bg5 from '../assets/images/hero/bg5-2400.jpg'
 import bg5Small from '../assets/images/hero/bg5-1200.jpg'
+import bg6 from '../assets/images/hero/bg6-2000.jpg'
+import bg6Small from '../assets/images/hero/bg6-1200.jpg'
 import './homeHero.css'
 import { usePhoto } from '../sitePhotos'
 
 gsap.registerPlugin(ScrollTrigger)
 
-// title : position dans home.json → hero.slides (légende de la carte « diapositive suivante »)
+// Ordre d'affichage des diapositives. Chaque photo garde son numéro (slot) :
+//   slot  : emplacement de l'admin home.hero.<slot> et grand titre home.json → hero.headlines[slot - 1]
+//   title : légende de la carte « diapositive suivante » (home.json → hero.slides)
 const slides = [
-  { image: bg1, small: bg1Small, title: 0 },
-  { image: bg2, small: bg2Small, title: 1 }, // cascade
-  { image: bg4, small: bg4Small, title: 2 },
-  { image: bg3, small: bg3Small, title: 3 }, // montagnes
-  { image: bg5, small: bg5Small, title: 2 },
+  // lémurien catta (pas d'original plus grand). Photo très claire : voile léger derrière le texte (shade)
+  { slot: 6, image: bg6, small: bg6Small, title: 4, width: 2000, shade: true },
+  { slot: 5, image: bg5, small: bg5Small, title: 2 }, // île
+  { slot: 1, image: bg1, small: bg1Small, title: 0 },
+  { slot: 2, image: bg2, small: bg2Small, title: 1 }, // cascade
+  { slot: 3, image: bg4, small: bg4Small, title: 2 },
+  { slot: 4, image: bg3, small: bg3Small, title: 3 }, // montagnes
 ]
 const SLIDE_DURATION = 7
 const pad = (n) => String(n).padStart(2, '0')
-const srcSet = (s) => `${s.small} 1200w, ${s.image} 2400w`
+const srcSet = (s) => `${s.small} 1200w, ${s.image} ${s.width || 2400}w`
 // Taille servie selon l'écran ; une photo remplacée dans l'admin n'a qu'une taille.
 // La photo remplit tout le hero (object-fit: cover) : sur un écran plus haut que large (téléphone), elle est
 // affichée bien plus large que l'écran. `sizes` en tient compte (photo au format 3:2 → 150 % de la hauteur),
 // sinon le téléphone reçoit la petite version (1200 px) et l'étire, ce qui la rend floue.
 const imgProps = (s) => (s.small ? { src: s.image, srcSet: srcSet(s), sizes: 'max(100vw, 150vh)' } : { src: s.image })
 
-// Diapositives avec les photos choisies dans l'admin (emplacements home.hero.1 à 5)
+// Diapositives avec les photos choisies dans l'admin (emplacements home.hero.1 à 6)
 function useSlides() {
   const photo = usePhoto()
-  return slides.map((s, i) => {
-    const custom = photo(`home.hero.${i + 1}`)
+  return slides.map((s) => {
+    const custom = photo(`home.hero.${s.slot}`)
     return custom === s.image ? s : { ...s, image: custom, small: null }
   })
 }
@@ -178,7 +184,7 @@ export function Hero({ ready }) {
   // Grand titre : un par diapositive, toujours en deux lignes (home.json → hero.headlines : [ligne 1, ligne 2])
   const headlines = t('hero.headlines')
   const [index, setIndex] = useState(0)
-  const headline = headlines[index % headlines.length] || []
+  const headline = headlines[slides[index].slot - 1] || []
   const [leaving, setLeaving] = useState(null)
   // Pas de défilement automatique si l'utilisateur limite les animations
   const [paused, setPaused] = useState(reduceMotion)
@@ -282,11 +288,11 @@ export function Hero({ ready }) {
   }, [index])
 
   return (
-    <section ref={root} className={`nzh${ready ? '' : ' is-loading'}`} aria-label={t('hero.label')}>
+    <section ref={root} className={`nzh${ready ? '' : ' is-loading'}${slides[index]?.shade ? ' is-bright' : ''}`} aria-label={t('hero.label')}>
       <div className="nzh__media" aria-hidden="true">
         {slides.map((s, i) => (
-          <div key={s.image} className={`nzh__slide${i === index ? ' is-active' : ''}${i === leaving ? ' is-leaving' : ''}`}>
-            <SiteMedia slot={`home.hero.${i + 1}`} active={i === index} {...imgProps(s)} alt="" loading={i === 0 ? undefined : 'lazy'} fetchPriority={i === 0 ? 'high' : undefined} />
+          <div key={s.image} className={`nzh__slide${i === index ? ' is-active' : ''}${i === leaving ? ' is-leaving' : ''}${s.shade ? ' has-shade' : ''}`}>
+            <SiteMedia slot={`home.hero.${s.slot}`} active={i === index} {...imgProps(s)} alt="" loading={i === 0 ? undefined : 'lazy'} fetchPriority={i === 0 ? 'high' : undefined} />
           </div>
         ))}
       </div>
