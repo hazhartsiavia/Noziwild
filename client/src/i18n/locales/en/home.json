@@ -55,6 +55,10 @@
     "pause": "Pause the slideshow",
     "play": "Play the slideshow"
   },
+  "strip": {
+    "label": "Circuits and day trips",
+    "days": "{days} Days / {nights} Nights"
+  },
   "talkBadge": "Talk to a Travel Expert / Talk to a Travel Expert /",
   "heroAlt": "White sand beach with bungalows, pirogues and a turquoise lagoon in Madagascar",
   "heroLabel": "Your Journey Begins Here",

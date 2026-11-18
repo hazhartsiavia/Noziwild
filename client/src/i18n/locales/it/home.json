@@ -55,6 +55,10 @@
     "pause": "Metti in pausa la presentazione",
     "play": "Riprendi la presentazione"
   },
+  "strip": {
+    "label": "Circuiti ed escursioni",
+    "days": "{days} giorni / {nights} notti"
+  },
   "talkBadge": "Parla con un esperto di viaggi / Parla con un esperto di viaggi /",
   "heroAlt": "Spiaggia di sabbia bianca con bungalow, piroghe e una laguna turchese in Madagascar",
   "heroLabel": "Il tuo viaggio comincia qui",

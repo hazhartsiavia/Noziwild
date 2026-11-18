@@ -55,6 +55,10 @@
     "pause": "Diashow anhalten",
     "play": "Diashow fortsetzen"
   },
+  "strip": {
+    "label": "Rundreisen und Ausflüge",
+    "days": "{days} Tage / {nights} Nächte"
+  },
   "talkBadge": "Sprechen Sie mit einem Reiseexperten / Sprechen Sie mit einem Reiseexperten /",
   "heroAlt": "Weißer Sandstrand mit Bungalows, Einbäumen und einer türkisfarbenen Lagune in Madagaskar",
   "heroLabel": "Hier beginnt Ihre Reise",

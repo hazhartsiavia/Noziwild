@@ -14,6 +14,7 @@ import Tana from '../assets/images/Tana.jpg'
 import Icone from '../assets/logo/icon.svg'
 import Footer from '../components/Footer'
 import Testimonials from '../components/Testimonials'
+import TripStrip from '../components/TripStrip'
 import { useSitePages } from '../context/SitePagesContext'
 import { slugify } from './destinationsData'
 import { Hero, Preloader, shouldPlayPreloader } from './HomeHero'
@@ -560,6 +561,7 @@ function Home() {
       {!ready && <Preloader onDone={() => setReady(true)} />}
       <main className="w-full overflow-x-clip bg-[#D5E8E2] flex flex-col items-center">
         <Hero ready={ready} />
+        <TripStrip />
         <Ways />
         <Intro />
         <Regions />

@@ -55,6 +55,10 @@
     "pause": "Mettre en pause le diaporama",
     "play": "Relancer le diaporama"
   },
+  "strip": {
+    "label": "Circuits et excursions",
+    "days": "{days} jours / {nights} nuits"
+  },
   "talkBadge": "Parlez à un expert du voyage / Parlez à un expert du voyage /",
   "heroAlt": "Plage de sable blanc avec bungalows, pirogues et lagon turquoise à Madagascar",
   "heroLabel": "Votre voyage commence ici",

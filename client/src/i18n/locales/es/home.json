@@ -55,6 +55,10 @@
     "pause": "Pausar la presentación",
     "play": "Reanudar la presentación"
   },
+  "strip": {
+    "label": "Circuitos y excursiones",
+    "days": "{days} días / {nights} noches"
+  },
   "talkBadge": "Hable con un experto en viajes / Hable con un experto en viajes /",
   "heroAlt": "Playa de arena blanca con bungalós, piraguas y una laguna turquesa en Madagascar",
   "heroLabel": "Su viaje empieza aquí",
