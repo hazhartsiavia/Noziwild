@@ -16,8 +16,6 @@ import bg2 from '../assets/images/hero/bg2-2400.jpg'
 import bg2Small from '../assets/images/hero/bg2-1200.jpg'
 import bg3 from '../assets/images/hero/bg3-2400.jpg'
 import bg3Small from '../assets/images/hero/bg3-1200.jpg'
-import bg4 from '../assets/images/hero/bg4-2400.jpg'
-import bg4Small from '../assets/images/hero/bg4-1200.jpg'
 import bg5 from '../assets/images/hero/bg5-2400.jpg'
 import bg5Small from '../assets/images/hero/bg5-1200.jpg'
 import bg6 from '../assets/images/hero/bg6-2000.jpg'
@@ -36,7 +34,6 @@ const slides = [
   { slot: 5, image: bg5, small: bg5Small, title: 2 }, // île
   { slot: 1, image: bg1, small: bg1Small, title: 0 },
   { slot: 2, image: bg2, small: bg2Small, title: 1 }, // cascade
-  { slot: 3, image: bg4, small: bg4Small, title: 2 },
   { slot: 4, image: bg3, small: bg3Small, title: 3 }, // montagnes
 ]
 const SLIDE_DURATION = 7
@@ -48,7 +45,7 @@ const srcSet = (s) => `${s.small} 1200w, ${s.image} ${s.width || 2400}w`
 // sinon le téléphone reçoit la petite version (1200 px) et l'étire, ce qui la rend floue.
 const imgProps = (s) => (s.small ? { src: s.image, srcSet: srcSet(s), sizes: 'max(100vw, 150vh)' } : { src: s.image })
 
-// Diapositives avec les photos choisies dans l'admin (emplacements home.hero.1 à 6)
+// Diapositives avec les photos choisies dans l'admin (emplacements home.hero.1, 2, 4, 5 et 6 ; le 3 a été retiré)
 function useSlides() {
   const photo = usePhoto()
   return slides.map((s) => {
