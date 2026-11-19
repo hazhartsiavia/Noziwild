@@ -135,7 +135,7 @@ function TalkBadge() {
 
 /* Pourquoi Noziwild (homeBottom.css) : en-tête, puis nos quatre engagements en cartes pleine largeur qui
    s'empilent au défilement (chacune monte et se pose sur la précédente, comme les étapes de la page
-   Sur mesure). Chaque carte : numéro, titre et texte à gauche, deux photos inclinées en sens opposé et
+   Sur mesure). Chaque carte : numéro, titre et texte à gauche, deux photos droites, décalées et
    superposées à droite (admin > Pages & photos, emplacements home.why.1 à home.why.8).
    Ordinateur : la section reste à l'écran pendant l'empilement ; à la fin, tout tient dans un écran. */
 function Intro() {
@@ -163,7 +163,7 @@ function Intro() {
 
     // Ordinateur : la section tient l'écran et y reste (sticky, homeBottom.css → .nzw-pin). Les cartes montent
     // du bas une à une et se posent sous le titre de la précédente ; à la fin, en-tête et quatre cartes sont
-    // visibles ensemble. Les photos de chaque carte s'écartent en s'inclinant pendant qu'elle monte.
+    // visibles ensemble. Les deux photos de chaque carte s'écartent pendant qu'elle monte.
     mm.add('(min-width: 1024px) and (prefers-reduced-motion: no-preference)', () => {
       const spacer = wrapper.querySelector('.nzw__spacer')
       const tl = gsap.timeline({
@@ -177,13 +177,13 @@ function Intro() {
           onRefresh: (self) => self.animation?.progress(1).progress(self.progress),
         },
       })
-      tl.fromTo(back(cards[0]), { rotation: 0, xPercent: 18 }, { rotation: -6, xPercent: 0, duration: 0.6, ease: 'power2.out' }, 0)
-        .fromTo(front(cards[0]), { rotation: 0, xPercent: -18 }, { rotation: 5, xPercent: 0, duration: 0.6, ease: 'power2.out' }, 0)
+      tl.fromTo(back(cards[0]), { xPercent: 18 }, { xPercent: 0, duration: 0.6, ease: 'power2.out' }, 0)
+        .fromTo(front(cards[0]), { xPercent: -18 }, { xPercent: 0, duration: 0.6, ease: 'power2.out' }, 0)
       cards.slice(1).forEach((card, n) => {
         const at = 0.4 + n
         tl.fromTo(card, { y: () => window.innerHeight }, { y: 0, duration: 1, ease: 'power2.out' }, at)
-          .fromTo(back(card), { rotation: 0, xPercent: 18 }, { rotation: -6, xPercent: 0, duration: 0.8, ease: 'power2.out' }, at + 0.2)
-          .fromTo(front(card), { rotation: 0, xPercent: -18 }, { rotation: 5, xPercent: 0, duration: 0.8, ease: 'power2.out' }, at + 0.2)
+          .fromTo(back(card), { xPercent: 18 }, { xPercent: 0, duration: 0.8, ease: 'power2.out' }, at + 0.2)
+          .fromTo(front(card), { xPercent: -18 }, { xPercent: 0, duration: 0.8, ease: 'power2.out' }, at + 0.2)
       })
       // tout en place : un temps d'arrêt avant que la page reparte
       tl.to({}, { duration: 0.6 })
@@ -195,8 +195,8 @@ function Intro() {
       cards.forEach((card) => {
         gsap.fromTo(card, { y: 70, opacity: 0 }, { y: 0, opacity: 1, duration: 0.9, ease: 'power3.out', scrollTrigger: { trigger: card, start: 'top 92%', once: true } })
         gsap.timeline({ scrollTrigger: { trigger: card, start: 'top bottom', end: 'top 35%', scrub: 0.6 } })
-          .fromTo(back(card), { rotation: 0, xPercent: 18 }, { rotation: -6, xPercent: 0, ease: 'power2.out' }, 0)
-          .fromTo(front(card), { rotation: 0, xPercent: -18 }, { rotation: 5, xPercent: 0, ease: 'power2.out' }, 0)
+          .fromTo(back(card), { xPercent: 18 }, { xPercent: 0, ease: 'power2.out' }, 0)
+          .fromTo(front(card), { xPercent: -18 }, { xPercent: 0, ease: 'power2.out' }, 0)
       })
     })
     return () => mm.revert()
@@ -228,7 +228,7 @@ function Intro() {
                 <h3 className="nzw__card-title">{p.title}</h3>
                 <p className="nzw__card-text">{p.text}</p>
               </div>
-              {/* Deux photos inclinées en sens opposé, superposées */}
+              {/* Deux photos droites, décalées et superposées */}
               <div className="nzw__photos" aria-hidden="true">
                 <img src={photo(`home.why.${i * 2 + 1}`)} alt="" loading="lazy" className="nzw__photo nzw__photo--back" />
                 <img src={photo(`home.why.${i * 2 + 2}`)} alt="" loading="lazy" className="nzw__photo nzw__photo--front" />

@@ -71,7 +71,7 @@
    (un bloc vide, car un sticky n'entre pas dans le padding de son parent) */
 
 /* Carte pleine largeur, accrochée sous le titre de la précédente : on lit le titre des cartes passées.
-   Numéro | titre + texte (en haut de la carte) | deux photos inclinées */
+   Numéro | titre + texte (en haut de la carte) | deux photos droites, décalées */
 .nzw__card {
   --nzw-ink: #0c3e2e;
   --nzw-soft: #55625c;
@@ -124,7 +124,7 @@
   color: var(--nzw-soft);
 }
 
-/* Deux photos : derrière en haut à gauche penchée à gauche, devant en bas à droite penchée à droite */
+/* Deux photos droites : derrière en haut à gauche, devant en bas à droite, qui se chevauchent */
 .nzw__photos {
   position: relative;
   align-self: stretch;
@@ -141,8 +141,8 @@
   box-shadow: 0 20px 40px rgba(7, 42, 31, .2);
 }
 
-.nzw__photo--back { top: 0; left: 4%; transform: rotate(-6deg); }
-.nzw__photo--front { right: 4%; bottom: 0; transform: rotate(5deg); }
+.nzw__photo--back { top: 0; left: 0; }
+.nzw__photo--front { right: 0; bottom: 0; }
 
 /* Enveloppe (gérée par React) : toute la largeur, section centrée ; le bloc vide sert au défilement */
 .nzw-pin { display: flex; flex-direction: column; align-items: center; width: 100%; }
