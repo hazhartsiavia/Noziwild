@@ -11,26 +11,6 @@
 
 @media (min-width: 1280px) { .nzw { width: 95vw; max-width: 95vw; } }
 
-/* Enveloppe (gérée par React) : toute la largeur, section centrée ; le bloc vide sert au défilement */
-.nzw-pin { display: flex; flex-direction: column; align-items: center; width: 100%; }
-.nzw__spacer { display: none; }
-
-/* Ordinateur : la section tient l'écran et y reste (sticky) le temps de l'animation au défilement (Home.jsx → Intro) */
-@media (min-width: 1024px) and (prefers-reduced-motion: no-preference) {
-  .nzw-pin { margin-top: clamp(30px, 3vw, 60px); }
-  .nzw {
-    position: sticky;
-    top: 0;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    min-height: 100vh;
-    margin-top: 0;
-  }
-  .nzw__spacer { display: block; flex: none; height: 100vh; }
-  .nzw__card { will-change: transform; }
-}
-
 .nzw__label {
   display: flex;
   align-items: center;
@@ -75,63 +55,140 @@
   background: rgba(12, 62, 46, .16);
 }
 
-/* Engagements : quatre cartes, comme les cartes de chiffres de « À propos » */
-.nzw__cards {
-  display: grid;
-  grid-template-columns: repeat(4, minmax(0, 1fr));
-  gap: clamp(12px, 1.1vw, 20px);
-  margin: clamp(36px, 3.6vw, 64px) 0 0;
-  padding: 0;
-  list-style: none;
+/* Hauteur à laquelle les cartes s'accrochent en haut de l'écran, et écart entre deux cartes empilées :
+   assez pour lire le numéro et le titre de chaque carte déjà passée (marge du haut + une ligne de titre) */
+.nzw {
+  --nzw-top: clamp(24px, 7vh, 80px);
+  --nzw-pad: clamp(24px, 2.6vw, 44px);
+  --nzw-title: clamp(24px, 2.1vw, 38px);
+  --nzw-step: calc(var(--nzw-pad) + var(--nzw-title) * 1.15 + 18px);
 }
 
+.nzw__cards { margin: clamp(36px, 3.6vw, 64px) 0 0; padding: 0; list-style: none; }
+
+/* Temps d'arrêt sous les cartes : une fois toutes posées, elles restent empilées un moment avant de repartir
+   (un bloc vide, car un sticky n'entre pas dans le padding de son parent) */
+
+/* Carte pleine largeur, accrochée sous le titre de la précédente : on lit le titre des cartes passées.
+   Numéro | titre + texte (en haut de la carte) | deux photos inclinées */
 .nzw__card {
-  display: flex;
-  flex-direction: column;
-  padding: clamp(22px, 1.8vw, 32px);
-  border: 1px solid rgba(12, 62, 46, .16);
-  border-radius: 18px;
-  background: rgba(255, 255, 255, .55);
-}
-
-.nzw__card-top {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-}
-
-.nzw__icon {
+  --nzw-ink: #0c3e2e;
+  --nzw-soft: #55625c;
+  position: sticky;
+  top: calc(var(--nzw-top) + var(--i) * var(--nzw-step));
   display: grid;
-  place-items: center;
-  width: 52px;
-  height: 52px;
-  border-radius: 50%;
-  background: #C49849;
-  color: #fff;
+  grid-template-columns: clamp(72px, 6vw, 120px) minmax(0, 1fr) clamp(220px, 20vw, 340px);
+  align-items: start;
+  gap: clamp(16px, 2.4vw, 48px);
+  min-height: clamp(190px, 27vh, 260px);
+  margin-bottom: clamp(16px, 1.6vw, 24px);
+  padding: var(--nzw-pad) clamp(24px, 3vw, 56px);
+  border-radius: 24px;
+  background: #fff;
+  color: var(--nzw-ink);
+  box-shadow: 0 -1px 0 rgba(12, 62, 46, .06), 0 18px 40px rgba(7, 42, 31, .06);
 }
 
-.nzw__icon svg { width: 24px; height: 24px; }
+.nzw__card:last-child { margin-bottom: 0; }
+
+/* Couleurs : blanc, vert forêt, or, crème */
+.nzw__card--2 { --nzw-ink: #fff; --nzw-soft: rgba(255, 255, 255, .78); background: #0c3e2e; }
+.nzw__card--3 { --nzw-ink: #fff; --nzw-soft: rgba(255, 255, 255, .88); background: #C49849; }
+.nzw__card--4 { background: #F6F1E7; }
 
 .nzw__num {
-  font-size: 15px;
-  font-weight: 500;
-  color: #8f9893;
+  /* haut du numéro aligné sur le haut du titre */
+  margin-top: -.14em;
+  font-size: clamp(44px, 4vw, 76px);
+  font-weight: 400;
+  line-height: 1;
+  letter-spacing: -.04em;
+  opacity: .55;
   font-variant-numeric: tabular-nums;
 }
 
 .nzw__card-title {
-  margin: clamp(28px, 3vw, 56px) 0 0;
-  font-size: clamp(22px, 1.7vw, 30px);
-  font-weight: 400;
-  line-height: 1.2;
-  letter-spacing: -.3px;
+  margin: 0;
+  font-size: var(--nzw-title);
+  font-weight: 500;
+  line-height: 1.15;
+  letter-spacing: -.5px;
 }
 
 .nzw__card-text {
-  margin: 12px 0 0;
-  font-size: clamp(16px, 1.1vw, 18px);
+  max-width: 32em;
+  margin: 10px 0 0;
+  font-size: clamp(16px, 1.15vw, 19px);
   line-height: 1.55;
-  color: #55625c;
+  color: var(--nzw-soft);
+}
+
+/* Deux photos : derrière en haut à gauche penchée à gauche, devant en bas à droite penchée à droite */
+.nzw__photos {
+  position: relative;
+  align-self: stretch;
+  min-height: clamp(140px, 19vh, 190px);
+}
+
+.nzw__photo {
+  position: absolute;
+  width: 60%;
+  height: 80%;
+  object-fit: cover;
+  border: clamp(5px, .45vw, 8px) solid #fff;
+  border-radius: 18px;
+  box-shadow: 0 20px 40px rgba(7, 42, 31, .2);
+}
+
+.nzw__photo--back { top: 0; left: 4%; transform: rotate(-6deg); }
+.nzw__photo--front { right: 4%; bottom: 0; transform: rotate(5deg); }
+
+/* Enveloppe (gérée par React) : toute la largeur, section centrée ; le bloc vide sert au défilement */
+.nzw-pin { display: flex; flex-direction: column; align-items: center; width: 100%; }
+.nzw__spacer { display: none; }
+
+/* Ordinateur : la section tient l'écran et y reste (sticky) pendant que les cartes montent et s'empilent
+   (Home.jsx → Intro). Tailles réglées aussi sur la hauteur : à la fin, en-tête + quatre cartes dans l'écran. */
+@media (min-width: 1024px) and (prefers-reduced-motion: no-preference) {
+  .nzw-pin { margin-top: clamp(40px, 5vw, 100px); }
+
+  .nzw {
+    --nzw-pad: clamp(18px, min(2.6vw, 3.4vh), 44px);
+    --nzw-title: clamp(22px, min(2.1vw, 3.6vh), 38px);
+    position: sticky;
+    top: 0;
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+    margin-top: 0;
+    padding: clamp(20px, 5vh, 56px) 0 clamp(16px, 3vh, 32px);
+    overflow: clip;
+  }
+
+  .nzw__label { font-size: clamp(14px, 1.9vh, 16px); }
+  .nzw__head { margin-top: clamp(8px, 1.6vh, 24px); }
+  .nzw__title { font-size: clamp(30px, min(3vw, 5.4vh), 58px); }
+  .nzw__intro { font-size: clamp(15px, min(1.2vw, 2.2vh), 21px); }
+  .nzw__rule { margin-top: clamp(14px, min(2.4vw, 2.6vh), 40px); }
+
+  /* Les cartes occupent la place qui reste ; chacune posée sous le titre de la précédente */
+  .nzw__cards { position: relative; flex: 1; min-height: 0; margin-top: clamp(14px, 2.6vh, 40px); }
+
+  .nzw__card {
+    position: absolute;
+    top: calc(var(--i) * var(--nzw-step));
+    left: 0;
+    right: 0;
+    /* carte compacte : les photos décident de sa hauteur, pas la place qui reste */
+    height: clamp(180px, 27vh, 260px);
+    min-height: 0;
+    margin: 0;
+  }
+
+  .nzw__card-text { font-size: clamp(15px, min(1.15vw, 2.1vh), 19px); }
+  .nzw__photos { min-height: 0; }
+
+  .nzw__spacer { display: block; flex: none; height: 300vh; }
 }
 
 /* Bandeau « Vous ne savez pas par où commencer ? » : fond uni comme les cartes (pas de dégradé) */
@@ -183,11 +240,17 @@
 
 @media (max-width: 1023px) {
   .nzw__head { flex-direction: column; align-items: flex-start; }
-  .nzw__cards { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  /* Tablette : numéro + textes, les photos dessous */
+  .nzw__card { grid-template-columns: auto minmax(0, 1fr); }
+  .nzw__photos { grid-column: 1 / -1; min-height: clamp(160px, 30vw, 220px); width: min(100%, 400px); justify-self: center; }
 }
 
 @media (max-width: 640px) {
-  .nzw__cards { grid-template-columns: 1fr; }
+  /* Téléphone : le numéro au-dessus du titre ; écart = numéro + titre */
+  .nzw { --nzw-step: calc(var(--nzw-pad) + 40px + 10px + var(--nzw-title) * 1.15 + 14px); }
+  .nzw__card { grid-template-columns: 1fr; min-height: 0; row-gap: 10px; }
+  .nzw__num { font-size: 40px; }
+  .nzw__photos { min-height: 140px; }
   .nzw__help { flex-direction: column; align-items: flex-start; }
 }
 

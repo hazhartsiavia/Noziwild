@@ -133,64 +133,71 @@ function TalkBadge() {
 
 /* -------------------------- Sections --------------------------- */
 
-/* Qui sommes-nous : titre + badge expert, puis nos engagements */
+/* Pourquoi Noziwild (homeBottom.css) : en-tête, puis nos quatre engagements en cartes pleine largeur qui
+   s'empilent au défilement (chacune monte et se pose sur la précédente, comme les étapes de la page
+   Sur mesure). Chaque carte : numéro, titre et texte à gauche, deux photos inclinées en sens opposé et
+   superposées à droite (admin > Pages & photos, emplacements home.why.1 à home.why.8).
+   Ordinateur : la section reste à l'écran pendant l'empilement ; à la fin, tout tient dans un écran. */
 function Intro() {
   const root = useRef(null)
   const t = useT('home')
+  const photo = usePhoto()
 
   useLayoutEffect(() => {
     if (!root.current) return undefined
     const mm = gsap.matchMedia(root.current)
+    const section = root.current
+    const wrapper = section.parentElement
+    const cards = gsap.utils.toArray(section.querySelectorAll('.nzw__card'))
+    const back = (card) => card.querySelector('.nzw__photo--back')
+    const front = (card) => card.querySelector('.nzw__photo--front')
 
-    // Ordinateur : la section reste en haut un écran (position: sticky, homeBottom.css → .nzw-pin) et tout
-    // avance au défilement : le titre s'éclaire mot à mot, le trait se dessine, puis les quatre cartes,
-    // empilées en éventail au centre, s'étalent chacune dans sa colonne.
-    mm.add('(min-width: 1024px) and (prefers-reduced-motion: no-preference)', () => {
-      const section = root.current
-      const spacer = section.parentElement.querySelector('.nzw__spacer')
-      const cards = gsap.utils.toArray('.nzw__card')
-      // Décalage de chaque carte jusqu'au centre de la rangée (largeur d'une carte + écart)
-      const step = () => {
-        const list = section.querySelector('.nzw__cards')
-        const w = cards[0].offsetWidth
-        return w + (list.clientWidth - w * cards.length) / (cards.length - 1)
-      }
-      const middle = (cards.length - 1) / 2
-      gsap.timeline({
-        scrollTrigger: {
-          trigger: section.parentElement,
-          start: 'top 70%',
-          // jusqu'à la fin du temps d'arrêt en haut de l'écran
-          end: () => `+=${spacer.offsetHeight + window.innerHeight * 0.7}`,
-          scrub: 0.6,
-          invalidateOnRefresh: true,
-          // Après un recalcul, GSAP ne replace que la première carte de l'éventail : on rejoue tout
-          // jusqu'au bout puis on revient au point courant, pour que chaque carte reprenne sa position.
-          onRefresh: (self) => self.animation?.progress(1).progress(self.progress),
-        },
-      })
+    // Le titre s'éclaire mot à mot pendant qu'il monte dans l'écran, puis le texte et le trait
+    mm.add('(prefers-reduced-motion: no-preference)', () => {
+      gsap.timeline({ scrollTrigger: { trigger: wrapper, start: 'top 85%', end: 'top 15%', scrub: 0.6 } })
         .fromTo('.nzw__label', { opacity: 0, y: 20 }, { opacity: 1, y: 0, duration: 0.3 }, 0)
         .fromTo('.nzw__tw', { opacity: 0.15 }, { opacity: 1, duration: 0.2, stagger: 0.06, ease: 'none' }, 0.1)
         .fromTo('.nzw__intro', { opacity: 0.15, y: 20 }, { opacity: 1, y: 0, duration: 0.4 }, 0.6)
         .fromTo('.nzw__rule', { scaleX: 0 }, { scaleX: 1, transformOrigin: 'left', duration: 0.8, ease: 'power2.inOut' }, 0.4)
-        .fromTo(cards, {
-          x: (i) => (middle - i) * step(),
-          y: 70,
-          rotation: (i) => (i - middle) * 4,
-          scale: 0.92,
-        }, { x: 0, y: 0, rotation: 0, scale: 1, duration: 1, ease: 'power3.inOut', stagger: 0.04 }, 1)
-        .fromTo('.nzw__icon', { rotation: -120, scale: 0.4 }, { rotation: 0, scale: 1, duration: 0.6, ease: 'back.out(1.6)', stagger: 0.06 }, 1.5)
-        // un temps d'arrêt, tout en place, avant que la page reparte
-        .to({}, { duration: 0.5 })
     })
 
-    // Téléphone, tablette ou animations réduites : simple arrivée (une fois)
-    mm.add('(max-width: 1023px), (prefers-reduced-motion: reduce)', () => {
-      const ease = 'expo.out'
-      gsap.timeline({ scrollTrigger: { trigger: root.current, start: 'top 80%', once: true } })
-        .from('.nzw__label, .nzw__head > *', { y: 24, opacity: 0, duration: 0.9, stagger: 0.08, ease })
-        .from('.nzw__rule', { scaleX: 0, transformOrigin: 'left', duration: 1.4, ease }, 0.15)
-      gsap.from('.nzw__card', { y: 50, opacity: 0, duration: 1, stagger: 0.1, ease, scrollTrigger: { trigger: '.nzw__cards', start: 'top 85%', once: true } })
+    // Ordinateur : la section tient l'écran et y reste (sticky, homeBottom.css → .nzw-pin). Les cartes montent
+    // du bas une à une et se posent sous le titre de la précédente ; à la fin, en-tête et quatre cartes sont
+    // visibles ensemble. Les photos de chaque carte s'écartent en s'inclinant pendant qu'elle monte.
+    mm.add('(min-width: 1024px) and (prefers-reduced-motion: no-preference)', () => {
+      const spacer = wrapper.querySelector('.nzw__spacer')
+      const tl = gsap.timeline({
+        scrollTrigger: {
+          trigger: wrapper,
+          start: 'top top',
+          end: () => `+=${spacer.offsetHeight}`,
+          scrub: 0.6,
+          invalidateOnRefresh: true,
+          // après un recalcul, chaque carte reprend sa position (GSAP ne replace que la première d'une série)
+          onRefresh: (self) => self.animation?.progress(1).progress(self.progress),
+        },
+      })
+      tl.fromTo(back(cards[0]), { rotation: 0, xPercent: 18 }, { rotation: -6, xPercent: 0, duration: 0.6, ease: 'power2.out' }, 0)
+        .fromTo(front(cards[0]), { rotation: 0, xPercent: -18 }, { rotation: 5, xPercent: 0, duration: 0.6, ease: 'power2.out' }, 0)
+      cards.slice(1).forEach((card, n) => {
+        const at = 0.4 + n
+        tl.fromTo(card, { y: () => window.innerHeight }, { y: 0, duration: 1, ease: 'power2.out' }, at)
+          .fromTo(back(card), { rotation: 0, xPercent: 18 }, { rotation: -6, xPercent: 0, duration: 0.8, ease: 'power2.out' }, at + 0.2)
+          .fromTo(front(card), { rotation: 0, xPercent: -18 }, { rotation: 5, xPercent: 0, duration: 0.8, ease: 'power2.out' }, at + 0.2)
+      })
+      // tout en place : un temps d'arrêt avant que la page reparte
+      tl.to({}, { duration: 0.6 })
+    })
+
+    // Téléphone et tablette : les cartes montent en arrivant puis restent accrochées (sticky), la suivante se
+    // pose dessus ; leurs photos s'écartent pendant qu'elles montent
+    mm.add('(max-width: 1023px) and (prefers-reduced-motion: no-preference)', () => {
+      cards.forEach((card) => {
+        gsap.fromTo(card, { y: 70, opacity: 0 }, { y: 0, opacity: 1, duration: 0.9, ease: 'power3.out', scrollTrigger: { trigger: card, start: 'top 92%', once: true } })
+        gsap.timeline({ scrollTrigger: { trigger: card, start: 'top bottom', end: 'top 35%', scrub: 0.6 } })
+          .fromTo(back(card), { rotation: 0, xPercent: 18 }, { rotation: -6, xPercent: 0, ease: 'power2.out' }, 0)
+          .fromTo(front(card), { rotation: 0, xPercent: -18 }, { rotation: 5, xPercent: 0, ease: 'power2.out' }, 0)
+      })
     })
     return () => mm.revert()
   }, [])
@@ -210,25 +217,28 @@ function Intro() {
       </div>
       <span className="nzw__rule" aria-hidden="true" />
 
-      {/* Nos engagements : quatre cartes numérotées */}
-      <ul className="nzw__cards">
+      {/* Nos engagements : cartes qui s'empilent (chaque carte est un peu plus bas que la précédente) */}
+      <ol className="nzw__cards">
         {promises.map((promise, i) => {
           const p = { ...promise, ...t('promises')[i] }
-          const PromiseIcon = p.icon
           return (
-            <li key={promise.title} className="nzw__card">
-              <div className="nzw__card-top">
-                <span className="nzw__icon"><PromiseIcon strokeWidth={1.8} aria-hidden="true" /></span>
-                <span className="nzw__num" aria-hidden="true">{String(i + 1).padStart(2, '0')}</span>
+            <li key={promise.title} className={`nzw__card nzw__card--${i + 1}`} style={{ '--i': i }}>
+              <span className="nzw__num" aria-hidden="true">{String(i + 1).padStart(2, '0')}</span>
+              <div className="nzw__card-body">
+                <h3 className="nzw__card-title">{p.title}</h3>
+                <p className="nzw__card-text">{p.text}</p>
               </div>
-              <h3 className="nzw__card-title">{p.title}</h3>
-              <p className="nzw__card-text">{p.text}</p>
+              {/* Deux photos inclinées en sens opposé, superposées */}
+              <div className="nzw__photos" aria-hidden="true">
+                <img src={photo(`home.why.${i * 2 + 1}`)} alt="" loading="lazy" className="nzw__photo nzw__photo--back" />
+                <img src={photo(`home.why.${i * 2 + 2}`)} alt="" loading="lazy" className="nzw__photo nzw__photo--front" />
+              </div>
             </li>
           )
         })}
-      </ul>
+      </ol>
     </section>
-    {/* Défilement pendant lequel la section reste en haut (ordinateur) */}
+    {/* Défilement pendant lequel la section reste à l'écran (ordinateur) */}
     <div className="nzw__spacer" aria-hidden="true" />
     </div>
   )
