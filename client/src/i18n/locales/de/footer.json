@@ -1,13 +1,9 @@
 {
   "home": "Noziwild Startseite",
   "tagline": "Noziwild gestaltet unvergessliche Reisen durch Madagaskar – mit lokalen Experten, sorgfältig ausgewählten Unterkünften und einfacher Buchung.",
-  "importantLinks": "Wichtige Links",
+  "promise": "Ihre Madagaskar-Reise, gemeinsam mit Ihnen geplant – von der ersten Idee bis zum letzten Tag.",
+  "backToTop": "Nach oben",
   "links": {
-    "home": "Startseite",
-    "about": "Über uns",
-    "circuits": "Rundreisen",
-    "destinations": "Reiseziele",
     "contact": "Kontakt"
-  },
-  "promise": "Ihre Madagaskar-Reise, gemeinsam mit Ihnen geplant – von der ersten Idee bis zum letzten Tag."
+  }
 }

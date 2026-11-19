@@ -1,0 +1,189 @@
+/* Voyages signature (Home.jsx → Trips), d'après un modèle Webflow, couleurs et police Noziwild.
+   Pleine largeur, un écran de haut : photo en fond (découpée en pilule au départ par GSAP), titre en haut
+   à gauche, carte crème des voyages en bas à droite. */
+
+.nzx {
+  position: relative;
+  width: 100%;
+  min-height: 100svh;
+  margin-top: clamp(70px, 8vw, 140px);
+  overflow: hidden;
+  background: #0c3e2e;   /* fond vert forêt autour de la pilule */
+  color: #fff;
+  isolation: isolate;
+}
+
+/* ---------- photo de fond ---------- */
+
+.nzx__frame {
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  overflow: hidden;
+}
+
+.nzx__frames { position: absolute; inset: 0; }
+
+.nzx__frames img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  opacity: 0;
+  transform: scale(1.05);
+  transition: opacity .9s ease, transform 1.4s cubic-bezier(.22, 1, .36, 1);
+}
+
+.nzx__frames img.is-active { opacity: 1; transform: scale(1); }
+
+/* Voile pour lire le titre (haut gauche) et laisser la photo visible ailleurs */
+.nzx__shade {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(180deg, rgba(7, 42, 31, .55) 0%, rgba(7, 42, 31, .1) 45%, rgba(7, 42, 31, .25) 100%);
+}
+
+/* ---------- contenu : titre en haut à gauche, carte en bas à droite ---------- */
+
+.nzx__content {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: 40px;
+  width: 90vw;
+  min-height: 100svh;
+  margin: 0 auto;
+  padding: clamp(40px, 5vw, 90px) 0 clamp(30px, 4vw, 70px);
+}
+
+@media (min-width: 1280px) { .nzx__content { width: 95vw; } }
+
+.nzx__label {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin: 0;
+  font-size: 16px;
+  font-weight: 500;
+  color: rgba(255, 255, 255, .85);
+}
+
+.nzx__label span { width: 7px; height: 7px; border-radius: 50%; background: #C49849; }
+
+.nzx__title {
+  max-width: 13em;
+  margin: clamp(14px, 1.4vw, 24px) 0 0;
+  font-size: clamp(40px, 4.4vw, 84px);
+  font-weight: 500;
+  line-height: 1.08;
+  letter-spacing: -.02em;
+  text-shadow: 0 2px 30px rgba(7, 42, 31, .25);
+}
+
+.nzx__w {
+  display: inline-block;
+  overflow: hidden;
+  vertical-align: top;
+  padding-bottom: .1em;
+  margin-bottom: -.1em;
+}
+
+.nzx__w > span { display: inline-block; }
+
+.nzx__all {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  margin-top: clamp(20px, 2vw, 32px);
+  padding: 15px 28px;
+  border-radius: 999px;
+  background: #C49849;
+  color: #fff;
+  font-size: 17px;
+  font-weight: 600;
+  transition: background .35s, transform .35s;
+}
+
+.nzx__all svg { width: 18px; height: 18px; transition: transform .45s cubic-bezier(.76, 0, .24, 1); }
+.nzx__all:hover { background: #a9813a; transform: translateY(-2px); }
+.nzx__all:hover svg { transform: rotate(45deg); }
+.nzx__all:focus-visible { outline: 2px solid #fff; outline-offset: 3px; }
+
+/* Carte crème des voyages */
+.nzx__card {
+  align-self: flex-end;
+  width: min(940px, 100%);
+  margin: 0;
+  padding: clamp(10px, 1.4vw, 24px) clamp(24px, 2.6vw, 48px);
+  border-radius: 28px;
+  background: #F6F1E7;
+  color: #0c3e2e;
+  list-style: none;
+  box-shadow: 0 30px 80px rgba(7, 42, 31, .25);
+}
+
+.nzx__card li + li { border-top: 1px solid rgba(12, 62, 46, .14); }
+
+.nzx__row {
+  display: grid;
+  grid-template-columns: minmax(0, 1.05fr) minmax(0, 1fr) auto;
+  align-items: center;
+  gap: clamp(16px, 2vw, 36px);
+  padding: clamp(18px, 2vw, 32px) 0;
+  color: #0c3e2e;
+}
+
+.nzx__name {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  font-size: clamp(24px, 2vw, 36px);
+  font-weight: 400;
+  line-height: 1.15;
+  letter-spacing: -.3px;
+  transition: color .3s;
+}
+
+.nzx__name small { font-size: 15px; font-weight: 500; letter-spacing: 0; color: #8a6a2b; }
+
+.nzx__text {
+  font-size: clamp(15px, 1.05vw, 18px);
+  line-height: 1.55;
+  color: #55625c;
+}
+
+.nzx__go {
+  display: grid;
+  place-items: center;
+  width: 48px;
+  height: 48px;
+  border: 1px solid rgba(12, 62, 46, .2);
+  border-radius: 50%;
+  transition: background .35s, color .35s, border-color .35s, transform .45s cubic-bezier(.76, 0, .24, 1);
+}
+
+.nzx__go svg { width: 20px; height: 20px; }
+
+.nzx__row.is-active .nzx__name { color: #8a6a2b; }
+.nzx__row.is-active .nzx__go,
+.nzx__row:hover .nzx__go { background: #0c3e2e; border-color: #0c3e2e; color: #fff; transform: rotate(45deg); }
+.nzx__row:focus-visible { outline: 2px solid #C49849; outline-offset: 4px; border-radius: 8px; }
+
+/* ---------- tablette et téléphone ---------- */
+
+@media (max-width: 1023px) {
+  .nzx { min-height: 0; }
+  .nzx__content { min-height: 0; }
+  .nzx__card { align-self: stretch; }
+}
+
+@media (max-width: 640px) {
+  .nzx__row { grid-template-columns: minmax(0, 1fr) auto; }
+  .nzx__text { grid-column: 1 / -1; grid-row: 2; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .nzx__frames img,
+  .nzx__go { transition: none; }
+}

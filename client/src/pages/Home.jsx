@@ -1,10 +1,7 @@
-import React, { useEffect, useLayoutEffect, useRef, useState } from 'react'
+import React, { useLayoutEffect, useRef, useState } from 'react'
 import gsap from 'gsap'
 import { ScrollTrigger } from 'gsap/ScrollTrigger'
-import {
-  ArrowRight, Backpack, BedDouble, Camera, Car, Compass, Route, Ship,
-  Sparkles, Sun, Ticket, Users, UtensilsCrossed,
-} from 'lucide-react'
+import { ArrowUpRight, Compass, Minus, Plus, Route, Sparkles, Sun, Ticket, Users } from 'lucide-react'
 import Ramena from '../assets/images/Ramena.jpg'
 import NosyIranja from '../assets/images/NosyIranja.jpg'
 import NosyLonjo from '../assets/images/NosyLonjo.jpg'
@@ -15,36 +12,28 @@ import Icone from '../assets/logo/icon.svg'
 import Footer from '../components/Footer'
 import Testimonials from '../components/Testimonials'
 import TripStrip from '../components/TripStrip'
-import { useSitePages } from '../context/SitePagesContext'
+import WaysOverview from '../components/WaysOverview'
+import AboutUs from '../components/AboutUs'
+import ServicesList from '../components/ServicesList'
 import { slugify } from './destinationsData'
 import { Hero, Preloader, shouldPlayPreloader } from './HomeHero'
+import './homeTrips.css'
+import './homeRegions.css'
+import './homeBottom.css'
 import { useLanguage, useT } from '../i18n/LanguageContext'
 import { monthName } from '../utils/format'
 import { usePhoto } from '../sitePhotos'
 import { A } from '../i18n/router'
-import SiteMedia from '../components/SiteMedia'
 
 gsap.registerPlugin(ScrollTrigger)
 
-/* Constantes partagées : mêmes valeurs que About, Transport, Hébergement et Destinations */
-const SECTION_WIDTH = 'w-[90vw] lg:max-w-[90vw] xl:max-w-[95vw]'
-const SECTION_TITLE = 'text-[clamp(2rem,4.4vw,4rem)] font-bold text-forest leading-[1.08] tracking-tight'
-const SECTION_SUBTITLE = 'text-sm sm:text-base md:text-lg text-slate-600 leading-relaxed max-w-3xl'
-const SECTION_GAP = 'mt-[50px] md:mt-[100px]'
-const SECTION_LABEL = 'mb-3 flex items-center gap-2 text-xs sm:text-sm font-medium uppercase tracking-wide text-slate-700'
-const ON_IMAGE_TITLE = 'text-[clamp(2rem,4.4vw,4rem)] font-bold text-white leading-[1.08] tracking-tight'
-const BTN = 'inline-flex items-center justify-center text-sm md:text-base font-medium px-6 py-3 rounded-full active:scale-95 transition'
-const GOLD = 'bg-[#C49849] hover:bg-[#a9813a]'
-const GREEN = 'bg-[#074636]'
-// Inclinaison de chaque carte tant qu'elle n'est pas redressée par le défilement
-const WAY_TILTS = [-9, 6, -5, 8]
 const quoteHref = (k, v) => `/contact?type=quote&${k}=${encodeURIComponent(v)}`
 
 /* ---------------------------- Données ---------------------------- */
 // Les textes affichés viennent de locales/<langue>/home.json (mêmes listes, même ordre) ;
 // les textes anglais ci-dessous servent d'identifiants (adresses des lieux, clés React).
 
-// Les 4 façons de voyager
+// Les 4 façons de voyager (section WaysOverview)
 const ways = [
   { title: 'Circuits', text: 'Ready-made routes across the island', href: '/circuits', icon: Route, slot: 'home.ways.1', image: Tana },
   { title: 'Excursions', text: 'Day trips and short escapes', href: '/excursions', icon: Sun, slot: 'home.ways.2', image: Ramena },
@@ -94,14 +83,15 @@ const trips = [
   { name: 'Wild North', days: 10, slot: 'home.trips.3', image: Deux, text: 'Baobabs, canyons and empty beaches, for the ones who want more.' },
 ]
 
+// Services (section ServicesList) : page, texte d'intro de la page (ns + clé), photo de la page, offres (kind)
 const services = [
-  { title: 'Accommodation', href: '/accommodation', icon: BedDouble },
-  { title: 'Transport', href: '/transport', icon: Car },
-  { title: 'Guides', href: '/guides', icon: Users },
-  { title: 'Food & Dining', href: '/food-dining', icon: UtensilsCrossed },
-  { title: 'Equipment Rentals', href: '/equipment-rentals', icon: Backpack },
-  { title: 'Photography', href: '/photography', icon: Camera },
-  { title: 'Cruise Excursions', href: '/cruise-excursions', icon: Ship },
+  { title: 'Accommodation', href: '/accommodation', ns: 'accommodation', textKey: 'intro.text', slot: 'hosting.hero', kind: 'stay' },
+  { title: 'Transport', href: '/transport', ns: 'transport', textKey: 'typesText', slot: 'transport.hero', kind: 'transport' },
+  { title: 'Guides', href: '/guides', ns: 'guides', textKey: 'intro', slot: 'guides.hero.1', kind: 'guide' },
+  { title: 'Food & Dining', href: '/food-dining', ns: 'food', textKey: 'intro', slot: 'food.class', kind: 'food' },
+  { title: 'Equipment Rentals', href: '/equipment-rentals', ns: 'equipment', textKey: 'intro', slot: 'gear.cta', kind: 'gear' },
+  { title: 'Photography', href: '/photography', ns: 'photography', textKey: 'intro', slot: 'photo.hero.1', kind: 'session' },
+  { title: 'Cruise Excursions', href: '/cruise-excursions', ns: 'cruise', textKey: 'intro', slot: 'cruise.hero', kind: 'cruise' },
 ]
 
 /* ----------------------- Hook utilitaire GSAP ---------------------- */
@@ -115,21 +105,6 @@ function useGsap(scope, setup, deps = []) {
     return () => mm.revert()
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, deps)
-}
-
-// Apparition des enfants d'une section quand elle entre à l'écran
-function useReveal(scope, selector) {
-  useGsap(scope, () => {
-    gsap.from(selector, {
-      y: 40,
-      opacity: 0,
-      duration: 0.8,
-      stagger: 0.1,
-      ease: 'power3.out',
-      clearProps: 'all',
-      scrollTrigger: { trigger: scope.current, start: 'top 80%', once: true },
-    })
-  })
 }
 
 /* -------------------------- Petits composants --------------------------- */
@@ -158,382 +133,351 @@ function TalkBadge() {
 
 /* -------------------------- Sections --------------------------- */
 
-/* Les 4 façons de voyager : cartes photo (même style que les cartes de la page Destinations) */
-function Ways() {
-  const photo = usePhoto()
-  const root = useRef(null)
-  const t = useT('home')
-  const { isHidden } = useSitePages()
-
-  // Au défilement, les cartes inclinées et serrées se redressent et s'alignent (et l'inverse en remontant)
-  useGsap(root, () => {
-    const trigger = { trigger: root.current, start: 'top 75%', once: true }
-    gsap.from('.ways-head > *', { y: 30, opacity: 0, duration: 0.8, stagger: 0.1, ease: 'power3.out', clearProps: 'all', scrollTrigger: trigger })
-    gsap.fromTo('.way-card', {
-      rotation: (i) => WAY_TILTS[i % WAY_TILTS.length],
-      x: (i, el, all) => ((all.length - 1) / 2 - i) * el.offsetWidth * 0.12,
-      y: (i) => (i % 2 ? 46 : 14),
-    }, {
-      rotation: 0, x: 0, y: 0, ease: 'none',
-      scrollTrigger: { trigger: '.ways-list', start: 'top 92%', end: 'top 38%', scrub: 0.7 },
-    })
-  })
-
-  return (
-    <section ref={root} className={`${SECTION_WIDTH} ${SECTION_GAP}`}>
-      <div className="ways-head mx-auto max-w-3xl text-center">
-        <p className={`${SECTION_LABEL} justify-center`}><span className="w-1.5 h-1.5 rounded-full bg-[#C49849]" aria-hidden="true" />{t('waysLabel')}</p>
-        <h2 className={SECTION_TITLE}>{t('waysTitle')}</h2>
-        <p className={`mt-4 mx-auto ${SECTION_SUBTITLE}`}>{t('waysText')}</p>
-      </div>
-
-      <ul className="ways-list mt-12 md:mt-16 grid grid-cols-2 lg:grid-cols-4 gap-3 md:gap-5">
-        {ways.map((way, i) => {
-          if (isHidden(way.href)) return null
-          const w = { ...way, ...t('ways')[i] }
-          const WayIcon = w.icon
-          return (
-            <li key={way.href} className="way-card relative hover:z-10">
-              <A href={w.href} className={`group block rounded-2xl bg-white p-2 md:p-3 pb-4 md:pb-5 text-center shadow-xl shadow-[#072a1f]/15 transition-transform duration-500 hover:-translate-y-2 focus:outline-none focus-visible:ring-4 focus-visible:ring-[#C49849]`}>
-                <span className="relative block aspect-[4/5] overflow-hidden rounded-xl">
-                  <img src={photo(w.slot)} alt="" className="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" />
-                  <span className="absolute left-2.5 top-2.5 w-9 h-9 md:w-11 md:h-11 rounded-full bg-[#C49849] text-white flex items-center justify-center">
-                    <WayIcon className="w-4 h-4 md:w-5 md:h-5" strokeWidth={1.8} aria-hidden="true" />
-                  </span>
-                </span>
-                <span className="mt-3 md:mt-4 block font-display text-lg md:text-2xl font-bold text-forest">{w.title}</span>
-                <span className="mt-1 block px-1 text-xs md:text-sm leading-snug text-slate-600">{w.text}</span>
-              </A>
-            </li>
-          )
-        })}
-      </ul>
-    </section>
-  )
-}
-
 /* Qui sommes-nous : titre + badge expert, puis nos engagements */
 function Intro() {
   const root = useRef(null)
   const t = useT('home')
 
-  useReveal(root, '.intro-text > *, .intro-card')
+  useLayoutEffect(() => {
+    if (!root.current) return undefined
+    const mm = gsap.matchMedia(root.current)
+
+    // Ordinateur : la section reste en haut un écran (position: sticky, homeBottom.css → .nzw-pin) et tout
+    // avance au défilement : le titre s'éclaire mot à mot, le trait se dessine, puis les quatre cartes,
+    // empilées en éventail au centre, s'étalent chacune dans sa colonne.
+    mm.add('(min-width: 1024px) and (prefers-reduced-motion: no-preference)', () => {
+      const section = root.current
+      const spacer = section.parentElement.querySelector('.nzw__spacer')
+      const cards = gsap.utils.toArray('.nzw__card')
+      // Décalage de chaque carte jusqu'au centre de la rangée (largeur d'une carte + écart)
+      const step = () => {
+        const list = section.querySelector('.nzw__cards')
+        const w = cards[0].offsetWidth
+        return w + (list.clientWidth - w * cards.length) / (cards.length - 1)
+      }
+      const middle = (cards.length - 1) / 2
+      gsap.timeline({
+        scrollTrigger: {
+          trigger: section.parentElement,
+          start: 'top 70%',
+          // jusqu'à la fin du temps d'arrêt en haut de l'écran
+          end: () => `+=${spacer.offsetHeight + window.innerHeight * 0.7}`,
+          scrub: 0.6,
+          invalidateOnRefresh: true,
+          // Après un recalcul, GSAP ne replace que la première carte de l'éventail : on rejoue tout
+          // jusqu'au bout puis on revient au point courant, pour que chaque carte reprenne sa position.
+          onRefresh: (self) => self.animation?.progress(1).progress(self.progress),
+        },
+      })
+        .fromTo('.nzw__label', { opacity: 0, y: 20 }, { opacity: 1, y: 0, duration: 0.3 }, 0)
+        .fromTo('.nzw__tw', { opacity: 0.15 }, { opacity: 1, duration: 0.2, stagger: 0.06, ease: 'none' }, 0.1)
+        .fromTo('.nzw__intro', { opacity: 0.15, y: 20 }, { opacity: 1, y: 0, duration: 0.4 }, 0.6)
+        .fromTo('.nzw__rule', { scaleX: 0 }, { scaleX: 1, transformOrigin: 'left', duration: 0.8, ease: 'power2.inOut' }, 0.4)
+        .fromTo(cards, {
+          x: (i) => (middle - i) * step(),
+          y: 70,
+          rotation: (i) => (i - middle) * 4,
+          scale: 0.92,
+        }, { x: 0, y: 0, rotation: 0, scale: 1, duration: 1, ease: 'power3.inOut', stagger: 0.04 }, 1)
+        .fromTo('.nzw__icon', { rotation: -120, scale: 0.4 }, { rotation: 0, scale: 1, duration: 0.6, ease: 'back.out(1.6)', stagger: 0.06 }, 1.5)
+        // un temps d'arrêt, tout en place, avant que la page reparte
+        .to({}, { duration: 0.5 })
+    })
+
+    // Téléphone, tablette ou animations réduites : simple arrivée (une fois)
+    mm.add('(max-width: 1023px), (prefers-reduced-motion: reduce)', () => {
+      const ease = 'expo.out'
+      gsap.timeline({ scrollTrigger: { trigger: root.current, start: 'top 80%', once: true } })
+        .from('.nzw__label, .nzw__head > *', { y: 24, opacity: 0, duration: 0.9, stagger: 0.08, ease })
+        .from('.nzw__rule', { scaleX: 0, transformOrigin: 'left', duration: 1.4, ease }, 0.15)
+      gsap.from('.nzw__card', { y: 50, opacity: 0, duration: 1, stagger: 0.1, ease, scrollTrigger: { trigger: '.nzw__cards', start: 'top 85%', once: true } })
+    })
+    return () => mm.revert()
+  }, [])
+
+  // Titre découpé en mots (ils s'éclairent un à un au défilement)
+  const title = t('introTitle').split(' ')
 
   return (
-    <section ref={root} className={`${SECTION_WIDTH} ${SECTION_GAP}`}>
-      <div className="grid grid-cols-1 lg:grid-cols-[1.3fr_1fr] gap-8 lg:gap-16 items-center">
-        <div className="intro-text">
-          <p className={SECTION_LABEL}>{t('introLabel')}</p>
-          <h2 className={SECTION_TITLE}>{t('introTitle')}</h2>
-          <p className={`mt-5 md:mt-6 ${SECTION_SUBTITLE}`}>
-            {t('introText')}
-          </p>
-        </div>
-
-        <div className="intro-card flex items-center gap-5 md:gap-6 rounded-3xl bg-white p-5 md:p-8">
-          <TalkBadge />
-          <div>
-            <p className="text-lg md:text-2xl font-medium leading-snug text-slate-900">{t('notSure')}</p>
-            <p className="mt-2 text-sm md:text-base text-slate-600">{t('notSureText')}</p>
-            <A href="/contact" className={`${BTN} ${GREEN} hover:bg-[#0a5f48] text-white mt-4`}>{t('talkExpert')}</A>
-          </div>
-        </div>
+    <div className="nzw-pin">
+    <section ref={root} className="nzw" aria-labelledby="nzw-title">
+      <p className="nzw__label"><Sparkles aria-hidden="true" />{t('introLabel')}</p>
+      <div className="nzw__head">
+        <h2 id="nzw-title" className="nzw__title">
+          {title.map((w, i) => <React.Fragment key={i}><span className="nzw__tw">{w}</span>{i < title.length - 1 && ' '}</React.Fragment>)}
+        </h2>
+        <p className="nzw__intro">{t('introText')}</p>
       </div>
+      <span className="nzw__rule" aria-hidden="true" />
 
-      <ul className="mt-10 md:mt-14 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3 md:gap-5">
+      {/* Nos engagements : quatre cartes numérotées */}
+      <ul className="nzw__cards">
         {promises.map((promise, i) => {
           const p = { ...promise, ...t('promises')[i] }
           const PromiseIcon = p.icon
           return (
-            <li key={promise.title} className="intro-card flex flex-col rounded-2xl bg-white p-5 md:p-6">
-              <span className="w-11 h-11 lg:w-[52px] lg:h-[52px] rounded-full bg-[#C49849] flex items-center justify-center text-white">
-                <PromiseIcon className="w-5 h-5 md:w-6 md:h-6" strokeWidth={1.8} aria-hidden="true" />
-              </span>
-              <h3 className="mt-5 text-lg md:text-xl font-medium text-forest">{p.title}</h3>
-              <p className="mt-2 text-sm md:text-base text-slate-600 leading-relaxed">{p.text}</p>
+            <li key={promise.title} className="nzw__card">
+              <div className="nzw__card-top">
+                <span className="nzw__icon"><PromiseIcon strokeWidth={1.8} aria-hidden="true" /></span>
+                <span className="nzw__num" aria-hidden="true">{String(i + 1).padStart(2, '0')}</span>
+              </div>
+              <h3 className="nzw__card-title">{p.title}</h3>
+              <p className="nzw__card-text">{p.text}</p>
             </li>
           )
         })}
       </ul>
     </section>
+    {/* Défilement pendant lequel la section reste en haut (ordinateur) */}
+    <div className="nzw__spacer" aria-hidden="true" />
+    </div>
   )
 }
 
-/* Les régions : une fresque de panneaux photo, celui qui est choisi s'ouvre en grand */
+/* Les régions (homeRegions.css), d'après deux modèles Webflow :
+   - entrée : la photo de la région occupe tout l'écran puis rétrécit en grande carte à droite (section figée
+     pendant le défilement), pendant que le titre et la liste des régions apparaissent à gauche ;
+   - ensuite : la liste des 5 régions en accordéon (la région ouverte montre son accroche, son texte, ses lieux
+     à voir et un lien) et, à droite, la photo de la région ouverte avec « 01 / 05 », son nom et sa saison.
+   Téléphone, tablette ou animations réduites : même mise en page, sans l'entrée plein écran. */
 function Regions() {
   const photo = usePhoto()
   const root = useRef(null)
-  const stage = useRef(null)
-  const hoverTimer = useRef(null)
-  const moveFocus = useRef(false)
   const t = useT('home')
   const { lang } = useLanguage()
   const [active, setActive] = useState(0)
   const texts = t('regions')
+  const region = regions[active]
+  const tr = texts[active]
+  const season = (r, style) => `${monthName(r.months[0], lang, style)} → ${monthName(r.months[1], lang, style)}`
 
-  useReveal(root, '.regions-head > *, .region-panel')
+  useLayoutEffect(() => {
+    if (!root.current) return undefined
+    const mm = gsap.matchMedia(root.current)
+    mm.add('(min-width: 1024px) and (prefers-reduced-motion: no-preference)', () => {
+      const section = root.current
+      const media = section.querySelector('.nzr__media')
+      const slot = section.querySelector('.nzr__slot')
+      // Position finale de la photo : la case de droite, en pixels dans la section
+      const box = () => {
+        const s = section.getBoundingClientRect()
+        const b = slot.getBoundingClientRect()
+        return { top: b.top - s.top, left: b.left - s.left, width: b.width, height: b.height }
+      }
+      const spacer = section.parentElement.querySelector('.nzr__spacer')
+      const words = media.querySelectorAll('.nzr__statement-w')
+      // La section est figée par le navigateur (position: sticky, voir homeRegions.css → .nzr-pin) et non par
+      // GSAP : pas d'à-coup quand la photo arrive en haut. On suit le défilement de l'enveloppe, qui ne bouge pas,
+      // sur la hauteur du bloc vide placé sous la section (.nzr__spacer).
+      gsap.timeline({
+        scrollTrigger: {
+          trigger: section.parentElement,
+          start: 'top top',
+          end: () => `+=${spacer.offsetHeight}`,
+          scrub: 0.6,
+          invalidateOnRefresh: true,
+        },
+      })
+        // 1. Photo plein écran : la petite invitation, puis la phrase mot à mot au milieu (flou → net),
+        //    un instant à l'écran, puis tout s'efface
+        .fromTo('.nzr__statement', { '--nzr-veil': 0 }, { '--nzr-veil': 1, duration: 0.3, ease: 'none' }, 0)
+        .fromTo('.nzr__kicker', { opacity: 0, y: 20 }, { opacity: 1, y: 0, duration: 0.25, ease: 'power2.out' }, 0)
+        .fromTo(words, { opacity: 0, filter: 'blur(12px)', yPercent: 40 }, {
+          opacity: 1, filter: 'blur(0px)', yPercent: 0, duration: 0.35, ease: 'power2.out', stagger: { amount: 0.7 },
+        }, 0.15)
+        .to('.nzr__statement', { opacity: 0, y: -40, duration: 0.3, ease: 'power2.in' }, 1.45)
+        // 2. La photo se pose dans la case de droite.
+        //    Départ : tout l'écran (la section est centrée et moins large que l'écran : on déborde de chaque côté)
+        .fromTo(media, {
+          top: 0,
+          left: () => -(document.documentElement.clientWidth - section.offsetWidth) / 2,
+          width: () => document.documentElement.clientWidth,
+          height: () => window.innerHeight,
+          borderRadius: 0,
+        }, {
+          top: () => box().top, left: () => box().left, width: () => box().width, height: () => box().height, borderRadius: 18,
+          ease: 'power2.inOut', duration: 1.3,
+        }, 1.7)
+        .fromTo('.nzr__media-ui', { opacity: 0 }, { opacity: 1, duration: 0.4 }, 2.6)
+        .from('.nzr__head > *', { y: 50, opacity: 0, duration: 0.5, stagger: 0.08 }, 2.3)
+        .from('.nzr__item', { x: -40, opacity: 0, duration: 0.5, stagger: 0.06 }, 2.4)
+    })
+    return () => mm.revert()
+  }, [])
 
-  // Avec une souris sur grand écran, le panneau survolé s'ouvre après un court instant
-  const openSoon = (i) => {
-    clearTimeout(hoverTimer.current)
-    if (!window.matchMedia('(hover: hover) and (min-width: 1024px)').matches) return
-    hoverTimer.current = setTimeout(() => setActive(i), 120)
-  }
-  const cancelOpen = () => clearTimeout(hoverTimer.current)
-  useEffect(() => cancelOpen, [])
-
-  // Au clavier, le bouton disparaît avec l'ouverture : le focus passe au titre de la région
-  useEffect(() => {
-    if (!moveFocus.current) return
-    moveFocus.current = false
-    stage.current?.querySelector('.region-title')?.focus()
+  // Région ouverte : ses textes arrivent l'un après l'autre
+  useGsap(root, () => {
+    gsap.fromTo('.nzr__item.is-open .nzr__body > *', { y: 16, opacity: 0 }, { y: 0, opacity: 1, duration: 0.6, stagger: 0.05, ease: 'expo.out', clearProps: 'transform,opacity' })
   }, [active])
 
-  // Les textes de la région ouverte arrivent l'un après l'autre
-  useGsap(stage, () => {
-    gsap.fromTo('.region-content > *', { y: 24, opacity: 0 }, { y: 0, opacity: 1, duration: 0.6, stagger: 0.06, delay: 0.2, ease: 'power3.out', clearProps: 'all' })
-  }, [active])
-
+  // Enveloppe gérée par React autour de la section figée (voir ServicesList.jsx)
   return (
-    <section ref={root} className={`${SECTION_WIDTH} ${SECTION_GAP}`}>
-      <div className="regions-head flex flex-col lg:flex-row lg:items-end lg:justify-between gap-5 lg:gap-12">
+    <div className="nzr-pin">
+    <section ref={root} className="nzr" aria-labelledby="nzr-title">
+      <div className="nzr__head">
         <div>
-          <p className={SECTION_LABEL}>{t('regionsLabel')}</p>
-          <h2 className={SECTION_TITLE}>{t('regionsTitle')}</h2>
+          <p className="nzr__label"><span aria-hidden="true" />{t('regionsLabel')}</p>
+          <h2 id="nzr-title" className="nzr__title">{t('regionsTitle')}</h2>
         </div>
-        <p className={`${SECTION_SUBTITLE} lg:max-w-md`}>{t('regionsText')}</p>
+        <p className="nzr__lead">{t('regionsText')}</p>
       </div>
 
-      {/* Fresque : un panneau photo par région, celui qui est choisi s'ouvre en grand */}
-      <ul ref={stage} aria-label={t('regionsTabs')} className="mt-8 md:mt-12 flex flex-col lg:flex-row gap-2 md:gap-3 lg:h-[max(600px,min(82vh,760px))]">
-        {regions.map((r, i) => {
-          const open = i === active
-          const tr = texts[i]
-          return (
-            <li
-              key={r.id}
-              onMouseEnter={() => openSoon(i)}
-              onMouseLeave={cancelOpen}
-              className={`region-panel relative flex flex-col justify-end min-w-0 overflow-hidden rounded-2xl md:rounded-3xl bg-[#084838] text-white transition-[flex-grow,min-height] duration-700 ease-[cubic-bezier(0.22,1,0.36,1)] motion-reduce:transition-none lg:basis-0 ${
-                open ? 'min-h-[560px] lg:min-h-0 lg:grow-[7]' : 'min-h-[84px] md:min-h-[100px] lg:min-h-0 lg:grow'
-              }`}
-            >
-              <img
-                src={photo(r.slot)}
-                alt={open ? tr.name : ''}
-                className={`absolute inset-0 w-full h-full object-cover transition-transform duration-[1400ms] ease-out motion-reduce:transition-none ${open ? 'scale-100' : 'scale-110'}`}
-              />
-              <div className={`absolute inset-0 transition-colors duration-700 ${open ? 'bg-transparent' : 'bg-[#072a1f]/55 hover:bg-[#072a1f]/35'}`} />
-
-              {open ? (
-                <>
-                  <div className="absolute inset-0 bg-gradient-to-t from-[#072a1f]/95 via-[#072a1f]/75 via-65% to-[#072a1f]/30 lg:via-[#072a1f]/45 lg:via-45% lg:to-transparent lg:to-75%" />
-                  <div className="region-content relative p-5 md:p-8 lg:p-10 lg:w-[min(46rem,50vw)] max-w-full">
-                    <span className="inline-block bg-[#C49849] text-white text-xs sm:text-sm font-medium px-3 py-1.5 rounded-sm">
-                      {t('bestFrom', { from: monthName(r.months[0], lang, 'long'), to: monthName(r.months[1], lang, 'long') })}
-                    </span>
-                    <h3 tabIndex={-1} className="region-title mt-4 font-display text-4xl md:text-5xl lg:text-6xl font-medium leading-[1.05] tracking-tight focus:outline-none">{tr.name}</h3>
-                    <p className="mt-3 text-lg md:text-2xl text-white">{tr.tagline}</p>
-                    <p className="mt-3 text-sm md:text-base text-white/85 leading-relaxed max-w-xl">{tr.text}</p>
-
-                    <ul aria-label={t('mustSee')} className="mt-5 flex flex-wrap gap-2">
+      <div className="nzr__grid">
+        {/* Accordéon des régions */}
+        <ul className="nzr__list" aria-label={t('regionsTabs')}>
+          {regions.map((r, i) => {
+            const open = i === active
+            const text = texts[i]
+            return (
+              <li key={r.id} className={`nzr__item${open ? ' is-open' : ''}`}>
+                <button type="button" aria-expanded={open} onClick={() => setActive(i)} className="nzr__toggle">
+                  <span className="nzr__num">{String(i + 1).padStart(2, '0')}</span>
+                  <span className="nzr__name">{text.name}</span>
+                  <span className="nzr__season">{season(r)}</span>
+                  <span className="nzr__plus" aria-hidden="true">{open ? <Minus /> : <Plus />}</span>
+                </button>
+                {open && (
+                  <div className="nzr__body">
+                    <p className="nzr__tagline">{text.tagline}</p>
+                    <p className="nzr__text">{text.text}</p>
+                    <ul className="nzr__places" aria-label={t('mustSee')}>
                       {r.places.map((p, n) => (
                         <li key={p.name}>
-                          <A href={`/destinations/${slugify(p.name)}`} className="flex items-center gap-2 rounded-full border border-white/30 bg-[#072a1f]/50 backdrop-blur-md hover:bg-white hover:text-slate-900 transition-colors pl-1 pr-4 py-1 text-sm">
-                            <img src={photo(p.slot)} alt="" className="w-8 h-8 rounded-full object-cover" />
-                            {tr.places[n]}
+                          <A href={`/destinations/${slugify(p.name)}`} className="nzr__place">
+                            <img src={photo(p.slot)} alt="" loading="lazy" />
+                            <span>{text.places[n]}</span>
                           </A>
                         </li>
                       ))}
                     </ul>
-
-                    <div className="mt-6 flex flex-wrap gap-3">
-                      <A href="/destinations" className={`${BTN} ${GOLD} text-white`}>{t('exploreRegion')}</A>
-                      <A href="/circuits" className={`${BTN} border border-white/50 hover:bg-white hover:text-slate-900 text-white`}>{t('seeCircuits')}</A>
+                    <div className="nzr__links">
+                      <A href="/destinations" className="nzr__link">{t('exploreRegion')}<ArrowUpRight aria-hidden="true" /></A>
+                      <A href="/circuits" className="nzr__link nzr__link--soft">{t('seeCircuits')}</A>
                     </div>
                   </div>
-                </>
-              ) : (
-                <button
-                  type="button"
-                  aria-expanded={false}
-                  aria-label={tr.name}
-                  onClick={(event) => {
-                    cancelOpen()
-                    moveFocus.current = event.detail === 0
-                    setActive(i)
-                  }}
-                  className="absolute inset-0 flex items-center lg:flex-col lg:items-center lg:justify-end gap-4 lg:gap-5 p-5 lg:px-2 lg:py-8 text-left focus:outline-none focus-visible:ring-4 focus-visible:ring-inset focus-visible:ring-[#C49849]"
-                >
-                  <span className="lg:order-2 text-sm tabular-nums text-[#E6C58A]">{String(i + 1).padStart(2, '0')}</span>
-                  <span className="font-display text-xl md:text-2xl lg:text-3xl font-medium whitespace-nowrap lg:[writing-mode:vertical-rl] lg:rotate-180">{tr.name}</span>
-                </button>
-              )}
-            </li>
-          )
-        })}
-      </ul>
+                )}
+              </li>
+            )
+          })}
+        </ul>
+
+        {/* Case de la photo (la photo s'y pose à la fin de l'entrée) */}
+        <div className="nzr__slot" aria-hidden="true" />
+      </div>
+
+      {/* Photo de la région ouverte : plein écran au départ, puis dans la case de droite */}
+      <div className="nzr__media">
+        <div className="nzr__photos" aria-hidden="true">
+          {regions.map((r, i) => <img key={r.id} src={photo(r.slot)} alt="" className={i === active ? 'is-active' : undefined} />)}
+        </div>
+        <div className="nzr__media-ui">
+          <span className="nzr__badge">{t('regionsLabel')}</span>
+          <span className="nzr__count">{String(active + 1).padStart(2, '0')} / {String(regions.length).padStart(2, '0')}</span>
+          <div className="nzr__caption">
+            <div>
+              <small>{tr.tagline}</small>
+              <strong>{tr.name}</strong>
+            </div>
+            <span className="nzr__big">{season(region)}</span>
+          </div>
+        </div>
+        {/* Texte au milieu de la photo plein écran (ordinateur), révélé mot à mot au défilement */}
+        <div className="nzr__statement" aria-hidden="true">
+          <span className="nzr__kicker"><i />{t('regionsKicker')}</span>
+          <p className="nzr__statement-text">
+            {t('regionsStatement').split(' ').map((w, i) => <span key={i} className="nzr__statement-w">{w}</span>)}
+          </p>
+        </div>
+      </div>
     </section>
+    {/* Défilement pendant lequel la section reste en haut (texte, puis photo qui se pose) */}
+    <div className="nzr__spacer" aria-hidden="true" />
+    </div>
   )
 }
 
-/* Voyages signature : bande de couleur, photo qui change selon le voyage survolé */
+/* Voyages signature (homeTrips.css), d'après un modèle Webflow : photo du voyage choisi en fond, titre en haut
+   à gauche et carte des voyages en bas à droite ; survoler ou choisir un voyage change la photo de fond.
+   Sur ordinateur, elle s'ouvre depuis le bouton « Parler à un expert » de la section Services (ServicesList.jsx :
+   la photo apparaît en pilule à la place du bouton et s'agrandit jusqu'à remplir l'écran). */
 function Trips() {
   const photo = usePhoto()
   const root = useRef(null)
   const t = useT('home')
-  const { lang } = useLanguage()
   const [active, setActive] = useState(0)
   const items = trips.map((trip, i) => ({ ...trip, ...t('trips')[i] }))
-  const current = items[active]
-
-  useReveal(root, '.trips-head > *, .trip-card')
-
-  // Le texte posé sur la photo se renouvelle à chaque voyage
-  useGsap(root, () => {
-    gsap.fromTo('.trip-caption > *', { y: 18, opacity: 0 }, { y: 0, opacity: 1, duration: 0.5, stagger: 0.05, ease: 'power3.out', clearProps: 'all' })
-  }, [active])
+  const words = t('tripsTitle').split(' ')
 
   return (
-    <section ref={root} className={`w-full ${SECTION_GAP} bg-[#BBD9CF] py-14 md:py-24 flex justify-center`}>
-      <div className={SECTION_WIDTH}>
-        <div className="trips-head flex flex-col lg:flex-row lg:items-end lg:justify-between gap-5 lg:gap-12">
-          <div>
-            <p className={SECTION_LABEL}><span className="w-1.5 h-1.5 rounded-full bg-[#C49849]" aria-hidden="true" />{t('tripsLabel')}</p>
-            <h2 className={`${SECTION_TITLE} max-w-4xl`}>{t('tripsTitle')}</h2>
-          </div>
-          <p className={`${SECTION_SUBTITLE} lg:max-w-md text-slate-700`}>{t('tripsText')}</p>
+    <section ref={root} className="nzx" aria-labelledby="nzx-title">
+      {/* Photo de fond (celle du voyage choisi), découpée en pilule au départ */}
+      <div className="nzx__frame" aria-hidden="true">
+        <div className="nzx__frames">
+          {items.map((trip, i) => (
+            <img key={trip.name} src={photo(trip.slot)} alt="" className={i === active ? 'is-active' : undefined} />
+          ))}
         </div>
-
-        {/* Grande photo à gauche, liste à droite : survoler un voyage change la photo */}
-        <div className="trip-card mt-10 md:mt-12 grid grid-cols-1 lg:grid-cols-[1.15fr_1fr] overflow-hidden rounded-[1.5rem] md:rounded-[2.5rem] bg-[#074636] text-white">
-          <div className="relative min-h-[360px] lg:min-h-[600px] flex flex-col justify-end overflow-hidden">
-            {items.map((trip, i) => (
-              <img key={trip.name} src={photo(trip.slot)} alt={i === active ? trip.name : ''} className={`absolute inset-0 w-full h-full object-cover transition-all duration-1000 ${i === active ? 'opacity-100 scale-100' : 'opacity-0 scale-105'}`} />
-            ))}
-            <div className="absolute inset-0 bg-gradient-to-t from-[#072a1f]/90 via-[#072a1f]/15 to-transparent" />
-            <div className="trip-caption relative p-5 md:p-8">
-              <p className="font-display text-3xl md:text-5xl font-bold tracking-tight">{current.name}</p>
-              {current.tags && (
-                <ul className="mt-4 flex flex-wrap gap-2">
-                  {current.tags.map((tag) => <li key={tag} className="rounded-full border border-white/40 bg-[#072a1f]/40 backdrop-blur-sm px-3 py-1 text-xs md:text-sm">{tag}</li>)}
-                </ul>
-              )}
-              {current.months && (
-                <p className="mt-4 flex flex-wrap items-center gap-2 text-sm text-white/85">
-                  {t('bestMonths')} {current.months.map((m) => <span key={m} className="rounded-full bg-white px-3 py-1 text-xs font-medium text-slate-900">{monthName(m, lang)}</span>)}
-                </p>
-              )}
-            </div>
-          </div>
-
-          <ul className="flex flex-col p-3 md:p-5 lg:p-6">
-            {items.map((trip, i) => (
-              <li key={trip.name} className="flex-1 border-b border-white/15 last:border-b-0">
-                <A
-                  href={quoteHref('trip', trip.name)}
-                  onMouseEnter={() => setActive(i)}
-                  onFocus={() => setActive(i)}
-                  className={`group h-full flex items-center gap-4 md:gap-5 rounded-2xl p-3 md:p-4 transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-[#E6C58A] ${i === active ? 'bg-white/10' : 'hover:bg-white/5'}`}
-                >
-                  <img src={photo(trip.slot)} alt="" className="w-20 h-20 md:w-28 md:h-28 shrink-0 rounded-xl object-cover" />
-                  <span className="min-w-0 flex-1">
-                    <span className="inline-block bg-[#C49849] text-xs font-medium px-2.5 py-1 rounded-sm">{t('days', { count: trip.days })}</span>
-                    <span className="mt-2 block text-lg md:text-2xl font-medium leading-snug">{trip.name}</span>
-                    <span className="mt-1 block text-sm leading-relaxed text-white/75">{trip.text}</span>
-                  </span>
-                  <span aria-hidden="true" className={`hidden sm:flex shrink-0 w-10 h-10 rounded-full items-center justify-center transition-all ${i === active ? 'bg-[#C49849] text-white' : 'border border-white/30'} group-hover:translate-x-1`}>
-                    <ArrowRight className="w-4 h-4" />
-                  </span>
-                </A>
-              </li>
-            ))}
-            <li className="px-3 md:px-4 pt-4 text-sm text-white/75">{t('freeQuote')}</li>
-          </ul>
-        </div>
+        <span className="nzx__shade" />
       </div>
-    </section>
-  )
-}
 
-/* Services : grande bande verte, titre fixe à gauche et liste en grandes lignes à droite */
-function Services() {
-  const root = useRef(null)
-  const t = useT('home')
-  const { isHidden } = useSitePages()
-
-  useReveal(root, '.services-head > *, .service-item')
-
-  return (
-    <section ref={root} className={`w-full ${GREEN} text-white py-14 md:py-24 flex justify-center`}>
-      <div className={`${SECTION_WIDTH} grid grid-cols-1 lg:grid-cols-[1fr_1.4fr] gap-8 lg:gap-20`}>
-        <div className="services-head lg:sticky lg:top-8 self-start">
-          <p className={`${SECTION_LABEL} text-white/80`}><span className="w-1.5 h-1.5 rounded-full bg-[#C49849]" aria-hidden="true" />{t('servicesLabel')}</p>
-          <h2 className={ON_IMAGE_TITLE}>{t('servicesTitle')}</h2>
-          <p className="mt-4 text-sm sm:text-base md:text-lg text-white/80 leading-relaxed max-w-md">{t('servicesText')}</p>
+      <div className="nzx__content">
+        <div className="nzx__head">
+          <p className="nzx__label"><span aria-hidden="true" />{t('tripsLabel')}</p>
+          <h2 id="nzx-title" className="nzx__title" aria-label={t('tripsTitle')}>
+            {words.map((w, i) => (
+              <React.Fragment key={i}><span className="nzx__w" aria-hidden="true"><span>{w}</span></span>{i < words.length - 1 ? ' ' : null}</React.Fragment>
+            ))}
+          </h2>
+          <A href="/circuits" className="nzx__all">{t('tripsAll')}<ArrowUpRight aria-hidden="true" /></A>
         </div>
 
-        <ul className="border-t border-white/20">
-          {services.map((s, i) => {
-            if (isHidden(s.href)) return null
-            const ServiceIcon = s.icon
-            return (
-              <li key={s.title} className="service-item border-b border-white/20">
-                <A href={s.href} className="group flex items-center gap-4 md:gap-6 py-4 md:py-5 transition-all duration-300 hover:pl-3 hover:text-[#E6C58A] focus:outline-none focus-visible:ring-2 focus-visible:ring-[#E6C58A]">
-                  <span className="shrink-0 w-11 h-11 md:w-14 md:h-14 rounded-full bg-[#C49849] flex items-center justify-center text-white">
-                    <ServiceIcon className="w-5 h-5 md:w-6 md:h-6" strokeWidth={1.8} aria-hidden="true" />
-                  </span>
-                  <span className="flex-1 text-xl md:text-3xl font-medium tracking-tight">{t('services')[i]}</span>
-                  <ArrowRight className="w-5 h-5 md:w-6 md:h-6 shrink-0 transition-transform group-hover:translate-x-1.5" aria-hidden="true" />
-                </A>
-              </li>
-            )
-          })}
+        {/* Carte des voyages : une ligne par voyage */}
+        <ul className="nzx__card">
+          {items.map((trip, i) => (
+            <li key={trip.name}>
+              <A
+                href={quoteHref('trip', trip.name)}
+                onMouseEnter={() => setActive(i)}
+                onFocus={() => setActive(i)}
+                className={`nzx__row${i === active ? ' is-active' : ''}`}
+              >
+                <span className="nzx__name">
+                  {trip.name}
+                  <small>{t('strip.days', { days: trip.days, nights: trip.days - 1 })}</small>
+                </span>
+                <span className="nzx__text">{trip.text}</span>
+                <span className="nzx__go" aria-hidden="true"><ArrowUpRight /></span>
+              </A>
+            </li>
+          ))}
         </ul>
       </div>
     </section>
   )
 }
 
-/* Appel final : photo sur toute la largeur, grand titre et photos inclinées qui flottent au défilement */
+
+/* Appel final : bandeau « Vous ne savez pas par où commencer ? » (badge qui tourne, texte, bouton vers Contact) */
 function FinalCta() {
-  const photo = usePhoto()
   const root = useRef(null)
   const t = useT('home')
-  const floats = [
-    { slot: 'home.ways.2', cls: 'left-[4%] top-[16%] w-[15vw] max-w-[230px] -rotate-6', move: -50 },
-    { slot: 'home.trips.1', cls: 'right-[5%] top-[6%] w-[13vw] max-w-[200px] rotate-6', move: -40 },
-    { slot: 'home.ways.4', cls: 'right-[13%] bottom-[6%] w-[12vw] max-w-[190px] -rotate-3', move: 40 },
-  ]
 
   useGsap(root, () => {
-    const whileVisible = { trigger: root.current, start: 'top bottom', end: 'bottom top', scrub: 0.6 }
-    gsap.fromTo('.cta-bg', { scale: 1.15 }, { scale: 1, ease: 'none', scrollTrigger: whileVisible })
-    gsap.utils.toArray('.cta-float').forEach((el, i) => {
-      gsap.fromTo(el, { y: -floats[i].move }, { y: floats[i].move, ease: 'none', scrollTrigger: whileVisible })
-    })
-    gsap.from('.cta-content > *', {
-      y: 40, opacity: 0, duration: 0.8, stagger: 0.12, ease: 'power3.out', clearProps: 'all',
-      scrollTrigger: { trigger: root.current, start: 'top 70%', once: true },
-    })
+    const ease = 'expo.out'
+    gsap.timeline({ scrollTrigger: { trigger: root.current, start: 'top 85%', once: true } })
+      .from('.nzw__help', { y: 50, opacity: 0, duration: 1.1, ease })
+      .from('.nzw__help > *', { y: 20, opacity: 0, duration: 0.8, stagger: 0.1, ease }, 0.25)
   })
 
   return (
-    <section ref={root} className={`w-full ${SECTION_GAP} relative overflow-hidden text-white min-h-[560px] md:min-h-[720px] flex items-center justify-center`}>
-      <SiteMedia slot="home.cta" alt="" className="cta-bg absolute inset-0 w-full h-full object-cover" />
-      <div className="absolute inset-0 bg-[#072a1f]/65" />
-      {floats.map((f) => (
-        <div key={f.slot} aria-hidden="true" className={`cta-float absolute hidden lg:block ${f.cls}`}>
-          <img src={photo(f.slot)} alt="" className="w-full aspect-[4/5] object-cover rounded-xl border-[6px] border-white shadow-2xl" />
+    <section ref={root} className="nzk" aria-labelledby="nzk-title">
+      <div className="nzw__help">
+        <TalkBadge />
+        <div className="nzw__help-text">
+          <h2 id="nzk-title" className="nzw__help-title">{t('notSure')}</h2>
+          <p className="nzw__help-sub">{t('notSureText')}</p>
         </div>
-      ))}
-      <div className="cta-content relative w-[90vw] max-w-4xl py-16 text-center flex flex-col items-center">
-        <h2 className="text-[clamp(2.25rem,6vw,5.5rem)] font-bold uppercase leading-[1.02] tracking-tight [text-wrap:balance]">{t('ctaTitle')}</h2>
-        <p className="mt-5 max-w-2xl text-sm md:text-lg text-white/90">{t('ctaText')}</p>
-        <div className="mt-8 flex flex-wrap justify-center gap-3">
-          <A href="/contact?type=quote" className={`${BTN} ${GOLD} text-white`}>{t('ctaQuote')}</A>
-          <A href="/tailor-made" className={`${BTN} border border-white/60 hover:bg-white/10`}>{t('ctaDesign')}</A>
-        </div>
+        <A href="/contact" className="nzw__btn">{t('talkExpert')}<ArrowUpRight aria-hidden="true" /></A>
       </div>
     </section>
   )
@@ -542,6 +486,7 @@ function FinalCta() {
 /* ================= Page ================= */
 
 function Home() {
+  const photo = usePhoto()
   // Preloader au premier affichage, puis entrée du hero
   const [ready, setReady] = useState(() => !shouldPlayPreloader())
 
@@ -562,12 +507,16 @@ function Home() {
       <main className="w-full overflow-x-clip bg-[#D5E8E2] flex flex-col items-center">
         <Hero ready={ready} />
         <TripStrip />
-        <Ways />
-        <Intro />
+        <WaysOverview ways={ways} />
+        <AboutUs regions={regions.length} />
+        {/* Voyages signature s'ouvre depuis le bouton de fin des Services */}
+        <ServicesList services={services} ctaImage={photo(trips[0].slot)}>
+          <Trips />
+        </ServicesList>
         <Regions />
-        <Trips />
-        <Services />
-        <Testimonials className={`${SECTION_WIDTH} ${SECTION_GAP}`} />
+        <Intro />
+        {/* Même largeur et même écart que les autres sections */}
+        <Testimonials className="w-[90vw] mt-[clamp(70px,8vw,140px)]" />
         <FinalCta />
       </main>
       <Footer />

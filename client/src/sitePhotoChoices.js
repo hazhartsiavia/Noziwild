@@ -3,7 +3,6 @@
 import p_amber_mountain_waterfall from './assets/images/site/amber-mountain-waterfall.jpg'
 import p_ankarana_bridge from './assets/images/site/ankarana-bridge.jpg'
 import p_ankarana_chameleon from './assets/images/site/ankarana-chameleon.jpg'
-import p_bay_islands_view from './assets/images/site/bay-islands-view.jpg'
 import p_bay_of_pigeons from './assets/images/site/bay-of-pigeons.jpg'
 import p_black_lemur from './assets/images/site/black-lemur.jpg'
 import p_boat_to_nosy_iranja from './assets/images/site/boat-to-nosy-iranja.jpg'
@@ -60,7 +59,6 @@ export const PHOTO_CHOICES = {
   'home.trips.1': p_ring_tailed_lemur,
   'home.trips.2': p_nosy_iranja_aerial_2,
   'home.trips.3': p_ankarana_bridge,
-  'home.cta': p_bay_islands_view,
   'region.north': p_nosy_iranja_aerial,
   'region.north.1': p_ramena_beach_aerial,
   'region.north.2': p_nosy_iranja_sandbar_drone,

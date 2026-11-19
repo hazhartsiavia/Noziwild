@@ -59,6 +59,35 @@
     "label": "Circuitos y excursiones",
     "days": "{days} días / {nights} noches"
   },
+  "overview": {
+    "pill": "Nuestras fórmulas",
+    "previous": "Fórmula anterior",
+    "next": "Fórmula siguiente",
+    "durations": [
+      "Varios días",
+      "Un día",
+      "Semanas",
+      "A tu ritmo"
+    ],
+    "story": "Nuestra historia"
+  },
+  "aboutUs": {
+    "label": "Sobre nosotros",
+    "headline": "Vivimos en Madagascar y organizamos cada viaje nosotros mismos, de la primera idea a la última puesta de sol, **para que solo tengas que disfrutar del viaje.**",
+    "cta": "Más sobre nosotros",
+    "stats": {
+      "destinations": "Destinos por descubrir",
+      "rating": {
+        "title": "Valoración media de los viajeros",
+        "text": "Según las opiniones que dejan nuestros viajeros después de su viaje."
+      },
+      "trips": {
+        "title": "Circuitos y excursiones",
+        "text": "Rutas de varios días y salidas de un día, para reservar tal cual o adaptar."
+      },
+      "regions": "Regiones de Madagascar"
+    }
+  },
   "talkBadge": "Hable con un experto en viajes / Hable con un experto en viajes /",
   "heroAlt": "Playa de arena blanca con bungalós, piraguas y una laguna turquesa en Madagascar",
   "heroLabel": "Su viaje empieza aquí",
@@ -125,6 +154,8 @@
   "regionsLabel": "Destinos",
   "regionsTitle": "Cinco regiones, una isla",
   "regionsText": "Madagascar es un continente en miniatura. Elija una región para ver por qué es famosa y cuándo ir.",
+  "regionsKicker": "Exploremos juntos nuestros destinos",
+  "regionsStatement": "Bahías esmeralda en el norte, arrozales en terrazas en las tierras altas, baobabs en el oeste, cañones en el sur y selva tropical en el este.",
   "regionsTabs": "Regiones",
   "bestFrom": "Mejor de {from} a {to}",
   "mustSee": "Lugares imprescindibles",
@@ -185,6 +216,8 @@
   "tripsLabel": "Viajes de autor",
   "tripsTitle": "Los viajes que nos encanta proponerle",
   "tripsText": "Puntos de partida ya preparados. Adaptamos cada uno a sus fechas, su ritmo y su presupuesto.",
+  "tripsAll": "Ver todos los circuitos",
+  "tripsQuote": "Presupuesto gratis",
   "days": "{count} días",
   "bestMonths": "Mejores meses:",
   "freeQuote": "Presupuesto gratuito y sin compromiso",
@@ -210,6 +243,7 @@
   "servicesLabel": "Servicios",
   "servicesTitle": "Nos ocupamos de todo",
   "servicesText": "Reserve todo el viaje con nosotros o solo la parte que necesite. Cada servicio lo prestan nuestro equipo y socios locales de confianza.",
+  "servicesCount": "{count} ofertas",
   "services": [
     "Alojamiento",
     "Transporte",

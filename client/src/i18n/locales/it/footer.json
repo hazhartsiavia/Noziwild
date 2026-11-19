@@ -1,13 +1,9 @@
 {
   "home": "Home Noziwild",
   "tagline": "Noziwild progetta viaggi indimenticabili in Madagascar, con esperti locali, alloggi selezionati e una prenotazione semplice.",
-  "importantLinks": "Link utili",
+  "promise": "Il vostro viaggio in Madagascar, organizzato con voi dalla prima idea all'ultimo giorno.",
+  "backToTop": "Torna su",
   "links": {
-    "home": "Home",
-    "about": "Chi siamo",
-    "circuits": "Tour",
-    "destinations": "Destinazioni",
     "contact": "Contatti"
-  },
-  "promise": "Il vostro viaggio in Madagascar, organizzato con voi dalla prima idea all'ultimo giorno."
+  }
 }

@@ -1,0 +1,205 @@
+/* Bas de l'accueil (Home.jsx → Intro « Pourquoi Noziwild » et FinalCta), même style que les sections du haut :
+   en-tête étiquette + titre + texte + trait, DM Sans, vert forêt et or, cartes arrondies, boutons en pilule. */
+
+/* =========================== Pourquoi Noziwild =========================== */
+
+.nzw {
+  width: 90vw;
+  margin-top: clamp(70px, 8vw, 140px);
+  color: #0c3e2e;
+}
+
+@media (min-width: 1280px) { .nzw { width: 95vw; max-width: 95vw; } }
+
+/* Enveloppe (gérée par React) : toute la largeur, section centrée ; le bloc vide sert au défilement */
+.nzw-pin { display: flex; flex-direction: column; align-items: center; width: 100%; }
+.nzw__spacer { display: none; }
+
+/* Ordinateur : la section tient l'écran et y reste (sticky) le temps de l'animation au défilement (Home.jsx → Intro) */
+@media (min-width: 1024px) and (prefers-reduced-motion: no-preference) {
+  .nzw-pin { margin-top: clamp(30px, 3vw, 60px); }
+  .nzw {
+    position: sticky;
+    top: 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    min-height: 100vh;
+    margin-top: 0;
+  }
+  .nzw__spacer { display: block; flex: none; height: 100vh; }
+  .nzw__card { will-change: transform; }
+}
+
+.nzw__label {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin: 0;
+  font-size: 16px;
+  font-weight: 500;
+  letter-spacing: .04em;
+  text-transform: uppercase;
+}
+
+.nzw__label svg { width: 18px; height: 18px; color: #C49849; }
+
+.nzw__head {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: clamp(24px, 4vw, 80px);
+  margin-top: clamp(14px, 1.4vw, 24px);
+}
+
+.nzw__title {
+  max-width: 16em;
+  margin: 0;
+  font-size: clamp(36px, 3vw, 58px);
+  font-weight: 400;
+  line-height: 1.15;
+  letter-spacing: -.5px;
+}
+
+.nzw__intro {
+  max-width: 30em;
+  margin: 0;
+  font-size: clamp(17px, 1.2vw, 21px);
+  line-height: 1.5;
+}
+
+.nzw__rule {
+  display: block;
+  height: 1px;
+  margin-top: clamp(24px, 2.4vw, 40px);
+  background: rgba(12, 62, 46, .16);
+}
+
+/* Engagements : quatre cartes, comme les cartes de chiffres de « À propos » */
+.nzw__cards {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: clamp(12px, 1.1vw, 20px);
+  margin: clamp(36px, 3.6vw, 64px) 0 0;
+  padding: 0;
+  list-style: none;
+}
+
+.nzw__card {
+  display: flex;
+  flex-direction: column;
+  padding: clamp(22px, 1.8vw, 32px);
+  border: 1px solid rgba(12, 62, 46, .16);
+  border-radius: 18px;
+  background: rgba(255, 255, 255, .55);
+}
+
+.nzw__card-top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.nzw__icon {
+  display: grid;
+  place-items: center;
+  width: 52px;
+  height: 52px;
+  border-radius: 50%;
+  background: #C49849;
+  color: #fff;
+}
+
+.nzw__icon svg { width: 24px; height: 24px; }
+
+.nzw__num {
+  font-size: 15px;
+  font-weight: 500;
+  color: #8f9893;
+  font-variant-numeric: tabular-nums;
+}
+
+.nzw__card-title {
+  margin: clamp(28px, 3vw, 56px) 0 0;
+  font-size: clamp(22px, 1.7vw, 30px);
+  font-weight: 400;
+  line-height: 1.2;
+  letter-spacing: -.3px;
+}
+
+.nzw__card-text {
+  margin: 12px 0 0;
+  font-size: clamp(16px, 1.1vw, 18px);
+  line-height: 1.55;
+  color: #55625c;
+}
+
+/* Bandeau « Vous ne savez pas par où commencer ? » : fond uni comme les cartes (pas de dégradé) */
+.nzw__help {
+  display: flex;
+  align-items: center;
+  gap: clamp(20px, 2.4vw, 44px);
+  margin-top: clamp(12px, 1.1vw, 20px);
+  padding: clamp(24px, 2.4vw, 40px) clamp(24px, 2.6vw, 48px);
+  border-radius: 18px;
+  border: 1px solid rgba(12, 62, 46, .16);
+  background: rgba(255, 255, 255, .55);
+}
+
+.nzw__help-text { flex: 1; min-width: 0; }
+
+.nzw__help-title {
+  margin: 0;
+  line-height: 1.2;
+  font-size: clamp(22px, 1.9vw, 34px);
+  font-weight: 400;
+  letter-spacing: -.3px;
+}
+
+.nzw__help-sub {
+  margin: 6px 0 0;
+  font-size: clamp(16px, 1.1vw, 18px);
+  color: #55625c;
+}
+
+.nzw__btn {
+  display: inline-flex;
+  flex: none;
+  align-items: center;
+  gap: 10px;
+  padding: 16px 28px;
+  border-radius: 999px;
+  background: #0c3e2e;
+  color: #fff;
+  font-size: 17px;
+  font-weight: 600;
+  transition: background .35s, transform .35s;
+}
+
+.nzw__btn svg { width: 18px; height: 18px; color: #E6C58A; transition: transform .45s cubic-bezier(.76, 0, .24, 1); }
+.nzw__btn:hover { background: #074636; transform: translateY(-2px); }
+.nzw__btn:hover svg { transform: rotate(45deg); }
+.nzw__btn:focus-visible { outline: 2px solid #C49849; outline-offset: 3px; }
+
+@media (max-width: 1023px) {
+  .nzw__head { flex-direction: column; align-items: flex-start; }
+  .nzw__cards { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+}
+
+@media (max-width: 640px) {
+  .nzw__cards { grid-template-columns: 1fr; }
+  .nzw__help { flex-direction: column; align-items: flex-start; }
+}
+
+/* =========================== Appel final =========================== */
+/* Le bandeau « Vous ne savez pas par où commencer ? » (styles .nzw__help ci-dessus), seul en bas de page */
+
+.nzk {
+  width: 90vw;
+  margin-top: clamp(70px, 8vw, 140px);
+  color: #0c3e2e;
+}
+
+@media (min-width: 1280px) { .nzk { width: 95vw; max-width: 95vw; } }
+
+.nzk .nzw__help { margin-top: 0; }

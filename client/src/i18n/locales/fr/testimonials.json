@@ -1,12 +1,13 @@
 {
-  "title": "Aimé des voyageurs",
-  "trustLabel": "Confiance des voyageurs",
-  "average": "Note moyenne des voyageurs",
-  "from": "Des voyageurs du monde entier",
-  "text": "Ce que disent les voyageurs après avoir découvert Madagascar avec nous.",
+  "headline": "Ce que disent nos voyageurs.",
   "ratingLabel": "Note : {rating} sur 5",
-  "videoLabel": "En vidéo",
-  "videoTitle": "Ils racontent leur voyage",
   "play": "Lire la vidéo de {name}",
-  "others": "Autres vidéos"
+  "pauseVideo": "Mettre la vidéo en pause",
+  "playVideo": "Lire la vidéo",
+  "soundOn": "Activer le son",
+  "soundOff": "Couper le son",
+  "ctaTitle": "Envie de partir ?",
+  "ctaButton": "Créer mon voyage",
+  "previous": "Avis précédent",
+  "next": "Avis suivant"
 }

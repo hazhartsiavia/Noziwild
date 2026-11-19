@@ -1,12 +1,13 @@
 {
-  "title": "Loved By Travelers",
-  "trustLabel": "Traveler trust",
-  "average": "Average traveler rating",
-  "from": "Travelers from around the world",
-  "text": "What travelers say after exploring Madagascar with us.",
+  "headline": "See what our travelers say.",
   "ratingLabel": "Rated {rating} out of 5",
-  "videoLabel": "On video",
-  "videoTitle": "In their own words",
   "play": "Play {name}'s video",
-  "others": "More videos"
+  "pauseVideo": "Pause the video",
+  "playVideo": "Play the video",
+  "soundOn": "Turn sound on",
+  "soundOff": "Turn sound off",
+  "ctaTitle": "Ready to go?",
+  "ctaButton": "Plan my trip",
+  "previous": "Previous review",
+  "next": "Next review"
 }

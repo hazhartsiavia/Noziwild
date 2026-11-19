@@ -1,12 +1,13 @@
 {
-  "title": "Los viajeros nos adoran",
-  "trustLabel": "La confianza de los viajeros",
-  "average": "Valoración media de los viajeros",
-  "from": "Viajeros de todo el mundo",
-  "text": "Lo que dicen los viajeros después de descubrir Madagascar con nosotros.",
+  "headline": "Lo que dicen nuestros viajeros.",
   "ratingLabel": "Valoración: {rating} de 5",
-  "videoLabel": "En vídeo",
-  "videoTitle": "Cuentan su viaje",
   "play": "Ver el vídeo de {name}",
-  "others": "Más vídeos"
+  "pauseVideo": "Pausar el vídeo",
+  "playVideo": "Reproducir el vídeo",
+  "soundOn": "Activar el sonido",
+  "soundOff": "Silenciar",
+  "ctaTitle": "¿Ganas de viajar?",
+  "ctaButton": "Crear mi viaje",
+  "previous": "Opinión anterior",
+  "next": "Opinión siguiente"
 }

@@ -1,0 +1,234 @@
+/* « À propos de nous » sur l'accueil (AboutUs.jsx), d'après un modèle Webflow.
+   Police du site (DM Sans), vert forêt et or ; tailles reprises de « Votre façon de voyager ». */
+
+.nza {
+  --nza-ink: #0c3e2e;
+  --nza-grey: #55625c;
+  --nza-line: rgba(12, 62, 46, .16);
+  --nza-card: rgba(255, 255, 255, .55);
+  --nza-radius: 18px;
+  width: 90vw;
+  margin-top: clamp(70px, 8vw, 140px);
+  color: var(--nza-ink);
+}
+
+@media (min-width: 1280px) { .nza { width: 95vw; max-width: 95vw; } }
+
+/* ---------- en-tête : étiquette, « Noziwild · Madagascar », trait ---------- */
+
+.nza__top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 20px;
+}
+
+.nza__label,
+.nza__handle {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin: 0;
+  font-size: 16px;
+  font-weight: 500;
+  letter-spacing: .04em;
+  text-transform: uppercase;
+}
+
+.nza__label svg { width: 18px; height: 18px; color: #C49849; }
+
+.nza__rule {
+  display: block;
+  height: 1px;
+  margin-top: 18px;
+  background: var(--nza-line);
+}
+
+/* ---------- grande phrase et bouton ---------- */
+
+.nza__statement {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: clamp(24px, 4vw, 80px);
+  margin-top: clamp(36px, 4vw, 70px);
+}
+
+.nza__headline {
+  max-width: 24em;
+  margin: 0;
+  font-size: clamp(36px, 3vw, 58px);
+  font-weight: 400;
+  line-height: 1.18;
+  letter-spacing: -.5px;
+}
+
+/* Un masque par mot (animation GSAP) ; la fin de la phrase en gras */
+.nza__line {
+  display: inline-block;
+  overflow: hidden;
+  vertical-align: top;
+  padding-bottom: .1em;
+  margin-bottom: -.1em;
+}
+
+.nza__line > span { display: inline-block; }
+.nza__line.is-bold { font-weight: 700; }
+
+.nza__cta {
+  display: inline-flex;
+  flex: none;
+  align-items: center;
+  gap: 12px;
+  padding: 18px 28px;
+  border-radius: 8px;
+  background: var(--nza-ink);
+  color: #fff;
+  font-size: 18px;
+  font-weight: 600;
+  transition: background .35s;
+}
+
+.nza__cta svg { width: 20px; height: 20px; color: #E6C58A; transition: transform .45s cubic-bezier(.22, 1, .36, 1); }
+.nza__cta:hover { background: #074636; }
+.nza__cta:hover svg { transform: translateX(4px); }
+.nza__cta:focus-visible { outline: 2px solid #C49849; outline-offset: 3px; }
+
+/* ---------- photo + cartes de chiffres ---------- */
+
+.nza__grid {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 2.15fr);
+  gap: clamp(28px, 6vw, 110px);
+  margin-top: clamp(50px, 5.6vw, 100px);
+}
+
+.nza__photo {
+  overflow: hidden;
+  min-height: clamp(380px, 32vw, 600px);
+  border-radius: var(--nza-radius);
+  background: #BBD9CF;
+}
+
+.nza__photo img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.nza__stats {
+  display: grid;
+  grid-auto-columns: minmax(0, 1fr);
+  grid-auto-flow: column;
+  gap: clamp(12px, 1.1vw, 20px);
+}
+
+.nza__stats-col {
+  display: flex;
+  flex-direction: column;
+  gap: clamp(12px, 1.1vw, 20px);
+}
+
+.nza__stat {
+  display: flex;
+  padding: clamp(20px, 1.6vw, 30px);
+  border: 1px solid var(--nza-line);
+  border-radius: var(--nza-radius);
+  background: var(--nza-card);
+}
+
+/* Petite carte : chiffre à gauche, libellé à droite */
+.nza__stat--small {
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+}
+
+/* Grande carte : chiffre en haut à droite, trait, titre et texte en bas */
+.nza__stat--tall {
+  flex: 1;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: clamp(40px, 6vw, 120px);
+}
+
+.nza__stat--tall .nza__value { align-self: flex-end; }
+
+.nza__value {
+  display: flex;
+  align-items: baseline;
+  gap: 6px;
+  margin: 0;
+  font-size: clamp(40px, 3.4vw, 64px);
+  font-weight: 600;
+  line-height: 1;
+  letter-spacing: -.02em;
+  font-variant-numeric: tabular-nums;
+}
+
+.nza__value small { font-size: .4em; font-weight: 500; color: var(--nza-grey); }
+
+/* Compteur : chaque chiffre est une colonne 0-9, masquée sur une hauteur de chiffre */
+.nza__num { display: inline-flex; }
+
+.nza__digit {
+  display: inline-block;
+  overflow: hidden;
+  height: 1em;
+  line-height: 1;
+}
+
+.nza__reel { display: flex; flex-direction: column; }
+.nza__reel > span { height: 1em; }
+
+.nza__stat-label {
+  margin: 0;
+  max-width: 11em;
+  font-size: 18px;
+  line-height: 1.35;
+  text-align: right;
+}
+
+.nza__stat-body {
+  padding-top: clamp(16px, 1.4vw, 24px);
+  border-top: 1px solid var(--nza-line);
+}
+
+.nza__stat-title {
+  margin: 0;
+  font-size: 20px;
+  font-weight: 500;
+}
+
+.nza__stat-text {
+  margin: 10px 0 0;
+  font-size: clamp(16px, 1.1vw, 18px);
+  line-height: 1.5;
+  color: var(--nza-grey);
+}
+
+/* ---------- tablette et téléphone ---------- */
+
+@media (max-width: 1023px) {
+  .nza__statement { flex-direction: column; align-items: flex-start; }
+  .nza__grid { grid-template-columns: 1fr; }
+  .nza__photo { min-height: 0; aspect-ratio: 16 / 10; }
+}
+
+@media (max-width: 640px) {
+  .nza__handle { display: none; }
+  .nza__stats { grid-auto-flow: row; grid-template-columns: 1fr; }
+  .nza__stat--tall { gap: 36px; }
+}
+
+/* Chaque colonne est posée sur son chiffre : le nombre est juste même si l'animation ne tourne pas.
+   GSAP la fait partir de 0 quand la carte arrive à l'écran. */
+.nza__reel[data-digit="1"] { transform: translateY(-10%); }
+.nza__reel[data-digit="2"] { transform: translateY(-20%); }
+.nza__reel[data-digit="3"] { transform: translateY(-30%); }
+.nza__reel[data-digit="4"] { transform: translateY(-40%); }
+.nza__reel[data-digit="5"] { transform: translateY(-50%); }
+.nza__reel[data-digit="6"] { transform: translateY(-60%); }
+.nza__reel[data-digit="7"] { transform: translateY(-70%); }
+.nza__reel[data-digit="8"] { transform: translateY(-80%); }
+.nza__reel[data-digit="9"] { transform: translateY(-90%); }

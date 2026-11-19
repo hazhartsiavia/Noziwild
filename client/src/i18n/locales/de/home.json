@@ -59,6 +59,35 @@
     "label": "Rundreisen und Ausflüge",
     "days": "{days} Tage / {nights} Nächte"
   },
+  "overview": {
+    "pill": "Unsere Angebote",
+    "previous": "Vorheriges Angebot",
+    "next": "Nächstes Angebot",
+    "durations": [
+      "Mehrere Tage",
+      "Ein Tag",
+      "Wochen",
+      "In Ihrem Tempo"
+    ],
+    "story": "Unsere Geschichte"
+  },
+  "aboutUs": {
+    "label": "Über uns",
+    "headline": "Wir leben auf Madagaskar und organisieren jede Reise selbst, von der ersten Idee bis zum letzten Sonnenuntergang, **damit Sie die Reise einfach genießen können.**",
+    "cta": "Mehr über uns",
+    "stats": {
+      "destinations": "Reiseziele zum Entdecken",
+      "rating": {
+        "title": "Durchschnittliche Bewertung",
+        "text": "Nach den Bewertungen, die unsere Reisenden nach ihrer Reise abgeben."
+      },
+      "trips": {
+        "title": "Rundreisen und Ausflüge",
+        "text": "Mehrtägige Routen und Tagesausflüge, so buchbar oder an Sie angepasst."
+      },
+      "regions": "Regionen Madagaskars"
+    }
+  },
   "talkBadge": "Sprechen Sie mit einem Reiseexperten / Sprechen Sie mit einem Reiseexperten /",
   "heroAlt": "Weißer Sandstrand mit Bungalows, Einbäumen und einer türkisfarbenen Lagune in Madagaskar",
   "heroLabel": "Hier beginnt Ihre Reise",
@@ -125,6 +154,8 @@
   "regionsLabel": "Reiseziele",
   "regionsTitle": "Fünf Regionen, eine Insel",
   "regionsText": "Madagaskar ist ein Kontinent im Kleinformat. Wählen Sie eine Region, um zu sehen, wofür sie bekannt ist und wann sich die Reise lohnt.",
+  "regionsKicker": "Entdecken wir gemeinsam unsere Reiseziele",
+  "regionsStatement": "Smaragdgrüne Buchten im Norden, Reisterrassen im Hochland, Baobabs im Westen, Canyons im Süden und Regenwald im Osten.",
   "regionsTabs": "Regionen",
   "bestFrom": "Am besten von {from} bis {to}",
   "mustSee": "Sehenswerte Orte",
@@ -185,6 +216,8 @@
   "tripsLabel": "Unsere Lieblingsreisen",
   "tripsTitle": "Reisen, auf die wir Sie gern schicken",
   "tripsText": "Fertige Ausgangspunkte. Wir passen jede Reise an Ihre Daten, Ihr Tempo und Ihr Budget an.",
+  "tripsAll": "Alle Rundreisen ansehen",
+  "tripsQuote": "Kostenloses Angebot",
   "days": "{count} Tage",
   "bestMonths": "Beste Monate:",
   "freeQuote": "Kostenloses, unverbindliches Angebot",
@@ -210,6 +243,7 @@
   "servicesLabel": "Leistungen",
   "servicesTitle": "Wir kümmern uns um alles",
   "servicesText": "Buchen Sie die ganze Reise bei uns oder nur den Teil, den Sie brauchen. Jede Leistung wird von unserem Team und vertrauenswürdigen lokalen Partnern erbracht.",
+  "servicesCount": "{count} Angebote",
   "services": [
     "Unterkünfte",
     "Transport",

@@ -1,13 +1,9 @@
 {
   "home": "Noziwild home",
   "tagline": "Noziwild designs unforgettable trips across Madagascar, with local experts, handpicked stays and easy booking.",
-  "importantLinks": "Important Links",
+  "promise": "Your trip to Madagascar, planned with you from the first idea to the last day.",
+  "backToTop": "Back to top",
   "links": {
-    "home": "Home",
-    "about": "About",
-    "circuits": "Circuits",
-    "destinations": "Destinations",
     "contact": "Contact"
-  },
-  "promise": "Your trip to Madagascar, planned with you from the first idea to the last day."
+  }
 }

@@ -1,60 +1,357 @@
-/* Section Témoignages. Par défaut (écran tactile, animations réduites) : liste à faire glisser au doigt. */
-.tm-viewport {
-  overflow-x: auto;
-  scroll-snap-type: x proximity;
-  scrollbar-width: none;
+/* Section Témoignages (Testimonials.jsx) : vidéo à gauche avec le titre dans un coin découpé,
+   bandeau « Envie de partir ? » dessous, avis qui défilent vers le haut à droite.
+   Couleurs Noziwild : fond menthe de la page, dégradé crème doré → menthe, vert forêt, or. */
+
+.nzt {
+  --nzt-bg: #D5E8E2;          /* fond de la page : remplit le coin découpé du titre */
+  --nzt-ink: #0c3e2e;
+  --nzt-gold: #C49849;
+  --nzt-soft: rgba(255, 255, 255, .55);   /* fond uni des cartes, comme les autres sections (pas de dégradé) */
+  --nzt-line: rgba(12, 62, 46, .16);
+  --nzt-radius: 28px;
+  --nzt-corner: 28px;         /* rayon des coins inversés autour du titre */
+  --nzt-gap: clamp(16px, 1.6vw, 28px);
+  display: grid;
+  grid-template-columns: minmax(0, 1.42fr) minmax(0, 1fr);
+  gap: var(--nzt-gap);
+  color: var(--nzt-ink);
 }
 
-.tm-column {
-  scroll-snap-align: start;
+/* Même largeur que la section « Votre façon de voyager » */
+@media (min-width: 1280px) { .nzt { width: 95vw; max-width: 95vw; } }
+
+/* ---------- gauche ---------- */
+
+.nzt__main {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: var(--nzt-gap);
+  min-width: 0;
 }
 
-.tm-copy {
-  display: none;
+.nzt__media {
+  position: relative;
+  flex: 1;
+  /* hauteur totale (vidéo + bandeau) proche de la colonne des avis */
+  min-height: clamp(400px, 31vw, 520px);
+  overflow: hidden;
+  border-radius: var(--nzt-radius);
+  background: #072a1f;
+  isolation: isolate;
 }
 
-/* Avec une souris : défilement continu, en pause au survol, et l'avis survolé passe en vert */
-@media (hover: hover) and (prefers-reduced-motion: no-preference) {
-  .tm-viewport {
-    overflow: hidden;
-    mask-image: linear-gradient(to right, transparent, #000 7%, #000 93%, transparent);
-  }
-
-  .tm-copy {
-    display: flex;
-  }
-
-  .tm-track {
-    animation: tm-scroll var(--tm-duration) linear infinite;
-  }
-
-  .tm-viewport:hover .tm-track {
-    animation-play-state: paused;
-  }
-
-  .tm-part,
-  .tm-part blockquote,
-  .tm-name,
-  .tm-origin {
-    transition: background-color 0.35s ease, color 0.35s ease;
-  }
-
-  .tm-column:hover .tm-part {
-    background-color: #074636;
-  }
-
-  .tm-column:hover blockquote,
-  .tm-column:hover .tm-name {
-    color: #fff;
-  }
-
-  .tm-column:hover .tm-origin {
-    color: rgb(255 255 255 / 0.7);
-  }
+.nzt__photo {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
 }
 
-@keyframes tm-scroll {
-  to {
-    transform: translateX(-50%);
-  }
+/* Titre dans le coin haut gauche : boîte couleur de la page, coins inversés à droite et dessous */
+.nzt__title {
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 2;
+  max-width: min(64%, 640px);
+  margin: 0;
+  padding: 0 clamp(18px, 2vw, 34px) clamp(14px, 1.6vw, 28px) 0;
+  border-bottom-right-radius: var(--nzt-radius);
+  background: var(--nzt-bg);
+  /* même taille que le titre « Toutes les façons de découvrir Madagascar » */
+  font-size: clamp(36px, 3vw, 58px);
+  font-weight: 400;
+  line-height: 1.15;
+  letter-spacing: -.5px;
+}
+
+.nzt__title::before,
+.nzt__title::after {
+  content: "";
+  position: absolute;
+  width: var(--nzt-corner);
+  height: var(--nzt-corner);
+  background: radial-gradient(circle at 100% 100%, transparent calc(var(--nzt-corner) - .5px), var(--nzt-bg) var(--nzt-corner));
+  pointer-events: none;
+}
+
+.nzt__title::before { top: 0; left: 100%; }
+.nzt__title::after { top: 100%; left: 0; }
+
+.nzt__w {
+  display: inline-block;
+  overflow: hidden;
+  vertical-align: top;
+  padding-bottom: .1em;
+  margin-bottom: -.1em;
+}
+
+.nzt__w > span { display: inline-block; }
+
+/* Bouton lecture (or) et nom du voyageur */
+.nzt__play {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  display: grid;
+  place-items: center;
+  background: rgba(7, 42, 31, .18);
+  cursor: pointer;
+  transition: background .35s;
+}
+
+.nzt__play span {
+  display: grid;
+  place-items: center;
+  width: clamp(64px, 5vw, 88px);
+  height: clamp(64px, 5vw, 88px);
+  border-radius: 50%;
+  background: var(--nzt-gold);
+  color: #fff;
+  box-shadow: 0 18px 50px rgba(7, 42, 31, .35);
+  transition: transform .45s cubic-bezier(.22, 1, .36, 1);
+}
+
+.nzt__play svg { width: 34%; height: 34%; margin-left: 6%; fill: currentColor; }
+.nzt__play:hover { background: rgba(7, 42, 31, .06); }
+.nzt__play:hover span { transform: scale(1.08); }
+.nzt__play:focus-visible { outline: 3px solid #E6C58A; outline-offset: -6px; }
+
+.nzt__credit {
+  position: absolute;
+  left: 24px;
+  bottom: 24px;
+  z-index: 1;
+  margin: 0;
+  padding: 10px 18px;
+  border-radius: 999px;
+  background: rgba(246, 241, 231, .22);
+  -webkit-backdrop-filter: blur(10px);
+  backdrop-filter: blur(10px);
+  color: #fff;
+  font-size: 16px;
+  font-weight: 500;
+  pointer-events: none;
+}
+
+/* Boutons de la vidéo de présentation (en bas à droite) : pause / lecture et son */
+.nzt__vctrl {
+  position: absolute;
+  right: 20px;
+  bottom: 20px;
+  z-index: 1;
+  display: flex;
+  gap: 10px;
+}
+
+.nzt__vbtn {
+  display: grid;
+  place-items: center;
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  background: rgba(246, 241, 231, .22);
+  -webkit-backdrop-filter: blur(10px);
+  backdrop-filter: blur(10px);
+  color: #fff;
+  cursor: pointer;
+  transition: background .3s, color .3s;
+}
+
+.nzt__vbtn svg { width: 22px; height: 22px; }
+.nzt__vbtn .nzt__vbtn-play { margin-left: 3px; fill: currentColor; }
+.nzt__vbtn:hover,
+.nzt__vbtn[aria-pressed="true"] { background: var(--nzt-gold); }
+.nzt__vbtn:focus-visible { outline: 3px solid #E6C58A; outline-offset: 3px; }
+
+/* Bandeau « Envie de partir ? » */
+.nzt__cta {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 20px;
+  padding: clamp(22px, 2vw, 36px) clamp(24px, 2.2vw, 40px);
+  border-radius: var(--nzt-radius);
+  border: 1px solid var(--nzt-line);
+  background: var(--nzt-soft);
+}
+
+.nzt__cta p {
+  margin: 0;
+  font-size: clamp(24px, 1.9vw, 34px);
+  font-weight: 400;
+  letter-spacing: -.5px;
+}
+
+.nzt__button {
+  display: inline-flex;
+  flex: none;
+  align-items: center;
+  gap: 12px;
+  padding: 6px 22px 6px 6px;
+  border-radius: 10px;
+  background: var(--nzt-ink);
+  color: #fff;
+  font-size: 18px;
+  font-weight: 600;
+  transition: background .35s;
+}
+
+.nzt__button i {
+  display: grid;
+  place-items: center;
+  width: 40px;
+  height: 40px;
+  border-radius: 7px;
+  background: var(--nzt-gold);
+  transition: transform .45s cubic-bezier(.22, 1, .36, 1);
+}
+
+.nzt__button svg { width: 22px; height: 22px; }
+.nzt__button:hover { background: #074636; }
+.nzt__button:hover i { transform: translateX(4px); }
+.nzt__button:focus-visible { outline: 2px solid var(--nzt-gold); outline-offset: 3px; }
+
+/* ---------- droite : avis qui défilent vers le haut ---------- */
+
+.nzt__reviews {
+  display: flex;
+  flex-direction: column;
+  gap: var(--nzt-gap);
+  min-width: 0;
+}
+
+/* Avis affichés : ils se partagent la hauteur de la colonne */
+.nzt__track {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  gap: var(--nzt-gap);
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.nzt__item { display: flex; flex: 1; }
+.nzt__item > .nzt__card { flex: 1; }
+
+/* Compteur « 01 / 04 » et boutons précédent / suivant */
+.nzt__controls {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+}
+
+.nzt__count {
+  margin: 0;
+  font-size: 18px;
+  color: #6b7570;
+  font-variant-numeric: tabular-nums;
+}
+
+.nzt__count strong { font-weight: 600; color: var(--nzt-ink); }
+
+.nzt__arrows { display: flex; gap: 10px; }
+
+.nzt__arrows button {
+  display: grid;
+  place-items: center;
+  width: 52px;
+  height: 52px;
+  border: 1px solid var(--nzt-line);
+  border-radius: 50%;
+  background: var(--nzt-soft);
+  color: var(--nzt-ink);
+  cursor: pointer;
+  transition: background .3s, color .3s, border-color .3s;
+}
+
+.nzt__arrows button:hover { background: var(--nzt-ink); border-color: var(--nzt-ink); color: #fff; }
+.nzt__arrows button:focus-visible { outline: 2px solid var(--nzt-gold); outline-offset: 3px; }
+.nzt__arrows svg { width: 22px; height: 22px; }
+
+
+
+.nzt__card {
+  display: flex;
+  flex-direction: column;
+  gap: clamp(12px, 1.1vw, 18px);
+  margin: 0;
+  padding: clamp(20px, 1.7vw, 28px);
+  border-radius: var(--nzt-radius);
+  border: 1px solid var(--nzt-line);
+  background: var(--nzt-soft);
+}
+
+.nzt__stars { display: flex; gap: 4px; }
+.nzt__stars svg { width: 17px; height: 17px; color: rgba(196, 152, 73, .35); }
+.nzt__stars svg.is-on { color: var(--nzt-gold); fill: var(--nzt-gold); }
+
+.nzt__quote {
+  margin: 0;
+  font-size: clamp(17px, 1.2vw, 21px);
+  line-height: 1.5;
+}
+
+.nzt__who {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+}
+
+.nzt__avatar {
+  flex: none;
+  width: 42px;
+  height: 42px;
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+.nzt__avatar--initials {
+  display: grid;
+  place-items: center;
+  background: var(--nzt-ink);
+  color: #E6C58A;
+  font-size: 14px;
+  font-weight: 600;
+}
+
+.nzt__name {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  text-align: right;
+  font-size: 17px;
+  font-weight: 500;
+}
+
+.nzt__name small { margin-top: 2px; font-size: 14px; font-weight: 400; color: #6b7570; }
+
+/* ---------- tablette et téléphone ---------- */
+
+@media (max-width: 1023px) {
+  .nzt { grid-template-columns: 1fr; }
+  .nzt__media { min-height: 0; aspect-ratio: 4 / 5; max-height: 720px; }
+
+  /* Un seul avis à la fois */
+  .nzt__item + .nzt__item { display: none; }
+  .nzt__card { height: 100%; }
+}
+
+@media (max-width: 767px) {
+  .nzt { --nzt-radius: 22px; --nzt-corner: 22px; }
+  .nzt__title { max-width: 82%; }
+  .nzt__cta { flex-direction: column; align-items: flex-start; }
+  .nzt__stars svg { width: 16px; height: 16px; }
+  .nzt__avatar { width: 40px; height: 40px; }
+}
+
+/* Sans animation : pas de mouvement sur les boutons */
+@media (prefers-reduced-motion: reduce) {
+  .nzt__play span,
+  .nzt__button i { transition: none; }
 }

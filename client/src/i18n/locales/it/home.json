@@ -59,6 +59,35 @@
     "label": "Circuiti ed escursioni",
     "days": "{days} giorni / {nights} notti"
   },
+  "overview": {
+    "pill": "Le nostre formule",
+    "previous": "Formula precedente",
+    "next": "Formula successiva",
+    "durations": [
+      "Più giorni",
+      "Una giornata",
+      "Settimane",
+      "Al vostro ritmo"
+    ],
+    "story": "La nostra storia"
+  },
+  "aboutUs": {
+    "label": "Chi siamo",
+    "headline": "Viviamo in Madagascar e organizziamo ogni viaggio in prima persona, dalla prima idea all'ultimo tramonto, **così a voi resta solo da godervi il viaggio.**",
+    "cta": "Scopri chi siamo",
+    "stats": {
+      "destinations": "Destinazioni da scoprire",
+      "rating": {
+        "title": "Valutazione media dei viaggiatori",
+        "text": "In base alle recensioni che i nostri viaggiatori lasciano dopo il viaggio."
+      },
+      "trips": {
+        "title": "Circuiti ed escursioni",
+        "text": "Itinerari di più giorni e uscite di una giornata, da prenotare così o da adattare."
+      },
+      "regions": "Regioni del Madagascar"
+    }
+  },
   "talkBadge": "Parla con un esperto di viaggi / Parla con un esperto di viaggi /",
   "heroAlt": "Spiaggia di sabbia bianca con bungalow, piroghe e una laguna turchese in Madagascar",
   "heroLabel": "Il tuo viaggio comincia qui",
@@ -125,6 +154,8 @@
   "regionsLabel": "Destinazioni",
   "regionsTitle": "Cinque regioni, un'isola",
   "regionsText": "Il Madagascar è un continente in miniatura. Scegli una regione per scoprire per cosa è famosa e quando andarci.",
+  "regionsKicker": "Esploriamo insieme le nostre destinazioni",
+  "regionsStatement": "Baie smeraldo a nord, risaie a terrazza sugli altipiani, baobab a ovest, canyon a sud e foresta pluviale a est.",
   "regionsTabs": "Regioni",
   "bestFrom": "Ideale da {from} a {to}",
   "mustSee": "Luoghi da non perdere",
@@ -185,6 +216,8 @@
   "tripsLabel": "Viaggi firmati",
   "tripsTitle": "I viaggi che amiamo proporti",
   "tripsText": "Punti di partenza già pronti. Adattiamo ognuno alle tue date, al tuo ritmo e al tuo budget.",
+  "tripsAll": "Vedi tutti i circuiti",
+  "tripsQuote": "Preventivo gratuito",
   "days": "{count} giorni",
   "bestMonths": "Mesi migliori:",
   "freeQuote": "Preventivo gratuito, senza impegno",
@@ -210,6 +243,7 @@
   "servicesLabel": "Servizi",
   "servicesTitle": "Pensiamo a tutto noi",
   "servicesText": "Prenota con noi tutto il viaggio, o solo la parte che ti serve. Ogni servizio è gestito dal nostro team e da partner locali di fiducia.",
+  "servicesCount": "{count} offerte",
   "services": [
     "Alloggi",
     "Trasporti",

@@ -1,0 +1,206 @@
+/* Pied de page (Footer.jsx), même style que les sections de l'accueil :
+   carte vert forêt arrondie à la largeur des sections, DM Sans, titres de colonnes en or, boutons en pilule. */
+
+.nzf {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  padding: clamp(50px, 6vw, 110px) 0 clamp(14px, 1.6vw, 28px);
+  background: #D5E8E2;
+}
+
+.nzf__box {
+  width: 90vw;
+  overflow: hidden;
+  padding: clamp(32px, 4vw, 72px) clamp(24px, 4vw, 72px) 0;
+  border-radius: 24px;
+  background: #0c3e2e;
+  color: #fff;
+}
+
+@media (min-width: 1280px) { .nzf__box { width: 95vw; max-width: 95vw; } }
+
+/* ---------- haut : phrase + contact ---------- */
+
+.nzf__top {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: clamp(24px, 4vw, 80px);
+}
+
+.nzf__promise {
+  max-width: 18em;
+  margin: 0;
+  font-size: clamp(30px, 3vw, 56px);
+  font-weight: 400;
+  line-height: 1.15;
+  letter-spacing: -.5px;
+}
+
+.nzf__actions {
+  display: flex;
+  flex: none;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 16px;
+}
+
+.nzf__btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  padding: 16px 30px;
+  border-radius: 999px;
+  background: #C49849;
+  color: #fff;
+  font-size: 17px;
+  font-weight: 600;
+  transition: background .35s, transform .35s;
+}
+
+.nzf__btn svg { width: 18px; height: 18px; transition: transform .45s cubic-bezier(.76, 0, .24, 1); }
+.nzf__btn:hover { background: #a9813a; transform: translateY(-2px); }
+.nzf__btn:hover svg { transform: rotate(45deg); }
+
+.nzf__mail {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 18px;
+  color: rgba(255, 255, 255, .85);
+  transition: color .3s;
+}
+
+.nzf__mail svg { width: 18px; height: 18px; color: #E6C58A; }
+.nzf__mail:hover { color: #fff; }
+
+.nzf__rule {
+  display: block;
+  height: 1px;
+  margin: clamp(32px, 3.6vw, 64px) 0;
+  background: rgba(255, 255, 255, .14);
+}
+
+/* ---------- milieu : marque + colonnes ---------- */
+
+.nzf__grid {
+  display: grid;
+  grid-template-columns: minmax(0, 1.5fr) repeat(3, minmax(0, 1fr));
+  gap: clamp(28px, 3vw, 60px);
+}
+
+.nzf__logo { display: inline-block; }
+.nzf__logo img { height: clamp(110px, 9vw, 150px); width: auto; }
+
+.nzf__tagline {
+  max-width: 24em;
+  margin: 22px 0 0;
+  font-size: 17px;
+  line-height: 1.6;
+  color: rgba(255, 255, 255, .72);
+}
+
+.nzf__col-title {
+  margin: 0 0 18px;
+  font-size: 14px;
+  font-weight: 500;
+  letter-spacing: .06em;
+  text-transform: uppercase;
+  color: #E6C58A;
+}
+
+.nzf__col ul {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+/* Lien : un trait doré se dessine dessous au survol */
+.nzf__link {
+  position: relative;
+  font-size: 17px;
+  color: rgba(255, 255, 255, .78);
+  transition: color .3s;
+}
+
+.nzf__link::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: -3px;
+  width: 100%;
+  height: 1px;
+  background: #C49849;
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform .45s cubic-bezier(.22, 1, .36, 1);
+}
+
+.nzf__link:hover { color: #fff; }
+.nzf__link:hover::after { transform: scaleX(1); }
+
+.nzf a:focus-visible,
+.nzf button:focus-visible { outline: 2px solid #E6C58A; outline-offset: 4px; border-radius: 4px; }
+
+/* ---------- bas : copyright + retour en haut ---------- */
+
+.nzf__bottom {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  font-size: 15px;
+  color: rgba(255, 255, 255, .65);
+}
+
+.nzf__bottom p { margin: 0; }
+
+.nzf__top-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+  font-size: 15px;
+  color: rgba(255, 255, 255, .85);
+  cursor: pointer;
+}
+
+.nzf__top-btn span {
+  display: grid;
+  place-items: center;
+  width: 40px;
+  height: 40px;
+  border: 1px solid rgba(255, 255, 255, .3);
+  border-radius: 50%;
+  transition: background .35s, border-color .35s, transform .45s cubic-bezier(.22, 1, .36, 1);
+}
+
+.nzf__top-btn svg { width: 16px; height: 16px; }
+.nzf__top-btn:hover span { background: #C49849; border-color: #C49849; transform: translateY(-3px); }
+
+.nzf__wordmark {
+  display: block;
+  width: 100%;
+  margin-top: clamp(24px, 3vw, 56px);
+  padding-bottom: clamp(20px, 2.4vw, 40px);
+  opacity: .08;
+  pointer-events: none;
+  user-select: none;
+}
+
+/* ---------- tablette et téléphone ---------- */
+
+@media (max-width: 1023px) {
+  .nzf__top { flex-direction: column; align-items: flex-start; }
+  .nzf__actions { align-items: flex-start; }
+  .nzf__grid { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+  .nzf__brand { grid-column: 1 / -1; }
+}
+
+@media (max-width: 640px) {
+  .nzf__grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .nzf__bottom { flex-direction: column-reverse; align-items: flex-start; }
+}

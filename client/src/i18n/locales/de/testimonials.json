@@ -1,12 +1,13 @@
 {
-  "title": "Von Reisenden geliebt",
-  "trustLabel": "Vertrauen der Reisenden",
-  "average": "Durchschnittliche Bewertung der Reisenden",
-  "from": "Reisende aus aller Welt",
-  "text": "Was Reisende sagen, nachdem sie Madagaskar mit uns entdeckt haben.",
+  "headline": "Was unsere Reisenden sagen.",
   "ratingLabel": "Bewertung: {rating} von 5",
-  "videoLabel": "Im Video",
-  "videoTitle": "Sie erzählen von ihrer Reise",
   "play": "Video von {name} abspielen",
-  "others": "Weitere Videos"
+  "pauseVideo": "Video pausieren",
+  "playVideo": "Video abspielen",
+  "soundOn": "Ton einschalten",
+  "soundOff": "Ton ausschalten",
+  "ctaTitle": "Lust zu reisen?",
+  "ctaButton": "Meine Reise planen",
+  "previous": "Vorherige Bewertung",
+  "next": "Nächste Bewertung"
 }

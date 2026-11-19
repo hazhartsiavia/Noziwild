@@ -17,6 +17,7 @@ import bg2 from './assets/images/hero/bg2-2400.jpg'
 import bg3 from './assets/images/hero/bg3-2400.jpg'
 import bg5 from './assets/images/hero/bg5-2400.jpg'
 import bg6 from './assets/images/hero/bg6-2000.jpg'
+import GuideSifaka from './assets/images/site/guide-with-sifaka.jpg'
 import { PHOTO_CHOICES } from './sitePhotoChoices'
 
 const list = (prefix, label, sources) =>
@@ -37,7 +38,7 @@ export const PHOTO_PAGES = [
       'home.hero.4': { label: 'Hero slide 5', src: bg3 },
       ...list('home.ways', 'Ways to travel card', [Tana, Ramena, NosyIranja, Ambanja]),
       ...list('home.trips', 'Trip we love', [Tana, NosyIranja, Deux]),
-      'home.cta': { label: 'Final banner', src: Ramena },
+      'home.about.1': { label: 'About us photo', src: GuideSifaka },
     },
   },
   {
@@ -199,7 +200,7 @@ const PORTRAIT_BY_SRC = Object.fromEntries(
 
 // Emplacements affichés avec <SiteMedia> : grands fonds où une vidéo a du sens
 export const VIDEO_SLOTS = new Set([
-  'home.hero.1', 'home.hero.2', 'home.hero.4', 'home.hero.5', 'home.hero.6', 'home.cta',
+  'home.hero.1', 'home.hero.2', 'home.hero.4', 'home.hero.5', 'home.hero.6',
   'dest.cta', 'blog.hero', 'about.promise', 'about.mission', 'act.banner', 'circ.hero', 'circ.cta', 'contact.banner',
   'cruise.hero', 'cruise.cta', 'gear.cta', 'exc.hero', 'exc.multi', 'exc.cta', 'food.class',
   'hosting.hero', 'hosting.featured', 'hosting.cta', 'long.hero', 'long.cta', 'photo.cta', 'tm.cta',

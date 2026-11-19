@@ -1,0 +1,343 @@
+/* Régions (Home.jsx → Regions), d'après deux modèles Webflow, couleurs et police Noziwild.
+   Mise en page : en-tête, puis l'accordéon des régions à gauche et la photo de la région à droite.
+   Ordinateur : la photo (.nzr__media) part du plein écran et se pose dans la case de droite (.nzr__slot)
+   pendant que la section reste figée (GSAP). */
+
+.nzr {
+  position: relative;
+  width: 90vw;
+  margin-top: clamp(70px, 8vw, 140px);
+  color: #0c3e2e;
+}
+
+@media (min-width: 1280px) { .nzr { width: 95vw; max-width: 95vw; } }
+
+/* ---------- en-tête ---------- */
+
+.nzr__head {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: clamp(24px, 4vw, 80px);
+}
+
+.nzr__label {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin: 0;
+  font-size: 16px;
+  font-weight: 500;
+}
+
+.nzr__label span { width: 7px; height: 7px; border-radius: 50%; background: #C49849; }
+
+.nzr__title {
+  margin: clamp(10px, 1vw, 18px) 0 0;
+  font-size: clamp(36px, 3vw, 58px);
+  font-weight: 400;
+  line-height: 1.15;
+  letter-spacing: -.5px;
+}
+
+.nzr__lead {
+  max-width: 30em;
+  margin: 0;
+  font-size: clamp(17px, 1.2vw, 21px);
+  line-height: 1.5;
+  color: #55625c;
+}
+
+/* ---------- accordéon + case de la photo ---------- */
+
+.nzr__grid {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1.05fr);
+  gap: clamp(24px, 2.6vw, 48px);
+  margin-top: clamp(28px, 3vw, 52px);
+}
+
+.nzr__list { margin: 0; padding: 0; list-style: none; }
+
+.nzr__item { border-bottom: 1px solid rgba(12, 62, 46, .14); }
+
+.nzr__item.is-open {
+  margin: 6px 0;
+  border: 0;
+  border-radius: 16px;
+  background: rgba(255, 255, 255, .6);
+}
+
+.nzr__toggle {
+  display: grid;
+  grid-template-columns: 34px minmax(0, 1fr) auto 36px;
+  align-items: center;
+  gap: 14px;
+  width: 100%;
+  padding: 16px 0;
+  color: #0c3e2e;
+  text-align: left;
+  cursor: pointer;
+}
+
+.nzr__item.is-open .nzr__toggle { padding: 18px 20px 6px; }
+
+.nzr__num { font-size: 14px; color: #8f9893; font-variant-numeric: tabular-nums; }
+
+.nzr__name {
+  font-size: clamp(20px, 1.5vw, 26px);
+  font-weight: 500;
+  letter-spacing: -.3px;
+}
+
+.nzr__season { font-size: 14px; color: #8f9893; white-space: nowrap; }
+
+.nzr__plus {
+  display: grid;
+  place-items: center;
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  border: 1px solid rgba(12, 62, 46, .2);
+  transition: background .3s, color .3s;
+}
+
+.nzr__plus svg { width: 16px; height: 16px; }
+.nzr__toggle:hover .nzr__plus { background: rgba(12, 62, 46, .08); }
+.nzr__item.is-open .nzr__plus { background: #0c3e2e; border-color: #0c3e2e; color: #fff; }
+.nzr__toggle:focus-visible { outline: 2px solid #C49849; outline-offset: 2px; border-radius: 10px; }
+
+/* Région ouverte : accroche, texte, lieux à voir (petites cartes), liens */
+.nzr__body { padding: 0 20px 20px 68px; }
+
+.nzr__tagline { margin: 0; font-size: 15px; font-weight: 500; color: #8a6a2b; }
+
+.nzr__text {
+  margin: 8px 0 0;
+  font-size: clamp(15px, 1.05vw, 17px);
+  line-height: 1.55;
+  color: #55625c;
+}
+
+.nzr__places {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 8px;
+  margin: 16px 0 0;
+  padding: 0;
+  list-style: none;
+}
+
+.nzr__place {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  padding: 8px;
+  border: 1px solid rgba(12, 62, 46, .12);
+  border-radius: 12px;
+  background: #fff;
+  color: #0c3e2e;
+  font-size: 14px;
+  font-weight: 500;
+  transition: border-color .3s, transform .3s;
+}
+
+.nzr__place img { width: 100%; aspect-ratio: 16 / 10; border-radius: 8px; object-fit: cover; }
+.nzr__place:hover { border-color: #C49849; transform: translateY(-2px); }
+
+.nzr__links { display: flex; flex-wrap: wrap; align-items: center; gap: 18px; margin-top: 16px; }
+
+.nzr__link {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 15px;
+  font-weight: 600;
+  color: #0c3e2e;
+  text-decoration: underline;
+  text-underline-offset: 4px;
+}
+
+.nzr__link svg { width: 16px; height: 16px; color: #C49849; }
+.nzr__link--soft { font-weight: 500; color: #55625c; }
+
+.nzr a:focus-visible { outline: 2px solid #C49849; outline-offset: 3px; border-radius: 6px; }
+
+/* Case de droite (la photo s'y pose) */
+.nzr__slot { min-height: clamp(460px, 40vw, 640px); }
+
+/* ---------- photo de la région ---------- */
+
+.nzr__media {
+  position: absolute;
+  overflow: hidden;
+  border-radius: 18px;
+  background: #0c3e2e;
+  color: #fff;
+  isolation: isolate;
+}
+
+.nzr__photos { position: absolute; inset: 0; z-index: -1; }
+
+.nzr__photos img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  opacity: 0;
+  transition: opacity .8s ease;
+}
+
+.nzr__photos img.is-active { opacity: 1; }
+
+.nzr__media-ui {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: 18px;
+  background: linear-gradient(0deg, rgba(7, 42, 31, .55) 0%, rgba(7, 42, 31, 0) 40%);
+}
+
+.nzr__badge,
+.nzr__count {
+  position: absolute;
+  top: 18px;
+  padding: 6px 12px;
+  border-radius: 999px;
+  background: rgba(7, 42, 31, .55);
+  -webkit-backdrop-filter: blur(8px);
+  backdrop-filter: blur(8px);
+  font-size: 13px;
+  font-weight: 500;
+}
+
+.nzr__badge { left: 18px; }
+.nzr__count { right: 18px; font-variant-numeric: tabular-nums; }
+
+/* Légende en bas : nom de la région à gauche, saison en grand à droite */
+.nzr__caption {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 16px;
+  margin-top: auto;
+  padding: 14px 18px;
+  border-radius: 12px;
+  background: rgba(246, 241, 231, .92);
+  color: #0c3e2e;
+}
+
+.nzr__caption small { display: block; font-size: 13px; color: #55625c; }
+.nzr__caption strong { display: block; margin-top: 2px; font-size: 18px; font-weight: 500; }
+
+.nzr__big {
+  font-size: clamp(24px, 2.2vw, 40px);
+  font-weight: 400;
+  letter-spacing: -.02em;
+  white-space: nowrap;
+}
+
+/* ---------- ordinateur : la section tient en un écran (figée pendant l'entrée) ---------- */
+
+@media (min-width: 1024px) {
+  .nzr { padding-top: clamp(24px, 3vh, 48px); }
+}
+
+/* Sans l'entrée animée (téléphone, tablette, animations réduites) : la photo est dans la case */
+@media (max-width: 1023px), (prefers-reduced-motion: reduce) {
+  .nzr__media { position: relative; height: clamp(320px, 70vw, 560px); margin-top: 20px; }
+  .nzr__slot { display: none; }
+}
+
+@media (min-width: 1024px) and (prefers-reduced-motion: reduce) {
+  .nzr__grid { grid-template-columns: minmax(0, 1fr) minmax(0, 1.05fr); }
+}
+
+@media (max-width: 1023px) {
+  .nzr__head { flex-direction: column; align-items: flex-start; }
+  .nzr__grid { grid-template-columns: 1fr; }
+}
+
+@media (max-width: 640px) {
+  .nzr__toggle { grid-template-columns: 28px minmax(0, 1fr) 34px; }
+  .nzr__season { display: none; }
+  .nzr__body { padding: 0 16px 18px; }
+  .nzr__places { grid-template-columns: 1fr 1fr; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .nzr__photos img,
+  .nzr__place { transition: none; }
+}
+
+/* Enveloppe de la section figée (gérée par React) : toute la largeur de la page */
+.nzr-pin { position: relative; z-index: 6; display: flex; justify-content: center; width: 100%; }
+
+/* Ordinateur : la section est remontée d'un écran. Pendant que « Voyages signature » reste figée (dernier
+   écran de la scène des Services, ServicesList.jsx → cover), elle monte par-dessus, photo plein écran en tête.
+   Arrivée en haut, elle y reste (sticky) le temps que la photo se pose dans sa case (90vh de défilement,
+   même valeur que end: '+=90%' dans Home.jsx → Regions). */
+@media (min-width: 1024px) and (prefers-reduced-motion: no-preference) {
+  /* Fond menthe de la page sur toute la largeur : la section d'avant ne se voit plus quand la photo rétrécit */
+  .nzr-pin { flex-direction: column; align-items: center; margin-top: -100vh; background: #D5E8E2; }
+  .nzr { position: sticky; top: 0; margin-top: 0; padding-top: 0; }
+
+  /* Défilement pendant lequel la section reste en haut : le texte (≈ 1 écran) puis la photo qui se pose.
+     Un bloc vide sous la section, car un sticky n'entre pas dans le padding de son parent. */
+  .nzr__spacer { flex: none; width: 100%; height: 220vh; }
+
+  /* Texte au milieu de la photo plein écran, sur un voile vert qui apparaît avec lui */
+  .nzr__statement {
+    --nzr-veil: 0;
+    position: absolute;
+    inset: 0;
+    z-index: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: clamp(18px, 2vw, 32px);
+    padding: 0 max(6vw, calc((100vw - 1180px) / 2));
+    background: rgba(7, 42, 31, calc(var(--nzr-veil) * .45));
+    color: #fff;
+    text-align: center;
+    text-shadow: 0 2px 30px rgba(7, 42, 31, .35);
+    pointer-events: none;
+  }
+
+  /* Petite invitation au-dessus de la phrase : point doré + texte, comme les étiquettes des sections */
+  .nzr__kicker {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    font-size: clamp(16px, 1.15vw, 20px);
+    font-weight: 500;
+    letter-spacing: .02em;
+    color: rgba(255, 255, 255, .9);
+  }
+
+  .nzr__kicker i { width: 8px; height: 8px; border-radius: 50%; background: #C49849; }
+
+  .nzr__statement-text {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 0 .26em;
+    margin: 0;
+    font-size: clamp(34px, 3.6vw, 64px);
+    font-weight: 500;
+    line-height: 1.18;
+    letter-spacing: -.02em;
+  }
+
+  .nzr__statement-w { display: inline-block; will-change: transform, opacity, filter; }
+}
+
+/* Sans l'entrée animée : pas de texte sur la photo ni d'espace de défilement */
+@media (max-width: 1023px), (prefers-reduced-motion: reduce) {
+  .nzr__statement,
+  .nzr__spacer { display: none; }
+}

@@ -3,13 +3,16 @@
 // Contenu lu depuis l'API dans la langue du site : les circuits (jours / nuits), puis les excursions.
 // La bande s'arrête au survol et au clavier ; sans animation (prefers-reduced-motion), elle défile à la main.
 // Rien n'est affiché tant que rien n'est chargé (API absente : la bande n'apparaît pas).
-import React, { useEffect, useState } from 'react'
+import React, { useEffect, useLayoutEffect, useRef, useState } from 'react'
+import gsap from 'gsap'
 import { ScrollTrigger } from 'gsap/ScrollTrigger'
 import { assetUrl, fetchCircuits } from '../api'
 import { useOffers } from '../utils/useOffers'
 import { useLanguage, useT } from '../i18n/LanguageContext'
 import { A } from '../i18n/router'
 import './tripStrip.css'
+
+gsap.registerPlugin(ScrollTrigger)
 
 // Secondes pour faire défiler une carte : vitesse constante quel que soit le nombre de cartes
 const SECONDS_PER_CARD = 6
@@ -33,6 +36,7 @@ export default function TripStrip() {
   const t = useT('home')
   const circuits = useCircuits()
   const { offers } = useOffers('excursion')
+  const root = useRef(null)
 
   const items = [
     ...circuits.map((c) => ({
@@ -59,6 +63,20 @@ export default function TripStrip() {
     return () => cancelAnimationFrame(frame)
   }, [items.length])
 
+  // Arrivée (GSAP, une fois) : les cartes visibles montent une à une, photo qui se dévoile
+  useLayoutEffect(() => {
+    if (!items.length || !root.current) return undefined
+    const mm = gsap.matchMedia(root.current)
+    mm.add('(prefers-reduced-motion: no-preference)', () => {
+      const trigger = { trigger: root.current, start: 'top 92%', once: true }
+      gsap.from('.nzs__card', { y: 60, opacity: 0, duration: 1.1, stagger: 0.06, ease: 'expo.out', scrollTrigger: trigger })
+      gsap.from('.nzs__img', { clipPath: 'inset(0% 0% 100% 0%)', scale: 1.25, duration: 1.3, stagger: 0.06, ease: 'expo.out', clearProps: 'clipPath,scale', scrollTrigger: trigger })
+    })
+    return () => mm.revert()
+    // Une seule fois, quand les cartes arrivent
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [items.length > 0])
+
   if (!items.length) return null
 
   const card = (item, copy) => (
@@ -74,7 +92,7 @@ export default function TripStrip() {
   )
 
   return (
-    <section className="nzs" aria-label={t('strip.label')}>
+    <section ref={root} className="nzs" aria-label={t('strip.label')}>
       {/* Deux fois la même liste : quand la première est sortie, la seconde est exactement à sa place */}
       <ul className="nzs__track" style={{ '--nzs-duration': `${items.length * SECONDS_PER_CARD}s` }}>
         {items.map((item) => card(item, false))}

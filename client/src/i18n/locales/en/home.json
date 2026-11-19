@@ -59,6 +59,35 @@
     "label": "Circuits and day trips",
     "days": "{days} Days / {nights} Nights"
   },
+  "overview": {
+    "pill": "Our formulas",
+    "previous": "Previous formula",
+    "next": "Next formula",
+    "durations": [
+      "Several days",
+      "One day",
+      "Weeks",
+      "Your own pace"
+    ],
+    "story": "Our story"
+  },
+  "aboutUs": {
+    "label": "About us",
+    "headline": "We live in Madagascar and plan every trip ourselves, from the first idea to the last sunset, **so all you have to do is enjoy the journey.**",
+    "cta": "Learn more about us",
+    "stats": {
+      "destinations": "Destinations to explore",
+      "rating": {
+        "title": "Average traveler rating",
+        "text": "Based on the reviews our travelers leave after their trip."
+      },
+      "trips": {
+        "title": "Circuits and day trips",
+        "text": "Multi-day routes and single-day outings, to book as they are or adapt to you."
+      },
+      "regions": "Regions of Madagascar"
+    }
+  },
   "talkBadge": "Talk to a Travel Expert / Talk to a Travel Expert /",
   "heroAlt": "White sand beach with bungalows, pirogues and a turquoise lagoon in Madagascar",
   "heroLabel": "Your Journey Begins Here",
@@ -125,6 +154,8 @@
   "regionsLabel": "Destinations",
   "regionsTitle": "Five Regions, One Island",
   "regionsText": "Madagascar is a continent in miniature. Pick a region to see what it is known for and when to go.",
+  "regionsKicker": "Let's explore our destinations together",
+  "regionsStatement": "Emerald bays in the north, rice terraces in the highlands, baobabs in the west, canyons in the south and rainforest in the east.",
   "regionsTabs": "Regions",
   "bestFrom": "Best from {from} to {to}",
   "mustSee": "Must-see places",
@@ -185,6 +216,8 @@
   "tripsLabel": "Signature trips",
   "tripsTitle": "Trips We Love To Send You On",
   "tripsText": "Ready-made starting points. We adapt each one to your dates, pace and budget.",
+  "tripsAll": "See all circuits",
+  "tripsQuote": "Free quote",
   "days": "{count} days",
   "bestMonths": "Best months:",
   "freeQuote": "Free quote, no obligation",
@@ -210,6 +243,7 @@
   "servicesLabel": "Services",
   "servicesTitle": "Everything Taken Care Of",
   "servicesText": "Book the whole trip with us, or only the part you need. Every service is run by our team and trusted local partners.",
+  "servicesCount": "{count} offers",
   "services": [
     "Accommodation",
     "Transport",

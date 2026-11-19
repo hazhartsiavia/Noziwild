@@ -1,0 +1,296 @@
+/* Section Services de l'accueil (ServicesList.jsx), d'après un modèle Webflow, couleurs et police Noziwild.
+   Ordinateur : section fixe à l'écran, rangée de cartes qui défile vers la gauche au défilement (GSAP).
+   Téléphone, tablette ou animations réduites : rangée à faire glisser au doigt. */
+
+/* Toute la largeur de l'écran (les cartes sortent par la droite), texte aligné sur les autres sections */
+.nzv {
+  --nzv-ink: #0c3e2e;
+  --nzv-side: 5vw;
+  position: relative;
+  width: 100%;
+  margin-top: clamp(70px, 8vw, 140px);
+  overflow: hidden;
+  color: var(--nzv-ink);
+}
+
+.nzv__scroller { width: 100%; overflow: hidden; }
+
+/* Section ouverte depuis le bouton de fin (Voyages signature) : en dessous sur téléphone */
+.nzv__reveal { position: relative; }
+
+@media (min-width: 1280px) { .nzv { --nzv-side: 2.5vw; } }
+
+.nzv__track {
+  display: flex;
+  align-items: flex-start;
+  gap: clamp(20px, 2vw, 36px);
+  width: max-content;
+  margin: 0;
+  padding: 0 var(--nzv-side);
+  list-style: none;
+}
+
+/* ---------- texte d'intro (première « carte ») ---------- */
+
+.nzv__intro {
+  display: flex;
+  flex: none;
+  flex-direction: column;
+  align-items: flex-start;
+  width: clamp(300px, 28vw, 520px);
+  padding-right: clamp(10px, 2vw, 40px);
+}
+
+.nzv__label {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin: 0;
+  font-size: 16px;
+  font-weight: 500;
+  letter-spacing: .04em;
+  text-transform: uppercase;
+}
+
+.nzv__label svg { width: 18px; height: 18px; color: #C49849; }
+
+.nzv__heading {
+  margin: clamp(10px, 1vw, 18px) 0 0;
+  font-size: clamp(36px, 3vw, 58px);
+  font-weight: 400;
+  line-height: 1.15;
+  letter-spacing: -.5px;
+}
+
+.nzv__lead {
+  margin: clamp(14px, 1.4vw, 24px) 0 0;
+  font-size: clamp(17px, 1.2vw, 21px);
+  line-height: 1.5;
+  color: #55625c;
+}
+
+.nzv__btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  margin-top: clamp(20px, 2vw, 32px);
+  padding: 16px 28px;
+  border-radius: 999px;
+  background: #C49849;
+  color: #fff;
+  font-size: 17px;
+  font-weight: 600;
+  white-space: nowrap;
+  transition: background .35s, transform .35s;
+}
+
+.nzv__btn svg { width: 18px; height: 18px; transition: transform .45s cubic-bezier(.22, 1, .36, 1); }
+.nzv__btn:hover { background: #a9813a; transform: translateY(-2px); }
+.nzv__btn:hover svg { transform: translateX(4px); }
+.nzv__btn:focus-visible { outline: 2px solid var(--nzv-ink); outline-offset: 3px; }
+
+/* ---------- cartes ---------- */
+
+.nzv__card {
+  flex: none;
+  width: clamp(270px, 21vw, 400px);
+}
+
+/* Une carte sur deux plus bas, comme la maquette */
+.nzv__card:nth-child(odd) { margin-top: clamp(40px, 4.4vw, 84px); }
+
+/* Carte blanche arrondie, photo encadrée d'une marge blanche */
+.nzv__link {
+  display: flex;
+  flex-direction: column;
+  padding: 12px 12px 0;
+  border-radius: 16px;
+  background: #fff;
+  color: var(--nzv-ink);
+  box-shadow: 0 1px 2px rgba(7, 42, 31, .04);
+  transition: box-shadow .4s, transform .4s;
+}
+
+.nzv__link:hover { box-shadow: 0 18px 40px rgba(7, 42, 31, .12); transform: translateY(-4px); }
+.nzv__link:focus-visible { outline: 2px solid #C49849; outline-offset: 4px; }
+
+.nzv__photo {
+  display: block;
+  overflow: hidden;
+  aspect-ratio: 4 / 3;
+  border-radius: 6px;
+  background: #BBD9CF;
+}
+
+.nzv__photo img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 1s cubic-bezier(.22, 1, .36, 1);
+}
+
+.nzv__link:hover .nzv__photo img { transform: scale(1.05); }
+
+.nzv__body {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  padding: 22px 8px 30px;
+}
+
+/* Ligne d'infos : « 6 offres | première offre », séparées par un trait vertical */
+.nzv__meta {
+  display: flex;
+  align-items: center;
+  min-width: 0;
+  font-size: 15px;
+  color: #6b7570;
+  white-space: nowrap;
+}
+
+.nzv__meta-first {
+  overflow: hidden;
+  margin-left: 12px;
+  padding-left: 12px;
+  border-left: 1px solid rgba(12, 62, 46, .3);
+  text-overflow: ellipsis;
+}
+
+.nzv__name {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  font-size: clamp(20px, 1.5vw, 26px);
+  font-weight: 500;
+  line-height: 1.25;
+  letter-spacing: -.3px;
+}
+
+.nzv__name svg {
+  flex: none;
+  width: 20px;
+  height: 20px;
+  color: #C49849;
+  transition: transform .45s cubic-bezier(.76, 0, .24, 1);
+}
+
+.nzv__link:hover .nzv__name svg { transform: rotate(45deg); }
+
+/* Phrase d'intro de la page du service, sur trois lignes au plus */
+.nzv__text {
+  display: -webkit-box;
+  overflow: hidden;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 3;
+  font-size: clamp(15px, 1vw, 17px);
+  line-height: 1.55;
+  color: #55625c;
+}
+
+/* Bouton en fin de rangée */
+.nzv__end {
+  display: flex;
+  flex: none;
+  align-items: center;
+  align-self: center;
+  padding: 0 clamp(20px, 4vw, 80px) 0 clamp(10px, 2vw, 40px);
+}
+
+.nzv__end .nzv__btn { margin-top: 0; }
+
+/* CTA : la photo de la section suivante en fond (cadrée par ServicesList.jsx comme la photo qui s'agrandit),
+   un voile pour lire le texte */
+.nzv__btn--image {
+  position: relative;
+  overflow: hidden;
+  padding: 22px 36px;
+  background-color: var(--nzv-ink);
+  background-position: center;
+  background-size: cover;
+  font-size: 19px;
+  isolation: isolate;
+}
+
+.nzv__btn--image::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  background: rgba(7, 42, 31, .38);
+  transition: background .35s;
+}
+
+.nzv__btn--image > span { display: inline-flex; align-items: center; gap: 10px; }
+.nzv__btn--image:hover { background-color: var(--nzv-ink); }
+.nzv__btn--image:hover::before { background: rgba(7, 42, 31, .2); }
+
+/* Copie du texte du bouton par-dessus la pilule qui s'agrandit (position posée par ServicesList.jsx) */
+.nzv__reveal-cta { display: none; }
+
+/* ---------- ordinateur : section fixe, hauteur d'un écran ---------- */
+
+@media (min-width: 1024px) and (prefers-reduced-motion: no-preference) {
+  .nzv {
+    display: flex;
+    align-items: center;
+    height: 100svh;
+  }
+
+  .nzv__track { align-items: center; }
+
+  /* Ordinateur : par-dessus la rangée, toute la section ; découpée par GSAP (pilule du bouton → plein écran) */
+  .nzv__reveal {
+    position: absolute;
+    inset: 0;
+    z-index: 5;
+    visibility: hidden;
+    pointer-events: none;
+  }
+
+  .nzv__reveal .nzx { height: 100%; min-height: 0; margin: 0; }
+
+  .nzv__reveal-cta {
+    position: absolute;
+    z-index: 3;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    color: #fff;
+    font-size: 19px;
+    font-weight: 600;
+    white-space: nowrap;
+    pointer-events: none;
+  }
+
+  .nzv__reveal-cta svg { width: 18px; height: 18px; }
+  .nzv__reveal .nzx__content { min-height: 0; height: 100%; }
+  .nzv__card:nth-child(odd) { margin-top: clamp(80px, 9vw, 168px); }
+  .nzv__card:nth-child(even) { margin-bottom: clamp(40px, 4.4vw, 84px); }
+}
+
+/* ---------- téléphone, tablette, animations réduites : rangée à faire glisser ---------- */
+
+@media (max-width: 1023px), (prefers-reduced-motion: reduce) {
+  .nzv__scroller { overflow-x: auto; scroll-snap-type: x proximity; scrollbar-width: none; }
+  .nzv__scroller::-webkit-scrollbar { display: none; }
+  .nzv__card { scroll-snap-align: start; }
+}
+
+@media (max-width: 640px) {
+  .nzv__intro { width: 78vw; }
+  .nzv__card { width: 74vw; }
+  .nzv__card:nth-child(odd) { margin-top: 0; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .nzv__photo img,
+  .nzv__name svg,
+  .nzv__link,
+  .nzv__btn,
+  .nzv__btn svg { transition: none; }
+}
+
+/* Enveloppe de la section figée (gérée par React) : toute la largeur de la page */
+.nzv-pin { width: 100%; }
