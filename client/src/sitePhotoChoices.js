@@ -52,6 +52,15 @@ import p_speedboat from './assets/images/site/speedboat.jpg'
 import p_turquoise_rocks from './assets/images/site/turquoise-rocks.jpg'
 
 export const PHOTO_CHOICES = {
+  // à la place de la photo de la 2CV (Tana.jpg), retirée du site
+  'region.highlands': p_noziwild_team_lookout,
+  'region.highlands.1': p_noziwild_van_team,
+  'region.east.3': p_lemurs_on_bamboo,
+  'about.expert.5': p_guide_with_sifaka,
+  'food.dish.2': p_noziwild_guides_market,
+  'food.class': p_noziwild_guides_market,
+  'long.week.1': p_noziwild_van_team,
+  'long.service.3': p_nosy_komba_village_aerial,
   'home.ways.1': p_red_tsingy_hikers,
   'home.ways.2': p_boat_to_nosy_iranja,
   'home.ways.3': p_palm_beach,

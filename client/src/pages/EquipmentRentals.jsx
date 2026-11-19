@@ -4,7 +4,7 @@ import Deux from "../assets/images/2.jpg";
 import Ambanja from "../assets/images/Ambanja.jpg";
 import NosyIranja from "../assets/images/NosyIranja.jpg";
 import Ramena from "../assets/images/Ramena.jpg";
-import Tana from "../assets/images/Tana.jpg";
+import TeamLookout from "../assets/images/site/noziwild-team-lookout.jpg";
 import Navbar from '../components/Navbar';
 import Footer from '../components/Footer';
 import { useTrip } from '../context/TripContext';
@@ -48,7 +48,7 @@ const ARCHES = [
   { id: 'water', label: 'Water', image: Ramena },
   { id: 'trek', label: 'Trek & Camp', image: Deux },
   { id: 'ride', label: 'Ride', image: Ambanja },
-  { id: 'optics', label: 'Photo & Optics', image: Tana },
+  { id: 'optics', label: 'Photo & Optics', image: TeamLookout },
 ]
 
 const PICKUPS = [

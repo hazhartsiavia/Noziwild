@@ -7,7 +7,7 @@ import NosyIranja from '../assets/images/NosyIranja.jpg'
 import NosyLonjo from '../assets/images/NosyLonjo.jpg'
 import Ambanja from '../assets/images/Ambanja.jpg'
 import Deux from '../assets/images/2.jpg'
-import Tana from '../assets/images/Tana.jpg'
+import TeamLookout from '../assets/images/site/noziwild-team-lookout.jpg'
 import Icone from '../assets/logo/icon.svg'
 import Footer from '../components/Footer'
 import Testimonials from '../components/Testimonials'
@@ -35,7 +35,7 @@ const quoteHref = (k, v) => `/contact?type=quote&${k}=${encodeURIComponent(v)}`
 
 // Les 4 façons de voyager (section WaysOverview)
 const ways = [
-  { title: 'Circuits', text: 'Ready-made routes across the island', href: '/circuits', icon: Route, slot: 'home.ways.1', image: Tana },
+  { title: 'Circuits', text: 'Ready-made routes across the island', href: '/circuits', icon: Route, slot: 'home.ways.1', image: TeamLookout },
   { title: 'Excursions', text: 'Day trips and short escapes', href: '/excursions', icon: Sun, slot: 'home.ways.2', image: Ramena },
   { title: 'Long Stay', text: 'Live the island for weeks', href: '/long-stay', icon: Compass, slot: 'home.ways.3', image: NosyIranja },
   { title: 'Tailor-Made', text: 'A trip designed around you', href: '/tailor-made', icon: Sparkles, slot: 'home.ways.4', image: Ambanja },
@@ -58,9 +58,9 @@ const regions = [
     places: [{ name: 'Ramena Beach', slot: 'region.north.1', image: Ramena }, { name: 'Nosy Iranja', slot: 'region.north.2', image: NosyIranja }, { name: 'Ambanja', slot: 'region.north.3', image: Ambanja }],
   },
   {
-    id: 'highlands', name: 'The Highlands', tagline: 'Royal hills, rice terraces and cool mornings', slot: 'region.highlands', image: Tana, months: [5, 10],
+    id: 'highlands', name: 'The Highlands', tagline: 'Royal hills, rice terraces and cool mornings', slot: 'region.highlands', image: TeamLookout, months: [5, 10],
     text: 'Start in Antananarivo, climb to the royal hill of Ambohimanga and ride south through the terraced valleys to Antsirabe.',
-    places: [{ name: 'Antananarivo', slot: 'region.highlands.1', image: Tana }, { name: 'Ambohimanga', slot: 'region.highlands.2', image: Deux }, { name: 'Antsirabe', slot: 'region.highlands.3', image: Ambanja }],
+    places: [{ name: 'Antananarivo', slot: 'region.highlands.1', image: TeamLookout }, { name: 'Ambohimanga', slot: 'region.highlands.2', image: Deux }, { name: 'Antsirabe', slot: 'region.highlands.3', image: Ambanja }],
   },
   {
     id: 'west', name: 'The West', tagline: 'Baobab avenues and stone forests', slot: 'region.west', image: Deux, months: [5, 10],
@@ -75,12 +75,12 @@ const regions = [
   {
     id: 'east', name: 'The East', tagline: 'Rainforest, lemurs and island beaches', slot: 'region.east', image: Ambanja, months: [9, 12],
     text: 'Listen for the indri at dawn in Andasibe, then take a boat to Ile Sainte-Marie or into the Masoala peninsula.',
-    places: [{ name: 'Andasibe', slot: 'region.east.1', image: Ambanja }, { name: 'Ile Sainte-Marie', slot: 'region.east.2', image: NosyIranja }, { name: 'Masoala', slot: 'region.east.3', image: Tana }],
+    places: [{ name: 'Andasibe', slot: 'region.east.1', image: Ambanja }, { name: 'Ile Sainte-Marie', slot: 'region.east.2', image: NosyIranja }, { name: 'Masoala', slot: 'region.east.3', image: TeamLookout }],
   },
 ]
 
 const trips = [
-  { name: 'Highlands & Coast', days: 7, slot: 'home.trips.1', image: Tana, text: 'From lemur forests to a quiet bay, a slow week that mixes culture, nature and the sea.', tags: ['Andasibe forest', 'Village stays', 'Ramena sunsets'], months: [10, 11, 12] },
+  { name: 'Highlands & Coast', days: 7, slot: 'home.trips.1', image: TeamLookout, text: 'From lemur forests to a quiet bay, a slow week that mixes culture, nature and the sea.', tags: ['Andasibe forest', 'Village stays', 'Ramena sunsets'], months: [10, 11, 12] },
   { name: 'Island Escape', days: 5, slot: 'home.trips.2', image: NosyIranja, text: 'White sand, turquoise water and days that end on a boat.' },
   { name: 'Wild North', days: 10, slot: 'home.trips.3', image: Deux, text: 'Baobabs, canyons and empty beaches, for the ones who want more.' },
 ]

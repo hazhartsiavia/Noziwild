@@ -4,7 +4,7 @@ import Ambanja from "../assets/images/Ambanja.jpg";
 import NosyLonjo from "../assets/images/NosyLonjo.jpg";
 import NosyIranja from "../assets/images/NosyIranja.jpg";
 import Ramena from "../assets/images/Ramena.jpg";
-import Tana from "../assets/images/Tana.jpg";
+import TeamLookout from "../assets/images/site/noziwild-team-lookout.jpg";
 import Icone from "../assets/logo/icon.svg";
 import Navbar from '../components/Navbar';
 import Footer from '../components/Footer';
@@ -217,7 +217,7 @@ const experts = [
     id: 5,
     name: 'Hery Andria',
     role: 'Wildlife Guide',
-    image: Tana,
+    image: TeamLookout,
     bio: 'Hery leads small-group wildlife walks and knows exactly when and where to find the island’s most unusual animals.',
     phone: '+261 34 00 000 05',
     email: 'hery@example.com',

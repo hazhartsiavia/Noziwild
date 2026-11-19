@@ -4,7 +4,6 @@ import Ambanja from "../assets/images/Ambanja.jpg";
 import NosyLonjo from "../assets/images/NosyLonjo.jpg";
 import NosyIranja from "../assets/images/NosyIranja.jpg";
 import Ramena from "../assets/images/Ramena.jpg";
-import Tana from "../assets/images/Tana.jpg";
 import Navbar from '../components/Navbar';
 import Footer from '../components/Footer';
 import AddToTrip from '../components/AddToTrip'

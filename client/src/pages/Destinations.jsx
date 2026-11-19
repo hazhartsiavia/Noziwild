@@ -6,7 +6,7 @@ import NosyIranja from '../assets/images/NosyIranja.jpg'
 import NosyLonjo from '../assets/images/NosyLonjo.jpg'
 import Ambanja from '../assets/images/Ambanja.jpg'
 import Deux from '../assets/images/2.jpg'
-import Tana from '../assets/images/Tana.jpg'
+import TeamLookout from '../assets/images/site/noziwild-team-lookout.jpg'
 import Navbar from '../components/Navbar'
 import Footer from '../components/Footer'
 import PageHero from '../components/PageHero'
@@ -47,10 +47,10 @@ const regions = [
     name: 'The Highlands',
     tagline: 'Royal hills, rice terraces and cool mornings',
     text: 'Start in Antananarivo, climb to the royal hill of Ambohimanga and ride south through the terraced valleys to Antsirabe.',
-    slot: 'region.highlands', image: Tana,
+    slot: 'region.highlands', image: TeamLookout,
     months: [5, 6, 7, 8, 9, 10],
     places: [
-      { name: 'Antananarivo', slot: 'region.highlands.1', image: Tana },
+      { name: 'Antananarivo', slot: 'region.highlands.1', image: TeamLookout },
       { name: 'Ambohimanga', slot: 'region.highlands.2', image: Deux },
       { name: 'Antsirabe', slot: 'region.highlands.3', image: Ambanja },
     ],
@@ -91,7 +91,7 @@ const regions = [
     places: [
       { name: 'Andasibe', slot: 'region.east.1', image: Ambanja },
       { name: 'Ile Sainte-Marie', slot: 'region.east.2', image: NosyIranja },
-      { name: 'Masoala', slot: 'region.east.3', image: Tana },
+      { name: 'Masoala', slot: 'region.east.3', image: TeamLookout },
     ],
   },
 ]

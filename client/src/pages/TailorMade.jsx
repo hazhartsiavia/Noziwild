@@ -6,7 +6,7 @@ import NosyIranja from '../assets/images/NosyIranja.jpg'
 import NosyLonjo from '../assets/images/NosyLonjo.jpg'
 import Ambanja from '../assets/images/Ambanja.jpg'
 import Deux from '../assets/images/2.jpg'
-import Tana from '../assets/images/Tana.jpg'
+import TeamLookout from '../assets/images/site/noziwild-team-lookout.jpg'
 import Navbar from '../components/Navbar'
 import Footer from '../components/Footer'
 import { CARD, CARD_BODY, CARD_IMG, CARD_MEDIA, CARD_TEXT, CARD_TITLE } from '../components/Card'
@@ -39,7 +39,7 @@ const QUESTION = 'text-4xl sm:text-5xl md:text-6xl font-medium leading-[1.05] tr
 const interests = [
   { id: 'Islands & beaches', slot: 'tm.interest.1', image: NosyIranja },
   { id: 'Wildlife', slot: 'tm.interest.2', image: Ambanja },
-  { id: 'Culture & villages', slot: 'tm.interest.3', image: Tana },
+  { id: 'Culture & villages', slot: 'tm.interest.3', image: TeamLookout },
   { id: 'Hiking & adventure', slot: 'tm.interest.4', image: Deux },
   { id: 'Sailing & sea', slot: 'tm.interest.5', image: Ramena },
   { id: 'Slow & relaxing', slot: 'tm.interest.6', image: NosyLonjo },

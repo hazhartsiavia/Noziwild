@@ -3,7 +3,7 @@ import Deux from "../assets/images/2.jpg";
 import Ambanja from "../assets/images/Ambanja.jpg";
 import NosyLonjo from "../assets/images/NosyLonjo.jpg";
 import Ramena from "../assets/images/Ramena.jpg";
-import Tana from "../assets/images/Tana.jpg";
+import TeamLookout from "../assets/images/site/noziwild-team-lookout.jpg";
 import Navbar from '../components/Navbar';
 import Footer from '../components/Footer';
 import AddToTrip from '../components/AddToTrip'
@@ -39,7 +39,7 @@ const prefersReducedMotion = () =>
 
 const DISHES = [
   { id: 1, name: 'Romazava', image: Ambanja, spice: 'Mild', where: 'Family tables in the highlands', text: 'The national dish: tender zebu beef simmered with fresh greens, ginger and tomato.' },
-  { id: 2, name: 'Ravitoto', image: Tana, spice: 'Medium', where: 'Local eateries in Antananarivo', text: 'Pounded cassava leaves slow-cooked with pork and garlic, served with steaming rice.' },
+  { id: 2, name: 'Ravitoto', image: TeamLookout, spice: 'Medium', where: 'Local eateries in Antananarivo', text: 'Pounded cassava leaves slow-cooked with pork and garlic, served with steaming rice.' },
   { id: 3, name: 'Zebu Skewers', image: Deux, spice: 'Hot', where: 'Street stalls at dusk', text: 'Grilled over charcoal and served with a fiery side of homemade chili sauce.' },
   { id: 4, name: 'Coconut Prawns', image: Ramena, spice: 'Mild', where: 'Beachfront restaurants', text: 'Fresh prawns in a creamy coconut sauce with a hint of vanilla.' },
   { id: 5, name: 'Vanilla Flan', image: NosyLonjo, spice: 'Sweet', where: 'Guesthouses and cafés', text: 'Silky custard made with real Malagasy vanilla, a gentle end to any meal.' },

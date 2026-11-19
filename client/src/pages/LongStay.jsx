@@ -6,7 +6,7 @@ import NosyIranja from '../assets/images/NosyIranja.jpg'
 import NosyLonjo from '../assets/images/NosyLonjo.jpg'
 import Ambanja from '../assets/images/Ambanja.jpg'
 import Deux from '../assets/images/2.jpg'
-import Tana from '../assets/images/Tana.jpg'
+import TeamLookout from '../assets/images/site/noziwild-team-lookout.jpg'
 import Navbar from '../components/Navbar'
 import Footer from '../components/Footer'
 import PageHero from '../components/PageHero'
@@ -31,7 +31,7 @@ const H2 = 'text-[clamp(2rem,4.4vw,4rem)] font-bold leading-[1.08] tracking-tigh
 // Autres textes de la page : locales/<langue>/longstay.json (listes dans le même ordre qu'ici)
 
 const weeks = [
-  { week: 'Week 1', place: 'Antananarivo', text: 'Arrive, settle in, explore the capital and the royal hill of Ambohimanga.', image: Tana },
+  { week: 'Week 1', place: 'Antananarivo', text: 'Arrive, settle in, explore the capital and the royal hill of Ambohimanga.', image: TeamLookout },
   { week: 'Week 2', place: 'Diego Suarez', text: 'Work from the bay and sail the emerald coast.', image: Ramena },
   { week: 'Week 3', place: 'Ambanja', text: 'Cocoa plantations, markets and northern wildlife.', image: Ambanja },
   { week: 'Week 4', place: 'Nosy Be', text: 'Close the month on the islands of Nosy Iranja and Nosy Lonjo.', image: NosyIranja },
@@ -40,7 +40,7 @@ const weeks = [
 const services = [
   { title: 'Housing', text: 'Villas, apartments and guesthouses.', image: NosyLonjo, span: 'col-span-2 row-span-2', pos: 'object-center' },
   { title: 'Transport', text: 'Airport pick-up and private drivers.', image: Deux, span: 'col-span-2', pos: 'object-center' },
-  { title: 'Internet', text: 'SIM card and connected homes.', image: Tana, span: '', pos: 'object-top' },
+  { title: 'Internet', text: 'SIM card and connected homes.', image: TeamLookout, span: '', pos: 'object-top' },
   { title: 'Paperwork', text: 'Visa and extension guidance.', image: Ambanja, span: '', pos: 'object-bottom' },
   { title: 'Local contacts', text: 'Guides, doctors, teachers and community projects.', image: Ramena, span: 'col-span-2', pos: 'object-center' },
 ]

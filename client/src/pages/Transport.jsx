@@ -3,7 +3,7 @@ import { ArrowDown, BadgeCheck, Car, Headset, Plane, ReceiptText, ShieldCheck, S
 import gsap from 'gsap'
 import { ScrollTrigger } from 'gsap/ScrollTrigger'
 import Deux from "../assets/images/2.jpg";
-import Tana from "../assets/images/Tana.jpg";
+import TeamLookout from "../assets/images/site/noziwild-team-lookout.jpg";
 import Navbar from '../components/Navbar';
 import Footer from '../components/Footer';
 import AddToTrip from '../components/AddToTrip'
@@ -84,7 +84,7 @@ const CTA = {
   text: 'Tell us where you want to go and we will handle the rest.',
   label: 'Get a Free Quote',
   href: '/contact',
-  image: Tana,
+  image: TeamLookout,
 }
 
 /* ----------------------- Utilitaires GSAP ------------------------ */

@@ -11,7 +11,7 @@ import NosyIranja from './assets/images/NosyIranja.jpg'
 import NosyLonjo from './assets/images/NosyLonjo.jpg'
 import Ambanja from './assets/images/Ambanja.jpg'
 import Deux from './assets/images/2.jpg'
-import Tana from './assets/images/Tana.jpg'
+import TeamLookout from './assets/images/site/noziwild-team-lookout.jpg'
 import bg1 from './assets/images/hero/bg1-2400.jpg'
 import bg2 from './assets/images/hero/bg2-2400.jpg'
 import bg3 from './assets/images/hero/bg3-2400.jpg'
@@ -36,8 +36,8 @@ export const PHOTO_PAGES = [
       'home.hero.1': { label: 'Hero slide 3', src: bg1 },
       'home.hero.2': { label: 'Hero slide 4', src: bg2 },
       'home.hero.4': { label: 'Hero slide 5', src: bg3 },
-      ...list('home.ways', 'Ways to travel card', [Tana, Ramena, NosyIranja, Ambanja]),
-      ...list('home.trips', 'Trip we love', [Tana, NosyIranja, Deux]),
+      ...list('home.ways', 'Ways to travel card', [TeamLookout, Ramena, NosyIranja, Ambanja]),
+      ...list('home.trips', 'Trip we love', [TeamLookout, NosyIranja, Deux]),
       'home.about.1': { label: 'About us photo', src: GuideSifaka },
       'home.why.1': { label: 'Why Noziwild, card 1 (Numerous routes), photo 1', src: GuideSifaka },
       'home.why.2': { label: 'Why Noziwild, card 1 (Numerous routes), photo 2', src: GuideSifaka },
@@ -54,19 +54,19 @@ export const PHOTO_PAGES = [
     slots: {
       'region.north': { label: 'The North', src: NosyIranja },
       ...list('region.north', 'The North, place', [Ramena, NosyIranja, Ambanja]),
-      'region.highlands': { label: 'The Highlands', src: Tana },
-      ...list('region.highlands', 'The Highlands, place', [Tana, Deux, Ambanja]),
+      'region.highlands': { label: 'The Highlands', src: TeamLookout },
+      ...list('region.highlands', 'The Highlands, place', [TeamLookout, Deux, Ambanja]),
       'region.west': { label: 'The West', src: Deux },
       ...list('region.west', 'The West, place', [Deux, NosyLonjo, Ambanja]),
       'region.south': { label: 'The South', src: NosyLonjo },
       ...list('region.south', 'The South, place', [NosyLonjo, Ramena, NosyIranja]),
       'region.east': { label: 'The East', src: Ambanja },
-      ...list('region.east', 'The East, place', [Ambanja, NosyIranja, Tana]),
+      ...list('region.east', 'The East, place', [Ambanja, NosyIranja, TeamLookout]),
     },
   },
   {
     id: 'destinations', label: 'Destinations', page: '/destinations',
-    slots: { ...list('dest.hero', 'Hero photo', [Ramena, Tana, NosyLonjo]), 'dest.cta': { label: 'Final banner', src: Ramena } },
+    slots: { ...list('dest.hero', 'Hero photo', [Ramena, TeamLookout, NosyLonjo]), 'dest.cta': { label: 'Final banner', src: Ramena } },
   },
   {
     id: 'blog', label: 'Blog', page: '/blog',
@@ -79,12 +79,12 @@ export const PHOTO_PAGES = [
       'about.promise': { label: '“Our promise” card', src: Deux },
       'about.mission': { label: 'Mission, large photo', src: NosyIranja },
       ...list('about.mission', 'Mission, small photo', [Ambanja, NosyLonjo]),
-      ...list('about.expert', 'Travel expert', [Ambanja, NosyLonjo, NosyIranja, Ramena, Tana]),
+      ...list('about.expert', 'Travel expert', [Ambanja, NosyLonjo, NosyIranja, Ramena, TeamLookout]),
     },
   },
   {
     id: 'activities', label: 'Activities', page: '/activities',
-    slots: { 'act.banner': { label: 'Banner', src: NosyLonjo }, ...list('act.photo', 'Tilted photo', [Ramena, Tana, NosyIranja]) },
+    slots: { 'act.banner': { label: 'Banner', src: NosyLonjo }, ...list('act.photo', 'Tilted photo', [Ramena, TeamLookout, NosyIranja]) },
   },
   {
     id: 'circuits', label: 'Circuits', page: '/circuits',
@@ -109,7 +109,7 @@ export const PHOTO_PAGES = [
       'gear.arch.water': { label: 'Category: water', src: Ramena },
       'gear.arch.trek': { label: 'Category: trek & camp', src: Deux },
       'gear.arch.ride': { label: 'Category: ride', src: Ambanja },
-      'gear.arch.optics': { label: 'Category: photo & optics', src: Tana },
+      'gear.arch.optics': { label: 'Category: photo & optics', src: TeamLookout },
       'gear.cta': { label: 'Final banner', src: NosyIranja },
     },
   },
@@ -125,16 +125,16 @@ export const PHOTO_PAGES = [
     id: 'food', label: 'Food & dining', page: '/food-dining',
     slots: {
       ...list('food.plate', 'Hero plate', [Ambanja, Ramena, NosyLonjo]),
-      ...list('food.dish', 'Dish', [Ambanja, Tana, Deux, Ramena, NosyLonjo]),
-      'food.class': { label: 'Cooking class', src: Tana },
+      ...list('food.dish', 'Dish', [Ambanja, TeamLookout, Deux, Ramena, NosyLonjo]),
+      'food.class': { label: 'Cooking class', src: TeamLookout },
     },
   },
   {
     id: 'guides', label: 'Guides', page: '/guides',
     slots: {
-      ...list('guides.hero', 'Hero photo', [Tana, Ramena]),
-      ...list('guides.service', 'Guide service', [Tana, Deux, NosyIranja, NosyLonjo]),
-      ...list('guides.gallery', 'Gallery photo', [Tana, Ramena, NosyLonjo, Deux, Ambanja, NosyIranja, Tana]),
+      ...list('guides.hero', 'Hero photo', [TeamLookout, Ramena]),
+      ...list('guides.service', 'Guide service', [TeamLookout, Deux, NosyIranja, NosyLonjo]),
+      ...list('guides.gallery', 'Gallery photo', [TeamLookout, Ramena, NosyLonjo, Deux, Ambanja, NosyIranja, TeamLookout]),
     },
   },
   {
@@ -149,16 +149,16 @@ export const PHOTO_PAGES = [
     id: 'longstay', label: 'Long stays', page: '/long-stay',
     slots: {
       'long.hero': { label: 'Banner', src: NosyIranja },
-      ...list('long.week', 'Week', [Tana, Ramena, Ambanja, NosyIranja]),
+      ...list('long.week', 'Week', [TeamLookout, Ramena, Ambanja, NosyIranja]),
       ...list('long.manage', 'Planning photo', [Ambanja, Deux]),
-      ...list('long.service', 'Service', [NosyLonjo, Deux, Tana, Ambanja, Ramena]),
+      ...list('long.service', 'Service', [NosyLonjo, Deux, TeamLookout, Ambanja, Ramena]),
       'long.cta': { label: 'Final banner', src: Ramena },
     },
   },
   {
     id: 'photography', label: 'Photography', page: '/photography',
     slots: {
-      ...list('photo.hero', 'Hero photo', [Ramena, Ambanja, Deux, NosyIranja, NosyLonjo, Tana]),
+      ...list('photo.hero', 'Hero photo', [Ramena, Ambanja, Deux, NosyIranja, NosyLonjo, TeamLookout]),
       'photo.edit': { label: 'Before / after photo', src: NosyIranja },
       'photo.cta': { label: 'Final banner', src: Ramena },
     },
@@ -166,14 +166,14 @@ export const PHOTO_PAGES = [
   {
     id: 'tailormade', label: 'Tailor-made', page: '/tailor-made',
     slots: {
-      ...list('tm.hero', 'Hero arch', [Ambanja, NosyIranja, Tana]),
-      ...list('tm.interest', 'Interest', [NosyIranja, Ambanja, Tana, Deux, Ramena, NosyLonjo]),
+      ...list('tm.hero', 'Hero arch', [Ambanja, NosyIranja, TeamLookout]),
+      ...list('tm.interest', 'Interest', [NosyIranja, Ambanja, TeamLookout, Deux, Ramena, NosyLonjo]),
       'tm.cta': { label: 'Final banner', src: Ramena },
     },
   },
   {
     id: 'transport', label: 'Transport', page: '/transport',
-    slots: { 'transport.hero': { label: 'Large card', src: Deux }, 'transport.cta': { label: 'Final banner', src: Tana } },
+    slots: { 'transport.hero': { label: 'Large card', src: Deux }, 'transport.cta': { label: 'Final banner', src: TeamLookout } },
   },
   {
     id: 'tickets', label: 'Ticket reservations', page: '/ticket-reservation',
