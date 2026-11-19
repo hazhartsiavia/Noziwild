@@ -171,11 +171,10 @@
 .nzx__row:hover .nzx__go { background: #0c3e2e; border-color: #0c3e2e; color: #fff; transform: rotate(45deg); }
 .nzx__row:focus-visible { outline: 2px solid #C49849; outline-offset: 4px; border-radius: 8px; }
 
-/* Ordinateur : la carte des voyages colle au bas de l'écran (pas de marge, coins du bas carrés) */
-@media (min-width: 1024px) {
-  .nzx__content { padding-bottom: 0; }
-  .nzx__card { border-radius: 28px 28px 0 0; box-shadow: 0 -20px 60px rgba(7, 42, 31, .18); }
-}
+/* La carte des voyages descend jusqu'en bas de la section (ordinateur, tablette et téléphone) :
+   pas de marge dessous, coins du bas carrés */
+.nzx__content { padding-bottom: 0; }
+.nzx__card { border-radius: 28px 28px 0 0; box-shadow: 0 -20px 60px rgba(7, 42, 31, .18); }
 
 /* ---------- tablette et téléphone ---------- */
 

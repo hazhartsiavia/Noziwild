@@ -44,7 +44,7 @@
 .nzw__intro {
   max-width: 30em;
   margin: 0;
-  font-size: clamp(17px, 1.2vw, 21px);
+  font-size: clamp(17px, 1.35vw, 23px);
   line-height: 1.5;
 }
 
@@ -60,7 +60,7 @@
 .nzw {
   --nzw-top: clamp(24px, 7vh, 80px);
   --nzw-pad: clamp(24px, 2.6vw, 44px);
-  --nzw-title: clamp(24px, 2.1vw, 38px);
+  --nzw-title: clamp(26px, 2.4vw, 42px);
   --nzw-step: calc(var(--nzw-pad) + var(--nzw-title) * 1.15 + 18px);
 }
 
@@ -117,9 +117,9 @@
 }
 
 .nzw__card-text {
-  max-width: 32em;
+  max-width: 34em;
   margin: 10px 0 0;
-  font-size: clamp(16px, 1.15vw, 19px);
+  font-size: clamp(17px, 1.3vw, 21px);
   line-height: 1.55;
   color: var(--nzw-soft);
 }
@@ -155,7 +155,7 @@
 
   .nzw {
     --nzw-pad: clamp(18px, min(2.6vw, 3.4vh), 44px);
-    --nzw-title: clamp(22px, min(2.1vw, 3.6vh), 38px);
+    --nzw-title: clamp(24px, min(2.4vw, 4vh), 42px);
     position: sticky;
     top: 0;
     display: flex;
@@ -168,8 +168,8 @@
 
   .nzw__label { font-size: clamp(14px, 1.9vh, 16px); }
   .nzw__head { margin-top: clamp(8px, 1.6vh, 24px); }
-  .nzw__title { font-size: clamp(30px, min(3vw, 5.4vh), 58px); }
-  .nzw__intro { font-size: clamp(15px, min(1.2vw, 2.2vh), 21px); }
+  .nzw__title { font-size: clamp(32px, min(3.3vw, 5.8vh), 62px); }
+  .nzw__intro { font-size: clamp(16px, min(1.35vw, 2.5vh), 23px); }
   .nzw__rule { margin-top: clamp(14px, min(2.4vw, 2.6vh), 40px); }
 
   /* Les cartes occupent la place qui reste ; chacune posée sous le titre de la précédente */
@@ -186,7 +186,7 @@
     margin: 0;
   }
 
-  .nzw__card-text { font-size: clamp(15px, min(1.15vw, 2.1vh), 19px); }
+  .nzw__card-text { font-size: clamp(16px, min(1.3vw, 2.4vh), 21px); }
   .nzw__photos { min-height: 0; }
 
   .nzw__spacer { display: block; flex: none; height: 300vh; }
