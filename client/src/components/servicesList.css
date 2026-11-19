@@ -272,16 +272,45 @@
 
 /* ---------- téléphone, tablette, animations réduites : rangée à faire glisser ---------- */
 
+/* Texte au-dessus de la rangée : seulement sans la scène figée (voir plus bas) */
+.nzv__top { display: none; }
+
 @media (max-width: 1023px), (prefers-reduced-motion: reduce) {
-  .nzv__scroller { overflow-x: auto; scroll-snap-type: x proximity; scrollbar-width: none; }
+  /* Le texte passe au-dessus, sur toute la largeur ; la rangée ne garde que les cartes */
+  .nzv__top {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    width: 90vw;
+    margin: 0 auto clamp(24px, 5vw, 36px);
+  }
+  .nzv__track > .nzv__intro { display: none; }
+
+  .nzv__scroller {
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    scroll-padding-inline: var(--nzv-side);
+    scrollbar-width: none;
+  }
   .nzv__scroller::-webkit-scrollbar { display: none; }
+  .nzv__track { align-items: stretch; padding-bottom: 4px; }
   .nzv__card { scroll-snap-align: start; }
+
+  /* Pas de décalage en escalier : les cartes alignées, à la même hauteur */
+  .nzv__card:nth-child(odd),
+  .nzv__card:nth-child(even) { margin-top: 0; margin-bottom: 0; }
+  .nzv__link { height: 100%; }
+  .nzv__end { align-self: center; }
+}
+
+@media (max-width: 1023px) {
+  .nzv { --nzv-side: 5vw; }
+  .nzv__card { width: clamp(260px, 44vw, 340px); }
 }
 
 @media (max-width: 640px) {
-  .nzv__intro { width: 78vw; }
-  .nzv__card { width: 74vw; }
-  .nzv__card:nth-child(odd) { margin-top: 0; }
+  .nzv__card { width: 78vw; }
+  .nzv__btn--image { padding: 18px 28px; font-size: 17px; }
 }
 
 @media (prefers-reduced-motion: reduce) {

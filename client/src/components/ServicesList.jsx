@@ -213,6 +213,15 @@ export default function ServicesList({ services, children, ctaImage }) {
   return (
     <div className="nzv-pin">
     <section ref={root} className="nzv" aria-labelledby="nzv-title">
+      {/* Téléphone, tablette, animations réduites : le texte au-dessus, sur toute la largeur, et seulement les
+          cartes dans la rangée à faire glisser (sur ordinateur, ce texte est le début de la rangée, plus bas) */}
+      <div className="nzv__top">
+        <p className="nzv__label"><Wrench aria-hidden="true" />{t('servicesLabel')}</p>
+        <h2 className="nzv__heading">{t('servicesTitle')}</h2>
+        <p className="nzv__lead">{t('servicesText')}</p>
+        <A href="/contact?type=quote" className="nzv__btn">{nav('quote')}<ArrowRight aria-hidden="true" /></A>
+      </div>
+
       {/* Rangée des cartes (téléphone : à faire glisser au doigt) */}
       <div className="nzv__scroller">
         <ul ref={track} className="nzv__track">
