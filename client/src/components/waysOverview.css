@@ -110,7 +110,8 @@
 
 .nzo__media {
   position: relative;
-  min-height: clamp(560px, 42vw, 760px);
+  /* toute la section tient dans l'écran : la photo prend la hauteur de l'écran, avec une marge */
+  min-height: clamp(460px, min(42vw, calc(100vh - 90px)), 760px);
   overflow: hidden;
   border-radius: var(--nzo-radius);
   background: #0c3e2e;
@@ -229,7 +230,7 @@
 .nzo__aside {
   display: flex;
   flex-direction: column;
-  gap: clamp(28px, 2.2vw, 40px);
+  gap: clamp(18px, min(2.2vw, 3.4vh), 40px);
 }
 
 .nzo__facts { margin: 0; padding: 0; list-style: none; }
@@ -245,8 +246,8 @@
   justify-content: space-between;
   gap: 24px;
   width: 100%;
-  padding: 22px 0;
-  font-size: 20px;
+  padding: clamp(12px, 2.4vh, 22px) 0;
+  font-size: clamp(17px, 2.3vh, 20px);
   text-align: left;
   color: var(--nzo-ink);
   cursor: pointer;
@@ -290,8 +291,8 @@
   display: flex;
   flex: 1;
   flex-direction: column;
-  gap: 32px;
-  padding: 30px;
+  gap: clamp(14px, 2.6vh, 32px);
+  padding: clamp(20px, 3.2vh, 30px);
   border-radius: var(--nzo-radius);
   background: #fff;
 }
@@ -306,8 +307,8 @@
 
 .nzo__quote {
   margin: auto 0;
-  font-size: clamp(21px, 1.6vw, 28px);
-  line-height: 1.5;
+  font-size: clamp(18px, min(1.6vw, 2.7vh), 28px);
+  line-height: 1.45;
 }
 
 .nzo__card .nzo__link { align-self: stretch; }
