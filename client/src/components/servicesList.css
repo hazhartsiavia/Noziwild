@@ -305,11 +305,13 @@
   .nzv__link { height: 100%; }
   .nzv__end { align-self: center; }
 
+  /* À droite, alignés sur le bord du texte */
   .nzv__nav {
     display: flex;
-    justify-content: center;
+    justify-content: flex-end;
     gap: 12px;
-    margin-top: clamp(18px, 4vw, 28px);
+    width: 90vw;
+    margin: clamp(18px, 4vw, 28px) auto 0;
   }
 
   .nzv__nav button {
