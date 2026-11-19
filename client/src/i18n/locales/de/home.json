@@ -133,24 +133,6 @@
   "notSure": "Sie wissen nicht, wo Sie anfangen sollen?",
   "notSureText": "Erzählen Sie uns, was Sie lieben. Wir schlagen die Route vor.",
   "talkExpert": "Mit einem Experten sprechen",
-  "promises": [
-    {
-      "title": "Lokal zuerst",
-      "text": "Lokale Guides, familiengeführte Unterkünfte und kleine Restaurants, die die Menschen unterstützen, die diesen Ort besonders machen."
-    },
-    {
-      "title": "Bewusst entschleunigt",
-      "text": "Weniger Stopps, mehr Zeit. Wir lassen Raum für ein langes Mittagessen, einen Umweg oder ein ungeplantes Bad."
-    },
-    {
-      "title": "Ehrliche Angebote",
-      "text": "Ein klares Angebot mit allem inklusive. Keine versteckten Kosten und keine Überraschungen am Ende."
-    },
-    {
-      "title": "Immer erreichbar",
-      "text": "Ein echter Mensch vor, während und nach Ihrer Reise, der antwortet, wenn Sie ihn brauchen."
-    }
-  ],
   "regionsLabel": "Reiseziele",
   "regionsTitle": "Fünf Regionen, eine Insel",
   "regionsText": "Madagaskar ist ein Kontinent im Kleinformat. Wählen Sie eine Region, um zu sehen, wofür sie bekannt ist und wann sich die Reise lohnt.",

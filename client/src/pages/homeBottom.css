@@ -78,7 +78,7 @@
   position: sticky;
   top: calc(var(--nzw-top) + var(--i) * var(--nzw-step));
   display: grid;
-  grid-template-columns: clamp(72px, 6vw, 120px) minmax(0, 1fr) clamp(220px, 20vw, 340px);
+  grid-template-columns: clamp(72px, 6vw, 120px) minmax(0, 1fr) clamp(200px, 17vw, 300px);
   align-items: start;
   gap: clamp(16px, 2.4vw, 48px);
   min-height: clamp(190px, 27vh, 260px);
@@ -180,9 +180,8 @@
     top: calc(var(--i) * var(--nzw-step));
     left: 0;
     right: 0;
-    /* carte compacte : les photos décident de sa hauteur, pas la place qui reste */
-    height: clamp(180px, 27vh, 260px);
-    min-height: 0;
+    /* carte compacte : hauteur minimale, elle grandit seulement si son texte est plus long */
+    min-height: clamp(180px, 27vh, 260px);
     margin: 0;
   }
 
@@ -247,11 +246,11 @@
 }
 
 @media (max-width: 640px) {
-  /* Téléphone : le numéro au-dessus du titre ; écart = numéro + titre */
-  .nzw { --nzw-step: calc(var(--nzw-pad) + 40px + 10px + var(--nzw-title) * 1.15 + 14px); }
-  .nzw__card { grid-template-columns: 1fr; min-height: 0; row-gap: 10px; }
-  .nzw__num { font-size: 40px; }
-  .nzw__photos { min-height: 140px; }
+  /* Téléphone : petit numéro à côté du titre ; écart = titre sur deux lignes au plus */
+  .nzw { --nzw-title: 22px; --nzw-step: calc(var(--nzw-pad) + var(--nzw-title) * 2.3 + 12px); }
+  .nzw__card { grid-template-columns: auto minmax(0, 1fr); min-height: 0; column-gap: 14px; row-gap: 14px; }
+  .nzw__num { font-size: 34px; }
+  .nzw__photos { min-height: 130px; }
   .nzw__help { flex-direction: column; align-items: flex-start; }
 }
 

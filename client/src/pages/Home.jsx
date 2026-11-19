@@ -1,7 +1,7 @@
 import React, { useLayoutEffect, useRef, useState } from 'react'
 import gsap from 'gsap'
 import { ScrollTrigger } from 'gsap/ScrollTrigger'
-import { ArrowUpRight, Compass, Minus, Plus, Route, Sparkles, Sun, Ticket, Users } from 'lucide-react'
+import { ArrowUpRight, Compass, Minus, Plus, Route, Sparkles, Sun } from 'lucide-react'
 import Ramena from '../assets/images/Ramena.jpg'
 import NosyIranja from '../assets/images/NosyIranja.jpg'
 import NosyLonjo from '../assets/images/NosyLonjo.jpg'
@@ -41,11 +41,13 @@ const ways = [
   { title: 'Tailor-Made', text: 'A trip designed around you', href: '/tailor-made', icon: Sparkles, slot: 'home.ways.4', image: Ambanja },
 ]
 
-const promises = [
-  { title: 'Local first', text: 'Local guides, family-run stays and small restaurants that support the people who make the place special.', icon: Users },
-  { title: 'Slow by design', text: 'Fewer stops, more time. We leave room for a long lunch, a detour or a swim you did not plan.', icon: Sun },
-  { title: 'Honest quotes', text: 'One clear quote with everything in it. No hidden fees and no surprises at the end.', icon: Ticket },
-  { title: 'Always reachable', text: 'A real person before, during and after your trip, who answers when you need it.', icon: Compass },
+// Les quatre raisons de « Pourquoi Noziwild » : titres de la page À propos (about.json → features), chacun
+// avec un texte déjà présent sur le site, sur le même sujet (même langue, mêmes mots partout)
+const reasons = [
+  { id: 'routes', text: ['home', 'tripsText'] },
+  { id: 'booking', text: ['home', 'servicesText'] },
+  { id: 'stays', text: ['accommodation', 'intro.text'] },
+  { id: 'guides', text: ['guides', 'intro'] },
 ]
 
 // Mêmes régions que la page Destinations (version courte)
@@ -135,12 +137,14 @@ function TalkBadge() {
 
 /* Pourquoi Noziwild (homeBottom.css) : en-tête, puis nos quatre engagements en cartes pleine largeur qui
    s'empilent au défilement (chacune monte et se pose sur la précédente, comme les étapes de la page
-   Sur mesure). Chaque carte : numéro, titre et texte à gauche, deux photos droites, décalées et
+   Sur mesure) : les quatre points de la page À propos. Chaque carte : numéro, titre et texte à gauche, deux photos droites, décalées et
    superposées à droite (admin > Pages & photos, emplacements home.why.1 à home.why.8).
    Ordinateur : la section reste à l'écran pendant l'empilement ; à la fin, tout tient dans un écran. */
 function Intro() {
   const root = useRef(null)
   const t = useT('home')
+  const about = useT('about')
+  const texts = { home: t, accommodation: useT('accommodation'), guides: useT('guides') }
   const photo = usePhoto()
 
   useLayoutEffect(() => {
@@ -217,12 +221,12 @@ function Intro() {
       </div>
       <span className="nzw__rule" aria-hidden="true" />
 
-      {/* Nos engagements : cartes qui s'empilent (chaque carte est un peu plus bas que la précédente) */}
+      {/* Les quatre raisons : cartes qui s'empilent (chaque carte est un peu plus bas que la précédente) */}
       <ol className="nzw__cards">
-        {promises.map((promise, i) => {
-          const p = { ...promise, ...t('promises')[i] }
+        {reasons.map((reason, i) => {
+          const p = { title: about('features')[i], text: texts[reason.text[0]](reason.text[1]) }
           return (
-            <li key={promise.title} className={`nzw__card nzw__card--${i + 1}`} style={{ '--i': i }}>
+            <li key={reason.id} className={`nzw__card nzw__card--${i + 1}`} style={{ '--i': i }}>
               <span className="nzw__num" aria-hidden="true">{String(i + 1).padStart(2, '0')}</span>
               <div className="nzw__card-body">
                 <h3 className="nzw__card-title">{p.title}</h3>

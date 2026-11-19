@@ -133,24 +133,6 @@
   "notSure": "Not sure where to start?",
   "notSureText": "Tell us what you love. We suggest the route.",
   "talkExpert": "Talk to an expert",
-  "promises": [
-    {
-      "title": "Local first",
-      "text": "Local guides, family-run stays and small restaurants that support the people who make the place special."
-    },
-    {
-      "title": "Slow by design",
-      "text": "Fewer stops, more time. We leave room for a long lunch, a detour or a swim you did not plan."
-    },
-    {
-      "title": "Honest quotes",
-      "text": "One clear quote with everything in it. No hidden fees and no surprises at the end."
-    },
-    {
-      "title": "Always reachable",
-      "text": "A real person before, during and after your trip, who answers when you need it."
-    }
-  ],
   "regionsLabel": "Destinations",
   "regionsTitle": "Five Regions, One Island",
   "regionsText": "Madagascar is a continent in miniature. Pick a region to see what it is known for and when to go.",

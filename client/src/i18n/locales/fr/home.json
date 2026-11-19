@@ -133,24 +133,6 @@
   "notSure": "Vous ne savez pas par où commencer ?",
   "notSureText": "Dites-nous ce que vous aimez. Nous vous proposons l'itinéraire.",
   "talkExpert": "Parler à un expert",
-  "promises": [
-    {
-      "title": "Le local d'abord",
-      "text": "Des guides locaux, des hébergements familiaux et de petits restaurants qui font vivre ceux qui rendent ces lieux uniques."
-    },
-    {
-      "title": "La lenteur, par choix",
-      "text": "Moins d'étapes, plus de temps. Nous laissons la place à un long déjeuner, un détour ou une baignade imprévue."
-    },
-    {
-      "title": "Des devis honnêtes",
-      "text": "Un seul devis clair, tout compris. Pas de frais cachés, pas de surprise à la fin."
-    },
-    {
-      "title": "Toujours joignables",
-      "text": "Une vraie personne avant, pendant et après votre voyage, qui répond quand vous en avez besoin."
-    }
-  ],
   "regionsLabel": "Destinations",
   "regionsTitle": "Cinq régions, une seule île",
   "regionsText": "Madagascar est un continent en miniature. Choisissez une région pour découvrir ce qui la rend célèbre et quand y aller.",

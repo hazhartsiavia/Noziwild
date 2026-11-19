@@ -133,24 +133,6 @@
   "notSure": "Non sai da dove cominciare?",
   "notSureText": "Raccontaci cosa ami. Ti proponiamo noi l'itinerario.",
   "talkExpert": "Parla con un esperto",
-  "promises": [
-    {
-      "title": "Prima il locale",
-      "text": "Guide locali, alloggi a gestione familiare e piccoli ristoranti che sostengono le persone che rendono speciale questo luogo."
-    },
-    {
-      "title": "Lentezza voluta",
-      "text": "Meno tappe, più tempo. Lasciamo spazio a un lungo pranzo, una deviazione o un bagno non previsto."
-    },
-    {
-      "title": "Preventivi onesti",
-      "text": "Un unico preventivo chiaro e completo. Nessun costo nascosto e nessuna sorpresa alla fine."
-    },
-    {
-      "title": "Sempre raggiungibili",
-      "text": "Una persona vera prima, durante e dopo il viaggio, che risponde quando ne hai bisogno."
-    }
-  ],
   "regionsLabel": "Destinazioni",
   "regionsTitle": "Cinque regioni, un'isola",
   "regionsText": "Il Madagascar è un continente in miniatura. Scegli una regione per scoprire per cosa è famosa e quando andarci.",

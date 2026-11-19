@@ -133,24 +133,6 @@
   "notSure": "¿No sabe por dónde empezar?",
   "notSureText": "Cuéntenos qué le gusta. Nosotros le proponemos la ruta.",
   "talkExpert": "Hablar con un experto",
-  "promises": [
-    {
-      "title": "Lo local, primero",
-      "text": "Guías locales, alojamientos familiares y pequeños restaurantes que apoyan a quienes hacen especial este lugar."
-    },
-    {
-      "title": "Despacio, a propósito",
-      "text": "Menos paradas, más tiempo. Dejamos espacio para una comida larga, un desvío o un baño que no estaba previsto."
-    },
-    {
-      "title": "Presupuestos honestos",
-      "text": "Un presupuesto claro con todo incluido. Sin gastos ocultos ni sorpresas al final."
-    },
-    {
-      "title": "Siempre localizables",
-      "text": "Una persona de verdad antes, durante y después de su viaje, que responde cuando lo necesita."
-    }
-  ],
   "regionsLabel": "Destinos",
   "regionsTitle": "Cinco regiones, una isla",
   "regionsText": "Madagascar es un continente en miniatura. Elija una región para ver por qué es famosa y cuándo ir.",
