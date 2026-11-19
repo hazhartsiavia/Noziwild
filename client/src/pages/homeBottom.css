@@ -64,7 +64,8 @@
   --nzw-step: calc(var(--nzw-pad) + var(--nzw-title) * 1.15 + 18px);
 }
 
-.nzw__cards { margin: clamp(36px, 3.6vw, 64px) 0 0; padding: 0; list-style: none; }
+/* Cartes moins larges que la section, centrées */
+.nzw__cards { width: min(100%, 1180px); margin: clamp(36px, 3.6vw, 64px) auto 0; padding: 0; list-style: none; }
 
 /* Temps d'arrêt sous les cartes : une fois toutes posées, elles restent empilées un moment avant de repartir
    (un bloc vide, car un sticky n'entre pas dans le padding de son parent) */
@@ -172,7 +173,7 @@
   .nzw__rule { margin-top: clamp(14px, min(2.4vw, 2.6vh), 40px); }
 
   /* Les cartes occupent la place qui reste ; chacune posée sous le titre de la précédente */
-  .nzw__cards { position: relative; flex: 1; min-height: 0; margin-top: clamp(14px, 2.6vh, 40px); }
+  .nzw__cards { position: relative; flex: 1; min-height: 0; margin: clamp(14px, 2.6vh, 40px) auto 0; }
 
   .nzw__card {
     position: absolute;
