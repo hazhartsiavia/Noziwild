@@ -226,6 +226,8 @@
   "servicesTitle": "Nous nous occupons de tout",
   "servicesText": "Réservez tout le voyage avec nous, ou seulement ce dont vous avez besoin. Chaque service est assuré par notre équipe et des partenaires locaux de confiance.",
   "servicesCount": "{count} offres",
+  "servicesPrev": "Service précédent",
+  "servicesNext": "Service suivant",
   "services": [
     "Hébergement",
     "Transport",

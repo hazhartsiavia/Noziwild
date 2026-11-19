@@ -226,6 +226,8 @@
   "servicesTitle": "Pensiamo a tutto noi",
   "servicesText": "Prenota con noi tutto il viaggio, o solo la parte che ti serve. Ogni servizio è gestito dal nostro team e da partner locali di fiducia.",
   "servicesCount": "{count} offerte",
+  "servicesPrev": "Servizio precedente",
+  "servicesNext": "Servizio successivo",
   "services": [
     "Alloggi",
     "Trasporti",

@@ -8,7 +8,7 @@
 import React, { useEffect, useLayoutEffect, useRef, useState } from 'react'
 import gsap from 'gsap'
 import { ScrollTrigger } from 'gsap/ScrollTrigger'
-import { ArrowRight, ArrowUpRight, Wrench } from 'lucide-react'
+import { ArrowRight, ArrowUpRight, ChevronLeft, ChevronRight, Wrench } from 'lucide-react'
 import { fetchOffers } from '../api'
 import { useLanguage, useT } from '../i18n/LanguageContext'
 import { A } from '../i18n/router'
@@ -73,6 +73,9 @@ export default function ServicesList({ services, children, ctaImage }) {
   const root = useRef(null)
   const track = useRef(null)
   const reveal = useRef(null)
+  const scroller = useRef(null)
+  // Boutons ← → sous la rangée (téléphone, tablette) : début / fin de la rangée atteints ?
+  const [edge, setEdge] = useState({ start: true, end: false })
   const titles = t('services')
   const offers = useOfferTitles(services.map((s) => s.kind))
   const items = services
@@ -206,6 +209,26 @@ export default function ServicesList({ services, children, ctaImage }) {
     return () => mm.revert()
   }, [items.length])
 
+  // Rangée à faire glisser : où en est-on, et défilement d'une carte avec les boutons
+  function updateEdge() {
+    const el = scroller.current
+    if (!el) return
+    const max = el.scrollWidth - el.clientWidth
+    setEdge({ start: el.scrollLeft <= 4, end: el.scrollLeft >= max - 4 })
+  }
+  useEffect(() => {
+    updateEdge()
+    window.addEventListener('resize', updateEdge)
+    return () => window.removeEventListener('resize', updateEdge)
+  })
+  const slide = (dir) => {
+    const el = scroller.current
+    const card = el?.querySelector('.nzv__card')
+    if (!card) return
+    const gap = parseFloat(getComputedStyle(card.parentElement).columnGap) || 0
+    el.scrollBy({ left: dir * (card.offsetWidth + gap), behavior: 'smooth' })
+  }
+
   if (!items.length) return null
 
   // Enveloppe gérée par React autour de la section figée : GSAP glisse son propre conteneur (pin-spacer)
@@ -223,7 +246,7 @@ export default function ServicesList({ services, children, ctaImage }) {
       </div>
 
       {/* Rangée des cartes (téléphone : à faire glisser au doigt) */}
-      <div className="nzv__scroller">
+      <div ref={scroller} className="nzv__scroller" onScroll={updateEdge}>
         <ul ref={track} className="nzv__track">
           <li className="nzv__intro">
             <p className="nzv__label"><Wrench aria-hidden="true" />{t('servicesLabel')}</p>
@@ -240,6 +263,12 @@ export default function ServicesList({ services, children, ctaImage }) {
             </A>
           </li>
         </ul>
+      </div>
+
+      {/* Boutons ← → sous la rangée (téléphone, tablette, animations réduites) */}
+      <div className="nzv__nav">
+        <button type="button" onClick={() => slide(-1)} disabled={edge.start} aria-label={t('servicesPrev')}><ChevronLeft aria-hidden="true" /></button>
+        <button type="button" onClick={() => slide(1)} disabled={edge.end} aria-label={t('servicesNext')}><ChevronRight aria-hidden="true" /></button>
       </div>
 
       {/* Section suivante, ouverte depuis le bouton (ordinateur) ou affichée en dessous (téléphone) */}

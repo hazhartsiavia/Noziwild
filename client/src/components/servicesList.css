@@ -275,6 +275,9 @@
 /* Texte au-dessus de la rangée : seulement sans la scène figée (voir plus bas) */
 .nzv__top { display: none; }
 
+/* Boutons ← → sous la rangée : seulement sans la scène figée */
+.nzv__nav { display: none; }
+
 @media (max-width: 1023px), (prefers-reduced-motion: reduce) {
   /* Le texte passe au-dessus, sur toute la largeur ; la rangée ne garde que les cartes */
   .nzv__top {
@@ -301,6 +304,31 @@
   .nzv__card:nth-child(even) { margin-top: 0; margin-bottom: 0; }
   .nzv__link { height: 100%; }
   .nzv__end { align-self: center; }
+
+  .nzv__nav {
+    display: flex;
+    justify-content: center;
+    gap: 12px;
+    margin-top: clamp(18px, 4vw, 28px);
+  }
+
+  .nzv__nav button {
+    display: grid;
+    place-items: center;
+    width: 52px;
+    height: 52px;
+    border: 1px solid rgba(12, 62, 46, .16);
+    border-radius: 50%;
+    background: rgba(255, 255, 255, .55);
+    color: var(--nzv-ink);
+    cursor: pointer;
+    transition: background .3s, color .3s, border-color .3s, opacity .3s;
+  }
+
+  .nzv__nav button:hover:not(:disabled) { background: var(--nzv-ink); border-color: var(--nzv-ink); color: #fff; }
+  .nzv__nav button:focus-visible { outline: 2px solid #C49849; outline-offset: 3px; }
+  .nzv__nav button:disabled { opacity: .35; cursor: default; }
+  .nzv__nav svg { width: 22px; height: 22px; }
 }
 
 @media (max-width: 1023px) {

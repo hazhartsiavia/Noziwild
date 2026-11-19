@@ -226,6 +226,8 @@
   "servicesTitle": "Everything Taken Care Of",
   "servicesText": "Book the whole trip with us, or only the part you need. Every service is run by our team and trusted local partners.",
   "servicesCount": "{count} offers",
+  "servicesPrev": "Previous service",
+  "servicesNext": "Next service",
   "services": [
     "Accommodation",
     "Transport",
