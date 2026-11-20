@@ -299,7 +299,7 @@ function Activities() {
       </div>
       <PageCta slot="act.banner" title={t('ctaTitle')} text={t('ctaText')} floats={['act.photo.1', 'act.photo.2', 'act.photo.3']}>
         <A href="/contact" className={PAGE_CTA_GOLD}>{t('ctaButton')}</A>
-        <A href="tel:+261340000000" className={PAGE_CTA_GHOST}>+261 34 00 000 00</A>
+        <A href="tel:+33698893064" className={PAGE_CTA_GHOST}>+33 6 98 89 30 64</A>
       </PageCta>
     </section>
     <Footer />

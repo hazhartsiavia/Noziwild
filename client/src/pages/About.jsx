@@ -176,6 +176,10 @@ const expertsSection = {
   startIndex: 1, // l'expert affiché au centre au chargement
 }
 
+// Coordonnées de Noziwild, affichées sur chaque fiche de l'équipe
+const NOZIWILD_PHONE = '+33 6 98 89 30 64'
+const NOZIWILD_EMAIL = 'contact@madanoziwild.com'
+
 const experts = [
   {
     id: 1,
@@ -183,8 +187,8 @@ const experts = [
     role: 'Local Experience Curator',
     image: Ambanja,
     bio: 'Sarah builds trips around the places locals actually love, from family-run guesthouses to quiet beaches away from the crowds.',
-    phone: '+261 34 00 000 01',
-    email: 'sarah@example.com',
+    phone: NOZIWILD_PHONE,
+    email: NOZIWILD_EMAIL,
   },
   {
     id: 2,
@@ -192,8 +196,8 @@ const experts = [
     role: 'Adventure Guide',
     image: NosyLonjo,
     bio: 'Lorem ipsum dolor sit amet consectetur. Pharetra proin eget iaculis nulla commodo sem vitae. Odio vulputate pellentesque id leo.',
-    phone: '+261 34 00 000 02',
-    email: 'james@example.com',
+    phone: NOZIWILD_PHONE,
+    email: NOZIWILD_EMAIL,
   },
   {
     id: 3,
@@ -201,8 +205,8 @@ const experts = [
     role: 'Senior Travel Consultant',
     image: NosyIranja,
     bio: 'With more than ten years of planning experience, Mark turns a rough idea into a smooth, well-paced itinerary.',
-    phone: '+261 34 00 000 03',
-    email: 'mark@example.com',
+    phone: NOZIWILD_PHONE,
+    email: NOZIWILD_EMAIL,
   },
   {
     id: 4,
@@ -210,8 +214,8 @@ const experts = [
     role: 'Cultural Tour Specialist',
     image: Ramena,
     bio: 'Lina shares the history, food and traditions of the island, and connects travelers with the people who keep them alive.',
-    phone: '+261 34 00 000 04',
-    email: 'lina@example.com',
+    phone: NOZIWILD_PHONE,
+    email: NOZIWILD_EMAIL,
   },
   {
     id: 5,
@@ -219,8 +223,8 @@ const experts = [
     role: 'Wildlife Guide',
     image: TeamLookout,
     bio: 'Hery leads small-group wildlife walks and knows exactly when and where to find the island’s most unusual animals.',
-    phone: '+261 34 00 000 05',
-    email: 'hery@example.com',
+    phone: NOZIWILD_PHONE,
+    email: NOZIWILD_EMAIL,
   },
 ]
 

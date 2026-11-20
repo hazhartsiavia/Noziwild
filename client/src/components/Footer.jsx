@@ -13,8 +13,8 @@ import { useT } from '../i18n/LanguageContext'
 import { useSitePages } from '../context/SitePagesContext'
 import './footer.css'
 
-// Adresse affichée sur la page Contact
-const EMAIL = 'info@noziwild.com'
+// Adresse e-mail de Noziwild (la même que sur la page Contact)
+const EMAIL = 'contact@madanoziwild.com'
 
 // Colonnes : [clé du libellé dans nav.json, adresse] ; même ordre que le menu (Navbar.jsx)
 const TRAVEL = [

@@ -82,7 +82,17 @@ function organization(base, lang) {
     logo: `${base}/favicon.svg`,
     image: `${base}${DEFAULT_IMAGE}`,
     description: WORDS[lang].description,
-    address: { '@type': 'PostalAddress', addressLocality: 'Antananarivo', addressCountry: 'MG' },
+    // Siège social
+    address: {
+      '@type': 'PostalAddress',
+      streetAddress: 'Lot AVA 149 AQ II Avarajozoro',
+      postalCode: '10402',
+      addressLocality: 'Ambatolampy',
+      addressRegion: 'Vakinankaratra',
+      addressCountry: 'MG',
+    },
+    telephone: '+33698893064',
+    email: 'contact@madanoziwild.com',
     areaServed: { '@type': 'Country', name: 'Madagascar' },
   }
 }

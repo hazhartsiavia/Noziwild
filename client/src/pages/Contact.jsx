@@ -34,9 +34,9 @@ const contact = {
   title: 'Let’s Talk With Noziwild',
   text: 'Questions about a trip, a custom itinerary or a partnership? Send us a message and a travel expert will get back to you within one working day.',
   cta: 'Contact Us Now',
-  phone: '+261 34 00 000 00',
-  email: 'info@noziwild.com',
-  address: 'Antananarivo, Madagascar',
+  phone: '+33 6 98 89 30 64',
+  email: 'contact@madanoziwild.com',
+  address: 'Lot AVA 149 AQ II Avarajozoro, 10402 Ambatolampy, Madagascar',   // siège social
 }
 
 // Valeur envoyée à l'équipe (en anglais, quelle que soit la langue du site) ; libellé traduit : contact.inquiryTypes
