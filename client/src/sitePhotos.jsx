@@ -92,7 +92,7 @@ export const PHOTO_PAGES = [
   },
   {
     id: 'contact', label: 'Contact', page: '/contact',
-    slots: { 'contact.hero': { label: 'Page banner', src: Ramena }, 'contact.banner': { label: '“Book a call” banner', src: NosyIranja }, ...list('contact.photo', 'Small photo', [Ambanja, NosyLonjo]) },
+    slots: { 'contact.banner': { label: '“Book a call” banner', src: NosyIranja }, ...list('contact.photo', 'Small photo', [Ambanja, NosyLonjo]) },
   },
   {
     id: 'cruise', label: 'Cruise excursions', page: '/cruise-excursions',
@@ -213,7 +213,7 @@ export const VIDEO_SLOTS = new Set([
   'cruise.hero', 'cruise.cta', 'gear.cta', 'exc.hero', 'exc.multi', 'exc.cta', 'food.class',
   'hosting.hero', 'hosting.featured', 'hosting.cta', 'long.hero', 'long.cta', 'photo.cta', 'tm.cta',
   'transport.hero', 'transport.cta', 'auth.background', 'tm.hero.2',
-  'about.hero', 'contact.hero', 'dest.hero.2',
+  'about.hero', 'dest.hero.2',
 ])
 
 const STORAGE_KEY = 'noziwild-photos'

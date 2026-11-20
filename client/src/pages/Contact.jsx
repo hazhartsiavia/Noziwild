@@ -1,10 +1,11 @@
+// Page Contact, d'après un modèle Webflow (Funway), avec les couleurs, la police et les formes de l'accueil :
+//   en-tête (grand titre | texte et bouton), coordonnées en pastilles dorées, carte blanche du formulaire avec
+//   la carte « Suivez-nous » qui déborde en haut à droite, puis le bandeau « échanger avec nos experts ».
+// Styles : contact.css. Textes : locales/<langue>/contact.json.
 import React, { useRef, useState } from 'react'
-import NosyIranja from "../assets/images/NosyIranja.jpg";
-import Ambanja from "../assets/images/Ambanja.jpg";
-import NosyLonjo from "../assets/images/NosyLonjo.jpg";
+import { ArrowUpRight } from 'lucide-react'
 import Navbar from '../components/Navbar';
 import Footer from '../components/Footer';
-import PageHero from '../components/PageHero'
 import { sendContact } from '../api';
 import { useAuth } from '../context/AuthContext';
 import { useT } from '../i18n/LanguageContext';
@@ -12,20 +13,7 @@ import { useScrollReveal } from '../utils/useScrollReveal'
 import { usePhoto } from '../sitePhotos'
 import { A } from '../i18n/router'
 import SiteMedia from '../components/SiteMedia'
-
-
-/* Constantes partagées : mêmes valeurs que dans les autres sections */
-const SECTION_WIDTH = "w-[90vw] lg:max-w-[90vw] xl:max-w-[95vw] mt-10"
-const SECTION_SUBTITLE = "text-sm sm:text-base md:text-lg text-slate-600 leading-relaxed max-w-3xl"
-const META_TEXT = "text-xs sm:text-sm"
-const BUTTON = "text-sm font-medium px-5 py-2.5 rounded-full"
-const STATEMENT_TITLE = "text-4xl sm:text-5xl md:text-6xl xl:text-7xl font-medium uppercase leading-[1.15] tracking-tight text-forest"
-
-// Propres au formulaire
-const LABEL = "block mb-2 text-sm md:text-base text-slate-700"
-const FIELD =
-  "w-full h-12 md:h-14 rounded-full border border-slate-300 bg-white px-6 text-base text-slate-800 " +
-  "focus:outline-none focus:border-slate-700 focus:ring-1 focus:ring-slate-700 transition"
+import './contact.css'
 
 /* ---------------------------- Données ---------------------------- */
 // Textes affichés : locales/<langue>/contact.json
@@ -42,13 +30,9 @@ const contact = {
 // Valeur envoyée à l'équipe (en anglais, quelle que soit la langue du site) ; libellé traduit : contact.inquiryTypes
 const inquiryTypes = ['Booking A Trip', 'Custom Tour Request', 'General Questions', 'Partnership', 'Support']
 
+// Bandeau « échanger avec nos experts » : le bouton appelle Noziwild (pas d'agenda en ligne pour l'instant)
 const call = {
-  title: 'Want To Connect With Our Travel Experts?',
-  text: 'Book A 30 Minutes Call',
-  cta: 'Contact Us',
-  href: '#', // lien vers ton agenda (Calendly, etc.)
-  image: NosyIranja,            // fond de la bannière (à remplacer)
-  photos: [Ambanja, NosyLonjo], // les 2 petites photos (à remplacer)
+  href: `tel:${contact.phone.replace(/\s/g, '')}`,
 }
 
 /* ---------------------------- Icônes ----------------------------- */
@@ -128,37 +112,31 @@ const socials = [
 
 /* -------------------------- Composants --------------------------- */
 
-// Coordonnée avec pastille rouge
+// Coordonnée avec pastille dorée
 function ContactItem({ icon, text, href }) {
   const inner = (
     <>
-      <span className="shrink-0 w-12 h-12 md:w-[68px] md:h-[68px] rounded-full bg-[#C49849] text-white flex items-center justify-center">
-        {icon}
-      </span>
-      <span className="text-base md:text-xl lg:text-2xl text-slate-800 break-words">{text}</span>
+      <span className="nzc__dot">{icon}</span>
+      <span className="nzc__info-text">{text}</span>
     </>
   )
-  const base = "flex items-center gap-4 md:gap-5"
-
   return href
-    ? <A href={href} className={`${base} hover:opacity-80 transition`}>{inner}</A>
-    : <div className={base}>{inner}</div>
+    ? <A href={href} className="nzc__info nzc__info--link">{inner}</A>
+    : <div className="nzc__info">{inner}</div>
 }
 
-// Carte "Let's Get Social" : déborde en haut à droite du formulaire (dès l'écran moyen)
+// Carte « Suivez-nous » : déborde en haut à droite de la carte du formulaire (ordinateur)
 function SocialCard() {
   const t = useT('contact')
   return (
-    <div className="relative md:absolute md:-top-12 md:right-10 z-10 w-fit mb-8 md:mb-0 rounded-2xl bg-[#074636] text-white px-6 py-4 md:px-9 md:py-5">
-      <p className="text-sm md:text-base font-medium">{t('social')}</p>
-      <ul className="mt-3 md:mt-4 flex items-center gap-5 md:gap-6">
+    <div className="nzc__social">
+      <p>{t('social')}</p>
+      <ul>
         {socials.map((social) => {
           const SocialIcon = social.icon
           return (
             <li key={social.id}>
-              <A href={social.href} aria-label={social.label} className="block hover:opacity-70 transition">
-                <SocialIcon />
-              </A>
+              <A href={social.href} aria-label={social.label}><SocialIcon /></A>
             </li>
           )
         })}
@@ -167,42 +145,23 @@ function SocialCard() {
   )
 }
 
-// Bannière "Want to connect with our travel experts?"
+// Bandeau « Envie d'échanger avec nos experts ? » : photo de fond, deux petites photos superposées, bouton doré
 function CallBanner() {
   const photo = usePhoto()
   const t = useT('contact')
-  const [first, second] = [photo('contact.photo.1'), photo('contact.photo.2')]
-  const frame = "absolute w-[52%] bg-white rounded-md p-1 md:p-1.5 shadow-sm"
-  const photoCls = "w-full aspect-[4/5] object-cover rounded-sm"
-
   return (
-    <div className="relative overflow-hidden rounded-xl text-white md:w-[66%]">
-      <SiteMedia slot="contact.banner" alt="" className="absolute inset-0 w-full h-full object-cover" />
-      <div className="absolute inset-0 bg-[#072a1f]/70" />
-
-      <div className="relative flex flex-col sm:flex-row sm:items-center gap-6 sm:gap-8 p-5 md:p-6">
-
-        {/* Deux photos inclinées */}
-        <div className="relative shrink-0 w-36 h-32 md:w-44 md:h-40 mx-auto sm:mx-0" aria-hidden="true">
-          <div className={`${frame} left-0 top-0 -rotate-6`}>
-            <img src={first} alt="" className={photoCls} />
-          </div>
-          <div className={`${frame} left-[42%] top-[10%] rotate-6`}>
-            <img src={second} alt="" className={photoCls} />
-          </div>
+    <div className="nzc__call">
+      <SiteMedia slot="contact.banner" alt="" className="nzc__call-bg" />
+      <div className="nzc__call-inner">
+        <div className="nzc__call-photos" aria-hidden="true">
+          <img src={photo('contact.photo.1')} alt="" loading="lazy" />
+          <img src={photo('contact.photo.2')} alt="" loading="lazy" />
         </div>
-
-        <div className="flex-1">
-          <h3 className="text-xl md:text-2xl font-bold leading-snug">{t('callTitle')}</h3>
-          <p className="mt-3 text-sm md:text-base">{t('callText')}</p>
+        <div className="nzc__call-text">
+          <h3>{t('callTitle')}</h3>
+          <p>{t('callText')}</p>
         </div>
-
-        <A
-          href={call.href}
-          className={`self-start sm:self-center shrink-0 bg-[#C49849] hover:bg-[#b53d2a] active:scale-95 transition text-white ${BUTTON} md:px-6 md:py-3`}
-        >
-          {t('callCta')}
-        </A>
+        <A href={call.href} className="nzc__btn">{t('callCta')}<ArrowUpRight aria-hidden="true" /></A>
       </div>
     </div>
   )
@@ -235,112 +194,87 @@ function Contact() {
 
   return (
     <>
+    <section ref={root} id="contact" className="nzc">
+      <Navbar />
 
-    <section ref={root} id="contact" className="w-full pt-0 pb-12 md:pb-20 bg-[#D5E8E2] flex flex-col items-center">
-        <Navbar />
-      <PageHero slot="contact.hero" title={t('title')} crumb={t('title')} text={t('text')} moreHref="#contact-form" moreLabel={t('cta')} />
-      <div className={SECTION_WIDTH}>
+      <div className="nzc__wrap">
+        {/* En-tête : grand titre à gauche ; texte et bouton à droite, séparés par un trait */}
+        <header className="nzc__head">
+          <h1 className="nzc__title">{t('title')}</h1>
+          <div className="nzc__intro">
+            <p>{t('text')}</p>
+            <A href="#contact-form" className="nzc__btn nzc__btn--dark">{t('cta')}<ArrowUpRight aria-hidden="true" /></A>
+          </div>
+        </header>
 
         {/* Coordonnées */}
-        <div className="mt-10 md:mt-16 flex flex-wrap gap-x-10 xl:gap-x-16 gap-y-6">
+        <div className="nzc__infos">
           <ContactItem icon={<PhoneIcon />} text={contact.phone} href={`tel:${contact.phone.replace(/\s/g, '')}`} />
           <ContactItem icon={<AtIcon />} text={contact.email} href={`mailto:${contact.email}`} />
           <ContactItem icon={<PinIcon />} text={t('address')} />
         </div>
 
         {/* Carte du formulaire */}
-        <div id="contact-form" className="relative mt-14 md:mt-24 rounded-3xl bg-white p-5 sm:p-8 md:p-12 scroll-mt-8">
+        <div id="contact-form" className="nzc__card">
           <SocialCard />
 
-          <form onSubmit={handleSubmit} className="flex flex-col gap-6 md:gap-8">
-
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-8">
+          <form onSubmit={handleSubmit} className="nzc__form">
+            <div className="nzc__row">
               <div>
-                <label htmlFor="name" className={LABEL}>{t('name')}</label>
-                <input id="name" name="name" key={`n-${user?.id}`} defaultValue={user?.name} type="text" autoComplete="name" required className={FIELD} />
+                <label htmlFor="name" className="nzc__label">{t('name')}</label>
+                <input id="name" name="name" key={`n-${user?.id}`} defaultValue={user?.name} type="text" autoComplete="name" required className="nzc__field" />
               </div>
               <div>
-                <label htmlFor="phone" className={LABEL}>{t('phone')}</label>
-                <input id="phone" name="phone" type="tel" autoComplete="tel" className={FIELD} />
+                <label htmlFor="phone" className="nzc__label">{t('phone')}</label>
+                <input id="phone" name="phone" type="tel" autoComplete="tel" className="nzc__field" />
               </div>
             </div>
 
             <div>
-              <label htmlFor="email" className={LABEL}>{t('email')}</label>
-              <input id="email" name="email" key={`e-${user?.id}`} defaultValue={user?.email} type="email" autoComplete="email" required className={FIELD} />
+              <label htmlFor="email" className="nzc__label">{t('email')}</label>
+              <input id="email" name="email" key={`e-${user?.id}`} defaultValue={user?.email} type="email" autoComplete="email" required className="nzc__field" />
             </div>
 
-            {/* Type de demande : boutons radio stylés en pastilles */}
-            <fieldset>
-              <legend className={LABEL}>{t('inquiry')}</legend>
-              <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-3">
+            {/* Type de demande : boutons radio en pastilles */}
+            <fieldset className="nzc__types">
+              <legend className="nzc__label">{t('inquiry')}</legend>
+              <div>
                 {inquiryTypes.map((type, i) => (
-                  <label key={type} className="cursor-pointer">
-                    <input type="radio" name="inquiry" value={type} className="peer sr-only" />
-                    <span
-                      className="block text-center rounded-full border border-slate-300 px-3 py-3 text-sm text-slate-700 transition
-                                 hover:border-slate-500
-                                 peer-checked:bg-[#074636] peer-checked:border-[#074636] peer-checked:text-white
-                                 peer-focus-visible:ring-2 peer-focus-visible:ring-slate-700 peer-focus-visible:ring-offset-2"
-                    >
-                      {t('inquiryTypes')[i]}
-                    </span>
+                  <label key={type}>
+                    <input type="radio" name="inquiry" value={type} />
+                    <span>{t('inquiryTypes')[i]}</span>
                   </label>
                 ))}
               </div>
             </fieldset>
 
             <div>
-              <label htmlFor="message" className={LABEL}>{t('message')}</label>
-              <textarea
-                id="message"
-                name="message"
-                rows={5}
-                required
-                className="w-full rounded-3xl border border-slate-300 bg-white px-6 py-4 text-base text-slate-800 resize-y
-                           focus:outline-none focus:border-slate-700 focus:ring-1 focus:ring-slate-700 transition"
-              />
+              <label htmlFor="message" className="nzc__label">{t('message')}</label>
+              <textarea id="message" name="message" rows={5} required className="nzc__field nzc__field--area" />
             </div>
 
-            <p className="flex items-center gap-2 text-sm md:text-base text-slate-700">
-              <svg className="w-4 h-4 text-[#F5B800] fill-current" viewBox="0 0 20 20" aria-hidden="true">
+            <p className="nzc__customers">
+              <svg viewBox="0 0 20 20" aria-hidden="true">
                 <path d="M10 15l-5.878 3.09 1.123-6.545L.489 6.91l6.572-.955L10 0l2.939 5.955 6.572.955-4.756 4.635 1.123 6.545z" />
               </svg>
               {t('customers')}
             </p>
 
-            <div className="flex flex-col sm:flex-row sm:items-center gap-4">
-              <button
-                type="submit"
-                disabled={status === 'sending'}
-                className={`self-start bg-[#C49849] hover:bg-[#b53d2a] active:scale-95 transition text-white disabled:opacity-60 disabled:cursor-wait ${BUTTON} md:px-6 md:py-3`}
-              >
+            <div className="nzc__submit">
+              <button type="submit" disabled={status === 'sending'} className="nzc__btn">
                 {status === 'sending' ? t('sending') : t('send')}
+                <ArrowUpRight aria-hidden="true" />
               </button>
-
-              {status === 'sent' && (
-                <p role="status" className={`${META_TEXT} md:text-base text-emerald-700`}>
-                  {t('sent')}
-                </p>
-              )}
-              {status === 'error' && (
-                <p role="alert" className={`${META_TEXT} md:text-base text-red-700`}>{error}</p>
-              )}
+              {status === 'sent' && <p role="status" className="nzc__note nzc__note--ok">{t('sent')}</p>}
+              {status === 'error' && <p role="alert" className="nzc__note nzc__note--error">{error}</p>}
             </div>
           </form>
 
           {/* Appel à l'action final */}
-          <p className="mt-10 md:mt-14 text-sm md:text-base font-medium text-slate-800">
-            {t('finalCta')}
-          </p>
-
-          <div className="mt-6 md:mt-8">
-            <CallBanner />
-          </div>
+          <p className="nzc__final">{t('finalCta')}</p>
+          <CallBanner />
         </div>
-
       </div>
-
     </section>
     <Footer />
     </>

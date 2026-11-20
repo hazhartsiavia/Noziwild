@@ -1,0 +1,282 @@
+/* Page Contact (Contact.jsx), d'après un modèle Webflow, avec les couleurs, la police (DM Sans) et les formes
+   de l'accueil : vert forêt, or, fond menthe, cartes blanches arrondies, boutons en pilule. */
+
+.nzc {
+  --nzc-ink: #0c3e2e;
+  --nzc-gold: #C49849;
+  --nzc-soft: #55625c;
+  --nzc-line: rgba(12, 62, 46, .16);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  padding-bottom: clamp(60px, 7vw, 120px);
+  background: #D5E8E2;
+  color: var(--nzc-ink);
+}
+
+.nzc__wrap { width: 90vw; }
+@media (min-width: 1280px) { .nzc__wrap { width: 82vw; max-width: 1500px; } }
+
+/* ---------- en-tête ---------- */
+
+.nzc__head {
+  display: grid;
+  grid-template-columns: minmax(0, 1.25fr) minmax(0, 1fr);
+  align-items: center;
+  gap: clamp(28px, 4vw, 80px);
+  margin-top: clamp(40px, 6vw, 110px);
+}
+
+.nzc__title {
+  margin: 0;
+  font-size: clamp(44px, 5.6vw, 104px);
+  font-weight: 500;
+  line-height: 1.04;
+  letter-spacing: -.03em;
+}
+
+.nzc__intro {
+  padding-left: clamp(24px, 3vw, 56px);
+  border-left: 1px solid var(--nzc-line);
+}
+
+.nzc__intro p {
+  margin: 0;
+  font-size: clamp(17px, 1.3vw, 22px);
+  line-height: 1.55;
+  color: var(--nzc-soft);
+}
+
+/* ---------- boutons (comme l'accueil) ---------- */
+
+.nzc__btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  padding: 16px 28px;
+  border-radius: 999px;
+  background: var(--nzc-gold);
+  color: #fff;
+  font-size: 17px;
+  font-weight: 600;
+  white-space: nowrap;
+  cursor: pointer;
+  transition: background .35s, transform .35s;
+}
+
+.nzc__btn svg { width: 18px; height: 18px; transition: transform .45s cubic-bezier(.76, 0, .24, 1); }
+.nzc__btn:hover { background: #a9813a; transform: translateY(-2px); }
+.nzc__btn:hover svg { transform: rotate(45deg); }
+.nzc__btn:focus-visible { outline: 2px solid var(--nzc-ink); outline-offset: 3px; }
+.nzc__btn:disabled { opacity: .6; cursor: wait; transform: none; }
+
+.nzc__btn--dark { margin-top: clamp(20px, 2vw, 32px); background: var(--nzc-ink); }
+.nzc__btn--dark svg { color: #E6C58A; }
+.nzc__btn--dark:hover { background: #074636; }
+
+/* ---------- coordonnées ---------- */
+
+.nzc__infos {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px clamp(28px, 3vw, 56px);
+  margin-top: clamp(48px, 6vw, 100px);
+}
+
+.nzc__info { display: flex; align-items: center; gap: 18px; min-width: 0; color: var(--nzc-ink); }
+.nzc__info--link { transition: opacity .3s; }
+.nzc__info--link:hover { opacity: .75; }
+.nzc__info--link:focus-visible { outline: 2px solid var(--nzc-gold); outline-offset: 4px; border-radius: 999px; }
+
+.nzc__dot {
+  display: grid;
+  flex: none;
+  place-items: center;
+  width: clamp(52px, 3.6vw, 64px);
+  height: clamp(52px, 3.6vw, 64px);
+  border-radius: 50%;
+  background: var(--nzc-gold);
+  color: #fff;
+}
+
+.nzc__dot svg { width: 46%; height: 46%; }
+
+.nzc__info-text {
+  font-size: clamp(17px, 1.2vw, 22px);
+  overflow-wrap: anywhere;
+}
+
+/* ---------- carte du formulaire ---------- */
+
+.nzc__card {
+  position: relative;
+  margin-top: clamp(64px, 7vw, 120px);
+  padding: clamp(24px, 4vw, 64px);
+  border-radius: 28px;
+  background: #fff;
+  scroll-margin-top: 24px;
+}
+
+/* « Suivez-nous » : vert forêt, déborde en haut à droite */
+.nzc__social {
+  position: absolute;
+  top: -48px;
+  right: clamp(24px, 3vw, 56px);
+  z-index: 1;
+  padding: 18px 32px 20px;
+  border-radius: 20px;
+  background: var(--nzc-ink);
+  color: #fff;
+}
+
+.nzc__social p { margin: 0; font-size: 16px; font-weight: 500; }
+.nzc__social ul { display: flex; gap: 22px; margin: 14px 0 0; padding: 0; list-style: none; }
+.nzc__social a { display: block; color: #fff; transition: color .3s; }
+.nzc__social a:hover { color: #E6C58A; }
+.nzc__social a:focus-visible { outline: 2px solid var(--nzc-gold); outline-offset: 4px; border-radius: 6px; }
+.nzc__social svg { width: 22px; height: 22px; }
+
+.nzc__form { display: flex; flex-direction: column; gap: clamp(22px, 2.2vw, 34px); }
+
+.nzc__row { display: grid; grid-template-columns: 1fr 1fr; gap: clamp(18px, 2vw, 32px); }
+
+.nzc__label {
+  display: block;
+  margin-bottom: 10px;
+  padding: 0;
+  font-size: clamp(15px, 1.1vw, 18px);
+  font-weight: 500;
+  color: var(--nzc-ink);
+}
+
+.nzc__field {
+  width: 100%;
+  height: clamp(52px, 4vw, 62px);
+  padding: 0 24px;
+  border: 1px solid var(--nzc-line);
+  border-radius: 999px;
+  background: #fff;
+  color: var(--nzc-ink);
+  font: inherit;
+  font-size: 16px;
+  transition: border-color .3s, box-shadow .3s;
+}
+
+.nzc__field--area { height: auto; min-height: 160px; padding: 18px 24px; border-radius: 24px; resize: vertical; }
+.nzc__field:focus { outline: none; border-color: var(--nzc-gold); box-shadow: 0 0 0 3px rgba(196, 152, 73, .2); }
+
+/* Types de demande : pastilles ; la choisie en vert forêt */
+.nzc__types { margin: 0; padding: 0; border: 0; }
+.nzc__types > div { display: grid; grid-template-columns: repeat(5, minmax(0, 1fr)); gap: 12px; }
+.nzc__types label { cursor: pointer; }
+.nzc__types input { position: absolute; opacity: 0; pointer-events: none; }
+
+.nzc__types span {
+  display: grid;
+  place-items: center;
+  height: 100%;
+  min-height: 52px;
+  padding: 10px 14px;
+  border: 1px solid var(--nzc-line);
+  border-radius: 999px;
+  font-size: clamp(14px, 1vw, 17px);
+  text-align: center;
+  color: var(--nzc-ink);
+  transition: background .3s, border-color .3s, color .3s;
+}
+
+.nzc__types label:hover span { border-color: var(--nzc-ink); }
+.nzc__types input:checked + span { background: var(--nzc-ink); border-color: var(--nzc-ink); color: #fff; }
+.nzc__types input:focus-visible + span { outline: 2px solid var(--nzc-gold); outline-offset: 3px; }
+
+.nzc__customers {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin: 0;
+  font-size: clamp(15px, 1.1vw, 18px);
+  color: var(--nzc-ink);
+}
+
+.nzc__customers svg { width: 18px; height: 18px; fill: var(--nzc-gold); }
+
+.nzc__submit { display: flex; flex-wrap: wrap; align-items: center; gap: 16px; }
+.nzc__note { margin: 0; font-size: 16px; }
+.nzc__note--ok { color: #0c6b4b; }
+.nzc__note--error { color: #b3261e; }
+
+/* ---------- appel final et bandeau ---------- */
+
+.nzc__final {
+  margin: clamp(40px, 4vw, 64px) 0 0;
+  font-size: clamp(17px, 1.3vw, 22px);
+  font-weight: 500;
+  line-height: 1.5;
+}
+
+.nzc__call {
+  position: relative;
+  overflow: hidden;
+  width: min(100%, 980px);
+  margin-top: 28px;
+  border-radius: 24px;
+  background: var(--nzc-ink);
+  color: #fff;
+  isolation: isolate;
+}
+
+.nzc__call-bg { position: absolute; inset: 0; z-index: -2; width: 100%; height: 100%; object-fit: cover; }
+.nzc__call::before { content: ""; position: absolute; inset: 0; z-index: -1; background: rgba(7, 42, 31, .68); }
+
+.nzc__call-inner {
+  display: flex;
+  align-items: center;
+  gap: clamp(20px, 2.6vw, 44px);
+  padding: clamp(22px, 2.4vw, 36px);
+}
+
+/* Deux petites photos droites, superposées, cadre blanc */
+.nzc__call-photos { position: relative; flex: none; width: clamp(170px, 15vw, 230px); aspect-ratio: 5 / 4; }
+
+.nzc__call-photos img {
+  position: absolute;
+  width: 58%;
+  aspect-ratio: 4 / 5;
+  object-fit: cover;
+  border: 5px solid #fff;
+  border-radius: 12px;
+  box-shadow: 0 16px 30px rgba(7, 42, 31, .3);
+}
+
+.nzc__call-photos img:first-child { top: 0; left: 0; }
+.nzc__call-photos img:last-child { right: 0; bottom: 0; }
+
+.nzc__call-text { flex: 1; min-width: 0; }
+.nzc__call-text h3 { margin: 0; font-size: clamp(22px, 1.9vw, 32px); font-weight: 500; line-height: 1.2; letter-spacing: -.3px; }
+.nzc__call-text p { margin: 10px 0 0; font-size: clamp(15px, 1.1vw, 18px); color: rgba(255, 255, 255, .85); }
+
+/* ---------- tablette et téléphone ---------- */
+
+@media (max-width: 1023px) {
+  .nzc__head { grid-template-columns: 1fr; }
+  .nzc__intro { padding-left: 0; border-left: 0; }
+  .nzc__types > div { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+  .nzc__call-inner { flex-wrap: wrap; }
+}
+
+@media (max-width: 767px) {
+  .nzc__infos { flex-direction: column; }
+  .nzc__social { position: static; width: fit-content; margin-bottom: 28px; }
+  .nzc__row { grid-template-columns: 1fr; }
+  .nzc__types > div { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .nzc__call-inner { flex-direction: column; align-items: flex-start; }
+  .nzc__call-photos { margin: 0 auto; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .nzc__btn,
+  .nzc__btn svg,
+  .nzc__field,
+  .nzc__types span { transition: none; }
+}
