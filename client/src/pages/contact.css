@@ -236,21 +236,23 @@
   padding: clamp(22px, 2.4vw, 36px);
 }
 
-/* Deux petites photos droites, superposées, cadre blanc */
-.nzc__call-photos { position: relative; flex: none; width: clamp(170px, 15vw, 230px); aspect-ratio: 5 / 4; }
+/* Deux petites photos inclinées en sens opposé, façon polaroïd (cadre blanc), la seconde chevauche la première */
+.nzc__call-photos { position: relative; flex: none; width: clamp(190px, 16vw, 250px); aspect-ratio: 5 / 4; }
 
 .nzc__call-photos img {
   position: absolute;
-  width: 58%;
+  top: 6%;
+  width: 52%;
   aspect-ratio: 4 / 5;
   object-fit: cover;
-  border: 5px solid #fff;
-  border-radius: 12px;
-  box-shadow: 0 16px 30px rgba(7, 42, 31, .3);
+  border: clamp(5px, .45vw, 8px) solid #fff;
+  border-radius: 10px;
+  background: #fff;
+  box-shadow: 0 16px 30px rgba(7, 42, 31, .35);
 }
 
-.nzc__call-photos img:first-child { top: 0; left: 0; }
-.nzc__call-photos img:last-child { right: 0; bottom: 0; }
+.nzc__call-photos img:first-child { left: 2%; transform: rotate(-6deg); }
+.nzc__call-photos img:last-child { left: 44%; top: 12%; transform: rotate(6deg); }
 
 .nzc__call-text { flex: 1; min-width: 0; }
 .nzc__call-text h3 { margin: 0; font-size: clamp(22px, 1.9vw, 32px); font-weight: 500; line-height: 1.2; letter-spacing: -.3px; }
