@@ -267,11 +267,31 @@
   .nzc__call-inner { flex-wrap: wrap; }
 }
 
+/* Téléphone (comme la version mobile du modèle) : coordonnées côte à côte qui passent à la ligne,
+   « Suivez-nous » à droite qui déborde sur le haut de la carte, Nom et Téléphone côte à côte */
 @media (max-width: 767px) {
-  .nzc__infos { flex-direction: column; }
-  .nzc__social { position: static; width: fit-content; margin-bottom: 28px; }
-  .nzc__row { grid-template-columns: 1fr; }
-  .nzc__types > div { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .nzc__head { gap: 22px; margin-top: 32px; }
+  .nzc__btn--dark { margin-top: 22px; }
+
+  .nzc__infos { gap: 16px 22px; margin-top: 36px; }
+  .nzc__info { gap: 12px; }
+  .nzc__dot { width: 52px; height: 52px; }
+  .nzc__info-text { font-size: 16px; }
+
+  .nzc__card { margin-top: 96px; padding: 28px 18px 22px; border-radius: 22px; }
+  .nzc__social { top: -62px; right: 14px; padding: 14px 22px 16px; border-radius: 18px; }
+  .nzc__social p { font-size: 15px; }
+  .nzc__social ul { gap: 18px; margin-top: 10px; }
+  .nzc__social svg { width: 20px; height: 20px; }
+
+  .nzc__form { margin-top: 18px; }
+  .nzc__row { grid-template-columns: 1fr 1fr; gap: 12px; }
+  .nzc__field { height: 52px; padding: 0 18px; }
+  .nzc__field--area { padding: 14px 18px; }
+  .nzc__types > div { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 10px; }
+  .nzc__types span { min-height: 48px; font-size: 14px; }
+
+  .nzc__call { border-radius: 18px; }
   .nzc__call-inner { flex-direction: column; align-items: flex-start; }
   .nzc__call-photos { margin: 0 auto; }
 }
