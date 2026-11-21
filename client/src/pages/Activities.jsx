@@ -1,4 +1,4 @@
-import React, { useEffect, useLayoutEffect, useRef, useState } from 'react'
+import React, { useLayoutEffect, useRef, useState } from 'react'
 import p_nosy_iranja_sandbar from '../assets/images/site/nosy-iranja-sandbar.jpg'
 import p_crowned_sifaka from '../assets/images/site/crowned-sifaka.jpg'
 import p_red_tsingy_hikers from '../assets/images/site/red-tsingy-hikers.jpg'
@@ -7,7 +7,6 @@ import p_amber_mountain_waterfall from '../assets/images/site/amber-mountain-wat
 import p_nosy_komba_craft_market from '../assets/images/site/nosy-komba-craft-market.jpg'
 import Navbar from '../components/Navbar';
 import Footer from '../components/Footer';
-import { CARD, CARD_BADGE, CARD_BODY, CARD_FOOT, CARD_IMG, CARD_MEDIA, CARD_TEXT, CARD_TITLE, CardMeta } from '../components/Card'
 import PageHero from '../components/PageHero'
 import PageCta, { PAGE_CTA_GOLD, PAGE_CTA_GHOST } from '../components/PageCta'
 import { gsap } from 'gsap'
@@ -18,6 +17,7 @@ import { useLanguage, useT } from '../i18n/LanguageContext'
 import { monthName } from '../utils/format'
 import { useOffers } from '../utils/useOffers'
 import { A } from '../i18n/router'
+import './activities.css'
 
 gsap.registerPlugin(ScrollTrigger)
 
@@ -43,89 +43,34 @@ const Svg = ({ children, className = "w-4 h-4" }) => (
     {children}
   </svg>
 )
-const ArrowIcon = () => <Svg className="w-5 h-5"><path d="M5 12h14M13 6l6 6-6 6" /></Svg>
 
 /* -------------------------- Composants --------------------------- */
 
-function ActivityCarousel({ list, status }) {
+// Toutes les activités (admin > Offers > Activities), d'après le modèle Funway : cartes blanches façon
+// polaroïd (photo carrée, nom centré), 4 colonnes, une colonne sur deux décalée vers le bas (activities.css)
+function ActivityGrid({ list, status }) {
   const t = useT('activities')
-  const trackRef = useRef(null)
-  const [pos, setPos] = useState({ progress: 0, start: true, end: false })
-
-  const update = () => {
-    const el = trackRef.current
-    if (!el) return
-    const max = el.scrollWidth - el.clientWidth
-    setPos({ progress: max > 0 ? el.scrollLeft / max : 0, start: el.scrollLeft <= 4, end: el.scrollLeft >= max - 4 })
-  }
-
-  // Recalculé quand les activités arrivent de l'API
-  useEffect(() => {
-    update()
-    window.addEventListener('resize', update)
-    return () => window.removeEventListener('resize', update)
-  }, [list.length])
-
-  const scrollByCard = (dir) => {
-    const el = trackRef.current
-    const card = el?.firstElementChild
-    if (!card) return
-    el.scrollBy({ left: dir * (card.offsetWidth + 16), behavior: 'smooth' })
-  }
-
-  const arrowClass =
-    "w-11 h-11 md:w-12 md:h-12 flex items-center justify-center rounded-full border border-[#074636] text-[#074636] transition " +
-    "hover:bg-[#074636]/10 active:bg-[#074636]/20 disabled:opacity-30 disabled:pointer-events-none " +
-    "focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#074636]"
-
   return (
-    <div id="activities" className={`${SECTION_GAP} scroll-mt-8`}>
-      <div className="mb-8 md:mb-12 flex items-end justify-between gap-6">
-        <div>
-          <p className="mb-3 text-xs sm:text-sm md:text-base uppercase tracking-wide text-slate-700">{t('eyebrow')}</p>
-          <h2 className={SECTION_TITLE}>{t('heading')}</h2>
-        </div>
-        <div className="hidden sm:flex items-center gap-3">
-          <button type="button" onClick={() => scrollByCard(-1)} disabled={pos.start} aria-label={t('previous')} className={arrowClass}>
-            <span className="rotate-180"><ArrowIcon /></span>
-          </button>
-          <button type="button" onClick={() => scrollByCard(1)} disabled={pos.end} aria-label={t('next')} className={arrowClass}>
-            <ArrowIcon />
-          </button>
-        </div>
-      </div>
-
+    <div id="activities" className={`${SECTION_GAP} nzac scroll-mt-8`}>
+      <h2 className="sr-only">{t('heading')}</h2>
       <OffersStatus status={status} empty={list.length === 0} />
-      <div
-        ref={trackRef}
-        onScroll={update}
-        className="flex gap-4 overflow-x-auto snap-x snap-mandatory scroll-smooth pb-2 [scrollbar-width:none] [&::-webkit-scrollbar]:hidden"
-      >
+      <ul className="nzac__grid">
         {list.map((a) => (
-          <article key={a.id} className={`${CARD} snap-start shrink-0 w-[82%] sm:w-[46%] lg:w-[31.5%] xl:w-[24%]`}>
-            <div className={CARD_MEDIA}>
-              <img src={a.image} alt={a.title} className={CARD_IMG} />
-              <span className={CARD_BADGE}>{a.type}</span>
-            </div>
-            <div className={CARD_BODY}>
-              <CardMeta items={[a.duration, a.level, a.group]} />
-              <h3 className={CARD_TITLE}>{a.title}</h3>
-              <p className={CARD_TEXT}>{a.text}</p>
-              <div className={`${CARD_FOOT} justify-end`}>
+          <li key={a.id} className="nzac__item">
+            <article className="nzac__card">
+              <div className="nzac__photo">
+                <img src={a.image} alt="" loading="lazy" />
                 <AddToTrip
                   variant="icon"
+                  className="nzac__add"
                   item={{ kind: 'activity', ref: String(a.id), title: a.title, image: a.image, link: '/activities', details: [a.duration, a.level].filter(Boolean).join(' · '), price: a.price, unit: 'person' }}
                 />
               </div>
-            </div>
-          </article>
+              <h3 className="nzac__name">{a.title}</h3>
+            </article>
+          </li>
         ))}
-      </div>
-
-      {/* Barre de progression */}
-      <div className="mt-6 h-1.5 rounded-full bg-[#074636]/20 overflow-hidden" aria-hidden="true">
-        <div className="h-full rounded-full bg-[#074636] transition-all duration-300" style={{ width: `${25 + pos.progress * 75}%` }} />
-      </div>
+      </ul>
     </div>
   )
 }
@@ -277,8 +222,8 @@ function Activities() {
   useLayoutEffect(() => {
     if (status !== 'ready' || window.matchMedia('(prefers-reduced-motion: reduce)').matches) return undefined
     const ctx = gsap.context(() => {
-      gsap.from('#activities a', {
-        y: 40, opacity: 0, duration: 0.8, ease: 'power3.out', stagger: 0.1,
+      gsap.from('.nzac__card', {
+        y: 60, opacity: 0, duration: 0.9, ease: 'power3.out', stagger: 0.08,
         scrollTrigger: { trigger: '#activities', start: 'top 80%', once: true },
       })
     }, contentRef)
@@ -292,7 +237,7 @@ function Activities() {
       <Navbar />
       <PageHero slot="act.banner" title={t('title')} crumb={t('eyebrow')} text={t('intro')} moreHref="#activities" moreLabel={t('seeAll')} />
       <div ref={contentRef} className={SECTION_WIDTH}>
-        <ActivityCarousel list={list} status={status} />
+        <ActivityGrid list={list} status={status} />
         {list.length > 0 && <BestTime list={list} />}
         <Moments />
         <Faq />

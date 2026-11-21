@@ -1,0 +1,78 @@
+/* Page Activités (Activities.jsx → ActivityGrid), d'après le modèle Funway, couleurs et police de l'accueil :
+   cartes blanches façon polaroïd (photo carrée, nom centré), 4 colonnes, une colonne sur deux décalée vers le bas. */
+
+.nzac__grid {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  align-items: start;
+  gap: clamp(16px, 1.6vw, 28px);
+  width: min(100%, 1240px);
+  margin: 0 auto;
+  padding: 0 0 clamp(28px, 2.4vw, 40px);
+  list-style: none;
+}
+
+/* Une colonne sur deux plus bas, comme le modèle */
+.nzac__item:nth-child(4n + 2),
+.nzac__item:nth-child(4n + 4) { margin-top: clamp(28px, 2.4vw, 40px); }
+
+.nzac__card {
+  padding: 10px;
+  border-radius: 10px;
+  background: #fff;
+  color: #0c3e2e;
+  box-shadow: 0 1px 2px rgba(7, 42, 31, .04);
+  transition: box-shadow .4s, transform .4s;
+}
+
+.nzac__card:hover { box-shadow: 0 18px 40px rgba(7, 42, 31, .12); transform: translateY(-4px); }
+
+.nzac__photo {
+  position: relative;
+  overflow: hidden;
+  aspect-ratio: 1 / 1;
+  border-radius: 6px;
+  background: #BBD9CF;
+}
+
+.nzac__photo img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 1s cubic-bezier(.22, 1, .36, 1);
+}
+
+.nzac__card:hover .nzac__photo img { transform: scale(1.06); }
+
+/* Bouton « ajouter au voyage » sur la photo */
+.nzac__add { position: absolute; top: 10px; right: 10px; }
+
+.nzac__name {
+  margin: 0;
+  padding: clamp(16px, 1.4vw, 22px) 8px clamp(14px, 1.2vw, 18px);
+  font-size: clamp(18px, 1.35vw, 24px);
+  font-weight: 500;
+  line-height: 1.25;
+  letter-spacing: -.2px;
+  text-align: center;
+}
+
+/* Tablette et téléphone : deux colonnes, celle de droite décalée */
+@media (max-width: 1023px) {
+  .nzac__grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .nzac__item:nth-child(4n + 2),
+  .nzac__item:nth-child(4n + 4) { margin-top: 0; }
+  .nzac__item:nth-child(even) { margin-top: 28px; }
+}
+
+@media (max-width: 480px) {
+  .nzac__grid { gap: 12px; }
+  .nzac__card { padding: 7px; }
+  .nzac__name { font-size: 16px; padding: 12px 4px 10px; }
+  .nzac__add { top: 6px; right: 6px; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .nzac__card,
+  .nzac__photo img { transition: none; }
+}
