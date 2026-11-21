@@ -10,7 +10,7 @@ import { useAuth } from '../context/AuthContext'
 import { BookingAdd, useTripItem } from '../components/AddToTrip'
 import { useScrollReveal } from '../utils/useScrollReveal'
 
-const W = 'w-[90vw] lg:max-w-[95vw]'
+const W = 'w-[90vw] xl:w-[95vw]'
 const GOLD = 'bg-[#C49849] hover:bg-[#a9813a]'
 const BTN = 'inline-flex items-center justify-center text-sm md:text-base font-medium px-6 py-3 rounded-full active:scale-95 transition'
 const H2 = 'text-2xl md:text-4xl font-medium leading-tight tracking-tight text-slate-900'

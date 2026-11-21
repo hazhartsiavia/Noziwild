@@ -7,7 +7,7 @@ import { useDestinations } from './destinationsData'
 import { useT } from '../i18n/LanguageContext'
 import { useScrollReveal } from '../utils/useScrollReveal'
 
-const W = 'w-[90vw] lg:max-w-[95vw]'
+const W = 'w-[90vw] xl:w-[95vw]'
 const GOLD = 'bg-[#C49849] hover:bg-[#a9813a]'
 const BTN = 'inline-flex items-center justify-center text-sm font-medium px-6 py-3 rounded-full active:scale-95 transition'
 const H2 = 'text-[clamp(2rem,4.4vw,4rem)] font-bold text-forest leading-[1.08] tracking-tight'

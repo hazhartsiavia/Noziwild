@@ -16,7 +16,7 @@ import { PostCard } from './Blog'
 
 gsap.registerPlugin(ScrollTrigger)
 
-const W = 'w-[90vw] lg:max-w-[95vw]'
+const W = 'w-[90vw] xl:w-[95vw]'
 const TEXT = 'w-full max-w-4xl'
 const BTN = 'inline-flex items-center justify-center text-sm md:text-base font-medium px-6 py-3 rounded-full active:scale-95 transition'
 // Photo plus haute que son cadre : c'est cette marge qui permet le mouvement au défilement

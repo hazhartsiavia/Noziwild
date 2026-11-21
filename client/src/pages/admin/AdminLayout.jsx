@@ -54,7 +54,7 @@ function AdminLayout() {
 
   return (
     <Shell>
-      <div className="w-[90vw] lg:max-w-[95vw] mt-6">
+      <div className="w-[90vw] xl:w-[95vw] mt-6">
         <header className="flex flex-col sm:flex-row sm:items-end justify-between gap-4">
           <div>
             <p className="text-sm uppercase tracking-wide text-slate-600">Noziwild</p>

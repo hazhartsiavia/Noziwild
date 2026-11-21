@@ -22,7 +22,7 @@ import { A } from '../i18n/router'
 
 gsap.registerPlugin(ScrollTrigger)
 
-const W = 'w-[90vw] lg:max-w-[95vw]'
+const W = 'w-[90vw] xl:w-[95vw]'
 const GOLD = 'bg-[#C49849] hover:bg-[#a9813a]'
 const DARK = 'bg-[#074636]'
 const BTN = 'inline-flex items-center justify-center text-sm md:text-base font-medium px-6 py-3 rounded-full active:scale-95 transition disabled:opacity-40 disabled:pointer-events-none'

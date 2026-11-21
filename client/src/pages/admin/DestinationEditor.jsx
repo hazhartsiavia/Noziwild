@@ -380,7 +380,7 @@ function DestinationEditor() {
 
       {/* Barre d'enregistrement */}
       <div className="fixed inset-x-0 bottom-0 z-40 border-t border-slate-200 bg-white/95 backdrop-blur">
-        <div className="mx-auto flex w-[90vw] lg:max-w-[95vw] items-center justify-between gap-4 py-3">
+        <div className="mx-auto flex w-[90vw] xl:w-[95vw] items-center justify-between gap-4 py-3">
           <p className="text-sm text-slate-600" aria-live="polite">
             {status === 'saving' ? 'Saving…' : dirty ? 'Unsaved changes' : isNew ? 'Not saved yet' : 'All changes saved'}
           </p>

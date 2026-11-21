@@ -9,7 +9,7 @@ import { useLanguage, useT } from '../i18n/LanguageContext'
 import { formatDate } from '../utils/format'
 import { A } from '../i18n/router'
 
-const SECTION_WIDTH = 'w-[90vw] lg:max-w-[95vw]'
+const SECTION_WIDTH = 'w-[90vw] xl:w-[95vw]'
 const SECTION_TITLE = 'text-[clamp(2rem,4.4vw,4rem)] font-bold text-forest leading-[1.08] tracking-tight'
 const META_TEXT = 'text-xs sm:text-sm'
 const PAGE_TITLE = 'text-5xl sm:text-6xl md:text-7xl lg:text-[80px] font-bold uppercase leading-none tracking-tight'
