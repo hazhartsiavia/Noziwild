@@ -332,16 +332,16 @@ function Navbar({ hero = false }) {
       <nav
         ref={navRef}
         aria-label="Main"
-        className={hero ? 'relative z-50 flex w-full justify-center md:mb-10' : 'relative z-50 flex w-full flex-col items-center md:mb-8 md:pt-5'}
+        className={hero ? 'relative z-50 flex w-full justify-center md:mb-10' : 'relative z-50 flex w-full flex-col items-center md:mb-8 md:pt-5 xl:mb-1'}
       >
         {/* Bande vert forêt : adresse à gauche, e-mail | téléphone à droite (ordinateur) */}
         {!hero && (
           <div className="hidden md:flex w-[90vw] xl:w-[95vw] items-center justify-between gap-6 rounded-full bg-[#0c3e2e] px-7 py-3 text-[15px] text-white">
             <span className="truncate">{contact('address')}</span>
             <span className="flex shrink-0 items-center">
-              <a href={`mailto:${EMAIL}`} className="transition hover:text-[#E6C58A]">{EMAIL}</a>
+              <a href={`mailto:${EMAIL}`} data-nav-light className="text-white transition hover:text-[#E6C58A]">{EMAIL}</a>
               <span aria-hidden="true" className="mx-5 h-5 w-px bg-white/30" />
-              <a href={PHONE_LINK} className="transition hover:text-[#E6C58A]">{PHONE}</a>
+              <a href={PHONE_LINK} data-nav-light className="text-white transition hover:text-[#E6C58A]">{PHONE}</a>
             </span>
           </div>
         )}
@@ -387,6 +387,7 @@ function Navbar({ hero = false }) {
               md:justify-start
               md:gap-6
               md:py-5
+              xl:pb-3
               lg:gap-10
             `}
           >
@@ -658,6 +659,7 @@ function Navbar({ hero = false }) {
             ================================================== */}
             <Link
               ref={ctaRef}
+              data-nav-light={hero ? undefined : true}
               to="/my-trip"
               aria-label={tripCount > 0 ? `${tt('navLabel')} (${tripCount})` : undefined}
               onMouseEnter={handleCtaEnter}
