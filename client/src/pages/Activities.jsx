@@ -47,7 +47,7 @@ const Svg = ({ children, className = "w-4 h-4" }) => (
 /* -------------------------- Composants --------------------------- */
 
 // Toutes les activités (admin > Offers > Activities), d'après le modèle Funway : cartes blanches façon
-// polaroïd (photo carrée, nom centré), 4 colonnes, une colonne sur deux décalée vers le bas (activities.css)
+// polaroïd (photo carrée, nom centré), 4 colonnes alignées, affichées tout de suite à leur place (activities.css)
 function ActivityGrid({ list, status }) {
   const t = useT('activities')
   return (
@@ -200,7 +200,7 @@ function Activities() {
 
     const ctx = gsap.context(() => {
       // Chaque section apparaît en remontant quand elle entre dans l'écran
-      // (sauf la grille des activités : elle a sa propre montée, et ses cartes se voient dès le départ)
+      // (sauf la grille des activités : ses cartes s'affichent tout de suite à leur place)
       Array.from(contentRef.current.children).filter((el) => el.id !== 'activities').forEach((el) => {
         gsap.from(el, {
           y: 50, opacity: 0, duration: 0.9, ease: 'power3.out',
@@ -218,21 +218,6 @@ function Activities() {
       ctx.revert()
     }
   }, [])
-
-  // Les cartes des activités montent au défilement, une fois chargées depuis l'API
-  useLayoutEffect(() => {
-    if (status !== 'ready' || window.matchMedia('(prefers-reduced-motion: reduce)').matches) return undefined
-    const ctx = gsap.context(() => {
-      // Le haut des cartes se voit déjà sous l'en-tête : elles montent à leur place au défilement,
-      // chaque colonne un peu plus que la précédente
-      gsap.fromTo('.nzac__card', { y: (i) => 70 + (i % 4) * 30 }, {
-        y: 0, ease: 'none',
-        scrollTrigger: { trigger: '#activities', start: 'top bottom', end: 'top 25%', scrub: 0.6 },
-      })
-    }, contentRef)
-    ScrollTrigger.refresh()
-    return () => ctx.revert()
-  }, [status])
 
   return (
     <>

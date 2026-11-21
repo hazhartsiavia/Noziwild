@@ -1,5 +1,5 @@
 /* Page Activités (Activities.jsx → ActivityGrid), d'après le modèle Funway, couleurs et police de l'accueil :
-   cartes blanches façon polaroïd (photo carrée, nom centré), 4 colonnes, une colonne sur deux décalée vers le bas. */
+   cartes blanches façon polaroïd (photo carrée, nom centré), 4 colonnes alignées. */
 
 .nzac__grid {
   display: grid;
@@ -11,10 +11,6 @@
   padding: 0 0 clamp(28px, 2.4vw, 40px);
   list-style: none;
 }
-
-/* Une colonne sur deux plus bas, comme le modèle */
-.nzac__item:nth-child(4n + 2),
-.nzac__item:nth-child(4n + 4) { margin-top: clamp(28px, 2.4vw, 40px); }
 
 .nzac__card {
   padding: 10px;
@@ -57,12 +53,9 @@
   text-align: center;
 }
 
-/* Tablette et téléphone : deux colonnes, celle de droite décalée */
+/* Tablette et téléphone : deux colonnes */
 @media (max-width: 1023px) {
   .nzac__grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
-  .nzac__item:nth-child(4n + 2),
-  .nzac__item:nth-child(4n + 4) { margin-top: 0; }
-  .nzac__item:nth-child(even) { margin-top: 28px; }
 }
 
 @media (max-width: 480px) {
