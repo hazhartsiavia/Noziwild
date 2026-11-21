@@ -1,4 +1,5 @@
 import React, { useRef, useState } from 'react'
+import { EMAIL, PHONE } from '../contactInfo'
 import Deux from "../assets/images/2.jpg";
 import Ambanja from "../assets/images/Ambanja.jpg";
 import NosyLonjo from "../assets/images/NosyLonjo.jpg";
@@ -177,8 +178,8 @@ const expertsSection = {
 }
 
 // Coordonnées de Noziwild, affichées sur chaque fiche de l'équipe
-const NOZIWILD_PHONE = '+33 6 98 89 30 64'
-const NOZIWILD_EMAIL = 'contact@madanoziwild.com'
+const NOZIWILD_PHONE = PHONE
+const NOZIWILD_EMAIL = EMAIL
 
 const experts = [
   {

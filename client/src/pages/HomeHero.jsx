@@ -298,7 +298,7 @@ export function Hero({ ready }) {
           Montée après le preloader pour que son animation d'entrée se voie. */}
       <div className="nzh__nav">
         <div className="nzh__strip" aria-hidden="true" />
-        {ready && <Navbar />}
+        {ready && <Navbar hero />}
       </div>
 
       <div className="nzh__content">

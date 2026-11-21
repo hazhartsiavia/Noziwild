@@ -9,6 +9,7 @@ import Avatar from './Avatar'
 import LanguageSwitcher, { LanguageRow } from './LanguageSwitcher'
 import { useT } from '../i18n/LanguageContext'
 import { useSitePages } from '../context/SitePagesContext'
+import { EMAIL, PHONE, PHONE_LINK } from '../contactInfo'
 
 /* ============================================================
    ÉPAULE COURBE
@@ -53,9 +54,13 @@ const Chevron = ({ className = '' }) => (
   </svg>
 )
 
-function Navbar() {
+// hero : la barre du grand visuel de l'accueil (onglet blanc accroché en haut, HomeHero.jsx).
+// Sinon (toutes les autres pages), barre d'après le modèle Funway : bande vert forêt avec l'adresse,
+// l'e-mail et le téléphone, puis logo, liens, langue, compte et bouton doré.
+function Navbar({ hero = false }) {
   const { user, loading } = useAuth()
   const t = useT('nav')
+  const contact = useT('contact')
   const tt = useT('trip')
   // Bouton devis : mène à la sélection « Mon voyage », avec le nombre d'offres mises de côté
   const { count: tripCount } = useTrip()
@@ -121,7 +126,7 @@ function Navbar() {
       })
 
       gsap.set(
-        [filletLeftRef.current, filletRightRef.current],
+        [filletLeftRef.current, filletRightRef.current].filter(Boolean),
         {
           opacity: 0,
           scale: 0.6,
@@ -161,7 +166,7 @@ function Navbar() {
       })
 
         .to(
-          [filletLeftRef.current, filletRightRef.current],
+          [filletLeftRef.current, filletRightRef.current].filter(Boolean),
           {
             opacity: 1,
             scale: 1,
@@ -318,32 +323,42 @@ function Navbar() {
   /* ============================================================
      STYLE PRINCIPAL
   ============================================================ */
-  const link =
-    'text-[15px] text-zinc-500 transition hover:text-zinc-900'
+  const link = hero
+    ? 'text-[15px] text-zinc-500 transition hover:text-zinc-900'
+    : 'text-[16px] text-[#0c3e2e] transition hover:text-[#C49849]'
 
   return (
     <>
       <nav
         ref={navRef}
         aria-label="Main"
-        className="relative z-50 flex w-full justify-center md:mb-10"
+        className={hero ? 'relative z-50 flex w-full justify-center md:mb-10' : 'relative z-50 flex w-full flex-col items-center md:mb-8 md:pt-5'}
       >
-        <div className="flex items-start">
+        {/* Bande vert forêt : adresse à gauche, e-mail | téléphone à droite (ordinateur) */}
+        {!hero && (
+          <div className="hidden md:flex w-[90vw] xl:w-[95vw] items-center justify-between gap-6 rounded-full bg-[#0c3e2e] px-7 py-3 text-[15px] text-white">
+            <span className="truncate">{contact('address')}</span>
+            <span className="flex shrink-0 items-center">
+              <a href={`mailto:${EMAIL}`} className="transition hover:text-[#E6C58A]">{EMAIL}</a>
+              <span aria-hidden="true" className="mx-5 h-5 w-px bg-white/30" />
+              <a href={PHONE_LINK} className="transition hover:text-[#E6C58A]">{PHONE}</a>
+            </span>
+          </div>
+        )}
+
+        <div className={hero ? 'flex items-start' : 'flex w-full justify-center'}>
 
           {/* ======================================================
               FILLET GAUCHE
           ====================================================== */}
-          <Fillet
-            side="left"
-            fRef={filletLeftRef}
-          />
+          {hero && <Fillet side="left" fRef={filletLeftRef} />}
 
           {/* ======================================================
               NAVBAR
           ====================================================== */}
           <div
             ref={tabRef}
-            className="
+            className={hero ? `
               relative
               flex
               w-[calc(100vw-3rem)]
@@ -360,7 +375,20 @@ function Navbar() {
               md:px-5
               lg:gap-8
               lg:px-8
-            "
+            ` : `
+              relative
+              flex
+              w-[90vw]
+              xl:w-[95vw]
+              items-center
+              justify-between
+              gap-6
+              py-3
+              md:justify-start
+              md:gap-6
+              md:py-5
+              lg:gap-10
+            `}
           >
 
             {/* ==================================================
@@ -598,7 +626,7 @@ function Navbar() {
             {/* ==================================================
                 LANGUE
             ================================================== */}
-            <LanguageSwitcher className="hidden md:block" />
+            <LanguageSwitcher className={hero ? 'hidden md:block' : 'hidden md:block md:ml-auto'} />
 
             {/* ==================================================
                 COMPTE (connexion / profil)
@@ -634,7 +662,7 @@ function Navbar() {
               aria-label={tripCount > 0 ? `${tt('navLabel')} (${tripCount})` : undefined}
               onMouseEnter={handleCtaEnter}
               onMouseLeave={handleCtaLeave}
-              className="
+              className={hero ? `
                 hidden
                 items-center
                 gap-2
@@ -648,7 +676,22 @@ function Navbar() {
                 font-medium
                 text-zinc-900
                 md:inline-flex
-              "
+              ` : `
+                hidden
+                items-center
+                gap-2
+                whitespace-nowrap
+                rounded-full
+                bg-[#C49849]
+                px-6
+                py-3
+                text-[16px]
+                font-semibold
+                text-white
+                transition-colors
+                hover:bg-[#a9813a]
+                md:inline-flex
+              `}
             >
               {tripCount > 0 ? (
                 <>
@@ -1026,10 +1069,7 @@ function Navbar() {
           {/* ======================================================
               FILLET DROIT
           ====================================================== */}
-          <Fillet
-            side="right"
-            fRef={filletRightRef}
-          />
+          {hero && <Fillet side="right" fRef={filletRightRef} />}
 
         </div>
       </nav>

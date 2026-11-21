@@ -11,10 +11,10 @@ import LogoPrincipal from '../assets/logo/principal-sur-vert.svg'
 import Wordmark from '../assets/logo/wordmark-blanc.svg'
 import { useT } from '../i18n/LanguageContext'
 import { useSitePages } from '../context/SitePagesContext'
+import { EMAIL } from '../contactInfo'
 import './footer.css'
 
-// Adresse e-mail de Noziwild (la même que sur la page Contact)
-const EMAIL = 'contact@madanoziwild.com'
+// Adresse e-mail de Noziwild : contactInfo.js
 
 // Colonnes : [clé du libellé dans nav.json, adresse] ; même ordre que le menu (Navbar.jsx)
 const TRAVEL = [

@@ -13,6 +13,7 @@ import { useScrollReveal } from '../utils/useScrollReveal'
 import { usePhoto } from '../sitePhotos'
 import { A } from '../i18n/router'
 import SiteMedia from '../components/SiteMedia'
+import { EMAIL, PHONE } from '../contactInfo'
 import './contact.css'
 
 /* ---------------------------- Données ---------------------------- */
@@ -22,8 +23,8 @@ const contact = {
   title: 'Let’s Talk With Noziwild',
   text: 'Questions about a trip, a custom itinerary or a partnership? Send us a message and a travel expert will get back to you within one working day.',
   cta: 'Contact Us Now',
-  phone: '+33 6 98 89 30 64',
-  email: 'contact@madanoziwild.com',
+  phone: PHONE,
+  email: EMAIL,
   address: 'Lot AVA 149 AQ II Avarajozoro, 10402 Ambatolampy, Madagascar',   // siège social
 }
 
