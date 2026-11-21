@@ -1,4 +1,5 @@
 // Bannière commune des pages intérieures : la photo (ou la vidéo) s'exprime, le texte reste en bas.
+// Hauteur : environ la moitié de l'écran (420 px au moins sur ordinateur), comme le modèle Funway.
 // Titre en majuscules sur une ligne dont la taille suit l'écran, trait fin, fil d'Ariane et phrase courte.
 //   <PageHero slot="circ.hero" title={t('title')} crumb={t('crumb')} text={t('intro')} moreHref="#plan" moreLabel={t('plan')} />
 import React, { useLayoutEffect, useRef } from 'react'
@@ -37,7 +38,7 @@ function PageHero({ slot, alt = '', title, crumb, text, moreHref, moreLabel }) {
   }, [])
 
   return (
-    <section ref={root} data-no-reveal className="w-[90vw] lg:max-w-[95vw] relative flex flex-col overflow-hidden rounded-[1.5rem] md:rounded-[2rem] bg-[#074636] text-white min-h-[460px] md:min-h-[max(520px,70vh)]">
+    <section ref={root} data-no-reveal className="w-[90vw] lg:max-w-[95vw] relative flex flex-col overflow-hidden rounded-[1.5rem] md:rounded-[2rem] bg-[#074636] text-white min-h-[380px] md:min-h-[max(420px,52vh)]">
       <div className="ph-media absolute inset-0">
         <SiteMedia slot={slot} alt={alt} className="absolute inset-0 w-full h-full object-cover" />
       </div>
@@ -51,7 +52,7 @@ function PageHero({ slot, alt = '', title, crumb, text, moreHref, moreLabel }) {
         </A>
       )}
 
-      <div className="relative mt-auto p-5 pt-40 md:p-8 md:pt-40 lg:p-10 lg:pt-40">
+      <div className="relative mt-auto p-5 pt-28 md:p-8 md:pt-28 lg:p-10 lg:pt-28">
         <h1 aria-label={title} style={{ '--chars': title.length }} className={TITLE}>
           <span aria-hidden="true">
             {title.split(' ').map((word, i) => (
