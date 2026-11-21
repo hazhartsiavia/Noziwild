@@ -51,7 +51,7 @@ const Svg = ({ children, className = "w-4 h-4" }) => (
 function ActivityGrid({ list, status }) {
   const t = useT('activities')
   return (
-    <div id="activities" className={`${SECTION_GAP} nzac scroll-mt-8`}>
+    <div id="activities" className="nzac mt-6 md:mt-10 scroll-mt-8">
       <h2 className="sr-only">{t('heading')}</h2>
       <OffersStatus status={status} empty={list.length === 0} />
       <ul className="nzac__grid">
@@ -200,7 +200,8 @@ function Activities() {
 
     const ctx = gsap.context(() => {
       // Chaque section apparaît en remontant quand elle entre dans l'écran
-      Array.from(contentRef.current.children).forEach((el) => {
+      // (sauf la grille des activités : elle a sa propre montée, et ses cartes se voient dès le départ)
+      Array.from(contentRef.current.children).filter((el) => el.id !== 'activities').forEach((el) => {
         gsap.from(el, {
           y: 50, opacity: 0, duration: 0.9, ease: 'power3.out',
           scrollTrigger: { trigger: el, start: 'top 88%', once: true },
@@ -218,13 +219,15 @@ function Activities() {
     }
   }, [])
 
-  // Les cartes du carrousel arrivent l'une après l'autre, une fois chargées depuis l'API
+  // Les cartes des activités montent au défilement, une fois chargées depuis l'API
   useLayoutEffect(() => {
     if (status !== 'ready' || window.matchMedia('(prefers-reduced-motion: reduce)').matches) return undefined
     const ctx = gsap.context(() => {
-      gsap.from('.nzac__card', {
-        y: 60, opacity: 0, duration: 0.9, ease: 'power3.out', stagger: 0.08,
-        scrollTrigger: { trigger: '#activities', start: 'top 80%', once: true },
+      // Le haut des cartes se voit déjà sous l'en-tête : elles montent à leur place au défilement,
+      // chaque colonne un peu plus que la précédente
+      gsap.fromTo('.nzac__card', { y: (i) => 70 + (i % 4) * 30 }, {
+        y: 0, ease: 'none',
+        scrollTrigger: { trigger: '#activities', start: 'top bottom', end: 'top 25%', scrub: 0.6 },
       })
     }, contentRef)
     ScrollTrigger.refresh()
