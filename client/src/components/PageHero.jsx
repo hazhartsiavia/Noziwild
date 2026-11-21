@@ -38,7 +38,7 @@ function PageHero({ slot, alt = '', title, crumb, text, moreHref, moreLabel }) {
   }, [])
 
   return (
-    <section ref={root} data-no-reveal className="w-[90vw] lg:max-w-[95vw] relative flex flex-col overflow-hidden rounded-[1.5rem] md:rounded-[2rem] bg-[#074636] text-white min-h-[380px] md:min-h-[max(420px,52vh)]">
+    <section ref={root} data-no-reveal className="w-[90vw] lg:max-w-[95vw] mt-5 md:mt-0 relative flex flex-col overflow-hidden rounded-[1.5rem] md:rounded-[2rem] bg-[#074636] text-white min-h-[380px] md:min-h-[max(420px,52vh)]">
       <div className="ph-media absolute inset-0">
         <SiteMedia slot={slot} alt={alt} className="absolute inset-0 w-full h-full object-cover" />
       </div>
