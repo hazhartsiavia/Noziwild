@@ -210,17 +210,22 @@ export default function ServicesList({ services, children, ctaImage }) {
   }, [items.length])
 
   // Rangée à faire glisser : où en est-on, et défilement d'une carte avec les boutons
+  // Mise à jour seulement si l'état change (sinon chaque rendu en relance un : boucle infinie)
   function updateEdge() {
     const el = scroller.current
     if (!el) return
     const max = el.scrollWidth - el.clientWidth
-    setEdge({ start: el.scrollLeft <= 4, end: el.scrollLeft >= max - 4 })
+    const start = el.scrollLeft <= 4
+    const end = el.scrollLeft >= max - 4
+    setEdge((prev) => (prev.start === start && prev.end === end ? prev : { start, end }))
   }
+  // Au chargement, quand la liste change et au redimensionnement (pas à chaque rendu)
   useEffect(() => {
     updateEdge()
     window.addEventListener('resize', updateEdge)
     return () => window.removeEventListener('resize', updateEdge)
-  })
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [items.length])
   const slide = (dir) => {
     const el = scroller.current
     const card = el?.querySelector('.nzv__card')
