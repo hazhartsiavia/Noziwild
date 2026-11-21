@@ -579,7 +579,7 @@ function Transport() {
     <>
     <section className="w-full overflow-x-clip pt-0 pb-12 bg-[#D5E8E2] flex flex-col items-center">
       <Navbar />
-      <div className={`${SECTION_WIDTH} mt-2 md:mt-4`}>
+      <div className={`${SECTION_WIDTH} mt-2 md:mt-4 xl:mt-0`}>
         <Hero />
       </div>
       <ModesMarquee />

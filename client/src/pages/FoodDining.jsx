@@ -553,7 +553,7 @@ function FoodDining() {
     <>
     <section className="w-full pt-0 pb-12 md:pb-20 bg-[#D5E8E2] flex flex-col items-center">
       <Navbar />
-      <div ref={contentRef} className={`${SECTION_WIDTH} mt-6 md:mt-10`}>
+      <div ref={contentRef} className={`${SECTION_WIDTH} mt-6 md:mt-10 xl:mt-0`}>
         <Hero />
         <Dishes />
         <Menu experiences={experiences} status={status} />
