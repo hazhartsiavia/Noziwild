@@ -113,15 +113,23 @@
 }
 
 @media (min-width: 1024px) and (prefers-reduced-motion: no-preference) {
-  .nzab__promise { clip-path: inset(0% 55% 45% 12% round 18px); }
+  .nzab__promise { clip-path: inset(0% 51% 33% 15.5% round 18px); }
   .nzab__promise-body { opacity: 0; }
   .nzab__aside {
     position: absolute;
-    top: 6%;
-    left: 66%;
-    right: 2%;
+    top: 12%;
+    left: 68%;
+    right: 3%;
     margin: 0;
   }
+}
+
+/* Ordinateur, comme le modèle : titre décalé vers la droite, badge plus bas entre le titre et le texte,
+   plus d'espace avant la photo */
+@media (min-width: 1024px) {
+  .nzab__title { padding-left: clamp(0px, 9vw, 180px); }
+  .nzab__badge { margin-right: clamp(0px, 8vw, 170px); transform: translateY(75%); }
+  .nzab__stage { margin-top: clamp(56px, 6vw, 130px); }
 }
 
 /* ---------- tablette et téléphone ---------- */
