@@ -1,0 +1,140 @@
+/* Page À propos (About.jsx), d'après le modèle Funway, couleurs et police de l'accueil :
+   grand titre + badge, petite photo qui s'agrandit en carte « Notre promesse » au défilement. */
+
+.nzab { color: #0c3e2e; }
+
+/* ---------- grand titre + badge ---------- */
+
+.nzab__head {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: clamp(20px, 3vw, 60px);
+  margin-top: clamp(24px, 3vw, 56px);
+}
+
+.nzab__title {
+  max-width: 13em;
+  margin: 0;
+  font-size: clamp(40px, 5.2vw, 100px);
+  font-weight: 500;
+  line-height: 1.02;
+  letter-spacing: -.03em;
+  text-transform: uppercase;
+}
+
+.nzab__badge { flex: none; color: #0c3e2e; }
+
+/* ---------- photo qui devient la carte « Notre promesse » ---------- */
+
+.nzab__stage {
+  position: relative;
+  margin-top: clamp(28px, 3vw, 56px);
+}
+
+.nzab__promise {
+  position: relative;
+  overflow: hidden;
+  min-height: clamp(520px, 68vh, 660px);
+  border-radius: 28px;
+  background: #0c3e2e;
+  color: #fff;
+  isolation: isolate;
+}
+
+.nzab__promise-media {
+  position: absolute;
+  inset: 0;
+  z-index: -2;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.nzab__promise-shade {
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  background: linear-gradient(90deg, rgba(7, 42, 31, .25) 0%, rgba(7, 42, 31, .1) 40%, rgba(7, 42, 31, .75) 100%);
+}
+
+.nzab__promise-body {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: clamp(22px, 2.4vw, 40px);
+}
+
+.nzab__promise-label {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin: 0;
+  font-size: clamp(18px, 1.3vw, 22px);
+  font-weight: 500;
+}
+
+.nzab__promise-label span { width: 7px; height: 7px; border-radius: 50%; background: #C49849; }
+
+.nzab__promise-title {
+  margin: 0 0 clamp(18px, 2vw, 32px);
+  font-size: clamp(34px, 3.6vw, 68px);
+  font-weight: 500;
+  line-height: 1.05;
+  letter-spacing: -.02em;
+  text-align: right;
+}
+
+.nzab__features {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: clamp(10px, 1.2vw, 20px);
+  width: min(100%, 1100px);
+  margin-left: auto;
+}
+
+/* Texte + « Besoin d'aide ? » : à droite de la petite photo (ordinateur) */
+.nzab__aside {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: clamp(18px, 2vw, 32px);
+  margin-top: 24px;
+}
+
+.nzab__aside p {
+  max-width: 30em;
+  margin: 0;
+  font-size: clamp(17px, 1.25vw, 22px);
+  line-height: 1.55;
+  color: #55625c;
+}
+
+@media (min-width: 1024px) and (prefers-reduced-motion: no-preference) {
+  .nzab__promise { clip-path: inset(0% 62% 45% 5% round 18px); }
+  .nzab__promise-body { opacity: 0; }
+  .nzab__aside {
+    position: absolute;
+    top: 6%;
+    left: 66%;
+    right: 2%;
+    margin: 0;
+  }
+}
+
+/* ---------- tablette et téléphone ---------- */
+
+@media (max-width: 1023px) {
+  .nzab__head { flex-direction: column; align-items: flex-start; }
+  .nzab__badge { align-self: flex-end; }
+  .nzab__stage { display: flex; flex-direction: column-reverse; gap: 28px; }
+  .nzab__aside { margin-top: 0; }
+  .nzab__promise-title { text-align: left; }
+  .nzab__features { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+}
+
+@media (max-width: 640px) {
+  .nzab__promise { min-height: 560px; border-radius: 22px; }
+}

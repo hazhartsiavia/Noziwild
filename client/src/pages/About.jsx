@@ -1,4 +1,9 @@
-import React, { useRef, useState } from 'react'
+import React, { useEffect, useLayoutEffect, useRef, useState } from 'react'
+import gsap from 'gsap'
+import { ScrollTrigger } from 'gsap/ScrollTrigger'
+import { fetchCircuits, fetchDestinations } from '../api'
+import { useLanguage } from '../i18n/LanguageContext'
+import { useOffers } from '../utils/useOffers'
 import { EMAIL, PHONE } from '../contactInfo'
 import Deux from "../assets/images/2.jpg";
 import Ambanja from "../assets/images/Ambanja.jpg";
@@ -9,23 +14,23 @@ import TeamLookout from "../assets/images/site/noziwild-team-lookout.jpg";
 import Icone from "../assets/logo/icon.svg";
 import Navbar from '../components/Navbar';
 import Footer from '../components/Footer';
-import PageHero from '../components/PageHero'
 import { useT } from '../i18n/LanguageContext';
 import { useScrollReveal } from '../utils/useScrollReveal'
 import { usePhoto } from '../sitePhotos'
 import { A } from '../i18n/router'
 import SiteMedia from '../components/SiteMedia'
+import './about.css'
+
+gsap.registerPlugin(ScrollTrigger)
 
 /* Constantes partagées : mêmes valeurs que dans Explore, Choose, Trips et Blog */
 const SECTION_WIDTH = "w-[90vw] xl:w-[95vw]"
-const SECTION_TITLE = "text-[clamp(2rem,4.4vw,4rem)] font-bold text-forest leading-[1.08] tracking-tight"
+const SECTION_TITLE = "text-[clamp(2.25rem,3vw,3.6rem)] font-normal text-forest leading-[1.15] tracking-[-0.5px]"
 const SECTION_SUBTITLE = "text-sm sm:text-base md:text-lg text-slate-600 leading-relaxed max-w-3xl"
 const META_TEXT = "text-xs sm:text-sm"
 
 // Propres à cette section
-const STATEMENT_TITLE = "text-4xl sm:text-5xl md:text-6xl xl:text-7xl font-medium uppercase leading-[1.15] tracking-tight text-forest"
 // Même échelle que SECTION_TITLE, en blanc pour être posé sur l'image
-const ON_IMAGE_TITLE = "text-[clamp(2rem,4.4vw,4rem)] font-bold text-white leading-[1.08] tracking-tight"
 
 /* ---------------------------- Données ---------------------------- */
 // Textes affichés : locales/<langue>/about.json (les listes suivent l'ordre de celles-ci)
@@ -157,10 +162,6 @@ const mission = {
   // Grande image (à remplacer)
   image: NosyIranja,
   imageAlt: 'A traveler walking along a coastal path',
-  stats: [
-    { id: 1, value: '160+', label: 'Destinations Worldwide' },
-    { id: 2, value: '12+', label: 'Years Travel Expertise' },
-  ],
   pillars: [
     { id: 1, label: 'Our Vision', icon: FlagIcon },
     { id: 2, label: 'Our Mission', icon: EyeIcon },
@@ -322,8 +323,28 @@ function Polaroids() {
   )
 }
 
+// Chiffres réels du site (comme « À propos » sur l'accueil) : destinations, puis circuits + excursions
+function useRealStats() {
+  const { lang } = useLanguage()
+  const home = useT('home')
+  const [counts, setCounts] = useState({ destinations: null, circuits: null })
+  const { offers: excursions, status } = useOffers('excursion')
+  useEffect(() => {
+    let cancelled = false
+    fetchDestinations(lang).then((d) => !cancelled && setCounts((c) => ({ ...c, destinations: d.destinations?.length ?? null }))).catch(() => {})
+    fetchCircuits(lang).then((d) => !cancelled && setCounts((c) => ({ ...c, circuits: d.circuits?.length ?? null }))).catch(() => {})
+    return () => { cancelled = true }
+  }, [lang])
+  const trips = counts.circuits != null && status === 'ready' ? counts.circuits + excursions.length : null
+  return [
+    counts.destinations ? { id: 'dest', value: counts.destinations, label: home('aboutUs.stats.destinations') } : null,
+    trips ? { id: 'trips', value: trips, label: home('aboutUs.stats.trips.title') } : null,
+  ].filter(Boolean)
+}
+
 function MissionSection() {
   const t = useT('about')
+  const stats = useRealStats()
   return (
     <div className="mt-[50px] md:mt-[100px]">
 
@@ -341,10 +362,10 @@ function MissionSection() {
           <Polaroids />
 
           <div className="flex flex-col gap-3 md:flex-row md:gap-8 lg:gap-12">
-            {mission.stats.map((stat, i) => (
+            {stats.map((stat) => (
               <div key={stat.id} className="flex items-center gap-3 md:block">
-                <p className="text-3xl md:text-5xl lg:text-6xl leading-none text-slate-800">{stat.value}</p>
-                <p className="md:mt-3 text-sm md:text-base lg:text-lg leading-snug text-slate-600">{t('stats')[i]}</p>
+                <p className="text-3xl md:text-5xl lg:text-6xl leading-none text-forest">{stat.value}</p>
+                <p className="md:mt-3 text-sm md:text-base lg:text-lg leading-snug text-slate-600">{stat.label}</p>
               </div>
             ))}
           </div>
@@ -511,64 +532,71 @@ function ExpertsSection() {
   )
 }
 
+// Page « À propos », d'après le modèle Funway : grand titre et badge, petite photo à gauche avec le texte et
+// « Besoin d'aide ? » à droite ; au défilement, la petite photo s'agrandit jusqu'à devenir la carte
+// « Notre promesse » (4 points), puis la mission et les experts. Styles : about.css.
 function About() {
   const t = useT('about')
-  const nav = useT('nav')
   const root = useRef(null)
+  const stage = useRef(null)
   useScrollReveal(root)
+
+  useLayoutEffect(() => {
+    if (!stage.current) return undefined
+    const mm = gsap.matchMedia(stage.current)
+    // Ordinateur : la carte part de la petite photo (découpe) et s'ouvre sur toute la largeur au défilement
+    mm.add('(min-width: 1024px) and (prefers-reduced-motion: no-preference)', () => {
+      const small = 'inset(0% 62% 45% 5% round 18px)'
+      const full = 'inset(0% 0% 0% 0% round 28px)'
+      gsap.timeline({ scrollTrigger: { trigger: stage.current, start: 'top 45%', end: 'top 2%', scrub: 0.6 } })
+        .fromTo('.nzab__promise', { clipPath: small }, { clipPath: full, ease: 'power2.inOut', duration: 1 }, 0)
+        .fromTo('.nzab__promise-media', { scale: 1.25 }, { scale: 1, ease: 'power2.inOut', duration: 1 }, 0)
+        .fromTo('.nzab__aside', { opacity: 1, y: 0 }, { opacity: 0, y: -30, ease: 'power1.in', duration: 0.35 }, 0.1)
+        .fromTo('.nzab__promise-body', { opacity: 0, y: 40 }, { opacity: 1, y: 0, ease: 'power2.out', duration: 0.35 }, 0.65)
+    })
+    return () => mm.revert()
+  }, [])
+
   return (
     <>
     <section ref={root} className="w-full pt-0 pb-12 bg-[#D5E8E2] flex flex-col items-center">
-        <Navbar />
-      <PageHero slot="about.hero" title={t('title')} crumb={nav('about')} />
-      <div className={`${SECTION_WIDTH} mt-8 md:mt-12`}>
-        {/* Texte + aide */}
-        <div className="flex flex-col lg:flex-row lg:items-center lg:justify-between gap-6 lg:gap-12">
-          <div className="flex items-center gap-5 md:gap-6 max-w-2xl">
-            <div className="hidden sm:block"><TalkBadge /></div>
-            <p className="text-sm sm:text-base md:text-lg text-slate-600 leading-relaxed">
-              {t('text')}
-            </p>
-          </div>
+      <Navbar />
+      <div className={`${SECTION_WIDTH} nzab`}>
+        {/* Grand titre + badge « Parlez à un expert » qui tourne */}
+        <header className="nzab__head" data-no-reveal>
+          <h1 className="nzab__title">{t('title')}</h1>
+          <div className="nzab__badge"><TalkBadge /></div>
+        </header>
 
-          <HelpPill />
-        </div>
-
-        {/* Carte "Our Promise" */}
-        <div className="relative mt-10 md:mt-16 overflow-hidden rounded-3xl bg-[#074636] text-white min-h-[520px] md:min-h-[625px]">
-          <SiteMedia
-            slot="about.promise"
-            alt={t('imageAlt')}
-            className="absolute inset-0 w-full h-full object-cover"
-          />
-          <div className="absolute inset-0 bg-gradient-to-r from-[#072a1f]/30 via-[#072a1f]/10 to-[#072a1f]/80" />
-
-          <div className="relative min-h-[inherit] flex flex-col p-5 md:p-8">
-            <p className="flex items-center gap-2 text-lg md:text-xl font-medium">
-              <span className="w-1.5 h-1.5 rounded-full bg-white" aria-hidden="true" />
-              {t('label')}
-            </p>
-
-            <div className="mt-auto pt-24">
-              <h2 className={`${ON_IMAGE_TITLE} text-left md:text-center`}>
-                {t('cardTitle')}
-              </h2>
-
-              <div className="mt-6 md:mt-10 grid grid-cols-2 md:grid-cols-4 gap-3 md:gap-5">
-                {features.map((feature, i) => (
-                  <FeatureCard key={feature.id} feature={feature} title={t('features')[i]} />
-                ))}
+        {/* Petite photo à gauche (le début de la carte « Notre promesse »), texte et aide à droite */}
+        <div ref={stage} className="nzab__stage" data-no-reveal>
+          <div className="nzab__promise">
+            <SiteMedia slot="about.promise" alt={t('imageAlt')} className="nzab__promise-media" />
+            <div className="nzab__promise-shade" aria-hidden="true" />
+            <div className="nzab__promise-body">
+              <p className="nzab__promise-label"><span aria-hidden="true" />{t('label')}</p>
+              <div className="nzab__promise-bottom">
+                <h2 className="nzab__promise-title">{t('cardTitle')}</h2>
+                <div className="nzab__features">
+                  {features.map((feature, i) => (
+                    <FeatureCard key={feature.id} feature={feature} title={t('features')[i]} />
+                  ))}
+                </div>
               </div>
             </div>
           </div>
+
+          <div className="nzab__aside">
+            <p>{t('text')}</p>
+            <HelpPill />
+          </div>
         </div>
 
-        {/* Section "Our Mission" */}
+        {/* Section « Notre mission » */}
         <MissionSection />
 
-        {/* Section "Travel Experts" */}
+        {/* Section « Nos experts » */}
         <ExpertsSection />
-
       </div>
     </section>
     <Footer />

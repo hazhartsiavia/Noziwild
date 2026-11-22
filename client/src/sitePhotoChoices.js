@@ -84,7 +84,6 @@ export const PHOTO_CHOICES = {
   'dest.hero.3': p_red_tsingy,
   'dest.cta': p_diego_bay_view,
   'blog.hero': p_nosy_tanikely_aerial,
-  'about.hero': p_noziwild_team_lookout,
   'about.promise': p_guide_nosy_iranja,
   'about.mission': p_red_tsingy_team,
   'about.mission.1': p_noziwild_guides_market,

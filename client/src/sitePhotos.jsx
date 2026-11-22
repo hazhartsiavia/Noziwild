@@ -75,7 +75,6 @@ export const PHOTO_PAGES = [
   {
     id: 'about', label: 'About', page: '/about',
     slots: {
-      'about.hero': { label: 'Page banner', src: Ramena },
       'about.promise': { label: '“Our promise” card', src: Deux },
       'about.mission': { label: 'Mission, large photo', src: NosyIranja },
       ...list('about.mission', 'Mission, small photo', [Ambanja, NosyLonjo]),
@@ -213,7 +212,7 @@ export const VIDEO_SLOTS = new Set([
   'cruise.hero', 'cruise.cta', 'gear.cta', 'exc.hero', 'exc.multi', 'exc.cta', 'food.class',
   'hosting.hero', 'hosting.featured', 'hosting.cta', 'long.hero', 'long.cta', 'photo.cta', 'tm.cta',
   'transport.hero', 'transport.cta', 'auth.background', 'tm.hero.2',
-  'about.hero', 'dest.hero.2',
+  'dest.hero.2',
 ])
 
 const STORAGE_KEY = 'noziwild-photos'
