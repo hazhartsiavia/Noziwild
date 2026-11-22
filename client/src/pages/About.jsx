@@ -546,7 +546,7 @@ function About() {
     const mm = gsap.matchMedia(stage.current)
     // Ordinateur : la carte part de la petite photo (découpe) et s'ouvre sur toute la largeur au défilement
     mm.add('(min-width: 1024px) and (prefers-reduced-motion: no-preference)', () => {
-      const small = 'inset(0% 62% 45% 5% round 18px)'
+      const small = 'inset(0% 55% 45% 12% round 18px)'
       const full = 'inset(0% 0% 0% 0% round 28px)'
       gsap.timeline({ scrollTrigger: { trigger: stage.current, start: 'top 45%', end: 'top 2%', scrub: 0.6 } })
         .fromTo('.nzab__promise', { clipPath: small }, { clipPath: full, ease: 'power2.inOut', duration: 1 }, 0)

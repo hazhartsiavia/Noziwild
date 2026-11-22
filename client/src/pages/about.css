@@ -113,7 +113,7 @@
 }
 
 @media (min-width: 1024px) and (prefers-reduced-motion: no-preference) {
-  .nzab__promise { clip-path: inset(0% 62% 45% 5% round 18px); }
+  .nzab__promise { clip-path: inset(0% 55% 45% 12% round 18px); }
   .nzab__promise-body { opacity: 0; }
   .nzab__aside {
     position: absolute;
